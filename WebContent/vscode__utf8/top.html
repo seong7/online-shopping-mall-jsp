@@ -9,7 +9,25 @@
 	<body>
 	    <div id="modalDiv">
 	        <div id="modalInnerFrame">
-	            <label for="userPopup"><i class="fas fa-times"></i></label>
+				<label for="userPopup" id="modal_close_btn"><i class="fas fa-times"></i></label>
+				<div id="modal_header">
+					<div id="login_btn" class="login_signup_btn">&nbsp로그인&nbsp</div>
+					<span id="modal_header_span">&nbsp|&nbsp</span>
+					<div id="signup_btn" class="login_signup_btn">회원가입</div>
+				</div>
+				<form method="POST" id="login_form" action="#">
+					<h3>로그인</h3>
+					<input type="text" id="login_id_input" class="login_input" name="id" value="아이디를 입력해주세요.">
+					<input type="text" id="login_pwd_input" class="login_input" name="pwd" value="비밀번호를 입력해주세요.">
+					<div id="lost_id_pwd_wrapper">
+						<a href="#">아이디 찾기</a>
+						<span>|</span>
+						<a href="#">비밀번호 찾기</a>
+					</div>
+					<button type="submit" id="login_submit_btn">
+						<span>로그인</span>
+					</button>
+				</form>
 	        </div>
 	        <label for="userPopup"></label>
 	    </div>

@@ -11,8 +11,8 @@ function init(){
             modalWindow.style.display = 'block';
             modaltrigger = true;
             setTimeout(function(){
-                modalInnerFrame.style.width = "600px";
-                modalInnerFrame.style.height = "800px";
+                modalInnerFrame.style.width = "400px";
+                modalInnerFrame.style.height = "500px";
             }, 80);
             console.log(modaltrigger);
         }
