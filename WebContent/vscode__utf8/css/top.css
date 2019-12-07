@@ -43,6 +43,16 @@
     font-style: normal;
     font-weight: normal;
 }
+
+/* html 전체 드래그 방지 */
+html{
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    user-select:none;
+}
+
 /*전체 컴포넌트 Wrapper 클래스(modal window 제외 Wrap)*/
 #top_wrapper{
     position: relative;
@@ -178,6 +188,7 @@ input[id*='userPopup']{
     height: 100%;
     z-index: 150;
     box-sizing: border-box;
+    color: #333;
 }
 #modalDiv > #modalInnerFrame{
     position: absolute;
@@ -193,24 +204,37 @@ input[id*='userPopup']{
     display : flex;
     flex-direction: column;
     align-items: center;
-    font-size:16px;
+    font-size:20px;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: bolder;
 }
 
-
-#modalDiv > #modalInnerFrame > #modal_header{
+/*  modal header */ 
+#modalInnerFrame > #modal_header{
     display : flex;
+    align-items: center;
+    font-size:16px;
 }
-#modalDiv > #modalInnerFrame > #modal_header > .login_signup_btn{
+#modalInnerFrame > #modal_header > .login_signup_btn{
    
-    display: inline-block;
-    flex-grow: 1;
-    margin:30px;
-    margin-top:50px;
+    /* flex-grow: 1; */
+    /* margin:30px; */
+    margin-top:10px;
+    
     padding:20px;
-    background-color: powderblue;
-    border-radius: 20px;
+    /* background-color: powderblue; */
+    border-radius: 5px;
+}
+#modal_header > #login_btn{
+    /* flex-basis:60px; */
+}
+#modal_header > #signup_btn{
+    color: rgb(161, 157, 157);
+}
+#modal_header > #modal_header_span{
+    color: rgb(161, 157, 157);
+    font-size: 30px;
+    font-weight:lighter;
 }
 
 /* 삭제 여부 확인 필요 */
@@ -228,37 +252,76 @@ input[id*='userPopup']{
     z-index: 1;
 } */
 
+
 /*  modal 닫기 버튼 */
-#modalDiv > #modalInnerFrame > #modal_close_btn> .fa-times{
+#modalInnerFrame > #modal_close_btn> .fa-times{
     position : absolute;
     top: 0%;
     right: 1%;
-    font-size: 4rem;
+    font-size: 40px;
     color: grey;
     opacity: 0.6;
 }
 .fa-times:hover{
     cursor: pointer;
 }
-#modalInnerFrame > #login_form > #login_form_wrapper{
+
+/*  login form */
+#modalInnerFrame > #login_form{
     display: flex;
     flex-direction: column;
-}
-#modalDiv > #modalInnerFrame > #login_form > #login_form_wrapper * {
-    display:inline-block;
     margin-top:30px;
-    margin-bottom:30px;
-    width: 250px;
+    margin-bottom:50px;
+    width: 80%;
 }
-.login_input{
-    padding-left: 10px;
-    height:30px;
+#login_form > h3{
+    text-align: center;
+    margin-top:0px;
 }
-#login_submit_btn{
+#login_form > .login_input{
+    box-sizing: border-box;
+    height:50px;
+    margin-top:10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    border-radius:3px;
+    border: 1px solid #EB984F;
+}
+.login_input:focus{
+    outline: 1px solid #D65C38;
+}
+#login_form > #lost_id_pwd_wrapper{
+    margin-top:3px;
+    text-align: right;
+    font-size: 13px;
+}
+#login_form > #lost_id_pwd_wrapper>a{
+    color:#333;
+    text-decoration: none;
+}
+#login_form > #login_submit_btn{
+    margin-top:30px;
+    width:100%;
+    height:50px;
     text-align:center;
-    line-height: 2;
-    /* justify-content: center; */
+    background-color: #EB984F;
+    border: 1px solid #EB984F;
+    border-radius:3px;
 }
+#login_form > #login_submit_btn> span{
+    font-size:18px;
+    font-weight: bolder;
+    color:#FAF478;
+}
+#login_submit_btn:hover{
+    cursor: pointer;
+}
+#login_submit_btn:focus{
+    outline: none;
+}
+
+
 
 
 /* 삭제여부 판단 필요 */
@@ -279,7 +342,7 @@ input[id*='userPopup']{
 
 
 /*  테두리 임시 부여  */
-#modalDiv > #modalInnerFrame *{
+/* #modalDiv > #modalInnerFrame *{
     border: 1px solid orange;
-}
+} */
 /**********************/
