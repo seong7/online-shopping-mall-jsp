@@ -8,7 +8,6 @@
 		<meta charset="EUC-KR">
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/top.css">
-		<link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
 		<script src="https://kit.fontawesome.com/115bcf1f34.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
