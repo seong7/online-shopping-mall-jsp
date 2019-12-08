@@ -9,6 +9,9 @@
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/top.css">
 		<script src="https://kit.fontawesome.com/115bcf1f34.js" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	</head>
 	<body>
 	    <div id="modalDiv">
