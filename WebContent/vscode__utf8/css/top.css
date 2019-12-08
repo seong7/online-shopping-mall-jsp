@@ -1,4 +1,3 @@
-@charset "EUC-KR";
 /* 폰트 추가 noto-Sans*/
 
 @font-face{
@@ -78,15 +77,20 @@ html{
     width: 446px;
     height: 40px;
     border: 2px solid #a4b0be;
-    border-radius: 35px;
+    border-top-left-radius : 5px;
+    border-top-right-radius : 5px;
     outline: none;
     color: #2f3542;
     font-size: 20px;
     font-family: 'Noto Sans KR', sans-serif;
     padding-left: 35px;
     padding-right: 40px;
+    background-color: #f4f4f4;
+    transition : background-color .35s;
 }
-
+#search_input:focus{
+	background-color: white;
+}
 /*search icon position, color set */
 .fa-search{
     cursor: pointer;
@@ -94,6 +98,7 @@ html{
     margin-top: 15px;
     margin-left: -40px;
     color: #a4b0be;
+    transition: color .35s;
 }
 /*menu Nav font, position set(stickcy)*/
 #menuNav{
@@ -304,7 +309,7 @@ input[id*='userPopup']{
     text-decoration: none;
 }
 #login_form > #login_submit_btn{
-    margin-top:30px;
+    margin-top:45px;
     width:100%;
     height:50px;
     text-align:center;
@@ -348,8 +353,48 @@ input[id*='userPopup']{
 }
 
 
+
 /*  테두리 임시 부여  */
 /* #modalDiv > #modalInnerFrame *{
     border: 1px solid orange;
 } */
 /**********************/
+
+/*autosearch css*/
+
+#ui-id-1{
+	background-color : #f3f1f1;
+}
+
+.ui-menu-item {
+margin: 0;
+padding: 0;
+zoom: 1;
+float: left;
+clear: left;
+width: 100%;
+}
+
+.ui-autocomplete li.ui-menu-item 
+{
+    padding: 1px;  
+    width:524px;
+    background-color: #f4f4f4 !important;
+}
+.ui-menu-item .ui-menu-item-wrapper.ui-state-active {
+    background: #cfcfcf !important;
+    font-weight: bold !important;
+    color: #000000!important;
+    border: none;
+} 
+.ui-menu-item a {
+text-decoration: none;
+display: block;
+padding: .2em .4em;
+line-height: 1.5;
+zoom: 1;
+}
+/*inputform color*/
+strong{
+	color: #0abde3;
+}
