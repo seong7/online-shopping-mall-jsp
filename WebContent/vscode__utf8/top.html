@@ -9,25 +9,27 @@
 	<body>
 	    <div id="modalDiv">
 	        <div id="modalInnerFrame">
-				<label for="userPopup" id="modal_close_btn"><i class="fas fa-times"></i></label>
-				<div id="modal_header">
-					<div id="login_btn" class="login_signup_btn">&nbsp로그인&nbsp</div>
-					<span id="modal_header_span">&nbsp|&nbsp</span>
-					<div id="signup_btn" class="login_signup_btn">회원가입</div>
-				</div>
-				<form method="POST" id="login_form" action="#">
-					<h3>로그인</h3>
-					<input type="text" id="login_id_input" class="login_input" name="id" value="아이디를 입력해주세요.">
-					<input type="text" id="login_pwd_input" class="login_input" name="pwd" value="비밀번호를 입력해주세요.">
-					<div id="lost_id_pwd_wrapper">
-						<a href="#">아이디 찾기</a>
-						<span>|</span>
-						<a href="#">비밀번호 찾기</a>
+				<div id="modal_elements_wrapper">
+					<label for="userPopup" id="modal_close_btn"><i class="fas fa-times"></i></label>
+					<div id="modal_header">
+						<a id="login_btn" class="login_signup_btns" href="#">&nbsp로그인&nbsp</a>
+						<span id="modal_header_span">&nbsp|&nbsp</span>
+						<a id="signup_btn" class="login_signup_btns" href="#">회원가입</a>
 					</div>
-					<button type="submit" id="login_submit_btn">
-						<span>로그인</span>
-					</button>
-				</form>
+					<form method="POST" id="login_form" action="#">
+						<h3>로그인</h3>
+						<input type="text" id="login_id_input" class="login_input" name="id" placeholder="아이디를 입력해주세요.">
+						<input type="password" id="login_pwd_input" class="login_input" name="pwd" placeholder="비밀번호를 입력해주세요.">
+						<div id="lost_id_pwd_wrapper">
+							<a href="#">아이디 찾기</a>
+							<span>|</span>
+							<a href="#">비밀번호 찾기</a>
+						</div>
+						<button type="submit" id="login_submit_btn">
+							<span>로그인</span>
+						</button>
+					</form>
+				</div>
 	        </div>
 	        <label for="userPopup"></label>
 	    </div>
@@ -88,15 +90,15 @@
 	                </ul>
 	                <i class="fas fa-shopping-cart"></i>
 	                <input type="checkbox" id="userPopup">
-	                <label for="userPopup">
-	                    <i class="fas fa-user"></i>
-	                </label>
+					<label for="userPopup" id="userPopup_label">
+						<i class="fas fa-user"></i>
+					</label>
 	            </div>
 	            <div id="ricecake_sub">
 	                <!--떡 slide menu ※기본속성 display none-->
 	            </div>
 	        </div>
 	</div>
-	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/top.js"></script>
 	</body>
 </html>
