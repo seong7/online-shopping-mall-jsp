@@ -1,16 +1,7 @@
 @charset "EUC-KR";
-/* ÆùÆ® Ãß°¡ noto-Sans*/
+/* í°íŠ¸ ì¶”ê°€ noto-Sans*/
 
-@font-face {
-    font-family: 'Noto Sans KR';
-    font-style: normal;font-weight: 100;
-    src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.otf) format('opentype');}
-@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 300;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf) format('opentype');}
-@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 400;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype');}
-@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 500;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf) format('opentype');}
-@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 700;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf) format('opentype');}
-@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 900;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.otf) format('opentype');}
-/*@font-face{
+@font-face{
     font-family: noto_Bold;
     src : url(../font/NotoSansCJKkr-Bold.otf);
     font-style: normal;
@@ -51,21 +42,31 @@
     src : url(../font/NotoSansCJKkr-Thin.otf);
     font-style: normal;
     font-weight: normal;
-}*/
-/*ÀüÃ¼ ÄÄÆ÷³ÍÆ® Wrapper Å¬·¡½º(modal window Á¦¿Ü Wrap)*/
+}
+
+/* html ì „ì²´ ë“œëž˜ê·¸ ë°©ì§€ */
+html{
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    user-select:none;
+}
+
+/*ì „ì²´ ì»´í¬ë„ŒíŠ¸ Wrapper í´ëž˜ìŠ¤(modal window ì œì™¸ Wrap)*/
 #top_wrapper{
     position: relative;
     min-width: 1050px;
     box-sizing: border-box;
 }
-/*·Î°í ÀÌ¹ÌÁö position*/
+/*ë¡œê³  ì´ë¯¸ì§€ position*/
 #homeLogo>img{
     width: 160px;
     display: block;
     margin : 0px auto;
     margin-top : 30px;
 }
-/*search_form À§Ä¡ */
+/*search_form ìœ„ì¹˜ */
 #search_form{
     position: absolute;
     left: 50%;
@@ -77,15 +78,20 @@
     width: 446px;
     height: 40px;
     border: 2px solid #a4b0be;
-    border-radius: 35px;
+    border-top-left-radius : 5px;
+    border-top-right-radius : 5px;
     outline: none;
     color: #2f3542;
     font-size: 20px;
     font-family: 'Noto Sans KR', sans-serif;
     padding-left: 35px;
     padding-right: 40px;
+    background-color: #f4f4f4;
+    transition : background-color .35s;
 }
-
+#search_input:focus{
+	background-color: white;
+}
 /*search icon position, color set */
 .fa-search{
     cursor: pointer;
@@ -93,6 +99,7 @@
     margin-top: 15px;
     margin-left: -40px;
     color: #a4b0be;
+    transition: color .35s;
 }
 /*menu Nav font, position set(stickcy)*/
 #menuNav{
@@ -104,11 +111,11 @@
     height: 55px;
     margin-left: auto;
     margin-right: auto;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
     z-index: 100;
 }
 
-/*³×ºñ°ÔÀÌ¼Ç ¸ÞÀÎ Å¬·¡½º(»èÁ¦ ½Ã icon »ç¶óÁü)*/
+/*ë„¤ë¹„ê²Œì´ì…˜ ë©”ì¸ í´ëž˜ìŠ¤(ì‚­ì œ ì‹œ icon ì‚¬ë¼ì§)*/
 .nav_main{
     overflow: hidden;
     float: left;
@@ -130,7 +137,7 @@
     vertical-align: top;
     
 }
-/*nav_a ÅÂ±×*/
+/*nav_a íƒœê·¸*/
 .nav_a{
     transition: color .35s;
     display: block;
@@ -138,11 +145,11 @@
     height: 55px;
     cursor: pointer;
 }
-/*hover ½Ã »ö»ó ÁöÁ¤(¾ÆÀÌÄÜ, nav a ÅÂ±×)*/
+/*hover ì‹œ ìƒ‰ìƒ ì§€ì •(ì•„ì´ì½˜, nav a íƒœê·¸)*/
 .nav_a:hover, .fa-shopping-cart:hover, .fa-user:hover{
     color: #ff9f43;
 }
-/*Çà °£°Ý ¸ÂÃß·Á°í line height Á¶Á¤*/
+/*í–‰ ê°„ê²© ë§žì¶”ë ¤ê³  line height ì¡°ì •*/
 .nav_a > span, .nav_a>input{
     line-height: 50px;
 }
@@ -159,9 +166,10 @@
     cursor: pointer;
 }
 .fa-user{
-    margin-left: 20px;
+    margin-left: 0px;
+    margin-top: 0px;
 }
-/*»§, ¶± sub menu*/
+/*ë¹µ, ë–¡ sub menu*/
 #bread_sub{
     display: none;
 }
@@ -174,7 +182,15 @@
 input[id*='userPopup']{
     display: none;
 }
-/*modal cssºÎ*/
+#userPopup_label{
+    display:inline-flex;
+    margin-left:20px;
+}
+
+
+
+/***********************************************/
+/*******************  modal êµ¬ì—­  **************/
 #modalDiv{
     display: none;
     position: fixed;
@@ -183,8 +199,10 @@ input[id*='userPopup']{
     width: 100%;
     height: 100%;
     z-index: 150;
+    box-sizing: border-box;
+    color: #333;
 }
-#modalDiv > div{
+#modalDiv > #modalInnerFrame{
     position: absolute;
     transition: all .05s;
     left: 50%;
@@ -196,19 +214,130 @@ input[id*='userPopup']{
     box-shadow: 0px 0px 20px 10px rgba(	250, 211, 144, 0.4);
 }
 
-#modalDiv > div > label{
-    display: none;
-    position: absolute;
-    top: 3%;
-    right: 3%;
-    width: 50px;
-    height: 50px;
-    transform: translate(40%, -40%);
-    padding: 20px;
-    background-color: crimson;
-    border-radius: 100%;
-    z-index: 1;
+#modalInnerFrame > #modal_elements_wrapper{
+    
+        display : flex;
+        opacity: 0;
+    
+
+        flex-direction: column;
+        align-items: center;
+        font-size:20px;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: bolder;
+
 }
+
+/*  modal header (ë¡œê·¸ì¸, íšŒì›ê°€ìž… ì„ íƒ ë²„íŠ¼) */ 
+#modal_elements_wrapper > #modal_header{
+    display : flex;
+    align-items: center;
+    font-size:16px;
+    padding-top: 15px;
+}
+#modal_header > .login_signup_btns{
+    display: none;
+}
+#modal_elements_wrapper > #modal_header > .login_signup_btns_label{
+    margin-top:10px;
+    /* color: rgb(161, 157, 157); */
+    text-decoration: none;
+}
+#modal_header > .login_signup_btns_label:hover{
+    transform: scale(1.05);
+    transition: transform 0.5s;
+    cursor: pointer;
+    /* flex-basis:60px; */
+}
+#modal_header > #login_btn_label{
+    margin-right:20px;
+}
+#modal_header > #signup_btn_label{
+    color: rgb(161, 157, 157);
+    margin-left:20px;
+}
+#modal_header > #modal_header_span{
+    color: rgb(161, 157, 157);
+    font-size: 30px;
+    font-weight:lighter;
+}
+
+/*  modal ë‹«ê¸° ë²„íŠ¼ */
+#modal_elements_wrapper > #modal_close_btn> .fa-times{
+    position : absolute;
+    top: 0%;
+    right: 1%;
+    font-size: 40px;
+    color: grey;
+    opacity: 0.6;
+}
+.fa-times:hover{
+    cursor: pointer;
+}
+
+/*  login form */
+#modal_elements_wrapper > #login_form{
+    display: flex;
+    flex-direction: column;
+    margin-top:30px;
+    margin-bottom:50px;
+    width: 80%;
+}
+#login_form > h3{
+    text-align: center;
+    margin-top:0px;
+}
+#login_form > .login_input{
+    box-sizing: border-box;
+    height:50px;
+    margin-top:10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    border-radius:3px;
+    border: 1px solid #EB984F;
+}
+.login_input:focus{
+    outline: 1px solid #D65C38;
+}
+#login_form > #lost_id_pwd_wrapper{
+    margin-top:3px;
+    text-align: right;
+    font-size: 13px;
+}
+#login_form > #lost_id_pwd_wrapper>a{
+    color:#333;
+    text-decoration: none;
+}
+#login_form > #login_submit_btn{
+    margin-top:30px;
+    width:100%;
+    height:50px;
+    text-align:center;
+    background-color: #EB984F;
+    border: 1px solid #EB984F;
+    border-radius:3px;
+}
+#login_form > #login_submit_btn> span{
+    font-size:18px;
+    font-weight: bolder;
+    color:#FAF478;
+}
+#login_submit_btn:hover{
+    cursor: pointer;
+}
+#login_submit_btn:focus{
+    outline: none;
+}
+
+/* signup form */
+#modal_elements_wrapper > #signup_form{
+    display: none;
+       
+}
+
+
+
 #modalDiv > label{
     position: absolute;
     top: 0;
@@ -222,4 +351,51 @@ input[id*='userPopup']{
 
 #contents{
     font-size: 5000px;
+}
+
+
+
+/*  í…Œë‘ë¦¬ ìž„ì‹œ ë¶€ì—¬  */
+/* #modalDiv > #modalInnerFrame *{
+    border: 1px solid orange;
+} */
+/**********************/
+
+/*autosearch css*/
+
+#ui-id-1{
+	background-color : #f3f1f1;
+}
+
+.ui-menu-item {
+margin: 0;
+padding: 0;
+zoom: 1;
+float: left;
+clear: left;
+width: 100%;
+}
+
+.ui-autocomplete li.ui-menu-item 
+{
+    padding: 1px;  
+    width:524px;
+    background-color: #f4f4f4 !important;
+}
+.ui-menu-item .ui-menu-item-wrapper.ui-state-active {
+    background: #cfcfcf !important;
+    font-weight: bold !important;
+    color: #000000!important;
+    border: none;
+} 
+.ui-menu-item a {
+text-decoration: none;
+display: block;
+padding: .2em .4em;
+line-height: 1.5;
+zoom: 1;
+}
+/*inputform color*/
+strong{
+	color: #0abde3;
 }
