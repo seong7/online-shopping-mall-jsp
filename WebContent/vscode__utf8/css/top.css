@@ -229,24 +229,24 @@ input[id*='userPopup']{
     font-size:16px;
     padding-top: 15px;
 }
-#modal_elements_wrapper > #modal_header > .login_signup_btns{
+#modal_header > .login_signup_btns{
+    display: none;
+}
+#modal_elements_wrapper > #modal_header > .login_signup_btns_label{
     margin-top:10px;
-    color: rgb(161, 157, 157);
+    /* color: rgb(161, 157, 157); */
     text-decoration: none;
 }
-#modal_header > .login_signup_btns:active{
-    color: #333;
-}
-#modal_header > .login_signup_btns:hover{
+#modal_header > .login_signup_btns_label:hover{
     transform: scale(1.05);
     transition: transform 0.5s;
     cursor: pointer;
     /* flex-basis:60px; */
 }
-#modal_header > #login_btn{
+#modal_header > #login_btn_label{
     margin-right:20px;
 }
-#modal_header > #signup_btn{
+#modal_header > #signup_btn_label{
     color: rgb(161, 157, 157);
     margin-left:20px;
 }
@@ -324,7 +324,10 @@ input[id*='userPopup']{
     outline: none;
 }
 
-
+/* signup form */
+#modal_elements_wrapper > #signup_form{
+    display: none;   
+}
 
 
 

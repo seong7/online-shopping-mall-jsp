@@ -53,6 +53,7 @@ function init(){
         }
     });
 
+
     /** 로그인 id, pwd  input 태그 event **/
     // const login_input = document.querySelectorAll('.login_input');
     
@@ -63,5 +64,39 @@ function init(){
     //     }
     // )
 };
+
+/** 모달 header (로그인, 회원가입 라디오 버튼) **/
+
+const login_form = document.getElementById("login_form");
+const signup_form = document.getElementById("signup_form");
+const login_btn_label = document.getElementById("login_btn_label");
+const signup_btn_label = document.getElementById("signup_btn_label");
+
+function login_signup(id){
+    if(id=="login"){
+        // console.log('login');
+        
+        /* 회원가입 form . display : none 설정 필요*/
+        signup_form.style.display="none";
+        signup_btn_label.style.color="rgb(161, 157, 157)";
+        
+        login_form.style.display="flex";
+        login_btn_label.style.color="#333";
+        
+        
+        
+        
+    }else{
+        // console.log('signup');
+        
+        login_btn_label.style.color="rgb(161, 157, 157)";
+        login_form.style.display="none";
+        
+        /* 회원가입 form . display : "flex" 설정 필요*/
+        signup_form.style.display="flex";
+        signup_btn_label.style.color="#333";
+    }
+};
+
 
   init();
