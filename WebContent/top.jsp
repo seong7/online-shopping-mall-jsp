@@ -13,7 +13,40 @@
 	<body>
 	    <div id="modalDiv">
 	        <div id="modalInnerFrame">
-	            <label for="userPopup"><i class="fas fa-times"></i></label>
+				<div id="modal_elements_wrapper">
+					<label for="userPopup" id="modal_close_btn"><i class="fas fa-times"></i></label>
+					<!-- modal_header : 로그인 / 회원가입 버튼-->
+					<div id="modal_header">
+						<input type="radio" id="login_btn" class="login_signup_btns" name="login_signup_btns" onclick="login_signup('login')" checked>
+						<label for="login_btn" id="login_btn_label" class="login_signup_btns_label" >&nbsp로그인&nbsp</label>
+						<span id="modal_header_span">&nbsp|&nbsp</span>
+						<input type="radio" id="signup_btn" class="login_signup_btns" name="login_signup_btns" onclick="login_signup('signup')">
+						<label for="signup_btn" id="signup_btn_label" class="login_signup_btns_label">회원가입</label>
+					</div>
+					<form method="POST" id="login_form" action="#">
+						<h3>로그인</h3>
+						<input type="text" id="login_id_input" class="login_input" name="id" placeholder="아이디를 입력해주세요.">
+						<input type="password" id="login_pwd_input" class="login_input" name="pwd" placeholder="비밀번호를 입력해주세요.">
+						<div id="lost_id_pwd_wrapper">
+							<a href="#">아이디 찾기</a>
+							<span>|</span>
+							<a href="#">비밀번호 찾기</a>
+						</div>
+						<button type="submit" id="login_submit_btn">
+							<span>로그인</span>
+						</button>
+					</form>
+					<form method="POST" id="signup_form" acrtion="#">
+						<h3>회원가입</h3>
+						<input type="text">
+						<button><span></span></button>
+						<input type="text">
+						<input type="text">
+						<input type="text">
+						<input type="text">
+						<input type="text">
+					</form>
+				</div>
 	        </div>
 	        <label for="userPopup"></label>
 	    </div>
@@ -30,7 +63,7 @@
 	                <img src="img/breadLogo.jpg" alt="이미지 로딩 불가!">
 	                <!--LOGO-->
 	            </div>
-	            <div id="search_div"">
+	            <div id="search_div">
 	                <form action="" id="search_form">
 	                    <label>
 	                        <input type="text" id="search_input" placeholder="상품을 입력하세요" autocomplete=”off”>
@@ -74,15 +107,15 @@
 	                </ul>
 	                <i class="fas fa-shopping-cart"></i>
 	                <input type="checkbox" id="userPopup">
-	                <label for="userPopup">
-	                    <i class="fas fa-user"></i>
-	                </label>
+					<label for="userPopup" id="userPopup_label">
+						<i class="fas fa-user"></i>
+					</label>
 	            </div>
 	            <div id="ricecake_sub">
 	                <!--떡 slide menu ※기본속성 display none-->
 	            </div>
 	        </div>
 	</div>
-	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/top.js"></script>
 	</body>
 </html>
