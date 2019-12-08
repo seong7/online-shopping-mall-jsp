@@ -326,7 +326,8 @@ input[id*='userPopup']{
 
 /* signup form */
 #modal_elements_wrapper > #signup_form{
-    display: none;   
+    display: none;
+       
 }
 
 
