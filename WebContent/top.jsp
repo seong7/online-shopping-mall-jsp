@@ -28,8 +28,8 @@
 					</div>
 					<form method="POST" id="login_form" action="#">
 						<h3>로그인</h3>
-						<input type="text" id="login_id_input" class="login_input" name="id" placeholder="아이디를 입력해주세요.">
-						<input type="password" id="login_pwd_input" class="login_input" name="pwd" placeholder="비밀번호를 입력해주세요.">
+						<input type="text" id="login_id_input" class="login_input" name="id" placeholder="아이디를 입력해주세요." autocomplete="off">
+						<input type="password" id="login_pwd_input" class="login_input" name="pwd" placeholder="비밀번호를 입력해주세요."autocomplete="off">
 						<div id="lost_id_pwd_wrapper">
 							<a href="#">아이디 찾기</a>
 							<span>|</span>
@@ -39,15 +39,81 @@
 							<span>로그인</span>
 						</button>
 					</form>
-					<form method="POST" id="signup_form" acrtion="#">
+					<form method="POST" id="signup_form" action="#">
 						<h3>회원가입</h3>
-						<input type="text">
-						<button><span></span></button>
-						<input type="text">
-						<input type="text">
-						<input type="text">
-						<input type="text">
-						<input type="text">
+						<table>
+							<tr>
+								<td>
+									<span>아이디</span>
+								</td>
+								<td>
+									<input type="text" autocomplete="off">
+									<button><span>중복확인</span></button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span>비밀번호</span>
+								</td>
+								<td>
+									<input type="text" autocomplete="off">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span>비밀번호확인</span>
+								</td>
+								<td>
+									<input type="text" autocomplete="off">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span>이름</span>
+								</td>
+								<td>
+									<input type="text" autocomplete="off">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span>생년월일</span>
+								</td>
+								<td>
+									<div>
+										<input type="text" autocomplete="off">
+										<input type="text" autocomplete="off">
+										<input type="text" autocomplete="off">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span>이메일</span>
+								</td>
+								<td>
+									<input type="text" autocomplete="off">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span>연락처</span>
+								</td>
+								<td>
+									<input type="text" autocomplete="off">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span>주소</span>
+								</td>
+								<td>
+									<buttton><span>주소 검색</span></buttton>
+									<input type="text" autocomplete="off">
+									<input type="text" autocomplete="off">
+								</td>
+							</tr>
+						</table>
 					</form>
 				</div>
 	        </div>

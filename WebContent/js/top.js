@@ -1,4 +1,9 @@
 function init(){
+	
+    //search ajax
+    searchInput();
+    inputTransition();
+    
 
     /******************  모달 제어부  *******************/
 
@@ -52,6 +57,10 @@ function init(){
             modalInnerFrame.style.height = "0px";
             // modal_elements_wrapper.style.opacity="0";
             // modal_elements_wrapper.style.transition="opacity 0.3s";
+            
+            setTimeout(function(){
+                login_signup('login');
+            }, 600);
         }
     });
 
@@ -101,12 +110,8 @@ function login_signup(id){
 };
 
 
-    //search ajax
-    searchInput();
-    inputTransition();
-    
-    
-};
+
+
 
 function searchInput(){
     $("#search_input").autocomplete({ 
