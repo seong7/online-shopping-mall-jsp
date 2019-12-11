@@ -8,9 +8,9 @@
   </ul>
  </li>
  <li>
-  origin/master의 업데이트가 있을 경우, 우선 local branch 와 merge 하기</li>
+  origin/master의 업데이트가 있을 경우, 우선 local branch 와 merge 하기
   <ul>
-    <li>git merge 로컬브랜치명 origin/master
+   <li>git merge 로컬브랜치명 origin/master</li>
   </ul>
  </li>
  <li>
