@@ -5,7 +5,7 @@ function init(){
     inputTransition();
     
 
-    /******************  ëª¨ë‹¬ ì œì–´ë¶€  *******************/
+    /******************  ¸ğ´Ş Á¦¾îºÎ  *******************/
 
     let modaltrigger = false;
     const userCheckBox = document.querySelector('#userPopup');
@@ -15,7 +15,7 @@ function init(){
     const modal_elements_wrapper = document.getElementById('modal_elements_wrapper');
     const login_form = document.getElementById('login_form');
 
-    /** ëª¨ë‹¬ì°½ ì—´ë¦¼ ë‹«í˜ ê¸°ëŠ¥ **/
+    /** ¸ğ´ŞÃ¢ ¿­¸² ´İÈû ±â´É **/
 
     modalInnerFrame.style.width = "0px";
     modalInnerFrame.style.height = "0px";
@@ -28,7 +28,7 @@ function init(){
             modalWindow.style.opacity = "1";
             setTimeout(function(){
                 modalInnerFrame.style.width = "400px";
-                modalInnerFrame.style.height = "500px";
+                modalInnerFrame.style.height = "400px";
             }, 80);
 
             setTimeout(function(){
@@ -65,7 +65,7 @@ function init(){
     });
 
 
-    /** ë¡œê·¸ì¸ id, pwd  input íƒœê·¸ event **/
+    /** ·Î±×ÀÎ id, pwd  input ÅÂ±× event **/
     // const login_input = document.querySelectorAll('.login_input');
     
     // [].forEach.call(login_input, function(inp){
@@ -76,7 +76,7 @@ function init(){
     // )
 };
 
-/** ëª¨ë‹¬ header (ë¡œê·¸ì¸, íšŒì›ê°€ì… ë¼ë””ì˜¤ ë²„íŠ¼) **/
+/** ¸ğ´Ş header (·Î±×ÀÎ, È¸¿ø°¡ÀÔ ¶óµğ¿À ¹öÆ°) **/
 
 const login_form = document.getElementById("login_form");
 const signup_form = document.getElementById("signup_form");
@@ -86,8 +86,10 @@ const signup_btn_label = document.getElementById("signup_btn_label");
 function login_signup(id){
     if(id=="login"){
         // console.log('login');
+        modalInnerFrame.style.width = "400px";
+        modalInnerFrame.style.height = "400px";
         
-        /* íšŒì›ê°€ì… form . display : none ì„¤ì • í•„ìš”*/
+        /* È¸¿ø°¡ÀÔ form . display : none */
         signup_form.style.display="none";
         signup_btn_label.style.color="rgb(161, 157, 157)";
         
@@ -99,11 +101,13 @@ function login_signup(id){
         
     }else{
         // console.log('signup');
+        modalInnerFrame.style.width = "500px";
+        modalInnerFrame.style.height = "800px";
         
         login_btn_label.style.color="rgb(161, 157, 157)";
         login_form.style.display="none";
         
-        /* íšŒì›ê°€ì… form . display : "flex" ì„¤ì • í•„ìš”*/
+        /* È¸¿ø°¡ÀÔ form . display : "flex" */
         signup_form.style.display="flex";
         signup_btn_label.style.color="#333";
     }

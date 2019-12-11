@@ -86,8 +86,10 @@ const signup_btn_label = document.getElementById("signup_btn_label");
 function login_signup(id){
     if(id=="login"){
         // console.log('login');
+        modalInnerFrame.style.width = "400px";
+        modalInnerFrame.style.height = "400px";
         
-        /* 회원가입 form . display : none 설정 필요*/
+        /* 회원가입 form . display : none */
         signup_form.style.display="none";
         signup_btn_label.style.color="rgb(161, 157, 157)";
         
@@ -98,15 +100,14 @@ function login_signup(id){
         
         
     }else{
-        
-        modalInnerFrame.style.width = "400px";
-        modalInnerFrame.style.height = "800px";
         // console.log('signup');
+        modalInnerFrame.style.width = "500px";
+        modalInnerFrame.style.height = "800px";
         
         login_btn_label.style.color="rgb(161, 157, 157)";
         login_form.style.display="none";
         
-        /* 회원가입 form . display : "flex" 설정 필요*/
+        /* 회원가입 form . display : "flex" */
         signup_form.style.display="flex";
         signup_btn_label.style.color="#333";
     }

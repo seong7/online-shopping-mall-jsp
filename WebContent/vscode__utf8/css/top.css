@@ -337,11 +337,18 @@ input[id*='userPopup']{
 /*  signup form  */
 /****************/
 #modal_elements_wrapper > #signup_form{
+    margin: 20px;
     display: none;
     flex-direction: column;
     align-content: center;
     justify-content: center;
+    text-align: center;
 }
+
+.signup_form_title{
+    font-size:14px;
+}
+
 
 
 
@@ -363,9 +370,9 @@ input[id*='userPopup']{
 
 
 /*  테두리 임시 부여  */
-/* #modalDiv > #modalInnerFrame *{
+#modalDiv > #modalInnerFrame *{
     border: 1px solid orange;
-} */
+}
 /**********************/
 
 

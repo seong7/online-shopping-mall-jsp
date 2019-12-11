@@ -44,7 +44,7 @@
 						<table>
 							<tr>
 								<td>
-									<span>아이디</span>
+									<span class="signup_form_title">아이디</span>
 								</td>
 								<td>
 									<input type="text" autocomplete="off">
@@ -53,7 +53,7 @@
 							</tr>
 							<tr>
 								<td>
-									<span>비밀번호</span>
+									<span class="signup_form_title">비밀번호</span>
 								</td>
 								<td>
 									<input type="text" autocomplete="off">
@@ -61,7 +61,7 @@
 							</tr>
 							<tr>
 								<td>
-									<span>비밀번호확인</span>
+									<span class="signup_form_title">비밀번호확인</span>
 								</td>
 								<td>
 									<input type="text" autocomplete="off">
@@ -69,7 +69,7 @@
 							</tr>
 							<tr>
 								<td>
-									<span>이름</span>
+									<span class="signup_form_title">이름</span>
 								</td>
 								<td>
 									<input type="text" autocomplete="off">
@@ -77,7 +77,7 @@
 							</tr>
 							<tr>
 								<td>
-									<span>생년월일</span>
+									<span class="signup_form_title">생년월일</span>
 								</td>
 								<td>
 									<div>
@@ -89,7 +89,7 @@
 							</tr>
 							<tr>
 								<td>
-									<span>이메일</span>
+									<span class="signup_form_title">이메일</span>
 								</td>
 								<td>
 									<input type="text" autocomplete="off">
@@ -97,7 +97,7 @@
 							</tr>
 							<tr>
 								<td>
-									<span>연락처</span>
+									<span class="signup_form_title">연락처</span>
 								</td>
 								<td>
 									<input type="text" autocomplete="off">
@@ -105,12 +105,13 @@
 							</tr>
 							<tr>
 								<td>
-									<span>주소</span>
+									<span class="signup_form_title">주소</span>
 								</td>
 								<td>
-									<buttton><span>주소 검색</span></buttton>
-									<input type="text" autocomplete="off">
-									<input type="text" autocomplete="off">
+									<button><span class="signup_form_title">주소 검색</span></button>
+									<input type="text" autocomplete="off" readonly>
+									<input type="text" autocomplete="off" readonly>
+									<input type="text" autocomplete="off" placeholder="상세주소를 입력해주세요.">
 								</td>
 							</tr>
 						</table>
@@ -121,7 +122,7 @@
 	    </div>
 	    <!--전체 페이지 Wrapper-->
 	    <div id="top_wrapper">
-	        <!--header Lapper(로고 상단 Div(추가 Contents 대비용), Hompage Logo)-->
+	        <!--header Wrapper(로고 상단 Div(추가 Contents 대비용), Hompage Logo)-->
 	        <div id="header">
 	            <!--ADD CONTENTS-->
 	            <div id="headerTopMenu">
@@ -129,7 +130,7 @@
 	            </div>
 	            <!--로고 이미지 Div-->
 	            <div id="homeLogo">
-	                <img src="img/breadLogo.jpg" alt="이미지 로딩 불가!">
+	                <img src="img/logo4.png" alt="이미지 로딩 불가!">
 	                <!--LOGO-->
 	            </div>
 	            <div id="search_div">
@@ -165,12 +166,12 @@
 	                    </li>
 	                    <li>
 	                        <a class="nav_a">
-	                            <span class="txt">이벤트</span>
+	                            <span class="txt">고객지원</span>
 	                        </a>
 	                    </li>
 	                    <li>
 	                        <a class="nav_a">
-	                            <span class="txt">고객지원 / merge test</span>
+	                            <span class="txt"></span>
 	                        </a>    
 	                    </li> 
 	                </ul>

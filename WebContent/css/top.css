@@ -1,5 +1,3 @@
-@charset "EUC-KR";
-
 /* 폰트 추가 noto-Sans*/
 
 @font-face{
@@ -62,7 +60,7 @@ html{
 }
 /*로고 이미지 position*/
 #homeLogo>img{
-    width: 160px;
+    width: 200px;
     display: block;
     margin : 0px auto;
     margin-top : 30px;
@@ -276,17 +274,20 @@ input[id*='userPopup']{
     cursor: pointer;
 }
 
-/*  login form */
+/*****************/
+/*  login form  */
+/****************/
 #modal_elements_wrapper > #login_form{
     display: flex;
     flex-direction: column;
     margin-top:30px;
-    margin-bottom:50px;
+    /* margin-bottom:50px; */
     width: 80%;
 }
 #login_form > h3{
     text-align: center;
     margin-top:0px;
+    margin-bottom:5px;
 }
 #login_form > .login_input{
     box-sizing: border-box;
@@ -312,7 +313,7 @@ input[id*='userPopup']{
     text-decoration: none;
 }
 #login_form > #login_submit_btn{
-    margin-top:45px;
+    margin-top:30px;
     width:100%;
     height:50px;
     text-align:center;
@@ -332,11 +333,22 @@ input[id*='userPopup']{
     outline: none;
 }
 
-/* signup form */
+/*****************/
+/*  signup form  */
+/****************/
 #modal_elements_wrapper > #signup_form{
+    margin: 20px;
     display: none;
-       
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
 }
+
+.signup_form_title{
+    font-size:14px;
+}
+
 
 
 
@@ -358,10 +370,14 @@ input[id*='userPopup']{
 
 
 /*  테두리 임시 부여  */
-/* #modalDiv > #modalInnerFrame *{
+#modalDiv > #modalInnerFrame *{
     border: 1px solid orange;
-} */
+}
 /**********************/
+
+
+
+
 
 /*autosearch css*/
 
@@ -401,4 +417,3 @@ zoom: 1;
 strong{
 	color: #0abde3;
 }
-
