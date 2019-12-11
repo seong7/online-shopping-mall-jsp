@@ -170,7 +170,7 @@
 	                    </li>
 	                    <li>
 	                        <a class="nav_a">
-	                            <span class="txt">°í°´Áö¿ø</span>
+	                            <span class="txt">°í°´Áö¿ø / merge test</span>
 	                        </a>    
 	                    </li> 
 	                </ul>
