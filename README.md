@@ -1,8 +1,9 @@
 # online-shopping-mall-jsp 
 ### Commit 규칙
- - 작업 전, 항상 최신 버전의 master 를 pull 받아 본인의 local 작업 branch 와 merge 할 것
- - 작업은 항상 본인 이름의 local branch 로 하고 Commit 및 Push 또한 해당 branch 로 작업 
- - Push 전에 항상 최신버전의 master 와 merge 할 것 
+ - 작업 전과 완료 후(push 전), 항상 최신 버전의 origin/master 를 fetch 하여 업데이트 여부 확인
+ - origin/master의 업데이트가 있을 경우, 우선 local branch 와 merge 하기 
+ - local branch 의 이름 : 본인의 영문 이름 (Commit 및 Push 또한 해당 branch 로 작업)
 
-#### SQL 바로가기 [./WebContent/sql/](./WebContent/sql/)
+
+### SQL 바로가기 [./WebContent/sql/](./WebContent/sql/)
 
