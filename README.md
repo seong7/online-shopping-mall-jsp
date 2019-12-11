@@ -10,6 +10,7 @@
     <li>git merge 로컬브랜치명 origin/master</li>
   </ul>
  <li>local branch 의 이름 : 본인의 영문 이름 (Commit 및 Push 또한 해당 branch 로 작업)</li>
+</ol>
 
 
 
