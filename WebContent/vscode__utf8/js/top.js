@@ -28,7 +28,7 @@ function init(){
             modalWindow.style.opacity = "1";
             setTimeout(function(){
                 modalInnerFrame.style.width = "400px";
-                modalInnerFrame.style.height = "500px";
+                modalInnerFrame.style.height = "400px";
             }, 80);
 
             setTimeout(function(){
@@ -98,6 +98,9 @@ function login_signup(id){
         
         
     }else{
+        
+        modalInnerFrame.style.width = "400px";
+        modalInnerFrame.style.height = "800px";
         // console.log('signup');
         
         login_btn_label.style.color="rgb(161, 157, 157)";
