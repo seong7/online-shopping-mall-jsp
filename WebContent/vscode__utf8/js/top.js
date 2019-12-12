@@ -118,27 +118,33 @@ function login_signup(id){
 // const ricecakeNavRect = ricecakeNav.getBoundingClientRect();
 const ricecakeNav = document.getElementById("ricecakeNav");
 const nav_category = document.getElementById("nav_category");
-const categrory = ricecakeNav.getBoundingClientRect();
-const categoryTop = ricecakeNav.getBoundingClientRect().top + ricecakeNav.getBoundingClientRect().height;
-const categoryLeft = ricecakeNav.getBoundingClientRect().left;
-const categoryWidth = ricecakeNav.getBoundingClientRect.width;
+const ricecakeNavRect = ricecakeNav.getBoundingClientRect();
+const categoryTop = ricecakeNavRect.top + ricecakeNavRect.height;
+const categoryLeft = ricecakeNavRect.left;
+const categoryWidth = ricecakeNavRect.width;
 // const categoryH = ricecakeNav.getBoundingClientRect.he;
-const flag = false; 
+var flag = false; 
 
 function navCategory(){
     if(flag==false){
-        console.log(categoryTop);
-        console.log(categoryLeft);
-        console.log(categoryWidth);
+        flag = true;
         nav_category.style.display="block";
-        nav_category.style.top=categoryTop;
-        nav_category.style.left=categoryLeft;
-        nav_category.style.width=categoryWidth;
-        nav_category.style.height="200px";
+        console.log(nav_category.style.display);
+        // console.log(ricecakeNavRect);
+        // console.log(categoryTop);
+        // console.log(categoryLeft);
+        // console.log(categoryWidth);
+        // nav_category.style.top=categoryTop;
+        // nav_category.style.left=categoryLeft;
+        // nav_category.style.width=categoryWidth;
+        // nav_category.style.height="200px";
         // nav_category.style.width="200px";
         // nav_category.style.zIndex="300";
         // navCategory.style.background="200px";
 
+    }else{
+        nav_category.style.display="none";
+        flag = false;
     }
 };
 

@@ -94,7 +94,7 @@
 	            <div id="nav_Div">
 	                <ul class="nav_main">
 	                    <li id="nav_start">
-	                        <a class="nav_a" id="breadNav">
+	                        <a class="nav_a" id="ricecakeNav" onclick="navCategory()">
 	                            <i class="fas fa-bars"></i>
 	                            <span class="txt">¶±</span>
 	                        </a>
@@ -126,8 +126,9 @@
 						<i class="fas fa-user"></i>
 					</label>
 	            </div>
-	            <div id="ricecake_sub">
-	                <!--¶± slide menu ¡Ø±âº»¼Ó¼º display none-->
+	            <div id="nav_category">
+					<!--¶± slide menu ¡Ø±âº»¼Ó¼º display none-->
+					
 	            </div>
 	        </div>
 	</div>
