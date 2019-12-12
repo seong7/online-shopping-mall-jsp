@@ -308,8 +308,6 @@ input[id*='userPopup']{
 }
 
 .login_input:focus{
-    /*box-shadow: none | x-position y-position blur spread color | inset | initial | inherit*/
-    /* outline:1px solid #D65C38; */
     outline: none;
     box-shadow: 0 4px 1px -3px #EB984F;
     /* box-shadow: 0px 1.5px 0px 0px #EB984F; */
