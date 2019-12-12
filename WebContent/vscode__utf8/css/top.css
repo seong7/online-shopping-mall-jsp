@@ -208,9 +208,11 @@ input[id*='userPopup']{
     top: 50%;
     transform: translate(-50%, -50%);
     transition-duration: .6s;
-    background: url(../img/loginFormBg.jpeg);
+    /* background: url(../img/loginFormBg.jpeg); */
+    background-color: rgb(255, 255, 255);
     z-index: 2;
-    box-shadow: 0px 0px 20px 10px rgba(	250, 211, 144, 0.4);
+    box-shadow: 0px 0px 0px 3px rgba(254, 192, 132, 1);
+    border-radius: 10px;
 }
 
 #modalInnerFrame > #modal_elements_wrapper{
@@ -281,7 +283,6 @@ input[id*='userPopup']{
     display: flex;
     flex-direction: column;
     margin-top:30px;
-    /* margin-bottom:50px; */
     width: 80%;
 }
 #login_form > h3{
@@ -297,11 +298,11 @@ input[id*='userPopup']{
     padding-right: 15px;
     width: 100%;
     border-radius:3px;
-    border: 1px solid #D65C38;
+    border: 1px solid #FFB57D;
 }
 .login_input:focus{
     /* outline:1px solid #D65C38; */
-    box-shadow: 0px 0px 1px 1px #D65C38;
+    box-shadow: 0px 0px 1px 1px #EB984F;
 }
 #login_form > #lost_id_pwd_wrapper{
     margin-top:3px;
@@ -317,14 +318,14 @@ input[id*='userPopup']{
     width:100%;
     height:50px;
     text-align:center;
-    background-color: #EB984F;
-    border: 1px solid #EB984F;
+    background-color: #FFB57D;
+    border: 1px solid #FFB57D;
     border-radius:3px;
 }
 #login_form > #login_submit_btn> span{
     font-size:18px;
     font-weight: bolder;
-    color:#FAF478;
+    color:#FFF;
 }
 #login_submit_btn:hover{
     cursor: pointer;
@@ -337,18 +338,81 @@ input[id*='userPopup']{
 /*  signup form  */
 /****************/
 #modal_elements_wrapper > #signup_form{
-    margin: 20px;
+    margin-top: 15px;
+    width:80%;
     display: none;
     flex-direction: column;
-    align-content: center;
-    justify-content: center;
+    opacity: 0;
+    /* justify-content: center; */
+    /* text-align: center; */
+}
+
+#signup_form > h3{
     text-align: center;
+    /* margin-top:0px; */
+    margin-bottom:10px;
 }
 
 .signup_form_title{
+    display: inline-block;
     font-size:14px;
+    min-width: 100px;
 }
 
+#signup_form > #signup_submit_btn{
+    margin-top:30px;
+    margin-left: 30px;
+    width:280px;
+    height:50px;
+    text-align:center;
+    background-color: #FFB57D;
+    border: 1px solid #FFB57D;
+    border-radius:3px;
+}
+#signup_submit_btn > span{
+    font-size:18px;
+    font-weight: bolder;
+    color:#FFF;
+}
+
+.signup_util_btn{
+    /* margin-top:30px; */
+    width:80px;
+    height:30px;
+    text-align:center;
+    background-color: #FFB57D;
+    border: 1px solid #FFB57D;
+    border-radius:3px;
+}
+.signup_util_btn > span{
+    font-size:14px;
+    font-weight: bolder;
+    color:#FFF;
+}
+
+.signup_input{
+    box-sizing: border-box;
+    height:40px;
+    margin-top:10px;
+    margin-left: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 280px;
+    border-radius:3px;
+    border: 1px solid #FFB57D;
+}
+
+.signup_input:focus{
+    /* outline:1px solid #D65C38; */
+    box-shadow: 0px 0px 1px 1px #EB984F;
+}
+
+#signup_submit_btn:hover{
+    cursor: pointer;
+}
+#signup_submit_btn:focus{
+    outline: none;
+}
 
 
 
@@ -370,9 +434,9 @@ input[id*='userPopup']{
 
 
 /*  테두리 임시 부여  */
-#modalDiv > #modalInnerFrame *{
+/* #modalDiv > #modalInnerFrame *{
     border: 1px solid orange;
-}
+} */
 /**********************/
 
 
