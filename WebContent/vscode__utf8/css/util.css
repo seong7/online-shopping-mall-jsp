@@ -1,0 +1,138 @@
+@charset "UTF-8";
+/*
+
+.fs {
+  &-small { font-size: 12px; }
+  &-medium { font-size: 14px; }
+  &-large { font-size: 16px; }
+}
+이걸 컴파일 시 
+.fs-small {
+  font-size: 12px;
+}
+.fs-medium {
+  font-size: 14px;
+}
+.fs-large {
+  font-size: 16px;
+}
+이렇게 됌 &는 호출자임  //$변수이름: 속성값; 으로선언하여 재사용
+scss는 변수선언 가능함
+$color-primary: #e96900;
+$url-images: "/assets/images/";
+$w: 200px;
+
+$red: #FF0000;
+$blue: #0000FF;
+
+$color-primary: $blue;
+$color-danger: $red;
+//재사용 가능함
+
+.list {
+  $w: 100px;       
+  $h: 50px;
+  li {
+    width: $w;
+    height: $h;
+  }
+  @at-root .box {
+    width: $w;
+    height: $h;
+  }
+}
+컴파일시
+.list li {
+  width: 100px;
+  height: 50px;
+}
+.box {
+  width: 100px;
+  height: 50px;
+}
+동일한 네임 스페이스 사용 시 다음같이 사용가능
+.box {
+  font: {
+    weight: bold;
+    size: 10px;
+    family: sans-serif;
+  };
+  margin: {
+    top: 10px;
+    left: 20px;
+  };
+  padding: {
+    bottom: 40px;
+    right: 30px;
+  };
+}
+컴파일 시 
+.box {
+  font-weight: bold;
+  font-size: 10px;
+  font-family: sans-serif;
+  margin-top: 10px;
+  margin-left: 20px;
+  padding-bottom: 40px;
+  padding-right: 30px;
+}
+
+*/
+/*btn style wrapper*/
+.button_style {
+  border: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FD6F46), to(#FB9832));
+  background-image: linear-gradient(to bottom, #FD6F46, #FB9832);
+  text-align: center;
+  border-radius: 10px;
+  background-repeat: repeat-y;
+  background-size: 100% 90px;
+  background-position: 0 -30px;
+  -webkit-transition: .35s;
+  transition: .35s;
+}
+
+.button_style:hover {
+  background-position: 0 0;
+}
+
+input::-webkit-input-placeholder {
+  color: #FB9832;
+}
+
+input::-moz-placeholder {
+  color: #FB9832;
+}
+
+input:-ms-input-placeholder {
+  color: #FB9832;
+}
+
+input::-ms-input-placeholder {
+  color: #FB9832;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+  -webkit-transition: .35s;
+  transition: .35s;
+}
+
+input:focus::-moz-placeholder {
+  color: transparent;
+  -webkit-transition: .35s;
+  transition: .35s;
+}
+
+input:focus:-ms-input-placeholder {
+  color: transparent;
+  -webkit-transition: .35s;
+  transition: .35s;
+}
+
+input:focus::-ms-input-placeholder {
+  color: transparent;
+  -webkit-transition: .35s;
+  transition: .35s;
+}
+/*# sourceMappingURL=util.css.map */
