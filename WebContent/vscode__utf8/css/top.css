@@ -210,12 +210,13 @@ html{
 /*떡 sub menu*/
 #nav_category{
     display: none;
+    position: absolute;
     background-color: #333;
     box-sizing: border-box;
-    top:0;
+    top:30px;
     left: 0;
-    width: 5%;
-    height: 2%;
+    width: 200px;
+    height: 500px;
     z-index: 300;
 
 
