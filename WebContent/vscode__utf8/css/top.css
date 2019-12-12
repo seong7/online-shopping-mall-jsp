@@ -298,11 +298,21 @@ input[id*='userPopup']{
     padding-right: 15px;
     width: 100%;
     border-radius:3px;
-    border: 1px solid #FFB57D;
+    border: none;
+    border-bottom: 2px solid #FFB57D;
+    transition: .35s;
 }
+.login_input:focus::-webkit-input-placeholder {
+    color:transparent;
+    transition: .35s;
+}
+
 .login_input:focus{
+    /*box-shadow: none | x-position y-position blur spread color | inset | initial | inherit*/
     /* outline:1px solid #D65C38; */
-    box-shadow: 0px 0px 1px 1px #EB984F;
+    outline: none;
+    box-shadow: 0 4px 1px -3px #EB984F;
+    /* box-shadow: 0px 1.5px 0px 0px #EB984F; */
 }
 #login_form > #lost_id_pwd_wrapper{
     margin-top:3px;
@@ -320,7 +330,7 @@ input[id*='userPopup']{
     text-align:center;
     background-color: #FFB57D;
     border: 1px solid #FFB57D;
-    border-radius:3px;
+    border-radius:10px;
 }
 #login_form > #login_submit_btn> span{
     font-size:18px;
