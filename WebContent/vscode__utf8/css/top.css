@@ -168,14 +168,14 @@ html{
     margin-left: 0px;
     margin-top: 0px;
 }
-/*빵, 떡 sub menu*/
-#bread_sub{
+/*떡 sub menu*/
+#navCategory{
     display: none;
+    background-color: black;
 }
 
-#ricecake_sub{
-    display: none;
-}
+
+
 
 /*userPopup checkbox*/
 input[id*='userPopup']{
