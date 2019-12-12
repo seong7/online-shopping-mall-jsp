@@ -208,11 +208,17 @@ html{
     margin-top: 0px;
 }
 /*떡 sub menu*/
-#navCategory{
+#nav_category{
     display: none;
-    position: fixed;
-    background-color: black;
+    background-color: #333;
+    box-sizing: border-box;
+    top:0;
+    left: 0;
+    width: 5%;
+    height: 2%;
     z-index: 300;
+
+
 }
 
 
