@@ -17,9 +17,9 @@ function init(){
 
     /** 모달창 열림 닫힘 기능 **/
 
-    modalInnerFrame.style.width = "0px";
-    modalInnerFrame.style.height = "0px";
     userCheckBox.addEventListener('change', function(){
+        modalInnerFrame.style.width = "0px";
+        modalInnerFrame.style.height = "0px";
         if(!modaltrigger){
 
             modaltrigger = true;
@@ -92,9 +92,14 @@ function login_signup(id){
         /* 회원가입 form . display : none */
         signup_form.style.display="none";
         signup_btn_label.style.color="rgb(161, 157, 157)";
+        signup_form.style.opacity="0";
         
         login_form.style.display="flex";
         login_btn_label.style.color="#333";
+        setTimeout(function(){
+            login_form.style.opacity="1";
+            login_form.style.transition="opacity 0.3s";
+        }, 300);
         
         
         
@@ -106,8 +111,14 @@ function login_signup(id){
         
         login_btn_label.style.color="rgb(161, 157, 157)";
         login_form.style.display="none";
+        login_form.style.opacity="0";
         
         /* 회원가입 form . display : "flex" */
+        setTimeout(function(){
+            signup_form.style.opacity="1";
+            signup_form.style.transition="opacity 0.3s";
+        }, 300);
+
         signup_form.style.display="flex";
         signup_btn_label.style.color="#333";
     }
