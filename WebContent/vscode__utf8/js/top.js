@@ -4,7 +4,7 @@ function init(){
     searchInput();
     inputTransition();
 
-    /******************  О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫  *******************/
+    /******************  О©╫О©╫О©? О©╫О©╫О©╫О©╫О©?  *******************/
 
     let modaltrigger = false;
     const userCheckBox = document.querySelector('#userPopup');
@@ -14,7 +14,7 @@ function init(){
     const modal_elements_wrapper = document.getElementById('modal_elements_wrapper');
     const login_form = document.getElementById('login_form');
 
-    /** О©╫О©╫О©╫ц╒ О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ О©╫О©╫О©╫ **/
+    /** О©╫О©╫О©╫ц? О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ О©╫О©╫О©? **/
 
     userCheckBox.addEventListener('change', function(){
         modalInnerFrame.style.width = "0px";
@@ -33,7 +33,6 @@ function init(){
             setTimeout(function(){
                 modal_elements_wrapper.style.opacity="1";
                 modal_elements_wrapper.style.transition="opacity 0.3s";
-                
             }, 500);
             
             // setTimeout(function(){
@@ -62,20 +61,9 @@ function init(){
             }, 600);
         }
     });
-
-
-    /** О©╫н╠О©╫О©╫О©╫ id, pwd  input О©╫б╠О©╫ event **/
-    // const login_input = document.querySelectorAll('.login_input');
-    
-    // [].forEach.call(login_input, function(inp){
-    //    inp.addEventListener('focus', function(){
-    //        console.log('hi');
-    //    })
-    //     }
-    // )
 };
 
-/** О©╫О©╫О©╫ header (О©╫н╠О©╫О©╫О©╫, х╦О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ О©╫О©╫ф╟) **/
+/** О©╫О©╫О©? header (О©╫н╠О©╫О©╫О©╫, х╦О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ О©╫О©╫ф╟) **/
 
 const login_form = document.getElementById("login_form");
 const signup_form = document.getElementById("signup_form");
@@ -126,6 +114,33 @@ function login_signup(id){
 
 
 
+/**  ╤╠ д╚ев╟М╦╝ ╦ч╢╨ ╨н╨п  **/
+// const ricecakeNavRect = ricecakeNav.getBoundingClientRect();
+const ricecakeNav = document.getElementById("ricecakeNav");
+const categoryTop = ricecakeNav.getBoundingClientRect().top + ricecakeNav.getBoundingClientRect().height;
+const categoryLeft = ricecakeNav.getBoundingClientRect().left;
+const categoryWidth = ricecakeNav.getBoundingClientRect.width;
+// const categoryH = ricecakeNav.getBoundingClientRect.he;
+const flag = false; 
+
+function navCategory(){
+    if(flag==false){
+        console.log()
+        nav_category.style.display="absolute";
+        nav_category.style.top=categoryTop;
+        nav_category.style.left=categoryLeft;
+        nav_category.style.width=categoryWidth;
+        nav_category.style.height="200px";
+        nav_category.style.width="200px";
+        nav_category.style.zIndex="300";
+        // navCategory.style.background="200px";
+
+    }
+};
+
+
+
+/** ╟к╩Ж Ajax ╨н╨п **/
 
 function searchInput(){
     $("#search_input").autocomplete({ 
