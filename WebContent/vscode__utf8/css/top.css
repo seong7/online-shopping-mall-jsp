@@ -403,6 +403,13 @@ input[id*='userPopup']{
     /* justify-content: center; */
     /* text-align: center; */
 }
+#id_section_wrapper{
+    /* margin-left:30px; */
+    margin-right:-30px;
+    padding-left:30px;
+    /* justify-content: center; */
+    /* text-align: center; */
+}
 
 
 #modalInnerFrame h3{
@@ -419,7 +426,7 @@ input[id*='userPopup']{
     min-width: 100px;
 }
 
-#signup_form > #signup_submit_btn{
+#signup_submit_btn{
     margin-top:30px;
     margin-left: 30px;
     width:355px;
@@ -433,14 +440,17 @@ input[id*='userPopup']{
 
 .signup_util_btn{
     /* margin-top:30px; */
-    width:80px;
+    width:70px;
     height:30px;
     text-align:center;
 }
 .signup_util_btn > span{
-    font-size:14px;
+    font-size:11px;
     font-weight: bolder;
     color:#FFF;
+}
+#id_section, #address_section_header{
+    min-width: 400px;
 }
 
 .signup_input{
