@@ -3,9 +3,8 @@ function init(){
     //search ajax
     searchInput();
     inputTransition();
-    
 
-    /******************  ¸ð´Þ Á¦¾îºÎ  *******************/
+    /******************  ï¿½ï¿½ï¿? ï¿½ï¿½ï¿½ï¿½ï¿?  *******************/
 
     let modaltrigger = false;
     const userCheckBox = document.querySelector('#userPopup');
@@ -15,7 +14,7 @@ function init(){
     const modal_elements_wrapper = document.getElementById('modal_elements_wrapper');
     const login_form = document.getElementById('login_form');
 
-    /** ¸ð´ÞÃ¢ ¿­¸² ´ÝÈû ±â´É **/
+    /** ï¿½ï¿½ï¿½Ã? ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿? **/
 
     userCheckBox.addEventListener('change', function(){
         modalInnerFrame.style.width = "0px";
@@ -64,7 +63,7 @@ function init(){
     });
 };
 
-/** ¸ð´Þ header (·Î±×ÀÎ, È¸¿ø°¡ÀÔ ¶óµð¿À ¹öÆ°) **/
+/** ï¿½ï¿½ï¿? header (ï¿½Î±ï¿½ï¿½ï¿½, È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°) **/
 
 const login_form = document.getElementById("login_form");
 const signup_form = document.getElementById("signup_form");
@@ -77,13 +76,13 @@ function login_signup(id){
         modalInnerFrame.style.width = "400px";
         modalInnerFrame.style.height = "400px";
         
-        /* È¸¿ø°¡ÀÔ form . display : none */
+        /* È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ form . display : none */
         signup_form.style.display="none";
-        signup_btn_label.style.color="rgb(161, 157, 157)";
+        signup_btn_label.style.color="#FB9832";
         signup_form.style.opacity="0";
         
         login_form.style.display="flex";
-        login_btn_label.style.color="#333";
+        login_btn_label.style.color="#FB9832";
         setTimeout(function(){
             login_form.style.opacity="1";
             login_form.style.transition="opacity 0.3s";
@@ -97,18 +96,18 @@ function login_signup(id){
         modalInnerFrame.style.width = "500px";
         modalInnerFrame.style.height = "800px";
         
-        login_btn_label.style.color="rgb(161, 157, 157)";
+        login_btn_label.style.color="#FB9832";
         login_form.style.display="none";
         login_form.style.opacity="0";
         
-        /* È¸¿ø°¡ÀÔ form . display : "flex" */
+        /* È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ form . display : "flex" */
         setTimeout(function(){
             signup_form.style.opacity="1";
             signup_form.style.transition="opacity 0.3s";
         }, 300);
 
         signup_form.style.display="flex";
-        signup_btn_label.style.color="#333";
+        signup_btn_label.style.color="#FB9832";
     }
 };
 
