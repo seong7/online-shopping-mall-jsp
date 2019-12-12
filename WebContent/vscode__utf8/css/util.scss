@@ -1,0 +1,147 @@
+/*
+https://heropy.blog/2018/01/31/sass/ scss참조 파일
+.fs {
+  &-small { font-size: 12px; }
+  &-medium { font-size: 14px; }
+  &-large { font-size: 16px; }
+}
+이걸 컴파일 시 
+.fs-small {
+  font-size: 12px;
+}
+.fs-medium {
+  font-size: 14px;
+}
+.fs-large {
+  font-size: 16px;
+}
+이렇게 됌 &는 호출자임  //$변수이름: 속성값; 으로선언하여 재사용
+scss는 변수선언 가능함
+$color-primary: #e96900;
+$url-images: "/assets/images/";
+$w: 200px;
+
+$red: #FF0000;
+$blue: #0000FF;
+
+$color-primary: $blue;
+$color-danger: $red;
+//재사용 가능함
+.list {
+  $w: 100px;       
+  $h: 50px;
+  li {
+    width: $w;
+    height: $h;
+  }
+  @at-root .box {
+    width: $w;
+    height: $h;
+  }
+}
+컴파일시
+.list li {
+  width: 100px;
+  height: 50px;
+}
+.box {
+  width: 100px;
+  height: 50px;
+}
+동일한 네임 스페이스 사용 시 다음같이 사용가능
+.box {
+  font: {
+    weight: bold;
+    size: 10px;
+    family: sans-serif;
+  };
+  margin: {
+    top: 10px;
+    left: 20px;
+  };
+  padding: {
+    bottom: 40px;
+    right: 30px;
+  };
+}
+컴파일 시 
+.box {
+  font-weight: bold;
+  font-size: 10px;
+  font-family: sans-serif;
+  margin-top: 10px;
+  margin-left: 20px;
+  padding-bottom: 40px;
+  padding-right: 30px;
+}
+
+.box1 {
+  $color: #111 !global;
+  background: $color;
+}
+.box2 {
+  background: $color;
+}
+//글로벌 선언 가능함 속성 오른쪽에 !global 선언
+
+//초기값 강제 할당가능(unique data)
+!default 플래그는 할당되지 않은 변수의 초깃값을 설정합니다.
+즉, 할당되어있는 변수가 있다면 변수가 기존 할당 값을 사용합니다.
+$color-primary: red;
+
+.box {
+  $color-primary: blue !default;
+  background: $color-primary;
+}
+//컴파일 시 
+.box {
+  background: red;
+}
+
+//어디서든 변수 값 들어갈수있음
+$family: unquote("Droid+Sans");
+@import url("http://fonts.googleapis.com/css?family=#{$fzamily}");
+컴파일 시 
+@import url("http://fonts.googleapis.com/css?family=Droid+Sans");
+
+*/
+
+
+/*btn style wrapper*/
+.button_style{
+    border: none;
+    background-image: -moz-linear-gradient(to bottom, #FD6F46, #FB9832 );
+    background-image: -webkit-linear-gradient(to bottom, #FD6F46, #FB9832 );
+    background-image: -o-linear-gradient(to bottom, #FD6F46 , #FB9832 );
+    background-image: linear-gradient(to bottom, #FD6F46, #FB9832 );
+    text-align:center;
+    border-radius:10px;
+    background-repeat: repeat-y;
+    background-size: 100% 90px;
+    background-position: 0 -30px;
+    transition: .35s;
+}
+.button_style:hover{
+    background-position: 0 0;
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+        -ms-border-radius: $radius;
+            border-radius: $radius;
+  }
+
+
+    input{
+        &::-webkit-input-placeholder { color: #FB9832;} 
+        &::-moz-placeholder { color: #FB9832; } 
+        &:-ms-input-placeholder { color: #FB9832; }
+        &::-ms-input-placeholder { color: #FB9832;}
+        &:focus::-webkit-input-placeholder { color: transparent; transition: .35s;} 
+        &:focus::-moz-placeholder { color: transparent; transition: .35s; } 
+        &:focus:-ms-input-placeholder { color: transparent; transition: .35s; }
+        &:focus::-ms-input-placeholder { color: transparent;  transition: .35s;}
+    }
+    
+    

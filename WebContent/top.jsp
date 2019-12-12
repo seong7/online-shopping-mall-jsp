@@ -6,115 +6,60 @@
 <html>
 	<head>
 		<meta charset="EUC-KR">
-		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet" href="css/top.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
-		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<script src="https://kit.fontawesome.com/115bcf1f34.js" crossorigin="anonymous"></script>
-		</head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	</head>
 	<body>
 	    <div id="modalDiv">
 	        <div id="modalInnerFrame">
 				<div id="modal_elements_wrapper">
-					<label for="userPopup" id="modal_close_btn"><i class="fas fa-times"></i></label>
 					<!-- modal_header : 로그인 / 회원가입 버튼-->
 					<div id="modal_header">
 						<input type="radio" id="login_btn" class="login_signup_btns" name="login_signup_btns" onclick="login_signup('login')" checked>
 						<label for="login_btn" id="login_btn_label" class="login_signup_btns_label" >&nbsp로그인&nbsp</label>
-						<span id="modal_header_span">&nbsp|&nbsp</span>
+						<span id="modal_header_span">&nbsp&nbsp&nbsp&nbsp&nbsp</span>
 						<input type="radio" id="signup_btn" class="login_signup_btns" name="login_signup_btns" onclick="login_signup('signup')">
 						<label for="signup_btn" id="signup_btn_label" class="login_signup_btns_label">회원가입</label>
 					</div>
 					<form method="POST" id="login_form" action="#">
-						<h3>로그인</h3>
+						<h3>어서오세요!</h3>
 						<input type="text" id="login_id_input" class="login_input" name="id" placeholder="아이디를 입력해주세요." autocomplete="off">
 						<input type="password" id="login_pwd_input" class="login_input" name="pwd" placeholder="비밀번호를 입력해주세요."autocomplete="off">
 						<div id="lost_id_pwd_wrapper">
-							<a href="#">아이디 찾기</a>
-							<span>|</span>
-							<a href="#">비밀번호 찾기</a>
+							<a href="#">아이디나 비밀번호를 잊어버렸습니까?</a>
 						</div>
-						<button type="submit" id="login_submit_btn">
+						<button type="submit" class="top_modal_button top_modal_button_style" id="login_submit_btn">
 							<span>로그인</span>
 						</button>
 					</form>
 					<form method="POST" id="signup_form" action="#">
-						<h3>회원가입</h3>
-						<table>
-							<tr>
-								<td>
-									<span class="signup_form_title">아이디</span>
-								</td>
-								<td>
-									<input type="text" autocomplete="off">
-									<button><span>중복확인</span></button>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<span class="signup_form_title">비밀번호</span>
-								</td>
-								<td>
-									<input type="text" autocomplete="off">
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<span class="signup_form_title">비밀번호확인</span>
-								</td>
-								<td>
-									<input type="text" autocomplete="off">
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<span class="signup_form_title">이름</span>
-								</td>
-								<td>
-									<input type="text" autocomplete="off">
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<span class="signup_form_title">생년월일</span>
-								</td>
-								<td>
-									<div>
-										<input type="text" autocomplete="off">
-										<input type="text" autocomplete="off">
-										<input type="text" autocomplete="off">
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<span class="signup_form_title">이메일</span>
-								</td>
-								<td>
-									<input type="text" autocomplete="off">
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<span class="signup_form_title">연락처</span>
-								</td>
-								<td>
-									<input type="text" autocomplete="off">
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<span class="signup_form_title">주소</span>
-								</td>
-								<td>
-									<button><span class="signup_form_title">주소 검색</span></button>
-									<input type="text" autocomplete="off" readonly>
-									<input type="text" autocomplete="off" readonly>
-									<input type="text" autocomplete="off" placeholder="상세주소를 입력해주세요.">
-								</td>
-							</tr>
-						</table>
+						<h3>처음이세요?</h3>
+						<div id="id_section">
+							<input type="text" class="signup_input" id="id_section_input" autocomplete="off" placeholder="아이디를 입력하세요.">
+							<!-- ajax 필요 ?-->
+							<button type="button" class="signup_util_btn top_modal_button_style top_modal_button" id="id_section_btn" onclick="location.href='xx.jsp'"><span>중복확인</span></button>
+						</div>
+						<input type="password" class="signup_input" autocomplete="off" placeholder="비밀번호를 입력하세요.">
+						<input type="password" class="signup_input" autocomplete="off" placeholder="비밀번호를 한번 더 입력하세요.">
+						<input type="text" class="signup_input" autocomplete="off" placeholder="이름을 입력하세요.">
+						<input type="text" class="signup_input" autocomplete="off" placeholder="생년월일을 입력하세요.">
+						<input type="text" class="signup_input" autocomplete="off" placeholder="이메일을 입력하세요.">
+						<input type="text" class="signup_input" autocomplete="off" placeholder="연락처를 입력하세요.">
+						<div id="address_section">
+							<div id ="address_section_header">
+								<input type="text" class="signup_input" id="address_section_zipcode" autocomplete="off" readonly placeholder="우편번호">
+								<button class="signup_util_btn top_modal_button_style top_modal_button" id="address_section_btn"><span>주소검색</span></button><br/>
+							</div>
+							<input type="text" class="signup_input" autocomplete="off" readonly placeholder="주소">
+							<input type="text" class="signup_input" autocomplete="off" placeholder="상세주소를 입력해주세요.">
+						</div>
+						<button type="submit" class="top_modal_button top_modal_button_style" id="signup_submit_btn">
+							<span>회원가입</span>
+						</button>
 					</form>
 				</div>
 	        </div>
