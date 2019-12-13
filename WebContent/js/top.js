@@ -114,39 +114,19 @@ function login_signup(id){
 
 
 
-/**  떡 카테고리 메뉴 부분  **/
+/*******************  떡 카테고리 메뉴 부분  *****************/
+                 // 삭제함
+// const ricecakeNav = document.getElementById("ricecakeNav"); /* 떡 메뉴 a */
+// const nav_category = document.getElementById("nav_category"); /* 떡 카테고리 div */
+// const nav_category_query = document.querySelector('#nav_category');
+
+// let cate_flag = false; 
+// /* 떡 메뉴 버튼의 위치 값 return */
 // const ricecakeNavRect = ricecakeNav.getBoundingClientRect();
-const ricecakeNav = document.getElementById("ricecakeNav");
-const nav_category = document.getElementById("nav_category");
-const ricecakeNavRect = ricecakeNav.getBoundingClientRect();
-const categoryTop = ricecakeNavRect.top + ricecakeNavRect.height;
-const categoryLeft = ricecakeNavRect.left;
-const categoryWidth = ricecakeNavRect.width;
-// const categoryH = ricecakeNav.getBoundingClientRect.he;
-var flag = false; 
+// const categoryTop = ricecakeNavRect.height-10;
+// const categoryLeft = 0;
+// const categoryWidth = ricecakeNavRect.width;
 
-function navCategory(){
-    if(flag==false){
-        flag = true;
-        nav_category.style.display="block";
-        console.log(nav_category.style.display);
-        // console.log(ricecakeNavRect);
-        // console.log(categoryTop);
-        // console.log(categoryLeft);
-        // console.log(categoryWidth);
-        // nav_category.style.top=categoryTop;
-        // nav_category.style.left=categoryLeft;
-        // nav_category.style.width=categoryWidth;
-        // nav_category.style.height="200px";
-        // nav_category.style.width="200px";
-        // nav_category.style.zIndex="300";
-        // navCategory.style.background="200px";
-
-    }else{
-        nav_category.style.display="none";
-        flag = false;
-    }
-};
 
 
 
