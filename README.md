@@ -24,6 +24,13 @@
 
 #### branch 관련 명령어
 <ul>
+  <li>
+  브랜치 리스트 보기
+   <ul>
+    <li>명령어 : git branch</li>
+    <li>remote 브랜치도 함께 보기 : git branch -a</li>
+  </ul>
+ </li>
  <li>
   브랜치 생성
    <ul>
