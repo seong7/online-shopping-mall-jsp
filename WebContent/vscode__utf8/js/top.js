@@ -4,7 +4,7 @@ function init(){
     searchInput();
     inputTransition();
 
-    /******************  ���? �����?  *******************/
+    /******************  모달부분  *******************/
 
     let modaltrigger = false;
     const userCheckBox = document.querySelector('#userPopup');
@@ -14,7 +14,7 @@ function init(){
     const modal_elements_wrapper = document.getElementById('modal_elements_wrapper');
     const login_form = document.getElementById('login_form');
 
-    /** ����? ���� ���� ���? **/
+    /** 모달창 열림 닫힘 기능 **/
 
     userCheckBox.addEventListener('change', function(){
         modalInnerFrame.style.width = "0px";
@@ -63,7 +63,7 @@ function init(){
     });
 };
 
-/** ���? header (�α���, ȸ������ ���� ��ư) **/
+/** 모달창 header **/
 
 const login_form = document.getElementById("login_form");
 const signup_form = document.getElementById("signup_form");
@@ -76,7 +76,7 @@ function login_signup(id){
         modalInnerFrame.style.width = "400px";
         modalInnerFrame.style.height = "400px";
         
-        /* ȸ������ form . display : none */
+        /* 로그인 form . display : none */
         signup_form.style.display="none";
         signup_btn_label.style.color="#FB9832";
         signup_form.style.opacity="0";
@@ -100,7 +100,7 @@ function login_signup(id){
         login_form.style.display="none";
         login_form.style.opacity="0";
         
-        /* ȸ������ form . display : "flex" */
+        /* 회원가입 form . display : "flex" */
         setTimeout(function(){
             signup_form.style.opacity="1";
             signup_form.style.transition="opacity 0.3s";
@@ -114,9 +114,11 @@ function login_signup(id){
 
 
 
-/**  �� ī�װ��� �޴� �κ�  **/
+/**  떡 카테고리 메뉴 부분  **/
 // const ricecakeNavRect = ricecakeNav.getBoundingClientRect();
 const ricecakeNav = document.getElementById("ricecakeNav");
+const nav_category = document.getElementById("nav_category");
+const categrory = ricecakeNav.getBoundingClientRect();
 const categoryTop = ricecakeNav.getBoundingClientRect().top + ricecakeNav.getBoundingClientRect().height;
 const categoryLeft = ricecakeNav.getBoundingClientRect().left;
 const categoryWidth = ricecakeNav.getBoundingClientRect.width;
@@ -125,14 +127,16 @@ const flag = false;
 
 function navCategory(){
     if(flag==false){
-        console.log()
-        nav_category.style.display="absolute";
+        console.log(categoryTop);
+        console.log(categoryLeft);
+        console.log(categoryWidth);
+        nav_category.style.display="block";
         nav_category.style.top=categoryTop;
         nav_category.style.left=categoryLeft;
         nav_category.style.width=categoryWidth;
         nav_category.style.height="200px";
-        nav_category.style.width="200px";
-        nav_category.style.zIndex="300";
+        // nav_category.style.width="200px";
+        // nav_category.style.zIndex="300";
         // navCategory.style.background="200px";
 
     }
@@ -140,7 +144,7 @@ function navCategory(){
 
 
 
-/** �˻� Ajax �κ� **/
+/** 검색 Ajax 부분 **/
 
 function searchInput(){
     $("#search_input").autocomplete({ 
@@ -198,4 +202,3 @@ function inputTransition(){
 }
 
 init();
-
