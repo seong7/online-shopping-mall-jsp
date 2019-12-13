@@ -60,6 +60,7 @@ function init(){
                 login_signup('login');
             }, 600);
         }
+    
     });
 };
 
@@ -91,6 +92,7 @@ function login_signup(id){
         
         
         
+        
     }else{
         // console.log('signup');
         modalInnerFrame.style.width = "500px";
@@ -108,10 +110,27 @@ function login_signup(id){
 
         signup_form.style.display="flex";
         signup_btn_label.style.color="#FB9832";
+       
+        //비밀번호 체크
+        const pwdCheck_btn = document.querySelector('#pwdCheck');
+        pwdCheck_btn.addEventListener('focusout', function(){
+            const pwd = document.querySelector('#pwd');
+            const pwdCheck = document.querySelector('#pwdCheck');
+            console.log(pwd.value);
+            console.log(pwdCheck.value);
+
+            if(pwd.value ==pwdCheck.value){
+                console.log('ok');
+            }
+            else{
+                pwdCheck.placeholder = "비밀번호가 일치하지 않습니다.";
+                pwdCheck.classList.add('default_placeholder_red');
+                pwdCheck.value = '';
+            }
+        });
+       
     }
 };
-
-
 
 
 /**  떡 카테고리 메뉴 부분  **/
@@ -194,7 +213,7 @@ function searchInput(){
                 .data("item.autocomplete", item)
                 .append("<a>" + item.label + "</a>")
                 .appendTo(ul);
-    };
+            };
 }
 
 function inputTransition(){
