@@ -15,7 +15,7 @@ function init(){
     const modal_elements_wrapper = document.getElementById('modal_elements_wrapper');
     const login_form = document.getElementById('login_form');
 
-    /** 紐⑤ъ갹 대┝ ロ 湲곕 **/
+     /** 모달창 열림 닫힘 기능 **/
 
     userCheckBox.addEventListener('change', function(){
         modalInnerFrame.style.width = "0px";
@@ -111,42 +111,6 @@ function login_signup(id){
 
         signup_form.style.display="flex";
         signup_btn_label.style.color="#FB9832";
-    }
-};
-
-
-
-/**  떡 카테고리 메뉴 부분  **/
-// const ricecakeNavRect = ricecakeNav.getBoundingClientRect();
-const ricecakeNav = document.getElementById("ricecakeNav");
-const nav_category = document.getElementById("nav_category");
-const ricecakeNavRect = ricecakeNav.getBoundingClientRect();
-const categoryTop = ricecakeNavRect.top + ricecakeNavRect.height;
-const categoryLeft = ricecakeNavRect.left;
-const categoryWidth = ricecakeNavRect.width;
-// const categoryH = ricecakeNav.getBoundingClientRect.he;
-var flag = false; 
-
-function navCategory(){
-    if(flag==false){
-        flag = true;
-        nav_category.style.display="block";
-        console.log(nav_category.style.display);
-        // console.log(ricecakeNavRect);
-        // console.log(categoryTop);
-        // console.log(categoryLeft);
-        // console.log(categoryWidth);
-        // nav_category.style.top=categoryTop;
-        // nav_category.style.left=categoryLeft;
-        // nav_category.style.width=categoryWidth;
-        // nav_category.style.height="200px";
-        // nav_category.style.width="200px";
-        // nav_category.style.zIndex="300";
-        // navCategory.style.background="200px";
-
-    }else{
-        nav_category.style.display="none";
-        flag = false;
     }
 };
 
