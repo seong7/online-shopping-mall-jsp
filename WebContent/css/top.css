@@ -1,4 +1,4 @@
-/* ÆùÆ® Ãß°¡ noto-Sans*/
+/* noto-Sans*/
 
 @font-face{
     font-family: 'noto_Bold';
@@ -42,7 +42,7 @@
     font-style: normal;
     font-weight: normal;
 }
-
+/* ì¶”ê°€ê¸€ê¼´ */
 @font-face {
     font-family: 'InkLipquid'; 
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff'); 
@@ -75,7 +75,7 @@
 .default_placeholder_red::-moz-placeholder{ color: red !important;}
 .default_placeholder_red:-ms-input-placeholder{ color: red !important;}
 .default_placeholder_red::-ms-input-placeholder{ color: red !important;}
-/* html ÀüÃ¼ µå·¡±× ¹æÁö */
+/* html ì „ì²´ ë“œëž˜ê·¸ ë°©ì§€ */
 html{
     -ms-user-select: none;
     -moz-user-select: -moz-none;
@@ -84,20 +84,20 @@ html{
     user-select:none;
 }
 
-/*ÀüÃ¼ ÄÄÆ÷³ÍÆ® Wrapper Å¬·¡½º(modal window Á¦¿Ü Wrap)*/
+/*ì „ì²´ ì»´í¬ë„ŒíŠ¸ Wrapper í´ëž˜ìŠ¤(modal window ì œì™¸ Wrap)*/
 #top_wrapper{
     position: relative;
     min-width: 1050px;
     box-sizing: border-box;
 }
-/*·Î°í ÀÌ¹ÌÁö position*/
+/*ë¡œê³  ì´ë¯¸ì§€ position*/
 #homeLogo>img{
     width: 200px;
     display: block;
     margin : 0px auto;
     margin-top : 30px;
 }
-/*search_form À§Ä¡ */
+/*search_form ìœ„ì¹˜ */
 #search_form{
     position: absolute;
     left: 50%;
@@ -148,7 +148,7 @@ html{
     margin-top: 100px;
     position: sticky;
     top:0px;
-    overflow: hidden;
+    overflow: visible;
     width: 1050px;
     height: 55px;
     margin-left: auto;
@@ -157,7 +157,7 @@ html{
     z-index: 100;
 }
 
-/*³×ºñ°ÔÀÌ¼Ç ¸ÞÀÎ Å¬·¡½º(»èÁ¦ ½Ã icon »ç¶óÁü)*/
+/*ë„¤ë¹„ê²Œì´ì…˜ ë©”ì¸ í´ëž˜ìŠ¤(ì‚­ì œ ì‹œ icon ì‚¬ë¼ì§)*/
 .nav_main{
     overflow: hidden;
     float: left;
@@ -179,7 +179,7 @@ html{
     vertical-align: top;
     
 }
-/*nav_a ÅÂ±×*/
+/*nav_a íƒœê·¸*/
 .nav_a{
     transition: color .35s;
     display: block;
@@ -187,11 +187,11 @@ html{
     height: 55px;
     cursor: pointer;
 }
-/*hover ½Ã »ö»ó ÁöÁ¤(¾ÆÀÌÄÜ, nav a ÅÂ±×)*/
+/*hover ì‹œ ìƒ‰ìƒ ì§€ì •(ì•„ì´ì½˜, nav a íƒœê·¸)*/
 .nav_a:hover, .fa-shopping-cart:hover, .fa-user:hover{
     color: #FB9832;
 }
-/*Çà °£°Ý ¸ÂÃß·Á°í line height Á¶Á¤*/
+/*hover ì‹œ ìƒ‰ìƒ ì§€ì •(ì•„ì´ì½˜, nav a íƒœê·¸)*/
 .nav_a > span, .nav_a>input{
     line-height: 50px;
 }
@@ -211,19 +211,50 @@ html{
     margin-left: 0px;
     margin-top: 0px;
 }
-/*¶± sub menu*/
+
+
+/* ë–¡ ì¹´í…Œê³ ë¦¬ */
+
 #nav_category{
-    display: none;
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    background-color: #333;
+    background-color: whitesmoke;
+    color: #fec084;
     box-sizing: border-box;
-    top:30px;
-    left: 0;
-    width: 200px;
-    height: 500px;
-    z-index: 300;
+    width: 177px;
+    height: 0px;
+    transition-duration: 0.5s;
+}
+#nav_start:hover div{
+    height: 134px;
+}
+#nav_category ul{
+    visibility:hidden;
+    opacity: 0;
+    transition: opacity 0.2s;
+    transition-delay: 0.4s;
+}
+#nav_start:hover div ul{
+    visibility:visible;
+    opacity: 1;
 
-
+}
+#nav_category ul li a{
+    text-align:left;
+    padding-left:15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: block;
+    color: gray;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'noto_Regular'; 
+    font-weight: lighter;
+}
+#nav_start li:hover a{
+    color: #FB9832;
+    background-color:#FFF4E9;
 }
 
 
@@ -239,9 +270,8 @@ input[id*='userPopup']{
 }
 
 
-
 /***********************************************/
-/*******************  modal ±¸¿ª  **************/
+/*******************  modal êµ¬ì—­  **************/
 #modalDiv{
     display: none;
     position: fixed;
@@ -305,7 +335,7 @@ input[id*='userPopup']{
     background-position: 0 0;
 }
 
-/*  modal header (·Î±×ÀÎ, È¸¿ø°¡ÀÔ ¼±ÅÃ ¹öÆ°) */ 
+/*  modal header (ë¡œê·¸ì¸, íšŒì›ê°€ìž… ì„ íƒ ë²„íŠ¼) */ 
 #modal_elements_wrapper > #modal_header{
     display : flex;
     align-items: center;
@@ -485,11 +515,13 @@ input[id*='userPopup']{
     z-index: 1;
 }
 
-/*  Å×µÎ¸® ÀÓ½Ã ºÎ¿©  */
+
+/*  í…Œë‘ë¦¬ ìž„ì‹œ ë¶€ì—¬  */
 /* #modalDiv > #modalInnerFrame *{
     border: 1px solid orange;
 } */
 /**********************/
+
 
 
 

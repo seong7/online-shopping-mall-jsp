@@ -148,7 +148,7 @@ html{
     margin-top: 100px;
     position: sticky;
     top:0px;
-    overflow: hidden;
+    overflow: visible;
     width: 1050px;
     height: 55px;
     margin-left: auto;
@@ -211,21 +211,50 @@ html{
     margin-left: 0px;
     margin-top: 0px;
 }
-/*떡 sub menu*/
-#nav_category{
-    display: none;
-    position: absolute;
-    background-color: #333;
-    box-sizing: border-box;
-    top:30px;
-    left: 0;
-    width: 200px;
-    height: 500px;
-    z-index: 300;
 
+
+/***** 떡 category *****/
+#nav_category{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: whitesmoke;
+    color: #fec084;
+    box-sizing: border-box;
+    width: 177px;
+    height: 0px;
+    transition-duration: 0.5s;
+}
+#nav_start:hover div{
+    height: 134px;
+}
+#nav_category ul{
+    visibility:hidden;
+    opacity: 0;
+    transition: opacity 0.2s;
+    transition-delay: 0.4s;
+}
+#nav_start:hover div ul{
+    visibility:visible;
+    opacity: 1;
 
 }
-
+#nav_category ul li a{
+    text-align:left;
+    padding-left:15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: block;
+    color: gray;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'noto_Regular'; 
+    font-weight: lighter;
+}
+#nav_start li:hover a{
+    color: #FB9832;
+    background-color:#FFF4E9;
+}
 
 
 

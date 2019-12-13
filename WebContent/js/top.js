@@ -16,6 +16,7 @@ function init(){
     const modal_elements_wrapper = document.getElementById('modal_elements_wrapper');
     const login_form = document.getElementById('login_form');
 
+     /** ëª¨ë‹¬ì°½ ì—´ë¦¼ ë‹«í˜ ê¸°ëŠ¥ **/
 
     userCheckBox.addEventListener('change', function(){
         modalInnerFrame.style.width = "0px";
@@ -119,7 +120,7 @@ function login_signup(id){
         const address_section_zipcode = document.querySelector('#address_section_zipcode');
         const signup_addr_detail = document.querySelector('#signup_addr_detail');
         
-        //¿ìÆí¹øÈ£, ÁÖ¼Ò
+        //ìš°í¸ë²ˆí˜¸, ì£¼ì†Œ
 		$('#signup_addr').css('border-bottom', 'solid 1px red');
 		$('#signup_addr').css('box-shadow', '0 4px 1px -3px red');
 		signup_addr.classList.add('default_placeholder_red');
@@ -144,7 +145,7 @@ function login_signup(id){
 	            	signup_pwd.classList.add('default_placeholder_red');
 					$('#signup_pwd').css('border-bottom', 'solid 1px red');
 					$('#signup_pwd').css('box-shadow', '0 4px 1px -3px red');
-	            	signup_pwd_check.placeholder = "ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.";
+	            	signup_pwd_check.placeholder = "ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 	            	signup_pwd_check.classList.add('default_placeholder_red');
 	            	signup_pwd_check.value = '';
 					$('#signup_pwd_check').css('border-bottom', 'solid 1px red');
@@ -194,40 +195,7 @@ function login_signup(id){
 };
 
 
-// const ricecakeNavRect = ricecakeNav.getBoundingClientRect();
-const ricecakeNav = document.getElementById("ricecakeNav");
-const nav_category = document.getElementById("nav_category");
-const ricecakeNavRect = ricecakeNav.getBoundingClientRect();
-const categoryTop = ricecakeNavRect.top + ricecakeNavRect.height;
-const categoryLeft = ricecakeNavRect.left;
-const categoryWidth = ricecakeNavRect.width;
-// const categoryH = ricecakeNav.getBoundingClientRect.he;
-var flag = false; 
-
-function navCategory(){
-    if(flag==false){
-        flag = true;
-        nav_category.style.display="block";
-        console.log(nav_category.style.display);
-        // console.log(ricecakeNavRect);
-        // console.log(categoryTop);
-        // console.log(categoryLeft);
-        // console.log(categoryWidth);
-        // nav_category.style.top=categoryTop;
-        // nav_category.style.left=categoryLeft;
-        // nav_category.style.width=categoryWidth;
-        // nav_category.style.height="200px";
-        // nav_category.style.width="200px";
-        // nav_category.style.zIndex="300";
-        // navCategory.style.background="200px";
-
-    }else{
-        nav_category.style.display="none";
-        flag = false;
-    }
-};
-
-
+/** ê²€ìƒ‰ Ajax ë¶€ë¶„ **/
 
 function searchInput(){
     $("#search_input").autocomplete({ 
@@ -276,7 +244,7 @@ function searchInput(){
 	id_section_btn.addEventListener('click', function(){
 		const userID = $('#id_section_input').val();
 	if(!userID){
-		alert("ÇÏÀÌ");
+		alert("í•˜ì´");
 	}
 	else{
 		console.log(userID);
@@ -284,7 +252,7 @@ function searchInput(){
 			type: 'POST',
 			url:'/online-shopping-mall/MemberRegisterCheckServlet',
 			data: {userID: userID},
-//	        ¾ÆÀÌµğ Áßº¹Ã¼Å©ºÎ
+//	         ì•„ì´ë”” ì¤‘ë³µì²´í¬ë¶€
 			success : function(result) {
 				if(result == 1){
 					$('#id_section_input').css('border-bottom', 'solid 1px green');
@@ -295,13 +263,13 @@ function searchInput(){
 			        const id_section_input = document.querySelector('#id_section_input');
 					$('#id_section_input').css('border-bottom', 'solid 1px red');
 					$('#id_section_input').css('box-shadow', '0 4px 1px -3px red');
-					id_section_input.placeholder = "¾ÆÀÌµğ°¡ Áßº¹µÇ¾ú½À´Ï´Ù.";
+					id_section_input.placeholder = "ì•„ì´ë””ê°€ ì¤‘ë³µë˜ì—ˆìŠµë‹ˆë‹¤.";
 					id_section_input.classList.add('default_placeholder_red');
 					id_section_input.value = '';
 					 $('#id_section_input').focus();
 				}
 			}, error : function(){
-				console.log('½ÇÆĞ');
+				console.log('ì‹¤íŒ¨');
 			}
 		})
 	}

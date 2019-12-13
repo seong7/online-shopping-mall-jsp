@@ -2,9 +2,9 @@
 <%
 		request.setCharacterEncoding("EUC-KR");
 %>
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
-	<head>
+	<head>-->
 		<meta charset="EUC-KR">
 		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet" href="css/top.css">
@@ -12,8 +12,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	</head>
-	<body>
+    <!--</head>
+	<body> -->
 	    <div id="modalDiv">
 	        <div id="modalInnerFrame">
 				<div id="modal_elements_wrapper">
@@ -90,14 +90,22 @@
 	        </div>
 	        <!--메뉴 네비게이션(sticky)-->
 	        <div id="menuNav">
-	            <!--nav 구성 :2개의 슬라이드 메뉴, 신상품, 알뜰쇼핑, 이벤트, 검색창(search icon), shopping icon(장바구니)-->
+	            <!--nav 구성 :1개의 슬라이드 메뉴, 베스트, 신상품, 고객지원, 검색창(search icon), shopping icon(장바구니)-->
 	            <div id="nav_Div">
 	                <ul class="nav_main">
 	                    <li id="nav_start">
-	                        <a class="nav_a" id="ricecakeNav" onclick="navCategory()">
+	                        <a class="nav_a" id="ricecakeNav">
 	                            <i class="fas fa-bars"></i>
 	                            <span class="txt">떡</span>
-	                        </a>
+							</a>
+							<div id="nav_category">
+								<ul>
+									<li><a href="#" class="category_menu">전체보기</a></li>
+									<li><a href="#" class="category_menu">전통떡</a></li>
+									<li><a href="#" class="category_menu">퓨전떡</a></li>
+
+								</ul>
+							</div>
 	                    </li>
 	                    <li>
 	                        <a class="nav_a">
@@ -125,13 +133,9 @@
 					<label for="userPopup" id="userPopup_label">
 						<i class="fas fa-user"></i>
 					</label>
-	            </div>
-	            <div id="nav_category">
-					<!--떡 slide menu ※기본속성 display none-->
-					
-	            </div>
+				</div>
 	        </div>
 	</div>
 	<script type="text/javascript" src="js/top.js"></script>
-	</body>
-</html>
+<!-- </body>    --- index.jsp 에서 닫아줌
+</html> -->
