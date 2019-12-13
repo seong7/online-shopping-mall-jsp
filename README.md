@@ -1,5 +1,4 @@
 # online-shopping-mall-jsp 
-<hr/>
 ##Git, Github
 ####Commit 규칙
 <ol>
