@@ -118,6 +118,7 @@ function login_signup(id){
 // const ricecakeNavRect = ricecakeNav.getBoundingClientRect();
 const ricecakeNav = document.getElementById("ricecakeNav");
 const nav_category = document.getElementById("nav_category");
+
 const ricecakeNavRect = ricecakeNav.getBoundingClientRect();
 const categoryTop = ricecakeNavRect.top + ricecakeNavRect.height;
 const categoryLeft = ricecakeNavRect.left;
@@ -127,6 +128,7 @@ var flag = false;
 
 function navCategory(){
     if(flag==false){
+
         flag = true;
         nav_category.style.display="block";
         console.log(nav_category.style.display);
@@ -208,4 +210,3 @@ function inputTransition(){
 }
 
 init();
-
