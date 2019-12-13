@@ -1,7 +1,7 @@
 # online-shopping-mall-jsp 
 <hr/>
-## Git, Github
-#### Commit 규칙
+##Git, Github
+####Commit 규칙
 <ol>
  <li>
   작업 전과 완료 후(push 전), 항상 최신 버전의 origin/master 를 fetch 하여 업데이트 여부 확인
