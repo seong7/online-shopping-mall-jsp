@@ -1,5 +1,5 @@
 # online-shopping-mall-jsp 
-<hr style="height:1px;"/>
+<hr/>
 ## Git, Github
 #### Commit 규칙
 <ol>
