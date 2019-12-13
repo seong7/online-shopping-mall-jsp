@@ -2,9 +2,9 @@
 <%
 		request.setCharacterEncoding("EUC-KR");
 %>
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
-	<head>
+	<head>-->
 		<meta charset="EUC-KR">
 		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet" href="css/top.css">
@@ -12,8 +12,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	</head>
-	<body>
+    <!--</head>
+	<body> -->
 	    <div id="modalDiv">
 	        <div id="modalInnerFrame">
 				<div id="modal_elements_wrapper">
@@ -41,21 +41,21 @@
 						<div id="id_section">
 							<input type="text" class="signup_input" id="id_section_input" autocomplete="off" placeholder="아이디를 입력하세요.">
 							<!-- ajax 필요 ?-->
-							<button type="button" class="signup_util_btn top_modal_button_style top_modal_button" id="id_section_btn" onclick="location.href='xx.jsp'"><span>중복확인</span></button>
+							<button type="button" class="signup_util_btn top_modal_button_style top_modal_button" id="id_section_btn"><span>중복확인</span></button>
 						</div>
-						<input type="password" class="signup_input" autocomplete="off" placeholder="비밀번호를 입력하세요.">
-						<input type="password" class="signup_input" autocomplete="off" placeholder="비밀번호를 한번 더 입력하세요.">
-						<input type="text" class="signup_input" autocomplete="off" placeholder="이름을 입력하세요.">
-						<input type="text" class="signup_input" autocomplete="off" placeholder="생년월일을 입력하세요.">
-						<input type="text" class="signup_input" autocomplete="off" placeholder="이메일을 입력하세요.">
-						<input type="text" class="signup_input" autocomplete="off" placeholder="연락처를 입력하세요.">
+						<input type="password" class="signup_input" id="signup_pwd"autocomplete="off" placeholder="비밀번호를 입력하세요.">
+						<input type="password" class="signup_input" id="signup_pwd_check" autocomplete="off" placeholder="비밀번호를 한번 더 입력하세요.">
+						<input type="text" class="signup_input" id="signup_name" autocomplete="off" placeholder="이름을 입력하세요.">
+						<input type="text" class="signup_input" id="signup_birth" autocomplete="off" placeholder="생년월일을 입력하세요.">
+						<input type="text" class="signup_input" id="signup_email" autocomplete="off" placeholder="이메일을 입력하세요.">
+						<input type="text" class="signup_input" id="signup_phone" autocomplete="off" placeholder="연락처를 입력하세요.">
 						<div id="address_section">
 							<div id ="address_section_header">
-								<input type="text" class="signup_input" id="address_section_zipcode" autocomplete="off" readonly placeholder="우편번호">
+								<input type="text" class="signup_input" id="address_section_zipcode" autocomplete="off" readonly tabindex="-1" placeholder="우편번호">
 								<button class="signup_util_btn top_modal_button_style top_modal_button" id="address_section_btn"><span>주소검색</span></button><br/>
 							</div>
-							<input type="text" class="signup_input" autocomplete="off" readonly placeholder="주소">
-							<input type="text" class="signup_input" autocomplete="off" placeholder="상세주소를 입력해주세요.">
+							<input type="text" class="signup_input" autocomplete="off" id="signup_addr" readonly tabindex="-1" placeholder="주소">
+							<input type="text" class="signup_input" autocomplete="off" id="signup_addr_detail" placeholder="상세주소를 입력해주세요.">
 						</div>
 						<button type="submit" class="top_modal_button top_modal_button_style" id="signup_submit_btn">
 							<span>회원가입</span>
@@ -90,14 +90,22 @@
 	        </div>
 	        <!--메뉴 네비게이션(sticky)-->
 	        <div id="menuNav">
-	            <!--nav 구성 :2개의 슬라이드 메뉴, 신상품, 알뜰쇼핑, 이벤트, 검색창(search icon), shopping icon(장바구니)-->
+	            <!--nav 구성 :1개의 슬라이드 메뉴, 베스트, 신상품, 고객지원, 검색창(search icon), shopping icon(장바구니)-->
 	            <div id="nav_Div">
 	                <ul class="nav_main">
 	                    <li id="nav_start">
-	                        <a class="nav_a" id="ricecakeNav" onclick="navCategory()">
+	                        <a class="nav_a" id="ricecakeNav">
 	                            <i class="fas fa-bars"></i>
 	                            <span class="txt">떡</span>
-	                        </a>
+							</a>
+							<div id="nav_category">
+								<ul>
+									<li><a href="#" class="category_menu">전체보기</a></li>
+									<li><a href="#" class="category_menu">전통떡</a></li>
+									<li><a href="#" class="category_menu">퓨전떡</a></li>
+
+								</ul>
+							</div>
 	                    </li>
 	                    <li>
 	                        <a class="nav_a">
@@ -125,13 +133,9 @@
 					<label for="userPopup" id="userPopup_label">
 						<i class="fas fa-user"></i>
 					</label>
-	            </div>
-	            <div id="nav_category">
-					<!--떡 slide menu ※기본속성 display none-->
-					
-	            </div>
+				</div>
 	        </div>
 	</div>
 	<script type="text/javascript" src="js/top.js"></script>
-	</body>
-</html>
+<!-- </body>    --- index.jsp 에서 닫아줌
+</html> -->
