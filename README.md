@@ -48,8 +48,7 @@
    <li>명령어 : git remote prune origin</li>
   </ul>
  </li>
+ </ul>
 
 
-### SQL 바로가기 <hr/>
-[./WebContent/sql/](./WebContent/sql/)
-
+### SQL 바로가기[./WebContent/sql/](./WebContent/sql/)
