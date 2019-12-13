@@ -114,22 +114,6 @@ function login_signup(id){
 
 
 
-/*******************  떡 카테고리 메뉴 부분  *****************/
-                 // 삭제함
-// const ricecakeNav = document.getElementById("ricecakeNav"); /* 떡 메뉴 a */
-// const nav_category = document.getElementById("nav_category"); /* 떡 카테고리 div */
-// const nav_category_query = document.querySelector('#nav_category');
-
-// let cate_flag = false; 
-// /* 떡 메뉴 버튼의 위치 값 return */
-// const ricecakeNavRect = ricecakeNav.getBoundingClientRect();
-// const categoryTop = ricecakeNavRect.height-10;
-// const categoryLeft = 0;
-// const categoryWidth = ricecakeNavRect.width;
-
-
-
-
 /** 검색 Ajax 부분 **/
 
 function searchInput(){
@@ -188,4 +172,3 @@ function inputTransition(){
 }
 
 init();
-

@@ -1,4 +1,4 @@
-/* ÆùÆ® Ãß°¡ noto-Sans*/
+/* í°íŠ¸ ì¶”ê°€ noto-Sans*/
 
 @font-face{
     font-family: 'noto_Bold';
@@ -71,7 +71,7 @@
     font-style: normal; 
 }
 
-/* html ÀüÃ¼ µå·¡±× ¹æÁö */
+/* html ì „ì²´ ë“œëž˜ê·¸ ë°©ì§€ */
 html{
     -ms-user-select: none;
     -moz-user-select: -moz-none;
@@ -80,20 +80,20 @@ html{
     user-select:none;
 }
 
-/*ÀüÃ¼ ÄÄÆ÷³ÍÆ® Wrapper Å¬·¡½º(modal window Á¦¿Ü Wrap)*/
+/*ì „ì²´ ì»´í¬ë„ŒíŠ¸ Wrapper í´ëž˜ìŠ¤(modal window ì œì™¸ Wrap)*/
 #top_wrapper{
     position: relative;
     min-width: 1050px;
     box-sizing: border-box;
 }
-/*·Î°í ÀÌ¹ÌÁö position*/
+/*ë¡œê³  ì´ë¯¸ì§€ position*/
 #homeLogo>img{
     width: 200px;
     display: block;
     margin : 0px auto;
     margin-top : 30px;
 }
-/*search_form À§Ä¡ */
+/*search_form ìœ„ì¹˜ */
 #search_form{
     position: absolute;
     left: 50%;
@@ -102,10 +102,10 @@ html{
 }
 /*input text component styling, sizing*/
 
-#modalDiv input::-webkit-input-placeholder { color: #FB9832;} 
-#modalDiv input::-moz-placeholder { color: #FB9832; } 
-#modalDiv input:-ms-input-placeholder { color: #FB9832; }
-#modalDiv input::-ms-input-placeholder { color: #FB9832;}
+#modalDiv input::-webkit-input-placeholder { color: #FB9832; font-size: 20px;} 
+#modalDiv input::-moz-placeholder { color: #FB9832;  font-size: 20px;} 
+#modalDiv input:-ms-input-placeholder { color: #FB9832;  font-size: 20px;}
+#modalDiv input::-ms-input-placeholder { color: #FB9832; font-size: 20px;}
 
 #modalDiv input:focus::-webkit-input-placeholder { color: transparent; transition: .35s;} 
 #modalDiv input:focus::-moz-placeholder { color: transparent; transition: .35s; } 
@@ -153,7 +153,7 @@ html{
     z-index: 100;
 }
 
-/*³×ºñ°ÔÀÌ¼Ç ¸ÞÀÎ Å¬·¡½º(»èÁ¦ ½Ã icon »ç¶óÁü)*/
+/*ë„¤ë¹„ê²Œì´ì…˜ ë©”ì¸ í´ëž˜ìŠ¤(ì‚­ì œ ì‹œ icon ì‚¬ë¼ì§)*/
 .nav_main{
     overflow: hidden;
     float: left;
@@ -175,7 +175,7 @@ html{
     vertical-align: top;
     
 }
-/*nav_a ÅÂ±×*/
+/*nav_a íƒœê·¸*/
 .nav_a{
     transition: color .35s;
     display: block;
@@ -183,11 +183,11 @@ html{
     height: 55px;
     cursor: pointer;
 }
-/*hover ½Ã »ö»ó ÁöÁ¤(¾ÆÀÌÄÜ, nav a ÅÂ±×)*/
+/*hover ì‹œ ìƒ‰ìƒ ì§€ì •(ì•„ì´ì½˜, nav a íƒœê·¸)*/
 .nav_a:hover, .fa-shopping-cart:hover, .fa-user:hover{
     color: #FB9832;
 }
-/*Çà °£°Ý ¸ÂÃß·Á°í line height Á¶Á¤*/
+/*í–‰ ê°„ê²© ë§žì¶”ë ¤ê³  line height ì¡°ì •*/
 .nav_a > span, .nav_a>input{
     line-height: 50px;
 }
@@ -209,7 +209,8 @@ html{
 }
 
 
-/***** ¶± category *****/
+/* ë–¡ ì¹´í…Œê³ ë¦¬ */
+
 #nav_category{
     display: flex;
     flex-direction: column;
@@ -252,8 +253,6 @@ html{
     background-color:#FFF4E9;
 }
 
-
-
 /*userPopup checkbox*/
 input[id*='userPopup']{
     display: none;
@@ -263,10 +262,8 @@ input[id*='userPopup']{
     margin-left:20px;
 }
 
-
-
 /***********************************************/
-/*******************  modal ±¸¿ª  **************/
+/*******************  modal êµ¬ì—­  **************/
 #modalDiv{
     display: none;
     position: fixed;
@@ -277,6 +274,12 @@ input[id*='userPopup']{
     z-index: 150;
     box-sizing: border-box;
     color: #333;
+}
+
+#modalDiv input{
+	caret-color: #FB9832;
+	color: #FB9832;
+	font-size: 20px;
 }
 #modalDiv > #modalInnerFrame{
     position: absolute;
@@ -301,7 +304,6 @@ input[id*='userPopup']{
     font-size:20px;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: bolder;
-
 }
 /*modal focus, outline set wrapper*/
 
@@ -330,7 +332,7 @@ input[id*='userPopup']{
     background-position: 0 0;
 }
 
-/*  modal header (·Î±×ÀÎ, È¸¿ø°¡ÀÔ ¼±ÅÃ ¹öÆ°) */ 
+/*  modal header (ë¡œê·¸ì¸, íšŒì›ê°€ìž… ì„ íƒ ë²„íŠ¼) */ 
 #modal_elements_wrapper > #modal_header{
     display : flex;
     align-items: center;
@@ -376,11 +378,10 @@ input[id*='userPopup']{
 #login_form > .login_input{
     box-sizing: border-box;
     height:50px;
-    margin-top:10px;
+    margin-top:15px;
     padding-left: 15px;
     padding-right: 15px;
     width: 100%;
-    border-radius:3px;
     border: none;
     border-bottom: 2px solid #FB9832;
     transition: .35s;
@@ -393,7 +394,7 @@ input[id*='userPopup']{
     /* box-shadow: 0px 1.5px 0px 0px #EB984F; */
 }
 #login_form > #lost_id_pwd_wrapper{
-    margin-top:3px;
+    margin-top:13px;
     text-align: right;
     font-size: 13px;
 }
@@ -409,7 +410,7 @@ input[id*='userPopup']{
 
 
 #login_form > #login_submit_btn{
-    margin-top:30px;
+    margin-top:40px;
     width:100%;
     height:50px;
 }
@@ -423,7 +424,8 @@ input[id*='userPopup']{
 /*  signup form  */
 /****************/
 #modal_elements_wrapper > #signup_form{
-    margin-top: 15px;
+    margin-top: 40px;
+    margin-left: -20px;
     width:80%;
     display: none;
     flex-direction: column;
@@ -446,6 +448,12 @@ input[id*='userPopup']{
     margin-bottom:10px;
     letter-spacing: 5px;
     color: #FB9832;
+	font-size: 35px
+}
+
+#signup_form h3{
+	padding: 20px;
+	margin-left: 20px
 }
 
 .signup_form_title{
@@ -489,12 +497,17 @@ input[id*='userPopup']{
     padding-left: 15px;
     padding-right: 15px;
     width: 280px;
-    border-radius:3px;
     border: none;
     border-bottom: 1px solid #FB9832;
     transition: all .35s;
 }
 
+#signup_pwd, #signup_pwd_check, #signup_name, #signup_birth, #signup_email, #signup_phone, #signup_addr_detail, #signup_addr{
+	width: 360px;
+}
+#id_section, #address_section_header{
+    min-width: 400px;
+}
 
 #id_section, #address_section_header{
     min-width: 400px;
@@ -510,7 +523,7 @@ input[id*='userPopup']{
     z-index: 1;
 }
 
-/*  Å×µÎ¸® ÀÓ½Ã ºÎ¿©  */
+/*  í…Œë‘ë¦¬ ìž„ì‹œ ë¶€ì—¬  */
 /* #modalDiv > #modalInnerFrame *{
     border: 1px solid orange;
 } */
