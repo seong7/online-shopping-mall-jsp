@@ -71,6 +71,10 @@
     font-style: normal; 
 }
 
+.default_placeholder_red::-webkit-input-placeholder{ color: red !important;}
+.default_placeholder_red::-moz-placeholder{ color: red !important;}
+.default_placeholder_red:-ms-input-placeholder{ color: red !important;}
+.default_placeholder_red::-ms-input-placeholder{ color: red !important;}
 /* html 전체 드래그 방지 */
 html{
     -ms-user-select: none;

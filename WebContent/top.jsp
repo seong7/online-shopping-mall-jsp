@@ -41,7 +41,7 @@
 						<div id="id_section">
 							<input type="text" class="signup_input" id="id_section_input" autocomplete="off" placeholder="아이디를 입력하세요.">
 							<!-- ajax 필요 ?-->
-							<button type="button" class="signup_util_btn top_modal_button_style top_modal_button" id="id_section_btn" onclick="location.href='xx.jsp'"><span>중복확인</span></button>
+							<button type="button" class="signup_util_btn top_modal_button_style top_modal_button" id="id_section_btn"><span>중복확인</span></button>
 						</div>
 						<input type="password" class="signup_input" id="signup_pwd"autocomplete="off" placeholder="비밀번호를 입력하세요.">
 						<input type="password" class="signup_input" id="signup_pwd_check" autocomplete="off" placeholder="비밀번호를 한번 더 입력하세요.">
