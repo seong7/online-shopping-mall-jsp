@@ -1,0 +1,452 @@
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp
+$ git clone /c/Jsp
+Cloning into 'Jsp'...
+fatal: 'C:/Jsp' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp
+$ git clone https://github.com/seong7/online-shopping-mall-jsp.git
+Cloning into 'online-shopping-mall-jsp'...
+remote: Enumerating objects: 117, done.
+remote: Counting objects: 100% (117/117), done.
+remote: Compressing objects: 100% (65/65), done.
+remote: Total 190 (delta 51), reused 93 (delta 39), pack-reused 73
+Receiving objects: 100% (190/190), 90.59 MiB | 15.27 MiB/s, done.
+Resolving deltas: 100% (70/70), done.
+Updating files: 100% (52/52), done.
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp
+$ git status
+fatal: not a git repository (or any of the parent directories): .git
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp
+$ ls
+ apache-tomcat-9.0.27.exe*   myapp/   online-shopping-mall-jsp/  'Tomcat 9.0'/
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp
+$ cd online-shopping-mall-jsp
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (master)
+$ git branch moowon
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (master)
+$ git branch
+* master
+  moowon
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (master)
+$ git checkout moowon
+Switched to branch 'moowon'
+M       .classpath
+M       .settings/org.eclipse.jdt.core.prefs
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git status
+On branch moowon
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .classpath
+        modified:   .settings/org.eclipse.jdt.core.prefs
+        modified:   WebContent/top.jsp
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git status
+On branch moowon
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   .classpath
+        modified:   .settings/org.eclipse.jdt.core.prefs
+        modified:   WebContent/top.jsp
+
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git commit -m "20191211 | test commit"
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'it@DESKTOP-R1HLBD8.(none)')
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git config --global user.email "mwchoi0428@gmail.com"
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git config --global user.name "Moowon Choi"
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git commit -m "20191211 | test commit"
+[moowon 380a2a7] 20191211 | test commit
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git log --all
+commit 380a2a7bc10c50a452ab00a6189e2ee107953b55 (HEAD -> moowon)
+Author: Moowon Choi <mwchoi0428@gmail.com>
+Date:   Wed Dec 11 10:20:05 2019 +0900
+
+    20191211 | test commit
+
+commit 689a06d700701edb99cf459ef4b8a28f8d15a890 (origin/master, origin/HEAD, master)
+Merge: 333779f 2225602
+Author: Seong jin Kim <52827441+seong7@users.noreply.github.com>
+Date:   Mon Dec 9 22:45:16 2019 +0900
+
+    Merge pull request #12 from seong7/seongjin
+
+    20191209 | --
+
+commit 22256020f529e1ba1b081e9be3bbde2eb74f789e
+Author: Seongjin <seongjinkim1123@gmail.com>
+Date:   Mon Dec 9 18:32:09 2019 +0900
+
+    20191209 | --
+
+commit 333779f59d39d9111ffef3dc540201c2c7cc7df4
+:...skipping...
+commit 380a2a7bc10c50a452ab00a6189e2ee107953b55 (HEAD -> moowon)
+Author: Moowon Choi <mwchoi0428@gmail.com>
+Date:   Wed Dec 11 10:20:05 2019 +0900
+
+    20191211 | test commit
+
+commit 689a06d700701edb99cf459ef4b8a28f8d15a890 (origin/master, origin/HEAD, master)
+Merge: 333779f 2225602
+Author: Seong jin Kim <52827441+seong7@users.noreply.github.com>
+Date:   Mon Dec 9 22:45:16 2019 +0900
+
+    Merge pull request #12 from seong7/seongjin
+
+    20191209 | --
+
+commit 22256020f529e1ba1b081e9be3bbde2eb74f789e
+Author: Seongjin <seongjinkim1123@gmail.com>
+Date:   Mon Dec 9 18:32:09 2019 +0900
+
+    20191209 | --
+
+commit 333779f59d39d9111ffef3dc540201c2c7cc7df4
+Author: Seong jin Kim <52827441+seong7@users.noreply.github.com>
+Date:   Sun Dec 8 23:35:41 2019 +0900
+
+    Update README.md
+
+commit ebd0620ffe1e1cc444db6b8946d0cf4412119a0c
+Author: Seong jin Kim <52827441+seong7@users.noreply.github.com>
+Date:   Sun Dec 8 23:34:50 2019 +0900
+
+    Update README.md
+
+commit a91e574d2dd57516df1d1b12e9920c7bf43dfd49
+Author: Seong jin Kim <52827441+seong7@users.noreply.github.com>
+Date:   Sun Dec 8 23:34:32 2019 +0900
+
+    Create README.md
+
+commit 51d726a5b3c73fc8531b467b7e060c8f65082e48
+Merge: b1154cd 80b31d0
+Author: Seong jin Kim <52827441+seong7@users.noreply.github.com>
+Date:   Sun Dec 8 23:25:17 2019 +0900
+
+    Merge pull request #11 from seong7/working
+
+    20191208 | 회원가입 폼 작업중
+
+commit 80b31d0d8576923c7ce0c993f8a54c57a9802633
+Author: Seongjin <seongjinkim1123@gmail.com>
+Date:   Sun Dec 8 23:24:28 2019 +0900
+
+    20191208 | 회원가입 폼 작업중
+
+commit b1154cd3a70bf58067e7aa2e09d8eaba0a4f8869
+Merge: 51704c0 4f5122b
+Author: Seong jin Kim <52827441+seong7@users.noreply.github.com>
+Date:   Sun Dec 8 21:11:21 2019 +0900
+
+    Merge pull request #9 from seong7/working
+
+    Working
+
+commit 4f5122bbbbb577298b02e3087a491d3400e478c0
+Merge: 4248b4d 6f0ac5c
+Author: Seong jin Kim <52827441+seong7@users.noreply.github.com>
+Date:   Sun Dec 8 18:30:07 2019 +0900
+
+    Merge pull request #8 from seong7/test
+
+    Test
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git status
+On branch moowon
+nothing to commit, working tree clean
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git push origin moowon
+remote: Permission to seong7/online-shopping-mall-jsp.git denied to mwchoi0428.
+fatal: unable to access 'https://github.com/seong7/online-shopping-mall-jsp.git/': The requested URL returned error: 403
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git push origin moowon
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (7/7), 714 bytes | 714.00 KiB/s, done.
+Total 7 (delta 5), reused 0 (delta 0)
+remote: Resolving deltas: 100% (5/5), completed with 5 local objects.
+remote:
+remote: Create a pull request for 'moowon' on GitHub by visiting:
+remote:      https://github.com/seong7/online-shopping-mall-jsp/pull/new/moowon
+remote:
+To https://github.com/seong7/online-shopping-mall-jsp.git
+ * [new branch]      moowon -> moowon
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git pull origin master
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (1/1), done.
+From https://github.com/seong7/online-shopping-mall-jsp
+ * branch            master     -> FETCH_HEAD
+   689a06d..b5402ef  master     -> origin/master
+Already up to date!
+Merge made by the 'recursive' strategy.
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git log --all
+commit 133795ede06c917bdb669579a0cf653b59c729cf (HEAD -> moowon)
+Merge: 8221306 b5402ef
+Author: Moowon Choi <mwchoi0428@gmail.com>
+Date:   Wed Dec 11 10:45:02 2019 +0900
+
+    Merge branch 'master' of https://github.com/seong7/online-shopping-mall-jsp into moowon
+
+commit 82213060075e74affa4933589f15c7cce95117d4 (origin/moowon)
+Author: Moowon Choi <mwchoi0428@gmail.com>
+Date:   Wed Dec 11 10:35:11 2019 +0900
+
+    20191211 | test2
+
+commit b5402efed0081d9ec3d49cedcbed0de6ff3e8d8d (origin/master, origin/HEAD)
+Merge: 689a06d 380a2a7
+Author: Seong jin Kim <52827441+seong7@users.noreply.github.com>
+Date:   Wed Dec 11 10:30:15 2019 +0900
+
+    Merge pull request #13 from seong7/moowon
+
+    20191211 | test commit
+
+commit 380a2a7bc10c50a452ab00a6189e2ee107953b55
+Author: Moowon Choi <mwchoi0428@gmail.com>
+Date:   Wed Dec 11 10:20:05 2019 +0900
+
+    20191211 | test commit
+
+commit 689a06d700701edb99cf459ef4b8a28f8d15a890 (master)
+Merge: 333779f 2225602
+Author: Seong jin Kim <52827441+seong7@users.noreply.github.com>
+Date:   Mon Dec 9 22:45:16 2019 +0900
+
+    Merge pull request #12 from seong7/seongjin
+
+    20191209 | --
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git status
+On branch moowon
+nothing to commit, working tree clean
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git status
+On branch moowon
+nothing to commit, working tree clean
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git log --all --oneline --graph --decorate
+*   133795e (HEAD -> moowon) Merge branch 'master' of https://github.com/seong7/online-shopping-mall-jsp into moowon
+|\
+| *   b5402ef (origin/master, origin/HEAD) Merge pull request #13 from seong7/moowon
+| |\
+* | | 8221306 (origin/moowon) 20191211 | test2
+| |/
+|/|
+* | 380a2a7 20191211 | test commit
+|/
+*   689a06d (master) Merge pull request #12 from seong7/seongjin
+|\
+| * 2225602 20191209 | --
+|/
+* 333779f Update README.md
+* ebd0620 Update README.md
+* a91e574 Create README.md
+*   51d726a Merge pull request #11 from seong7/working
+|\
+| * 80b31d0 20191208 | 회원가입 폼 작업중
+* |   b1154cd Merge pull request #9 from seong7/working
+|\ \
+| |/
+| *   4f5122b Merge pull request #8 from seong7/test
+| |\
+| | *   6f0ac5c Merge branch 'working' into test
+| | |\
+| | |/
+| |/|
+| * | 4248b4d 20191208 | Ajax 준비완료
+| * |   e01aa40 Merge remote-tracking branch 'origin/working' into working
+| |\ \
+| | * \   b34ac58 Merge pull request #7 from seong7/eungyu
+| | |\ \
+| | | * | 2ab1a4a searchAdd2
+| | | * | d73980c seasrchAdd
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git fetch origin
+remote: Enumerating objects: 15, done.
+remote: Counting objects: 100% (15/15), done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 15 (delta 3), reused 12 (delta 3), pack-reused 0
+Unpacking objects: 100% (15/15), done.
+From https://github.com/seong7/online-shopping-mall-jsp
+   b5402ef..9ab5e24  master     -> origin/master
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git log --all --oneline --graph --decorate
+*   9ab5e24 (origin/master, origin/HEAD) Merge pull request #15 from seong7/seongjin
+|\
+| * f3a39ea 20191211 | test _ 성진
+* |   f19ae41 Merge pull request #14 from seong7/moowon
+|\ \
+| | | *   133795e (HEAD -> moowon) Merge branch 'master' of https://github.com/seong7/online-shopping-mall-jsp into moowon
+| | | |\
+| | |/ /
+| |/| /
+| |_|/
+|/| |
+* | |   b5402ef Merge pull request #13 from seong7/moowon
+|\ \ \
+| |_|/
+|/| |
+| | * 8221306 (origin/moowon) 20191211 | test2
+| |/
+| * 380a2a7 20191211 | test commit
+|/
+*   689a06d (master) Merge pull request #12 from seong7/seongjin
+|\
+| * 2225602 20191209 | --
+|/
+* 333779f Update README.md
+* ebd0620 Update README.md
+* a91e574 Create README.md
+*   51d726a Merge pull request #11 from seong7/working
+|\
+| * 80b31d0 20191208 | 회원가입 폼 작업중
+* |   b1154cd Merge pull request #9 from seong7/working
+|\ \
+| |/
+| *   4f5122b Merge pull request #8 from seong7/test
+| |\
+| | *   6f0ac5c Merge branch 'working' into test
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git checkout origin/master
+Note: switching to 'origin/master'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 9ab5e24 Merge pull request #15 from seong7/seongjin
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp ((9ab5e24...))
+$ git checkout moowon
+Previous HEAD position was 9ab5e24 Merge pull request #15 from seong7/seongjin
+Switched to branch 'moowon'
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git status
+On branch moowon
+nothing to commit, working tree clean
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git merge moowon origin/master
+Merge made by the 'recursive' strategy.
+ WebContent/img/logo4.png              | Bin 0 -> 25251 bytes
+ WebContent/top.jsp                    |   2 +-
+ WebContent/vscode__utf8/css/top.css   |  51 +++++++++++++++++++++-------------
+ WebContent/vscode__utf8/img/logo4.png | Bin 0 -> 25251 bytes
+ WebContent/vscode__utf8/js/top.js     |   5 +++-
+ WebContent/vscode__utf8/top.html      |   8 +++---
+ 6 files changed, 40 insertions(+), 26 deletions(-)
+ create mode 100644 WebContent/img/logo4.png
+ create mode 100644 WebContent/vscode__utf8/img/logo4.png
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$ git log --all --oneline --graph --decorate
+*   342edf2 (HEAD -> moowon) Merge remote-tracking branch 'origin/master' into moowon
+|\
+| *   9ab5e24 (origin/master, origin/HEAD) Merge pull request #15 from seong7/seongjin
+| |\
+| | * f3a39ea 20191211 | test _ 성진
+| * |   f19ae41 Merge pull request #14 from seong7/moowon
+| |\ \
+* | \ \   133795e Merge branch 'master' of https://github.com/seong7/online-shopping-mall-jsp into moowon
+|\ \ \ \
+| |/ / /
+| | / /
+| |/ /
+|/| |
+| * |   b5402ef Merge pull request #13 from seong7/moowon
+| |\ \
+| | |/
+| |/|
+* | | 8221306 (origin/moowon) 20191211 | test2
+| |/
+|/|
+* | 380a2a7 20191211 | test commit
+|/
+*   689a06d (master) Merge pull request #12 from seong7/seongjin
+|\
+| * 2225602 20191209 | --
+|/
+* 333779f Update README.md
+* ebd0620 Update README.md
+* a91e574 Create README.md
+*   51d726a Merge pull request #11 from seong7/working
+|\
+| * 80b31d0 20191208 | 회원가입 폼 작업중
+* |   b1154cd Merge pull request #9 from seong7/working
+|\ \
+| |/
+| *   4f5122b Merge pull request #8 from seong7/test
+
+it@DESKTOP-R1HLBD8 MINGW64 /c/Jsp/online-shopping-mall-jsp (moowon)
+$
