@@ -1,6 +1,6 @@
 # online-shopping-mall-jsp 
-
-### Git, Github<hr/>
+<hr style="height:2px;">
+## Git, Github
 #### Commit 규칙
 <ol>
  <li>
