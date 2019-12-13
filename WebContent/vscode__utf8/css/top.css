@@ -208,9 +208,18 @@ html{
     margin-top: 0px;
 }
 /*떡 sub menu*/
-#navCategory{
+#nav_category{
     display: none;
-    background-color: black;
+    position: absolute;
+    background-color: #333;
+    box-sizing: border-box;
+    top:30px;
+    left: 0;
+    width: 200px;
+    height: 500px;
+    z-index: 300;
+
+
 }
 
 
@@ -325,16 +334,6 @@ input[id*='userPopup']{
     font-size: 30px;
     font-weight:lighter;
 }
-
-/*  modal 닫기 버튼 */
-/* #modal_elements_wrapper > #modal_close_btn> .fa-times{
-    position : absolute;
-    top: 0%;
-    right: 1%;
-    font-size: 40px;
-    color: grey;
-    opacity: 0.6;
-} */
 
 /*****************/
 /*  login form  */

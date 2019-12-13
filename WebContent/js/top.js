@@ -4,6 +4,7 @@ function init(){
     searchInput();
     inputTransition();
 
+
     /******************  모달부분  *******************/
 
     let modaltrigger = false;
@@ -14,7 +15,7 @@ function init(){
     const modal_elements_wrapper = document.getElementById('modal_elements_wrapper');
     const login_form = document.getElementById('login_form');
 
-    /** 모달창 열림 닫힘 기능 **/
+    /** 紐⑤ъ갹 대┝ ロ 湲곕 **/
 
     userCheckBox.addEventListener('change', function(){
         modalInnerFrame.style.width = "0px";
@@ -63,6 +64,7 @@ function init(){
     });
 };
 
+
 /** 모달창 header **/
 
 const login_form = document.getElementById("login_form");
@@ -76,6 +78,7 @@ function login_signup(id){
         modalInnerFrame.style.width = "400px";
         modalInnerFrame.style.height = "400px";
         
+
         /* 로그인 form . display : none */
         signup_form.style.display="none";
         signup_btn_label.style.color="#FB9832";
@@ -113,39 +116,43 @@ function login_signup(id){
 
 
 
-
 /**  떡 카테고리 메뉴 부분  **/
 // const ricecakeNavRect = ricecakeNav.getBoundingClientRect();
 const ricecakeNav = document.getElementById("ricecakeNav");
 const nav_category = document.getElementById("nav_category");
-const categrory = ricecakeNav.getBoundingClientRect();
-const categoryTop = ricecakeNav.getBoundingClientRect().top + ricecakeNav.getBoundingClientRect().height;
-const categoryLeft = ricecakeNav.getBoundingClientRect().left;
-const categoryWidth = ricecakeNav.getBoundingClientRect.width;
+const ricecakeNavRect = ricecakeNav.getBoundingClientRect();
+const categoryTop = ricecakeNavRect.top + ricecakeNavRect.height;
+const categoryLeft = ricecakeNavRect.left;
+const categoryWidth = ricecakeNavRect.width;
 // const categoryH = ricecakeNav.getBoundingClientRect.he;
-const flag = false; 
+var flag = false; 
 
 function navCategory(){
     if(flag==false){
-        console.log(categoryTop);
-        console.log(categoryLeft);
-        console.log(categoryWidth);
+        flag = true;
         nav_category.style.display="block";
-        nav_category.style.top=categoryTop;
-        nav_category.style.left=categoryLeft;
-        nav_category.style.width=categoryWidth;
-        nav_category.style.height="200px";
+        console.log(nav_category.style.display);
+        // console.log(ricecakeNavRect);
+        // console.log(categoryTop);
+        // console.log(categoryLeft);
+        // console.log(categoryWidth);
+        // nav_category.style.top=categoryTop;
+        // nav_category.style.left=categoryLeft;
+        // nav_category.style.width=categoryWidth;
+        // nav_category.style.height="200px";
         // nav_category.style.width="200px";
         // nav_category.style.zIndex="300";
         // navCategory.style.background="200px";
 
+    }else{
+        nav_category.style.display="none";
+        flag = false;
     }
 };
 
 
 
 /** 검색 Ajax 부분 **/
-
 function searchInput(){
     $("#search_input").autocomplete({ 
             source : function( request, response ) {

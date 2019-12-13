@@ -1,4 +1,4 @@
-/* ÆùÆ® Ãß°¡ noto-Sans*/
+/* í°íŠ¸ ì¶”ê°€ noto-Sans*/
 
 @font-face{
     font-family: 'noto_Bold';
@@ -71,7 +71,7 @@
     font-style: normal; 
 }
 
-/* html ÀüÃ¼ µå·¡±× ¹æÁö */
+/* html ì „ì²´ ë“œëž˜ê·¸ ë°©ì§€ */
 html{
     -ms-user-select: none;
     -moz-user-select: -moz-none;
@@ -80,20 +80,20 @@ html{
     user-select:none;
 }
 
-/*ÀüÃ¼ ÄÄÆ÷³ÍÆ® Wrapper Å¬·¡½º(modal window Á¦¿Ü Wrap)*/
+/*ì „ì²´ ì»´í¬ë„ŒíŠ¸ Wrapper í´ëž˜ìŠ¤(modal window ì œì™¸ Wrap)*/
 #top_wrapper{
     position: relative;
     min-width: 1050px;
     box-sizing: border-box;
 }
-/*·Î°í ÀÌ¹ÌÁö position*/
+/*ë¡œê³  ì´ë¯¸ì§€ position*/
 #homeLogo>img{
     width: 200px;
     display: block;
     margin : 0px auto;
     margin-top : 30px;
 }
-/*search_form À§Ä¡ */
+/*search_form ìœ„ì¹˜ */
 #search_form{
     position: absolute;
     left: 50%;
@@ -153,7 +153,7 @@ html{
     z-index: 100;
 }
 
-/*³×ºñ°ÔÀÌ¼Ç ¸ÞÀÎ Å¬·¡½º(»èÁ¦ ½Ã icon »ç¶óÁü)*/
+/*ë„¤ë¹„ê²Œì´ì…˜ ë©”ì¸ í´ëž˜ìŠ¤(ì‚­ì œ ì‹œ icon ì‚¬ë¼ì§)*/
 .nav_main{
     overflow: hidden;
     float: left;
@@ -175,7 +175,7 @@ html{
     vertical-align: top;
     
 }
-/*nav_a ÅÂ±×*/
+/*nav_a íƒœê·¸*/
 .nav_a{
     transition: color .35s;
     display: block;
@@ -183,11 +183,11 @@ html{
     height: 55px;
     cursor: pointer;
 }
-/*hover ½Ã »ö»ó ÁöÁ¤(¾ÆÀÌÄÜ, nav a ÅÂ±×)*/
+/*hover ì‹œ ìƒ‰ìƒ ì§€ì •(ì•„ì´ì½˜, nav a íƒœê·¸)*/
 .nav_a:hover, .fa-shopping-cart:hover, .fa-user:hover{
     color: #FB9832;
 }
-/*Çà °£°Ý ¸ÂÃß·Á°í line height Á¶Á¤*/
+/*í–‰ ê°„ê²© ë§žì¶”ë ¤ê³  line height ì¡°ì •*/
 .nav_a > span, .nav_a>input{
     line-height: 50px;
 }
@@ -207,16 +207,19 @@ html{
     margin-left: 0px;
     margin-top: 0px;
 }
-/*¶± sub menu*/
-#navCategory{
+/*ë–¡ sub menu*/
+#nav_category{
     display: none;
-    position: fixed;
-    background-color: black;
+    background-color: #333;
+    box-sizing: border-box;
+    top:0;
+    left: 0;
+    width: 5%;
+    height: 2%;
     z-index: 300;
+
+
 }
-
-
-
 
 /*userPopup checkbox*/
 input[id*='userPopup']{
@@ -227,10 +230,8 @@ input[id*='userPopup']{
     margin-left:20px;
 }
 
-
-
 /***********************************************/
-/*******************  modal ±¸¿ª  **************/
+/*******************  modal êµ¬ì—­  **************/
 #modalDiv{
     display: none;
     position: fixed;
@@ -271,7 +272,6 @@ input[id*='userPopup']{
     font-size:20px;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: bolder;
-
 }
 /*modal focus, outline set wrapper*/
 
@@ -300,7 +300,7 @@ input[id*='userPopup']{
     background-position: 0 0;
 }
 
-/*  modal header (·Î±×ÀÎ, È¸¿ø°¡ÀÔ ¼±ÅÃ ¹öÆ°) */ 
+/*  modal header (ë¡œê·¸ì¸, íšŒì›ê°€ìž… ì„ íƒ ë²„íŠ¼) */ 
 #modal_elements_wrapper > #modal_header{
     display : flex;
     align-items: center;
@@ -415,7 +415,7 @@ input[id*='userPopup']{
     text-align: center;
     margin-bottom:10px;
     letter-spacing: 5px;
-    color: #FB9832;;
+    color: #FB9832;
 	font-size: 35px
 }
 
@@ -477,6 +477,10 @@ input[id*='userPopup']{
     min-width: 400px;
 }
 
+#id_section, #address_section_header{
+    min-width: 400px;
+}
+
 #modalDiv > label{
     position: absolute;
     top: 0;
@@ -487,7 +491,7 @@ input[id*='userPopup']{
     z-index: 1;
 }
 
-/*  Å×µÎ¸® ÀÓ½Ã ºÎ¿©  */
+/*  í…Œë‘ë¦¬ ìž„ì‹œ ë¶€ì—¬  */
 /* #modalDiv > #modalInnerFrame *{
     border: 1px solid orange;
 } */
