@@ -43,19 +43,19 @@
 							<!-- ajax 필요 ?-->
 							<button type="button" class="signup_util_btn top_modal_button_style top_modal_button" id="id_section_btn" onclick="location.href='xx.jsp'"><span>중복확인</span></button>
 						</div>
-						<input type="password" class="signup_input" autocomplete="off" placeholder="비밀번호를 입력하세요.">
-						<input type="password" class="signup_input" autocomplete="off" placeholder="비밀번호를 한번 더 입력하세요.">
-						<input type="text" class="signup_input" autocomplete="off" placeholder="이름을 입력하세요.">
-						<input type="text" class="signup_input" autocomplete="off" placeholder="생년월일을 입력하세요.">
-						<input type="text" class="signup_input" autocomplete="off" placeholder="이메일을 입력하세요.">
-						<input type="text" class="signup_input" autocomplete="off" placeholder="연락처를 입력하세요.">
+						<input type="password" class="signup_input" id="signup_pwd"autocomplete="off" placeholder="비밀번호를 입력하세요.">
+						<input type="password" class="signup_input" id="signup_pwd_check" autocomplete="off" placeholder="비밀번호를 한번 더 입력하세요.">
+						<input type="text" class="signup_input" id="signup_name" autocomplete="off" placeholder="이름을 입력하세요.">
+						<input type="text" class="signup_input" id="signup_birth" autocomplete="off" placeholder="생년월일을 입력하세요.">
+						<input type="text" class="signup_input" id="signup_email" autocomplete="off" placeholder="이메일을 입력하세요.">
+						<input type="text" class="signup_input" id="signup_phone" autocomplete="off" placeholder="연락처를 입력하세요.">
 						<div id="address_section">
 							<div id ="address_section_header">
-								<input type="text" class="signup_input" id="address_section_zipcode" autocomplete="off" readonly placeholder="우편번호">
+								<input type="text" class="signup_input" id="address_section_zipcode" autocomplete="off" readonly tabindex="-1" placeholder="우편번호">
 								<button class="signup_util_btn top_modal_button_style top_modal_button" id="address_section_btn"><span>주소검색</span></button><br/>
 							</div>
-							<input type="text" class="signup_input" autocomplete="off" readonly placeholder="주소">
-							<input type="text" class="signup_input" autocomplete="off" placeholder="상세주소를 입력해주세요.">
+							<input type="text" class="signup_input" autocomplete="off" id="signup_addr" readonly tabindex="-1" placeholder="주소">
+							<input type="text" class="signup_input" autocomplete="off" id="signup_addr_detail" placeholder="상세주소를 입력해주세요.">
 						</div>
 						<button type="submit" class="top_modal_button top_modal_button_style" id="signup_submit_btn">
 							<span>회원가입</span>

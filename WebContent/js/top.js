@@ -4,7 +4,8 @@ function init(){
     searchInput();
     inputTransition();
 
-    /******************  ¸ğ´ŞºÎºĞ  *******************/
+
+    /******************  ëª¨ë‹¬ë¶€ë¶„  *******************/
 
     let modaltrigger = false;
     const userCheckBox = document.querySelector('#userPopup');
@@ -14,7 +15,7 @@ function init(){
     const modal_elements_wrapper = document.getElementById('modal_elements_wrapper');
     const login_form = document.getElementById('login_form');
 
-    /** ¸ğ´ŞÃ¢ ¿­¸² ´İÈû ±â´É **/
+    /** ï§â‘¤Â‹ÑŠê°¹ Â—ëŒ€â” Â‹ãƒ­ÂÂ˜ æ¹²ê³•ÂŠ **/
 
     userCheckBox.addEventListener('change', function(){
         modalInnerFrame.style.width = "0px";
@@ -63,7 +64,8 @@ function init(){
     });
 };
 
-/** ¸ğ´ŞÃ¢ header **/
+
+/** ëª¨ë‹¬ì°½ header **/
 
 const login_form = document.getElementById("login_form");
 const signup_form = document.getElementById("signup_form");
@@ -76,7 +78,8 @@ function login_signup(id){
         modalInnerFrame.style.width = "400px";
         modalInnerFrame.style.height = "400px";
         
-        /* ·Î±×ÀÎ form . display : none */
+
+        /* ë¡œê·¸ì¸ form . display : none */
         signup_form.style.display="none";
         signup_btn_label.style.color="#FB9832";
         signup_form.style.opacity="0";
@@ -100,7 +103,7 @@ function login_signup(id){
         login_form.style.display="none";
         login_form.style.opacity="0";
         
-        /* È¸¿ø°¡ÀÔ form . display : "flex" */
+        /* íšŒì›ê°€ì… form . display : "flex" */
         setTimeout(function(){
             signup_form.style.opacity="1";
             signup_form.style.transition="opacity 0.3s";
@@ -113,8 +116,7 @@ function login_signup(id){
 
 
 
-
-/**  ¶± Ä«Å×°í¸® ¸Ş´º ºÎºĞ  **/
+/**  ë–¡ ì¹´í…Œê³ ë¦¬ ë©”ë‰´ ë¶€ë¶„  **/
 // const ricecakeNavRect = ricecakeNav.getBoundingClientRect();
 const ricecakeNav = document.getElementById("ricecakeNav");
 const nav_category = document.getElementById("nav_category");
@@ -150,8 +152,7 @@ function navCategory(){
 
 
 
-/** °Ë»ö Ajax ºÎºĞ **/
-
+/** ê²€ìƒ‰ Ajax ë¶€ë¶„ **/
 function searchInput(){
     $("#search_input").autocomplete({ 
             source : function( request, response ) {
@@ -208,4 +209,3 @@ function inputTransition(){
 }
 
 init();
-
