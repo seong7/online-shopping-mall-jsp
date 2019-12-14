@@ -81,7 +81,7 @@
 		            </div>
 		            <!--로고 이미지 Div-->
 		            <div id="homeLogo">
-		                <img src="img/logo4.png" alt="이미지 로딩 불가!">
+		                <img src="img/index/logo/mills_logo.png" alt="이미지 로딩 불가!">
 		                <!--LOGO-->
 		            </div>
 		            <div id="search_div">
