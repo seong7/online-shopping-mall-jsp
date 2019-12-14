@@ -1,0 +1,16 @@
+$brandColor: #fec084; 
+
+
+main{
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    ul{
+        display: flex;
+        flex-direction: row;
+        li{
+            margin: 10px;
+        }
+    }
+}
