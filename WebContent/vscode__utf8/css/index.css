@@ -132,6 +132,14 @@ main ul li {
 main ul li img {
   width: 249px;
   height: 320px;
+  max-width: 100%;
+}
+
+main ul li img:hover {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 main ul li .goods_info {

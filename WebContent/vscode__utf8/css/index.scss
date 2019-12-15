@@ -40,6 +40,14 @@ main{
             img{
                 width: 249px;
                 height: 320px;
+                max-width:100%;
+                // background-image: url('../img/index/product_sample/prod_sample1.PNG');
+                // background-repeat: no-repeat;
+                // background-size: cover;
+                &:hover{
+                    transform: scale(1.02);
+                    transition: all 0.3s ease-in-out;
+                }
             }
             .goods_info{
                 width: 249px;
@@ -48,7 +56,6 @@ main{
                 }
                 .name{
                     font-family: $normalFont;
-                    // font-weight: lighter;
                     color:$titleDetailColor;
                 }
                 .price{

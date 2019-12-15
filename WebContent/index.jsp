@@ -5,8 +5,11 @@
 %>
 <link rel="stylesheet" type="text/css" href="css/index.css">
 <jsp:include page="top.jsp"/>
-	
-<main>
+
+        <!--******************-->
+        <!--작업 및 복붙 구역-->
+        <!--******************-->        	
+ <main>
             <!-- 배너 구역-->
             <div id="bannerWrapper">
                 <img src="./img/index/banner/banner_sample1.png" alt="banner slider">
@@ -160,7 +163,10 @@
                 </ul>
             </div>
         </main>
-	
+		<!--******************-->
+        <!--작업 및 복붙 구역-->
+        <!--******************-->        
+		
 </body>
 </html>
 	
