@@ -1,4 +1,5 @@
-/* ∆˘∆Æ √ﬂ∞° noto-Sans*/
+@charset "UTF-8";
+/* Ìè∞Ìä∏ Ï∂îÍ∞Ä noto-Sans*/
 @font-face {
   font-family: 'noto_Bold';
   src: url(../font/NotoSansCJKkr-Bold.otf);
@@ -75,87 +76,4 @@
   font-weight: normal;
   font-style: normal;
 }
-
-main {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  min-width: 1050px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-main .goodslist_tit {
-  margin-top: 100px;
-  margin-bottom: 60px;
-  text-align: center;
-  width: 100%;
-  font-family: "noto_Bold";
-}
-
-main .goodslist_tit .goodslist_btn {
-  display: block;
-  text-decoration: none;
-  color: #333;
-  font-size: 30px;
-}
-
-main .goodslist_tit .goodslist_detail {
-  display: inline-block;
-  color: gray;
-  margin-top: 15px;
-}
-
-main ul {
-  width: 815%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  margin-top: 20px;
-}
-
-main ul li {
-  margin-right: 18px;
-}
-
-main ul li img {
-  width: 249px;
-  height: 320px;
-  max-width: 100%;
-}
-
-main ul li img:hover {
-  -webkit-transform: scale(1.02);
-          transform: scale(1.02);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-main ul li .goods_info {
-  width: 249px;
-}
-
-main ul li .goods_info a {
-  text-decoration: none;
-}
-
-main ul li .goods_info .name {
-  font-family: "noto_Bold";
-  color: gray;
-}
-
-main ul li .goods_info .price {
-  display: block;
-  margin-top: 3px;
-}
-/*# sourceMappingURL=index.css.map */
+/*# sourceMappingURL=font-family.css.map */

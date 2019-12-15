@@ -1,16 +1,68 @@
+@import './font-family'; 
 $brandColor: #fec084; 
+$titleColor: #333;
+$titleDetailColor: gray;
+$normalFont: 'noto_Bold';
 
 
 main{
     display: flex;
+    width: 100%;
+    min-width: 1050px;
     flex-direction: column;
-    // justify-content: center;
     align-items: center;
+    .goodslist_tit{
+        margin-top: 100px;
+        margin-bottom: 60px;
+        text-align: center;
+        width:100%;
+        font-family:$normalFont;
+        .goodslist_btn{
+            display: block;
+            text-decoration: none;
+            color: $titleColor;
+            font-size: 30px;
+        }
+        .goodslist_detail{
+            display: inline-block;
+            color:$titleDetailColor;
+            margin-top: 15px;
+        }
+    }
     ul{
+        width: 815%;
         display: flex;
         flex-direction: row;
+        margin-top: 20px;
         li{
-            margin: 10px;
+            margin-right: 18px;
+            // width: 200px;
+            img{
+                width: 249px;
+                height: 320px;
+                max-width:100%;
+                // background-image: url('../img/index/product_sample/prod_sample1.PNG');
+                // background-repeat: no-repeat;
+                // background-size: cover;
+                &:hover{
+                    transform: scale(1.02);
+                    transition: all 0.3s ease-in-out;
+                }
+            }
+            .goods_info{
+                width: 249px;
+                a{
+                    text-decoration: none;
+                }
+                .name{
+                    font-family: $normalFont;
+                    color:$titleDetailColor;
+                }
+                .price{
+                    display: block;
+                    margin-top: 3px;
+                }
+            }
         }
     }
 }
