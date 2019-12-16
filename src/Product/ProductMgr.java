@@ -10,4 +10,11 @@ public class ProductMgr {
 	public ProductMgr() {
 		pool = DBConnectionMgr.getInstance();
 	}
+	//alllist
+	//bestlist
+	//reviewlist
+	//priceuplist
+	//pricedownlist
+	//searchlist
+	//
 }
