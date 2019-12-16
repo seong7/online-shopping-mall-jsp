@@ -1,4 +1,4 @@
-/* noto-Sans*/
+/* 폰트 추가 noto-Sans*/
 
 @font-face{
     font-family: 'noto_Bold';
@@ -42,7 +42,7 @@
     font-style: normal;
     font-weight: normal;
 }
-/* 추가글꼴 */
+
 @font-face {
     font-family: 'InkLipquid'; 
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff'); 
@@ -87,11 +87,9 @@ html{
 /*전체 컴포넌트 Wrapper 클래스(modal window 제외 Wrap)*/
 #top_wrapper{
     position: relative;
-    top: 0px;
     min-width: 1050px;
     box-sizing: border-box;
-    box-shadow:0px 8px 10px rgb(204,204,204, 0.5);
-
+    box-shadow:0px 8px 10px rgba(204,204,204, 0.5);
 }
 /*로고 이미지 position*/
 #homeLogo>img{
@@ -194,7 +192,7 @@ html{
 .nav_a:hover, .fa-shopping-cart:hover, .fa-user:hover{
     color: #FB9832;
 }
-/*hover 시 색상 지정(아이콘, nav a 태그)*/
+/*행 간격 맞추려고 line height 조정*/
 .nav_a > span, .nav_a>input{
     line-height: 50px;
 }
@@ -216,8 +214,7 @@ html{
 }
 
 
-/* 떡 카테고리 */
-
+/***** 떡 category *****/
 #nav_category{
     display: flex;
     flex-direction: column;
@@ -262,7 +259,6 @@ html{
 
 
 
-
 /*userPopup checkbox*/
 input[id*='userPopup']{
     display: none;
@@ -271,6 +267,7 @@ input[id*='userPopup']{
     display:inline-flex;
     margin-left:20px;
 }
+
 
 
 /***********************************************/
@@ -316,7 +313,7 @@ input[id*='userPopup']{
 .top_modal_button:hover{
     cursor: pointer;
 }
-.top_modal_button{
+.top_modal_button:focus{
     outline: none;
 }
 
@@ -518,13 +515,11 @@ input[id*='userPopup']{
     z-index: 1;
 }
 
-
 /*  테두리 임시 부여  */
 /* #modalDiv > #modalInnerFrame *{
     border: 1px solid orange;
 } */
 /**********************/
-
 
 
 

@@ -114,7 +114,7 @@ main .goodslist_tit .goodslist_detail {
 }
 
 main ul {
-  width: 815%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
