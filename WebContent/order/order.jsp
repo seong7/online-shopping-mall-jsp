@@ -50,7 +50,6 @@
 				int p_code = cart.getP_code();
 				ProductBean pbean = pMgr.getProduct(p_code);
 		%>
-		<%=p_code%>
 	<tr>
 		<td>
 		<img alt="제품사진" src="/img/product_sample/prod_sample1.PNG">
