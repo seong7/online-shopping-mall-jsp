@@ -3,8 +3,11 @@
 		request.setCharacterEncoding("EUC-KR");
 		
 %>
+
 <link rel="stylesheet" type="text/css" href="css/index.css">
+
 <jsp:include page="top.jsp"/>
+
 
         <!--******************-->
         <!--작업 및 복붙 구역-->
