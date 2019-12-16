@@ -16,7 +16,7 @@
     <!--</head>
 	<body> -->
 	        
-		<div id="wrap" style="display:none;border:1px solid #DDDDDD;width:500px;margin-top:500px; margin-left: 200px, z-index: 200"></div>
+			    <div id="wrap" style="display:none;border:1px solid #DDDDDD;width:500px;margin-top:500px; margin-left: 200px, z-index: 200"></div>
     	<div style="height:10px;"></div>
 	    <div id="modalDiv">
 	        <div id="modalInnerFrame">
@@ -132,33 +132,35 @@
 	                            <span class="txt">°í°´Áö¿ø</span>
 	                        </a>
 	                    </li>
-	                    <li>
-	                    	<ul id="active_btn_wrapper">
-	                    		<% if(id==null){ %>
-									<li>
-										<input type="checkbox" id="userPopup">
-										<label for="userPopup" id="userPopup_label">
-											<i class="fas fa-user"></i>
-										</label>
-									</li>
-								<%}else{ %>
-									<li>
-										<a href="#"><i class="fas fa-user"></i></a> 
-									</li>
-									<li>
-										<a href="#"><i class="fas fa-shopping-cart"></i></a>
-									</li>
-									<li>
-											<a href="#"><i class="fas fa-sign-in-alt"></i></a>
-									</li>
-								<%} %>
+						<li id="active_btn_li">
+							<ul id="active_btn_wrapper">
+							<%if(id==null){ %>
+								<li>
+									<input type="checkbox" id="userPopup">
+									<label for="userPopup" id="userPopup_label">
+										<i class="fas fa-user"></i>
+									</label>
+								</li>
+							<%}else{ %>
+								<li>
+									<a href="#"><i class="fas fa-user"></i></a> 
+								</li>
+								<li>
+									<a href="#"><i class="fas fa-shopping-cart"></i></a>
+								</li>
+								<li>
+										<a href="#"><i class="fas fa-sign-in-alt"></i></a>
+								</li>
+							<%} %>
 							</ul>
-	                    </li> 
-	                </ul>
+						</li>
+					</ul>
 				</div>
 	        </div>
 	</div>
+
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript" src="js/top.js"></script>
+
 <!-- </body>    --- index.jsp ¿¡¼­ ´Ý¾ÆÁÜ
 </html> -->
