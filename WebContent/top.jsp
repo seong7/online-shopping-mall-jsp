@@ -8,8 +8,8 @@
 <html>
 	<head>-->
 		<meta charset="EUC-KR">
-		<link rel="stylesheet" type="text/css" href="c:\Jsp\online-shopping-mall-jsp\WebContent\css\reset.css">
-		<link rel="stylesheet" href="c:\Jsp\online-shopping-mall-jsp\WebContent\css\top.css">
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" href="css/top.css">
 		<script src="https://kit.fontawesome.com/115bcf1f34.js" crossorigin="anonymous"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -159,7 +159,7 @@
 	</div>
 
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script type="text/javascript" src="c:\Jsp\online-shopping-mall-jsp\WebContent\js\top.js"></script>
+	<script type="text/javascript" src="js/top.js"></script>
 
 <!-- </body>    --- index.jsp 에서 닫아줌
 </html> -->
