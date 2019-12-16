@@ -37,7 +37,7 @@
 							<a href="#">아이디나 비밀번호를 잊어버렸습니까?</a>
 						</div>
 						<button type="button" class="top_modal_button top_modal_button_style" id="login_submit_btn">
-							<span>로그인</span>
+							<span id="login_span">로그인</span>
 						</button>
 					</form>
 					<form id="signup_form">
