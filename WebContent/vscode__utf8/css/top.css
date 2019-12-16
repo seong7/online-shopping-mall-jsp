@@ -1,518 +1,662 @@
+@charset "UTF-8";
 /* 폰트 추가 noto-Sans*/
-
-@font-face{
-    font-family: 'noto_Bold';
-    src : url(../font/NotoSansCJKkr-Bold.otf);
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face{
-    font-family: 'noto_Black';
-    src : url(../font/NotoSansCJKkr-Black.otf);
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face{
-    font-family: 'noto_Demilight';
-    src : url(../font/NotoSansCJKkr-DemiLight.otf);
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face{
-    font-family: 'noto_Light';
-    src : url(../font/NotoSansCJKkr-Light.otf);
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face{
-    font-family: 'noto_Medium';
-    src : url(../font/NotoSansCJKkr-Medium.otf);
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face{
-    font-family: 'noto_Regular';
-    src : url(../font/NotoSansCJKkr-Regular.otf);
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face{
-    font-family: 'noto_Thin';
-    src : url(../font/NotoSansCJKkr-Thin.otf);
-    font-style: normal;
-    font-weight: normal;
+@font-face {
+  font-family: 'noto_Bold';
+  src: url(../font/NotoSansCJKkr-Bold.otf);
+  font-style: normal;
+  font-weight: normal;
 }
 
 @font-face {
-    font-family: 'InkLipquid'; 
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff'); 
-    font-weight: normal; 
-    font-style: normal; 
-}
-
-@font-face { 
-    font-family: 'Cafe24Danjunghae'; 
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Danjunghae.woff') format('woff'); 
-    font-weight: normal; 
-    font-style: normal; 
+  font-family: 'noto_Black';
+  src: url(../font/NotoSansCJKkr-Black.otf);
+  font-style: normal;
+  font-weight: normal;
 }
 
 @font-face {
-    font-family: 'BMHANNAAir'; 
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff') format('woff'); 
-    font-weight: normal; 
-    font-style: normal; 
+  font-family: 'noto_Demilight';
+  src: url(../font/NotoSansCJKkr-DemiLight.otf);
+  font-style: normal;
+  font-weight: normal;
 }
 
-@font-face { 
-    font-family: 'BBTreeGB'; 
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff') format('woff'); 
-    font-weight: normal; 
-    font-style: normal; 
+@font-face {
+  font-family: 'noto_Light';
+  src: url(../font/NotoSansCJKkr-Light.otf);
+  font-style: normal;
+  font-weight: normal;
 }
 
-.default_placeholder_red::-webkit-input-placeholder{ color: red !important;}
-.default_placeholder_red::-moz-placeholder{ color: red !important;}
-.default_placeholder_red:-ms-input-placeholder{ color: red !important;}
-.default_placeholder_red::-ms-input-placeholder{ color: red !important;}
+@font-face {
+  font-family: 'noto_Medium';
+  src: url(../font/NotoSansCJKkr-Medium.otf);
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'noto_Regular';
+  src: url(../font/NotoSansCJKkr-Regular.otf);
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'noto_Thin';
+  src: url(../font/NotoSansCJKkr-Thin.otf);
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'InkLipquid';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cafe24Danjunghae';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Danjunghae.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BMHANNAAir';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BBTreeGB';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.default_placeholder_red::-webkit-input-placeholder {
+  color: red !important;
+}
+
+.default_placeholder_red::-moz-placeholder {
+  color: red !important;
+}
+
+.default_placeholder_red:-ms-input-placeholder {
+  color: red !important;
+}
+
+.default_placeholder_red::-ms-input-placeholder {
+  color: red !important;
+}
+
 /* html 전체 드래그 방지 */
-html{
-    -ms-user-select: none;
-    -moz-user-select: -moz-none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    user-select:none;
+html {
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 /*전체 컴포넌트 Wrapper 클래스(modal window 제외 Wrap)*/
-#top_wrapper{
-    position: relative;
-    min-width: 1050px;
-    box-sizing: border-box;
-    box-shadow:0px 8px 10px rgb(204,204,204, 0.5);
+#top_wrapper {
+  position: relative;
+  min-width: 1050px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0px 8px 10px rgba(204, 204, 204, 0.5);
+          box-shadow: 0px 8px 10px rgba(204, 204, 204, 0.5);
 }
+
 /*로고 이미지 position*/
-#homeLogo>img{
-    width: 200px;
-    display: block;
-    margin : 0px auto;
-    margin-top : 30px;
+#homeLogo > img {
+  width: 200px;
+  display: block;
+  margin: 0px auto;
+  margin-top: 30px;
 }
+
 /*search_form 위치 */
-#search_form{
-    position: absolute;
-    left: 50%;
-    margin-top: 25px;
-    margin-left: -262px;
+#search_form {
+  position: absolute;
+  left: 50%;
+  margin-top: 25px;
+  margin-left: -262px;
 }
+
 /*input text component styling, sizing*/
-
-#modalDiv input::-webkit-input-placeholder { color: #FB9832;} 
-#modalDiv input::-moz-placeholder { color: #FB9832; } 
-#modalDiv input:-ms-input-placeholder { color: #FB9832; }
-#modalDiv input::-ms-input-placeholder { color: #FB9832;}
-
-#modalDiv input:focus::-webkit-input-placeholder { color: transparent; transition: .35s;} 
-#modalDiv input:focus::-moz-placeholder { color: transparent; transition: .35s; } 
-#modalDiv input:focus:-ms-input-placeholder { color: transparent; transition: .35s; }
-#modalDiv input:focus::-ms-input-placeholder { color: transparent;  transition: .35s;}
-
-#search_input{
-    width: 446px;
-    height: 40px;
-    border: 2px solid #a4b0be;
-    border-top-left-radius : 5px;
-    border-top-right-radius : 5px;
-    outline: none;
-    color: #2f3542;
-    font-size: 20px;
-    font-family: 'Noto Sans KR', sans-serif;
-    padding-left: 35px;
-    padding-right: 40px;
-    background-color: #f4f4f4;
-    transition : background-color .35s;
+#modalDiv input::-webkit-input-placeholder {
+  color: #FB9832;
 }
-#search_input:focus{
-	background-color: white;
+
+#modalDiv input::-moz-placeholder {
+  color: #FB9832;
 }
+
+#modalDiv input:-ms-input-placeholder {
+  color: #FB9832;
+}
+
+#modalDiv input::-ms-input-placeholder {
+  color: #FB9832;
+}
+
+#modalDiv input:focus::-webkit-input-placeholder {
+  color: transparent;
+  -webkit-transition: .35s;
+  transition: .35s;
+}
+
+#modalDiv input:focus::-moz-placeholder {
+  color: transparent;
+  -webkit-transition: .35s;
+  transition: .35s;
+}
+
+#modalDiv input:focus:-ms-input-placeholder {
+  color: transparent;
+  -webkit-transition: .35s;
+  transition: .35s;
+}
+
+#modalDiv input:focus::-ms-input-placeholder {
+  color: transparent;
+  -webkit-transition: .35s;
+  transition: .35s;
+}
+
+#search_input {
+  width: 446px;
+  height: 40px;
+  border: 2px solid #a4b0be;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  outline: none;
+  color: #2f3542;
+  font-size: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+  padding-left: 35px;
+  padding-right: 40px;
+  background-color: #f4f4f4;
+  -webkit-transition: background-color .35s;
+  transition: background-color .35s;
+}
+
+#search_input:focus {
+  background-color: white;
+}
+
 /*search icon position, color set */
-.fa-search{
-    cursor: pointer;
-    position: absolute;
-    margin-top: 15px;
-    margin-left: -40px;
-    color: #a4b0be;
-    transition: color .35s;
+.fa-search {
+  cursor: pointer;
+  position: absolute;
+  margin-top: 15px;
+  margin-left: -40px;
+  color: #a4b0be;
+  -webkit-transition: color .35s;
+  transition: color .35s;
 }
+
 /*menu Nav font, position set(stickcy)*/
-#menuNav{
-    margin-top: 100px;
-    position: sticky;
-    top:0px;
-    overflow: visible;
-    width: 1050px;
-    height: 55px;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: "Noto Sans KR", sans-serif;
-    z-index: 100;
+#menuNav {
+  margin-top: 100px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  overflow: visible;
+  width: 1050px;
+  height: 55px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Noto Sans KR", sans-serif;
+  z-index: 100;
 }
 
 /*네비게이션 메인 클래스(삭제 시 icon 사라짐)*/
-.nav_main{
-    overflow: hidden;
-    float: left;
-    height: 55px;
-    text-align: center;
-    padding: 16px 50px 0 48px;
-    color: #333;
-    line-height: 20px;
-    display: table;
-    margin: auto; 
-    padding:0;
+.nav_main {
+  overflow: hidden;
+  float: left;
+  height: 55px;
+  text-align: center;
+  padding: 16px 50px 0 48px;
+  color: #333;
+  line-height: 20px;
+  display: table;
+  margin: auto;
+  padding: 0;
 }
 
 /*nav li set*/
-.nav_main>li{
-    display: inline-block;
-    left : 50px;
-    font-size: 20px;
-    vertical-align: top;
-    
+.nav_main > li {
+  display: inline-block;
+  left: 50px;
+  font-size: 20px;
+  vertical-align: top;
 }
+
 /*nav_a 태그*/
-.nav_a{
-    transition: color .35s;
-    display: block;
-    width: 175px;
-    height: 55px;
-    cursor: pointer;
+.nav_a {
+  -webkit-transition: color .35s;
+  transition: color .35s;
+  display: block;
+  width: 175px;
+  height: 55px;
+  cursor: pointer;
 }
+
 /*hover 시 색상 지정(아이콘, nav a 태그)*/
-.nav_a:hover, .fa-shopping-cart:hover, .fa-user:hover{
-    color: #FB9832;
+.nav_a:hover {
+  color: #FB9832;
 }
+
 /*행 간격 맞추려고 line height 조정*/
-.nav_a > span, .nav_a>input{
-    line-height: 50px;
+.nav_a > span, .nav_a > input {
+  line-height: 50px;
 }
+
 /*text font, spacing set*/
-.txt{
-    letter-spacing: 2px;
-    font-family: 'noto_Bold';
-}
-/*font-awesome nav icon set*/
-.fa-shopping-cart, .fa-user{
-    font-size: 20px;
-    margin-top: 13px;
-    transition: .35s;
-    cursor: pointer;
-}
-.fa-user{
-    margin-left: 0px;
-    margin-top: 0px;
+.txt {
+  letter-spacing: 2px;
+  font-family: 'noto_Bold';
 }
 
-
-/***** 떡 category *****/
-#nav_category{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    background-color: whitesmoke;
-    color: #fec084;
-    box-sizing: border-box;
-    width: 177px;
-    height: 0px;
-    transition-duration: 0.5s;
-}
-#nav_start:hover div{
-    height: 134px;
-}
-#nav_category ul{
-    visibility:hidden;
-    opacity: 0;
-    transition: opacity 0.2s;
-    transition-delay: 0.4s;
-}
-#nav_start:hover div ul{
-    visibility:visible;
-    opacity: 1;
-
-}
-#nav_category ul li a{
-    text-align:left;
-    padding-left:15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    display: block;
-    color: gray;
-    text-decoration: none;
-    font-size: 18px;
-    font-family: 'noto_Regular'; 
-    font-weight: lighter;
-}
-#nav_start li:hover a{
-    color: #FB9832;
-    background-color:#FFF4E9;
+#active_btn_li {
+  display: inline-block;
+  padding-left: 50px;
+  padding-top: 16px;
 }
 
+#active_btn_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+}
 
+#active_btn_wrapper li {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+#active_btn_wrapper li .fas {
+  font-size: 20px;
+  -webkit-transition: .35s;
+  transition: .35s;
+  cursor: pointer;
+}
+
+#active_btn_wrapper li .fas:hover {
+  color: #FB9832;
+}
+
+#active_btn_wrapper li a {
+  color: #333;
+  text-decoration: none;
+}
 
 /*userPopup checkbox*/
-input[id*='userPopup']{
-    display: none;
-}
-#userPopup_label{
-    display:inline-flex;
-    margin-left:20px;
+input[id*='userPopup'] {
+  display: none;
 }
 
+#userPopup_label {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
 
+/***** 떡 category *****/
+#nav_category {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  background-color: whitesmoke;
+  color: #fec084;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 177px;
+  height: 0px;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+}
+
+#nav_start:hover div {
+  height: 134px;
+}
+
+#nav_category ul {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+  -webkit-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+}
+
+#nav_start:hover div ul {
+  visibility: visible;
+  opacity: 1;
+}
+
+#nav_category ul li a {
+  text-align: left;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: block;
+  color: gray;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: 'noto_Regular';
+  font-weight: lighter;
+}
+
+#nav_start li:hover a {
+  color: #FB9832;
+  background-color: #FFF4E9;
+}
 
 /***********************************************/
 /*******************  modal 구역  **************/
-#modalDiv{
-    display: none;
-    position: fixed;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 150;
-    box-sizing: border-box;
-    color: #333;
-}
-#modalDiv > #modalInnerFrame{
-    position: absolute;
-    transition: all .05s;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    transition-duration: .6s;
-    /* background: url(../img/loginFormBg.jpeg); */
-    background-color: rgb(255, 255, 255);
-    z-index: 2;
-    border: 5px solid  rgba(238, 152, 71, 0.7);
-    box-shadow: 0px 0px 10px 3px rgba(238, 152, 71, 0.7);
-    border-radius: 10px;
+#modalDiv {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 150;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #333;
 }
 
-#modalInnerFrame > #modal_elements_wrapper{
-    opacity: 0;
-    display : flex;
-    flex-direction: column;
-    align-items: center;
-    font-size:20px;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: bolder;
-
+#modalDiv > #modalInnerFrame {
+  position: absolute;
+  -webkit-transition: all .05s;
+  transition: all .05s;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition-duration: .6s;
+          transition-duration: .6s;
+  /* background: url(../img/loginFormBg.jpeg); */
+  background-color: white;
+  z-index: 2;
+  border: 5px solid rgba(238, 152, 71, 0.7);
+  -webkit-box-shadow: 0px 0px 10px 3px rgba(238, 152, 71, 0.7);
+          box-shadow: 0px 0px 10px 3px rgba(238, 152, 71, 0.7);
+  border-radius: 10px;
 }
+
+#modalInnerFrame > #modal_elements_wrapper {
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: bolder;
+}
+
 /*modal focus, outline set wrapper*/
-
-.top_modal_button:hover{
-    cursor: pointer;
+.top_modal_button:hover {
+  cursor: pointer;
 }
-.top_modal_button:focus{
-    outline: none;
+
+.top_modal_button:focus {
+  outline: none;
 }
 
 /*btn style wrapper*/
-.top_modal_button_style{
-    border: none;
-    background-image: -moz-linear-gradient(to bottom, #FD6F46, #FB9832 );
-    background-image: -webkit-linear-gradient(to bottom, #FD6F46, #FB9832 );
-    background-image: -o-linear-gradient(to bottom, #FD6F46 , #FB9832 );
-    background-image: linear-gradient(to bottom, #FD6F46, #FB9832 );
-    text-align:center;
-    border-radius:10px;
-    background-repeat: repeat-y;
-    background-size: 100% 90px;
-    background-position: 0 -30px;
-    transition: .35s;
-}
-.top_modal_button_style:hover{
-    background-position: 0 0;
+.top_modal_button_style {
+  border: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FD6F46), to(#FB9832));
+  background-image: linear-gradient(to bottom, #FD6F46, #FB9832);
+  text-align: center;
+  border-radius: 10px;
+  background-repeat: repeat-y;
+  background-size: 100% 90px;
+  background-position: 0 -30px;
+  -webkit-transition: .35s;
+  transition: .35s;
 }
 
-/*  modal header (로그인, 회원가입 선택 버튼) */ 
-#modal_elements_wrapper > #modal_header{
-    display : flex;
-    align-items: center;
-    font-size:16px;
-    padding-top: 15px;
+.top_modal_button_style:hover {
+  background-position: 0 0;
 }
-#modal_header > .login_signup_btns{
-    display: none;
+
+/*  modal header (로그인, 회원가입 선택 버튼) */
+#modal_elements_wrapper > #modal_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 16px;
+  padding-top: 15px;
 }
-#modal_elements_wrapper > #modal_header > .login_signup_btns_label{
-    margin-top:10px;
-    color:rgb(245, 139, 46);
-    text-decoration: none;
+
+#modal_header > .login_signup_btns {
+  display: none;
 }
-#modal_header > .login_signup_btns_label:hover{
-    transform: scale(1.05);
-    transition: transform 0.5s;
-    cursor: pointer;
+
+#modal_elements_wrapper > #modal_header > .login_signup_btns_label {
+  margin-top: 10px;
+  color: #f58b2e;
+  text-decoration: none;
 }
-#modal_header > #login_btn_label{
-    color:rgb(245, 139, 46);
-    margin-right:20px;
+
+#modal_header > .login_signup_btns_label:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  cursor: pointer;
 }
-#modal_header > #signup_btn_label{
-    color:rgb(245, 139, 46);
-    margin-left:20px;
+
+#modal_header > #login_btn_label {
+  color: #f58b2e;
+  margin-right: 20px;
 }
-#modal_header > #modal_header_span{
-    color:rgb(245, 139, 46);
-    font-size: 30px;
-    font-weight:lighter;
+
+#modal_header > #signup_btn_label {
+  color: #f58b2e;
+  margin-left: 20px;
+}
+
+#modal_header > #modal_header_span {
+  color: #f58b2e;
+  font-size: 30px;
+  font-weight: lighter;
 }
 
 /*****************/
 /*  login form  */
 /****************/
-#modal_elements_wrapper > #login_form{
-    display: flex;
-    flex-direction: column;
-    margin-top:30px;
-    width: 80%;
-}
-#login_form > .login_input{
-    box-sizing: border-box;
-    height:50px;
-    margin-top:10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    width: 100%;
-    border-radius:3px;
-    border: none;
-    border-bottom: 2px solid #FB9832;
-    transition: .35s;
+#modal_elements_wrapper > #login_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 30px;
+  width: 80%;
 }
 
-
-.login_input:focus, .signup_input:focus{
-    outline: none;
-    box-shadow: 0 4px 1px -3px #FB9832;
-    /* box-shadow: 0px 1.5px 0px 0px #EB984F; */
-}
-#login_form > #lost_id_pwd_wrapper{
-    margin-top:3px;
-    text-align: right;
-    font-size: 13px;
-}
-#login_form > #lost_id_pwd_wrapper>a{
-    color:#FB9832;
-    text-decoration: none;
-    transition: color .35s;
-}
-#login_form > #lost_id_pwd_wrapper>a:hover{
-    color:rgb(245, 139, 46);
-    text-decoration: none;
+#login_form > .login_input {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 50px;
+  margin-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
+  border-radius: 3px;
+  border: none;
+  border-bottom: 2px solid #FB9832;
+  -webkit-transition: .35s;
+  transition: .35s;
 }
 
-
-#login_form > #login_submit_btn{
-    margin-top:30px;
-    width:100%;
-    height:50px;
+.login_input:focus, .signup_input:focus {
+  outline: none;
+  -webkit-box-shadow: 0 4px 1px -3px #FB9832;
+          box-shadow: 0 4px 1px -3px #FB9832;
+  /* box-shadow: 0px 1.5px 0px 0px #EB984F; */
 }
-#login_form > #login_submit_btn> span{
-    font-size:18px;
-    font-weight: bolder;
-    color:#FFF;
+
+#login_form > #lost_id_pwd_wrapper {
+  margin-top: 3px;
+  text-align: right;
+  font-size: 13px;
+}
+
+#login_form > #lost_id_pwd_wrapper > a {
+  color: #FB9832;
+  text-decoration: none;
+  -webkit-transition: color .35s;
+  transition: color .35s;
+}
+
+#login_form > #lost_id_pwd_wrapper > a:hover {
+  color: #f58b2e;
+  text-decoration: none;
+}
+
+#login_form > #login_submit_btn {
+  margin-top: 30px;
+  width: 100%;
+  height: 50px;
+}
+
+#login_form > #login_submit_btn > span {
+  font-size: 18px;
+  font-weight: bolder;
+  color: #FFF;
 }
 
 /*****************/
 /*  signup form  */
 /****************/
-#modal_elements_wrapper > #signup_form{
-    margin-top: 15px;
-    width:80%;
-    display: none;
-    flex-direction: column;
-    opacity: 0;
-    /* justify-content: center; */
-    /* text-align: center; */
-}
-#id_section_wrapper{
-    /* margin-left:30px; */
-    margin-right:-30px;
-    padding-left:30px;
-    /* justify-content: center; */
-    /* text-align: center; */
+#modal_elements_wrapper > #signup_form {
+  margin-top: 15px;
+  width: 80%;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  opacity: 0;
+  /* justify-content: center; */
+  /* text-align: center; */
 }
 
-
-#modalInnerFrame h3{
-    font-family: 'BBTreeGB';
-    text-align: center;
-    margin-bottom:10px;
-    letter-spacing: 5px;
-    color: #FB9832;
+#id_section_wrapper {
+  /* margin-left:30px; */
+  margin-right: -30px;
+  padding-left: 30px;
+  /* justify-content: center; */
+  /* text-align: center; */
 }
 
-.signup_form_title{
-    display: inline-block;
-    font-size:14px;
-    min-width: 100px;
+#modalInnerFrame h3 {
+  font-family: 'BBTreeGB';
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: 5px;
+  color: #FB9832;
 }
 
-#signup_submit_btn{
-    margin-top:30px;
-    margin-left: 30px;
-    width:355px;
-    height:50px;
-}
-#signup_submit_btn > span{
-    font-size:18px;
-    font-weight: bolder;
-    color:#FFF;
+.signup_form_title {
+  display: inline-block;
+  font-size: 14px;
+  min-width: 100px;
 }
 
-.signup_util_btn{
-    /* margin-top:30px; */
-    width:70px;
-    height:30px;
-    text-align:center;
-}
-.signup_util_btn > span{
-    font-size:11px;
-    font-weight: bolder;
-    color:#FFF;
-}
-#id_section, #address_section_header{
-    min-width: 400px;
+#signup_submit_btn {
+  margin-top: 30px;
+  margin-left: 30px;
+  width: 355px;
+  height: 50px;
 }
 
-.signup_input{
-    box-sizing: border-box;
-    height:40px;
-    margin-top:10px;
-    margin-left: 30px;
-    padding-left: 15px;
-    padding-right: 15px;
-    width: 280px;
-    border-radius:3px;
-    border: none;
-    border-bottom: 1px solid #FB9832;
-    transition: all .35s;
+#signup_submit_btn > span {
+  font-size: 18px;
+  font-weight: bolder;
+  color: #FFF;
 }
 
-
-#id_section, #address_section_header{
-    min-width: 400px;
+.signup_util_btn {
+  /* margin-top:30px; */
+  width: 70px;
+  height: 30px;
+  text-align: center;
 }
 
-#modalDiv > label{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, .7);
-    z-index: 1;
+.signup_util_btn > span {
+  font-size: 11px;
+  font-weight: bolder;
+  color: #FFF;
+}
+
+#id_section, #address_section_header {
+  min-width: 400px;
+}
+
+.signup_input {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 40px;
+  margin-top: 10px;
+  margin-left: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 280px;
+  border-radius: 3px;
+  border: none;
+  border-bottom: 1px solid #FB9832;
+  -webkit-transition: all .35s;
+  transition: all .35s;
+}
+
+#id_section, #address_section_header {
+  min-width: 400px;
+}
+
+#modalDiv > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
 }
 
 /*  테두리 임시 부여  */
@@ -520,46 +664,43 @@ input[id*='userPopup']{
     border: 1px solid orange;
 } */
 /**********************/
-
-
-
-
-
 /*autosearch css*/
-
-#ui-id-1{
-	background-color : #f3f1f1;
+#ui-id-1 {
+  background-color: #f3f1f1;
 }
 
 .ui-menu-item {
-margin: 0;
-padding: 0;
-zoom: 1;
-float: left;
-clear: left;
-width: 100%;
+  margin: 0;
+  padding: 0;
+  zoom: 1;
+  float: left;
+  clear: left;
+  width: 100%;
 }
 
-.ui-autocomplete li.ui-menu-item 
-{
-    padding: 1px;  
-    width:524px;
-    background-color: #f4f4f4 !important;
+.ui-autocomplete li.ui-menu-item {
+  padding: 1px;
+  width: 524px;
+  background-color: #f4f4f4 !important;
 }
+
 .ui-menu-item .ui-menu-item-wrapper.ui-state-active {
-    background: #cfcfcf !important;
-    font-weight: bold !important;
-    color: #000000!important;
-    border: none;
-} 
+  background: #cfcfcf !important;
+  font-weight: bold !important;
+  color: #000000 !important;
+  border: none;
+}
+
 .ui-menu-item a {
-text-decoration: none;
-display: block;
-padding: .2em .4em;
-line-height: 1.5;
-zoom: 1;
+  text-decoration: none;
+  display: block;
+  padding: .2em .4em;
+  line-height: 1.5;
+  zoom: 1;
 }
+
 /*inputform color*/
-strong{
-	color: #0abde3;
+strong {
+  color: #0abde3;
 }
+/*# sourceMappingURL=top.css.map */

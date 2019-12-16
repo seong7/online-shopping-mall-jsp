@@ -1,13 +1,36 @@
 
-
 const request = new XMLHttpRequest();
 
+const login_submit_btn  = document.querySelector('#login_submit_btn');
+
+const login_id_input  = document.querySelector('#login_id_input');
+const signup_pwd = document.querySelector('#signup_pwd');
+const signup_pwd_check = document.querySelector('#signup_pwd_check');
+const signup_name = document.querySelector('#signup_name');
+const signup_birth = document.querySelector('#signup_birth');
+const signup_email = document.querySelector('#signup_email');
+const signup_phone = document.querySelector('#signup_phone');
+const signup_addr = document.querySelector('#signup_addr');
+const address_section_btn = document.querySelector('#address_section_btn');
+const address_section_zipcode = document.querySelector('#address_section_zipcode');
+const signup_addr_detail = document.querySelector('#signup_addr_detail');
+let sign_up_id_flag = 0;
+let sign_up_pwd_flag = 0;
+let sign_up_addr_flag = 0;
+let sign_up_email_flag = 0;
+let sign_up_name_flag  = 0;
+let sign_up_birth_flag  = 0;
+let sign_up_phone_flag  = 0;
+let sign_up_detail_flag  = 0;
+let regist_flag = 0;
 function init(){
-	
+	 $("#signup_addr").val('');
+	 $("#address_section_zipcode").val('');
+	 $("#signup_addr_detail").val('');
     //search ajax
     searchInput();
     inputTransition();
-
+    
     let modaltrigger = false;
     const userCheckBox = document.querySelector('#userPopup');
     const modalWindow = document.getElementById('modalDiv');
@@ -16,15 +39,15 @@ function init(){
     const modal_elements_wrapper = document.getElementById('modal_elements_wrapper');
     const login_form = document.getElementById('login_form');
 
-     /** ëª¨ë‹¬ì°½ ì—´ë¦¼ ë‹«í˜ ê¸°ëŠ¥ **/
-
+     /** ¸ğ´ŞÃ¢ ¿­¸² ´İÈû ±â´É **/
+    const session_id = "<%=id%>";
+    if(session_id==null){
     userCheckBox.addEventListener('change', function(){
         modalInnerFrame.style.width = "0px";
         modalInnerFrame.style.height = "0px";
         if(!modaltrigger){
 
             modaltrigger = true;
-            // console.log(modaltrigger);
             modalWindow.style.display = "block";
             modalWindow.style.opacity = "1";
             setTimeout(function(){
@@ -37,14 +60,9 @@ function init(){
                 modal_elements_wrapper.style.transition="opacity 0.3s";
             }, 500);
             
-            // setTimeout(function(){
-                //     login_form.style.display = "flex";
-                // }, 600);
-                
             }
         else{
             modaltrigger = false;
-            // console.log(modaltrigger);
             
             modalWindow.style.opacity = "0";
             modal_elements_wrapper.style.opacity="0";
@@ -55,8 +73,6 @@ function init(){
 
             modalInnerFrame.style.width = "0px";
             modalInnerFrame.style.height = "0px";
-            // modal_elements_wrapper.style.opacity="0";
-            // modal_elements_wrapper.style.transition="opacity 0.3s";
             
             setTimeout(function(){
                 login_signup('login');
@@ -64,6 +80,7 @@ function init(){
         }
     });
 };
+}
 
 
 
@@ -74,7 +91,6 @@ const signup_btn_label = document.getElementById("signup_btn_label");
 
 function login_signup(id){
     if(id=="login"){
-        // console.log('login');
         modalInnerFrame.style.width = "400px";
         modalInnerFrame.style.height = "400px";
         
@@ -94,7 +110,6 @@ function login_signup(id){
         
         
     }else{
-        // console.log('signup');
         modalInnerFrame.style.width = "500px";
         modalInnerFrame.style.height = "800px";
         
@@ -109,18 +124,35 @@ function login_signup(id){
 
         signup_form.style.display="flex";
         signup_btn_label.style.color="#FB9832";
-
-        const signup_pwd = document.querySelector('#signup_pwd');
-        const signup_pwd_check = document.querySelector('#signup_pwd_check');
-        const signup_name = document.querySelector('#signup_name');
-        const signup_birth = document.querySelector('#signup_birth');
-        const signup_email = document.querySelector('#signup_email');
-        const signup_phone = document.querySelector('#signup_phone');
-        const signup_addr = document.querySelector('#signup_addr');
-        const address_section_zipcode = document.querySelector('#address_section_zipcode');
-        const signup_addr_detail = document.querySelector('#signup_addr_detail');
         
-        //ìš°í¸ë²ˆí˜¸, ì£¼ì†Œ
+        //input zero check
+        function inputEmptyCheck(event){
+        const inputTarget = event.target;
+        	if(!inputTarget.value){
+        		inputTarget.classList.remove('default_placeholder_red');
+        		inputTarget.style.borderBottom = "solid 1px #FB9832 "
+        		inputTarget.style.boxShadow = "0 4px 1px -3px #FB9832";
+        	}
+        }
+        
+        //target bottom green
+        function inputBottomGreen(event){
+            const inputTarget = event.target;
+            	if(inputTarget.value){
+            		inputTarget.style.borderBottom = "solid 1px green "
+            		inputTarget.style.boxShadow = "0 4px 1px -3px green";
+            	}
+            }
+        signup_pwd.addEventListener('keyup', inputEmptyCheck);
+		signup_pwd_check.addEventListener('keyup', inputEmptyCheck);
+        signup_name.addEventListener('keyup', inputEmptyCheck);
+        signup_birth.addEventListener('keyup', inputEmptyCheck);
+        signup_email.addEventListener('keyup', inputEmptyCheck);
+        signup_phone.addEventListener('keyup', inputEmptyCheck);
+        signup_addr.addEventListener('keyup', inputEmptyCheck);
+        signup_addr_detail.addEventListener('keyup', inputEmptyCheck);
+        //¿ìÆí¹øÈ£, ÁÖ¼Ò
+        if(regist_flag= 0){
 		$('#signup_addr').css('border-bottom', 'solid 1px red');
 		$('#signup_addr').css('box-shadow', '0 4px 1px -3px red');
 		signup_addr.classList.add('default_placeholder_red');
@@ -128,74 +160,140 @@ function login_signup(id){
 		$('#address_section_zipcode').css('border-bottom', 'solid 1px red');
 		$('#address_section_zipcode').css('box-shadow', '0 4px 1px -3px red');
 		address_section_zipcode.classList.add('default_placeholder_red');
-		
+        }
         
 		signup_pwd_check.addEventListener('focusout', function(){
-            console.log(signup_pwd.value);
-            console.log(signup_pwd_check.value);
             if(signup_pwd.value){
 	            if(signup_pwd.value === signup_pwd_check.value){
 					$('#signup_pwd').css('border-bottom', 'solid 1px green');
 					$('#signup_pwd').css('box-shadow', '0 4px 1px -3px green');
 					$('#signup_pwd_check').css('border-bottom', 'solid 1px green');
 					$('#signup_pwd_check').css('box-shadow', '0 4px 1px -3px green');
+
+					sign_up_pwd_flag = 1;
+
 	            }
 	            else{
 	            	signup_pwd.value = '';
 	            	signup_pwd.classList.add('default_placeholder_red');
 					$('#signup_pwd').css('border-bottom', 'solid 1px red');
 					$('#signup_pwd').css('box-shadow', '0 4px 1px -3px red');
-	            	signup_pwd_check.placeholder = "ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
+	            	signup_pwd_check.placeholder = "ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.";
 	            	signup_pwd_check.classList.add('default_placeholder_red');
 	            	signup_pwd_check.value = '';
 					$('#signup_pwd_check').css('border-bottom', 'solid 1px red');
 					$('#signup_pwd_check').css('box-shadow', '0 4px 1px -3px red');
 					$('#signup_pwd').focus();
+
+					sign_up_pwd_flag = 0;
+
 	            }
             }
+            else{
+            	console.log('empty here');
+            }
         });
+	
+		//ÀÌ¸ŞÀÏ À¯È¿¼º °Ë»ç
+		function isValidEmail(email) {
+			  var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+			    return (email != '' && email != 'undefined' && regex.test(email));
+		}
+		//null Ã¼Å©
+
+		function isNull(input) {
+		    if (input.value == null || input.value == "") {
+		        return true;
+		    }
+		    return false;
+		}
+		function isValidFormat(input,format) {
+		    if (input.value.search(format) != -1) {
+		        return true; //¿Ã¹Ù¸¥ Æ÷¸Ë Çü½Ä
+		    }
+		    return false;
+		}
 		
 		signup_name.addEventListener('focusout', function(){
-			if(signup_name.value){
-				$('#signup_name').css('border-bottom', 'solid 1px green');
-				$('#signup_name').css('box-shadow', '0 4px 1px -3px green');
+			if(!($('#signup_name').val())){
+				signup_name.classList.add('default_placeholder_red');
+				sign_up_name_flag  = 0;
 			}
-        });
-		signup_birth.addEventListener('focusout', function(){
-			if(signup_birth.value){
-				$('#signup_birth').css('border-bottom', 'solid 1px green');
-				$('#signup_birth').css('box-shadow', '0 4px 1px -3px green');
+			else{
+				signup_name.style.borderBottom = "solid 1px green "
+				signup_name.style.boxShadow = "0 4px 1px -3px green";
+				sign_up_name_flag = 1;
 			}
-        });
-		signup_email.addEventListener('focusout', function(){
-			if(signup_email.value){
-				$('#signup_email').css('border-bottom', 'solid 1px green');
-				$('#signup_email').css('box-shadow', '0 4px 1px -3px green');
-			}
-        });
-		signup_phone.addEventListener('focusout', function(){
-			if(signup_phone.value){
-				$('#signup_phone').css('border-bottom', 'solid 1px green');
-				$('#signup_phone').css('box-shadow', '0 4px 1px -3px green');
-			}
-        });
-		signup_addr_detail.addEventListener('focusout', function(){
-			if(signup_addr_detail.value){
-				$('#signup_addr_detail').css('border-bottom', 'solid 1px green');
-				$('#signup_addr_detail').css('box-shadow', '0 4px 1px -3px green');
-			}
-        });
+		});
 		
-//		function isEmail(email) {
-//			 var regex = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
-//
-//			 return regex.test(email);
-//		}
+		signup_birth.addEventListener('focusout', function(){
+			const dayRegExp = /^(19|20)\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[0-1])$/;
+			if(!dayRegExp.test($('#signup_birth').val())){
+				signup_birth.classList.add('default_placeholder_red');
+				signup_birth.style.borderBottom = "solid 1px red "
+				signup_birth.style.boxShadow = "0 4px 1px -3px red";
+				signup_birth.placeholder = "»ı³â¿ùÀÏÀ» Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä. (YYYY-MM-DD)";
+				signup_birth.value = '';
+				sign_up_birth_flag  = 0;
+			}
+			else{
+				signup_birth.style.borderBottom = "solid 1px green "
+				signup_birth.style.boxShadow = "0 4px 1px -3px green";
+				sign_up_birth_flag = 1;
+			}
+		});
+		
+		signup_email.addEventListener('focusout', function(){
+			if(!isValidEmail($('#signup_email').val())){
+				signup_email.placeholder = "ÀÌ¸ŞÀÏ Çü½ÄÀ¸·Î ÀÔ·ÂÇØÁÖ¼¼¿ä(timi2020@gmail.com).";
+				signup_email.value = '';
+				signup_email.classList.add('default_placeholder_red');
+				signup_email.style.borderBottom = "solid 1px red "
+				signup_email.style.boxShadow = "0 4px 1px -3px red";
+				sign_up_email_flag = 0;
+			}
+			else{
+				signup_email.style.borderBottom = "solid 1px green "
+				signup_email.style.boxShadow = "0 4px 1px -3px green";
+				sign_up_email_flag = 1;
+			}
+		});	
+		signup_phone.addEventListener('focusout', function(){
+			const regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+			if(!regExp.test($('#signup_phone').val())){
+				signup_phone.placeholder = "Á¤È®ÇÑ Çü½ÄÀ¸·Î ÀÔ·ÂÇØÁÖ¼¼¿ä(010-0000-0000).";
+            	signup_phone.value = '';
+            	signup_phone.classList.add('default_placeholder_red');
+            	signup_phone.style.borderBottom = "solid 1px red "
+            	signup_phone.style.boxShadow = "0 4px 1px -3px red";
+				sign_up_phone_flag  = 0;
+			}
+			else{
+				signup_phone.style.borderBottom = "solid 1px green "
+				signup_phone.style.boxShadow = "0 4px 1px -3px green";
+				sign_up_phone_flag = 1;
+			}
+		});
+		
+
+		signup_addr_detail.addEventListener('focusout', function(){
+			if(!($('#signup_addr_detail').val())){
+				signup_addr_detail.classList.add('default_placeholder_red');
+				signup_addr_detail.style.borderBottom = "solid 1px red "
+				signup_addr_detail.style.boxShadow = "0 4px 1px -3px red";
+				sign_up_detail_flag  = 0;
+			}
+			else{
+				signup_addr_detail.style.borderBottom = "solid 1px green "
+				signup_addr_detail.style.boxShadow = "0 4px 1px -3px green";
+				sign_up_detail_flag = 1;
+			}
+		});
     }	
 };
 
 
-/** ê²€ìƒ‰ Ajax ë¶€ë¶„ **/
+/** °Ë»ö Ajax ºÎºĞ **/
 
 function searchInput(){
     $("#search_input").autocomplete({ 
@@ -223,11 +321,6 @@ function searchInput(){
         	
         } 
    }).focus(function(){            
-       // The following works only once.
-       // $(this).trigger('keydown.autocomplete');
-       // As suggested by digitalPBK, works multiple times
-       // $(this).data("autocomplete").search($(this).val());
-       // As noted by Jonny in his answer, with newer versions use uiAutocomplete
        $(this).data("uiAutocomplete").search($(this).val());
    });
     
@@ -239,12 +332,13 @@ function searchInput(){
                 .appendTo(ul);
     };
     
-
+    //¾ÆÀÌµğ Áßº¹Ã¼Å©ºÎ
 	const duplicate_btn = document.querySelector('#id_section_btn');
 	id_section_btn.addEventListener('click', function(){
-		const userID = $('#id_section_input').val();
+	const userID = $('#id_section_input').val();
 	if(!userID){
-		alert("í•˜ì´");
+		alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+		sign_up_id_flag = 0;
 	}
 	else{
 		console.log(userID);
@@ -252,29 +346,150 @@ function searchInput(){
 			type: 'POST',
 			url:'/online-shopping-mall/MemberRegisterCheckServlet',
 			data: {userID: userID},
-//	         ì•„ì´ë”” ì¤‘ë³µì²´í¬ë¶€
+//	         ¾ÆÀÌµğ Áßº¹Ã¼Å©ºÎ
 			success : function(result) {
 				if(result == 1){
 					$('#id_section_input').css('border-bottom', 'solid 1px green');
 					$('#id_section_input').css('box-shadow', '0 4px 1px -3px green');
 					document.getElementById('signup_pwd').focus();
+					 sign_up_id_flag = 1;
 	                
 				}else{
 			        const id_section_input = document.querySelector('#id_section_input');
 					$('#id_section_input').css('border-bottom', 'solid 1px red');
 					$('#id_section_input').css('box-shadow', '0 4px 1px -3px red');
-					id_section_input.placeholder = "ì•„ì´ë””ê°€ ì¤‘ë³µë˜ì—ˆìŠµë‹ˆë‹¤.";
+					id_section_input.placeholder = "¾ÆÀÌµğ°¡ Áßº¹µÇ¾ú½À´Ï´Ù.";
 					id_section_input.classList.add('default_placeholder_red');
 					id_section_input.value = '';
 					 $('#id_section_input').focus();
+
+					 sign_up_id_flag = 0;
+
 				}
 			}, error : function(){
-				console.log('ì‹¤íŒ¨');
+
+				sign_up_id_flag = 0;
 			}
 		})
 	}
 	});
+	//login ajax
+	login_submit_btn.addEventListener('click', function(){
+		let login_id = $('#login_id_input').val();
+		let login_pwd = $('#login_pwd_input').val();
+		$('#login_span').removeClass('box');
+		$('#login_span').addClass('hidden');
+		
+		$.ajax({
+			type: 'post',
+			url:'/online-shopping-mall/MemberLoginServlet',
+			data: {
+				login_id : login_id,
+				login_pwd : login_pwd
+			},
+			dataType: 'json',
+//	         ¾ÆÀÌµğ Áßº¹Ã¼Å©ºÎ
+			success : function(result) {
+				if(result == 1){
+					$('#login_span').removeClass('hidden');
+					$('#login_span').addClass('box');
+					$('#login_span').text('·Î±×ÀÎ ¼º°ø!');
+					$('#login_span').css({"background-image":"linear-gradient(to bottom, #00FF4C, #4B8215)"});
+					$('#login_span').attr("disabled","disabled");
+				       setTimeout(function(){
+				    	   "location.href='http://https://www.localhost/online-shopping-mall/top.jsp/"
+			            }, 2000);
+				}else{
+					$('#login_span').removeClass('hidden');
+					$('#login_span').addClass('box');
+					$('#login_span').text('·Î±×ÀÎ ½ÇÆĞ');
+					$('#login_span').css({"background-image":"linear-gradient(to bottom, red, red)"});
+					$('#login_span').attr("disabled","disabled");
+				}
+			}, error : function(){
+				console.log('½ÇÆĞ');
+			}
+		})	
+	});
+	
+	//signup ajax
 
+	signup_submit_btn.addEventListener('click', function(){
+		$('#submit_span').removeClass('box');
+		$('#submit_span').addClass('hidden');
+		
+		if(sign_up_id_flag == 0){
+			alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			console.log(sign_up_id_flag);
+		}
+		else if(sign_up_pwd_flag == 0){
+			alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		}
+		else if(sign_up_name_flag == 0){
+			alert("ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		}
+		else if(sign_up_birth_flag == 0){
+			alert("»ıÀÏÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		}
+		else if(sign_up_email_flag == 0){
+			alert("ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		}
+		else if(sign_up_phone_flag == 0){
+			alert("ÈŞ´ëÆù¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		}
+		else if(sign_up_addr_flag == 0 || sign_up_detail_flag == 0){
+			alert("ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		}
+		else{
+			let signup_section_inputValue = $('#id_section_input').val();
+			let signup_pwdValue = $('#signup_pwd').val();
+			let signup_pwd_checkValue = $('#signup_pwd_check').val();
+			let signup_nameVal = $('#signup_name').val();
+			let signup_birthValue =  $('#signup_birth').val();
+			let signup_emailValue = $('#signup_email').val();
+			let signup_phoneValue = $('#signup_phone').val();
+			let signup_addrValue =  $('#signup_addr').val();
+			let address_section_zipcodeValue = $('#address_section_zipcode').val();
+			let signup_addr_detailValue =  $('#signup_addr_detail').val();
+			
+			
+			//È¸¿ø°¡ÀÔ ÀÌº¥Æ® ajax
+			$.ajax({
+				type: 'post',
+				url:'/online-shopping-mall/MemberSignupServlet',
+				data: {
+					signup_id_input : signup_section_inputValue,
+					signup_pwd_check : signup_pwdValue,
+					signup_name : signup_nameVal,
+					signup_birth : signup_birthValue,
+					signup_email : signup_emailValue,
+					signup_phone : signup_phoneValue,
+					address_section_zipcode : address_section_zipcodeValue,
+					signup_addr : signup_addrValue,
+					signup_addr_detail : signup_addr_detailValue
+				},
+				dataType: 'json',
+//		         ¾ÆÀÌµğ Áßº¹Ã¼Å©ºÎ
+				success : function(result) {
+					if(result == 1){
+						$('#submit_span').removeClass('hidden');
+						$('#submit_span').addClass('box');
+						$('#submit_span').text('È¸¿ø°¡ÀÔ ¿Ï·á!');
+						$('#signup_submit_btn').css({"background-image":"linear-gradient(to bottom, #00FF4C, #4B8215)"});
+						$('#signup_submit_btn').attr("disabled","disabled");
+						regist_flag = 1;
+					}else{
+					$('#submit_span').addClass('box');
+					$('#submit_span').text('½ÇÆĞÇÏ¼Ì½À´Ï´Ù.');
+					$('#signup_submit_btn').css({"background-image":"linear-gradient(to bottom, red, red)"});
+					
+					}
+				}, error : function(){
+					console.log('½ÇÆĞ');
+				}
+			})	
+		}
+		});
 }
 
 function inputTransition(){
@@ -289,5 +504,56 @@ function inputTransition(){
     });
 }
 
+//´ÙÀ½ ÁÖ¼Ò°Ë»ö ¿¬µ¿
+function openDaumZipAddress() {
+    // ¿ìÆí¹øÈ£ Ã£±â È­¸éÀ» ³ÖÀ» element¸¦ ÁöÁ¤
+    const element_wrap = document.getElementById("daumWrap");
+
+    // wrap ·¹ÀÌ¾î°¡ offµÈ »óÅÂ¶ó¸é ´ÙÀ½ ¿ìÆí¹øÈ£ ·¹ÀÌ¾î¸¦ open ÇÑ´Ù.
+    if($("#daumWrap").css("display") == "none") {
+        new daum.Postcode({
+            oncomplete:function(data) {
+                $("#address_section_zipcode").val(data.zonecode);
+                $("#signup_addr").val(data.address);
+                $("#signup_addr_detail").focus();
+				$('#address_section_zipcode').css('border-bottom', 'solid 1px green');
+				$('#address_section_zipcode').css('box-shadow', '0 4px 1px -3px green');
+				$('#signup_addr').css('border-bottom', 'solid 1px green');
+				$('#signup_addr').css('box-shadow', '0 4px 1px -3px green');
+
+				sign_up_addr_flag = 1;
+
+            }
+            // »ç¿ëÀÚ°¡ °ªÀ» ÁÖ¼Ò¸¦ ¼±ÅÃÇØ¼­ ·¹ÀÌ¾î¸¦ ´İÀ» °æ¿ì
+            // ´ÙÀ½ ÁÖ¼Ò·Ï ·¹ÀÌ¾î¸¦ ¿ÏÀüÈ÷ Á¾·á ½ÃÅ²´Ù.
+            , onclose:function(state) {
+                if(state === "COMPLETE_CLOSE") {
+                    // Äİ¹éÇÔ¼ö¸¦ ½ÇÇàÇÏ¿© ½½¶óÀÌµå ¾÷ ±â´ÉÀÌ ½ÇÇà ¿Ï·áÈÄ ÀÛ¾÷À» ÁøÇàÇÑ´Ù.
+                    offDaumZipAddress(function() {
+                        element_wrap.style.display = "none";
+                    });
+                }
+            }
+        }).embed(element_wrap);
+
+        // ½½¶óÀÌµå ´Ù¿î ±â´ÉÀ» ÀÌ¿ëÇØ ·¹ÀÌ¾î Ã¢À» ¿ÀÇÂÇÑ´Ù.
+        $("#daumWrap").slideDown();
+    }
+    
+    // warp ·¹ÀÌ¾î°¡ openµÈ »óÅÂ¶ó¸é ´ÙÀ½ ¿ìÆí¹øÈ£ ·¹ÀÌ¾î¸¦ off »óÅÂ·Î º¯°æÇÑ´Ù.
+    else {
+        // Äİ¹éÇÔ¼ö¸¦ ½ÇÇàÇÏ¿© ½½¶óÀÌµå ¾÷ ±â´ÉÀÌ ½ÇÇà ¿Ï·áÈÄ ÀÛ¾÷À» ÁøÇàÇÑ´Ù.
+        offDaumZipAddress(function() {
+            element_wrap.style.display = "none";
+            return false;
+        });
+    }
+}
+
+function offDaumZipAddress() {
+	// ½½¶óÀÌµå ¾÷ ±â´ÉÀ» ÀÌ¿ëÇØ ·¹ÀÌ¾î Ã¢À» ´İ´Â´Ù.
+    $("#daumWrap").slideUp();
+
+}
 
 init();

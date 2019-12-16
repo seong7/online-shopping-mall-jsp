@@ -50,4 +50,13 @@ public class ProductMgr {
 			return bean;
 		}
 		
+
+	//alllist
+	//bestlist
+	//reviewlist
+	//priceuplist
+	//pricedownlist
+	//searchlist
+	//
+
 }
