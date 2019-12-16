@@ -73,7 +73,9 @@ thead{background:lightgray;}
 			}//---for
 		}//---else
 		%>
+		
 </table>
+		<jsp:include page="../bottom.jsp"/>
 </body>
 </html>
 
