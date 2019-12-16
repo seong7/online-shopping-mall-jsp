@@ -2,13 +2,14 @@
 <%
 		request.setCharacterEncoding("EUC-KR");
 		String id = (String)session.getAttribute("idKey");
+
 %>
 <!--<!DOCTYPE html>
 <html>
 	<head>-->
 		<meta charset="EUC-KR">
-		<link rel="stylesheet" type="text/css" href="css/reset.css">
-		<link rel="stylesheet" href="css/top.css">
+		<link rel="stylesheet" type="text/css" href="c:\Jsp\online-shopping-mall-jsp\WebContent\css\reset.css">
+		<link rel="stylesheet" href="c:\Jsp\online-shopping-mall-jsp\WebContent\css\top.css">
 		<script src="https://kit.fontawesome.com/115bcf1f34.js" crossorigin="anonymous"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -73,9 +74,7 @@
 	        </div>
 	        <label for="userPopup"></label>
 	    </div>
-	
-	    
-	    <!--전체 페이지 Wrapper-->
+	    	    <!--전체 페이지 Wrapper-->
 	    <div id="top_wrapper">
 	        <!--header Wrapper(로고 상단 Div(추가 Contents 대비용), Hompage Logo)-->
 	        <div id="header">
@@ -160,7 +159,7 @@
 	</div>
 
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script type="text/javascript" src="js/top.js"></script>
+	<script type="text/javascript" src="c:\Jsp\online-shopping-mall-jsp\WebContent\js\top.js"></script>
 
 <!-- </body>    --- index.jsp 에서 닫아줌
 </html> -->

@@ -4,12 +4,18 @@
 <jsp:useBean id="memberMgr" class="Member.MemberMgr"/>
 <jsp:useBean id="pMgr" class="Product.ProductMgr"/>
 <jsp:useBean id="oMgr" class="Order.OrderMgr"/>
+
+<%
+		String id = (String)session.getAttribute("idKey");
+%>
+
 <link rel="stylesheet" type="text/css" href="css/order.css"/>
 
 <html>
 <title>주문서</title>
 <head>
 <script type="text/javascript" src="js/order.js"></script>
+
 </head>
 <body>
 <h2>주문서</h2>
@@ -34,7 +40,10 @@
 	</tr>
 	<tr>
 		<td>보내는 분</td>
-		<td>최무원</td>
+		<%
+		
+		%>
+		<td></td>
 	</tr>
 	<tr>
 		<td>휴대폰 </td>
