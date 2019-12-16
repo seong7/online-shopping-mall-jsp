@@ -82,13 +82,6 @@ function init(){
 };
 
 
-const mypage_btn = document.getElementById("mypage_btn");
-function btn_test(){
-	console.log('working');
-};
-
-
-
 const login_form = document.getElementById("login_form");
 const signup_form = document.getElementById("signup_form");
 const login_btn_label = document.getElementById("login_btn_label");

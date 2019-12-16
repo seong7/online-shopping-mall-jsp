@@ -143,7 +143,7 @@
 								</li>
 							<%}else{ %>
 								<li>
-									<a href="#" id="mypage_btn" onclick="mypage_btn()"><i class="fas fa-user" ></i></a>
+									<a href="#" ><i class="fas fa-user" ></i></a>
 								</li>
 								<li>
 									<a href="#"><i class="fas fa-shopping-cart"></i></a>
