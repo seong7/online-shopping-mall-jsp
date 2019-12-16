@@ -1,4 +1,5 @@
-/* ∆˘∆Æ √ﬂ∞° noto-Sans*/
+@charset "UTF-8";
+/* Ìè∞Ìä∏ Ï∂îÍ∞Ä noto-Sans*/
 @font-face {
   font-family: 'noto_Bold';
   src: url(../font/NotoSansCJKkr-Bold.otf);
@@ -76,12 +77,10 @@
   font-style: normal;
 }
 
-main {
+#footer_wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
-  min-width: 1050px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -89,31 +88,21 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-main .goodslist_tit {
   margin-top: 100px;
-  margin-bottom: 60px;
-  text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 10px -5px 10px rgba(204, 204, 204, 0.5);
+          box-shadow: 10px -5px 10px rgba(204, 204, 204, 0.5);
   width: 100%;
-  font-family: "noto_Bold";
+  min-width: 1050px;
 }
 
-main .goodslist_tit .goodslist_btn {
-  display: block;
-  text-decoration: none;
-  color: #333;
-  font-size: 30px;
-}
-
-main .goodslist_tit .goodslist_detail {
-  display: inline-block;
-  color: gray;
-  margin-top: 15px;
-}
-
-main ul {
-  width: 100%;
+#footer_wrapper ul {
+  width: 1050px;
+  height: 200px;
+  padding: 0px;
+  padding-top: 10px;
+  padding-bottom: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -121,41 +110,98 @@ main ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  margin-top: 20px;
 }
 
-main ul li {
-  margin-right: 18px;
+#footer_wrapper ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-main ul li img {
-  width: 249px;
-  height: 320px;
-  max-width: 100%;
+#footer_wrapper ul li span {
+  display: block;
 }
 
-main ul li img:hover {
-  -webkit-transform: scale(1.02);
-          transform: scale(1.02);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+#footer_wrapper ul #footer_first {
+  font-family: 'noto_Bold';
+  color: gray;
+  width: 200px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-main ul li .goods_info {
-  width: 249px;
+#footer_wrapper ul #footer_first span, #footer_wrapper ul #footer_first a {
+  display: block;
+  margin-top: 0px;
 }
 
-main ul li .goods_info a {
-  text-decoration: none;
+#footer_wrapper ul #footer_first #title {
+  font-size: 30px;
+  margin-bottom: 30px;
 }
 
-main ul li .goods_info .name {
-  font-family: "noto_Bold";
+#footer_wrapper ul #footer_first #middle {
+  font-size: 30px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+#footer_wrapper ul #footer_first #bottom {
+  display: inline-block;
+  border: 1.5px solid gray;
+  font-family: 'noto_Demilight';
+  font-size: 20px;
+  width: 150px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#footer_wrapper ul #footer_second {
+  margin-right: 100px;
+  font-family: 'noto_Demilight';
+  color: #333;
+  font-size: 14px;
+}
+
+#footer_wrapper ul #footer_second span {
+  font-family: 'noto_Medium';
   color: gray;
 }
 
-main ul li .goods_info .price {
-  display: block;
-  margin-top: 3px;
+#footer_wrapper ul #footer_second div {
+  margin-bottom: 40px;
 }
-/*# sourceMappingURL=index.css.map */
+
+#footer_wrapper ul #footer_second #phone {
+  margin-top: 80px;
+}
+
+#footer_wrapper ul #footer_third {
+  font-family: 'noto_Demilight';
+  color: gray;
+  font-size: 14px;
+}
+
+#footer_wrapper ul #footer_third div {
+  margin-top: 50px;
+}
+
+#footer_wrapper ul #footer_third div span {
+  margin-bottom: 13px;
+}
+
+#footer_wrapper ul #footer_third div img {
+  margin-right: 10px;
+  width: 40px;
+  height: auto;
+}
+/*# sourceMappingURL=bottom.css.map */

@@ -89,7 +89,7 @@ html{
     position: relative;
     min-width: 1050px;
     box-sizing: border-box;
-    box-shadow:0px 8px 10px rgb(204,204,204, 0.5);
+    box-shadow:0px 8px 10px rgba(204,204,204, 0.5);
 }
 /*로고 이미지 position*/
 #homeLogo>img{

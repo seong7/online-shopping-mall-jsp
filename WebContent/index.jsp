@@ -12,7 +12,7 @@
         <!--******************-->
         <!--작업 및 복붙 구역-->
         <!--******************-->        	
- <main>
+         <main>
             <!-- 배너 구역-->
             <div id="bannerWrapper">
                 <img src="./img/index/banner/banner_sample1.png" alt="banner slider">
@@ -169,7 +169,7 @@
 		<!--******************-->
         <!--작업 및 복붙 구역-->
         <!--******************-->        
-		
+		<jsp:include page="bottom.jsp"/>
 </body>
 </html>
 	
