@@ -4,13 +4,19 @@
 <jsp:useBean id="memberMgr" class="Member.MemberMgr"/>
 <jsp:useBean id="pMgr" class="Product.ProductMgr"/>
 <jsp:useBean id="oMgr" class="Order.OrderMgr"/>
+<%
+		String id = (String)session.getAttribute("idKey");
+%>
+<!DOCTYPE html>
+<html>
+<title>주문서</title>
+<head>
+
 <style>
 hr{width:600px;}
 body { width: 550px;  margin: 0 auto;}
 </style>
-<html>
-<title>주문서</title>
-<head>
+
 <script type="text/javascript">
 	function paymentMethod(value){//결제방법 변경 시 입력창 변경 
 		if(value=='1'){tr1.style.display = '';
@@ -60,7 +66,10 @@ body { width: 550px;  margin: 0 auto;}
 	</tr>
 	<tr>
 		<td>보내는 분</td>
-		<td>최무원</td>
+		<%
+		
+		%>
+		<td></td>
 	</tr>
 	<tr>
 		<td>휴대폰 </td>
