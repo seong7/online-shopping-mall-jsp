@@ -1,6 +1,6 @@
 package Product;
 
-public class productBean {
+public class ProductBean {
 	private int p_code;
 	private String p_name;
 	private int p_price;
