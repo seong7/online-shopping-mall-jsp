@@ -2,13 +2,14 @@
 <%
 		request.setCharacterEncoding("EUC-KR");
 		String id = (String)session.getAttribute("idKey");
+
 %>
 <!--<!DOCTYPE html>
 <html>
 	<head>-->
 		<meta charset="EUC-KR">
-		<link rel="stylesheet" type="text/css" href="css/reset.css">
-		<link rel="stylesheet" href="css/top.css">
+		<link rel="stylesheet" type="text/css" href="c:\Jsp\online-shopping-mall-jsp\WebContent\css\reset.css">
+		<link rel="stylesheet" href="c:\Jsp\online-shopping-mall-jsp\WebContent\css\top.css">
 		<script src="https://kit.fontawesome.com/115bcf1f34.js" crossorigin="anonymous"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -16,7 +17,7 @@
     <!--</head>
 	<body> -->
 	        
-		<div id="wrap" style="display:none;border:1px solid #DDDDDD;width:500px;margin-top:500px; margin-left: 200px, z-index: 200"></div>
+			    <div id="wrap" style="display:none;border:1px solid #DDDDDD;width:500px;margin-top:500px; margin-left: 200px, z-index: 200"></div>
     	<div style="height:10px;"></div>
 	    <div id="modalDiv">
 	        <div id="modalInnerFrame">
@@ -37,7 +38,7 @@
 							<a href="#">아이디나 비밀번호를 잊어버렸습니까?</a>
 						</div>
 						<button type="button" class="top_modal_button top_modal_button_style" id="login_submit_btn">
-							<span>로그인</span>
+							<span id="login_span">로그인</span>
 						</button>
 					</form>
 					<form id="signup_form">
@@ -73,9 +74,7 @@
 	        </div>
 	        <label for="userPopup"></label>
 	    </div>
-	
-	    
-	    <!--전체 페이지 Wrapper-->
+	    	    <!--전체 페이지 Wrapper-->
 	    <div id="top_wrapper">
 	        <!--header Wrapper(로고 상단 Div(추가 Contents 대비용), Hompage Logo)-->
 	        <div id="header">
@@ -132,26 +131,35 @@
 	                            <span class="txt">고객지원</span>
 	                        </a>
 	                    </li>
-	                    <li>
-	                        <a class="nav_a">
-	                            <span class="txt"></span>
-	                        </a>    
-	                    </li> 
-	                </ul>
-					<%if(id==null){ %>
-	                <input type="checkbox" id="userPopup">
-					<label for="userPopup" id="userPopup_label">
-					<i class="fas fa-user"></i>
-					<%} else{%>
-						<i class="fas fa-user"></i>
-						<i class="fas fa-sign-in-alt"></i>
-		                <i class="fas fa-shopping-cart"></i>
-					</label>
-					<%}%>
+						<li id="active_btn_li">
+							<ul id="active_btn_wrapper">
+							<%if(id==null){ %>
+								<li>
+									<input type="checkbox" id="userPopup">
+									<label for="userPopup" id="userPopup_label">
+										<i class="fas fa-user"></i>
+									</label>
+								</li>
+							<%}else{ %>
+								<li>
+									<a href="#"><i class="fas fa-user"></i></a> 
+								</li>
+								<li>
+									<a href="#"><i class="fas fa-shopping-cart"></i></a>
+								</li>
+								<li>
+										<a href="#"><i class="fas fa-sign-in-alt"></i></a>
+								</li>
+							<%} %>
+							</ul>
+						</li>
+					</ul>
 				</div>
 	        </div>
 	</div>
+
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script type="text/javascript" src="js/top.js"></script>
+	<script type="text/javascript" src="c:\Jsp\online-shopping-mall-jsp\WebContent\js\top.js"></script>
+
 <!-- </body>    --- index.jsp 에서 닫아줌
 </html> -->

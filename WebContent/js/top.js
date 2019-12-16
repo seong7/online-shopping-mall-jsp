@@ -30,7 +30,7 @@ function init(){
     //search ajax
     searchInput();
     inputTransition();
-
+    
     let modaltrigger = false;
     const userCheckBox = document.querySelector('#userPopup');
     const modalWindow = document.getElementById('modalDiv');
@@ -40,7 +40,8 @@ function init(){
     const login_form = document.getElementById('login_form');
 
      /** 모달창 열림 닫힘 기능 **/
-
+    const session_id = "<%=id%>";
+    if(session_id==null){
     userCheckBox.addEventListener('change', function(){
         modalInnerFrame.style.width = "0px";
         modalInnerFrame.style.height = "0px";
@@ -79,6 +80,7 @@ function init(){
         }
     });
 };
+}
 
 
 
@@ -375,7 +377,8 @@ function searchInput(){
 	login_submit_btn.addEventListener('click', function(){
 		let login_id = $('#login_id_input').val();
 		let login_pwd = $('#login_pwd_input').val();
-		
+		$('#login_span').removeClass('box');
+		$('#login_span').addClass('hidden');
 		
 		$.ajax({
 			type: 'post',
@@ -388,9 +391,20 @@ function searchInput(){
 //	         아이디 중복체크부
 			success : function(result) {
 				if(result == 1){
-					alert("로그인 성공");
+					$('#login_span').removeClass('hidden');
+					$('#login_span').addClass('box');
+					$('#login_span').text('로그인 성공!');
+					$('#login_span').css({"background-image":"linear-gradient(to bottom, #00FF4C, #4B8215)"});
+					$('#login_span').attr("disabled","disabled");
+				       setTimeout(function(){
+				    	   "location.href='http://https://www.localhost/online-shopping-mall/top.jsp/"
+			            }, 2000);
 				}else{
-					alert("로그인 실패");
+					$('#login_span').removeClass('hidden');
+					$('#login_span').addClass('box');
+					$('#login_span').text('로그인 실패');
+					$('#login_span').css({"background-image":"linear-gradient(to bottom, red, red)"});
+					$('#login_span').attr("disabled","disabled");
 				}
 			}, error : function(){
 				console.log('실패');
