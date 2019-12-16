@@ -133,21 +133,28 @@
 	                        </a>
 	                    </li>
 	                    <li>
-	                        <a class="nav_a">
-	                            <span class="txt"></span>
-	                        </a>    
+	                    	<ul id="active_btn_wrapper">
+	                    		<% if(id==null){ %>
+									<li>
+										<input type="checkbox" id="userPopup">
+										<label for="userPopup" id="userPopup_label">
+											<i class="fas fa-user"></i>
+										</label>
+									</li>
+								<%}else{ %>
+									<li>
+										<a href="#"><i class="fas fa-user"></i></a> 
+									</li>
+									<li>
+										<a href="#"><i class="fas fa-shopping-cart"></i></a>
+									</li>
+									<li>
+											<a href="#"><i class="fas fa-sign-in-alt"></i></a>
+									</li>
+								<%} %>
+							</ul>
 	                    </li> 
 	                </ul>
-					<%if(id==null){ %>
-	                <input type="checkbox" id="userPopup">
-					<label for="userPopup" id="userPopup_label">
-					<i class="fas fa-user"></i>
-					<%} else{%>
-						<i class="fas fa-user"></i>
-						<i class="fas fa-sign-in-alt"></i>
-		                <i class="fas fa-shopping-cart"></i>
-					</label>
-					<%}%>
 				</div>
 	        </div>
 	</div>

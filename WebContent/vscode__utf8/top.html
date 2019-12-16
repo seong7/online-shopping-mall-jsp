@@ -16,6 +16,8 @@
 		<!-- top.jsp 로 복사할때 시작점 -->
 		<!--****************************-->
 		<!--****************************-->
+	    <div id="wrap" style="display:none;border:1px solid #DDDDDD;width:500px;margin-top:500px; margin-left: 200px, z-index: 200"></div>
+    	<div style="height:10px;"></div>
 	    <div id="modalDiv">
 	        <div id="modalInnerFrame">
 				<div id="modal_elements_wrapper">
@@ -34,40 +36,45 @@
 						<div id="lost_id_pwd_wrapper">
 							<a href="#">아이디나 비밀번호를 잊어버렸습니까?</a>
 						</div>
-						<button type="submit" class="top_modal_button top_modal_button_style" id="login_submit_btn">
+						<button type="button" class="top_modal_button top_modal_button_style" id="login_submit_btn">
 							<span>로그인</span>
 						</button>
 					</form>
-					<form method="POST" id="signup_form" action="#">
+					<form id="signup_form">
 						<h3>처음이세요?</h3>
+						<div id="daumWrap"></div>
 						<div id="id_section">
 							<input type="text" class="signup_input" id="id_section_input" autocomplete="off" placeholder="아이디를 입력하세요.">
-							<!-- ajax 아이디 중복체크-->
-							
-							<button type="button" class="signup_util_btn top_modal_button_style top_modal_button" id="id_section_btn" onclick="location.href='xx.jsp'"><span>중복확인</span></button>
+							<!-- ajax 필요 ?-->
+							<button type="button" class="signup_util_btn top_modal_button_style top_modal_button" id="id_section_btn"><span>중복확인</span></button>
 						</div>
-						<input type="password" class="signup_input" id="pwd" autocomplete="off" placeholder="비밀번호를 입력하세요.">
-						<input type="password" class="signup_input" id="pwdCheck" autocomplete="off" placeholder="비밀번호를 한번 더 입력하세요.">
-						<input type="text" class="signup_input" autocomplete="off" placeholder="이름을 입력하세요.">
-						<input type="text" class="signup_input" autocomplete="off" placeholder="생년월일을 입력하세요.">
-						<input type="text" class="signup_input" autocomplete="off" placeholder="이메일을 입력하세요.">
-						<input type="text" class="signup_input" autocomplete="off" placeholder="연락처를 입력하세요.">
+						<input type="password" class="signup_input signup_long_input" id="signup_pwd"autocomplete="off" placeholder="비밀번호를 입력하세요.">
+						<input type="password" class="signup_input signup_long_input" id="signup_pwd_check" autocomplete="off" placeholder="비밀번호를 한번 더 입력하세요.">
+						<input type="text" class="signup_input signup_long_input" id="signup_name" autocomplete="off" placeholder="이름을 입력하세요.">
+						<input type="text" class="signup_input signup_long_input" id="signup_birth" autocomplete="off" placeholder="생년월일을 입력하세요. Ex)1900-01-01">
+						<input type="text" class="signup_input signup_long_input" id="signup_email" autocomplete="off" placeholder="이메일을 입력하세요. Ex)timi2030@gmail.com">
+						<input type="text" class="signup_input signup_long_input" id="signup_phone" autocomplete="off" placeholder="연락처를 입력하세요. Ex)010-0000-0000">
 						<div id="address_section">
 							<div id ="address_section_header">
-								<input type="text" class="signup_input" id="address_section_zipcode" autocomplete="off" readonly placeholder="우편번호">
-								<button class="signup_util_btn top_modal_button_style top_modal_button" id="address_section_btn"><span>주소검색</span></button><br/>
+							    <input id="address_section_zipcode" class="signup_input" type="text" value="" readOnly/>
+							    <input id="address_section_btn" class="signup_util_btn top_modal_button_style top_modal_button" type="button" onClick="openDaumZipAddress();" value = "주소 찾기"/>
+							
+							    <!-- 다음 우편번호 찾기 리스트를 띄울 영역을 지정 -->
+							
+							    <input type="text" class="signup_input signup_long_input" id="signup_addr" readOnly/>
+							    <input type="text" class="signup_input signup_long_input" id="signup_addr_detail" placeholder="상세주소를 입력하세요."/>
 							</div>
-							<input type="text" class="signup_input" autocomplete="off" readonly placeholder="주소">
-							<input type="text" class="signup_input" autocomplete="off" placeholder="상세주소를 입력해주세요.">
 						</div>
-						<button type="submit" class="top_modal_button top_modal_button_style" id="signup_submit_btn">
-							<span>회원가입</span>
+						<button type="button" class="top_modal_button top_modal_button_style" id="signup_submit_btn" >
+							<span id="submit_span" class="box">회원가입</span>
 						</button>
 					</form>
 				</div>
 	        </div>
 	        <label for="userPopup"></label>
 	    </div>
+	
+	    
 	    <!--전체 페이지 Wrapper-->
 	    <div id="top_wrapper">
 	        <!--header Wrapper(로고 상단 Div(추가 Contents 대비용), Hompage Logo)-->
@@ -125,23 +132,36 @@
 	                            <span class="txt">고객지원</span>
 	                        </a>
 	                    </li>
-	                    <li>
-	                        <a class="nav_a">
-	                            <span class="txt"></span>
-	                        </a>    
-	                    </li> 
-	                </ul>
-	                <i class="fas fa-shopping-cart"></i>
-	                <input type="checkbox" id="userPopup">
-					<label for="userPopup" id="userPopup_label">
-						<i class="fas fa-user"></i>
-					</label>
+						<li id="active_btn_li">
+							<ul id="active_btn_wrapper">
+								<!-- <li>
+									<input type="checkbox" id="userPopup">
+									<label for="userPopup" id="userPopup_label">
+										<i class="fas fa-user"></i>
+									</label>
+								</li> -->
+								<li>
+									<a href="#"><i class="fas fa-user"></i></a> 
+								</li>
+								<li>
+									<a href="#"><i class="fas fa-shopping-cart"></i></a>
+								</li>
+								<li>
+										<a href="#"><i class="fas fa-sign-in-alt"></i></a>
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</div>
 	        </div>
 	</div>
+
+	<!-- test -->
+	<div id="test"></div>
+
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript" src="js/top.js"></script>
 
-	
 		<!--****************************-->
 		<!--****************************-->
 		<!-- top.jsp 로 복사할때 끝점 -->
