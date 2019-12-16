@@ -312,11 +312,6 @@ input[id*='userPopup'] {
   display: inline-flex;
 }
 
-#test {
-  background-color: coral;
-  height: 2000px;
-}
-
 /***** 떡 category *****/
 #nav_category {
   display: -webkit-box;
