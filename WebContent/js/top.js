@@ -39,7 +39,7 @@ function init(){
     const modal_elements_wrapper = document.getElementById('modal_elements_wrapper');
     const login_form = document.getElementById('login_form');
 
-     /** ëª¨ë‹¬ì°½ ì—´ë¦¼ ë‹«í˜ ê¸°ëŠ¥ **/
+     /** ¸ğ´ŞÃ¢ ¿­¸² ´İÈû ±â´É **/
 //    const session_id = "<%=id%>";
 
     userCheckBox.addEventListener('change', function(){
@@ -149,7 +149,7 @@ function login_signup(id){
         signup_phone.addEventListener('keyup', inputEmptyCheck);
         signup_addr.addEventListener('keyup', inputEmptyCheck);
         signup_addr_detail.addEventListener('keyup', inputEmptyCheck);
-        //ìš°í¸ë²ˆí˜¸, ì£¼ì†Œ
+        //¿ìÆí¹øÈ£, ÁÖ¼Ò
         if(regist_flag= 0){
 		$('#signup_addr').css('border-bottom', 'solid 1px red');
 		$('#signup_addr').css('box-shadow', '0 4px 1px -3px red');
@@ -176,7 +176,7 @@ function login_signup(id){
 	            	signup_pwd.classList.add('default_placeholder_red');
 					$('#signup_pwd').css('border-bottom', 'solid 1px red');
 					$('#signup_pwd').css('box-shadow', '0 4px 1px -3px red');
-	            	signup_pwd_check.placeholder = "ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
+	            	signup_pwd_check.placeholder = "ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.";
 	            	signup_pwd_check.classList.add('default_placeholder_red');
 	            	signup_pwd_check.value = '';
 					$('#signup_pwd_check').css('border-bottom', 'solid 1px red');
@@ -192,12 +192,12 @@ function login_signup(id){
             }
         });
 	
-		//ì´ë©”ì¼ ìœ íš¨ì„± ê²€ì‚¬
+		//ÀÌ¸ŞÀÏ À¯È¿¼º °Ë»ç
 		function isValidEmail(email) {
 			  var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 			    return (email != '' && email != 'undefined' && regex.test(email));
 		}
-		//null ì²´í¬
+		//null Ã¼Å©
 
 		function isNull(input) {
 		    if (input.value == null || input.value == "") {
@@ -207,7 +207,7 @@ function login_signup(id){
 		}
 		function isValidFormat(input,format) {
 		    if (input.value.search(format) != -1) {
-		        return true; //ì˜¬ë°”ë¥¸ í¬ë§· í˜•ì‹
+		        return true; //¿Ã¹Ù¸¥ Æ÷¸Ë Çü½Ä
 		    }
 		    return false;
 		}
@@ -230,7 +230,7 @@ function login_signup(id){
 				signup_birth.classList.add('default_placeholder_red');
 				signup_birth.style.borderBottom = "solid 1px red "
 				signup_birth.style.boxShadow = "0 4px 1px -3px red";
-				signup_birth.placeholder = "ìƒë…„ì›”ì¼ì„ ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”. (YYYY-MM-DD)";
+				signup_birth.placeholder = "»ı³â¿ùÀÏÀ» Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä. (YYYY-MM-DD)";
 				signup_birth.value = '';
 				sign_up_birth_flag  = 0;
 			}
@@ -243,7 +243,7 @@ function login_signup(id){
 		
 		signup_email.addEventListener('focusout', function(){
 			if(!isValidEmail($('#signup_email').val())){
-				signup_email.placeholder = "ì´ë©”ì¼ í˜•ì‹ìœ¼ë¡œ ì…ë ¥í•´ì£¼ì„¸ìš”(timi2020@gmail.com).";
+				signup_email.placeholder = "ÀÌ¸ŞÀÏ Çü½ÄÀ¸·Î ÀÔ·ÂÇØÁÖ¼¼¿ä(timi2020@gmail.com).";
 				signup_email.value = '';
 				signup_email.classList.add('default_placeholder_red');
 				signup_email.style.borderBottom = "solid 1px red "
@@ -259,7 +259,7 @@ function login_signup(id){
 		signup_phone.addEventListener('focusout', function(){
 			const regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
 			if(!regExp.test($('#signup_phone').val())){
-				signup_phone.placeholder = "ì •í™•í•œ í˜•ì‹ìœ¼ë¡œ ì…ë ¥í•´ì£¼ì„¸ìš”(010-0000-0000).";
+				signup_phone.placeholder = "Á¤È®ÇÑ Çü½ÄÀ¸·Î ÀÔ·ÂÇØÁÖ¼¼¿ä(010-0000-0000).";
             	signup_phone.value = '';
             	signup_phone.classList.add('default_placeholder_red');
             	signup_phone.style.borderBottom = "solid 1px red "
@@ -291,7 +291,7 @@ function login_signup(id){
 };
 
 
-/** ê²€ìƒ‰ Ajax ë¶€ë¶„ **/
+/** °Ë»ö Ajax ºÎºĞ **/
 
 function searchInput(){
     $("#search_input").autocomplete({ 
@@ -330,12 +330,12 @@ function searchInput(){
                 .appendTo(ul);
     };
     
-    //ì•„ì´ë”” ì¤‘ë³µì²´í¬ë¶€
+    //¾ÆÀÌµğ Áßº¹Ã¼Å©ºÎ
 	const duplicate_btn = document.querySelector('#id_section_btn');
 	id_section_btn.addEventListener('click', function(){
 	const userID = $('#id_section_input').val();
 	if(!userID){
-		alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
+		alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
 		sign_up_id_flag = 0;
 	}
 	else{
@@ -344,7 +344,7 @@ function searchInput(){
 			type: 'POST',
 			url:'/online-shopping-mall/MemberRegisterCheckServlet',
 			data: {userID: userID},
-//	         ì•„ì´ë”” ì¤‘ë³µì²´í¬ë¶€
+//	         ¾ÆÀÌµğ Áßº¹Ã¼Å©ºÎ
 			success : function(result) {
 				if(result == 1){
 					$('#id_section_input').css('border-bottom', 'solid 1px green');
@@ -356,7 +356,7 @@ function searchInput(){
 			        const id_section_input = document.querySelector('#id_section_input');
 					$('#id_section_input').css('border-bottom', 'solid 1px red');
 					$('#id_section_input').css('box-shadow', '0 4px 1px -3px red');
-					id_section_input.placeholder = "ì•„ì´ë””ê°€ ì¤‘ë³µë˜ì—ˆìŠµë‹ˆë‹¤.";
+					id_section_input.placeholder = "¾ÆÀÌµğ°¡ Áßº¹µÇ¾ú½À´Ï´Ù.";
 					id_section_input.classList.add('default_placeholder_red');
 					id_section_input.value = '';
 					 $('#id_section_input').focus();
@@ -386,12 +386,12 @@ function searchInput(){
 				login_pwd : login_pwd
 			},
 			dataType: 'json',
-//	         ì•„ì´ë”” ì¤‘ë³µì²´í¬ë¶€
+//	         ¾ÆÀÌµğ Áßº¹Ã¼Å©ºÎ
 			success : function(result) {
 				if(result == 1){
 					$('#login_span').removeClass('hidden');
 					$('#login_span').addClass('box');
-					$('#login_span').text('ë¡œê·¸ì¸ ì„±ê³µ!');
+					$('#login_span').text('·Î±×ÀÎ ¼º°ø!');
 					$('#login_span').css({"background-image":"linear-gradient(to bottom, #00FF4C, #4B8215)"});
 					$('#login_span').attr("disabled","disabled");
 				       setTimeout(function(){
@@ -400,12 +400,12 @@ function searchInput(){
 				}else{
 					$('#login_span').removeClass('hidden');
 					$('#login_span').addClass('box');
-					$('#login_span').text('ë¡œê·¸ì¸ ì‹¤íŒ¨');
+					$('#login_span').text('·Î±×ÀÎ ½ÇÆĞ');
 					$('#login_span').css({"background-image":"linear-gradient(to bottom, red, red)"});
 					$('#login_span').attr("disabled","disabled");
 				}
 			}, error : function(){
-				console.log('ì‹¤íŒ¨');
+				console.log('½ÇÆĞ');
 			}
 		})	
 	});
@@ -417,26 +417,26 @@ function searchInput(){
 		$('#submit_span').addClass('hidden');
 		
 		if(sign_up_id_flag == 0){
-			alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 			console.log(sign_up_id_flag);
 		}
 		else if(sign_up_pwd_flag == 0){
-			alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 		}
 		else if(sign_up_name_flag == 0){
-			alert("ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			alert("ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 		}
 		else if(sign_up_birth_flag == 0){
-			alert("ìƒì¼ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			alert("»ıÀÏÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 		}
 		else if(sign_up_email_flag == 0){
-			alert("ì´ë©”ì¼ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			alert("ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 		}
 		else if(sign_up_phone_flag == 0){
-			alert("íœ´ëŒ€í°ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			alert("ÈŞ´ëÆù¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 		}
 		else if(sign_up_addr_flag == 0 || sign_up_detail_flag == 0){
-			alert("ì£¼ì†Œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			alert("ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 		}
 		else{
 			let signup_section_inputValue = $('#id_section_input').val();
@@ -451,7 +451,7 @@ function searchInput(){
 			let signup_addr_detailValue =  $('#signup_addr_detail').val();
 			
 			
-			//íšŒì›ê°€ì… ì´ë²¤íŠ¸ ajax
+			//È¸¿ø°¡ÀÔ ÀÌº¥Æ® ajax
 			$.ajax({
 				type: 'post',
 				url:'/online-shopping-mall/MemberSignupServlet',
@@ -467,23 +467,23 @@ function searchInput(){
 					signup_addr_detail : signup_addr_detailValue
 				},
 				dataType: 'json',
-//		         ì•„ì´ë”” ì¤‘ë³µì²´í¬ë¶€
+//		         ¾ÆÀÌµğ Áßº¹Ã¼Å©ºÎ
 				success : function(result) {
 					if(result == 1){
 						$('#submit_span').removeClass('hidden');
 						$('#submit_span').addClass('box');
-						$('#submit_span').text('íšŒì›ê°€ì… ì™„ë£Œ!');
+						$('#submit_span').text('È¸¿ø°¡ÀÔ ¿Ï·á!');
 						$('#signup_submit_btn').css({"background-image":"linear-gradient(to bottom, #00FF4C, #4B8215)"});
 						$('#signup_submit_btn').attr("disabled","disabled");
 						regist_flag = 1;
 					}else{
 					$('#submit_span').addClass('box');
-					$('#submit_span').text('ì‹¤íŒ¨í•˜ì…¨ìŠµë‹ˆë‹¤.');
+					$('#submit_span').text('½ÇÆĞÇÏ¼Ì½À´Ï´Ù.');
 					$('#signup_submit_btn').css({"background-image":"linear-gradient(to bottom, red, red)"});
 					
 					}
 				}, error : function(){
-					console.log('ì‹¤íŒ¨');
+					console.log('½ÇÆĞ');
 				}
 			})	
 		}
@@ -502,12 +502,12 @@ function inputTransition(){
     });
 }
 
-//ë‹¤ìŒ ì£¼ì†Œê²€ìƒ‰ ì—°ë™
+//´ÙÀ½ ÁÖ¼Ò°Ë»ö ¿¬µ¿
 function openDaumZipAddress() {
-    // ìš°í¸ë²ˆí˜¸ ì°¾ê¸° í™”ë©´ì„ ë„£ì„ elementë¥¼ ì§€ì •
+    // ¿ìÆí¹øÈ£ Ã£±â È­¸éÀ» ³ÖÀ» element¸¦ ÁöÁ¤
     const element_wrap = document.getElementById("daumWrap");
 
-    // wrap ë ˆì´ì–´ê°€ offëœ ìƒíƒœë¼ë©´ ë‹¤ìŒ ìš°í¸ë²ˆí˜¸ ë ˆì´ì–´ë¥¼ open í•œë‹¤.
+    // wrap ·¹ÀÌ¾î°¡ offµÈ »óÅÂ¶ó¸é ´ÙÀ½ ¿ìÆí¹øÈ£ ·¹ÀÌ¾î¸¦ open ÇÑ´Ù.
     if($("#daumWrap").css("display") == "none") {
         new daum.Postcode({
             oncomplete:function(data) {
@@ -522,11 +522,11 @@ function openDaumZipAddress() {
 				sign_up_addr_flag = 1;
 
             }
-            // ì‚¬ìš©ìê°€ ê°’ì„ ì£¼ì†Œë¥¼ ì„ íƒí•´ì„œ ë ˆì´ì–´ë¥¼ ë‹«ì„ ê²½ìš°
-            // ë‹¤ìŒ ì£¼ì†Œë¡ ë ˆì´ì–´ë¥¼ ì™„ì „íˆ ì¢…ë£Œ ì‹œí‚¨ë‹¤.
+            // »ç¿ëÀÚ°¡ °ªÀ» ÁÖ¼Ò¸¦ ¼±ÅÃÇØ¼­ ·¹ÀÌ¾î¸¦ ´İÀ» °æ¿ì
+            // ´ÙÀ½ ÁÖ¼Ò·Ï ·¹ÀÌ¾î¸¦ ¿ÏÀüÈ÷ Á¾·á ½ÃÅ²´Ù.
             , onclose:function(state) {
                 if(state === "COMPLETE_CLOSE") {
-                    // ì½œë°±í•¨ìˆ˜ë¥¼ ì‹¤í–‰í•˜ì—¬ ìŠ¬ë¼ì´ë“œ ì—… ê¸°ëŠ¥ì´ ì‹¤í–‰ ì™„ë£Œí›„ ì‘ì—…ì„ ì§„í–‰í•œë‹¤.
+                    // Äİ¹éÇÔ¼ö¸¦ ½ÇÇàÇÏ¿© ½½¶óÀÌµå ¾÷ ±â´ÉÀÌ ½ÇÇà ¿Ï·áÈÄ ÀÛ¾÷À» ÁøÇàÇÑ´Ù.
                     offDaumZipAddress(function() {
                         element_wrap.style.display = "none";
                     });
@@ -534,13 +534,13 @@ function openDaumZipAddress() {
             }
         }).embed(element_wrap);
 
-        // ìŠ¬ë¼ì´ë“œ ë‹¤ìš´ ê¸°ëŠ¥ì„ ì´ìš©í•´ ë ˆì´ì–´ ì°½ì„ ì˜¤í”ˆí•œë‹¤.
+        // ½½¶óÀÌµå ´Ù¿î ±â´ÉÀ» ÀÌ¿ëÇØ ·¹ÀÌ¾î Ã¢À» ¿ÀÇÂÇÑ´Ù.
         $("#daumWrap").slideDown();
     }
     
-    // warp ë ˆì´ì–´ê°€ openëœ ìƒíƒœë¼ë©´ ë‹¤ìŒ ìš°í¸ë²ˆí˜¸ ë ˆì´ì–´ë¥¼ off ìƒíƒœë¡œ ë³€ê²½í•œë‹¤.
+    // warp ·¹ÀÌ¾î°¡ openµÈ »óÅÂ¶ó¸é ´ÙÀ½ ¿ìÆí¹øÈ£ ·¹ÀÌ¾î¸¦ off »óÅÂ·Î º¯°æÇÑ´Ù.
     else {
-        // ì½œë°±í•¨ìˆ˜ë¥¼ ì‹¤í–‰í•˜ì—¬ ìŠ¬ë¼ì´ë“œ ì—… ê¸°ëŠ¥ì´ ì‹¤í–‰ ì™„ë£Œí›„ ì‘ì—…ì„ ì§„í–‰í•œë‹¤.
+        // Äİ¹éÇÔ¼ö¸¦ ½ÇÇàÇÏ¿© ½½¶óÀÌµå ¾÷ ±â´ÉÀÌ ½ÇÇà ¿Ï·áÈÄ ÀÛ¾÷À» ÁøÇàÇÑ´Ù.
         offDaumZipAddress(function() {
             element_wrap.style.display = "none";
             return false;
@@ -549,7 +549,7 @@ function openDaumZipAddress() {
 }
 
 function offDaumZipAddress() {
-	// ìŠ¬ë¼ì´ë“œ ì—… ê¸°ëŠ¥ì„ ì´ìš©í•´ ë ˆì´ì–´ ì°½ì„ ë‹«ëŠ”ë‹¤.
+	// ½½¶óÀÌµå ¾÷ ±â´ÉÀ» ÀÌ¿ëÇØ ·¹ÀÌ¾î Ã¢À» ´İ´Â´Ù.
     $("#daumWrap").slideUp();
 
 }
