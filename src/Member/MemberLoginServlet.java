@@ -7,15 +7,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/MemberRegisterCheckServlet")
-public class MemberRegisterCheckServlet extends HttpServlet {
+@WebServlet("/MemberLoginServlet")
+public class MemberLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;charset=EUC-KR");
-		String userID = request.getParameter("userID");
-		response.getWriter().write(new MemberMgr().duplicationCheck(userID)+ "");
-	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id = request.getParameter("login_id");
+		String pwd = request.getParameter("login_pwd");
+		System.out.println(id);
+		System.out.println(pwd);
+		response.getWriter().write(new MemberMgr().login(id, pwd)+ "");
+	}
+	
 }

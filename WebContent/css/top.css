@@ -87,11 +87,8 @@ html{
 /*전체 컴포넌트 Wrapper 클래스(modal window 제외 Wrap)*/
 #top_wrapper{
     position: relative;
-    top: 0px;
     min-width: 1050px;
     box-sizing: border-box;
-    box-shadow:0px 8px 10px rgb(204,204,204, 0.5);
-
 }
 /*로고 이미지 position*/
 #homeLogo>img{
@@ -119,6 +116,10 @@ html{
 #modalDiv input:focus:-ms-input-placeholder { color: transparent; transition: .35s; }
 #modalDiv input:focus::-ms-input-placeholder { color: transparent;  transition: .35s;}
 
+
+.signup_long_input{
+	width: 350px !important;
+}
 #search_input{
     width: 446px;
     height: 40px;
@@ -191,7 +192,7 @@ html{
     cursor: pointer;
 }
 /*hover 시 색상 지정(아이콘, nav a 태그)*/
-.nav_a:hover, .fa-shopping-cart:hover, .fa-user:hover{
+.nav_a:hover, .fa-shopping-cart:hover, .fa-user:hover, .fa-sign-in-alt:hover{
     color: #FB9832;
 }
 /*hover 시 색상 지정(아이콘, nav a 태그)*/
@@ -204,15 +205,16 @@ html{
     font-family: 'noto_Bold';
 }
 /*font-awesome nav icon set*/
-.fa-shopping-cart, .fa-user{
+.fa-shopping-cart, .fa-user, .fa-sign-in-alt{
     font-size: 20px;
     margin-top: 13px;
     transition: .35s;
     cursor: pointer;
+    margin-right: 15px;
 }
 .fa-user{
-    margin-left: 0px;
-    margin-top: 0px;
+    margin-left: -30px;
+    margin-top: 15px;
 }
 
 
@@ -228,6 +230,9 @@ html{
     width: 177px;
     height: 0px;
     transition-duration: 0.5s;
+}
+#nav_start{
+	margin-left: 5%;
 }
 #nav_start:hover div{
     height: 134px;
@@ -320,6 +325,7 @@ input[id*='userPopup']{
     outline: none;
 }
 
+
 /*btn style wrapper*/
 .top_modal_button_style{
     border: none;
@@ -384,7 +390,7 @@ input[id*='userPopup']{
 #login_form > .login_input{
     box-sizing: border-box;
     height:50px;
-    margin-top:10px;
+    margin-top:20px;
     padding-left: 15px;
     padding-right: 15px;
     width: 100%;
@@ -401,7 +407,7 @@ input[id*='userPopup']{
     /* box-shadow: 0px 1.5px 0px 0px #EB984F; */
 }
 #login_form > #lost_id_pwd_wrapper{
-    margin-top:3px;
+    margin-top:7px;
     text-align: right;
     font-size: 13px;
 }
@@ -417,7 +423,7 @@ input[id*='userPopup']{
 
 
 #login_form > #login_submit_btn{
-    margin-top:30px;
+    margin-top:35px;
     width:100%;
     height:50px;
 }
@@ -454,8 +460,12 @@ input[id*='userPopup']{
     margin-bottom:10px;
     letter-spacing: 5px;
     color: #FB9832;
+    font-size: 35px;
 }
 
+#signup_form h3{
+	margin-top: 20px;
+}
 .signup_form_title{
     display: inline-block;
     font-size:14px;
@@ -481,6 +491,11 @@ input[id*='userPopup']{
     text-align:center;
 }
 .signup_util_btn > span{
+    font-size:11px;
+    font-weight: bolder;
+    color:#FFF;
+}
+#address_section_btn{
     font-size:11px;
     font-weight: bolder;
     color:#FFF;
@@ -568,3 +583,28 @@ zoom: 1;
 strong{
 	color: #0abde3;
 }
+#daumWrap{
+	position: absolute;
+	top:100px;
+	left: 120%;	
+	display:none;
+	border:1px solid #DDDDDD;
+	width:500px;
+	margin-top:5px;
+}
+
+@keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+.box {  
+    transition: opacity 2s linear;  
+    transform:translate(0);
+    opacity: 1;
+  }  
+  .hidden {  
+    transform:translate(9999px);
+    opacity: 0;  
+  }
