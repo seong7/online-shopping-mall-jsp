@@ -40,8 +40,8 @@ function init(){
     const login_form = document.getElementById('login_form');
 
      /** ¸ð´ÞÃ¢ ¿­¸² ´ÝÈû ±â´É **/
-    const session_id = "<%=id%>";
-    if(session_id==null){
+//    const session_id = "<%=id%>";
+
     userCheckBox.addEventListener('change', function(){
         modalInnerFrame.style.width = "0px";
         modalInnerFrame.style.height = "0px";
@@ -80,7 +80,12 @@ function init(){
         }
     });
 };
-}
+
+
+const mypage_btn = document.getElementById("mypage_btn");
+function btn_test(){
+	console.log('working');
+};
 
 
 

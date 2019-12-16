@@ -2,6 +2,7 @@
 <%
 		request.setCharacterEncoding("EUC-KR");
 		String id = (String)session.getAttribute("idKey");
+		id="ss";
 
 %>
 <!--<!DOCTYPE html>
@@ -142,7 +143,8 @@
 								</li>
 							<%}else{ %>
 								<li>
-									<a href="#"><i class="fas fa-user"></i></a> 
+									<!-- <a href="#" id="mypage_btn" onclick="mypage_btn()"><i class="fas fa-user" ></i></a>  -->
+									<button id="mypage_btn" onclick="btn_test()"><i class="fas fa-user" ></i></button> 
 								</li>
 								<li>
 									<a href="#"><i class="fas fa-shopping-cart"></i></a>
