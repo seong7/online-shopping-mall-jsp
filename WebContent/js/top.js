@@ -1,6 +1,12 @@
 
 const request = new XMLHttpRequest();
+const ctx = getContextPath();
 
+function getContextPath() {
+	const hostIndex = location.href.indexOf( location.host ) + location.host.length;
+	return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
+}
+console.log(ctx);
 const login_submit_btn  = document.querySelector('#login_submit_btn');
 
 const login_id_input  = document.querySelector('#login_id_input');
@@ -302,7 +308,7 @@ function searchInput(){
     $("#search_input").autocomplete({ 
             source : function( request, response ) {
                  const autoValues = $.ajax({
-                     url: "search.jsp", 
+                     url: ctx+"/search.jsp", 
                      dataType: "json",               
                      data: {
                           searchValue: encodeURIComponent(request.term)
@@ -347,7 +353,7 @@ function searchInput(){
 		console.log(userID);
 		$.ajax({
 			type: 'POST',
-			url:'/online-shopping-mall/MemberRegisterCheckServlet',
+			url:ctx+'/online-shopping-mall/MemberRegisterCheckServlet',
 			data: {userID: userID},
 //	         아이디 중복체크부
 			success : function(result) {
@@ -392,7 +398,7 @@ function searchInput(){
 		
 		$.ajax({
 			type: 'post',
-			url:'/online-shopping-mall/MemberLoginServlet',
+			url:ctx+'/online-shopping-mall/MemberLoginServlet',
 			data: {
 				login_id : login_id,
 				login_pwd : login_pwd
@@ -472,7 +478,7 @@ function searchInput(){
 			//회원가입 이벤트 ajax
 			$.ajax({
 				type: 'post',
-				url:'/online-shopping-mall/MemberSignupServlet',
+				url:ctx+'/online-shopping-mall/MemberSignupServlet',
 				data: {
 					signup_id_input : signup_section_inputValue,
 					signup_pwd_check : signup_pwdValue,
