@@ -427,12 +427,24 @@ input[id*='userPopup'] {
 .top_modal_button:focus {
   outline: none;
 }
-
+#address_section_btn{
+	color: white !important;
+}
 /*btn style wrapper*/
-.top_modal_button_style {
-  border: none;
+.top_modal_orange{
   background-image: -webkit-gradient(linear, left top, left bottom, from(#FD6F46), to(#FB9832));
   background-image: linear-gradient(to bottom, #FD6F46, #FB9832);
+}
+.top_modal_red{
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FF5342), to(#FF8576));
+  background-image: linear-gradient(to bottom, #FF5342, #FF8576);
+}
+.top_modal_green{
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#05c191), to(#26d97d));
+  background-image: linear-gradient(to bottom, #05c191, #26d97d);
+}
+.top_modal_button_style {
+  border: none;
   text-align: center;
   border-radius: 10px;
   background-repeat: repeat-y;
@@ -481,11 +493,13 @@ input[id*='userPopup'] {
 #modal_header > #login_btn_label {
   color: #f58b2e;
   margin-right: 20px;
+  transition: all .35s;
 }
 
 #modal_header > #signup_btn_label {
   color: #f58b2e;
   margin-left: 20px;
+  transition: all .35s;
 }
 
 #modal_header > #modal_header_span {
@@ -573,6 +587,7 @@ input[id*='userPopup'] {
       -ms-flex-direction: column;
           flex-direction: column;
   opacity: 0;
+  margin-left: -20px;
   /* justify-content: center; */
   /* text-align: center; */
 }
@@ -597,6 +612,14 @@ input[id*='userPopup'] {
   display: inline-block;
   font-size: 14px;
   min-width: 100px;
+}
+
+#signup_form h3{
+	font-size: 35px;
+	margin-top: 25px;
+}
+#login_form h3{
+	font-size: 35px;
 }
 
 #signup_submit_btn {
@@ -633,7 +656,7 @@ input[id*='userPopup'] {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   height: 40px;
-  margin-top: 10px;
+  margin-top: 13px;
   margin-left: 30px;
   padding-left: 15px;
   padding-right: 15px;
@@ -645,6 +668,10 @@ input[id*='userPopup'] {
   transition: all .35s;
 }
 
+
+.signup_long_input{
+	width: 360px;
+}
 #id_section, #address_section_header {
   min-width: 400px;
 }
@@ -677,26 +704,33 @@ input[id*='userPopup'] {
   clear: left;
   width: 100%;
 }
-
+/*item base setting*/
 .ui-autocomplete li.ui-menu-item {
   padding: 1px;
-  width: 524px;
+  width: 436px;
   background-color: #f4f4f4 !important;
 }
-
+/*item highlight setting*/
 .ui-menu-item .ui-menu-item-wrapper.ui-state-active {
   background: #cfcfcf !important;
   font-weight: bold !important;
   color: #000000 !important;
+  width: 436px;
+  padding-left: 5px;
   border: none;
+  padding: 0 7px 0 0;
 }
 
 .ui-menu-item a {
   text-decoration: none;
   display: block;
-  padding: .2em .4em;
   line-height: 1.5;
   zoom: 1;
+  width: 436px;
+}
+#daumWrap{
+	postion: absolute !important;
+	left: 150%;
 }
 
 /*inputform color*/
