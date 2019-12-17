@@ -1,0 +1,60 @@
+@charset "UTF-8";
+/* 폰트 추가*/
+/* 굵음 */
+@font-face {
+  font-family: 'ON_IGothic';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 일반 */
+@font-face {
+  font-family: 'Handon3gyeopsal600g';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+#mypage {
+  width: 80%;
+  font-family: "ON_IGothic";
+  padding-left: 50px;
+}
+
+#mypage table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  color: #333;
+}
+
+#mypage table td {
+  font-size: 16px;
+  height: 100px;
+  padding-top: 40px;
+}
+
+#mypage table .btn_td a {
+  text-decoration: none;
+  color: #333;
+}
+
+#mypage table .btn_td:hover a {
+  color: #fec084;
+}
+
+#mypage table #head_td {
+  height: 60px;
+  border-bottom: 0.5px solid #dcdbde;
+  padding-top: 0px;
+  font-size: 30px;
+}
+
+#mypage table .column_td {
+  border-bottom: 0.5px solid #dcdbde;
+  font-size: 20px;
+  height: 50px;
+  padding-top: 13px;
+}
+/*# sourceMappingURL=mypage_orderlist.css.map */

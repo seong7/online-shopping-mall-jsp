@@ -2,18 +2,18 @@
 /*/////  mills DB ////////*/
 /*///////////////////////*/
 
-/* millsdb »ý¼º */
+/* millsdb ìƒì„± */
 CREATE DATABASE if NOT EXISTS millsdb ;
 
-/* millsdb Á¢¼Ó */
+/* millsdb ì ‘ì† */
 USE millsdb;
 
 
 
-/***** member ¿µ¿ª ******/
+/***** member ì˜ì—­ ******/
 /************************/
 
-/* È¸¿øÅ×ÀÌºí */
+/* íšŒì›í…Œì´ë¸” */
 CREATE TABLE IF NOT EXISTS USER_TB(
 id CHAR(20),
 pwd CHAR(20) NOT NULL,
@@ -28,7 +28,7 @@ join_date DATE NOT NULL,
 PRIMARY KEY (id)
 )COLLATE='euckr_korean_ci';
 
-/* Á¢¼Ó°ü¸® Å×ÀÌºí  */
+/* ì ‘ì†ê´€ë¦¬ í…Œì´ë¸”  */
 CREATE TABLE IF NOT EXISTS PAGE_CONNECTION_TB(
 c_index INT auto_increment,
 c_id CHAR(20) NOT NULL,
@@ -40,7 +40,7 @@ ON UPDATE CASCADE ON DELETE CASCADE
 )COLLATE='euckr_korean_ci';
 
 
-/* °ü¸®ÀÚ Å×ÀÌºí */
+/* ê´€ë¦¬ìž í…Œì´ë¸” */
 CREATE TABLE IF NOT EXISTS MANAGER_TB(
 mgr_id CHAR(20),
 mgr_pwd CHAR(20) NOT NULL,
@@ -50,7 +50,7 @@ PRIMARY KEY(mgr_id)
 )COLLATE='euckr_korean_ci';
 
 
-/* °ü¸®Á¤Ã¥ Å×ÀÌºí */ 
+/* ê´€ë¦¬ì •ì±… í…Œì´ë¸” */ 
 CREATE TABLE IF NOT EXISTS POLICY_TB(
 pl_change_id CHAR(20),
 pl_point_rate INT(2) NOT NULL,
@@ -60,7 +60,7 @@ ON UPDATE cascade
 )COLLATE='euckr_korean_ci';
 
 
-/* °øÁö»çÇ× Å×ÀÌºí */
+/* ê³µì§€ì‚¬í•­ í…Œì´ë¸” */
 CREATE TABLE IF NOT EXISTS NOTICE_TB(
 n_index INT auto_increment,
 n_id CHAR(20) NOT NULL,
@@ -76,7 +76,7 @@ ON UPDATE CASCADE ON DELETE CASCADE
 )COLLATE='euckr_korean_ci';
 
 
-/* Áú¹® Å×ÀÌºí */
+/* ì§ˆë¬¸ í…Œì´ë¸” */
 CREATE TABLE IF NOT EXISTS QUESTION_TB(
 q_index INT AUTO_increment,
 q_id CHAR(20) NOT NULL,
@@ -91,7 +91,7 @@ FOREIGN KEY(q_id) REFERENCES user_tb(id)
 ON UPDATE CASCADE ON DELETE CASCADE
 )COLLATE='euckr_korean_ci';
 
-/* ´äº¯ Å×ÀÌºí */
+/* ë‹µë³€ í…Œì´ë¸” */
 CREATE TABLE IF NOT EXISTS ANSWER_TB(
 q_index INT,
 a_index INT,
@@ -109,9 +109,9 @@ ON UPDATE CASCADE ON DELETE CASCADE
 
 
 /*************************/
-/***** product ¿µ¿ª ******/
+/***** product ì˜ì—­ ******/
 
-/* Á¦Ç°¸¶½ºÅÍ Å×ÀÌºí */
+/* ì œí’ˆë§ˆìŠ¤í„° í…Œì´ë¸” */
 CREATE TABLE IF NOT EXISTS PRODUCT_MST_TB(
 p_code INT AUTO_INCREMENT,
 p_name CHAR(30) NOT NULL,
@@ -128,7 +128,7 @@ PRIMARY KEY(p_code)
 )COLLATE='euckr_korean_ci';
 
 
-/* Àç°í Å×ÀÌºí */
+/* ìž¬ê³  í…Œì´ë¸” */
 CREATE TABLE IF NOT EXISTS STOCK_TB(
 p_code INT,
 st_exp_date DATE,
@@ -141,14 +141,14 @@ ON UPDATE CASCADE ON DELETE CASCADE
 )COLLATE='euckr_korean_ci';
 
 
-/* ¿øÀç·á Å×ÀÌºí */
+/* ì›ìž¬ë£Œ í…Œì´ë¸” */
 CREATE TABLE if NOT EXISTS RAWMATERIAL_TB(
 rm_code INT AUTO_INCREMENT,
 rm_name CHAR(20) NOT NULL,
 PRIMARY KEY(rm_code)
 )COLLATE='euckr_korean_ci';
 
-/* ¿øÀç·á ÇÔ·®À² Å×ÀÌºí */
+/* ì›ìž¬ë£Œ í•¨ëŸ‰ìœ¨ í…Œì´ë¸” */
 CREATE TABLE IF NOT EXISTS RM_PCT_TB(
 p_code INT,
 rm_code INT,
@@ -164,10 +164,10 @@ ON UPDATE CASCADE ON DELETE CASCADE
 
 
 /*************************/
-/***** order ¿µ¿ª *******/
+/***** order ì˜ì—­ *******/
 
 
-/* ÅëÇÕ ÁÖ¹® Å×ÀÌºí */
+/* í†µí•© ì£¼ë¬¸ í…Œì´ë¸” */
 CREATE TABLE IF NOT EXISTS ORDER_TB(
 o_index INT AUTO_INCREMENT,
 o_id CHAR(20) NOT NULL,
@@ -192,7 +192,7 @@ ON UPDATE CASCADE ON DELETE CASCADE
 )COLLATE='euckr_korean_ci';
 
 
-/* ÁÖ¹® »ó¼¼ Å×ÀÌºí */
+/* ì£¼ë¬¸ ìƒì„¸ í…Œì´ë¸” */
 CREATE TABLE IF NOT EXISTS ORDER_DETAIL_TB(
 o_index INT,
 p_code INT,
@@ -205,7 +205,7 @@ ON UPDATE CASCADE ON DELETE CASCADE
 )COLLATE='euckr_korean_ci';
 
 
-/* ¸®ºä Å×ÀÌºí */
+/* ë¦¬ë·° í…Œì´ë¸” */
 CREATE TABLE IF NOT EXISTS REVIEW_TB(
 o_index INT,
 p_code INT,
@@ -220,7 +220,7 @@ ON UPDATE CASCADE ON DELETE CASCADE
 )COLLATE='euckr_korean_ci';
 
 
-/* Àå¹Ù±¸´Ï Å×ÀÌºí */
+/* ìž¥ë°”êµ¬ë‹ˆ í…Œì´ë¸” */
 CREATE TABLE IF NOT EXISTS CART_TB(
 id CHAR(20),
 p_code INT,
@@ -233,7 +233,7 @@ ON UPDATE CASCADE ON DELETE CASCADE
 )COLLATE='euckr_korean_ci';
 
 
-/* Æ÷ÀÎÆ® ³»¿ª Å×ÀÌºí */
+/* í¬ì¸íŠ¸ ë‚´ì—­ í…Œì´ë¸” */
 CREATE TABLE IF NOT EXISTS POINT_TB(
 pt_index INT,
 id CHAR(20) NOT NULL,
@@ -250,7 +250,7 @@ ON UPDATE CASCADE ON DELETE CASCADE
 )COLLATE='euckr_korean_ci';
 
 
-/* ¹ÝÇ° Å×ÀÌºí */
+/* ë°˜í’ˆ í…Œì´ë¸” */
 CREATE TABLE IF NOT EXISTS RETURN_TB(
 o_index INT,
 p_code INT,
