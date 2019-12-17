@@ -80,7 +80,33 @@ public class ProductMgr {
 		}
 		return vlist;
 	}
-	
+	//model name list(for search bar ajax)
+	public Vector<String> getProductList(String searchValue) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Vector<String> vlist = new Vector<String>();
+		String sql = null;
+		System.out.println("searchdata :" +searchValue);
+		try {
+			con = pool.getConnection();
+			sql = "select p_name from PRODUCT_MST_TB where p_name like ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%"+searchValue+"%");
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				vlist.add(rs.getString(1));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		for(int z = 0; z<vlist.size();z++) {
+			System.out.print("vlist : " + vlist.get(z));
+		}
+		return vlist;
+	}
 	//bestlist
 	//reviewlist
 	//priceuplist

@@ -36,7 +36,7 @@ public class MemberMgr {
 		return -1;
 	}
 	//INSERT INTO `user_tb` (`id`, `pwd`, `NAME`, `birthday`, `email`, `contact`, `zipcode`, `address`, `address_detail`, `join_date`) VALUES
-	public int signup_user(UserBean bean) {
+	public int signup_user(MemberBean bean) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
