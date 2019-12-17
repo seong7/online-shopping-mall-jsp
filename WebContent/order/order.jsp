@@ -1,9 +1,14 @@
 <!-- 사용자 주문서 page -->
+<%@page import="Product.ProductBean"%>
+<%@page import="Order.CartMgr"%>
+<%@page import="Order.CartBean"%>
+<%@page import="java.util.Vector"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <%request.setCharacterEncoding("EUC-KR");%>
 <jsp:useBean id="memberMgr" class="Member.MemberMgr"/>
 <jsp:useBean id="pMgr" class="Product.ProductMgr"/>
 <jsp:useBean id="oMgr" class="Order.OrderMgr"/>
+<jsp:useBean id="cMgr" class="Order.CartMgr"/>
 
 <%
 		String id = (String)session.getAttribute("idKey");
@@ -24,14 +29,38 @@
 		<td>상품정보</td>
 	</tr>
 	<tr>
-		<td>상품정보</td>
+		<td colspan="2">상품정보</td>
+		<td>상품수량</td>
 		<td>상품금액</td>
 	</tr>
-	<tr>
 		<%
-			/* 상품정보 가져오기  */
+			Vector<CartBean> vlist = cMgr.getCart("u1");
+			if(vlist.isEmpty()){
 		%>
+		<tr> 
+			<tr>
+				<td colspan="4">
+				주문하신 물품이 없습니다.
+				</td>
+			</tr>
+		<%
+			}
+			for(int i=0; i<vlist.size(); i++){
+				CartBean cart = vlist.get(i);
+				int p_code = cart.getP_code();
+				ProductBean pbean = pMgr.getProduct(p_code);
+		%>
+	<tr>
+		<td>
+		<img alt="제품사진" src="/img/product_sample/prod_sample1.PNG">
+		</td>
+		<td><%=pbean.getP_name() %></td>
+		<td><%=cart.getC_qty() %></td>
+		<td><%=pbean.getP_price() %></td>
 	</tr>
+	<%
+			}
+		%>
 </table>
 <hr/>
 <table>

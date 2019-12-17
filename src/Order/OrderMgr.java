@@ -125,6 +125,8 @@ public class OrderMgr {
 		return vlist;
 	}
 	
+	
+	
 
 	//***Admin 기능설계***
 	//All List

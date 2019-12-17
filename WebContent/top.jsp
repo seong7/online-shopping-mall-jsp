@@ -4,12 +4,13 @@
 		String id = (String)session.getAttribute("idKey");
 
 %>
+
 <!--<!DOCTYPE html>
 <html>
 	<head>-->
 		<meta charset="EUC-KR">
-		<link rel="stylesheet" type="text/css" href="c:\Jsp\online-shopping-mall-jsp\WebContent\css\reset.css">
-		<link rel="stylesheet" href="c:\Jsp\online-shopping-mall-jsp\WebContent\css\top.css">
+		<link rel="stylesheet" type="text/css" href= "${pageContext.request.contextPath}/css/reset.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/top.css">
 		<script src="https://kit.fontawesome.com/115bcf1f34.js" crossorigin="anonymous"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -84,7 +85,7 @@
 	            </div>
 	            <!--로고 이미지 Div-->
 	            <div id="homeLogo">
-	                <img src="img/index/logo/mills_logo.png" alt="이미지 로딩 불가!">
+	                <img src="${pageContext.request.contextPath}/img/index/logo/mills_logo.png" alt="이미지 로딩 불가!">
 	                <!--LOGO-->
 	            </div>
 	            <div id="search_div">
@@ -142,13 +143,13 @@
 								</li>
 							<%}else{ %>
 								<li>
-									<a href="#"><i class="fas fa-user"></i></a> 
+									<a href="#"><i class="fas fa-user"></i></a>
 								</li>
 								<li>
 									<a href="#"><i class="fas fa-shopping-cart"></i></a>
 								</li>
 								<li>
-										<a href="#"><i class="fas fa-sign-in-alt"></i></a>
+									<a href="#"><i class="fas fa-sign-in-alt"></i></a>
 								</li>
 							<%} %>
 							</ul>
@@ -159,7 +160,7 @@
 	</div>
 
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script type="text/javascript" src="c:\Jsp\online-shopping-mall-jsp\WebContent\js\top.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/top.js"></script>
 
 <!-- </body>    --- index.jsp 에서 닫아줌
 </html> -->

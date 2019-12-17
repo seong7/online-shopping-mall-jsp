@@ -8,12 +8,15 @@
 <jsp:useBean id="pMgr" class="Product.ProductMgr"/>
 <%
 		String id = (String)session.getAttribute("idKey");
+		String msg = "";
 		/* if(session.getAttribute("idKey")==null){
-			String msg = "로그인이 필요한 페이지 입니다.";
-			response.sendRedirect("/online-shopping-mall/index.jsp");
+			msg="로그인이 필요한 페이지 입니다.";
 		} */
 %>
-
+<script>
+	//alert("<%=msg%>");
+	location.href = "../index.jsp";
+</script>
 <jsp:include page="../top.jsp"/>
 <style>
 table {border: 1px solid; border-collapse:collapse; 
@@ -70,7 +73,9 @@ thead{background:lightgray;}
 			}//---for
 		}//---else
 		%>
+		
 </table>
+		<jsp:include page="../bottom.jsp"/>
 </body>
 </html>
 
