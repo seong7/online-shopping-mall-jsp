@@ -3,7 +3,7 @@
 #### Commit 규칙
 <ol>
  <li>
-  작업 전과 완료 후(push 전), 항상 최신 버전의 origin/master 를 fetch 하여 업데이트 여부 확인
+  작업 전과 완료 후(push 전), 항상 최신 버전의 origin/dev 를 fetch 하여 업데이트 여부 확인
   <ul>
     <li>명령어 : git fetch origin</li>
   </ul>
@@ -11,7 +11,7 @@
  <li>
   origin/master의 업데이트가 있을 경우, 우선 local branch 와 merge 하기
   <ul>
-   <li>명령어 : git merge 로컬브랜치명 origin/master</li>
+   <li>명령어 : git merge 로컬브랜치명 origin/dev</li>
   </ul>
  </li>
  <li>
