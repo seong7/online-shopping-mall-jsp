@@ -28,7 +28,7 @@
 <link rel="stylesheet" type="text/css" href="./css/mypage_orderlist.css">
 <jsp:include page="../top.jsp"/>
 
-<div id="main">
+
 	<jsp:include page="./mypage_aside.jsp"/>
 	
 	
