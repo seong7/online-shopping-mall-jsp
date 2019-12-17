@@ -1,5 +1,11 @@
+<%@ page contentType="text/html; charset=EUC-KR"%>
+<%
+		request.setCharacterEncoding("EUC-KR");
+		
+%>
+
 <!-- 사용자 주문서 page -->
-<%@page import="Order.UtilMgr"%>
+<%@page import="Product.UtilMgr"%>
 <%@page import="Order.OrderBean"%>
 <%@page import="Member.MemberBean"%>
 <%@page import="Product.ProductBean"%>
@@ -7,7 +13,6 @@
 <%@page import="Order.CartBean"%>
 <%@page import="java.util.Vector"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
-<%request.setCharacterEncoding("EUC-KR");%>
 <jsp:useBean id="mMgr" class="Member.MemberMgr"/>
 <jsp:useBean id="pMgr" class="Product.ProductMgr"/>
 <jsp:useBean id="oMgr" class="Order.OrderMgr"/>
@@ -19,15 +24,20 @@
 		int shippingPrice = 2500;
 %>
 
-
+<!-- 
 <!DOCTYPE html>
 <html>
 <title>주문서</title>
 <head>
-<script type="text/javascript" src="js/order.js"></script>
-<link rel="stylesheet" type="text/css" href="css/order.css"/>
 </head>
 <body>
+ -->
+<link rel="stylesheet" type="text/css" href="../css/index.css">
+<script type="text/javascript" src="js/order.js"></script>
+<link rel="stylesheet" type="text/css" href="css/order.css"/>
+
+<jsp:include page="../top.jsp"/>
+<main>
 <h2>주문서</h2>
 
 
@@ -152,17 +162,17 @@
 	<tr>
 		<td>상품금액&nbsp;&nbsp;&nbsp;</td>
 		<td><input name="o_prod_amount" readonly size="13" 
-		value="<%=UtilMgr.intFormat(priceTotal) %>">원</td>
+		value="<%=priceTotal%>">원</td>
 	</tr>
 	<tr>
 		<td>배송비&nbsp;&nbsp;&nbsp;</td>
 		<td><input name="o_del_fee" readonly size="13" 
-		value="<%=UtilMgr.intFormat(shippingPrice) %>">원</td>
+		value="<%=shippingPrice%>">원</td>
 	</tr>
 	<tr>
 		<td>최종결재금액&nbsp;&nbsp;&nbsp;</td>
 		<td><input name="o_total_amount" readonly size="13" 
-		value="<%=UtilMgr.intFormat(priceTotal+shippingPrice) %>">원</td>
+		value="<%=priceTotal+shippingPrice%>">원</td>
 	</tr>
 	<tr>
 		<td>구매시 <%=UtilMgr.intFormat(priceTotal)%>원(5%)적립예정</td>
@@ -238,6 +248,7 @@
 <hr>
 	<input type="submit" value="결재완료" onclick="agreement()">
 </form>
+</main>
 </body>
 </html>
 
