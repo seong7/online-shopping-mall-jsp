@@ -152,17 +152,17 @@
 	<tr>
 		<td>상품금액&nbsp;&nbsp;&nbsp;</td>
 		<td><input name="o_prod_amount" readonly size="13" 
-		value="<%=UtilMgr.intFormat(priceTotal) %>">원</td>
+		value="<%=priceTotal%>">원</td>
 	</tr>
 	<tr>
 		<td>배송비&nbsp;&nbsp;&nbsp;</td>
 		<td><input name="o_del_fee" readonly size="13" 
-		value="<%=UtilMgr.intFormat(shippingPrice) %>">원</td>
+		value="<%=shippingPrice%>">원</td>
 	</tr>
 	<tr>
 		<td>최종결재금액&nbsp;&nbsp;&nbsp;</td>
 		<td><input name="o_total_amount" readonly size="13" 
-		value="<%=UtilMgr.intFormat(priceTotal+shippingPrice) %>">원</td>
+		value="<%=priceTotal+shippingPrice%>">원</td>
 	</tr>
 	<tr>
 		<td>구매시 <%=UtilMgr.intFormat(priceTotal)%>원(5%)적립예정</td>
