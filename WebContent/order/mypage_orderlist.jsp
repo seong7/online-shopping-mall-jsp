@@ -29,22 +29,22 @@
 <jsp:include page="../top.jsp"/>
 
 
-	<jsp:include page="./mypage_aside.jsp"/>
+	<jsp:include page="./mypage_side.jsp"/>
 	
 	
 	<div id="mypage">
-		<table>
+		<table id="mypage_table">
 			<thead>
 			<tr>
-				<td colspan="5">주문내역</td>
+				<td id="head_td" colspan="5">주문내역</td>
 			</tr>
 			</thead>
-			<tr>
-				<td>주문번호</td>
-				<td>제품명</td>
-				<td>주문날짜</td>
-				<td>주문상태</td>
-				<td>주문방법</td>
+			<tr id="column_tr">
+				<td class="column_td">주문번호</td>
+				<td class="column_td">제품명</td>
+				<td class="column_td">주문날짜</td>
+				<td class="column_td">주문상태</td>
+				<td class="column_td">주문방법</td>
 			</tr>
 		<!-- 주문내역 가져오기 -->
 				<%
@@ -69,8 +69,8 @@
 							ProductBean pbean = pMgr.getProduct(p_code);
 				%>			
 				<tr>
-					<td><%=order.getO_index() %></td>
-					<td><%=pbean.getP_name()%></td>
+					<td class="btn_td"><a href="#"><%=order.getO_index() %></a></td>
+					<td class="btn_td"><a href="#"><%=pbean.getP_name()%></a></td>
 					<td><%=order.getO_date()%></td>
 					<td><%=order.getO_status()%></td>
 					<td><%=order.getO_pay_method()%></td>
@@ -83,7 +83,8 @@
 				
 		</table>
 	</div>
-</div>
+</div> <!--  #btn_mypage_wrapper (버튼메뉴 + mypage) : mypage_side.jsp 에서 열림-->
+</div> <!-- #main (상단요약 + 버튼 + mypage) : mypage_side.jsp 에서 열림-->
 		<jsp:include page="../bottom.jsp"/>
 </body>
 </html>

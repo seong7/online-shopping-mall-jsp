@@ -185,7 +185,7 @@ o_pay_method CHAR(10) NOT NULL,
 o_mgr_note CHAR(50) NOT NULL default '',
 o_status CHAR(10) NOT NULL default '',
 o_del_num CHAR(25) NOT NULL default '',
-o_del_date DATE NOT NULL,
+o_del_date DATE,  /* NULL 허용하도록 수정 */
 PRIMARY KEY(o_index),
 FOREIGN KEY(o_id) REFERENCES USER_TB(id)
 ON UPDATE CASCADE ON DELETE CASCADE

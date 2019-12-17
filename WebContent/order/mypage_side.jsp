@@ -4,7 +4,7 @@
 %>
 
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/order/css/mypage_aside.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/order/css/mypage_side.css">
 <script src="https://kit.fontawesome.com/115bcf1f34.js" crossorigin="anonymous"></script>
   
   	<!-- top, bottom 제외 페이지 전체-->
@@ -115,4 +115,6 @@
         </div>   <!-- #btn_wrapper -->
 
 
-    <!-- </div>   #btn_mypage_wrapper (버튼메뉴 + mypage) -->
+    <!-- </div>   #btn_mypage_wrapper (버튼메뉴 + mypage) : 하위 페이지에서 닫아야함-->
+    
+   <!-- </div>  #main (상단요약 + 버튼 + mypage) : 하위페이지에서 닫아야함-->

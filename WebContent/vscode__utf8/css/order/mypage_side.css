@@ -49,12 +49,12 @@
           flex-direction: row;
   width: 100%;
   height: 100%;
-  min-height: 800px;
+  min-height: 600px;
 }
 
 #main #btn_mypage_wrapper #btn_wrapper {
   height: 100%;
-  min-height: 800px;
+  min-height: 600px;
   width: 150px;
 }
 
@@ -210,4 +210,4 @@
 #mypage_summ #mypage_summ_ul li:first-of-type {
   border-left: none;
 }
-/*# sourceMappingURL=mypage_aside.css.map */
+/*# sourceMappingURL=mypage_side.css.map */
