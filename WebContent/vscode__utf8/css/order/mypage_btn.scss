@@ -1,0 +1,109 @@
+@import '../../font/font-family';
+$brandFont: 'ON_IGothic';
+$testFont: 'Handon3gyeopsal600g';
+$brandColor: #fec084;
+
+
+/*************************/
+/***** 메뉴 버튼 부분 *****/
+/*************************/
+#mypage_btn_wrapper{
+
+    /****  위치 다시 잡기 (html 전체 기준임) ****/
+    top: 400px;
+    left: 50px;
+
+
+    display: inline-block;
+    position: fixed;
+    border: 0.5px solid #dcdbde;
+    border-radius: 5px;
+    font-family: $brandFont;
+    font-size: 14px;
+    ul{
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-items: center;
+        margin: 0px;
+        padding: 0px;
+        a{
+            text-decoration: none;
+            li{
+                display: block;
+                position: relative;
+                list-style: none;
+                padding-top: 30px;
+                padding-bottom: 30px;
+                padding-left: 20px;
+                padding-right: 50px;
+                // border-top: 0.5px solid $brandColor;
+                color: gray;
+                transition: all 0.3s;
+                
+                .icon{
+                    position: absolute;
+                    top: 32px;
+                    right: 10px;
+                }
+                &:hover{
+                    background-color: #f3f3f5;
+                    color: #EB7A36;
+                    i{
+                        transform: rotate(0.5turn);
+                        transition: all 0.2s;
+                    }
+                }
+            }
+           
+        }
+    }
+}
+
+#btn_first{
+    li:first-of-type{
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+}
+#btn_last{
+    li:first-of-type{
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}
+
+
+
+/**********************/
+/***** 요약창 부분 *****/
+/**********************/
+#mypage_summ{
+    margin-top: 100px;
+    margin-left: 300px;
+    display: inline-block;
+    ul{
+        display: flex;
+        flex-direction: row;
+        border: 0.5px solid #dcdbde;
+        border-radius: 3px;
+        margin: 0px;
+        padding: 0px;
+        background-color: rgba(254, 192, 132,0.4);
+        
+        li{
+            list-style: none;
+            border-left: 0.5px solid #dcdbde;
+            div{
+                width: 150px;
+                height: 50px;
+            }
+        }
+    }
+    
+    #mypage_summ_ul{
+        li:first-of-type{
+            border-left: none;
+        }
+    }
+}

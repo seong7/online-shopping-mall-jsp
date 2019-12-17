@@ -46,7 +46,7 @@ $normalFont: 'ON_IGothic';
             #middle{
                 font-size: 30px;
                 margin-bottom: 30px;
-                color: #333;
+                color: $titleColor;
             }
             #bottom{
                 display: inline-block;
