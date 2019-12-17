@@ -1,8 +1,8 @@
 function paymentMethod(value){//결제방법 변경 시 입력창 변경 
-		if(value=='1'){tr1.style.display = '';
+		if(value=='신용카드'){tr1.style.display = '';
 			tr2.style.display = 'none';
 		}
-		else if(value=='2'){
+		else if(value=='휴대폰'){
 			tr1.style.display = 'none';
 			tr2.style.display = '';
 		}

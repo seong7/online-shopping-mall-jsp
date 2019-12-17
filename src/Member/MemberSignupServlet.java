@@ -40,8 +40,20 @@ public class MemberSignupServlet extends HttpServlet {
 		String zipcode = request.getParameter("address_section_zipcode");
 		String address = request.getParameter("signup_addr");
 		String address_detail = request.getParameter("signup_addr_detail");
+
+		System.out.println(id);
+		System.out.println(pwd);
+		System.out.println(NAME);
+		System.out.println(birthday);
+		System.out.println(email);
+		System.out.println(contact);
+		System.out.println(zipcode);
+		System.out.println(address);
+		System.out.println(address_detail);
 		
+
 		String join_date = format.format(cal.getTime());
+      
 		MemberBean bean = new MemberBean();
 		bean.setId(id);
 		bean.setPwd(pwd);
@@ -57,7 +69,7 @@ public class MemberSignupServlet extends HttpServlet {
 		int result = mgr.signup_user(bean);
 		if(result == 1) {
 				session.setAttribute("idKey", bean.getId());
-				System.out.println("세션에 id를 저장하였습니다(idKey : "+bean.getId()+")");
+				System.out.println(" id(idKey : "+bean.getId()+")");
 				response.getWriter().write(result+ "");
 			}
 		}
