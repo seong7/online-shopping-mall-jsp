@@ -9,12 +9,12 @@
 <%
 		String id = (String)session.getAttribute("idKey");
 		String msg = "";
-		if(session.getAttribute("idKey")==null){
+		/* if(session.getAttribute("idKey")==null){
 			msg="로그인이 필요한 페이지 입니다.";
-		}
+		} */
 %>
 <script>
-	alert("<%=msg%>");
+	//alert("<%=msg%>");
 	location.href = "../index.jsp";
 </script>
 <jsp:include page="../top.jsp"/>
