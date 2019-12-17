@@ -9,12 +9,21 @@
 }
 
 /* 일반 */
+@font-face {
+  font-family: 'Handon3gyeopsal600g';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
 main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
+  max-width: 1050px;
   min-width: 1050px;
+  width: 1050px;
+  margin: 0 auto;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -28,7 +37,7 @@ main .goodslist_tit {
   margin-top: 100px;
   margin-bottom: 60px;
   text-align: center;
-  width: 100%;
+  width: 1050px;
   font-family: "ON_IGothic";
 }
 
@@ -46,7 +55,7 @@ main .goodslist_tit .goodslist_detail {
 }
 
 main ul {
-  width: 100%;
+  width: 1050px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -64,7 +73,7 @@ main ul li {
 main ul li img {
   width: 249px;
   height: 320px;
-  max-width: 100%;
+  max-width: 1050px;
 }
 
 main ul li img:hover {

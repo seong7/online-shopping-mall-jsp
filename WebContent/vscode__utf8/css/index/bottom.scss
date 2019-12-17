@@ -13,12 +13,13 @@ $normalFont: 'ON_IGothic';
     box-shadow:10px -5px 10px rgba(204,204,204, 0.5);
     width: 100%;
     min-width: 1050px;
+    // z-index: 10;
     ul{
         width: 1050px;
         height: 200px;
         padding: 0px;
         padding-top: 10px;
-        padding-bottom: 50px;
+        padding-bottom: 30px;
         display: flex;
         flex-direction: row;
         // border: 1px solid gray;

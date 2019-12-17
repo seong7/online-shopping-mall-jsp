@@ -1,0 +1,31 @@
+#main{
+	min-height: 500px;
+	max-width: 1050px;
+	min-widh: 1050px;
+	width: 1050px;
+	margin:0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+}
+
+#mypage{
+	
+}
+
+
+table {
+	border: 1px solid;
+	border-collapse:collapse; 
+	width: 70%;
+	text-align:center;
+}
+
+td{
+	border: 1px solid;
+}
+
+thead{
+	background:lightgray;
+}
