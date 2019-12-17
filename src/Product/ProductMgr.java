@@ -3,6 +3,7 @@ package Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Vector;
 
 
@@ -78,14 +79,13 @@ public class ProductMgr {
 			pool.freeConnection(con, pstmt, rs);
 		}
 		return vlist;
-	}
+	}	
 	
-	//bestlist
 	//reviewlist
 	//priceuplist
 	//pricedownlist
 	//searchlist
 	//product insert
-	//Product Insert
+	
 
 }

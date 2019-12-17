@@ -12,6 +12,7 @@ public class ProductBean {
 	private int p_info_pht_size;
 	private String p_date;
 	private int p_on_sale;
+	private int st_ava_qty;
 	
 	public int getP_code() {
 		return p_code;
@@ -78,6 +79,12 @@ public class ProductBean {
 	}
 	public void setP_on_sale(int p_on_sale) {
 		this.p_on_sale = p_on_sale;
+	}
+	public int getSt_ava_qty() {
+		return st_ava_qty;
+	}
+	public void setSt_ava_qty(int st_ava_qty) {
+		this.st_ava_qty = st_ava_qty;
 	}
 	
 	

@@ -1,20 +1,21 @@
-<!-- goods_insert.jsp -->
-<%@page import="java.sql.Date"%>
+<!-- goods_update.jsp  -->
+<%@page import="Product.ProductBean"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
-<%
-	request.setCharacterEncoding("EUC-KR");
-%>
+<jsp:useBean id="pMgr" class="Product.ProductMgr"/>
+<%request.setCharacterEncoding("EUC-KR");%>
+
 <html>
 <head>
-<title>-관리자-제품 등록</title>
+<title>-관리자-제품 수정</title>
 <script src="script.js"></script>
 </head>
 <body topmargin="100">
-	<form method="post" action="goods_Proc.jsp?flag=insert"
+<%
+	int no = Integer.parseInt(request.getParameter("p_code"));
+	ProductBean product = pMgr.getProduct(no);
+%>
+	<form method="post" action="goods_insertProc.jsp?flag=update"
 		enctype="multipart/form-data">
-		<!-- enctype="multipart/form-data" 일때에는 post방식으로 보낸다. 
-	대신에 action을 통해서 action="productProc.jsp?flag=insert" 를 해줘야한다.-->
-
 		<h3>기본정보</h3>
 		<table width="75%">
 			<tr>
@@ -23,20 +24,26 @@
 
 						<tr>
 							<td align="center">제품코드</td>
-							<td align="left"><input name="p_code" size="20"></td>
+							<td align="left"><input name="p_code" size="20">
+							<%=product.getP_code() %>
+							</td>
 						</tr>
 						<tr>
 							<td align="center">제품명</td>
-							<td align="left"><input name="p_name" size="20"></td>
+							<td align="left"><input name="p_name" size="20">
+							<%=product.getP_name() %>
+							</td>
 						</tr>
 						<tr>
 							<td align="center">제품가격</td>
-							<td align="left"><input name="p_price" size="20">원</td>
+							<td align="left"><input name="p_price" size="20">
+							<%=product.getP_price() %>>원							
+							</td>
 						</tr>
 						<tr>
 							<td align="center">판매여부</td>
 							<td align="left"><input type="checkbox" name="p_on_sale" value="0" checked>판매
-								<input type="checkbox" name="p_on_sale" value="1">숨기기</td>
+							<input type="checkbox" name="p_on_sale" value="1">숨기기</td>
 						</tr>						
 						
 						<tr>
@@ -70,22 +77,25 @@
 					<table width="75%" align="left" width="95%" border="1">
 						<tr>
 							<td align="center">메인이미지</td>
-							<td><input type="file" name="upFile1"></td>
+							<td><input type="file" name="upFile1">
+							<%=product.getP_main_pht_name()%></td>
 						</tr>
 						<tr>
 							<td align="center">설명이미지</td>
-							<td><input type="file" name="upFile2"></td>
+							<td><input type="file" name="upFile2">
+							<%=product.getP_detail_pht_name() %></td>
 						</tr>
 						<tr>
 							<td align="center">상세이미지</td>
-							<td><input type="file" name="upFile3"></td>							
+							<td><input type="file" name="upFile3">
+							<%=product.getP_info_pht_name() %></td>
 						</tr>
 					</table>
 				</td>
 			</tr>
 		</table>
-		<input type="submit" value="상품등록">&nbsp;&nbsp;&nbsp; <input
-			type="reset" value="다시쓰기">
+		<input type="submit" value="제품수정">&nbsp;&nbsp;&nbsp; 
+		<input type="reset" value="다시쓰기">
 	</form>
 </body>
 </html>
