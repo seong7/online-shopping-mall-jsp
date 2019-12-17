@@ -37,7 +37,7 @@ public class OrderMgr {
 				pstmt.setString(5, order.getO_recpt_add());
 				pstmt.setString(6, order.getO_recpt_add_det());
 				pstmt.setString(7, order.getO_del_msg());
-				pstmt.setString(8, order.getO_date());
+				pstmt.setString(8, UtilMgr.getDay());
 				pstmt.setInt(9, order.getO_prod_amount());
 				pstmt.setInt(10, order.getO_del_fee());
 				pstmt.setInt(11, order.getO_total_amount());

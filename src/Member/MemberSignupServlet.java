@@ -53,7 +53,7 @@ public class MemberSignupServlet extends HttpServlet {
 		
 		
 		String join_date = format.format(cal.getTime());;
-		UserBean bean = new UserBean();
+		MemberBean bean = new MemberBean();
 		bean.setId(id);
 		bean.setPwd(pwd);
 		bean.setNAME(NAME);
