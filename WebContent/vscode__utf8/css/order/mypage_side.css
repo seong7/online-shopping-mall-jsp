@@ -60,6 +60,9 @@
 
 #main #btn_mypage_wrapper #mypage {
   height: 100%;
+  width: 80%;
+  font-family: "ON_IGothic";
+  padding-left: 50px;
 }
 
 /*************************/
