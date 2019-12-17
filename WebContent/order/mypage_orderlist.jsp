@@ -9,18 +9,21 @@
 <%
 		String id = (String)session.getAttribute("idKey");
 		String msg = "";
+
 		//if(session.getAttribute("idKey")==null){
 		//	msg="로그인이 필요한 페이지 입니다.";
 		//}
 		
 		
-		/*  test  */
-		id ="u1";
+		/*  test ( u1 의 값을 가져옴 )  */
+		//id ="u1";
 %>
 <script>
 	//alert("<%=msg%>");
 	//location.href = "../index.jsp";
+	
 </script>
+
 <jsp:include page="../top.jsp"/>
 <style>
 table {border: 1px solid; border-collapse:collapse; 
