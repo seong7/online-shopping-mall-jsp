@@ -97,9 +97,9 @@
   display: inline-block;
   border: 1.5px solid gray;
   font-family: "ON_IGothic";
-  font-size: 20px;
-  width: 150px;
-  height: 50px;
+  font-size: 15px;
+  width: 130px;
+  height: 45px;
   padding: 10px;
   border-radius: 5px;
 }
@@ -117,7 +117,7 @@
 }
 
 #footer_wrapper ul #footer_second div {
-  margin-bottom: 40px;
+  margin-bottom: 35px;
 }
 
 #footer_wrapper ul #footer_second #phone {

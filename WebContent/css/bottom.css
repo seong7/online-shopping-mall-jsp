@@ -9,6 +9,13 @@
 }
 
 /* ¿œπ› */
+@font-face {
+  font-family: 'Handon3gyeopsal600g';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
 #footer_wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -31,7 +38,7 @@
 
 #footer_wrapper ul {
   width: 1050px;
-  height: 180px;
+  height: 200px;
   padding: 0px;
   padding-top: 10px;
   padding-bottom: 50px;
@@ -90,9 +97,9 @@
   display: inline-block;
   border: 1.5px solid gray;
   font-family: "ON_IGothic";
-  font-size: 20px;
-  width: 150px;
-  height: 50px;
+  font-size: 15px;
+  width: 130px;
+  height: 45px;
   padding: 10px;
   border-radius: 5px;
 }
@@ -110,7 +117,7 @@
 }
 
 #footer_wrapper ul #footer_second div {
-  margin-bottom: 40px;
+  margin-bottom: 35px;
 }
 
 #footer_wrapper ul #footer_second #phone {

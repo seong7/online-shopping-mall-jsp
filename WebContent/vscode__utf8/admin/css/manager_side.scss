@@ -13,11 +13,11 @@ $brandColor: #fec084;
 	flex-direction: column;
     align-items: center;
     
-    header{  // mypage 요약창 구역
+    header{  // manager 요약창 구역
         width: 100%;
         min-width: 1050px;
     }
-    #btn_mypage_wrapper{  // 버튼메뉴 + mypage 내용 wrapper (flex container)
+    #btn_manager_wrapper{  // 버튼메뉴 + manager 내용 wrapper (flex container)
         display: flex;
         flex-direction: row;
         width: 100%;
@@ -29,8 +29,8 @@ $brandColor: #fec084;
             height: 100%;
             min-height:600px;
             width: 150px;
-        }
-        #mypage{
+        } 
+        #manager{          // manager 모드 페이지 별 내용
             height: 100%;
             width: 80%;
             font-family: $brandFont;
@@ -42,7 +42,7 @@ $brandColor: #fec084;
 /*************************/
 /***** 메뉴 버튼 부분 *****/
 /*************************/
-#mypage_btn_wrapper{
+#manager_btn_wrapper{
     
     /****  위치 다시 잡기 (html 전체 기준임) ****/
     /* 미디어 쿼리 사용 예정 */
@@ -116,7 +116,7 @@ $brandColor: #fec084;
 /**********************/
 /***** 요약창 부분 *****/
 /**********************/
-#mypage_summ{
+#manager_summ{
     margin-top: 30px;
     margin-bottom: 50px;
     margin-left: 500px;
@@ -164,7 +164,7 @@ $brandColor: #fec084;
         }
     }
     
-    #mypage_summ_ul{
+    #manager_summ_ul{
         li:first-of-type{
             border-left: none;
         }

@@ -1,3 +1,4 @@
+
 /* 폰트 추가*/
 /* 굵음 */
 @font-face {
@@ -13,12 +14,6 @@
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff") format("woff");
   font-weight: 200;
   font-style: normal;
-}
-
-#mypage {
-  width: 80%;
-  font-family: "ON_IGothic";
-  padding-left: 50px;
 }
 
 #mypage table {
