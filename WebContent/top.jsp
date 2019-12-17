@@ -4,7 +4,6 @@
 		String id = (String)session.getAttribute("idKey");
 
 %>
-
 <!--<!DOCTYPE html>
 <html>
 	<head>-->
