@@ -1,29 +1,46 @@
+<%@ page contentType="text/html; charset=EUC-KR"%>
+<%
+		request.setCharacterEncoding("EUC-KR");
+		
+%>
+
 <!-- 사용자 주문서 page -->
+<%@page import="Product.UtilMgr"%>
+<%@page import="Order.OrderBean"%>
+<%@page import="Member.MemberBean"%>
 <%@page import="Product.ProductBean"%>
 <%@page import="Order.CartMgr"%>
 <%@page import="Order.CartBean"%>
 <%@page import="java.util.Vector"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
-<%request.setCharacterEncoding("EUC-KR");%>
-<jsp:useBean id="memberMgr" class="Member.MemberMgr"/>
+<jsp:useBean id="mMgr" class="Member.MemberMgr"/>
 <jsp:useBean id="pMgr" class="Product.ProductMgr"/>
 <jsp:useBean id="oMgr" class="Order.OrderMgr"/>
 <jsp:useBean id="cMgr" class="Order.CartMgr"/>
 
 <%
 		String id = (String)session.getAttribute("idKey");
+		int priceTotal = 0;
+		int shippingPrice = 2500;
 %>
 
-<link rel="stylesheet" type="text/css" href="css/order.css"/>
-
+<!-- 
+<!DOCTYPE html>
 <html>
 <title>주문서</title>
 <head>
-<script type="text/javascript" src="js/order.js"></script>
-
 </head>
 <body>
+ -->
+<link rel="stylesheet" type="text/css" href="../css/index.css">
+<script type="text/javascript" src="js/order.js"></script>
+<link rel="stylesheet" type="text/css" href="css/order.css"/>
+
+<jsp:include page="../top.jsp"/>
+<main>
 <h2>주문서</h2>
+
+
 <table>
 	<tr>
 		<td>상품정보</td>
@@ -49,14 +66,17 @@
 				CartBean cart = vlist.get(i);
 				int p_code = cart.getP_code();
 				ProductBean pbean = pMgr.getProduct(p_code);
+				int price = pbean.getP_price();
+				int quantity = cart.getC_qty();
+				priceTotal += price * quantity;
 		%>
 	<tr>
 		<td>
-		<img alt="제품사진" src="/img/product_sample/prod_sample1.PNG">
+		<img alt="제품사진" src="${pageContext.request.contextPath}/img/product/ready.gif">
 		</td>
-		<td><%=pbean.getP_name() %></td>
-		<td><%=cart.getC_qty() %></td>
-		<td><%=pbean.getP_price() %></td>
+		<td name><%=pbean.getP_name() %></td>
+		<td><%=cart.getC_qty() %>개</td>
+		<td><%=UtilMgr.intFormat(pbean.getP_price()) %>원</td>
 	</tr>
 	<%
 			}
@@ -68,10 +88,10 @@
 		<td>주문자 정보</td>
 	</tr>
 	<tr>
-		<td>보내는 분</td>
-		<%
+	<%
 		
-		%>
+	%>
+		<td>보내는 분</td>
 		<td></td>
 	</tr>
 	<tr>
@@ -84,35 +104,44 @@
 	</tr>
 </table>
 <hr/>
+<form name="orderFrm" method="post" action="orderProc.jsp">
 <table>
 	<tr>
 		<td>배송정보</td>
 	</tr>
+		<%
+		Vector<OrderBean> olist = oMgr.getOrder("u1");
+		OrderBean order = olist.get(0); //최근 주문 정보 
+		%>
 	<tr>
 		<td>배송주소</td>
-		<td><input name="address1" size="50" value=""></td>
+		<td><input name="o_recpt_add" size="50" 
+		value="<%=order.getO_recpt_add()%>"></td>
 	</tr>
 	<tr>
 		<td></td>
-		<td><input name="address2" size="50" value=""></td>
+		<td><input name="o_recpt_add_det" size="50" 
+		value="<%=order.getO_recpt_add_det()%>"></td>
 	</tr>
 	<tr>
-		<td></td>
+		<td><input name="o_recpt_zipcode" size="5" 
+		value="<%=order.getO_recpt_zipcode()%>"></td>
 		<td><input type="button" value="주소검색"></td>
 	</tr>
 	<tr>
 		<td>수령인 이름 </td>
-		<td><%	%></td>
+		<td><input name="o_recpt_name" size="20" 
+		value="<%=order.getO_recpt_name()%>"></td>
 	</tr>
 	<tr>
 		<td>휴대폰 </td>
-		<td><input name="cellphone1" size="5" value="">
-		<input name="cellphone2" size="5" value="">
-		<input name="cellphone3" size="5" value=""><td>
+		<td><input name="o_recpt_contact" size="13" 
+		value="<%=order.getO_recpt_contact()%>"></td>
 	</tr>
+	
 	<tr>
 		<td>배송요청사항 </td>
-		<td><textarea name="content" rows="5" cols="50"><%%></textarea></td>
+		<td><textarea name="o_del_msg" rows="5" cols="50"></textarea></td>
 	</tr>
 </table>
 <hr/>
@@ -132,18 +161,21 @@
 	</tr>
 	<tr>
 		<td>상품금액&nbsp;&nbsp;&nbsp;</td>
-		<td>10,000원</td>
+		<td><input name="o_prod_amount" readonly size="13" 
+		value="<%=priceTotal%>">원</td>
 	</tr>
 	<tr>
 		<td>배송비&nbsp;&nbsp;&nbsp;</td>
-		<td>2,500원</td>
+		<td><input name="o_del_fee" readonly size="13" 
+		value="<%=shippingPrice%>">원</td>
 	</tr>
 	<tr>
 		<td>최종결재금액&nbsp;&nbsp;&nbsp;</td>
-		<td>12,500원</td>
+		<td><input name="o_total_amount" readonly size="13" 
+		value="<%=priceTotal+shippingPrice%>">원</td>
 	</tr>
 	<tr>
-		<td>구매시 600원(5%)적립예정</td>
+		<td>구매시 <%=UtilMgr.intFormat(priceTotal)%>원(5%)적립예정</td>
 	</tr>
 </table>
 <hr/>
@@ -153,16 +185,15 @@
 	</tr>
 	<tr>
 		<td>일반결재 &nbsp;&nbsp;&nbsp;</td>
-		<td> 신용카드<input type=radio name=radio1 value=1 onclick='paymentMethod(this.value);' checked>&nbsp;&nbsp;&nbsp;
-  			 	휴대폰<input type=radio name=radio1 value=2 onclick='paymentMethod(this.value);'>
+		<td> 신용카드<input type=radio name="o_pay_method" value="신용카드" 
+				onclick='paymentMethod(this.value);' checked>&nbsp;&nbsp;&nbsp;
+  			 	휴대폰<input type=radio name="o_pay_method" value="휴대폰" 
+  			 	onclick='paymentMethod(this.value);'>
   			 	</td>
   	</tr>
  </table>
-  <form name="card">
   <table>
   	<tr id='tr1'>
-  		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
   		<td>
   			<select id="card">
   				<option value="0">카드를 선택해주세요.</option>
@@ -183,24 +214,20 @@
   		</td>
 	</tr>
 	</table>
-	</form>
-	<form name="cellphone">
 		<table>
 			<tr id='tr2' style="display:none">
-				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
-				<td><input name="cellphone1" size="5" value="">
-				<input name="cellphone2" size="5" value="">
-				<input name="cellphone3" size="5" value=""><td>
+				<td><input name="cellphone1" size="13" 
+				placeholder="010-1234-1234"><td>
 			</tr>
 		</table>
-	</form>
 <table>
 	<tr>
 		<td>간편결제 &nbsp;&nbsp;&nbsp;</td>
-		<td>네이버 페이<input type=radio name=radio1 value=3 onclick='paymentMethod(this.value);'></td>
+		<td>네이버 페이<input type=radio name="o_pay_method" 
+		value="네이버페이" onclick='paymentMethod(this.value);'></td>
   	</tr>
 </table>
+
 <hr>
 <table>
 	<tr>
@@ -220,6 +247,8 @@
 </table>
 <hr>
 	<input type="submit" value="결재완료" onclick="agreement()">
+</form>
+</main>
 </body>
 </html>
 

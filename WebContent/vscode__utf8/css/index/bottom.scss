@@ -1,0 +1,97 @@
+@import '../../font/font-family'; 
+$brandColor: #fec084; 
+$titleColor: #333;
+$titleDetailColor: gray;
+$normalFont: 'ON_IGothic';
+
+#footer_wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    box-sizing: border-box;
+    box-shadow:10px -5px 10px rgba(204,204,204, 0.5);
+    width: 100%;
+    min-width: 1050px;
+    ul{
+        width: 1050px;
+        height: 200px;
+        padding: 0px;
+        padding-top: 10px;
+        padding-bottom: 50px;
+        display: flex;
+        flex-direction: row;
+        // border: 1px solid gray;
+        li{
+            display: flex;
+            flex-direction: column;
+            span{
+                display: block;
+            }
+        }
+        #footer_first{
+            font-family: $normalFont;
+            color: gray;
+            width: 200px;
+            justify-content: center;
+            align-items: center;
+            span, a{
+                display: block;
+                margin-top: 0px;
+            }
+            #title{
+                font-size: 30px;
+                margin-bottom: 30px;
+            }
+            #middle{
+                font-size: 30px;
+                margin-bottom: 30px;
+                color: $titleColor;
+            }
+            #bottom{
+                display: inline-block;
+                border: 1.5px solid gray;
+                font-family: $normalFont;
+                font-size: 15px;
+                width: 130px;
+                height: 45px;
+                padding: 10px;
+                border-radius: 5px;
+                
+            }
+        }
+        #footer_second{
+            margin-right: 100px;
+            font-family: $normalFont;
+            color: #333;
+            font-size: 14px;
+            span{
+                font-family: $normalFont;
+                color: gray;
+            }
+            div{
+                margin-bottom: 35px;
+            }
+            #phone{
+                margin-top: 80px;
+            }
+        }
+        #footer_third{
+            font-family: $normalFont;
+            color: gray;
+            font-size: 14px;
+            div{
+                margin-top: 50px;
+                span{
+                    margin-bottom: 13px;
+                }
+                img{
+                    margin-right:10px;
+                    width: 40px;
+                    height: auto;
+                }
+            }
+        }
+
+    }
+}

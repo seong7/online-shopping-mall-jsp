@@ -1,5 +1,6 @@
-/* ÆùÆ® Ãß°¡*/
-/* ±½À½ */
+@charset "UTF-8";
+/* í°íŠ¸ ì¶”ê°€*/
+/* êµµìŒ */
 @font-face {
   font-family: 'ON_IGothic';
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff") format("woff");
@@ -7,7 +8,7 @@
   font-style: normal;
 }
 
-/* ÀÏ¹Ý */
+/* ì¼ë°˜ */
 .default_placeholder_red::-webkit-input-placeholder {
   color: red !important;
 }
@@ -24,7 +25,7 @@
   color: red !important;
 }
 
-/* html ÀüÃ¼ µå·¡±× ¹æÁö */
+/* html ì „ì²´ ë“œëž˜ê·¸ ë°©ì§€ */
 html {
   -ms-user-select: none;
   -moz-user-select: -moz-none;
@@ -32,7 +33,7 @@ html {
   user-select: none;
 }
 
-/*ÀüÃ¼ ÄÄÆ÷³ÍÆ® Wrapper Å¬·¡½º(modal window Á¦¿Ü Wrap)*/
+/*ì „ì²´ ì»´í¬ë„ŒíŠ¸ Wrapper í´ëž˜ìŠ¤(modal window ì œì™¸ Wrap)*/
 #top_wrapper {
   position: relative;
   min-width: 1050px;
@@ -42,7 +43,7 @@ html {
           box-shadow: 0px 8px 10px rgba(204, 204, 204, 0.5);
 }
 
-/*·Î°í ÀÌ¹ÌÁö position*/
+/*ë¡œê³  ì´ë¯¸ì§€ position*/
 #homeLogo > img {
   width: 200px;
   display: block;
@@ -50,7 +51,7 @@ html {
   margin-top: 30px;
 }
 
-/*search_form À§Ä¡ */
+/*search_form ìœ„ì¹˜ */
 #search_form {
   position: absolute;
   left: 50%;
@@ -146,7 +147,7 @@ html {
   z-index: 100;
 }
 
-/*³×ºñ°ÔÀÌ¼Ç ¸ÞÀÎ Å¬·¡½º(»èÁ¦ ½Ã icon »ç¶óÁü)*/
+/*ë„¤ë¹„ê²Œì´ì…˜ ë©”ì¸ í´ëž˜ìŠ¤(ì‚­ì œ ì‹œ icon ì‚¬ë¼ì§)*/
 .nav_main {
   overflow: hidden;
   float: left;
@@ -168,7 +169,7 @@ html {
   vertical-align: top;
 }
 
-/*nav_a ÅÂ±×*/
+/*nav_a íƒœê·¸*/
 .nav_a {
   -webkit-transition: color .35s;
   transition: color .35s;
@@ -178,12 +179,12 @@ html {
   cursor: pointer;
 }
 
-/*hover ½Ã »ö»ó ÁöÁ¤(¾ÆÀÌÄÜ, nav a ÅÂ±×)*/
+/*hover ì‹œ ìƒ‰ìƒ ì§€ì •(ì•„ì´ì½˜, nav a íƒœê·¸)*/
 .nav_a:hover {
   color: #FB9832;
 }
 
-/*Çà °£°Ý ¸ÂÃß·Á°í line height Á¶Á¤*/
+/*í–‰ ê°„ê²© ë§žì¶”ë ¤ê³  line height ì¡°ì •*/
 .nav_a > span, .nav_a > input {
   line-height: 50px;
 }
@@ -243,7 +244,7 @@ input[id*='userPopup'] {
   display: inline-flex;
 }
 
-/***** ¶± category *****/
+/***** ë–¡ category *****/
 #nav_category {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -300,7 +301,7 @@ input[id*='userPopup'] {
 }
 
 /***********************************************/
-/*******************  modal ±¸¿ª  **************/
+/*******************  modal êµ¬ì—­  **************/
 #modalDiv {
   display: none;
   position: fixed;
@@ -358,24 +359,12 @@ input[id*='userPopup'] {
 .top_modal_button:focus {
   outline: none;
 }
-#address_section_btn{
-	color: white !important;
-}
+
 /*btn style wrapper*/
-.top_modal_orange{
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#FD6F46), to(#FB9832));
-  background-image: linear-gradient(to bottom, #FD6F46, #FB9832);
-}
-.top_modal_red{
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#FF5342), to(#FF8576));
-  background-image: linear-gradient(to bottom, #FF5342, #FF8576);
-}
-.top_modal_green{
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#05c191), to(#26d97d));
-  background-image: linear-gradient(to bottom, #05c191, #26d97d);
-}
 .top_modal_button_style {
   border: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FD6F46), to(#FB9832));
+  background-image: linear-gradient(to bottom, #FD6F46, #FB9832);
   text-align: center;
   border-radius: 10px;
   background-repeat: repeat-y;
@@ -389,7 +378,7 @@ input[id*='userPopup'] {
   background-position: 0 0;
 }
 
-/*  modal header (·Î±×ÀÎ, È¸¿ø°¡ÀÔ ¼±ÅÃ ¹öÆ°) */
+/*  modal header (ë¡œê·¸ì¸, íšŒì›ê°€ìž… ì„ íƒ ë²„íŠ¼) */
 #modal_elements_wrapper > #modal_header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -424,13 +413,11 @@ input[id*='userPopup'] {
 #modal_header > #login_btn_label {
   color: #f58b2e;
   margin-right: 20px;
-  transition: all .35s;
 }
 
 #modal_header > #signup_btn_label {
   color: #f58b2e;
   margin-left: 20px;
-  transition: all .35s;
 }
 
 #modal_header > #modal_header_span {
@@ -518,7 +505,6 @@ input[id*='userPopup'] {
       -ms-flex-direction: column;
           flex-direction: column;
   opacity: 0;
-  margin-left: -20px;
   /* justify-content: center; */
   /* text-align: center; */
 }
@@ -543,14 +529,6 @@ input[id*='userPopup'] {
   display: inline-block;
   font-size: 14px;
   min-width: 100px;
-}
-
-#signup_form h3{
-	font-size: 35px;
-	margin-top: 25px;
-}
-#login_form h3{
-	font-size: 35px;
 }
 
 #signup_submit_btn {
@@ -587,7 +565,7 @@ input[id*='userPopup'] {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   height: 40px;
-  margin-top: 13px;
+  margin-top: 10px;
   margin-left: 30px;
   padding-left: 15px;
   padding-right: 15px;
@@ -599,10 +577,6 @@ input[id*='userPopup'] {
   transition: all .35s;
 }
 
-
-.signup_long_input{
-	width: 360px;
-}
 #id_section, #address_section_header {
   min-width: 400px;
 }
@@ -617,7 +591,7 @@ input[id*='userPopup'] {
   z-index: 1;
 }
 
-/*  Å×µÎ¸® ÀÓ½Ã ºÎ¿©  */
+/*  í…Œë‘ë¦¬ ìž„ì‹œ ë¶€ì—¬  */
 /* #modalDiv > #modalInnerFrame *{
     border: 1px solid orange;
 } */
@@ -635,33 +609,26 @@ input[id*='userPopup'] {
   clear: left;
   width: 100%;
 }
-/*item base setting*/
+
 .ui-autocomplete li.ui-menu-item {
   padding: 1px;
-  width: 436px;
+  width: 524px;
   background-color: #f4f4f4 !important;
 }
-/*item highlight setting*/
+
 .ui-menu-item .ui-menu-item-wrapper.ui-state-active {
   background: #cfcfcf !important;
   font-weight: bold !important;
   color: #000000 !important;
-  width: 436px;
-  padding-left: 5px;
   border: none;
-  padding: 0 7px 0 0;
 }
 
 .ui-menu-item a {
   text-decoration: none;
   display: block;
+  padding: .2em .4em;
   line-height: 1.5;
   zoom: 1;
-  width: 436px;
-}
-#daumWrap{
-	postion: absolute !important;
-	left: 150%;
 }
 
 /*inputform color*/

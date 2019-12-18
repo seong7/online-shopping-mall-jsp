@@ -53,7 +53,7 @@ public class ProductMgr {
 			return bean;
 		}
 		
-	//alllist
+	//get alllist
 	public Vector<ProductBean> getAllList(){
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -81,7 +81,7 @@ public class ProductMgr {
 		}
 		return vlist;
 	}		
-	//베스트상품 리스트
+	//get best product
 	public Vector<ProductBean> getBestList(){
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -111,7 +111,7 @@ public class ProductMgr {
 		}
 		return blist;
 	}
-	//신상품
+	//get new item
 	public Vector<ProductBean> getNewList(){
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -141,7 +141,7 @@ public class ProductMgr {
 		return nlist;
 	}	
 	
-	//리뷰많은 상품 리스트
+	//get review high list
 	public Vector<ProductBean> getReviewList(){
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -163,7 +163,6 @@ public class ProductMgr {
 				bean.setP_main_pht_name(rs.getString(3));
 				rlist.addElement(bean);
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -171,7 +170,8 @@ public class ProductMgr {
 		}
 		return rlist;
 	}
-	//가격높은순
+  
+	//price high product
 	public Vector<ProductBean> getHighList(){
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -192,7 +192,6 @@ public class ProductMgr {
 				bean.setP_main_pht_name(rs.getString(3));
 				phlist.addElement(bean);
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -200,6 +199,27 @@ public class ProductMgr {
 		}
 		return phlist;
 	}
+
+	//model name list(for search bar ajax)
+	public Vector<String> getProductList(String searchValue) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Vector<String> vlist = new Vector<String>();
+		String sql = null;
+		System.out.println("searchdata :" +searchValue);
+		try {
+			con = pool.getConnection();
+			sql = "select p_name from PRODUCT_MST_TB where p_name like ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%"+searchValue+"%");
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				vlist.add(rs.getString(1));
+			}
+		return vlist;
+	}
+    
 	//pricelowlist
 	public Vector<ProductBean> getLowList(){
 		Connection con = null;
@@ -221,16 +241,11 @@ public class ProductMgr {
 				bean.setP_main_pht_name(rs.getString(3));
 				pllist.addElement(bean);
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
 		return pllist;
-	}
-	//상품검색
-	
-	
-
+  }
 }
