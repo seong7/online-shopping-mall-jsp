@@ -62,7 +62,7 @@ public class ProductMgr {
 		Vector<ProductBean> vlist = new Vector<ProductBean>();		
 		try {
 			con = pool.getConnection();
-			sql = "select p_name, p_price, p_main_pht_name from product_mst_tb order by p_date";
+			sql = "select p_name, p_price, p_main_pht_name from product_mst_tb WHERE p_on_sale like '1' order by p_date";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -90,9 +90,10 @@ public class ProductMgr {
 		Vector<ProductBean> blist = new Vector<ProductBean>();		
 		try {
 			con = pool.getConnection();
-			sql = "SELECT p_name, p_price, p.p_main_pht_name "
+			sql = "SELECT p_name, p_price, p.p_main_pht_name, p.p_on_sale "
 				+ "FROM product_mst_tb p JOIN stock_tb s ON p.p_code = s.p_code "
-				+ "GROUP BY p.p_code ORDER BY (SUM(s.st_enter_qty)-SUM(s.st_ava_qty)) DESC";
+				+ "GROUP BY p.p_code having p.p_on_sale LIKE '1' "
+				+ "ORDER BY (SUM(s.st_enter_qty)-SUM(s.st_ava_qty)) DESC";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -121,7 +122,7 @@ public class ProductMgr {
 		try {
 			con = pool.getConnection();
 			sql = "SELECT p_name, p_price, p_main_pht_name "
-				+ "FROM product_mst_tb WHERE p_date ORDER BY p_date DESC";
+				+ "FROM product_mst_tb WHERE p_on_sale LIKE '1' ORDER BY p_date DESC";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -150,9 +151,9 @@ public class ProductMgr {
 		Vector<ProductBean> rlist = new Vector<ProductBean>();		
 		try {
 			con = pool.getConnection();
-			sql = "SELECT p.p_name, p.p_price, p.p_main_pht_name "
-				+	"FROM product_mst_tb p JOIN review_tb r ON p.p_code = r.p_code "
-				+	"GROUP BY p.p_code ORDER BY COUNT(r.p_code) DESC";
+			sql = "SELECT p.p_name, p.p_price, p.p_main_pht_name, p.p_on_sale "
+				+ "FROM product_mst_tb p JOIN review_tb r ON p.p_code = r.p_code "
+				+ "GROUP BY p.p_code having p_on_sale like '1' ORDER BY COUNT(r.p_code) DESC";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -181,7 +182,7 @@ public class ProductMgr {
 		try {
 			con = pool.getConnection();
 			sql = "SELECT p_name, p_price, p_main_pht_name "
-				  + "FROM product_mst_tb ORDER BY p_price DESC";
+			    + "FROM product_mst_tb where p_on_sale like '1' ORDER BY p_price DESC";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -234,8 +235,8 @@ public class ProductMgr {
 		Vector<ProductBean> pllist = new Vector<ProductBean>();		
 		try {
 			con = pool.getConnection();
-			sql = "SELECT p_name, p_price, p_main_pht_name "
-				+ "FROM product_mst_tb	ORDER BY p_price";
+			sql =  "SELECT p_name, p_price, p_main_pht_name "
+				+ "FROM product_mst_tb where p_on_sale like '1'	ORDER BY p_price";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
