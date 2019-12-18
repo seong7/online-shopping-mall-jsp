@@ -89,7 +89,9 @@ public class MemberMgr {
 		return -1;
 	}
 	
-	//È¸¿øÁ¤º¸ ¼öÁ¤½Ã È®ÀÎ
+
+	//íšŒì›ì •ë³´ ìˆ˜ì •ì‹œ ë¹„ë²ˆí™•ì¸
+
 			public boolean checkPwd(String pwd) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -110,7 +112,7 @@ public class MemberMgr {
 				}
 				return flag;
 			}
-	//È¸¿øÁ¤º¸ °¡Á®¿À±â
+	//íšŒì›ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 			public MemberBean getMember(String id) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -143,7 +145,7 @@ public class MemberMgr {
 			}
 
 				
-			//È¸¿øÁ¤º¸ ¼öÁ¤ÇÏ±â
+			//íšŒì›ì •ë³´ ìˆ˜ì •í•˜ê¸°
 			public boolean updateMember(MemberBean bean) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -161,8 +163,7 @@ public class MemberMgr {
 					System.out.println(bean.getId());
 					System.out.println(bean.getPwd());
 					System.out.println(bean.getZipcode());
-					System.out.println(bean.getName());					
-					
+					System.out.println(bean.getName());										
 					pstmt.setString(1, bean.getPwd());
 					pstmt.setString(2, bean.getName());
 					pstmt.setString(3, bean.getBirthday());
@@ -171,7 +172,6 @@ public class MemberMgr {
 					pstmt.setString(6, bean.getAddress());
 					pstmt.setString(7, bean.getAddress_detail());
 					pstmt.setString(8, bean.getId()) ;
-					
 					if(pstmt.executeUpdate()==1)
 						flag = true;
 				} catch (Exception e) {
