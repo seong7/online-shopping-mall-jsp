@@ -36,7 +36,7 @@ public class MemberMgr {
 		return -1;
 	}
 	//INSERT INTO `user_tb` (`id`, `pwd`, `NAME`, `birthday`, `email`, `contact`, `zipcode`, `address`, `address_detail`, `join_date`) VALUES
-	public int signup_user(UserBean bean) {
+	public int signup_user(MemberBean bean) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
@@ -46,7 +46,7 @@ public class MemberMgr {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, bean.getId());
 			pstmt.setString(2, bean.getPwd());
-			pstmt.setString(3, bean.getNAME());
+			pstmt.setString(3, bean.getName());
 			pstmt.setString(4, bean.getBirthday());
 			pstmt.setString(5, bean.getEmail());
 			pstmt.setString(6, bean.getContact());
@@ -88,4 +88,98 @@ public class MemberMgr {
 		}
 		return -1;
 	}
+	
+	//회원정보 수정시 확인
+			public boolean checkPwd(String pwd) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = null;
+				boolean flag = false;
+				try {
+					con = pool.getConnection();
+					sql = "select pwd from user_tb where pwd=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, pwd);
+					rs = pstmt.executeQuery();
+					flag = rs.next();
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt, rs);
+				}
+				return flag;
+			}
+	//회원정보 가져오기
+			public MemberBean getMember(String id) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = null;
+				MemberBean bean = new MemberBean();
+				try {
+					con = pool.getConnection();
+					sql = "select * from user_tb where id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, id);
+					rs = pstmt.executeQuery();
+					if (rs.next()) {
+						bean.setId(rs.getString("id"));
+						bean.setPwd(rs.getString("pwd"));
+						bean.setName(rs.getString("name"));
+						bean.setBirthday(rs.getString("birthday"));
+						bean.setEmail(rs.getString("email"));
+						bean.setContact(rs.getString("contact"));
+						bean.setZipcode(rs.getInt("zipcode"));
+						bean.setAddress(rs.getString("address"));
+						bean.setAddress_detail(rs.getString("address_detail"));
+						}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt, rs);
+				}
+				return bean;
+			}
+
+				
+			//회원정보 수정하기
+			public boolean updateMember(MemberBean bean) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				String sql = null;
+				boolean flag = false;
+				try {
+					con = pool.getConnection();
+					sql = "update user_tb set pwd=?,name=?,birthday=?,email=?,zipcode=?,address=?,address_detail=? where id=?";
+					pstmt = con.prepareStatement(sql);
+					System.out.println(bean.getAddress());
+					System.out.println(bean.getAddress_detail());
+					System.out.println(bean.getBirthday());
+					System.out.println(bean.getContact());
+					System.out.println(bean.getEmail());
+					System.out.println(bean.getId());
+					System.out.println(bean.getPwd());
+					System.out.println(bean.getZipcode());
+					System.out.println(bean.getName());					
+					
+					pstmt.setString(1, bean.getPwd());
+					pstmt.setString(2, bean.getName());
+					pstmt.setString(3, bean.getBirthday());
+					pstmt.setString(4, bean.getEmail());
+					pstmt.setInt(5, bean.getZipcode());
+					pstmt.setString(6, bean.getAddress());
+					pstmt.setString(7, bean.getAddress_detail());
+					pstmt.setString(8, bean.getId()) ;
+					
+					if(pstmt.executeUpdate()==1)
+						flag = true;
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt);
+				}
+				return flag;
+			}
 }
+						
