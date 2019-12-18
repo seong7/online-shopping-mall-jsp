@@ -50,10 +50,7 @@ public class MemberSignupServlet extends HttpServlet {
 		System.out.println(zipcode);
 		System.out.println(address);
 		System.out.println(address_detail);
-		
-
 		String join_date = format.format(cal.getTime());
-      
 		MemberBean bean = new MemberBean();
 		bean.setId(id);
 		bean.setPwd(pwd);

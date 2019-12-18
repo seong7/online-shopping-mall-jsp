@@ -61,7 +61,7 @@
 							    <input id="address_section_btn" class="signup_util_btn top_modal_button_style top_modal_orange top_modal_button" type="button" onClick="openDaumZipAddress();" value = "주소 찾기"/>
 							
 							    <!-- 다음 우편번호 찾기 리스트를 띄울 영역을 지정 -->
-							
+						
 							    <input type="text" class="signup_input signup_long_input" id="signup_addr" readOnly/>
 							    <input type="text" class="signup_input signup_long_input" id="signup_addr_detail" placeholder="상세주소를 입력하세요."/>
 							</div>
@@ -165,3 +165,5 @@
 
 <!-- </body>    --- index.jsp 에서 닫아줌
 </html> -->
+
+<!-- test - juhong -->

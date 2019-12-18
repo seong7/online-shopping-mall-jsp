@@ -1,6 +1,7 @@
 @import '../../font-family.css';
 
 $main-color: #FB9832;
+$main-active: #f09439;
 $main-font : 'ON-IGothic';
 $main-blackcolor: #333;
 $table-graycolor:#dcdbde;
@@ -18,6 +19,7 @@ main{
             text-align: center;
             font-family: $main-font;
             color:$main-blackcolor;
+            letter-spacing: 1px;
         }
         margin: 0px auto;
     }
@@ -26,6 +28,9 @@ main{
     #order_product{
         table{
             tr:nth-of-type(1){
+                td:nth-of-type(1){
+                    text-align: center;
+                }
                 td:nth-of-type(2){
                     width: 100px;
                     text-align: center;
@@ -38,10 +43,10 @@ main{
             tr, td{
                 padding: 15px;
                 text-align: left;
-                border-top: 3px solid $table-graycolor;
-                border-bottom: 3px solid $table-graycolor;
             }
-            
+            td:first-of-type{
+                padding-left: 20px;
+            }
             td:nth-of-type(1){
                 width: 100px;
             }
@@ -55,14 +60,7 @@ main{
             td:nth-of-type(4){
                 width: 100px;
                 text-align: center;
-            }
-            tr:nth-of-type(1){
-                td{
-                    border-top: 3px solid $main-color;
-                    border-bottom: 3px solid $table-graycolor;
-                }
-            }
-            
+            }            
         }
     }
     //주문자 정보 section
@@ -73,42 +71,183 @@ main{
                     height: 25px;
                     padding: 30px;
                 }
-                td{
-                    border-top: 3px solid $table-graycolor;
-                    border-bottom: 3px solid $table-graycolor;
-                }
-            }
-            tr:nth-of-type(1){
-                td{
-                    border-top: 3px solid $main-color;
-                    border-bottom: 3px solid $table-graycolor;
-                }
             }
             
         }
     }
 }
+//배송정보
+#order_delivery{
+    table{
+        tr{
+            td{
+                input{
+                    font-family: $main-font;
+                    padding-left: 8px;
+                    border: 1px solid $table-graycolor;
+                    height: 28px;
+                }
+                input[name=o_recpt_add]{
+                    width: 600px;
+                }
+                
+                input[name=o_recpt_zipcode]{
+                    width: 50px;
+                    padding-left: 0px;
+                    text-align: center;
+                }
+                input[name=o_recpt_add_det]{
+                    width: 617px;
+                    margin-left: 25px;
+                }
+                textarea[name=o_del_msg]{
+                    font-family: $main-font;
+                    font-size: 14px;
+                    padding: 8px;
+                    border: 1px solid $table-graycolor;
+                    height: 40px;
+                    width: 688px;
+                    resize: none;
+                }
+                border-top: none;
+                border-bottom: none;
+                height: 35px;
+                padding: 5px;
+            }
+            td:first-of-type{
+                padding-left: 20px;
+            }
+        }
+        tr:first-of-type{
+            td{
+                padding-top: 20px;
+            }
+        }
+        tr:last-of-type{
+            border-bottom: 2px solid $table-graycolor;
+            td{
+                padding-bottom: 20px;
+            }
+        }
+    }
+}
+//적립금
+#order_point{
+    tr{
+        td:first-of-type{
+            padding-left: 30px;
+            width: 130px;
+        }
+        td{
+            padding-top: 20px;
+            padding-bottom: 20px;
+            input{
+                width: 400px;
+                height: 23px;
+                padding: 8px;
+                border: 1px solid $table-graycolor;
+            }
+        }
+    }
+}
+//결제금액
+#order_pay{
+    table{
+        font-family: $main-font;
+        tr{
+            td{
+                font-size: 18px;
+                input{
+                    border: none;
+                    font-family: $main-font;
+                    font-size: 18px;
+                    text-align: end;
+                    padding-right: 10px;
+                }
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+            td:nth-of-type(1){
+                width: 170px;
+                text-align: center;
+            }
+            td:nth-of-type(2){
+                text-align: end;
+                padding-right: 50px;
+            }
+        }
+        tr:last-child{
+            td:last-child{
+                font-size: 12px;
+            }
+        }
+    }
+}
+//결제수단
+#order_howpay{
+    table{
+        tr{
+            td:nth-of-type(1){
+                width: 100px;
+            }
 
+            td:nth-of-type(2){
+                text-align: center;
+            }
+        }
+        tr:nth-of-type(1){
+            td{
+            }
+        }
+        tr:nth-of-type(2){
+            td{
+                padding-top: 20px;
+            }
+        }
+        tr:nth-of-type(3){
+            td{
+            }
+        }
+        tr:nth-of-type(4){
+            td{
+            }
+        }
+        
+        
+    }
+}
+
+/*전체 속성 제어부*/
+table{
+    tr:nth-of-type(1){
+        td{
+            border-top: 3px solid $main-color !important;
+            padding-top: 15px;
+        }
+    }
+    tr:last-of-type{
+        td{
+            border-bottom: 2px solid $table-graycolor;
+            padding-bottom: 15px;
+        }
+    }
+}
 .order_subtitle{
     font-size: 25px;
     font-family: $main-font;
     color: $main-blackcolor;
     margin: 0 auto;
 }
-hr{
-    min-width: 500px;
-    width: 500px;
-    margin: 0;
-    border: 1px solid $main-color;
-    margin : 10px 0 10px 0;
+a{
+    font-weight: 520;
+    cursor: pointer;
+    &:hover{
+        color: $main-color;
+    }
 }
-button{
-    background-color: $main-color;
-}
-
 main{
+    letter-spacing: 0.5px;
     table{
-        letter-spacing: 0.5px;
         box-sizing: border-box;
         width: 100%;
         border-collapse: collapse;
@@ -117,7 +256,22 @@ main{
         color:$main-blackcolor;
         margin-bottom: 50px;
         td{
+            font-family: $main-font;
             font-size: 18px;
+        }
+    }
+    
+    input[type=button], input[type=submit]{
+        margin-left: 25px;
+        height: 30px;
+        width: 70px;
+        background-color: $main-color;
+        border: none;
+        color: white;
+        font-weight: bold;
+        
+        &:active{
+            background-color: $main-active;
         }
     }
 }
