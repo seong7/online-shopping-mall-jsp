@@ -46,7 +46,7 @@ public class MemberMgr {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, bean.getId());
 			pstmt.setString(2, bean.getPwd());
-			pstmt.setString(3, bean.getNAME());
+			pstmt.setString(3, bean.getName());
 			pstmt.setString(4, bean.getBirthday());
 			pstmt.setString(5, bean.getEmail());
 			pstmt.setString(6, bean.getContact());
@@ -89,7 +89,9 @@ public class MemberMgr {
 		return -1;
 	}
 	
-	//È¸¿øÁ¤º¸ ¼öÁ¤½Ã ºñ¹øÈ®ÀÎ
+
+	//íšŒì›ì •ë³´ ìˆ˜ì •ì‹œ ë¹„ë²ˆí™•ì¸
+
 			public boolean checkPwd(String pwd) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -110,7 +112,7 @@ public class MemberMgr {
 				}
 				return flag;
 			}
-	//È¸¿øÁ¤º¸ °¡Á®¿À±â
+	//íšŒì›ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 			public MemberBean getMember(String id) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -126,7 +128,7 @@ public class MemberMgr {
 					if (rs.next()) {
 						bean.setId(rs.getString("id"));
 						bean.setPwd(rs.getString("pwd"));
-						bean.setNAME(rs.getString("name"));
+						bean.setName(rs.getString("name"));
 						bean.setBirthday(rs.getString("birthday"));
 						bean.setEmail(rs.getString("email"));
 						bean.setContact(rs.getString("contact"));
@@ -143,7 +145,7 @@ public class MemberMgr {
 			}
 
 				
-			//È¸¿øÁ¤º¸ ¼öÁ¤ÇÏ±â
+			//íšŒì›ì •ë³´ ìˆ˜ì •í•˜ê¸°
 			public boolean updateMember(MemberBean bean) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -161,13 +163,9 @@ public class MemberMgr {
 					System.out.println(bean.getId());
 					System.out.println(bean.getPwd());
 					System.out.println(bean.getZipcode());
-					System.out.println(bean.getNAME());
-
-					
-					
-					
+					System.out.println(bean.getName());										
 					pstmt.setString(1, bean.getPwd());
-					pstmt.setString(2, bean.getNAME());
+					pstmt.setString(2, bean.getName());
 					pstmt.setString(3, bean.getBirthday());
 					pstmt.setString(4, bean.getEmail());
 					pstmt.setInt(5, bean.getZipcode());

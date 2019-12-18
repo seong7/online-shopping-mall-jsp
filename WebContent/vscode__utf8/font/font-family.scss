@@ -1,0 +1,24 @@
+/* 폰트 추가*/
+
+/* 굵음 */
+@font-face { 
+    font-family: 'ON_IGothic'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff') format('woff'); 
+    font-weight: normal; 
+    font-style: normal; 
+}
+
+/* 일반 */
+// @font-face { 
+//     font-family: 'Eoe_Zno_L'; 
+//     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/Eoe_Zno_L.woff') format('woff'); 
+//     font-weight: normal; 
+//     font-style: normal; 
+// }
+
+@font-face { font-family: 'Handon3gyeopsal600g';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff') 
+    format('woff'); 
+    font-weight: 200; 
+    font-style: normal;
+}

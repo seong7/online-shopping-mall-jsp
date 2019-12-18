@@ -4,7 +4,6 @@
 		String id = (String)session.getAttribute("idKey");
 
 %>
-
 <!--<!DOCTYPE html>
 <html>
 	<head>-->
@@ -38,7 +37,7 @@
 						<div id="lost_id_pwd_wrapper">
 							<a href="#">아이디나 비밀번호를 잊어버렸습니까?</a>
 						</div>
-						<button type="button" class="top_modal_button top_modal_button_style" id="login_submit_btn">
+						<button type="button" class="top_modal_button top_modal_button_style top_modal_orange" id="login_submit_btn">
 							<span id="login_span">로그인</span>
 						</button>
 					</form>
@@ -48,7 +47,7 @@
 						<div id="id_section">
 							<input type="text" class="signup_input" id="id_section_input" autocomplete="off" placeholder="아이디를 입력하세요.">
 							<!-- ajax 필요 ?-->
-							<button type="button" class="signup_util_btn top_modal_button_style top_modal_button" id="id_section_btn"><span>중복확인</span></button>
+							<button type="button" class="signup_util_btn top_modal_button_style top_modal_orange top_modal_button" id="id_section_btn"><span>중복확인</span></button>
 						</div>
 						<input type="password" class="signup_input signup_long_input" id="signup_pwd"autocomplete="off" placeholder="비밀번호를 입력하세요.">
 						<input type="password" class="signup_input signup_long_input" id="signup_pwd_check" autocomplete="off" placeholder="비밀번호를 한번 더 입력하세요.">
@@ -59,15 +58,15 @@
 						<div id="address_section">
 							<div id ="address_section_header">
 							    <input id="address_section_zipcode" class="signup_input" type="text" value="" readOnly/>
-							    <input id="address_section_btn" class="signup_util_btn top_modal_button_style top_modal_button" type="button" onClick="openDaumZipAddress();" value = "주소 찾기"/>
+							    <input id="address_section_btn" class="signup_util_btn top_modal_button_style top_modal_orange top_modal_button" type="button" onClick="openDaumZipAddress();" value = "주소 찾기"/>
 							
 							    <!-- 다음 우편번호 찾기 리스트를 띄울 영역을 지정 -->
-							
+						
 							    <input type="text" class="signup_input signup_long_input" id="signup_addr" readOnly/>
 							    <input type="text" class="signup_input signup_long_input" id="signup_addr_detail" placeholder="상세주소를 입력하세요."/>
 							</div>
 						</div>
-						<button type="button" class="top_modal_button top_modal_button_style" id="signup_submit_btn" >
+						<button type="button" class="top_modal_button top_modal_button_style top_modal_orange" id="signup_submit_btn" >
 							<span id="submit_span" class="box">회원가입</span>
 						</button>
 					</form>
@@ -149,7 +148,9 @@
 									<a href="#"><i class="fas fa-shopping-cart"></i></a>
 								</li>
 								<li>
-									<a href="#"><i class="fas fa-sign-in-alt"></i></a>
+									<form id="logout_form" action="/online-shopping-mall/MemberSignupServlet"  method="post">
+										<a onclick="logout_onclick()"><i class="fas fa-sign-in-alt"></i></a>
+									</form>
 								</li>
 							<%} %>
 							</ul>

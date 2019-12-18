@@ -10,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 /**
  * Servlet implementation class MemberSignupServlet
@@ -21,12 +23,11 @@ public class MemberSignupServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-//		if ("POST".equalsIgnoreCase(request.getMethod())) 
-//		{
-//		  String test = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-//		  System.out.println(test);
-//		}
+		
 
+		HttpSession session = request.getSession();
+		Object obj =session.getAttribute("idKey");
+		if(obj==null) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();
 		
@@ -39,7 +40,6 @@ public class MemberSignupServlet extends HttpServlet {
 		String zipcode = request.getParameter("address_section_zipcode");
 		String address = request.getParameter("signup_addr");
 		String address_detail = request.getParameter("signup_addr_detail");
-		
 
 		System.out.println(id);
 		System.out.println(pwd);
@@ -50,9 +50,7 @@ public class MemberSignupServlet extends HttpServlet {
 		System.out.println(zipcode);
 		System.out.println(address);
 		System.out.println(address_detail);
-		
-		
-		String join_date = format.format(cal.getTime());;
+		String join_date = format.format(cal.getTime());
 		MemberBean bean = new MemberBean();
 		bean.setId(id);
 		bean.setPwd(pwd);
@@ -64,8 +62,17 @@ public class MemberSignupServlet extends HttpServlet {
 		bean.setAddress(address);
 		bean.setAddress_detail(address_detail);
 		bean.setJoin_date(join_date);
-		response.getWriter().write(new MemberMgr().signup_user(bean)+ "");
-		
+		MemberMgr mgr = new MemberMgr();
+		int result = mgr.signup_user(bean);
+		if(result == 1) {
+				session.setAttribute("idKey", bean.getId());
+				System.out.println(" id(idKey : "+bean.getId()+")");
+				response.getWriter().write(result+ "");
+			}
+		}
+		else {
+			session.invalidate();
+			response.sendRedirect("http://localhost/online-shopping-mall/top.jsp");
+		}
 	}
-
 }

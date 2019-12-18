@@ -1,81 +1,13 @@
-/* 폰트 추가 noto-Sans*/
+/* 폰트 추가*/
+/* 굵음 */
 @font-face {
-  font-family: 'noto_Bold';
-  src: url(../font/NotoSansCJKkr-Bold.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'noto_Black';
-  src: url(../font/NotoSansCJKkr-Black.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'noto_Demilight';
-  src: url(../font/NotoSansCJKkr-DemiLight.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'noto_Light';
-  src: url(../font/NotoSansCJKkr-Light.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'noto_Medium';
-  src: url(../font/NotoSansCJKkr-Medium.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'noto_Regular';
-  src: url(../font/NotoSansCJKkr-Regular.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'noto_Thin';
-  src: url(../font/NotoSansCJKkr-Thin.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'InkLipquid';
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff") format("woff");
+  font-family: 'ON_IGothic';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'Cafe24Danjunghae';
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Danjunghae.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'BMHANNAAir';
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'BBTreeGB';
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
+/* 일반 */
 .default_placeholder_red::-webkit-input-placeholder {
   color: red !important;
 }
@@ -176,7 +108,7 @@ html {
   outline: none;
   color: #2f3542;
   font-size: 20px;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "ON_IGothic";
   padding-left: 35px;
   padding-right: 40px;
   background-color: #f4f4f4;
@@ -210,7 +142,7 @@ html {
   height: 55px;
   margin-left: auto;
   margin-right: auto;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "ON_IGothic";
   z-index: 100;
 }
 
@@ -259,7 +191,7 @@ html {
 /*text font, spacing set*/
 .txt {
   letter-spacing: 2px;
-  font-family: 'noto_Bold';
+  font-family: "ON_IGothic";
 }
 
 #active_btn_li {
@@ -311,7 +243,6 @@ input[id*='userPopup'] {
   display: inline-flex;
 }
 
-
 /***** 떡 category *****/
 #nav_category {
   display: -webkit-box;
@@ -359,7 +290,7 @@ input[id*='userPopup'] {
   color: gray;
   text-decoration: none;
   font-size: 18px;
-  font-family: 'noto_Regular';
+  font-family: "ON_IGothic";
   font-weight: lighter;
 }
 
@@ -415,7 +346,7 @@ input[id*='userPopup'] {
       -ms-flex-align: center;
           align-items: center;
   font-size: 20px;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "ON_IGothic";
   font-weight: bolder;
 }
 
@@ -427,12 +358,24 @@ input[id*='userPopup'] {
 .top_modal_button:focus {
   outline: none;
 }
-
+#address_section_btn{
+	color: white !important;
+}
 /*btn style wrapper*/
-.top_modal_button_style {
-  border: none;
+.top_modal_orange{
   background-image: -webkit-gradient(linear, left top, left bottom, from(#FD6F46), to(#FB9832));
   background-image: linear-gradient(to bottom, #FD6F46, #FB9832);
+}
+.top_modal_red{
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FF5342), to(#FF8576));
+  background-image: linear-gradient(to bottom, #FF5342, #FF8576);
+}
+.top_modal_green{
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#05c191), to(#26d97d));
+  background-image: linear-gradient(to bottom, #05c191, #26d97d);
+}
+.top_modal_button_style {
+  border: none;
   text-align: center;
   border-radius: 10px;
   background-repeat: repeat-y;
@@ -481,11 +424,13 @@ input[id*='userPopup'] {
 #modal_header > #login_btn_label {
   color: #f58b2e;
   margin-right: 20px;
+  transition: all .35s;
 }
 
 #modal_header > #signup_btn_label {
   color: #f58b2e;
   margin-left: 20px;
+  transition: all .35s;
 }
 
 #modal_header > #modal_header_span {
@@ -573,6 +518,7 @@ input[id*='userPopup'] {
       -ms-flex-direction: column;
           flex-direction: column;
   opacity: 0;
+  margin-left: -20px;
   /* justify-content: center; */
   /* text-align: center; */
 }
@@ -586,7 +532,7 @@ input[id*='userPopup'] {
 }
 
 #modalInnerFrame h3 {
-  font-family: 'BBTreeGB';
+  font-family: "ON_IGothic";
   text-align: center;
   margin-bottom: 10px;
   letter-spacing: 5px;
@@ -597,6 +543,14 @@ input[id*='userPopup'] {
   display: inline-block;
   font-size: 14px;
   min-width: 100px;
+}
+
+#signup_form h3{
+	font-size: 35px;
+	margin-top: 25px;
+}
+#login_form h3{
+	font-size: 35px;
 }
 
 #signup_submit_btn {
@@ -633,7 +587,7 @@ input[id*='userPopup'] {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   height: 40px;
-  margin-top: 10px;
+  margin-top: 13px;
   margin-left: 30px;
   padding-left: 15px;
   padding-right: 15px;
@@ -645,6 +599,10 @@ input[id*='userPopup'] {
   transition: all .35s;
 }
 
+
+.signup_long_input{
+	width: 360px;
+}
 #id_section, #address_section_header {
   min-width: 400px;
 }
@@ -677,26 +635,33 @@ input[id*='userPopup'] {
   clear: left;
   width: 100%;
 }
-
+/*item base setting*/
 .ui-autocomplete li.ui-menu-item {
   padding: 1px;
-  width: 524px;
+  width: 436px;
   background-color: #f4f4f4 !important;
 }
-
+/*item highlight setting*/
 .ui-menu-item .ui-menu-item-wrapper.ui-state-active {
   background: #cfcfcf !important;
   font-weight: bold !important;
   color: #000000 !important;
+  width: 436px;
+  padding-left: 5px;
   border: none;
+  padding: 0 7px 0 0;
 }
 
 .ui-menu-item a {
   text-decoration: none;
   display: block;
-  padding: .2em .4em;
   line-height: 1.5;
   zoom: 1;
+  width: 436px;
+}
+#daumWrap{
+	postion: absolute !important;
+	left: 150%;
 }
 
 /*inputform color*/
