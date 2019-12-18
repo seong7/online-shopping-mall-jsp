@@ -1,44 +1,51 @@
+<%@ page contentType="text/html; charset=EUC-KR"%>
+<%
+		request.setCharacterEncoding("EUC-KR");
+%>
 
-<link rel="stylesheet" type="text/css" href="css/manager_side.css">
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/admin/css/admin_style.css">
 <script src="https://kit.fontawesome.com/115bcf1f34.js" crossorigin="anonymous"></script>
   
 
-
-
-  	<!-- top, bottom Ï†úÏô∏ ÌéòÏù¥ÏßÄ Ï†ÑÏ≤¥-->
+  	<!-- top, bottom ¡¶ø‹ ∆‰¿Ã¡ˆ ¿¸√º-->
     <div id="main">
   
         <header>
 
 
-        <!-- ÏöîÏïΩÏ∞Ω Î∂ÄÎ∂Ñ -->
+        <!-- ø‰æ‡√¢ ∫Œ∫– -->
         <div id="manager_summ">
               <ul id="manager_summ_ul">
                   <li id="summ_first">
+                  	
+                  	  <!-- ¿”Ω√ ∏ﬁ∏  :: -->
+                      <span style="font-size: 12px; color: red;">∞¸∏Æ¿⁄ ∏µÂ¿« ø‰æ‡√¢ <br/>(ªÁøÎ ø©∫Œ: πÃ¡§ / ≥ªøÎ: πÃ¡§)</span>
+                  
                       <div class="top">
-                          <span id="name" class="bold">ÍπÄÏÑ±ÏßÑ</span>
-                          <span id="name_top" class="text">Îãò</span>
+                          <span id="name" class="bold">±Ëº∫¡¯</span>
+                          <span id="name_top" class="text">¥‘</span>
                       </div>
                       <div class="bottom">
-                          <span id="name_bottom" class="text">ÌôòÏòÅÌï©ÎãàÎã§.</span>
+                          <span id="name_bottom" class="text">»Øøµ«’¥œ¥Ÿ.</span>
                       </div>
                   </li>
                   <li>
                       <div class="top">
-                          <span id="point_top" class="text">ÏÇ¨Ïö©Í∞ÄÎä• Ìè¨Ïù∏Ìä∏</span>
+                          <span id="point_top" class="text">ªÁøÎ∞°¥… ∆˜¿Œ∆Æ</span>
                       </div>
                       <div class="bottom">
                           <span id="point" class="bold">1,000</span>
-                          <span id="point_bottm" class="text">Ïõê</span>
+                          <span id="point_bottm" class="text">ø¯</span>
                       </div>
                   </li>
                   <li id="summ_last">
                       <div class="top">
-                          <span id="del_top" class="text">Î∞∞ÏÜ°Ï§ëÏù∏ Ï£ºÎ¨∏</span>
+                          <span id="del_top" class="text">πËº€¡ﬂ¿Œ ¡÷πÆ</span>
                       </div>
                       <div class="bottom">
                           <span id="del" class="bold">2</span>
-                          <span id="del_bottom" class="text">Í±¥</span>
+                          <span id="del_bottom" class="text">∞«</span>
                       </div>
                   </li>
               </ul>
@@ -50,19 +57,19 @@
 
     
     <div id="btn_manager_wrapper">  
-    <!-- (Î≤ÑÌäºÎ©îÎâ¥ + manager) -->
+    <!-- (πˆ∆∞∏ﬁ¥∫ + manager) -->
 
 
         <div id="btn_wrapper">
     
-            <!-- Î©îÎâ¥ Î∂ÄÎ∂Ñ -->
+            <!-- ∏ﬁ¥∫ ∫Œ∫– -->
             <div id="manager_btn_wrapper">
                 <ul>
                     <a id="btn_first" href="#">
                         <li>
-                            <span class="text">ÌÜµÍ≥Ñ</span>
+                            <span class="text">≈Î∞Ë</span>
                             
-                            <!-- default ÏïÑÏù¥ÏΩò -->
+                            <!-- default æ∆¿Ãƒ‹ -->
                             <span class="icon"><i class="fas fa-chevron-left"></i></span>
                         
                              <!-- chart.jsp :: -->
@@ -72,9 +79,9 @@
                     </a>
                     <a href="#">
                         <li>
-                            <span class="text">ÌöåÏõêÍ¥ÄÎ¶¨</span>
+                            <span class="text">»∏ø¯∞¸∏Æ</span>
         
-                            <!-- default ÏïÑÏù¥ÏΩò -->
+                            <!-- default æ∆¿Ãƒ‹ -->
                             <span class="icon"><i class="fas fa-chevron-left"></i></span>
         
                             <!-- member_list.jsp / member_view.jsp :: -->
@@ -84,9 +91,9 @@
                     </a>
                     <a href="#">
                         <li>
-                            <span class="text">Ï£ºÎ¨∏Í¥ÄÎ¶¨</span>
+                            <span class="text">¡÷πÆ∞¸∏Æ</span>
                             
-                            <!-- default ÏïÑÏù¥ÏΩò -->
+                            <!-- default æ∆¿Ãƒ‹ -->
                             <span class="icon"><i class="fas fa-chevron-left"></i></span>
         
                              <!-- order_list.jsp / order_view.jsp :: -->
@@ -96,9 +103,9 @@
                     </a>
                     <a href="#">
                         <li>
-                            <span class="text">Ï†úÌíàÍ¥ÄÎ¶¨</span>
+                            <span class="text">¡¶«∞∞¸∏Æ</span>
                             
-                            <!-- default ÏïÑÏù¥ÏΩò -->
+                            <!-- default æ∆¿Ãƒ‹ -->
                             <span class="icon"><i class="fas fa-chevron-left"></i></span>
                         
                              <!-- goods_master.jsp, goods_insert.jsp, goods_view.jsp, goods_stock.jsp :: -->
@@ -108,12 +115,12 @@
                     </a>
                     <a href="#">
                         <li>
-                            <span class="text">Ï†ëÏÜçÍ¥ÄÎ¶¨</span>
+                            <span class="text">¡¢º”∞¸∏Æ</span>
                             
-                            <!-- default ÏïÑÏù¥ÏΩò -->
+                            <!-- default æ∆¿Ãƒ‹ -->
                             <span class="icon"><i class="fas fa-chevron-left"></i></span>
                         
-                             <!-- Ï†ëÏÜçÍ¥ÄÎ¶¨ ÌéòÏù¥ÏßÄ ÎàÑÎùΩÎê® :: -->
+                             <!-- ¡¢º”∞¸∏Æ ∆‰¿Ã¡ˆ ¥©∂Ùµ  :: -->
                             <!-- <span class="icon"><i class="fas fa-chevron-right"></i></span> -->
                         
                         </li>
@@ -122,7 +129,7 @@
                         <li>
                             <span class="text">QnA</span>
                             
-                            <!-- default ÏïÑÏù¥ÏΩò -->
+                            <!-- default æ∆¿Ãƒ‹ -->
                             <span class="icon"><i class="fas fa-chevron-left"></i></span>
                         
                              <!-- qna_list.jsp / qna_view.jsp :: -->
@@ -132,9 +139,9 @@
                     </a>
                     <a href="#">
                         <li>
-                            <span class="text">Í≥µÏßÄÏÇ¨Ìï≠</span>
+                            <span class="text">∞¯¡ˆªÁ«◊</span>
                             
-                            <!-- default ÏïÑÏù¥ÏΩò -->
+                            <!-- default æ∆¿Ãƒ‹ -->
                             <span class="icon"><i class="fas fa-chevron-left"></i></span>
                         
                              <!-- notice_list.jsp / notice_view.jsp :: -->
@@ -146,7 +153,7 @@
                         <li>
                             <span class="text">FAQ</span>
                             
-                            <!-- default ÏïÑÏù¥ÏΩò -->
+                            <!-- default æ∆¿Ãƒ‹ -->
                             <span class="icon"><i class="fas fa-chevron-left"></i></span>
                         
                              <!-- faq_list.jsp / faq_view.jsp :: -->
@@ -161,6 +168,7 @@
         </div>   <!-- #btn_wrapper -->
 
 
-    </div>   <!--#btn_manager_wrapper (Î≤ÑÌäºÎ©îÎâ¥ + manager) : ÌïòÏúÑ ÌéòÏù¥ÏßÄÏóêÏÑú Îã´ÏïÑÏïºÌï®-->
+    <!--</div>   #btn_manager_wrapper (πˆ∆∞∏ﬁ¥∫ + manager) : «œ¿ß ∆‰¿Ã¡ˆø°º≠ ¥›æ∆æﬂ«‘-->
     
-   </div>  <!--#main (ÏÉÅÎã®ÏöîÏïΩ + Î≤ÑÌäº + manager) : ÌïòÏúÑÌéòÏù¥ÏßÄÏóêÏÑú Îã´ÏïÑÏïºÌï®-->
+   <!--</div>  #main (ªÛ¥‹ø‰æ‡ + πˆ∆∞ + manager) : «œ¿ß∆‰¿Ã¡ˆø°º≠ ¥›æ∆æﬂ«‘-->
+

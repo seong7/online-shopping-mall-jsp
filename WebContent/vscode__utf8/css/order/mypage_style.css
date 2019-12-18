@@ -39,7 +39,7 @@
   min-width: 1050px;
 }
 
-#main #btn_manager_wrapper {
+#main #btn_mypage_wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -52,13 +52,13 @@
   min-height: 600px;
 }
 
-#main #btn_manager_wrapper #btn_wrapper {
+#main #btn_mypage_wrapper #btn_wrapper {
   height: 100%;
   min-height: 600px;
   width: 150px;
 }
 
-#main #btn_manager_wrapper #manager {
+#main #btn_mypage_wrapper #mypage {
   height: 100%;
   width: 80%;
   font-family: "ON_IGothic";
@@ -68,7 +68,7 @@
 /*************************/
 /***** 메뉴 버튼 부분 *****/
 /*************************/
-#manager_btn_wrapper {
+#mypage_btn_wrapper {
   /****  위치 다시 잡기 (html 전체 기준임) ****/
   /* 미디어 쿼리 사용 예정 */
   position: -webkit-sticky;
@@ -81,7 +81,7 @@
   width: 150px;
 }
 
-#manager_btn_wrapper ul {
+#mypage_btn_wrapper ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -97,11 +97,11 @@
   padding: 0px;
 }
 
-#manager_btn_wrapper ul a {
+#mypage_btn_wrapper ul a {
   text-decoration: none;
 }
 
-#manager_btn_wrapper ul a li {
+#mypage_btn_wrapper ul a li {
   display: block;
   position: relative;
   list-style: none;
@@ -114,18 +114,18 @@
   transition: all 0.3s;
 }
 
-#manager_btn_wrapper ul a li .icon {
+#mypage_btn_wrapper ul a li .icon {
   position: absolute;
   top: 32px;
   right: 10px;
 }
 
-#manager_btn_wrapper ul a li:hover {
+#mypage_btn_wrapper ul a li:hover {
   background-color: #f3f3f5;
   color: #FB9832;
 }
 
-#manager_btn_wrapper ul a li:hover i {
+#mypage_btn_wrapper ul a li:hover i {
   -webkit-transform: rotate(0.5turn);
           transform: rotate(0.5turn);
   -webkit-transition: -webkit-transform 0.2s;
@@ -147,14 +147,14 @@
 /**********************/
 /***** 요약창 부분 *****/
 /**********************/
-#manager_summ {
+#mypage_summ {
   margin-top: 30px;
   margin-bottom: 50px;
   margin-left: 500px;
   display: inline-block;
 }
 
-#manager_summ ul {
+#mypage_summ ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -169,7 +169,7 @@
   background-color: rgba(254, 192, 132, 0.4);
 }
 
-#manager_summ ul li {
+#mypage_summ ul li {
   list-style: none;
   border-left: 0.5px solid #dcdbde;
   display: -webkit-box;
@@ -187,30 +187,30 @@
   margin: 10px;
 }
 
-#manager_summ ul li div {
+#mypage_summ ul li div {
   display: block;
   width: 150px;
   height: 50px;
   text-align: center;
 }
 
-#manager_summ ul li .bold {
+#mypage_summ ul li .bold {
   font-size: 24px;
   font-family: "ON_IGothic";
   color: #EB7A36;
 }
 
-#manager_summ ul li #point_top, #manager_summ ul li #del_top {
+#mypage_summ ul li #point_top, #mypage_summ ul li #del_top {
   position: relative;
   top: 8px;
 }
 
-#manager_summ ul li #name_bottom {
+#mypage_summ ul li #name_bottom {
   position: relative;
   top: 7px;
 }
 
-#manager_summ #manager_summ_ul li:first-of-type {
+#mypage_summ #mypage_summ_ul li:first-of-type {
   border-left: none;
 }
-/*# sourceMappingURL=manager_side.css.map */
+/*# sourceMappingURL=mypage_style.css.map */

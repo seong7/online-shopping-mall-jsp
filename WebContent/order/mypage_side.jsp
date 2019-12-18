@@ -4,7 +4,7 @@
 %>
 
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/order/css/mypage_side.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/order/css/mypage_style.css">
 <script src="https://kit.fontawesome.com/115bcf1f34.js" crossorigin="anonymous"></script>
   
   	<!-- top, bottom 제외 페이지 전체-->
