@@ -1,78 +1,18 @@
-/* 폰트 추가 noto-Sans*/
-@font-face {
-  font-family: 'noto_Bold';
-  src: url(../font/NotoSansCJKkr-Bold.otf);
-  font-style: normal;
-  font-weight: normal;
-}
 
+/* 폰트 추가*/
+/* 굵음 */
 @font-face {
-  font-family: 'noto_Black';
-  src: url(../font/NotoSansCJKkr-Black.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'noto_Demilight';
-  src: url(../font/NotoSansCJKkr-DemiLight.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'noto_Light';
-  src: url(../font/NotoSansCJKkr-Light.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'noto_Medium';
-  src: url(../font/NotoSansCJKkr-Medium.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'noto_Regular';
-  src: url(../font/NotoSansCJKkr-Regular.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'noto_Thin';
-  src: url(../font/NotoSansCJKkr-Thin.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'InkLipquid';
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff") format("woff");
+  font-family: 'ON_IGothic';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
+/* 일반 */
 @font-face {
-  font-family: 'Cafe24Danjunghae';
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Danjunghae.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'BMHANNAAir';
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'BBTreeGB';
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff") format("woff");
-  font-weight: normal;
+  font-family: 'Handon3gyeopsal600g';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff") format("woff");
+  font-weight: 200;
   font-style: normal;
 }
 
@@ -80,8 +20,10 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
+  max-width: 1050px;
   min-width: 1050px;
+  width: 1050px;
+  margin: 0 auto;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -95,8 +37,8 @@ main .goodslist_tit {
   margin-top: 100px;
   margin-bottom: 60px;
   text-align: center;
-  width: 100%;
-  font-family: "noto_Bold";
+  width: 1050px;
+  font-family: "ON_IGothic";
 }
 
 main .goodslist_tit .goodslist_btn {
@@ -113,7 +55,7 @@ main .goodslist_tit .goodslist_detail {
 }
 
 main ul {
-  width: 100%;
+  width: 1050px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -131,7 +73,7 @@ main ul li {
 main ul li img {
   width: 249px;
   height: 320px;
-  max-width: 100%;
+  max-width: 1050px;
 }
 
 main ul li img:hover {
@@ -150,12 +92,15 @@ main ul li .goods_info a {
 }
 
 main ul li .goods_info .name {
-  font-family: "noto_Bold";
+  font-family: "ON_IGothic";
   color: gray;
+  line-height: 1.5em;
+  font-size: 18px;
 }
 
 main ul li .goods_info .price {
   display: block;
-  margin-top: 3px;
+  font-family: "ON_IGothic";
+  margin-top: 6px;
 }
 /*# sourceMappingURL=index.css.map */

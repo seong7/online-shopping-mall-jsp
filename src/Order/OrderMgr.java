@@ -17,18 +17,18 @@ public class OrderMgr {
 	}
 	//***User 기능설계***
 	//insert 
-	public void insertOrder(OrderBean order) {
+	public boolean insertOrder(OrderBean order) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
+		boolean flag = false;
 		try {
 			con = pool.getConnection();
-			sql = "insert order_tb(o_id,o_recpt_name,"
-					+ "o_recpt_contact,o_recpt_zipcode,o_recpt_add,"
-					+ "o_recpt_add_det,o_del_msg,o_date,"
-					+ "o_prod_amount,o_del_fee,o_total_amount,"
-					+ "o_pay_method,o_mgr_note,o_status, o_del_num,"
-					+ "o_del_date) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			sql = "insert order_tb(o_id,o_recpt_name,o_recpt_contact,"
+					+ "o_recpt_zipcode,o_recpt_add,o_recpt_add_det,"
+					+ "o_del_msg,o_date,o_prod_amount,o_del_fee,"
+					+ "o_total_amount,o_pay_method) "
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, now(), ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, order.getO_id());
 				pstmt.setString(2, order.getO_recpt_name());
@@ -37,21 +37,17 @@ public class OrderMgr {
 				pstmt.setString(5, order.getO_recpt_add());
 				pstmt.setString(6, order.getO_recpt_add_det());
 				pstmt.setString(7, order.getO_del_msg());
-				pstmt.setString(8, order.getO_date());
-				pstmt.setInt(9, order.getO_prod_amount());
-				pstmt.setInt(10, order.getO_del_fee());
-				pstmt.setInt(11, order.getO_total_amount());
-				pstmt.setString(12, order.getO_pay_method());
-				pstmt.setString(13, order.getO_mgr_note());
-				pstmt.setString(14, order.getO_status());
-				pstmt.setString(15, order.getO_del_num());//송장번호
-				pstmt.setString(16, order.getO_id());
-			pstmt.executeUpdate();
+				pstmt.setInt(8, order.getO_prod_amount());
+				pstmt.setInt(9, order.getO_del_fee());
+				pstmt.setInt(10, order.getO_total_amount());
+				pstmt.setString(11, order.getO_pay_method());
+				pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			pool.freeConnection(con, pstmt);
 		}
+		return flag;
 	}
 	//Order list 
 	public Vector<OrderBean> getOrder(String id) {

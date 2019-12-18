@@ -71,8 +71,4 @@ public class MemberBean {
 	public void setJoin_date(String join_date) {
 		this.join_date = join_date;
 	}
-	
-	
-	
-	
 }
