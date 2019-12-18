@@ -4,6 +4,17 @@
 <%
 	request.setCharacterEncoding("EUC-KR");
 %>
+<html>
+<head>
+<title>-관리자-제품 등록</title>
+<script src="script.js"></script>
+</head>
+<body topmargin="100">
+	<form method="post" action="goods_Proc.jsp?flag=insert"
+		enctype="multipart/form-data">
+		<!-- enctype="multipart/form-data" 일때에는 post방식으로 보낸다. 
+	대신에 action을 통해서 action="productProc.jsp?flag=insert" 를 해줘야한다.-->
+
 
 <!-- <title>-관리자-제품 등록</title> -->
 
@@ -108,5 +119,6 @@
 </div> <!--  #btn_manager_wrapper (버튼메뉴 + manager) : manager_side.jsp 에서 열림-->
 </div> <!-- #main (상단요약 + 버튼 + manager) : manager_side.jsp 에서 열림-->
 	<jsp:include page="../bottom.jsp"/>
+
 </body>
 </html>
