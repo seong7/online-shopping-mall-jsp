@@ -1,6 +1,6 @@
 package Member;
 
-public class UserBean {
+public class MemberBean {
 	private String id;
 	private String pwd;
 	private String NAME;
