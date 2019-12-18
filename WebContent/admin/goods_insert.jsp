@@ -7,7 +7,6 @@
 <html>
 <head>
 <!-- <title>-包府磊-力前 殿废</title>  -->
-<script src="script.js"></script>
 </head>
 <body topmargin="100">
 	<form method="post" action="goods_Proc.jsp?flag=insert"

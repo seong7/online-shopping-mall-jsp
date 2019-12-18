@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-        
-    <wb-module deploy-name="online-shopping-mall">
-                
-        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-                
-        <property name="context-root" value="online-shopping-mall"/>
-                
-        <property name="java-output-path" value="/online-shopping-mall/build/classes"/>
             
-    </wb-module>
     
+    <wb-module deploy-name="online-shopping-mall">
+                        
+        
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+                        
+        
+        <property name="java-output-path" value="/online-shopping-mall/build/classes"/>
+        <property name="context-root" value="online-shopping-mall"/>
+                    
+    
+    </wb-module>
+        
+
 </project-modules>

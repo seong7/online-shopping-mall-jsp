@@ -16,7 +16,7 @@ import javax.websocket.Session;
 /**
  * Servlet implementation class MemberSignupServlet
  */
-@WebServlet("/MemberSignupServlet")
+@WebServlet( urlPatterns="/MemberSignupServlet")
 public class MemberSignupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -54,7 +54,7 @@ public class MemberSignupServlet extends HttpServlet {
 		MemberBean bean = new MemberBean();
 		bean.setId(id);
 		bean.setPwd(pwd);
-		bean.setNAME(NAME);
+		bean.setName(NAME);
 		bean.setBirthday(birthday);
 		bean.setEmail(email);
 		bean.setContact(contact);

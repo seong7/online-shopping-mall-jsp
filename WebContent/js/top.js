@@ -397,7 +397,7 @@ function searchInput(){
 		
 		$.ajax({
 			type: 'post',
-			url:ctx+'/MemberLoginServlet',
+			url:'/MemberLoginServlet',
 			data: {
 				login_id : login_id,
 				login_pwd : login_pwd

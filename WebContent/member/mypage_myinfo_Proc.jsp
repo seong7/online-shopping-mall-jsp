@@ -7,15 +7,15 @@
 boolean flag = mMgr.updateMember(mBean);
 String id = request.getParameter("id");
 if(flag){%>
-	<script>
-		alert("íšŒì›ì •ë³´ê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
-		location.href="index.jsp";
-
-	</script>
+<script>
+	alert("È¸¿øÁ¤º¸°¡ ¼öÁ¤µÇ¾ú½À´Ï´Ù.");
+	location.href="index.jsp";
+</script>
 <%}else{%>
-	<script>
-		alert("ìˆ˜ì •ë„ì¤‘ ì—ëŸ¬ê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤.");
-		history.back();
-	</script>
+<script>
+	alert("¼öÁ¤µµÁß ¿¡·¯°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù.");
+	history.back();
+</script>
 <%}%>
+
 
