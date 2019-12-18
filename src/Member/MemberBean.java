@@ -3,7 +3,7 @@ package Member;
 public class MemberBean {
 	private String id;
 	private String pwd;
-	private String NAME;
+	private String name;
 	private String birthday;
 	private String email;
 	private String contact;
@@ -23,11 +23,11 @@ public class MemberBean {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	public String getNAME() {
-		return NAME;
+	public String getName() {
+		return name;
 	}
-	public void setNAME(String nAME) {
-		NAME = nAME;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getBirthday() {
 		return birthday;
@@ -71,5 +71,4 @@ public class MemberBean {
 	public void setJoin_date(String join_date) {
 		this.join_date = join_date;
 	}
-	
 }
