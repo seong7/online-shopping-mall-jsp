@@ -9,11 +9,7 @@
   </ul>
  </li>
  <li>
-<<<<<<< HEAD
-  origin/dev의 업데이트가 있을 경우, 우선 local branch 와 merge 하기
-=======
   origin/dev 업데이트가 있을 경우, 우선 local branch 와 merge 하기
->>>>>>> origin/dev
   <ul>
    <li>명령어 : git merge 로컬브랜치명 origin/dev</li>
   </ul>
