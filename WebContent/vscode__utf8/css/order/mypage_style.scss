@@ -3,7 +3,6 @@ $brandFont: 'ON_IGothic';
 $testFont: 'Handon3gyeopsal600g';
 $brandColor: #fec084;
 
-/* include 하는 각각의 페이지에서 div #main 선언해야함 */
 #main{
 	max-width: 1050px;
 	min-width: 1050px;
@@ -24,19 +23,25 @@ $brandColor: #fec084;
         height: 100%;
         min-height: 600px;
 
-        #btn_wrapper{     // 버튼메뉴 구역
-            // width: %;
+        #mypage_side{     // 버튼메뉴 구역
+            display: flex;
+            flex-direction: column;
             height: 100%;
             min-height:600px;
             width: 150px;
         }
-        #mypage{
-            height: 100%;
-            width: 80%;
-            font-family: $brandFont;
-            padding-left: 50px;
-        }
     }
+}
+
+#section{
+    display: block;
+    font-size: 30px;
+    font-family: $brandFont;
+    color: #4A4439;
+    height: 53px;
+    // text-align: center;
+    padding-top: 20px;
+    overflow: visible;
 }
 
 /*************************/
@@ -51,7 +56,7 @@ $brandColor: #fec084;
     // display: inline-block;
     // position: fixed;
     position: sticky;
-    top: 216px;
+    top: 268px;
     border: 0.5px solid #dcdbde;
     border-radius: 5px;
     // left: 200px;
@@ -118,7 +123,7 @@ $brandColor: #fec084;
 /**********************/
 #mypage_summ{
     margin-top: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     margin-left: 500px;
     display: inline-block;
     ul{
@@ -170,3 +175,58 @@ $brandColor: #fec084;
         }
     }
 }
+
+
+
+// mypage 모든 페이지에 공통 적용 부분
+
+#mypage{
+    height: 100%;
+    width: 80%;
+    font-family: $brandFont;
+    padding-left: 50px;
+}  
+
+.title{
+    display: inline-block;
+    width: 100%;
+    color: #333;
+    font-size: 24px;
+    border-bottom: 3px solid $brandColor;
+    padding-bottom: 20px;
+    margin-top: 20px;
+}
+    
+.mypage_table {
+    margin-top: 80px;
+    border-collapse:collapse;
+    width: 100%;
+    text-align:center;
+    color: #333;
+
+    th{
+        border-top: 0.5px solid #dcdbde;
+        border-bottom: 0.5px solid #dcdbde;
+        font-size: 20px;
+        height: 50px;
+        padding-top: 13px;
+    }
+
+    td{
+        border-bottom: 0.5px solid #dcdbde;
+        font-size: 16px;
+        height: 100px;
+        padding-top:40px;
+    }
+
+    // a 태그 걸린 td 속성
+    .btn_td{
+        a{
+            text-decoration: none;
+            color: #333;
+        }
+        &:hover a{
+            color: #fec084;
+        }
+    }
+}    

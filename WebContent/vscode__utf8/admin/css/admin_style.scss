@@ -25,14 +25,24 @@ $tableBorder: 0.5px solid #dcdbde;
         height: 100%;
         min-height: 600px;
 
-        #btn_wrapper{     // 버튼메뉴 구역
-            // width: %;
+        #admin_side{     // 버튼메뉴 구역
+            display: flex;
+            flex-direction: column;
             height: 100%;
             min-height:600px;
             width: 150px;
         } 
 
     }
+}
+
+#section{
+    display: block;
+    font-size: 30px;
+    font-family: $brandFont;
+    color: #4A4439;
+    height: 53px;
+    overflow: visible;
 }
 
 /*************************/
@@ -47,7 +57,7 @@ $tableBorder: 0.5px solid #dcdbde;
     // display: inline-block;
     // position: fixed;
     position: sticky;
-    top: 216px;
+    top: 268px;
     border: $tableBorder;
     border-radius: 5px;
     // left: 200px;
@@ -171,7 +181,7 @@ $tableBorder: 0.5px solid #dcdbde;
 
 
 
-// manager 모드 모든 페이지에 공통 적용 부분
+// admin 모드 모든 페이지에 공통 적용 부분
 
 #manager{
     height: 100%;
@@ -189,7 +199,7 @@ $tableBorder: 0.5px solid #dcdbde;
     display: inline-block;
     width: 100%;
     color: #333;
-    font-size: 30px;
+    font-size: 24px;
     border-bottom: 3px solid $brandColor;
     padding-bottom: 20px;
 }
@@ -278,4 +288,7 @@ form{
     input{
         width: 300px;
     }
+}
+.rm_pct{
+    margin-top: 5px;
 }
