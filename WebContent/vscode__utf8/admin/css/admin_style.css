@@ -39,7 +39,7 @@
   min-width: 1050px;
 }
 
-#main #btn_mypage_wrapper {
+#main #btn_manager_wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -52,23 +52,16 @@
   min-height: 600px;
 }
 
-#main #btn_mypage_wrapper #btn_wrapper {
+#main #btn_manager_wrapper #btn_wrapper {
   height: 100%;
   min-height: 600px;
   width: 150px;
 }
 
-#main #btn_mypage_wrapper #mypage {
-  height: 100%;
-  width: 80%;
-  font-family: "ON_IGothic";
-  padding-left: 50px;
-}
-
 /*************************/
 /***** 메뉴 버튼 부분 *****/
 /*************************/
-#mypage_btn_wrapper {
+#manager_btn_wrapper {
   /****  위치 다시 잡기 (html 전체 기준임) ****/
   /* 미디어 쿼리 사용 예정 */
   position: -webkit-sticky;
@@ -81,7 +74,7 @@
   width: 150px;
 }
 
-#mypage_btn_wrapper ul {
+#manager_btn_wrapper ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -97,11 +90,11 @@
   padding: 0px;
 }
 
-#mypage_btn_wrapper ul a {
+#manager_btn_wrapper ul a {
   text-decoration: none;
 }
 
-#mypage_btn_wrapper ul a li {
+#manager_btn_wrapper ul a li {
   display: block;
   position: relative;
   list-style: none;
@@ -114,18 +107,18 @@
   transition: all 0.3s;
 }
 
-#mypage_btn_wrapper ul a li .icon {
+#manager_btn_wrapper ul a li .icon {
   position: absolute;
   top: 32px;
   right: 10px;
 }
 
-#mypage_btn_wrapper ul a li:hover {
+#manager_btn_wrapper ul a li:hover {
   background-color: #f3f3f5;
   color: #FB9832;
 }
 
-#mypage_btn_wrapper ul a li:hover i {
+#manager_btn_wrapper ul a li:hover i {
   -webkit-transform: rotate(0.5turn);
           transform: rotate(0.5turn);
   -webkit-transition: -webkit-transform 0.2s;
@@ -147,14 +140,14 @@
 /**********************/
 /***** 요약창 부분 *****/
 /**********************/
-#mypage_summ {
+#manager_summ {
   margin-top: 30px;
   margin-bottom: 50px;
   margin-left: 500px;
   display: inline-block;
 }
 
-#mypage_summ ul {
+#manager_summ ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -169,7 +162,7 @@
   background-color: rgba(254, 192, 132, 0.4);
 }
 
-#mypage_summ ul li {
+#manager_summ ul li {
   list-style: none;
   border-left: 0.5px solid #dcdbde;
   display: -webkit-box;
@@ -187,30 +180,142 @@
   margin: 10px;
 }
 
-#mypage_summ ul li div {
+#manager_summ ul li div {
   display: block;
   width: 150px;
   height: 50px;
   text-align: center;
 }
 
-#mypage_summ ul li .bold {
+#manager_summ ul li .bold {
   font-size: 24px;
   font-family: "ON_IGothic";
   color: #EB7A36;
 }
 
-#mypage_summ ul li #point_top, #mypage_summ ul li #del_top {
+#manager_summ ul li #point_top, #manager_summ ul li #del_top {
   position: relative;
   top: 8px;
 }
 
-#mypage_summ ul li #name_bottom {
+#manager_summ ul li #name_bottom {
   position: relative;
   top: 7px;
 }
 
-#mypage_summ #mypage_summ_ul li:first-of-type {
+#manager_summ #manager_summ_ul li:first-of-type {
   border-left: none;
 }
-/*# sourceMappingURL=mypage_side.css.map */
+
+#manager {
+  height: 100%;
+  width: 80%;
+  min-width: 80%;
+  font-family: "ON_IGothic";
+  padding-left: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.title {
+  display: inline-block;
+  width: 100%;
+  color: #333;
+  font-size: 30px;
+  border-bottom: 3px solid #fec084;
+  padding-bottom: 20px;
+}
+
+form {
+  width: 97%;
+  padding-left: 20px;
+}
+
+.inner_title {
+  display: inline-block;
+  color: #333;
+  font-size: 23px;
+  padding-bottom: 20px;
+  margin-top: 30px;
+}
+
+/***** mgr_table (매니져모드의 테이블 공통 속성) ****/
+.mgr_table {
+  border: 2px solid #dcdbde;
+  letter-spacing: 0.5px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.mgr_table th {
+  background-color: #f3f3f5;
+  width: 100px;
+  border: 0.5px solid #dcdbde;
+}
+
+.mgr_table td {
+  border: 0.5px solid #dcdbde;
+  padding: 5px;
+}
+
+.mgr_table td input, .mgr_table td select {
+  padding: 10px;
+  border: 1px solid #dcdbde;
+  border-radius: 3px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 180px;
+}
+
+.mgr_table td .radio {
+  width: 50px;
+  margin-top: -1px;
+  vertical-align: middle;
+}
+
+.submit_wrapper {
+  display: block;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.submit_wrapper .btn {
+  margin-right: 30px;
+  height: 50px;
+  width: 100px;
+  font-size: 17px;
+}
+
+.btn {
+  height: 30px;
+  width: 70px;
+  background-color: #fec084;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+}
+
+.btn:active {
+  background-color: #f09439;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+/*** goods_insert.jsp 에만 ***/
+#pht_table input {
+  width: 300px;
+}
+/*# sourceMappingURL=admin_style.css.map */

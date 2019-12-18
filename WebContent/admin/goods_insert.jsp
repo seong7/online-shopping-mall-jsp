@@ -6,107 +6,131 @@
 %>
 <html>
 <head>
-<title>-Í¥ÄÎ¶¨Ïûê-Ï†úÌíà Îì±Î°ù</title>
+<!-- <title>-∞¸∏Æ¿⁄-¡¶«∞ µÓ∑œ</title>  -->
 <script src="script.js"></script>
 </head>
 <body topmargin="100">
 	<form method="post" action="goods_Proc.jsp?flag=insert"
 		enctype="multipart/form-data">
-		<!-- enctype="multipart/form-data" ÏùºÎïåÏóêÎäî postÎ∞©ÏãùÏúºÎ°ú Î≥¥ÎÇ∏Îã§. 
-	ÎåÄÏã†Ïóê actionÏùÑ ÌÜµÌï¥ÏÑú action="productProc.jsp?flag=insert" Î•º Ìï¥Ï§òÏïºÌïúÎã§.-->
+		<!-- enctype="multipart/form-data" ¿œ∂ßø°¥¬ postπÊΩƒ¿∏∑Œ ∫∏≥Ω¥Ÿ. 
+	¥ÎΩ≈ø° action¿ª ≈Î«ÿº≠ action="productProc.jsp?flag=insert" ∏¶ «ÿ¡‡æﬂ«—¥Ÿ.-->
 
 
-<!-- <title>-Í¥ÄÎ¶¨Ïûê-Ï†úÌíà Îì±Î°ù</title> -->
+<!-- <title>-∞¸∏Æ¿⁄-¡¶«∞ µÓ∑œ</title> -->
 
 <!-- <link rel="stylesheet" type="text/css" href="./css/mypage_orderlist.css"> -->
 <jsp:include page="../top.jsp"/>
 
-	<jsp:include page="./manager_side.jsp"/>
+	<jsp:include page="./admin_side.jsp"/>
+
+
+<!--------------->
+<!--  ¿€æ˜ øµø™  -->
+<!--------------->
 	
-	<div id="manager">  
+        <div id="manager">  
+        
+            <h1 class="title">¡¶«∞ µÓ∑œ</h1>
+
+            <form method="post" action="goods_insertProc.jsp?flag=insert"
+                enctype="multipart/form-data">
+                <!-- enctype="multipart/form-data" ¿œ∂ßø°¥¬ postπÊΩƒ¿∏∑Œ ∫∏≥Ω¥Ÿ. 
+            ¥ÎΩ≈ø° action¿ª ≈Î«ÿº≠ action="productProc.jsp?flag=insert" ∏¶ «ÿ¡‡æﬂ«—¥Ÿ.-->
+        
+                <h3 class="inner_title">±‚∫ª¡§∫∏</h3>
+
+
+                            <table class="mgr_table verHead">
+        
+                                <tr>
+                                    <th>¡¶«∞ƒ⁄µÂ</td>
+                                    <td><input name="p_code" placeholder="¿⁄µøª˝º∫µÀ¥œ¥Ÿ." readonly></td>
+                                
+                                    <th>¡¶«∞∏Ì</td>
+                                    <td><input name="p_name"></td>
+                                </tr>
+                                <tr>
+                                    <th>¡¶«∞∞°∞›</td>
+                                    <td><input name="p_price">ø¯</td>
+                                
+                                    <th>∆«∏≈ø©∫Œ</td>
+                                    <td>
+                                        <input class="radio" type="radio" name="p_on_sale" value="1">∆«∏≈
+                                        <input class="radio" type="radio" name="p_on_sale" value="0" checked>º˚±‚±‚
+                                    </td>
+                                </tr>						
+                                <tr>
+                                    <th>ø¯¿Á∑·(1)</td>
+                                    <td>
+                                        <select name="rm_code1">
+                                            <option value="" disabled selected>ø¯¿Á∑·∏Ì</option>
+                                            <option value=""></option>
+                                        </select>
+                                        <input class="" name="rm_percentage1" placeholder="«‘¿Ø¿≤">%
+                                    
+                                    </td>
+                                    
+                                    <th>ø¯¿Á∑·(2)</td>
+                                    <td>
+                                        <select name="rm_code2">
+                                                <option value="" disabled selected>ø¯¿Á∑·∏Ì</option>
+                                                <option value=""></option>
+                                        </select>
+                                        <input name="rm_percentage2" placeholder="«‘¿Ø¿≤">%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>ø¯¿Á∑·(3)</td>
+                                    <td>
+                                        <select name="rm_code3">
+                                                <option value="" disabled selected>ø¯¿Á∑·∏Ì</option>
+                                                <option value=""></option>
+                                        </select>
+                                        <input name="rm_percentage3" placeholder="«‘¿Ø¿≤">%
+                                    </td>
+                                
+                                    <th>ø¯¿Á∑·(4)</td>
+                                    <td>
+                                        <select name="rm_code4">
+                                                <option value="" disabled selected>ø¯¿Á∑·∏Ì</option>
+                                                <option value=""></option>
+                                        </select>
+                                        <input name="rm_percentage4" placeholder="«‘¿Ø¿≤">%
+                                    </td>
+                                </tr>
+                            </table>
+        
+                <h3 class="inner_title">ªÁ¡¯¡§∫∏</h3>
+                            <table class="mgr_table verHead" id="pht_table">
+                                <tr>
+                                    <th>∏ﬁ¿Œ¿ÃπÃ¡ˆ</td>
+                                    <td><input type="file" name="upFile1"></td>
+                                </tr>
+                                <tr>
+                                    <th>º≥∏Ì¿ÃπÃ¡ˆ</td>
+                                    <td><input type="file" name="upFile2"></td>
+                                </tr>
+                                <tr>
+                                    <th>ªÛºº¿ÃπÃ¡ˆ</td>
+                                    <td><input type="file" name="upFile3"></td>
+                                </tr>
+                            </table>
+
+            <div class="submit_wrapper">
+                <input class="btn" type="submit" value="ªÛ«∞µÓ∑œ">
+                <input class="btn" type="reset" value="¥ŸΩ√æ≤±‚">
+            </div>
+            </form>
+        
+        </div>	
 	
 	
-		<form method="post" action="goods_insertProc.jsp?flag=insert"
-			enctype="multipart/form-data">
-			<!-- enctype="multipart/form-data" ÏùºÎïåÏóêÎäî postÎ∞©ÏãùÏúºÎ°ú Î≥¥ÎÇ∏Îã§. 
-		ÎåÄÏã†Ïóê actionÏùÑ ÌÜµÌï¥ÏÑú action="productProc.jsp?flag=insert" Î•º Ìï¥Ï§òÏïºÌïúÎã§.-->
+<!----------------->
+<!--  ¿€æ˜ øµø™ ≥° -->
+<!----------------->
 	
-			<h3>Í∏∞Î≥∏Ï†ïÎ≥¥</h3>
-			<table width="75%">
-				<tr>
-					<td>
-						<table width="95%" border="1">
-	
-							<tr>
-								<td align="center">Ï†úÌíàÏΩîÎìú</td>
-								<td align="left"><input name="p_code" size="20"></td>
-							</tr>
-							<tr>
-								<td align="center">Ï†úÌíàÎ™Ö</td>
-								<td align="left"><input name="p_name" size="20"></td>
-							</tr>
-							<tr>
-								<td align="center">Ï†úÌíàÍ∞ÄÍ≤©</td>
-								<td align="left"><input name="p_price" size="20">Ïõê</td>
-							</tr>
-							<tr>
-								<td align="center">ÌåêÎß§Ïó¨Î∂Ä</td>
-								<td align="left"><input type="checkbox" name="p_on_sale" value="0" checked>ÌåêÎß§
-									<input type="checkbox" name="p_on_sale" value="1">Ïà®Í∏∞Í∏∞</td>
-							</tr>						
-							
-							<tr>
-								<td align="center">ÏõêÏû¨Î£å(1)</td>
-								<td align="left"><input name="rm_code1" size="20">
-								<input name="rm_percentage1" size="20">
-								</td>
-								
-							</tr>
-							<tr>
-								<td align="center">ÏõêÏû¨Î£å(2)</td>
-								<td align="left"><input name="rm_code2" size="20">
-								<input name="rm_percentage2" size="20">
-								</td>
-							</tr>
-							<tr>
-								<td align="center">ÏõêÏû¨Î£å(3)</td>
-								<td align="left"><input name="rm_code3" size="20">
-								<input name="rm_percentage3" size="20">
-								</td>
-							</tr>
-							<tr>
-								<td align="center">ÏõêÏû¨Î£å(4)</td>
-								<td align="left"><input name="rm_code4" size="20">
-								<input name="rm_percentage4" size="20">
-								</td>
-							</tr>
-						</table>
-	
-						<h3 align="left">ÏÉÅÏÑ∏Ï†ïÎ≥¥</h3>
-						<table width="75%" align="left" width="95%" border="1">
-							<tr>
-								<td align="center">Î©îÏù∏Ïù¥ÎØ∏ÏßÄ</td>
-								<td><input type="file" name="upFile1"></td>
-							</tr>
-							<tr>
-								<td align="center">ÏÑ§Î™ÖÏù¥ÎØ∏ÏßÄ</td>
-								<td><input type="file" name="upFile2"></td>
-							</tr>
-							<tr>
-								<td align="center">ÏÉÅÏÑ∏Ïù¥ÎØ∏ÏßÄ</td>
-								<td><input type="file" name="upFile3"></td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-			</table>
-			<input type="submit" value="ÏÉÅÌíàÎì±Î°ù">&nbsp;&nbsp;&nbsp; <input
-				type="reset" value="Îã§ÏãúÏì∞Í∏∞">
-		</form>
-	
-	</div>	
-</div> <!--  #btn_manager_wrapper (Î≤ÑÌäºÎ©îÎâ¥ + manager) : manager_side.jsp ÏóêÏÑú Ïó¥Î¶º-->
-</div> <!-- #main (ÏÉÅÎã®ÏöîÏïΩ + Î≤ÑÌäº + manager) : manager_side.jsp ÏóêÏÑú Ïó¥Î¶º-->
+</div> <!--  #btn_manager_wrapper (πˆ∆∞∏ﬁ¥∫ + manager) : admin_side.jsp ø°º≠ ø≠∏≤-->
+</div> <!-- #main (ªÛ¥‹ø‰æ‡ + πˆ∆∞ + manager) : admin_side.jsp ø°º≠ ø≠∏≤-->
 	<jsp:include page="../bottom.jsp"/>
 
 </body>
