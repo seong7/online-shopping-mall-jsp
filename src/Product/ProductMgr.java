@@ -217,6 +217,11 @@ public class ProductMgr {
 			while(rs.next()) {
 				vlist.add(rs.getString(1));
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
 		return vlist;
 	}
     
