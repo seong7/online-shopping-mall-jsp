@@ -4,7 +4,7 @@
 %>
 
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/admin/css/manager_side.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/admin/css/manager_style.css">
 <script src="https://kit.fontawesome.com/115bcf1f34.js" crossorigin="anonymous"></script>
   
 
@@ -18,6 +18,10 @@
         <div id="manager_summ">
               <ul id="manager_summ_ul">
                   <li id="summ_first">
+                  	
+                  	  <!-- 임시 메모  :: -->
+                      <span style="font-size: 12px; color: red;">관리자 모드의 요약창 <br/>(사용 여부: 미정 / 내용: 미정)</span>
+                  
                       <div class="top">
                           <span id="name" class="bold">김성진</span>
                           <span id="name_top" class="text">님</span>

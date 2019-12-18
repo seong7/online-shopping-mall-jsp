@@ -11,6 +11,11 @@
 <jsp:include page="../top.jsp"/>
 
 	<jsp:include page="./manager_side.jsp"/>
+
+
+<!--------------->
+<!--  작업 영역  -->
+<!--------------->
 	
 	<div id="manager">  
 	
@@ -94,6 +99,12 @@
 		</form>
 	
 	</div>	
+	
+	
+<!----------------->
+<!--  작업 영역 끝 -->
+<!----------------->
+	
 </div> <!--  #btn_manager_wrapper (버튼메뉴 + manager) : manager_side.jsp 에서 열림-->
 </div> <!-- #main (상단요약 + 버튼 + manager) : manager_side.jsp 에서 열림-->
 	<jsp:include page="../bottom.jsp"/>
