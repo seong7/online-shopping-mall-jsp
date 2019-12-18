@@ -305,7 +305,7 @@ public class ProductMgr {
 						+ "GROUP BY p.p_code "
 						+ "having p_name LIKE ? AND p_date BETWEEN ? AND ?" ;
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, p_name);
+				pstmt.setString(1, "%"+p_name+"%");
 				pstmt.setInt(2, p_date1);
 				pstmt.setInt(3, p_date2);
 				rs = pstmt.executeQuery();				
