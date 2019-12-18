@@ -1,4 +1,5 @@
-@import url(c:\Jsp\online-shopping-mall\WebContent\vscode__utf8\css\font-family.css);
+@charset "UTF-8";
+@import url(c:\Jsp\online-shopping-mall-jsp\WebContent\vscode__utf8\css\font-family.css);
 main #orderWrapper {
   min-width: 1050px;
   max-width: 1050px;
@@ -15,6 +16,11 @@ main #orderWrapper h2 {
   text-align: center;
   font-family: "ON-IGothic";
   color: #333;
+  letter-spacing: 1px;
+}
+
+main #order_product table tr:nth-of-type(1) td:nth-of-type(1) {
+  text-align: center;
 }
 
 main #order_product table tr:nth-of-type(1) td:nth-of-type(2) {
@@ -30,8 +36,10 @@ main #order_product table tr:nth-of-type(1) td:nth-of-type(3) {
 main #order_product table tr, main #order_product table td {
   padding: 15px;
   text-align: left;
-  border-top: 3px solid #dcdbde;
-  border-bottom: 3px solid #dcdbde;
+}
+
+main #order_product table td:first-of-type {
+  padding-left: 20px;
 }
 
 main #order_product table td:nth-of-type(1) {
@@ -52,24 +60,136 @@ main #order_product table td:nth-of-type(4) {
   text-align: center;
 }
 
-main #order_product table tr:nth-of-type(1) td {
-  border-top: 3px solid #FB9832;
-  border-bottom: 3px solid #dcdbde;
-}
-
 main #order_member table tr td {
   height: 25px;
   padding: 30px;
 }
 
-main #order_member table tr td {
-  border-top: 3px solid #dcdbde;
-  border-bottom: 3px solid #dcdbde;
+#order_delivery table tr td {
+  border-top: none;
+  border-bottom: none;
+  height: 35px;
+  padding: 5px;
 }
 
-main #order_member table tr:nth-of-type(1) td {
-  border-top: 3px solid #FB9832;
-  border-bottom: 3px solid #dcdbde;
+#order_delivery table tr td input {
+  font-family: "ON-IGothic";
+  padding-left: 8px;
+  border: 1px solid #dcdbde;
+  height: 28px;
+}
+
+#order_delivery table tr td input[name=o_recpt_add] {
+  width: 600px;
+}
+
+#order_delivery table tr td input[name=o_recpt_zipcode] {
+  width: 50px;
+  padding-left: 0px;
+  text-align: center;
+}
+
+#order_delivery table tr td input[name=o_recpt_add_det] {
+  width: 617px;
+  margin-left: 25px;
+}
+
+#order_delivery table tr td textarea[name=o_del_msg] {
+  font-family: "ON-IGothic";
+  font-size: 14px;
+  padding: 8px;
+  border: 1px solid #dcdbde;
+  height: 40px;
+  width: 688px;
+  resize: none;
+}
+
+#order_delivery table tr td:first-of-type {
+  padding-left: 20px;
+}
+
+#order_delivery table tr:first-of-type td {
+  padding-top: 20px;
+}
+
+#order_delivery table tr:last-of-type {
+  border-bottom: 2px solid #dcdbde;
+}
+
+#order_delivery table tr:last-of-type td {
+  padding-bottom: 20px;
+}
+
+#order_point tr td:first-of-type {
+  padding-left: 30px;
+  width: 130px;
+}
+
+#order_point tr td {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#order_point tr td input {
+  width: 400px;
+  height: 23px;
+  padding: 8px;
+  border: 1px solid #dcdbde;
+}
+
+#order_pay table {
+  font-family: "ON-IGothic";
+}
+
+#order_pay table tr td {
+  font-size: 18px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#order_pay table tr td input {
+  border: none;
+  font-family: "ON-IGothic";
+  font-size: 18px;
+  text-align: end;
+  padding-right: 10px;
+}
+
+#order_pay table tr td:nth-of-type(1) {
+  width: 170px;
+  text-align: center;
+}
+
+#order_pay table tr td:nth-of-type(2) {
+  text-align: end;
+  padding-right: 50px;
+}
+
+#order_pay table tr:last-child td:last-child {
+  font-size: 12px;
+}
+
+#order_howpay table tr td:nth-of-type(1) {
+  width: 100px;
+}
+
+#order_howpay table tr td:nth-of-type(2) {
+  text-align: center;
+}
+
+#order_howpay table tr:nth-of-type(2) td {
+  padding-top: 20px;
+}
+
+/*전체 속성 제어부*/
+table tr:nth-of-type(1) td {
+  border-top: 3px solid #FB9832 !important;
+  padding-top: 15px;
+}
+
+table tr:last-of-type td {
+  border-bottom: 2px solid #dcdbde;
+  padding-bottom: 15px;
 }
 
 .order_subtitle {
@@ -79,20 +199,20 @@ main #order_member table tr:nth-of-type(1) td {
   margin: 0 auto;
 }
 
-hr {
-  min-width: 500px;
-  width: 500px;
-  margin: 0;
-  border: 1px solid #FB9832;
-  margin: 10px 0 10px 0;
+a {
+  font-weight: 520;
+  cursor: pointer;
 }
 
-button {
-  background-color: #FB9832;
+a:hover {
+  color: #FB9832;
+}
+
+main {
+  letter-spacing: 0.5px;
 }
 
 main table {
-  letter-spacing: 0.5px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 100%;
@@ -104,6 +224,21 @@ main table {
 }
 
 main table td {
+  font-family: "ON-IGothic";
   font-size: 18px;
+}
+
+main input[type=button], main input[type=submit] {
+  margin-left: 25px;
+  height: 30px;
+  width: 70px;
+  background-color: #FB9832;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+main input[type=button]:active, main input[type=submit]:active {
+  background-color: #f09439;
 }
 /*# sourceMappingURL=order.css.map */
