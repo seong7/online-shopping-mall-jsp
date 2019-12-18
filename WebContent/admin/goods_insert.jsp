@@ -66,7 +66,7 @@
                                             <option value="" disabled selected>원재료명</option>
                                             <option value=""></option>
                                         </select>
-                                        <input class="" name="rm_percentage1" placeholder="함유율">%
+                                        <input class="rm_pct" name="rm_percentage1" placeholder="함유율">%
                                     
                                     </td>
                                     
@@ -76,7 +76,7 @@
                                                 <option value="" disabled selected>원재료명</option>
                                                 <option value=""></option>
                                         </select>
-                                        <input name="rm_percentage2" placeholder="함유율">%
+                                        <input class="rm_pct" name="rm_percentage2" placeholder="함유율">%
                                     </td>
                                 </tr>
                                 <tr>
@@ -86,7 +86,7 @@
                                                 <option value="" disabled selected>원재료명</option>
                                                 <option value=""></option>
                                         </select>
-                                        <input name="rm_percentage3" placeholder="함유율">%
+                                        <input class="rm_pct" name="rm_percentage3" placeholder="함유율">%
                                     </td>
                                 
                                     <th>원재료(4)</td>
@@ -95,7 +95,7 @@
                                                 <option value="" disabled selected>원재료명</option>
                                                 <option value=""></option>
                                         </select>
-                                        <input name="rm_percentage4" placeholder="함유율">%
+                                        <input class="rm_pct" name="rm_percentage4" placeholder="함유율">%
                                     </td>
                                 </tr>
                             </table>

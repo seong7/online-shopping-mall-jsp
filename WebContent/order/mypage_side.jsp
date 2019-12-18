@@ -55,7 +55,12 @@
     <!-- (버튼메뉴 + mypage) -->
 
 
-        <div id="btn_wrapper">
+        <div id="mypage_side">
+        
+        	<div id="section">
+              	  마이페이지
+            </div>
+    
     
             <!-- 메뉴 부분 -->
             <div id="mypage_btn_wrapper">

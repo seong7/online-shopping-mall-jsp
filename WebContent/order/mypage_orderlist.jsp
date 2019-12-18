@@ -33,20 +33,18 @@
 	
 	
 	<div id="mypage">
-		<table id="mypage_table">
-			<thead>
-			<tr>
-				<td id="head_td" colspan="5">주문내역</td>
-			</tr>
-			</thead>
-			<tr id="column_tr">
-				<td class="column_td">주문번호</td>
-				<td class="column_td">제품명</td>
-				<td class="column_td">주문날짜</td>
-				<td class="column_td">주문상태</td>
-				<td class="column_td">주문방법</td>
-			</tr>
-		<!-- 주문내역 가져오기 -->
+
+            <h1 class="title">주문내역</h1>
+            
+            <table class="mypage_table">
+                <tr id="column_tr">
+                    <th>주문번호</th>
+                    <th>제품명</th>
+                    <th>주문날짜</th>
+                    <th>주문상태</th>
+                    <th>주문방법</th>
+                </tr>
+            <!-- 주문내역 가져오기 -->
 				<%
 					Vector<OrderBean> vlist = orderMgr.getOrder(id);
 					

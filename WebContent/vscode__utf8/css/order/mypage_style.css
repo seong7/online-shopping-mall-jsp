@@ -16,7 +16,6 @@
   font-style: normal;
 }
 
-/* include 하는 각각의 페이지에서 div #main 선언해야함 */
 #main {
   max-width: 1050px;
   min-width: 1050px;
@@ -52,17 +51,27 @@
   min-height: 600px;
 }
 
-#main #btn_mypage_wrapper #btn_wrapper {
+#main #btn_mypage_wrapper #mypage_side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   height: 100%;
   min-height: 600px;
   width: 150px;
 }
 
-#main #btn_mypage_wrapper #mypage {
-  height: 100%;
-  width: 80%;
+#section {
+  display: block;
+  font-size: 30px;
   font-family: "ON_IGothic";
-  padding-left: 50px;
+  color: #4A4439;
+  height: 53px;
+  padding-top: 20px;
+  overflow: visible;
 }
 
 /*************************/
@@ -73,7 +82,7 @@
   /* 미디어 쿼리 사용 예정 */
   position: -webkit-sticky;
   position: sticky;
-  top: 216px;
+  top: 268px;
   border: 0.5px solid #dcdbde;
   border-radius: 5px;
   font-family: "ON_IGothic";
@@ -149,7 +158,7 @@
 /**********************/
 #mypage_summ {
   margin-top: 30px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   margin-left: 500px;
   display: inline-block;
 }
@@ -212,5 +221,54 @@
 
 #mypage_summ #mypage_summ_ul li:first-of-type {
   border-left: none;
+}
+
+#mypage {
+  height: 100%;
+  width: 80%;
+  font-family: "ON_IGothic";
+  padding-left: 50px;
+}
+
+.title {
+  display: inline-block;
+  width: 100%;
+  color: #333;
+  font-size: 24px;
+  border-bottom: 3px solid #fec084;
+  padding-bottom: 20px;
+  margin-top: 20px;
+}
+
+.mypage_table {
+  margin-top: 80px;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  color: #333;
+}
+
+.mypage_table th {
+  border-top: 0.5px solid #dcdbde;
+  border-bottom: 0.5px solid #dcdbde;
+  font-size: 20px;
+  height: 50px;
+  padding-top: 13px;
+}
+
+.mypage_table td {
+  border-bottom: 0.5px solid #dcdbde;
+  font-size: 16px;
+  height: 100px;
+  padding-top: 40px;
+}
+
+.mypage_table .btn_td a {
+  text-decoration: none;
+  color: #333;
+}
+
+.mypage_table .btn_td:hover a {
+  color: #fec084;
 }
 /*# sourceMappingURL=mypage_style.css.map */
