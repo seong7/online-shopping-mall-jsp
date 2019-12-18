@@ -19,7 +19,7 @@
 <html>
 <head>
 <body>
-	<table border ="1">
+	<table>
 		<tr>					
 			<td>力前内靛</td>
 			<td>惑前疙</td>
