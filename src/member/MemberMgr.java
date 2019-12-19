@@ -181,8 +181,6 @@ public class MemberMgr {
 				}
 				return flag;
 			}
-			
-		///admin///
 			public Vector<MemberBean> getMemberList(){
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -206,14 +204,31 @@ public class MemberMgr {
 						bean.setAddress_detail(rs.getString("address_detail"));
 						bean.setJoin_date(rs.getString("join_date"));
 						vlist.addElement(bean);
-					}
+						}
+				} catch (Exception e) {
+						e.printStackTrace();
+				} finally {
+						pool.freeConnection(con, pstmt, rs);
+				}
+						return vlist;
+				}
+			public int getMemberList(String type, String value) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = null;
+				int flag = 0;
+				try {
+					con = pool.getConnection();
+					sql = "select * from ";
+					pstmt = con.prepareStatement(sql);
+					rs = pstmt.executeQuery();
 				} catch (Exception e) {
 					e.printStackTrace();
 				} finally {
 					pool.freeConnection(con, pstmt, rs);
 				}
-				return vlist;
+					return flag;
 			}
-			
-			
 }
+

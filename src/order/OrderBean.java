@@ -1,4 +1,4 @@
-package Order;
+package order;
 
 public class OrderBean {
 	private int o_index;

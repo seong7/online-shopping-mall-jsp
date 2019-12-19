@@ -1,4 +1,4 @@
-package Admin;
+package admin;
 
 import java.io.File;
 import java.sql.Connection;
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import Product.ProductBean;
-import Product.StockBean;
+import product.ProductBean;
+import product.StockBean;
 
 
 public class ProductMgr {

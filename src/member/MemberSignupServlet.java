@@ -23,7 +23,6 @@ public class MemberSignupServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		
-
 		HttpSession session = request.getSession();
 		Object obj =session.getAttribute("idKey");
 		
@@ -54,7 +53,7 @@ public class MemberSignupServlet extends HttpServlet {
 		MemberBean bean = new MemberBean();
 		bean.setId(id);
 		bean.setPwd(pwd);
-		bean.setName(NAME);
+		bean.setNAME(NAME);
 		bean.setBirthday(birthday);
 		bean.setEmail(email);
 		bean.setContact(contact);

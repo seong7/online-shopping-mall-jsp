@@ -1,4 +1,4 @@
-package Admin;
+package admin;
 
 import java.io.File;
 import java.text.NumberFormat;
