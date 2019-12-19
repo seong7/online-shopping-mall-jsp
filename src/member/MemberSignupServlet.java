@@ -26,6 +26,7 @@ public class MemberSignupServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		Object obj =session.getAttribute("idKey");
+		
 		if(obj==null) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();

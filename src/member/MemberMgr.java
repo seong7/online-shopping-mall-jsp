@@ -69,6 +69,7 @@ public class MemberMgr {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
+		int flag = 0;
 		try {
 			con = pool.getConnection();
 			sql = "SELECT * from USER_TB where id=? and pwd=?";
@@ -76,17 +77,16 @@ public class MemberMgr {
 			pstmt.setString(1, id);
 			pstmt.setString(2, pwd);
 			rs = pstmt.executeQuery();
-			if(rs.next() || id.equals("")) { 
-				return 1; 
-			} else {
-				return 0; 
-			} 
+			System.out.println("¹Ù²ïÇÃ·¡±×");
+			if(rs.next()) 
+				flag = 1;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
-		return -1;
+		return flag;
 	}
 	
 
