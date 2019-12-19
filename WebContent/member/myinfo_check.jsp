@@ -6,19 +6,19 @@
 <body>
 <div class="page_section section_myinfo">
 <div class="head_aticle">
-<h2 class="tit">°³ÀÎ Á¤º¸ ¼öÁ¤</h2>
+<h2 class="tit">ê°œì¸ ì •ë³´ ìˆ˜ì •</h2>
 </div>
 <div class="conf_pw">
 <form name="confirmForm" method="post" action="myinfo_check_Proc.jsp">
 <div class="field_pw">
-<input type="text" id="login_id_input" class="login_input" name="id" placeholder="¾ÆÀÌµð¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä." >
-<input type="password" id="login_pwd_input" class="login_input" name="pwd" placeholder="ºñ¹Ð¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.">
+<input type="text" id="login_id_input" class="login_input" name="id" placeholder="ì•„ì´ë””ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”." >
+<input type="password" id="login_pwd_input" class="login_input" name="pwd" placeholder="ë¹„ë°€ë²ˆí˜¸ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”.">
 
 </div>
 <div class="group_btn">
 <span class="inner_groupbtn">
 </br>
-<button type="submit" class="btn btn_positive">È®ÀÎ</button>
+<button type="submit" class="btn btn_positive">í™•ì¸</button>
 </span>
 </div>
 </form>

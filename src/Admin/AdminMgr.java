@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import Member.DBConnectionMgr;
+import member.DBConnectionMgr;
 
 public class AdminMgr {
 

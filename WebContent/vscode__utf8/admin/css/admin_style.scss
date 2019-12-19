@@ -1,0 +1,294 @@
+@import '../../font/font-family';
+$brandFont: 'ON_IGothic';
+$testFont: 'Handon3gyeopsal600g';
+$brandColor: #fec084;
+$tableBorder: 0.5px solid #dcdbde;
+
+/* include 하는 각각의 페이지에서 div #main 선언해야함 */
+#main{
+	max-width: 1050px;
+	min-width: 1050px;
+	width: 1050px;
+	margin:0 auto;
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+    
+    header{  // manager 요약창 구역
+        width: 100%;
+        min-width: 1050px;
+    }
+    #btn_manager_wrapper{  // 버튼메뉴 + manager 내용 wrapper (flex container)
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+        min-height: 600px;
+
+        #admin_side{     // 버튼메뉴 구역
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height:600px;
+            width: 150px;
+        } 
+
+    }
+}
+
+#section{
+    display: block;
+    font-size: 30px;
+    font-family: $brandFont;
+    color: #4A4439;
+    height: 53px;
+    overflow: visible;
+}
+
+/*************************/
+/***** 메뉴 버튼 부분 *****/
+/*************************/
+#manager_btn_wrapper{
+    
+    /****  위치 다시 잡기 (html 전체 기준임) ****/
+    /* 미디어 쿼리 사용 예정 */
+    // z-index: -100;
+    
+    // display: inline-block;
+    // position: fixed;
+    position: sticky;
+    top: 268px;
+    border: $tableBorder;
+    border-radius: 5px;
+    // left: 200px;
+    font-family: $brandFont;
+    font-size: 14px;
+    width: 150px;
+    ul{
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-items: center;
+        margin: 0px;
+        padding: 0px;
+        a{
+            text-decoration: none;
+            li{
+                display: block;
+                position: relative;
+                list-style: none;
+                padding-top: 30px;
+                padding-bottom: 30px;
+                padding-left: 20px;
+                padding-right: 50px;
+                // border-top: 0.5px solid $brandColor;
+                color: gray;
+                transition: all 0.3s;
+                
+                .icon{
+                    position: absolute;
+                    top: 32px;
+                    right: 10px;
+                }
+                &:hover{
+                    background-color: #f3f3f5;
+                    color: #FB9832;
+                    i{
+                        transform: rotate(0.5turn);
+                        transition: transform 0.2s;
+                    }
+                }
+            }
+           
+        }
+    }
+}
+
+#btn_first{
+    li:first-of-type{
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+}
+#btn_last{
+    li:first-of-type{
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}
+
+
+
+/**********************/
+/***** 요약창 부분 *****/
+/**********************/
+#manager_summ{
+    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-left: 500px;
+    display: inline-block;
+    ul{
+        display: flex;
+        flex-direction: row;
+        border: 0.5px solid #dcdbde;
+        border-radius: 3px;
+        margin: 0px;
+        padding: 0px;
+        background-color: rgba(254, 192, 132,0.4);
+        
+        li{
+            list-style: none;
+            border-left: 0.5px solid #dcdbde;
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            text-align: center;
+            padding-top: 15px;
+            font-family: $brandFont;
+            color: #333333;
+            margin: 10px;
+            
+            div{
+                display: block;
+                width: 150px;
+                height: 50px;
+                text-align: center;
+            }
+            .bold{
+                font-size: 24px;
+                font-family: $brandFont;
+                color: #EB7A36;
+            }
+            #point_top, #del_top{
+                position: relative;
+                top: 8px;
+            }
+            #name_bottom{
+                position: relative;
+                top: 7px;
+            }
+        }
+    }
+    
+    #manager_summ_ul{
+        li:first-of-type{
+            border-left: none;
+        }
+    }
+}
+
+
+
+
+
+// admin 모드 모든 페이지에 공통 적용 부분
+
+#manager{
+    height: 100%;
+    width: 80%;
+    min-width: 80%;
+    font-family: $brandFont;
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.title{
+    display: inline-block;
+    width: 100%;
+    color: #333;
+    font-size: 24px;
+    border-bottom: 3px solid $brandColor;
+    padding-bottom: 20px;
+}
+
+form{
+    width: 97%;
+    padding-left: 20px;
+    // padding-right: 30px;
+
+}
+
+.inner_title{
+    display: inline-block;
+    color: #333;
+    font-size: 23px;
+    padding-bottom: 20px;
+    margin-top: 30px;
+}
+
+
+/***** mgr_table (매니져모드의 테이블 공통 속성) ****/
+.mgr_table{
+    border: 2px solid #dcdbde;
+    letter-spacing: 0.5px;
+    color: #333;
+    margin-bottom: 20px;
+    th{
+        background-color: #f3f3f5;
+        width: 100px;
+        border: $tableBorder;
+        
+    }
+    td{
+        border: $tableBorder;
+        padding: 5px;
+        input, select{
+            padding: 10px;
+            border: 1px solid #dcdbde;
+            border-radius: 3px;
+            margin-left: 5px;
+            margin-right: 5px;
+            width: 180px;
+        }
+        .radio{
+            width: 50px;
+            margin-top: -1px;
+            vertical-align: middle;
+        }
+    }
+}
+
+.submit_wrapper{
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+    .btn{
+        margin-right: 30px;
+        height: 50px;
+        width: 100px;
+        font-size: 17px;
+    }
+}
+
+.btn{
+    height: 30px;
+    width: 70px;
+    background-color: $brandColor;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    
+    &:active{
+        background-color: #f09439;
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+
+
+
+/*** goods_insert.jsp 에만 ***/
+#pht_table{
+    input{
+        width: 300px;
+    }
+}
+.rm_pct{
+    margin-top: 5px;
+}

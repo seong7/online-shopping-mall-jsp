@@ -1,6 +1,12 @@
 
 const request = new XMLHttpRequest();
+const ctx = getContextPath();
 
+function getContextPath() {
+	const hostIndex = location.href.indexOf( location.host ) + location.host.length;
+	return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
+}
+console.log(ctx);
 const login_submit_btn  = document.querySelector('#login_submit_btn');
 
 const login_id_input  = document.querySelector('#login_id_input');
@@ -23,14 +29,20 @@ let sign_up_birth_flag  = 0;
 let sign_up_phone_flag  = 0;
 let sign_up_detail_flag  = 0;
 let regist_flag = 0;
+
+function logout_onclick(){
+	const logout_form =  document.querySelector('#logout_form');
+	logout_form.submit();
+}
 function init(){
+	openDaumZipAddress();
 	 $("#signup_addr").val('');
 	 $("#address_section_zipcode").val('');
 	 $("#signup_addr_detail").val('');
+
     //search ajax
     searchInput();
     inputTransition();
-    
     let modaltrigger = false;
     const userCheckBox = document.querySelector('#userPopup');
     const modalWindow = document.getElementById('modalDiv');
@@ -38,6 +50,7 @@ function init(){
 
     const modal_elements_wrapper = document.getElementById('modal_elements_wrapper');
     const login_form = document.getElementById('login_form');
+    
 
      /** 모달창 열림 닫힘 기능 **/
 //    const session_id = "<%=id%>";
@@ -91,7 +104,8 @@ function login_signup(id){
     if(id=="login"){
         modalInnerFrame.style.width = "400px";
         modalInnerFrame.style.height = "400px";
-        
+        $('#login_btn_label').css('font-size', '19pt');
+        $('#signup_btn_label').css('font-size', '16pt');
 
         signup_form.style.display="none";
         signup_btn_label.style.color="#FB9832";
@@ -104,13 +118,11 @@ function login_signup(id){
             login_form.style.transition="opacity 0.3s";
         }, 300);
         
-        
-        
-        
     }else{
         modalInnerFrame.style.width = "500px";
         modalInnerFrame.style.height = "800px";
-        
+        $('#login_btn_label').css('font-size', '16pt');
+        $('#signup_btn_label').css('font-size', '19pt');
         login_btn_label.style.color="#FB9832";
         login_form.style.display="none";
         login_form.style.opacity="0";
@@ -119,7 +131,7 @@ function login_signup(id){
             signup_form.style.opacity="1";
             signup_form.style.transition="opacity 0.3s";
         }, 300);
-
+        
         signup_form.style.display="flex";
         signup_btn_label.style.color="#FB9832";
         
@@ -243,7 +255,7 @@ function login_signup(id){
 		
 		signup_email.addEventListener('focusout', function(){
 			if(!isValidEmail($('#signup_email').val())){
-				signup_email.placeholder = "이메일 형식으로 입력해주세요(timi2020@gmail.com).";
+				signup_email.placeholder = "이메일 형식으로 입력해주세요.";
 				signup_email.value = '';
 				signup_email.classList.add('default_placeholder_red');
 				signup_email.style.borderBottom = "solid 1px red "
@@ -259,7 +271,7 @@ function login_signup(id){
 		signup_phone.addEventListener('focusout', function(){
 			const regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
 			if(!regExp.test($('#signup_phone').val())){
-				signup_phone.placeholder = "정확한 형식으로 입력해주세요(010-0000-0000).";
+				signup_phone.placeholder = "정확한 형식으로 입력해주세요.";
             	signup_phone.value = '';
             	signup_phone.classList.add('default_placeholder_red');
             	signup_phone.style.borderBottom = "solid 1px red "
@@ -292,15 +304,14 @@ function login_signup(id){
 
 
 /** 검색 Ajax 부분 **/
-
 function searchInput(){
     $("#search_input").autocomplete({ 
             source : function( request, response ) {
                  const autoValues = $.ajax({
-                     url: "search.jsp", 
-                     dataType: "json",
-                      data: {
-                          searchValue: request.term
+                     url: ctx+"/search.jsp", 
+                     dataType: "json",               
+                     data: {
+                          searchValue: encodeURIComponent(request.term)
                          },
                           success: function(result) { 
                                 response( 
@@ -342,13 +353,16 @@ function searchInput(){
 		console.log(userID);
 		$.ajax({
 			type: 'POST',
-			url:'/online-shopping-mall/MemberRegisterCheckServlet',
+			url:ctx+'/member/idcheck',
 			data: {userID: userID},
 //	         아이디 중복체크부
 			success : function(result) {
 				if(result == 1){
 					$('#id_section_input').css('border-bottom', 'solid 1px green');
 					$('#id_section_input').css('box-shadow', '0 4px 1px -3px green');
+					$('#id_section_btn').removeClass('top_modal_orange');
+					$('#id_section_btn').removeClass('top_modal_red');
+					$('#id_section_btn').addClass('top_modal_green');	
 					document.getElementById('signup_pwd').focus();
 					 sign_up_id_flag = 1;
 	                
@@ -356,6 +370,9 @@ function searchInput(){
 			        const id_section_input = document.querySelector('#id_section_input');
 					$('#id_section_input').css('border-bottom', 'solid 1px red');
 					$('#id_section_input').css('box-shadow', '0 4px 1px -3px red');
+					$('#id_section_btn').removeClass('top_modal_orange');
+					$('#id_section_btn').removeClass('top_modal_green');
+					$('#id_section_btn').addClass('top_modal_red');	
 					id_section_input.placeholder = "아이디가 중복되었습니다.";
 					id_section_input.classList.add('default_placeholder_red');
 					id_section_input.value = '';
@@ -365,8 +382,8 @@ function searchInput(){
 
 				}
 			}, error : function(){
-
 				sign_up_id_flag = 0;
+				
 			}
 		})
 	}
@@ -380,7 +397,7 @@ function searchInput(){
 		
 		$.ajax({
 			type: 'post',
-			url:'/online-shopping-mall/MemberLoginServlet',
+			url:ctx+'/member/login',
 			data: {
 				login_id : login_id,
 				login_pwd : login_pwd
@@ -392,20 +409,26 @@ function searchInput(){
 					$('#login_span').removeClass('hidden');
 					$('#login_span').addClass('box');
 					$('#login_span').text('로그인 성공!');
-					$('#login_span').css({"background-image":"linear-gradient(to bottom, #00FF4C, #4B8215)"});
+					$('#login_submit_btn').css( 'font-weight' , 'bold' );
+					$('#login_submit_btn').removeClass('top_modal_orange');
+					$('#login_submit_btn').removeClass('top_modal_red');
+					$('#login_submit_btn').addClass('top_modal_green');	
+					$('#login_span').removeClass('top_modal_orange');
+					$('#login_span').addClass('top_modal_green');					
 					$('#login_span').attr("disabled","disabled");
-				       setTimeout(function(){
-				    	   "location.href='http://https://www.localhost/online-shopping-mall/top.jsp/"
-			            }, 2000);
-				}else{
-					$('#login_span').removeClass('hidden');
-					$('#login_span').addClass('box');
-					$('#login_span').text('로그인 실패');
-					$('#login_span').css({"background-image":"linear-gradient(to bottom, red, red)"});
-					$('#login_span').attr("disabled","disabled");
+					setTimeout(function(){
+					   	 location.href='http://localhost/online-shopping-mall/index.jsp'
+				     }, 500);
 				}
 			}, error : function(){
-				console.log('실패');
+				$('#login_submit_btn').removeClass('hidden');
+				$('#login_submit_btn').addClass('box');
+				$('#login_submit_btn').text('로그인 실패');
+				$('#login_submit_btn').css( 'font-weight' , 'bold' );
+				$('#login_submit_btn').css("color", "white");
+				$('#login_submit_btn').removeClass('top_modal_orange');
+				$('#login_submit_btn').addClass('top_modal_red');
+				$('#login_submit_btn').removeClass('top_modal_green');	
 			}
 		})	
 	});
@@ -454,7 +477,7 @@ function searchInput(){
 			//회원가입 이벤트 ajax
 			$.ajax({
 				type: 'post',
-				url:'/online-shopping-mall/MemberSignupServlet',
+				url:ctx+'/member/signup',
 				data: {
 					signup_id_input : signup_section_inputValue,
 					signup_pwd_check : signup_pwdValue,
@@ -473,14 +496,15 @@ function searchInput(){
 						$('#submit_span').removeClass('hidden');
 						$('#submit_span').addClass('box');
 						$('#submit_span').text('회원가입 완료!');
-						$('#signup_submit_btn').css({"background-image":"linear-gradient(to bottom, #00FF4C, #4B8215)"});
+						$('#signup_submit_btn').removeClass('top_modal_orange');
+						$('#signup_submit_btn').addClass('top_modal_green');	
 						$('#signup_submit_btn').attr("disabled","disabled");
 						regist_flag = 1;
 					}else{
 					$('#submit_span').addClass('box');
 					$('#submit_span').text('실패하셨습니다.');
-					$('#signup_submit_btn').css({"background-image":"linear-gradient(to bottom, red, red)"});
-					
+					$('#signup_submit_btn').removeClass('top_modal_orange');
+					$('#signup_submit_btn').addClass('top_modal_red');	
 					}
 				}, error : function(){
 					console.log('실패');
@@ -489,7 +513,6 @@ function searchInput(){
 		}
 		});
 }
-
 function inputTransition(){
     const input = document.querySelector('#search_input');
     let searchIcon = document.querySelector('.fa-search');
@@ -507,6 +530,7 @@ function openDaumZipAddress() {
     // 우편번호 찾기 화면을 넣을 element를 지정
     const element_wrap = document.getElementById("daumWrap");
 
+	element_wrap.style.position  = "absolute";
     // wrap 레이어가 off된 상태라면 다음 우편번호 레이어를 open 한다.
     if($("#daumWrap").css("display") == "none") {
         new daum.Postcode({
@@ -518,9 +542,7 @@ function openDaumZipAddress() {
 				$('#address_section_zipcode').css('box-shadow', '0 4px 1px -3px green');
 				$('#signup_addr').css('border-bottom', 'solid 1px green');
 				$('#signup_addr').css('box-shadow', '0 4px 1px -3px green');
-
 				sign_up_addr_flag = 1;
-
             }
             // 사용자가 값을 주소를 선택해서 레이어를 닫을 경우
             // 다음 주소록 레이어를 완전히 종료 시킨다.

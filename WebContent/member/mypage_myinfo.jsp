@@ -1,24 +1,24 @@
-<%@page import="Member.MemberBean"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<jsp:useBean id="mgr" class="Member.MemberMgr" />
+<%@page import="member.MemberBean"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<jsp:useBean id="mgr" class="member.MemberMgr"/>
 <%
-	String id = (String) session.getAttribute("idKey");
-	MemberBean bean = mgr.getMember(id);
+		String id = (String)session.getAttribute("idKey");
+		MemberBean bean = mgr.getMember("");
+		
 %>
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
- <script>
+      <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script>
             //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
             function openDaumZipAddress() {
                 new daum.Postcode({
                     oncomplete: function(data) {
-                    	console.log("gd");
                         // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
         
                         // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
                         // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
                         var roadAddr = data.roadAddress; // 도로명 주소 변수
                         var extraRoadAddr = ''; // 참고 항목 변수
+             
                         // 법정동명이 있을 경우 추가한다. (법정리는 제외)
                         // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
                         if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
@@ -52,7 +52,6 @@
                 }).open();
             }
         </script>
-<!-- form 시작 부 -->
 <html>
 <head>
 <title>회원정보 수정</title>
@@ -69,7 +68,7 @@
 				<table class="Member_comm">
 					<tbody>
 						<tr>
-							<td class="member_id1">*아이디</td>
+							<td class="member_id1">아이디</td>
 							<td class="member_id2"><input name="id"
 								value="<%=bean.getId()%>" ></td>
 						</tr>
@@ -83,7 +82,7 @@
 							<td class="member_ori_pwd1">현재 비밀번호</td>
 							<td class="member_ori_pwd2"><input type="password"
 								name="pwd"> <!-- <p class="txt_guide" style="display: block;">
-					<span class="txt_guide_pwd">현재 비밀번호를 확인해주세요</span></p> --></td>
+					<span class="txt_guide_pwd">현재 비밀번호를 확인해주세요.</span></p> --></td>
 						</tr>
 						
 						<tr class="member_new_pwd">
@@ -116,7 +115,7 @@
 							<tr>
 								<td class="member_zipcode1">*우편번호</td>
 								<td class="member_zipcode2"><input id="input_zipcode"name="zipcode"type="text" value="<%=bean.getZipcode()%>"  /> 
-								<input name="zip_btn" type="button" onclick="openDaumZipAddress();"value="주소 찾기" /></br> 
+								<input name="zip_btn" type="button" onclick="openDaumZipAddress();"value="주소" /></br> 
 								<input name="address" id="input_addr" type="text"
 									value="<%=bean.getAddress()%>" /></td>
 							</tr>
@@ -132,5 +131,8 @@
 			</form>
 		</div>
 	</div>
+
+</div>
+</form>
 </body>
 </html>

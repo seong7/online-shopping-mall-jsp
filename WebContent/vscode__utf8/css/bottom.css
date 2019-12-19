@@ -1,79 +1,18 @@
 @charset "UTF-8";
-/* 폰트 추가 noto-Sans*/
+/* 폰트 추가*/
+/* 굵음 */
 @font-face {
-  font-family: 'noto_Bold';
-  src: url(../font/NotoSansCJKkr-Bold.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'noto_Black';
-  src: url(../font/NotoSansCJKkr-Black.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'noto_Demilight';
-  src: url(../font/NotoSansCJKkr-DemiLight.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'noto_Light';
-  src: url(../font/NotoSansCJKkr-Light.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'noto_Medium';
-  src: url(../font/NotoSansCJKkr-Medium.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'noto_Regular';
-  src: url(../font/NotoSansCJKkr-Regular.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'noto_Thin';
-  src: url(../font/NotoSansCJKkr-Thin.otf);
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'InkLipquid';
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff") format("woff");
+  font-family: 'ON_IGothic';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
+/* 일반 */
 @font-face {
-  font-family: 'Cafe24Danjunghae';
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Danjunghae.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'BMHANNAAir';
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'BBTreeGB';
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff") format("woff");
-  font-weight: normal;
+  font-family: 'Handon3gyeopsal600g';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff") format("woff");
+  font-weight: 200;
   font-style: normal;
 }
 
@@ -127,7 +66,7 @@
 }
 
 #footer_wrapper ul #footer_first {
-  font-family: 'noto_Bold';
+  font-family: "ON_IGothic";
   color: gray;
   width: 200px;
   -webkit-box-pack: center;
@@ -157,28 +96,28 @@
 #footer_wrapper ul #footer_first #bottom {
   display: inline-block;
   border: 1.5px solid gray;
-  font-family: 'noto_Demilight';
-  font-size: 20px;
-  width: 150px;
-  height: 50px;
+  font-family: "ON_IGothic";
+  font-size: 15px;
+  width: 130px;
+  height: 45px;
   padding: 10px;
   border-radius: 5px;
 }
 
 #footer_wrapper ul #footer_second {
   margin-right: 100px;
-  font-family: 'noto_Demilight';
+  font-family: "ON_IGothic";
   color: #333;
   font-size: 14px;
 }
 
 #footer_wrapper ul #footer_second span {
-  font-family: 'noto_Medium';
+  font-family: "ON_IGothic";
   color: gray;
 }
 
 #footer_wrapper ul #footer_second div {
-  margin-bottom: 40px;
+  margin-bottom: 35px;
 }
 
 #footer_wrapper ul #footer_second #phone {
@@ -186,7 +125,7 @@
 }
 
 #footer_wrapper ul #footer_third {
-  font-family: 'noto_Demilight';
+  font-family: "ON_IGothic";
   color: gray;
   font-size: 14px;
 }

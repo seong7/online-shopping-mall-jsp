@@ -4,31 +4,17 @@
 <jsp:useBean id="mBean" class="Member.MemberBean" />
 <jsp:setProperty name="mBean" property="*" />
 <%
-String id = request.getParameter("id");
-String name = request.getParameter("name");
-String pwd = request.getParameter("pwd");
-String newPassword = request.getParameter("newPwd");
-String checkPassword = request.getParameter("checkPwd");
-String birthday = request.getParameter("birthday");
-String email = request.getParameter("email");
-String contact = request.getParameter("contact");
-String zipcode = request.getParameter("zipcode");
-String address = request.getParameter("address");
-String address_detail = request.getParameter("address_detail");
-
 boolean flag = mMgr.updateMember(mBean);
-%>
-
-
-<% 
+String id = request.getParameter("id");
 if(flag){%>
-<script>
-		alert("È¸¿øÁ¤º¸°¡ ¼öÁ¤µÇ¾ú½À´Ï´Ù.");
-		location.href="../index.jsp";
+	<script>
+		alert("íšŒì›ì •ë³´ê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
+		location.href="index.jsp";
+
 	</script>
 <%}else{%>
 	<script>
-		alert("¼öÁ¤µµÁß ¿¡·¯°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù.");
+		alert("ìˆ˜ì •ë„ì¤‘ ì—ëŸ¬ê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤.");
 		history.back();
 	</script>
 <%}%>

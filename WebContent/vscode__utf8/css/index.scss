@@ -1,21 +1,23 @@
-@import './font-family'; 
+@import '../../font/font-family'; 
 $brandColor: #fec084; 
 $titleColor: #333;
 $titleDetailColor: gray;
-$normalFont: 'noto_Bold';
+$normalFont: 'ON_IGothic';
 
 
 main{
     display: flex;
-    width: 100%;
+    max-width: 1050px;
     min-width: 1050px;
+    width: 1050px;
+    margin: 0 auto;
     flex-direction: column;
     align-items: center;
     .goodslist_tit{
         margin-top: 100px;
         margin-bottom: 60px;
         text-align: center;
-        width:100%;
+        width:1050px;
         font-family:$normalFont;
         .goodslist_btn{
             display: block;
@@ -30,7 +32,7 @@ main{
         }
     }
     ul{
-        width: 100%;
+        width: 1050px;
         display: flex;
         flex-direction: row;
         margin-top: 20px;
@@ -40,7 +42,7 @@ main{
             img{
                 width: 249px;
                 height: 320px;
-                max-width:100%;
+                max-width:1050px;
                 // background-image: url('../img/index/product_sample/prod_sample1.PNG');
                 // background-repeat: no-repeat;
                 // background-size: cover;
@@ -55,12 +57,15 @@ main{
                     text-decoration: none;
                 }
                 .name{
-                    font-family: $normalFont;
+                    font-family:$normalFont;
                     color:$titleDetailColor;
+                    line-height: 1.5em;
+                    font-size: 18px;
                 }
                 .price{
                     display: block;
-                    margin-top: 3px;
+                    font-family: $normalFont;
+                    margin-top: 6px;
                 }
             }
         }
