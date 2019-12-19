@@ -1,4 +1,4 @@
-package Order;
+package order;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -138,13 +138,14 @@ public class OrderMgr {
 		try {
 			con = pool.getConnection();
 			if((keyWord.trim().equals("")||keyWord==null)&&
-			((keyDate1.trim().equals("")||keyDate1==null))&&
-			((keyDate2.trim().equals("")||keyDate2==null))) {//검색이 아닌경우
+			(keyDate1.trim().equals("")||keyDate1==null)&&
+			(keyDate2.trim().equals("")||keyDate2==null)) {//검색이 아닌경우
 				sql = "select count(*) from order_tb";
 				pstmt = con.prepareStatement(sql);
 			}else if((!keyDate1.trim().equals("")||keyDate1!=null) &&
-					  (!keyDate2.trim().equals("")||keyDate2!=null)){//기간 검색인 경우
-					sql = "select count(*) from order_tb WHERE "
+					  (!keyDate2.trim().equals("")||keyDate2!=null)&&
+					  (keyWord.trim().equals("")||keyWord==null)){//기간 검색인 경우
+				sql = "select count(*) from order_tb WHERE "
 							+ "o_date BETWEEN ? and ?"; 
 					pstmt = con.prepareStatement(sql); 
 					  pstmt.setString(1, keyDate1);
@@ -166,7 +167,7 @@ public class OrderMgr {
 		}
 		return totalCount;
 	}
-	//All List
+	//All List(검색기능 포함)
 	public Vector<OrderBean> getOrderList(String keyField, 
 			String keyWord, String keyDate1, String keyDate2, 
 			int start, int cnt) {//limit start, cnt로 검색 
@@ -186,15 +187,16 @@ public class OrderMgr {
 				pstmt.setInt(1, start);//게시물 시작번호
 				pstmt.setInt(2, cnt);//가져올 게시물 개수
 			} else if((!keyDate1.trim().equals("")||keyDate1!=null) &&
-					  (!keyDate2.trim().equals("")||keyDate2!=null)){//기간 검색인 경우
-					sql = "select * from order_tb WHERE o_date BETWEEN " +
+					  (!keyDate2.trim().equals("")||keyDate2!=null)&&
+					  (keyWord.trim().equals("")||keyWord==null)){//기간 검색인 경우
+				sql = "select * from order_tb WHERE o_date BETWEEN " +
 					  "? and ? order by o_index desc, o_index LIMIT ?,?"; 
 					pstmt = con.prepareStatement(sql); 
 					  pstmt.setString(1, keyDate1);
 					  pstmt.setString(2, keyDate2); 
 					  pstmt.setInt(3, start);//게시물 시작번호 
 					  pstmt.setInt(4, cnt);//가져올 게시물개수 
-			}else{//검색어 검색인 경우
+			}else if(!keyWord.trim().equals("")||keyWord!=null){//검색어 검색인 경우
 				sql = "select * from order_tb where "+ keyField 
 						+" like ? order by o_index desc, o_index limit ?,?";
 				pstmt = con.prepareStatement(sql);
@@ -285,7 +287,7 @@ public class OrderMgr {
 			
 			//main
 			public static void main(String[] args) {
-				OrderMgr mgr = new OrderMgr();
+				//OrderMgr mgr = new OrderMgr();
 				//mgr.post1000();
 				System.out.println("성공~~");
 			}

@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <%@page import="java.util.Vector"%>
-<%@page import="Product.ProductBean"%>
-<jsp:useBean id="mgr" class="Admin.ProductMgr"/>
+<%@page import="product.ProductBean"%>
+<jsp:useBean id="mgr" class="admin.ProductMgr"/>
 <%
 		request.setCharacterEncoding("EUC-KR");
 		Vector<ProductBean> list = mgr.printPname();

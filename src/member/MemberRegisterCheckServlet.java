@@ -1,4 +1,4 @@
-package Member;
+package member;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

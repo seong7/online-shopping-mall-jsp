@@ -1,4 +1,4 @@
-package Member;
+package member;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -90,7 +90,7 @@ public class MemberMgr {
 	}
 	
 
-	//회원정보 수정시 비번확인
+	//??????�? ?????? �?�?????
 
 			public boolean checkPwd(String pwd) {
 				Connection con = null;
@@ -112,7 +112,7 @@ public class MemberMgr {
 				}
 				return flag;
 			}
-	//회원정보 가져오기
+	//??????�? �??��?�기
 			public MemberBean getMember(String id) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -145,7 +145,7 @@ public class MemberMgr {
 			}
 
 				
-			//회원정보 수정하기
+			//??????�? ??????�?
 			public boolean updateMember(MemberBean bean) {
 				Connection con = null;
 				PreparedStatement pstmt = null;

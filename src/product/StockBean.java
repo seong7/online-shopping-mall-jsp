@@ -1,4 +1,4 @@
-package Product;
+package product;
 
 public class StockBean {
 	private int p_code;
