@@ -9,7 +9,6 @@
         
         <property name="java-output-path" value="/online-shopping-mall/build/classes"/>
         <property name="context-root" value="online-shopping-mall"/>
-                    
     
     </wb-module>
         
