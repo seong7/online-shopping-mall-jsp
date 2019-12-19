@@ -3,9 +3,10 @@ package member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Vector;
 
 public class MemberMgr {
-	
+
 	private DBConnectionMgr pool;
 	
 	public MemberMgr() {
@@ -46,7 +47,7 @@ public class MemberMgr {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, bean.getId());
 			pstmt.setString(2, bean.getPwd());
-			pstmt.setString(3, bean.getName());
+			pstmt.setString(3, bean.getNAME());
 			pstmt.setString(4, bean.getBirthday());
 			pstmt.setString(5, bean.getEmail());
 			pstmt.setString(6, bean.getContact());
@@ -69,6 +70,7 @@ public class MemberMgr {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
+		int flag = 0;
 		try {
 			con = pool.getConnection();
 			sql = "SELECT * from USER_TB where id=? and pwd=?";
@@ -76,21 +78,20 @@ public class MemberMgr {
 			pstmt.setString(1, id);
 			pstmt.setString(2, pwd);
 			rs = pstmt.executeQuery();
-			if(rs.next() || id.equals("")) { 
-				return 1; 
-			} else {
-				return 0; 
-			} 
+			System.out.println("바뀐플래그");
+			if(rs.next()) 
+				flag = 1;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
-		return -1;
+		return flag;
 	}
 	
 
-	//??????�? ?????? �?�?????
+	//패스워드 체크
 
 			public boolean checkPwd(String pwd) {
 				Connection con = null;
@@ -112,7 +113,6 @@ public class MemberMgr {
 				}
 				return flag;
 			}
-	//??????�? �??��?�기
 			public MemberBean getMember(String id) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -128,7 +128,7 @@ public class MemberMgr {
 					if (rs.next()) {
 						bean.setId(rs.getString("id"));
 						bean.setPwd(rs.getString("pwd"));
-						bean.setName(rs.getString("name"));
+						bean.setNAME(rs.getString("name"));
 						bean.setBirthday(rs.getString("birthday"));
 						bean.setEmail(rs.getString("email"));
 						bean.setContact(rs.getString("contact"));
@@ -145,7 +145,7 @@ public class MemberMgr {
 			}
 
 				
-			//??????�? ??????�?
+	//회원정보 수정하기
 			public boolean updateMember(MemberBean bean) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -153,7 +153,7 @@ public class MemberMgr {
 				boolean flag = false;
 				try {
 					con = pool.getConnection();
-					sql = "update user_tb set pwd=?,name=?,birthday=?,email=?,zipcode=?,address=?,address_detail=? where id=?";
+					sql = "update user_tb set pwd=?,NAME=?,birthday=?,email=?,zipcode=?,address=?,address_detail=? where id=?";
 					pstmt = con.prepareStatement(sql);
 					System.out.println(bean.getAddress());
 					System.out.println(bean.getAddress_detail());
@@ -163,9 +163,9 @@ public class MemberMgr {
 					System.out.println(bean.getId());
 					System.out.println(bean.getPwd());
 					System.out.println(bean.getZipcode());
-					System.out.println(bean.getName());										
+					System.out.println(bean.getNAME());					
 					pstmt.setString(1, bean.getPwd());
-					pstmt.setString(2, bean.getName());
+					pstmt.setString(2, bean.getNAME());
 					pstmt.setString(3, bean.getBirthday());
 					pstmt.setString(4, bean.getEmail());
 					pstmt.setInt(5, bean.getZipcode());
@@ -181,5 +181,69 @@ public class MemberMgr {
 				}
 				return flag;
 			}
+			public Vector<MemberBean> getAllMemberList(){
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = null;
+				Vector<MemberBean> vlist = new Vector<>();
+				try {
+					con = pool.getConnection();
+					sql = "select * from user_tb";
+					pstmt = con.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+					while(rs.next()){
+						MemberBean bean = new MemberBean();
+						bean.setId(rs.getString("id"));
+						bean.setNAME(rs.getString("NAME"));
+						bean.setBirthday(rs.getString("birthday"));
+						bean.setEmail(rs.getString("email"));
+						bean.setContact(rs.getString("contact"));
+						bean.setZipcode(rs.getInt("zipcode"));
+						bean.setAddress(rs.getString("address"));
+						bean.setAddress_detail(rs.getString("address_detail"));
+						bean.setJoin_date(rs.getString("join_date"));
+						vlist.addElement(bean);
+						}
+				} catch (Exception e) {
+						e.printStackTrace();
+				} finally {
+						pool.freeConnection(con, pstmt, rs);
+				}
+						return vlist;
+				}
+			public Vector<MemberBean> getMemberList(String type, String value) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = null;
+				System.out.println("db안에서 value는 : " + value);
+				Vector<MemberBean> vlist = new Vector<MemberBean>();
+				try {
+					con = pool.getConnection();
+					sql = "select * from user_tb where " + type + " like ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%"+value+"%");
+					rs = pstmt.executeQuery();
+					while(rs.next()){
+						MemberBean bean = new MemberBean();
+						bean.setId(rs.getString("id"));
+						bean.setNAME(rs.getString("NAME"));
+						bean.setBirthday(rs.getString("birthday"));
+						bean.setEmail(rs.getString("email"));
+						bean.setContact(rs.getString("contact"));
+						bean.setZipcode(rs.getInt("zipcode"));
+						bean.setAddress(rs.getString("address"));
+						bean.setAddress_detail(rs.getString("address_detail"));
+						bean.setJoin_date(rs.getString("join_date"));
+						vlist.addElement(bean);
+						}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt, rs);
+				}
+					return vlist;
+			}
 }
-						
+

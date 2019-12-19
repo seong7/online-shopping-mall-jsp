@@ -1,4 +1,4 @@
-<!-- »ç¿ëÀÚ ÁÖ¹®¼­ page -->
+<!-- ì‚¬ìš©ìž ì£¼ë¬¸ì„œ page -->
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <%@page import="product.UtilMgr"%>
 <%@page import="order.OrderBean"%>
@@ -7,6 +7,7 @@
 <%@page import="order.CartMgr"%>
 <%@page import="order.CartBean"%>
 <%@page import="java.util.Vector"%>
+
 <jsp:useBean id="mMgr" class="member.MemberMgr"/>
 <jsp:useBean id="pMgr" class="product.ProductMgr"/>
 <jsp:useBean id="oMgr" class="order.OrderMgr"/>
@@ -22,7 +23,7 @@
 <!-- 
 <!DOCTYPE html>
 <html>
-<title>ÁÖ¹®¼­</title>
+<title>ì£¼ë¬¸ì„œ</title>
 <head>
 </head>
 <body>
@@ -34,14 +35,14 @@
 <jsp:include page="../top.jsp"/>
 		<main>
 			<div id="orderWapper">
-				<h2>ÁÖ¹®¼­</h2>
+				<h2>ì£¼ë¬¸ì„œ</h2>
 					<section id="order_product">
-					<h3 class="order_subtitle">»óÇ°Á¤º¸</h3>
+					<h3 class="order_subtitle">ìƒí’ˆì •ë³´</h3>
 						<table>
 							<tr>
-								<td colspan="2">»óÇ°Á¤º¸</td>
-								<td>»óÇ°¼ö·®</td>
-								<td>»óÇ°±Ý¾×</td>
+								<td colspan="2">ìƒí’ˆì •ë³´</td>
+								<td>ìƒí’ˆìˆ˜ëŸ‰</td>
+								<td>ìƒí’ˆê¸ˆì•¡</td>
 							</tr>
 								<%
 									Vector<CartBean> vlist = cMgr.getCart("u1");
@@ -50,7 +51,7 @@
 								<tr> 
 									<tr>
 										<td colspan="4">
-										ÁÖ¹®ÇÏ½Å ¹°Ç°ÀÌ ¾ø½À´Ï´Ù.
+										ì£¼ë¬¸í•˜ì‹  ë¬¼í’ˆì´ ì—†ìŠµë‹ˆë‹¤.
 										</td>
 									</tr>
 								<%
@@ -65,11 +66,11 @@
 								%>
 							<tr>
 								<td>
-								<img alt="Á¦Ç°»çÁø" src="${pageContext.request.contextPath}/img/product/ready.gif">
+								<img alt="ì œí’ˆì‚¬ì§„" src="${pageContext.request.contextPath}/img/product/ready.gif">
 								</td>
 								<td><a><%=pbean.getP_name() %></a></td>
-								<td><%=cart.getC_qty() %>°³</td>
-								<td><%=UtilMgr.intFormat(pbean.getP_price()) %>¿ø</td>
+								<td><%=cart.getC_qty() %>ê°œ</td>
+								<td><%=UtilMgr.intFormat(pbean.getP_price()) %>ì›</td>
 							</tr>
 							<%
 									}
@@ -77,21 +78,21 @@
 						</table>
 					</section>
 					<section id="order_member">
-						<h3 class="order_subtitle">ÁÖ¹®ÀÚ Á¤º¸</h3>
+						<h3 class="order_subtitle">ì£¼ë¬¸ìž ì •ë³´</h3>
 						<table>
 							<tr>
 							<%
 								
 							%>
-								<td>º¸³»´Â ºÐ</td>
-								<td>Á¶Àº±Ô</td>
+								<td>ë³´ë‚´ëŠ” ë¶„</td>
+								<td>ì¡°ì€ê·œ</td>
 							</tr>
 							<tr>
-								<td>ÈÞ´ëÆù </td>
+								<td>íœ´ëŒ€í° </td>
 								<td>010-3841-0424</td>
 							</tr>
 							<tr>
-								<td>ÀÌ¸ÞÀÏ </td>
+								<td>ì´ë©”ì¼ </td>
 								<td>mwchoi0428@gmail.com</td>
 							</tr>
 						</table>
@@ -99,15 +100,15 @@
 						</section>
 						<section id="order_delivery">
 						<form name="orderFrm" method="post" action="orderProc.jsp">
-						<h3 class="order_subtitle">¹è¼ÛÁ¤º¸</h3>
+						<h3 class="order_subtitle">ë°°ì†¡ì •ë³´</h3>
 						<table>
 								<%
 									Vector<OrderBean> olist = oMgr.getOrder("u1");
-									OrderBean order = olist.get(0); //ÃÖ±Ù ÁÖ¹® Á¤º¸ 
+									OrderBean order = olist.get(0); //ìµœê·¼ ì£¼ë¬¸ ì •ë³´ 
 								%>
 							<tr>
-								<td>¹è¼ÛÁÖ¼Ò</td>
-								<td><input name="o_recpt_add" readonly="readonly" value="<%=order.getO_recpt_add()%>"><input type="button" value="ÁÖ¼Ò°Ë»ö"></td>
+								<td>ë°°ì†¡ì£¼ì†Œ</td>
+								<td><input name="o_recpt_add" readonly="readonly" value="<%=order.getO_recpt_add()%>"><input type="button" value="ì£¼ì†Œê²€ìƒ‰"></td>
 							</tr>
 							<tr>
 								<td></td>
@@ -118,77 +119,77 @@
 								<td><input name="o_recpt_zipcode" readonly="readonly" value="<%=order.getO_recpt_zipcode()%>"></td>
 							</tr>
 							<tr>
-								<td>¼ö·ÉÀÎ ÀÌ¸§</td>
+								<td>ìˆ˜ë ¹ì¸ ì´ë¦„</td>
 								<td><input name="o_recpt_name" value="<%=order.getO_recpt_name()%>"></td>
 							</tr>
 							<tr>
-								<td>ÈÞ´ëÆù</td>
+								<td>íœ´ëŒ€í°</td>
 								<td><input name="o_recpt_contact"  value="<%=order.getO_recpt_contact()%>"></td>
 							</tr>
 							
 							<tr>
-								<td>¹è¼Û¿äÃ»»çÇ×</td>
+								<td>ë°°ì†¡ìš”ì²­ì‚¬í•­</td>
 								<td><textarea name="o_del_msg" rows="5" cols="50"></textarea></td>
 							</tr>
 						</table>
 						</section>
 						<section id="order_point">
-							<h3 class="order_subtitle">Àû¸³±Ý</h3>
+							<h3 class="order_subtitle">ì ë¦½ê¸ˆ</h3>
 								<table>
 									<tr>
-										<td>Àû¸³±Þ Àû¿ë</td>
-										<td><input placeholder="»ç¿ë°¡´ÉÇÑ Àû¸³±Ý : 5000¿ø"></td>
+										<td>ì ë¦½ê¸‰ ì ìš©</td>
+										<td><input placeholder="ì‚¬ìš©ê°€ëŠ¥í•œ ì ë¦½ê¸ˆ : 5000ì›"></td>
 									</tr>
 								</table>
 						</section>
 						<section id="order_pay">
-							<h3 class="order_subtitle">°áÁ¦±Ý¾×</h3>
+							<h3 class="order_subtitle">ê²°ì œê¸ˆì•¡</h3>
 							<table>
 								<tr>
-									<td>»óÇ°±Ý¾×&nbsp;&nbsp;&nbsp;</td>
-									<td><input name="o_prod_amount" readonly size="13" 	value="<%=priceTotal%>">¿ø</td>
+									<td>ìƒí’ˆê¸ˆì•¡&nbsp;&nbsp;&nbsp;</td>
+									<td><input name="o_prod_amount" readonly size="13" 	value="<%=priceTotal%>">ì›</td>
 								</tr>
 								<tr>
-									<td>¹è¼Ûºñ&nbsp;&nbsp;&nbsp;</td>
-									<td><input name="o_del_fee" readonly size="13" 	value="<%=shippingPrice%>">¿ø</td>
+									<td>ë°°ì†¡ë¹„&nbsp;&nbsp;&nbsp;</td>
+									<td><input name="o_del_fee" readonly size="13" 	value="<%=shippingPrice%>">ì›</td>
 								</tr>
 								<tr>
-									<td>ÃÖÁ¾°áÀç±Ý¾×&nbsp;&nbsp;&nbsp;</td>
-									<td><input name="o_total_amount" readonly size="13" value="<%=priceTotal+shippingPrice%>">¿ø</td>
+									<td>ìµœì¢…ê²°ìž¬ê¸ˆì•¡&nbsp;&nbsp;&nbsp;</td>
+									<td><input name="o_total_amount" readonly size="13" value="<%=priceTotal+shippingPrice%>">ì›</td>
 								</tr>
 								<tr>
-									<td>±¸¸Å ½Ã <%=UtilMgr.intFormat(priceTotal)%>P Àû¸³</td>
+									<td>êµ¬ë§¤ ì‹œ <%=UtilMgr.intFormat(priceTotal)%>P ì ë¦½</td>
 								</tr>
 							</table>
 						</section>
 						<section id="order_howpay">
-							<h3 class="order_subtitle">°áÁ¦¼ö´Ü</h3>
+							<h3 class="order_subtitle">ê²°ì œìˆ˜ë‹¨</h3>
 							<table>
 								<tr>
-									<td>ÀÏ¹Ý°áÀç &nbsp;&nbsp;&nbsp;</td>
-									<td> ½Å¿ëÄ«µå
-									<input type=radio name="o_pay_method" value="½Å¿ëÄ«µå" onclick='paymentMethod(this.value);' checked>
-									&nbsp;&nbsp;&nbsp; ÈÞ´ëÆù
-									<input type=radio name="o_pay_method" value="ÈÞ´ëÆù" onclick='paymentMethod(this.value);'>
+									<td>ì¼ë°˜ê²°ìž¬ &nbsp;&nbsp;&nbsp;</td>
+									<td> ì‹ ìš©ì¹´ë“œ
+									<input type=radio name="o_pay_method" value="ì‹ ìš©ì¹´ë“œ" onclick='paymentMethod(this.value);' checked>
+									&nbsp;&nbsp;&nbsp; íœ´ëŒ€í°
+									<input type=radio name="o_pay_method" value="íœ´ëŒ€í°" onclick='paymentMethod(this.value);'>
 							  		</td>
 							  </tr>
 							  <tr id='tr1'>
 						  			<td>
 						  				<select id="card">
-							  				<option value="0">Ä«µå¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.</option>
-							  				<option value="1">Çö´ë(¹«ÀÌÀÚ)</option>
-							  				<option value="2">½ÅÇÑ</option>
-							  				<option value="3">ºñ¾¾</option>
+							  				<option value="0">ì¹´ë“œë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.</option>
+							  				<option value="1">í˜„ëŒ€(ë¬´ì´ìž)</option>
+							  				<option value="2">ì‹ í•œ</option>
+							  				<option value="3">ë¹„ì”¨</option>
 							  				<option value="4">NH</option>
-							  				<option value="5">»ï¼º</option>
+							  				<option value="5">ì‚¼ì„±</option>
 						  				</select>
 						  				<select id="installment">
-							  				<option value="0">ÀÏ½ÃºÒ</option>
-							  				<option value="1">2°³¿ù ÇÒºÎ</option>
-							  				<option value="2">3°³¿ù ÇÒºÎ</option>
-							  				<option value="3">4°³¿ù ÇÒºÎ</option>
-							  				<option value="4">5°³¿ù ÇÒºÎ</option>
-							  				<option value="5">6°³¿ù ÇÒºÎ</option>
+							  				<option value="0">ì¼ì‹œë¶ˆ</option>
+							  				<option value="1">2ê°œì›” í• ë¶€</option>
+							  				<option value="2">3ê°œì›” í• ë¶€</option>
+							  				<option value="3">4ê°œì›” í• ë¶€</option>
+							  				<option value="4">5ê°œì›” í• ë¶€</option>
+							  				<option value="5">6ê°œì›” í• ë¶€</option>
 						  				</select>
 						  			</td>
 							  	</tr>
@@ -197,31 +198,31 @@
 									<td><input name="cellphone1" size="13" placeholder="010-1234-1234"><td>
 								</tr>
 								<tr>
-									<td>°£Æí°áÁ¦ &nbsp;&nbsp;&nbsp;</td>
-									<td>³×ÀÌ¹ö ÆäÀÌ<input type=radio name="o_pay_method" value="³×ÀÌ¹öÆäÀÌ" onclick='paymentMethod(this.value);'></td>
+									<td>ê°„íŽ¸ê²°ì œ &nbsp;&nbsp;&nbsp;</td>
+									<td>ë„¤ì´ë²„ íŽ˜ì´<input type=radio name="o_pay_method" value="ë„¤ì´ë²„íŽ˜ì´" onclick='paymentMethod(this.value);'></td>
 							  	</tr>
  							</table>
   						</section>
 						<section id="order_private">
-						<h3 class="order_subtitle">°³ÀÎÁ¤º¸ ¼öÁý/Á¦°ø*</h3>
+						<h3 class="order_subtitle">ê°œì¸ì •ë³´ ìˆ˜ì§‘/ì œê³µ*</h3>
 						<table>
 							<tr>
-								<td>°³ÀÎÁ¤º¸ ¼öÁý/Á¦°ø*</td>
+								<td>ê°œì¸ì •ë³´ ìˆ˜ì§‘/ì œê³µ*</td>
 							</tr>
 							<tr>
-								<td><input id="agreement" type=checkbox value=1>°áÀçÁøÇà ÇÊ¼öµ¿ÀÇ</td>
+								<td><input id="agreement" type=checkbox value=1>ê²°ìž¬ì§„í–‰ í•„ìˆ˜ë™ì˜</td>
 							</tr>
 							<tr>
-								<td>&nbsp;&nbsp;&nbsp;°³ÀÎÁ¤º¸ ¼öÁý/ÀÌ¿ëµ¿ÀÇ(ÇÊ¼ö)</td>
-								<td>&nbsp;&nbsp;&nbsp;<a href="">¾à°üÈ®ÀÎ></a></td>
+								<td>&nbsp;&nbsp;&nbsp;ê°œì¸ì •ë³´ ìˆ˜ì§‘/ì´ìš©ë™ì˜(í•„ìˆ˜)</td>
+								<td>&nbsp;&nbsp;&nbsp;<a href="">ì•½ê´€í™•ì¸></a></td>
 							</tr>
 							<tr>
-								<td>&nbsp;&nbsp;&nbsp;°áÀç´ëÇà ¼­ºñ½º ¾à°ü µ¿ÀÇ(ÇÊ¼ö)</td>
-								<td>&nbsp;&nbsp;&nbsp;<a href="">¾à°üÈ®ÀÎ></a></td>
+								<td>&nbsp;&nbsp;&nbsp;ê²°ìž¬ëŒ€í–‰ ì„œë¹„ìŠ¤ ì•½ê´€ ë™ì˜(í•„ìˆ˜)</td>
+								<td>&nbsp;&nbsp;&nbsp;<a href="">ì•½ê´€í™•ì¸></a></td>
 							</tr>
 						</table>
 					</section>
-					<input type="submit" value="°áÀç¿Ï·á" onclick="agreement()">
+					<input type="submit" value="ê²°ìž¬ì™„ë£Œ" onclick="agreement()">
 				</form>
 			</div>
 		</main>

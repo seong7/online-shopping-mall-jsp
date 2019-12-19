@@ -17,7 +17,7 @@ public class OrderMgr {
 	public OrderMgr() {
 		pool = DBConnectionMgr.getInstance();
 	}
-	//***User ±â´É¼³°è***
+	//***User ê¸°ëŠ¥ì„¤ê³„***
 	//insert 
 	public boolean insertOrder(OrderBean order) {
 		Connection con = null;
@@ -95,7 +95,7 @@ public class OrderMgr {
 		return vlist;
 	}
 	
-	//Order detail code, ¼ö·® È®ÀÎ 
+	//Order detail code, ìˆ˜ëŸ‰ í™•ì¸ 
 	public Vector<OrderDetailBean> getOrderCode(int o_index) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -126,8 +126,8 @@ public class OrderMgr {
 	
 	
 
-	//***Admin ±â´É¼³°è***
-	//Order Total Count(¿À´õ°¹¼ö)
+	//***Admin ê¸°ëŠ¥ì„¤ê³„***
+	//Order Total Count(ì˜¤ë”ê°¯ìˆ˜)
 	public int getTotalCount(String keyField, String keyWord,
 			String keyDate1, String keyDate2) {
 		Connection con = null;
@@ -139,18 +139,18 @@ public class OrderMgr {
 			con = pool.getConnection();
 			if((keyWord.trim().equals("")||keyWord==null)&&
 			(keyDate1.trim().equals("")||keyDate1==null)&&
-			(keyDate2.trim().equals("")||keyDate2==null)) {//°Ë»öÀÌ ¾Æ´Ñ°æ¿ì
+			(keyDate2.trim().equals("")||keyDate2==null)) {//ê²€ìƒ‰ì´ ì•„ë‹Œê²½ìš°
 				sql = "select count(*) from order_tb";
 				pstmt = con.prepareStatement(sql);
 			}else if((!keyDate1.trim().equals("")||keyDate1!=null) &&
 					  (!keyDate2.trim().equals("")||keyDate2!=null)&&
-					  (keyWord.trim().equals("")||keyWord==null)){//±â°£ °Ë»öÀÎ °æ¿ì
+					  (keyWord.trim().equals("")||keyWord==null)){//ê¸°ê°„ ê²€ìƒ‰ì¸ ê²½ìš°
 				sql = "select count(*) from order_tb WHERE "
 							+ "o_date BETWEEN ? and ?"; 
 					pstmt = con.prepareStatement(sql); 
 					  pstmt.setString(1, keyDate1);
 					  pstmt.setString(2, keyDate2); 
-			}else if(!keyWord.trim().equals("")||keyWord!=null){//°Ë»ö¾îÀÎ °æ¿ì
+			}else if(!keyWord.trim().equals("")||keyWord!=null){//ê²€ìƒ‰ì–´ì¸ ê²½ìš°
 				//select count(*) from tblBoard WHERE NAME LIKE '%aaa%';
 				sql = "select count(*) from order_tb where " + keyField;
 				sql +=" like ?"; 
@@ -167,10 +167,10 @@ public class OrderMgr {
 		}
 		return totalCount;
 	}
-	//All List(°Ë»ö±â´É Æ÷ÇÔ)
+	//All List(ê²€ìƒ‰ê¸°ëŠ¥ í¬í•¨)
 	public Vector<OrderBean> getOrderList(String keyField, 
 			String keyWord, String keyDate1, String keyDate2, 
-			int start, int cnt) {//limit start, cnt·Î °Ë»ö 
+			int start, int cnt) {//limit start, cntë¡œ ê²€ìƒ‰ 
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -180,29 +180,29 @@ public class OrderMgr {
 			con = pool.getConnection();
 			if((keyWord.trim().equals("")||keyWord==null)&&
 			((keyDate1.trim().equals("")||keyDate1==null))&&
-			((keyDate2.trim().equals("")||keyDate2==null))){//°Ë»öÀÌ ¾Æ´Ñ °æ¿ì
+			((keyDate2.trim().equals("")||keyDate2==null))){//ê²€ìƒ‰ì´ ì•„ë‹Œ ê²½ìš°
 				sql = "select * from order_tb order by o_index desc, "
 						+ "o_index limit ?,?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, start);//°Ô½Ã¹° ½ÃÀÛ¹øÈ£
-				pstmt.setInt(2, cnt);//°¡Á®¿Ã °Ô½Ã¹° °³¼ö
+				pstmt.setInt(1, start);//ê²Œì‹œë¬¼ ì‹œì‘ë²ˆí˜¸
+				pstmt.setInt(2, cnt);//ê°€ì ¸ì˜¬ ê²Œì‹œë¬¼ ê°œìˆ˜
 			} else if((!keyDate1.trim().equals("")||keyDate1!=null) &&
 					  (!keyDate2.trim().equals("")||keyDate2!=null)&&
-					  (keyWord.trim().equals("")||keyWord==null)){//±â°£ °Ë»öÀÎ °æ¿ì
+					  (keyWord.trim().equals("")||keyWord==null)){//ê¸°ê°„ ê²€ìƒ‰ì¸ ê²½ìš°
 				sql = "select * from order_tb WHERE o_date BETWEEN " +
 					  "? and ? order by o_index desc, o_index LIMIT ?,?"; 
 					pstmt = con.prepareStatement(sql); 
 					  pstmt.setString(1, keyDate1);
 					  pstmt.setString(2, keyDate2); 
-					  pstmt.setInt(3, start);//°Ô½Ã¹° ½ÃÀÛ¹øÈ£ 
-					  pstmt.setInt(4, cnt);//°¡Á®¿Ã °Ô½Ã¹°°³¼ö 
-			}else if(!keyWord.trim().equals("")||keyWord!=null){//°Ë»ö¾î °Ë»öÀÎ °æ¿ì
+					  pstmt.setInt(3, start);//ê²Œì‹œë¬¼ ì‹œì‘ë²ˆí˜¸ 
+					  pstmt.setInt(4, cnt);//ê°€ì ¸ì˜¬ ê²Œì‹œë¬¼ê°œìˆ˜ 
+			}else if(!keyWord.trim().equals("")||keyWord!=null){//ê²€ìƒ‰ì–´ ê²€ìƒ‰ì¸ ê²½ìš°
 				sql = "select * from order_tb where "+ keyField 
 						+" like ? order by o_index desc, o_index limit ?,?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, keyWord);
-				pstmt.setInt(2, start);//°Ô½Ã¹° ½ÃÀÛ¹øÈ£
-				pstmt.setInt(3, cnt);//°¡Á®¿Ã °Ô½Ã¹° °³¼ö
+				pstmt.setInt(2, start);//ê²Œì‹œë¬¼ ì‹œì‘ë²ˆí˜¸
+				pstmt.setInt(3, cnt);//ê°€ì ¸ì˜¬ ê²Œì‹œë¬¼ ê°œìˆ˜
 			}
 				 
 			rs = pstmt.executeQuery();
@@ -264,7 +264,7 @@ public class OrderMgr {
 	//Refund insert
 	//Refund update
 	//Refund delete 
-	//ÆäÀÌÂ¡ ¹× ºí·° Å×½ºÆ®¸¦ À§ÇÑ °Ô½Ã¹° ÀúÀå ¸Ş¼Òµå (°Ô½Ã¹° 1,000°³ ÀúÀå)
+	//í˜ì´ì§• ë° ë¸”ëŸ­ í…ŒìŠ¤íŠ¸ë¥¼ ìœ„í•œ ê²Œì‹œë¬¼ ì €ì¥ ë©”ì†Œë“œ (ê²Œì‹œë¬¼ 1,000ê°œ ì €ì¥)
 	public void post1000(){
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -289,7 +289,7 @@ public class OrderMgr {
 			public static void main(String[] args) {
 				//OrderMgr mgr = new OrderMgr();
 				//mgr.post1000();
-				System.out.println("¼º°ø~~");
+				System.out.println("ì„±ê³µ~~");
 			}
 		
 	
