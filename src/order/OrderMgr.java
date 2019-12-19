@@ -6,9 +6,6 @@ import java.sql.ResultSet;
 import java.util.Vector;
 
 
-
-
-
 public class OrderMgr {
 	
 	private DBConnectionMgr pool;
@@ -16,7 +13,7 @@ public class OrderMgr {
 	public OrderMgr() {
 		pool = DBConnectionMgr.getInstance();
 	}
-	//***User ±â´É¼³°è***
+	//***User ê¸°ëŠ¥ì„¤ê³„***
 	//insert 
 	public boolean insertOrder(OrderBean order) {
 		Connection con = null;
@@ -93,8 +90,9 @@ public class OrderMgr {
 		}
 		return vlist;
 	}
-	
-	//Order detail code, ¼ö·® È®ÀÎ 
+
+  
+	//Order detail code, ìˆ˜ëŸ‰ í™•ì¸ 
 	public Vector<OrderDetailBean> getOrderCode(int o_index) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -125,8 +123,9 @@ public class OrderMgr {
 	
 	
 
-	//***Admin ±â´É¼³°è***
-	//Order Total Count(¿À´õ°¹¼ö)
+	//***Admin ê¸°ëŠ¥ì„¤ê³„***
+
+	//Order Total Count(ì˜¤ë”ê°¯ìˆ˜)
 	public int getTotalCount(String keyField, String keyWord) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -135,10 +134,10 @@ public class OrderMgr {
 		int totalCount = 0;
 		try {
 			con = pool.getConnection();
-			if(keyWord.trim().equals("")||keyWord==null) {//°Ë»öÀÌ ¾Æ´Ñ°æ¿ì
+			if(keyWord.trim().equals("")||keyWord==null) {//ê²€ìƒ‰ì´ ì•„ë‹Œê²½ìš°
 				sql = "select count(*) from order_tb";
 				pstmt = con.prepareStatement(sql);
-			}else {//°Ë»öÀÎ °æ¿ì
+			}else {//ê²€ìƒ‰ì¸ ê²½ìš°
 				//select count(*) from tblBoard WHERE NAME LIKE '%aaa%';
 				sql = "select count(*) from order_tb where " + keyField;
 				sql +=" like?"; 
@@ -157,7 +156,7 @@ public class OrderMgr {
 	}
 	//All List
 	public Vector<OrderBean> getOrderList(String keyField, 
-			String keyWord, int start, int cnt) {//limit start, cnt·Î °Ë»ö 
+			String keyWord, int start, int cnt) {//limit start, cntë¡œ ê²€ìƒ‰ 
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -165,19 +164,19 @@ public class OrderMgr {
 		Vector<OrderBean> vlist =new Vector<OrderBean>();
 		try {
 			con = pool.getConnection();
-			if(keyWord.trim().equals("")||keyWord==null) {//°Ë»öÀÌ ¾Æ´Ñ °æ¿ì
+			if(keyWord.trim().equals("")||keyWord==null) {//ê²€ìƒ‰ì´ ì•„ë‹Œ ê²½ìš°
 				sql = "select * from order_tb order by o_index desc, "
 						+ "o_index limit ?,?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, start);//°Ô½Ã¹° ½ÃÀÛ¹øÈ£
-				pstmt.setInt(2, cnt);//°¡Á®¿Ã °Ô½Ã¹° °³¼ö
-			}else {//°Ë»öÀÎ °æ¿ì
+				pstmt.setInt(1, start);//ê²Œì‹œë¬¼ ì‹œì‘ë²ˆí˜¸
+				pstmt.setInt(2, cnt);//ê°€ì ¸ì˜¬ ê²Œì‹œë¬¼ ê°œìˆ˜
+			}else {//ê²€ìƒ‰ì¸ ê²½ìš°
 				sql = "select * from order_tb where "+ keyField 
 						+" like  ? order by o_index desc, o_index limit ?,?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, "%"+keyWord+"%");
-				pstmt.setInt(2, start);//°Ô½Ã¹° ½ÃÀÛ¹øÈ£
-				pstmt.setInt(3, cnt);//°¡Á®¿Ã °Ô½Ã¹° °³¼ö
+				pstmt.setInt(2, start);//ê²Œì‹œë¬¼ ì‹œì‘ë²ˆí˜¸
+				pstmt.setInt(3, cnt);//ê°€ì ¸ì˜¬ ê²Œì‹œë¬¼ ê°œìˆ˜
 			}
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -210,7 +209,7 @@ public class OrderMgr {
 		return vlist;
 	}
 	
-	
+
 	//Order detail 
 	//Order update
 	//Order delete

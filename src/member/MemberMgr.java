@@ -78,7 +78,7 @@ public class MemberMgr {
 			pstmt.setString(1, id);
 			pstmt.setString(2, pwd);
 			rs = pstmt.executeQuery();
-			System.out.println("¹Ù²ïÇÃ·¡±×");
+			System.out.println("ë°”ë€í”Œë˜ê·¸");
 			if(rs.next()) 
 				flag = 1;
 			
@@ -91,7 +91,7 @@ public class MemberMgr {
 	}
 	
 
-	//ÆĞ½º¿öµå Ã¼Å©
+	//íŒ¨ìŠ¤ì›Œë“œ ì²´í¬
 
 			public boolean checkPwd(String pwd) {
 				Connection con = null;
@@ -145,7 +145,7 @@ public class MemberMgr {
 			}
 
 				
-	//È¸¿øÁ¤º¸ ¼öÁ¤ÇÏ±â
+	//íšŒì›ì •ë³´ ìˆ˜ì •í•˜ê¸°
 			public boolean updateMember(MemberBean bean) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -181,7 +181,7 @@ public class MemberMgr {
 				}
 				return flag;
 			}
-			public Vector<MemberBean> getMemberList(){
+			public Vector<MemberBean> getAllMemberList(){
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
@@ -212,23 +212,38 @@ public class MemberMgr {
 				}
 						return vlist;
 				}
-			public int getMemberList(String type, String value) {
+			public Vector<MemberBean> getMemberList(String type, String value) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
 				String sql = null;
-				int flag = 0;
+				System.out.println("dbì•ˆì—ì„œ valueëŠ” : " + value);
+				Vector<MemberBean> vlist = new Vector<MemberBean>();
 				try {
 					con = pool.getConnection();
-					sql = "select * from ";
+					sql = "select * from user_tb where " + type + " like ?";
 					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%"+value+"%");
 					rs = pstmt.executeQuery();
+					while(rs.next()){
+						MemberBean bean = new MemberBean();
+						bean.setId(rs.getString("id"));
+						bean.setNAME(rs.getString("NAME"));
+						bean.setBirthday(rs.getString("birthday"));
+						bean.setEmail(rs.getString("email"));
+						bean.setContact(rs.getString("contact"));
+						bean.setZipcode(rs.getInt("zipcode"));
+						bean.setAddress(rs.getString("address"));
+						bean.setAddress_detail(rs.getString("address_detail"));
+						bean.setJoin_date(rs.getString("join_date"));
+						vlist.addElement(bean);
+						}
 				} catch (Exception e) {
 					e.printStackTrace();
 				} finally {
 					pool.freeConnection(con, pstmt, rs);
 				}
-					return flag;
+					return vlist;
 			}
 }
 

@@ -23,6 +23,7 @@ public class MemberBean {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
+
 	public String getNAME() {
 		return NAME;
 	}

@@ -1,18 +1,29 @@
+<%@page import="java.util.Calendar"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <%@page import="java.util.Vector"%>
 <%@page import="product.ProductBean"%>
 <jsp:useBean id="amgr" class="admin.ProductMgr"/>
-<jsp:useBean id="mgr" class="admin.ProductMgr"/>
+
 <%
 		request.setCharacterEncoding("EUC-KR");
-		Vector<ProductBean> list = mgr.printPname();
-		String pnameList[] = mgr.readPname();
-		out.println(list.size());
+		Vector<ProductBean> list = amgr.printPname();
+		String pnameList[] = amgr.readPname();
+		out.println(list.size());		   
+		
+		//Printing yymmdd
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		Calendar cal1 = Calendar.getInstance();	Calendar cal2 = Calendar.getInstance();
+		int year = Integer.parseInt((sdf.format(cal2.getTime())).substring(0, 4));
+		int month = Integer.parseInt((sdf.format(cal2.getTime())).substring(4, 6));
+		int date = Integer.parseInt((sdf.format(cal2.getTime())).substring(6, 8));
+		cal1.set(year ,month-1, date);	cal1.add(Calendar.MONTH, -1);
+						
+		int today1 = Integer.parseInt(sdf.format(cal1.getTime()));
+		int today2 = Integer.parseInt(sdf.format(cal2.getTime()));			
 		
 		//need to search variable 
-		String p_name = "";
-		int p_date1=0;
-		int p_date2=0;
+		String p_name = "";	int p_date1=today1;	int p_date2=today2;
 		
 		//if do Searching
 		if(request.getParameter("p_name")!=null){
@@ -24,9 +35,7 @@
 		//After searching, request first screen again
 		if(request.getParameter("reload")!=null&&
 		request.getParameter("reload").equals("true")){
-			p_name = ""; 
-			p_date1=0; 
-			p_date2=0; 
+			p_name = ""; p_date1=0; p_date2=0; 
 		}
 %>
 
@@ -40,16 +49,24 @@ td{border: 1px solid;}
 thead{background:lightgray;}
 </style>
 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script type ="text/javascript">
+
+var today = new Date( ) 
+document.write(today.getYear( ) , 
+               today.getMonth( )+1 , today.getDate( )) 
+
 function check() {
 	f = document.SearchFrm;
 	if(f.p_name.value.length==0){
-		alert("Á¦Ç°¸íÀ» ¼±ÅÃÇÏ¼¼¿ä");
+		alert("ì œí’ˆëª…ì„ ì„ íƒí•˜ì„¸ìš”");
 		f.p_name.focus();
 		return;
 	}
 	if(f.p_date1.value.length==0 || f.p_date1.value.length!=8){
-		alert("±â°£À» ¿Ã¹Ù¸£°Ô ÀÔ·ÂÇØÁÖ¼¼¿ä ex) 20191217")
+		alert("ê¸°ê°„ì„ ì˜¬ë°”ë¥´ê²Œ ì…ë ¥í•´ì£¼ì„¸ìš” ex) 20191217")
 		f.p_date1.focus();
 		return;
 	}
@@ -60,7 +77,7 @@ function check() {
 	}
 	
 	if(f.p_date2.value.length==0 || f.p_date2.value.length!=8){
-		alert("±â°£À» ¿Ã¹Ù¸£°Ô ÀÔ·ÂÇØÁÖ¼¼¿ä ex) 20191217")
+		alert("ê¸°ê°„ì„ ì˜¬ë°”ë¥´ê²Œ ì…ë ¥í•´ì£¼ì„¸ìš” ex) 20191217")
 		f.p_date2.focus();
 		return;
 	}f.submit();
@@ -71,41 +88,43 @@ function listSelect() {
 	pl = f.pnameList;
 	f.p_name.value = pl.options[pl.selectedIndex].value;
 }
+ 
 /* checkbox javascript */
  
  function allChk() {
 	f= document.rFrm;
 	if(f.allCh.checked){
 		for(i=0;i<f.fch.length;i++){
-				/*Ç×¸ñÀÇ Ã¼Å©¹öÆ°(fch)µéÀÌ ¹è¿­ÀÌ±â¿¡*/
+				/*í•­ëª©ì˜ ì²´í¬ë²„íŠ¼(fch)ë“¤ì´ ë°°ì—´ì´ê¸°ì—*/
 			f.fch[i].checked = true;
 		}
-		f.btn.disabled = false;//¹öÆ°ÀÇ È°¼ºÈ­
+		f.delete.disabled = false;//ë²„íŠ¼ì˜ í™œì„±í™”
 	}else{
 		for(i=0;i<f.fch.length;i++){
 			f.fch[i].checked = false;
 		}
-		f.btn.disabled = true;	//¹öÆ°ÀÇ ºñÈ°¼ºÈ­			
+		f.delete.disabled = true;	//ë²„íŠ¼ì˜ ë¹„í™œì„±í™”			
 	}
 }
  function chk(){
 		f=document.rFrm;
-		for(i=1; i<f.fch.length;i++){
+		for(i=0; i<f.fch.length;i++){
 			//alert(f.fch[i].value);
-			if(f.fch[i].checked){ //fch Ã¼Å©¹Ú½º°¡ Ã¼Å©°¡ µÈ °æ¿ì
-				f.btn.disabled = false;
-			return; //¹Ø¿¡ ÀÖ´Â Ã¼Å©¹Ú½ºÀÇ Ã¼Å© À¯¹«´Â ¹«ÀÇ¹Ì
+			if(f.fch[i].checked){ //fch ì²´í¬ë°•ìŠ¤ê°€ ì²´í¬ê°€ ëœ ê²½ìš°
+				f.delete.disabled = false;
+			return; //ë°‘ì— ìˆëŠ” ì²´í¬ë°•ìŠ¤ì˜ ì²´í¬ ìœ ë¬´ëŠ” ë¬´ì˜ë¯¸
 			}
 		}
-		f.allCh.checked= false; //ÀüÃ¼Ã¼Å©¹Ú½º ÇØÁ¦
-		f.btn.disabled = true; //¹öÆ° ºñÈ°¼ºÈ­
+		f.allCh.checked= false; //ì „ì²´ì²´í¬ë°•ìŠ¤ í•´ì œ
+		f.delete.disabled = true; //ë²„íŠ¼ ë¹„í™œì„±í™”
 	}
+
  
 </script>
 </head>
 
 <body>
-<h3>Á¦Ç°Á¤º¸</h3>
+<h3>ì œí’ˆì •ë³´</h3>
 
 <form name = "listFrm">
 	<input type ="hidden"  name ="reload" value="true">
@@ -115,13 +134,13 @@ function listSelect() {
 <form name ="SearchFrm" method="get" >
 <input type = "hidden" name ="fch" value="0">	
 <hr>
-<h4>Á¦Ç°Á¤º¸ °Ë»ö</h4>
+<h4>ì œí’ˆì •ë³´ ê²€ìƒ‰</h4>
 <table>
 	<tr>
-		<td >Á¦Ç°¸í</td>
+		<td >ì œí’ˆëª…</td>
 		<td>
 		<select name ="pnameList" onchange = "listSelect()">
-		<option value ="">Á¦Ç°¸í ¼±ÅÃ</option>
+		<option value ="">ì œí’ˆëª… ì„ íƒ</option>
 		<%for(int i=0; i<pnameList.length;i++){ %>
 		<option value ="<%=pnameList[i]%>"><%=pnameList[i]%></option>
 		<%} %>		
@@ -130,7 +149,7 @@ function listSelect() {
 		</td>		
 	</tr>
 	<tr>
-		<td>°Ë»ö±â°£(µî·ÏÀÏ)</td>
+		<td>ê²€ìƒ‰ê¸°ê°„(ë“±ë¡ì¼)</td>
 		<td>
 			<input name ="p_date1" size="20"  value="<%=p_date1%>"> &nbsp; ~ &nbsp;
 			<input name ="p_date2" size="20" value="<%=p_date2%>">			
@@ -141,7 +160,8 @@ function listSelect() {
 		
 </form>
 
-	<form name=rFrm action="goods_Proc.jsp?flag=update">
+	<!-- <form name=rFrm action="goods_Proc.jsp?flag=delete" enctype="multipart/form-data"> -->
+	<form name=rFrm id="rFrame" action="goods_deleteProc.jsp" enctype="multipart/form-data">
 <table>
 	<tr>
 		<%
@@ -155,18 +175,18 @@ function listSelect() {
 				out.println(p_date1);
 				out.println(p_date2);				
 				out.println(slist.size());				
-				out.println("°Ë»ö°á°ú¾øÀ½");
+				out.println("ê²€ìƒ‰ê²°ê³¼ì—†ìŒ");
 			}else{
 				
 		%>
 		<tr>
-			<td><input type ="checkbox" name= "allCh" onclick="allChk()"></td>					
-			<td>Á¦Ç°ÄÚµå</td>
-			<td>»óÇ°¸í</td>
-			<td>»óÇ°°¡°İ</td>
-			<td>µî·ÏÀÏ</td>
-			<td>ÆÇ¸Å¿©ºÎ</td>
-			<td>Àç°í¼ö·®</td>
+			<th><input type ="checkbox" name="allCh" onclick="allChk()"></th>					
+			<th>ì œí’ˆì½”ë“œ</th>
+			<th>ìƒí’ˆëª…</th>
+			<th>ìƒí’ˆê°€ê²©</th>
+			<th>ë“±ë¡ì¼</th>
+			<th>íŒë§¤ì—¬ë¶€</th>
+			<th>ì¬ê³ ìˆ˜ëŸ‰</th>
 		</tr>			
 			<% 
 			for(int i=0; i<slist.size(); i++){
@@ -175,8 +195,8 @@ function listSelect() {
 		%>			
 			<tr>
 			<td>
-			<input type ="checkbox" name="fch" value="<%=p_code%>" onclick="chk()"></td>			
-			<td><%=pbean.getP_code() %></td>
+			<input type ="checkbox" name="fch" value="<%=p_code%>" onclick="chk()"></td>						
+			<td><a href="goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_code() %></a></td>
 			<td><%=pbean.getP_name() %></td>
 			<td><%=pbean.getP_price() %></td>
 			<td><%=pbean.getP_date() %></td>
@@ -185,10 +205,33 @@ function listSelect() {
 		</tr>
 	<%}//--for %>
 	<%}//--else %>
+	
 		</table>
-		<input type ="submit" value="¼öÁ¤">
-		<input type ="button" value="»èÁ¦">
-		<input type ="button" value="Ãß°¡" onclick ="location.href='goods_insert.jsp'">
+		<input type ="button" name="update" id="update_btn" value="ìˆ˜ì •">
+		<input type="button" name="delete" id="delete_btn" value="ì‚­ì œ" disabled>
+		<input type ="button" value="ì¶”ê°€" onclick ="location.href='goods_insert.jsp'">	
+		<input type ="hidden" name="buffer" id="buffer">
 	</form>
+	<script>
+
+	window.onload = function(){
+		function typeCheck(){
+			const update_btn = document.querySelector('#update_btn');
+			const delete_btn = document.querySelector('#delete_btn');
+			
+			update_btn.addEventListener('click', function(){
+				const inputdata = 
+				$('#buffer').val('update');
+				$('#rFrame').submit();
+			});
+			delete_btn.addEventListener('click',function(){
+				$('#buffer').val('delete');
+				$('#rFrame').submit();
+			});
+		}
+		typeCheck();
+	}
+	
+	</script>
 </body>	
 </html>
