@@ -1,5 +1,5 @@
 <%@page import="java.net.URLDecoder"%>
-<%@page import="Product.ProductMgr"%>
+<%@page import="product.ProductMgr"%>
 <%@page import="java.util.Vector" %>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.JSONArray"%>

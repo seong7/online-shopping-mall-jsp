@@ -1,9 +1,5 @@
-<%@ page contentType="text/html; charset=EUC-KR"%>
-<%
-	request.setCharacterEncoding("EUC-KR");
-%>
-
 <!-- 사용자 주문서 page -->
+<%@ page contentType="text/html; charset=EUC-KR"%>
 <%@page import="product.UtilMgr"%>
 <%@page import="order.OrderBean"%>
 <%@page import="member.MemberBean"%>
@@ -11,13 +7,14 @@
 <%@page import="order.CartMgr"%>
 <%@page import="order.CartBean"%>
 <%@page import="java.util.Vector"%>
-<%@ page contentType="text/html; charset=EUC-KR"%>
+
 <jsp:useBean id="mMgr" class="member.MemberMgr"/>
 <jsp:useBean id="pMgr" class="product.ProductMgr"/>
 <jsp:useBean id="oMgr" class="order.OrderMgr"/>
 <jsp:useBean id="cMgr" class="order.CartMgr"/>
 
 <%
+		request.setCharacterEncoding("EUC-KR");
 		String id = (String)session.getAttribute("idKey");
 		int priceTotal = 0;
 		int shippingPrice = 2500;
