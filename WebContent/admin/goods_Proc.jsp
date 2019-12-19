@@ -1,14 +1,15 @@
 <!-- goods_Proc.jsp -->
-<%@page import="Product.UtilMgr"%>
+<%@page import="product.UtilMgr"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
-<jsp:useBean id="pMgr" class="Admin.ProductMgr"/>
+<jsp:useBean id="pMgr" class="admin.ProductMgr"/>
 
 <%
 		request.setCharacterEncoding("EUC-KR");
 		String flag = request.getParameter("flag");
+		System.out.println(flag);
 		String msg = "오류가 발생하였습니다.";
 		boolean result = false;
-		System.out.println(flag);
+		
 			
 		if(flag.equals("insert")){
 			result = pMgr.insertProduct(request);

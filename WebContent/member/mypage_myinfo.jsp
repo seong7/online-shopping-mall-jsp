@@ -1,7 +1,7 @@
-<%@page import="Member.MemberBean"%>
+<%@page import="member.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
-<jsp:useBean id="mgr" class="Member.MemberMgr" />
+<jsp:useBean id="mgr" class="member.MemberMgr" />
 <%
 	String id = (String) session.getAttribute("idKey");
 	MemberBean bean = mgr.getMember(id);

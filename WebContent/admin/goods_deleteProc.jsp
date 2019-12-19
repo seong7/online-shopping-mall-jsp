@@ -1,9 +1,9 @@
-<%@page import="Product.ProductBean"%>
+<%@page import="product.ProductBean"%>
 <%@page import="java.util.Vector"%>
-<%@page import="Product.UtilMgr"%>
+<%@page import="product.UtilMgr"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
-<jsp:useBean id="aMgr" class="Admin.ProductMgr"/>
-<jsp:useBean id="pMgr" class="Product.ProductMgr"/>
+<jsp:useBean id="aMgr" class="admin.ProductMgr"/>
+<jsp:useBean id="pMgr" class="product.ProductMgr"/>
 <%
 	request.setCharacterEncoding("EUC-KR");
 	String p_code[]=request.getParameterValues("fch");
@@ -15,10 +15,9 @@
 	//update, delete
 		for(int i=0; i<p_code.length; i++){
 			System.out.println(p_code[i]);			
-			
 		}		
 	}else{
-		System.out.println(msg);
+		msg
 	}	
 	if(type_check.equals("delete")){
 		for(int i=0; i<p_code.length; i++){
@@ -27,6 +26,7 @@
 	System.out.println("µô¸®Æ®");
 	}	
 %>
-<html>
-<input type = date>
-</html>
+<script>
+	alert="msg"
+	location.href=""
+</script>
