@@ -4,4 +4,4 @@
 /bin/
 
 .classpath
-.map
+*.map
