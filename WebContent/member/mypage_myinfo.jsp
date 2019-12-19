@@ -75,8 +75,8 @@
 						</tr>
 						<tr>
 							<td class="member_name1">*¿Ã∏ß</td>
-							<td class="member_name2"><input name="name"
-								value="<%=bean.getName()%>"></td>
+							<td class="member_name2"><input name="NAME"
+								value="<%=bean.getNAME()%>"></td>
 						</tr>
 						
 						<tr>
