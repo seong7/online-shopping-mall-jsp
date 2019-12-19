@@ -124,80 +124,144 @@ public class ProductMgr {
 				String upFile3 = multi.getFilesystemName("upFile3");
 				File f1 = multi.getFile("upFile1");
 				File f2 = multi.getFile("upFile2");
+				File f3 = multi.getFile("upFile3");
+				
+				con = pool.getConnection();
+				sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
+					   +"p_main_pht_name=?, p_main_pht_size=?, p_detail_pht_name=?, p_detail_pht_size=?, "
+					   +"p_info_pht_name=?, p_info_pht_size=? where p_code=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, multi.getParameter("p_name"));
+				pstmt.setInt(2, Integer.parseInt(multi.getParameter("p_price")));
+				pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_on_sale")));				
+				
+				if(multi.getFilesystemName("upFile1")!=null) {
+					int size1 = (int)f1.length();
+					pstmt.setString(4, upFile1);
+					pstmt.setInt(5, size1);
+				}else {
+					pstmt.setString(4, "ready.gif");
+					pstmt.setInt(5, 0);
+				}
+				if(multi.getFilesystemName("upFile2")!=null) {
+					int size2 = (int)f2.length();
+					pstmt.setString(6, upFile2);
+					pstmt.setInt(7, size2);
+				}else {
+					pstmt.setString(6, "ready.gif");
+					pstmt.setInt(7, 0);
+				}
+				if(multi.getFilesystemName("upFile3")!=null) {
+					int size3 = (int)f3.length();
+					pstmt.setString(8, upFile3);
+					pstmt.setInt(9, size3);
+				}else {
+					pstmt.setString(8, "ready.gif");
+					pstmt.setInt(9, 0);
+				}
+				pstmt.setInt(10, Integer.parseInt(multi.getParameter("p_code")));		
+				int cnt = pstmt.executeUpdate();				
+				if(cnt==1) {
+					flag = true;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pool.freeConnection(con, pstmt);
+			}
+			return flag;
+		}
+		
+		
+		//updateproduct2
+		public boolean updateProduct2(HttpServletRequest req) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+			boolean flag = false;
+			try {
+				MultipartRequest multi = 
+						new MultipartRequest(req,UPLOAD,MAXSIZE,ENCTYPE,
+								new DefaultFileRenamePolicy());
+				String upFile1 = multi.getFilesystemName("upFile1");
+				String upFile2 = multi.getFilesystemName("upFile2");
+				String upFile3 = multi.getFilesystemName("upFile3");
+				File f1 = multi.getFile("upFile1");
+				File f2 = multi.getFile("upFile2");
 				File f3 = multi.getFile("upFile3");		
 				
 				con = pool.getConnection();
 				//이미지 파일까지 수정
 				if(multi.getFilesystemName("upFile1")!=null) {
 				int size1 = (int)f1.length();
-				sql = "update product_mst_tb set p_code=?, p_name=?, p_price=?, p_on_sale=?, "
-				      +"p_main_pht_name=?, p_main_pht_size=?";
+				sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
+				      +"p_main_pht_name=?, p_main_pht_size=? where p_code=? " ;
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, Integer.parseInt(multi.getParameter("p_code")));
-				pstmt.setString(2, multi.getParameter("p_name"));
-				pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_price")));
-				pstmt.setInt(4, Integer.parseInt(multi.getParameter("p_on_sale")));	
-				pstmt.setString(5, upFile1);
-				pstmt.setInt(6, size1);
+				pstmt.setString(1, multi.getParameter("p_name"));
+				pstmt.setInt(2, Integer.parseInt(multi.getParameter("p_price")));
+				pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_on_sale")));	
+				pstmt.setString(4, upFile1);
+				pstmt.setInt(5, size1);
+				pstmt.setInt(6, Integer.parseInt(multi.getParameter("p_code")));	
 				}else {
 				//이미지 파일 수정이 아님
-				sql = "update product_mst_tb set p_code=?, p_name=?, p_price=?, p_on_sale=?, "
-					   +"p_main_pht_name=?, p_main_pht_size=?";
+				sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
+					   +"p_main_pht_name=?, p_main_pht_size=? where p_code=?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, Integer.parseInt(multi.getParameter("p_code")));
-				pstmt.setString(2, multi.getParameter("p_name"));
-				pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_price")));
-				pstmt.setInt(4, Integer.parseInt(multi.getParameter("p_on_sale")));
-				pstmt.setString(5, "ready.gif");
-				pstmt.setInt(6, 0);
+				pstmt.setString(1, multi.getParameter("p_name"));
+				pstmt.setInt(2, Integer.parseInt(multi.getParameter("p_price")));
+				pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_on_sale")));
+				pstmt.setString(4, "ready.gif");
+				pstmt.setInt(5, 0);
+				pstmt.setInt(6, Integer.parseInt(multi.getParameter("p_code")));
 			}
 				if(multi.getFilesystemName("upFile2")!=null) {
 					int size2 = (int)f2.length();
-					sql = "update product_mst_tb set p_code=?, p_name=?, p_price=?, p_on_sale=?, "
-						      +"p_detail_pht_name=?, p_detail_pht_size=?";
+					sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
+						      +"p_detail_pht_name=?, p_detail_pht_size=? where p_code=?";
 				pool.freeConnection(con, pstmt);
 				con = pool.getConnection();
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, Integer.parseInt(multi.getParameter("p_code")));
-				pstmt.setString(2, multi.getParameter("p_name"));
-				pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_price")));
-				pstmt.setInt(4, Integer.parseInt(multi.getParameter("p_on_sale")));	
-				pstmt.setString(5, upFile2);
-				pstmt.setInt(6, size2);
+				pstmt.setString(1, multi.getParameter("p_name"));
+				pstmt.setInt(2, Integer.parseInt(multi.getParameter("p_price")));
+				pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_on_sale")));	
+				pstmt.setString(4, upFile2);
+				pstmt.setInt(5, size2);
+				pstmt.setInt(6, Integer.parseInt(multi.getParameter("p_code")));
 				}else {
-					sql = "update product_mst_tb set p_code=?, p_name=?, p_price=?, p_on_sale=?, "
-						  +"p_detail_pht_name=?, p_detail_pht_size=?";
+					sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
+						  +"p_detail_pht_name=?, p_detail_pht_size=? where p_code=?";
 					pool.freeConnection(con, pstmt);
 					con = pool.getConnection();
 					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, Integer.parseInt(multi.getParameter("p_code")));
-					pstmt.setString(2, multi.getParameter("p_name"));
-					pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_price")));
-					pstmt.setInt(4, Integer.parseInt(multi.getParameter("p_on_sale")));	
-					pstmt.setString(5, "ready.gif");
-					pstmt.setInt(6, 0);
+					pstmt.setString(1, multi.getParameter("p_name"));
+					pstmt.setInt(2, Integer.parseInt(multi.getParameter("p_price")));
+					pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_on_sale")));	
+					pstmt.setString(4, "ready.gif");
+					pstmt.setInt(5, 0);
+					pstmt.setInt(6, Integer.parseInt(multi.getParameter("p_code")));
 				}
 				if(multi.getFilesystemName("upFile3")!=null) {
 					int size3 = (int)f3.length();
-					sql = "update product_mst_tb set p_code=?, p_name=?, p_price=?, p_on_sale=?, "
-						      +"p_info_pht_name=?, p_info_pht_size=?";
+					sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
+						      +"p_info_pht_name=?, p_info_pht_size=? where p_code=?";
 					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, Integer.parseInt(multi.getParameter("p_code")));
-					pstmt.setString(2, multi.getParameter("p_name"));
-					pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_price")));
-					pstmt.setInt(4, Integer.parseInt(multi.getParameter("p_on_sale")));	
-					pstmt.setString(5, upFile3);
-					pstmt.setInt(6, size3);
+					pstmt.setString(1, multi.getParameter("p_name"));
+					pstmt.setInt(2, Integer.parseInt(multi.getParameter("p_price")));
+					pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_on_sale")));	
+					pstmt.setString(4, upFile3);
+					pstmt.setInt(5, size3);
+					pstmt.setInt(6, Integer.parseInt(multi.getParameter("p_code")));
 				}else {
-					sql = "update product_mst_tb set p_code=?, p_name=?, p_price=?, p_on_sale=?, "
-						  +"p_info_pht_name=?, p_info_pht_size=?";
+					sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
+						  +"p_info_pht_name=?, p_info_pht_size=? where p_code=?";
 					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, Integer.parseInt(multi.getParameter("p_code")));
-					pstmt.setString(2, multi.getParameter("p_name"));
-					pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_price")));
-					pstmt.setInt(4, Integer.parseInt(multi.getParameter("p_on_sale")));
-					pstmt.setString(5, "ready.gif");
-					pstmt.setInt(6, 0);
+					pstmt.setString(1, multi.getParameter("p_name"));
+					pstmt.setInt(2, Integer.parseInt(multi.getParameter("p_price")));
+					pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_on_sale")));
+					pstmt.setString(4, "ready.gif");
+					pstmt.setInt(5, 0);
+					pstmt.setInt(6, Integer.parseInt(multi.getParameter("p_code")));
 				}				
 				int cnt=pstmt.executeUpdate();
 				if(cnt==1) flag = true;
@@ -212,24 +276,41 @@ public class ProductMgr {
 		
 		
 		//deleteproduct
-		public boolean deleteproduct(int p_code) {
+		public boolean deleteproduct(int p_code[]) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		String sql = null;
 		boolean flag = false;
 		try {
 			con = pool.getConnection();
+			for(int i=0; i<p_code.length; i++) {
+				sql="select p_main_pht_name from product_mst_tb where p_code=? ";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, p_code[i]);
+				rs = pstmt.executeQuery();
+				if(!rs.next())
+					continue;
+				
+				String p_main_pht_name = rs.getString(1);
+				File f = new File(UPLOAD + p_main_pht_name);
+				if(f.exists())
+					f.delete();
+			
+			pstmt.close();
+			
 			sql = "delete from product_mst_tb where p_code =?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, p_code);
-			if(pstmt.executeUpdate()==1)
-				flag = true;
+			pstmt.setInt(1, p_code[i]);
+			pstmt.executeUpdate();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			pool.freeConnection(con, pstmt);
+			pool.freeConnection(con, pstmt, rs);
 		}	return flag;
 		}
+		
 		
 		//제품명 뽑아내기
 		public Vector<ProductBean> printPname() {
