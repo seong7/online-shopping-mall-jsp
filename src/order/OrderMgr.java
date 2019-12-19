@@ -13,7 +13,7 @@ public class OrderMgr {
 	public OrderMgr() {
 		pool = DBConnectionMgr.getInstance();
 	}
-	//***User ê¸°ëŠ¥ì„¤ê³„***
+	//***User ±â´É¼³°è***
 	//insert 
 	public boolean insertOrder(OrderBean order) {
 		Connection con = null;
@@ -92,7 +92,7 @@ public class OrderMgr {
 	}
 
   
-	//Order detail code, ìˆ˜ëŸ‰ í™•ì¸ 
+	//Order detail code, ¼ö·® È®ÀÎ 
 	public Vector<OrderDetailBean> getOrderCode(int o_index) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -123,9 +123,9 @@ public class OrderMgr {
 	
 	
 
-	//***Admin ê¸°ëŠ¥ì„¤ê³„***
+	//***Admin ±â´É¼³°è***
 
-	//Order Total Count(ì˜¤ë”ê°¯ìˆ˜)
+	//Order Total Count(¿À´õ°¹¼ö)
 	public int getTotalCount(String keyField, String keyWord) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -134,10 +134,10 @@ public class OrderMgr {
 		int totalCount = 0;
 		try {
 			con = pool.getConnection();
-			if(keyWord.trim().equals("")||keyWord==null) {//ê²€ìƒ‰ì´ ì•„ë‹Œê²½ìš°
+			if(keyWord.trim().equals("")||keyWord==null) {//°Ë»öÀÌ ¾Æ´Ñ°æ¿ì
 				sql = "select count(*) from order_tb";
 				pstmt = con.prepareStatement(sql);
-			}else {//ê²€ìƒ‰ì¸ ê²½ìš°
+			}else {//°Ë»öÀÎ °æ¿ì
 				//select count(*) from tblBoard WHERE NAME LIKE '%aaa%';
 				sql = "select count(*) from order_tb where " + keyField;
 				sql +=" like?"; 
@@ -156,7 +156,7 @@ public class OrderMgr {
 	}
 	//All List
 	public Vector<OrderBean> getOrderList(String keyField, 
-			String keyWord, int start, int cnt) {//limit start, cntë¡œ ê²€ìƒ‰ 
+			String keyWord, int start, int cnt) {//limit start, cnt·Î °Ë»ö 
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -164,19 +164,19 @@ public class OrderMgr {
 		Vector<OrderBean> vlist =new Vector<OrderBean>();
 		try {
 			con = pool.getConnection();
-			if(keyWord.trim().equals("")||keyWord==null) {//ê²€ìƒ‰ì´ ì•„ë‹Œ ê²½ìš°
+			if(keyWord.trim().equals("")||keyWord==null) {//°Ë»öÀÌ ¾Æ´Ñ °æ¿ì
 				sql = "select * from order_tb order by o_index desc, "
 						+ "o_index limit ?,?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, start);//ê²Œì‹œë¬¼ ì‹œì‘ë²ˆí˜¸
-				pstmt.setInt(2, cnt);//ê°€ì ¸ì˜¬ ê²Œì‹œë¬¼ ê°œìˆ˜
-			}else {//ê²€ìƒ‰ì¸ ê²½ìš°
+				pstmt.setInt(1, start);//°Ô½Ã¹° ½ÃÀÛ¹øÈ£
+				pstmt.setInt(2, cnt);//°¡Á®¿Ã °Ô½Ã¹° °³¼ö
+			}else {//°Ë»öÀÎ °æ¿ì
 				sql = "select * from order_tb where "+ keyField 
 						+" like  ? order by o_index desc, o_index limit ?,?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, "%"+keyWord+"%");
-				pstmt.setInt(2, start);//ê²Œì‹œë¬¼ ì‹œì‘ë²ˆí˜¸
-				pstmt.setInt(3, cnt);//ê°€ì ¸ì˜¬ ê²Œì‹œë¬¼ ê°œìˆ˜
+				pstmt.setInt(2, start);//°Ô½Ã¹° ½ÃÀÛ¹øÈ£
+				pstmt.setInt(3, cnt);//°¡Á®¿Ã °Ô½Ã¹° °³¼ö
 			}
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
