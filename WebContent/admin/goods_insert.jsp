@@ -9,17 +9,11 @@
 <!-- <title>-관리자-제품 등록</title>  -->
 <script src="script.js"></script>
 </head>
-<body topmargin="100">
-	<form method="post" action="goods_Proc.jsp?flag=insert"
-		enctype="multipart/form-data">
-		<!-- enctype="multipart/form-data" 일때에는 post방식으로 보낸다. 
-	대신에 action을 통해서 action="productProc.jsp?flag=insert" 를 해줘야한다.-->
-
 
 <!-- <title>-관리자-제품 등록</title> -->
 
 <!-- <link rel="stylesheet" type="text/css" href="./css/mypage_orderlist.css"> -->
-<jsp:include page="/../top.jsp"/>
+<jsp:include page="../top.jsp"/>
 
 	<jsp:include page="./admin_side.jsp"/>
 
@@ -32,10 +26,11 @@
         
             <h1 class="title">제품 등록</h1>
 
-            <form method="post" action="goods_insertProc.jsp?flag=insert"
-                enctype="multipart/form-data">
-                <!-- enctype="multipart/form-data" 일때에는 post방식으로 보낸다. 
-            대신에 action을 통해서 action="productProc.jsp?flag=insert" 를 해줘야한다.-->
+			<form method="post" action="goods_Proc.jsp?flag=insert"
+				enctype="multipart/form-data">
+				<!-- enctype="multipart/form-data" 일때에는 post방식으로 보낸다. 
+			대신에 action을 통해서 action="productProc.jsp?flag=insert" 를 해줘야한다.-->
+
         
                 <h3 class="inner_title">기본정보</h3>
 

@@ -27,6 +27,9 @@ public class MemberloginServlet extends HttpServlet {
 		}else {
 			HttpSession session = request.getSession();
 		    session.setAttribute("idKey",id);
+			System.out.println("로그인 성공 " +id);
+			System.out.println("로그인 성공 " +pwd);
+			
 			response.getWriter().write(result + "");
 		}
 	}
