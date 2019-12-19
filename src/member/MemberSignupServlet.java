@@ -53,7 +53,7 @@ public class MemberSignupServlet extends HttpServlet {
 		MemberBean bean = new MemberBean();
 		bean.setId(id);
 		bean.setPwd(pwd);
-		bean.setName(NAME);
+		bean.setNAME(NAME);
 		bean.setBirthday(birthday);
 		bean.setEmail(email);
 		bean.setContact(contact);
@@ -71,7 +71,7 @@ public class MemberSignupServlet extends HttpServlet {
 		}
 		else {
 			session.invalidate();
-			response.sendRedirect("http://localhost/online-shopping-mall/index.jsp");
+			response.sendRedirect("http://localhost:8080/online-shopping-mall/index.jsp");
 		}
 	}
 

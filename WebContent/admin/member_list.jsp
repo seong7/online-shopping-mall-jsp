@@ -1,9 +1,5 @@
 <!-- member list -->
-<%@page import="java.sql.Date"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
-<%
-	request.setCharacterEncoding("EUC-KR");
-%>
 <link rel="stylesheet" type="text/css" href="css/index.css">
 <!-- <title>-包府磊-力前 殿废</title> -->
 
