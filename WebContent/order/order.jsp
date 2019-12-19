@@ -1,19 +1,18 @@
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <%
-		request.setCharacterEncoding("EUC-KR");
-		
+	request.setCharacterEncoding("EUC-KR");
 %>
 
 <!-- 사용자 주문서 page -->
 <%@page import="Product.UtilMgr"%>
 <%@page import="Order.OrderBean"%>
-<%@page import="Member.MemberBean"%>
+<%@page import="member.MemberBean"%>
 <%@page import="Product.ProductBean"%>
 <%@page import="Order.CartMgr"%>
 <%@page import="Order.CartBean"%>
 <%@page import="java.util.Vector"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
-<jsp:useBean id="mMgr" class="Member.MemberMgr"/>
+<jsp:useBean id="mMgr" class="member.MemberMgr"/>
 <jsp:useBean id="pMgr" class="Product.ProductMgr"/>
 <jsp:useBean id="oMgr" class="Order.OrderMgr"/>
 <jsp:useBean id="cMgr" class="Order.CartMgr"/>

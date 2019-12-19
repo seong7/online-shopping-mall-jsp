@@ -353,7 +353,7 @@ function searchInput(){
 		console.log(userID);
 		$.ajax({
 			type: 'POST',
-			url:ctx+'/MemberRegisterCheckServlet',
+			url:ctx+'/member/idcheck',
 			data: {userID: userID},
 //	         아이디 중복체크부
 			success : function(result) {
@@ -397,7 +397,7 @@ function searchInput(){
 		
 		$.ajax({
 			type: 'post',
-			url:ctx+'/MemberLoginServlet',
+			url:ctx+'/member/login',
 			data: {
 				login_id : login_id,
 				login_pwd : login_pwd
@@ -417,7 +417,7 @@ function searchInput(){
 					$('#login_span').addClass('top_modal_green');					
 					$('#login_span').attr("disabled","disabled");
 					setTimeout(function(){
-					   	 location.href='http://localhost/online-shopping-mall/top.jsp'
+					   	 location.href='http://localhost/online-shopping-mall/index.jsp'
 				     }, 500);
 				}
 			}, error : function(){
@@ -477,7 +477,7 @@ function searchInput(){
 			//회원가입 이벤트 ajax
 			$.ajax({
 				type: 'post',
-				url:ctx+'/MemberSignupServlet',
+				url:ctx+'/member/signup',
 				data: {
 					signup_id_input : signup_section_inputValue,
 					signup_pwd_check : signup_pwdValue,
