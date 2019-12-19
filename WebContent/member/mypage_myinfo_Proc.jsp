@@ -1,21 +1,19 @@
 <%@ page contentType="text/html;charset=EUC-KR"%>
 <%request.setCharacterEncoding("EUC-KR");%>
-<jsp:useBean id="mMgr" class="Member.MemberMgr" />
-<jsp:useBean id="mBean" class="Member.MemberBean" />
+<jsp:useBean id="mMgr" class="member.MemberMgr" />
+<jsp:useBean id="mBean" class="member.MemberBean" />
 <jsp:setProperty name="mBean" property="*" />
 <%
 boolean flag = mMgr.updateMember(mBean);
 String id = request.getParameter("id");
 if(flag){%>
 	<script>
-		alert("íšŒì›ì •ë³´ê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
+		alert("È¸¿øÁ¤º¸°¡ ¼öÁ¤µÇ¾ú½À´Ï´Ù.");
 		location.href="index.jsp";
-
 	</script>
 <%}else{%>
 	<script>
-		alert("ìˆ˜ì •ë„ì¤‘ ì—ëŸ¬ê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤.");
+		alert("¼öÁ¤µµÁß ¿¡·¯°¡ ¹ß»ýÇÏ¿´½À´Ï´Ù.");
 		history.back();
 	</script>
 <%}%>
-
