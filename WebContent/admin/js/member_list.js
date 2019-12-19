@@ -2,7 +2,7 @@ function init(){
     const member_search_btn = document.querySelector('#member_search_btn');
 
     member_search_btn.addEventListener('click', function(){
-        //ì…€ë ‰íŠ¸ë°•ìŠ¤ ì„ íƒ ë³€ìˆ˜
+        //¼¿·ºÆ®¹Ú½º ¼±ÅÃ º¯¼ö
         const select_type = document.getElementById('select_type').value;
         const select_value = document.getElementById('select_value').value;
 
@@ -19,18 +19,19 @@ function init(){
                     },                              //key value
                 success : function(result) {
                     if(result == 1){
-                        //ì„±ê³µ ì´ë²¤íŠ¸
-                        
+                        //¼º°ø ÀÌº¥Æ®
+                        console.log('¼º°ø');
                     }else{
-                        //ì‹¤íŒ¨ ì´ë²¤íŠ¸
+                        //½ÇÆĞ ÀÌº¥Æ®
+                        console.log('½ÇÆĞ');
                     }
                 }, error : function(){
-                    //ì—ëŸ¬ê²½ìš°
-                    alert("error");
+                    //¿¡·¯°æ¿ì
+                    console.log('¿¡·¯');
                 }
             })
         }else{
-            alert("ë‚´ìš©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”");
+            alert("³»¿ëÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä");
         }
     });
 }

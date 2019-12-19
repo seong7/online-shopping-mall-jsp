@@ -181,4 +181,24 @@ public class MemberMgr {
 				}
 				return flag;
 			}
+			
+			public int getMemberList(String type, String value) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = null;
+				int flag = 0;
+				try {
+					con = pool.getConnection();
+					sql = "select * from ";
+					pstmt = con.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt, rs);
+				}
+				return flag;
+			}
 }

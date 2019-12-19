@@ -26,28 +26,27 @@
             <h3 class="inner_title">회원정보 검색</h3>
 
 
-                        <table class="mgr_table verHead">
+                        <table class="mgr_table verHead" id="search_table">
                             <tr>
                                 <th>검색어</th>
                                 <td>
-                                    <select>
+                                    <select id="select_type">
                                         <option>ID</option>
                                         <option>이름</option>
                                         <option>Email</option>
-                                        <option>회원가입일</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <input placeholder="내용을 입력해주세요">
+                                    <input placeholder="내용을 입력해주세요" id="select_value">
                                 </td>
                                 <td>
-                                    <input class="btn" type="button" value="검색">
+                                    <input class="btn" type="button" value="검색" id="member_search_btn">
                                 </td>
                             </tr>
                         </table>
     
             <h3 class="inner_title">회원 정보 List</h3>
-                        <table class="mgr_table verHead" id="pht_table">
+                        <table class="mgr_table verHead" id="result_table">
                             <tr>
                                 <th>ID</th>
                                 <th>이름</th>
@@ -70,6 +69,6 @@
 </div> <!--  #btn_manager_wrapper (버튼메뉴 + manager) : admin_side.jsp 에서 열림-->
 </div> <!-- #main (상단요약 + 버튼 + manager) : admin_side.jsp 에서 열림-->
 	<jsp:include page="../bottom.jsp"/>
-
+<script src="js/member_list.js"></script>
 </body>
 </html>
