@@ -181,9 +181,7 @@ public class MemberMgr {
 				}
 				return flag;
 			}
-			
-		///admin///
-			public Vector<MemberBean> getMemberList(){
+			public Vector<MemberBean> getAllMemberList(){
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
@@ -206,14 +204,46 @@ public class MemberMgr {
 						bean.setAddress_detail(rs.getString("address_detail"));
 						bean.setJoin_date(rs.getString("join_date"));
 						vlist.addElement(bean);
-					}
+						}
+				} catch (Exception e) {
+						e.printStackTrace();
+				} finally {
+						pool.freeConnection(con, pstmt, rs);
+				}
+						return vlist;
+				}
+			public Vector<MemberBean> getMemberList(String type, String value) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = null;
+				System.out.println("db안에서 value는 : " + value);
+				Vector<MemberBean> vlist = new Vector<MemberBean>();
+				try {
+					con = pool.getConnection();
+					sql = "select * from user_tb where " + type + " like ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%"+value+"%");
+					rs = pstmt.executeQuery();
+					while(rs.next()){
+						MemberBean bean = new MemberBean();
+						bean.setId(rs.getString("id"));
+						bean.setNAME(rs.getString("NAME"));
+						bean.setBirthday(rs.getString("birthday"));
+						bean.setEmail(rs.getString("email"));
+						bean.setContact(rs.getString("contact"));
+						bean.setZipcode(rs.getInt("zipcode"));
+						bean.setAddress(rs.getString("address"));
+						bean.setAddress_detail(rs.getString("address_detail"));
+						bean.setJoin_date(rs.getString("join_date"));
+						vlist.addElement(bean);
+						}
 				} catch (Exception e) {
 					e.printStackTrace();
 				} finally {
 					pool.freeConnection(con, pstmt, rs);
 				}
-				return vlist;
+					return vlist;
 			}
-			
-			
 }
+

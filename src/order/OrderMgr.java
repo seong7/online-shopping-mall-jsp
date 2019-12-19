@@ -9,6 +9,7 @@ import java.util.Vector;
 
 
 
+
 public class OrderMgr {
 	
 	private DBConnectionMgr pool;
@@ -127,7 +128,8 @@ public class OrderMgr {
 
 	//***Admin 기능설계***
 	//Order Total Count(오더갯수)
-	public int getTotalCount(String keyField, String keyWord) {
+	public int getTotalCount(String keyField, String keyWord,
+			String keyDate1, String keyDate2) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -135,15 +137,25 @@ public class OrderMgr {
 		int totalCount = 0;
 		try {
 			con = pool.getConnection();
-			if(keyWord.trim().equals("")||keyWord==null) {//검색이 아닌경우
+			if((keyWord.trim().equals("")||keyWord==null)&&
+			(keyDate1.trim().equals("")||keyDate1==null)&&
+			(keyDate2.trim().equals("")||keyDate2==null)) {//검색이 아닌경우
 				sql = "select count(*) from order_tb";
 				pstmt = con.prepareStatement(sql);
-			}else {//검색인 경우
+			}else if((!keyDate1.trim().equals("")||keyDate1!=null) &&
+					  (!keyDate2.trim().equals("")||keyDate2!=null)&&
+					  (keyWord.trim().equals("")||keyWord==null)){//기간 검색인 경우
+				sql = "select count(*) from order_tb WHERE "
+							+ "o_date BETWEEN ? and ?"; 
+					pstmt = con.prepareStatement(sql); 
+					  pstmt.setString(1, keyDate1);
+					  pstmt.setString(2, keyDate2); 
+			}else if(!keyWord.trim().equals("")||keyWord!=null){//검색어인 경우
 				//select count(*) from tblBoard WHERE NAME LIKE '%aaa%';
 				sql = "select count(*) from order_tb where " + keyField;
-				sql +=" like?"; 
+				sql +=" like ?"; 
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, "%"+keyWord+"%");
+				pstmt.setString(1, keyWord);
 			}
 			rs = pstmt.executeQuery();
 			if(rs.next())
@@ -155,9 +167,10 @@ public class OrderMgr {
 		}
 		return totalCount;
 	}
-	//All List
+	//All List(검색기능 포함)
 	public Vector<OrderBean> getOrderList(String keyField, 
-			String keyWord, int start, int cnt) {//limit start, cnt로 검색 
+			String keyWord, String keyDate1, String keyDate2, 
+			int start, int cnt) {//limit start, cnt로 검색 
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -165,20 +178,33 @@ public class OrderMgr {
 		Vector<OrderBean> vlist =new Vector<OrderBean>();
 		try {
 			con = pool.getConnection();
-			if(keyWord.trim().equals("")||keyWord==null) {//검색이 아닌 경우
+			if((keyWord.trim().equals("")||keyWord==null)&&
+			((keyDate1.trim().equals("")||keyDate1==null))&&
+			((keyDate2.trim().equals("")||keyDate2==null))){//검색이 아닌 경우
 				sql = "select * from order_tb order by o_index desc, "
 						+ "o_index limit ?,?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, start);//게시물 시작번호
 				pstmt.setInt(2, cnt);//가져올 게시물 개수
-			}else {//검색인 경우
+			} else if((!keyDate1.trim().equals("")||keyDate1!=null) &&
+					  (!keyDate2.trim().equals("")||keyDate2!=null)&&
+					  (keyWord.trim().equals("")||keyWord==null)){//기간 검색인 경우
+				sql = "select * from order_tb WHERE o_date BETWEEN " +
+					  "? and ? order by o_index desc, o_index LIMIT ?,?"; 
+					pstmt = con.prepareStatement(sql); 
+					  pstmt.setString(1, keyDate1);
+					  pstmt.setString(2, keyDate2); 
+					  pstmt.setInt(3, start);//게시물 시작번호 
+					  pstmt.setInt(4, cnt);//가져올 게시물개수 
+			}else if(!keyWord.trim().equals("")||keyWord!=null){//검색어 검색인 경우
 				sql = "select * from order_tb where "+ keyField 
-						+" like  ? order by o_index desc, o_index limit ?,?";
+						+" like ? order by o_index desc, o_index limit ?,?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, "%"+keyWord+"%");
+				pstmt.setString(1, keyWord);
 				pstmt.setInt(2, start);//게시물 시작번호
 				pstmt.setInt(3, cnt);//가져올 게시물 개수
 			}
+				 
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				OrderBean order = new OrderBean();
@@ -212,8 +238,6 @@ public class OrderMgr {
 	
 	
 	//Order detail 
-	//Order update
-	//Order delete
 	public OrderBean getOrderDetail(int O_index) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -233,9 +257,40 @@ public class OrderMgr {
 		}
 		return order;
 	}
+	//Order update
+	
+	//Order delete
+	
 	//Refund insert
 	//Refund update
 	//Refund delete 
-	
+	//페이징 및 블럭 테스트를 위한 게시물 저장 메소드 (게시물 1,000개 저장)
+	public void post1000(){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			con = pool.getConnection();
+			sql = "insert order_tb(o_id,o_recpt_name,o_recpt_contact,o_recpt_zipcode,o_recpt_add,o_recpt_add_det," + 
+					"o_del_msg,o_date,o_prod_amount,o_del_fee,o_total_amount,o_pay_method)" + 
+					"VALUES('u1', 'bbb', 'ccc', 12345, 'ccc', 'ccc','ccc', NOW(),0, 0, 0,'ccc')";
+			pstmt = con.prepareStatement(sql);
+			for (int i = 0; i < 1000; i++) {
+				pstmt.executeUpdate();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+	}
+			
+			//main
+			public static void main(String[] args) {
+				//OrderMgr mgr = new OrderMgr();
+				//mgr.post1000();
+				System.out.println("성공~~");
+			}
+		
 	
 }

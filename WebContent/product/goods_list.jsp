@@ -2,7 +2,9 @@
 <%@page import="product.UtilMgr"%>
 <%@page import="product.ProductBean"%>
 <%@page import="java.util.Vector"%>
+
 <jsp:useBean id="mgr" class="product.ProductMgr" />
+
 <%
 	request.setCharacterEncoding("EUC-KR");
 	
