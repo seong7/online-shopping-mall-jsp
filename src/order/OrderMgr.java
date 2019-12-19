@@ -6,6 +6,10 @@ import java.sql.ResultSet;
 import java.util.Vector;
 
 
+
+
+
+
 public class OrderMgr {
 	
 	private DBConnectionMgr pool;
@@ -13,7 +17,7 @@ public class OrderMgr {
 	public OrderMgr() {
 		pool = DBConnectionMgr.getInstance();
 	}
-	//***User ±â´É¼³°è***
+	//***User ê¸°ëŠ¥ì„¤ê³„***
 	//insert 
 	public boolean insertOrder(OrderBean order) {
 		Connection con = null;
@@ -90,9 +94,8 @@ public class OrderMgr {
 		}
 		return vlist;
 	}
-
-  
-	//Order detail code, ¼ö·® È®ÀÎ 
+	
+	//Order detail code, ìˆ˜ëŸ‰ í™•ì¸ 
 	public Vector<OrderDetailBean> getOrderCode(int o_index) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -123,10 +126,10 @@ public class OrderMgr {
 	
 	
 
-	//***Admin ±â´É¼³°è***
-
-	//Order Total Count(¿À´õ°¹¼ö)
-	public int getTotalCount(String keyField, String keyWord) {
+	//***Admin ê¸°ëŠ¥ì„¤ê³„***
+	//Order Total Count(ì˜¤ë”ê°¯ìˆ˜)
+	public int getTotalCount(String keyField, String keyWord,
+			String keyDate1, String keyDate2) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -134,15 +137,25 @@ public class OrderMgr {
 		int totalCount = 0;
 		try {
 			con = pool.getConnection();
-			if(keyWord.trim().equals("")||keyWord==null) {//°Ë»öÀÌ ¾Æ´Ñ°æ¿ì
+			if((keyWord.trim().equals("")||keyWord==null)&&
+			(keyDate1.trim().equals("")||keyDate1==null)&&
+			(keyDate2.trim().equals("")||keyDate2==null)) {//ê²€ìƒ‰ì´ ì•„ë‹Œê²½ìš°
 				sql = "select count(*) from order_tb";
 				pstmt = con.prepareStatement(sql);
-			}else {//°Ë»öÀÎ °æ¿ì
+			}else if((!keyDate1.trim().equals("")||keyDate1!=null) &&
+					  (!keyDate2.trim().equals("")||keyDate2!=null)&&
+					  (keyWord.trim().equals("")||keyWord==null)){//ê¸°ê°„ ê²€ìƒ‰ì¸ ê²½ìš°
+				sql = "select count(*) from order_tb WHERE "
+							+ "o_date BETWEEN ? and ?"; 
+					pstmt = con.prepareStatement(sql); 
+					  pstmt.setString(1, keyDate1);
+					  pstmt.setString(2, keyDate2); 
+			}else if(!keyWord.trim().equals("")||keyWord!=null){//ê²€ìƒ‰ì–´ì¸ ê²½ìš°
 				//select count(*) from tblBoard WHERE NAME LIKE '%aaa%';
 				sql = "select count(*) from order_tb where " + keyField;
-				sql +=" like?"; 
+				sql +=" like ?"; 
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, "%"+keyWord+"%");
+				pstmt.setString(1, keyWord);
 			}
 			rs = pstmt.executeQuery();
 			if(rs.next())
@@ -154,9 +167,10 @@ public class OrderMgr {
 		}
 		return totalCount;
 	}
-	//All List
+	//All List(ê²€ìƒ‰ê¸°ëŠ¥ í¬í•¨)
 	public Vector<OrderBean> getOrderList(String keyField, 
-			String keyWord, int start, int cnt) {//limit start, cnt·Î °Ë»ö 
+			String keyWord, String keyDate1, String keyDate2, 
+			int start, int cnt) {//limit start, cntë¡œ ê²€ìƒ‰ 
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -164,20 +178,33 @@ public class OrderMgr {
 		Vector<OrderBean> vlist =new Vector<OrderBean>();
 		try {
 			con = pool.getConnection();
-			if(keyWord.trim().equals("")||keyWord==null) {//°Ë»öÀÌ ¾Æ´Ñ °æ¿ì
+			if((keyWord.trim().equals("")||keyWord==null)&&
+			((keyDate1.trim().equals("")||keyDate1==null))&&
+			((keyDate2.trim().equals("")||keyDate2==null))){//ê²€ìƒ‰ì´ ì•„ë‹Œ ê²½ìš°
 				sql = "select * from order_tb order by o_index desc, "
 						+ "o_index limit ?,?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, start);//°Ô½Ã¹° ½ÃÀÛ¹øÈ£
-				pstmt.setInt(2, cnt);//°¡Á®¿Ã °Ô½Ã¹° °³¼ö
-			}else {//°Ë»öÀÎ °æ¿ì
+				pstmt.setInt(1, start);//ê²Œì‹œë¬¼ ì‹œì‘ë²ˆí˜¸
+				pstmt.setInt(2, cnt);//ê°€ì ¸ì˜¬ ê²Œì‹œë¬¼ ê°œìˆ˜
+			} else if((!keyDate1.trim().equals("")||keyDate1!=null) &&
+					  (!keyDate2.trim().equals("")||keyDate2!=null)&&
+					  (keyWord.trim().equals("")||keyWord==null)){//ê¸°ê°„ ê²€ìƒ‰ì¸ ê²½ìš°
+				sql = "select * from order_tb WHERE o_date BETWEEN " +
+					  "? and ? order by o_index desc, o_index LIMIT ?,?"; 
+					pstmt = con.prepareStatement(sql); 
+					  pstmt.setString(1, keyDate1);
+					  pstmt.setString(2, keyDate2); 
+					  pstmt.setInt(3, start);//ê²Œì‹œë¬¼ ì‹œì‘ë²ˆí˜¸ 
+					  pstmt.setInt(4, cnt);//ê°€ì ¸ì˜¬ ê²Œì‹œë¬¼ê°œìˆ˜ 
+			}else if(!keyWord.trim().equals("")||keyWord!=null){//ê²€ìƒ‰ì–´ ê²€ìƒ‰ì¸ ê²½ìš°
 				sql = "select * from order_tb where "+ keyField 
-						+" like  ? order by o_index desc, o_index limit ?,?";
+						+" like ? order by o_index desc, o_index limit ?,?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, "%"+keyWord+"%");
-				pstmt.setInt(2, start);//°Ô½Ã¹° ½ÃÀÛ¹øÈ£
-				pstmt.setInt(3, cnt);//°¡Á®¿Ã °Ô½Ã¹° °³¼ö
+				pstmt.setString(1, keyWord);
+				pstmt.setInt(2, start);//ê²Œì‹œë¬¼ ì‹œì‘ë²ˆí˜¸
+				pstmt.setInt(3, cnt);//ê°€ì ¸ì˜¬ ê²Œì‹œë¬¼ ê°œìˆ˜
 			}
+				 
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				OrderBean order = new OrderBean();
@@ -209,10 +236,8 @@ public class OrderMgr {
 		return vlist;
 	}
 	
-
+	
 	//Order detail 
-	//Order update
-	//Order delete
 	public OrderBean getOrderDetail(int O_index) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -232,9 +257,40 @@ public class OrderMgr {
 		}
 		return order;
 	}
+	//Order update
+	
+	//Order delete
+	
 	//Refund insert
 	//Refund update
 	//Refund delete 
-	
+	//í˜ì´ì§• ë° ë¸”ëŸ­ í…ŒìŠ¤íŠ¸ë¥¼ ìœ„í•œ ê²Œì‹œë¬¼ ì €ì¥ ë©”ì†Œë“œ (ê²Œì‹œë¬¼ 1,000ê°œ ì €ì¥)
+	public void post1000(){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			con = pool.getConnection();
+			sql = "insert order_tb(o_id,o_recpt_name,o_recpt_contact,o_recpt_zipcode,o_recpt_add,o_recpt_add_det," + 
+					"o_del_msg,o_date,o_prod_amount,o_del_fee,o_total_amount,o_pay_method)" + 
+					"VALUES('u1', 'bbb', 'ccc', 12345, 'ccc', 'ccc','ccc', NOW(),0, 0, 0,'ccc')";
+			pstmt = con.prepareStatement(sql);
+			for (int i = 0; i < 1000; i++) {
+				pstmt.executeUpdate();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+	}
+			
+			//main
+			public static void main(String[] args) {
+				//OrderMgr mgr = new OrderMgr();
+				//mgr.post1000();
+				System.out.println("ì„±ê³µ~~");
+			}
+		
 	
 }

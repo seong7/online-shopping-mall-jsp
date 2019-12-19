@@ -231,7 +231,7 @@ public class ProductMgr {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = null;
+		String sql = null;  
 		Vector<ProductBean> pllist = new Vector<ProductBean>();		
 		try {
 			con = pool.getConnection();
