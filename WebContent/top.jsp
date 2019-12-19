@@ -84,14 +84,16 @@
 	            </div>
 	            <!--로고 이미지 Div-->
 	            <div id="homeLogo">
-	                <img src="${pageContext.request.contextPath}/img/index/logo/mills_logo.png" alt="이미지 로딩 불가!">
-	                <!--LOGO-->
+	            	<a id="logo_a" href="${pageContext.request.contextPath}/index.jsp">
+		                <img id="logoImg" src="${pageContext.request.contextPath}/img/index/logo/mills_logo.png" alt="이미지 로딩 불가!">
+		                <!--LOGO-->
+	            	</a>
 	            </div>
 	            <div id="search_div">
-	                <form action="" id="search_form">
+	                <form  id="search_form" action="${pageContext.request.contextPath}/product/goods_list.jsp">
 	                    <label>
-	                        <input type="text" id="search_input" placeholder="상품을 입력하세요" autocomplete=”off”>
-	                        <i class="fas fa-search"></i>
+	                        <input name="searchTerm" type="text" id="search_input" placeholder="상품을 입력하세요" autocomplete=”off”>
+	                        <i class="fas fa-search" onclick="document.getElementById('search_form').submit()"></i>
 	                    </label>
 	                </form>
 	            </div>
@@ -117,17 +119,17 @@
 							</div>
 	                    </li>
 	                    <li>
-	                        <a class="nav_a">
+	                        <a class="nav_a" href="${pageContext.request.contextPath}/product/goods_list.jsp?list=best">
 	                            <span class="txt">베스트</span>
 	                        </a>
 	                    </li>
 	                    <li>
-	                        <a class="nav_a">
+	                        <a class="nav_a" href="${pageContext.request.contextPath}/product/goods_list.jsp?list=new">
 	                            <span class="txt">신상품</span>
 	                        </a>
 	                    </li>
 	                    <li>
-	                        <a class="nav_a">
+	                        <a class="nav_a"  href="#">
 	                            <span class="txt">고객지원</span>
 	                        </a>
 	                    </li>

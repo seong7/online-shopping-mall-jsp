@@ -1,4 +1,4 @@
-package Product;
+package product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -52,8 +52,11 @@ public class ProductMgr {
 			}
 			return bean;
 		}
+	
 		
-	//get alllist
+		
+		
+	//get alllist (on sale list)
 	public Vector<ProductBean> getAllList(){
 		Connection con = null;
 		PreparedStatement pstmt = null;

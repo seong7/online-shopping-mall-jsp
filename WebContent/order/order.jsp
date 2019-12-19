@@ -4,18 +4,18 @@
 %>
 
 <!-- 사용자 주문서 page -->
-<%@page import="Product.UtilMgr"%>
-<%@page import="Order.OrderBean"%>
+<%@page import="product.UtilMgr"%>
+<%@page import="order.OrderBean"%>
 <%@page import="member.MemberBean"%>
-<%@page import="Product.ProductBean"%>
-<%@page import="Order.CartMgr"%>
-<%@page import="Order.CartBean"%>
+<%@page import="product.ProductBean"%>
+<%@page import="order.CartMgr"%>
+<%@page import="order.CartBean"%>
 <%@page import="java.util.Vector"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <jsp:useBean id="mMgr" class="member.MemberMgr"/>
-<jsp:useBean id="pMgr" class="Product.ProductMgr"/>
-<jsp:useBean id="oMgr" class="Order.OrderMgr"/>
-<jsp:useBean id="cMgr" class="Order.CartMgr"/>
+<jsp:useBean id="pMgr" class="product.ProductMgr"/>
+<jsp:useBean id="oMgr" class="order.OrderMgr"/>
+<jsp:useBean id="cMgr" class="order.CartMgr"/>
 
 <%
 		String id = (String)session.getAttribute("idKey");

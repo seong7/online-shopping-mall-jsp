@@ -1,4 +1,4 @@
-package Order;
+package product;
 
 import java.util.*;
 
@@ -29,13 +29,13 @@ public class UtilMgr {
        return buffer.toString(); 
   } 
 
-  public static String monFormat(String b){//1000단위 점찍기 
+  public static String monFormat(String b){
          String won;
 		 double bb = Double.parseDouble(b); 
 		 won = NumberFormat.getIntegerInstance().format(bb);
 		 return won;
   }
-  public static String monFormat(int b){//1000단위 점찍기 
+  public static String monFormat(int b){
          String won;
 		 double bb = b;
 		 won = NumberFormat.getIntegerInstance().format(bb);

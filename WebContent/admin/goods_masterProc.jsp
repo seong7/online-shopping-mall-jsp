@@ -1,8 +1,8 @@
-<%@page import="Product.StockBean"%>
-<%@page import="Product.ProductBean"%>
+<%@page import="product.StockBean"%>
+<%@page import="product.ProductBean"%>
 <%@page import="java.util.Vector"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
-<jsp:useBean id="mgr" class="Admin.ProductMgr"/>
+<jsp:useBean id="mgr" class="admin.ProductMgr"/>
 <%
 		request.setCharacterEncoding("EUC-KR");
 		String p_name = request.getParameter("p_name");

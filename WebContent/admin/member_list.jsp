@@ -1,9 +1,9 @@
 <%@page import="Member.MemberBean"%>
 <%@page import="java.util.Vector"%>
-<%@page import="Admin.UtilMgr"%>
+<%@page import="admin.UtilMgr"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <jsp:useBean id="mMgr" class="Member.MemberMgr"/>
-<jsp:useBean id="aMgr" class="Admin.AdminMgr"/>
+<jsp:useBean id="aMgr" class="admin.AdminMgr"/>
 <%
 	request.setCharacterEncoding("EUC-KR");
 	int totalRecord = 0;
