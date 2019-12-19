@@ -11,14 +11,14 @@
 %>
 <html>
 <head>
-<!-- <title>-∞¸∏Æ¿⁄-¡¶«∞ µÓ∑œ</title>  -->
+<!-- <title>-Í¥ÄÎ¶¨Ïûê-Ï†úÌíà Îì±Î°ù</title>  -->
 
 
 
 </head>
 <body topmargin="100">	
 
-<!-- <title>-∞¸∏Æ¿⁄-¡¶«∞ µÓ∑œ</title> -->
+<!-- <title>-Í¥ÄÎ¶¨Ïûê-Ï†úÌíà Îì±Î°ù</title> -->
 
 <!-- <link rel="stylesheet" type="text/css" href="./css/mypage_orderlist.css"> -->
 <jsp:include page="../top.jsp"/>
@@ -26,104 +26,104 @@
 	<jsp:include page="./admin_side.jsp"/>
 
 <!--------------->
-<!--  ¿€æ˜ øµø™  -->
+<!--  ÏûëÏóÖ ÏòÅÏó≠  -->
 <!--------------->
 	
         <div id="manager">  
         
-            <h1 class="title">¡¶«∞ ºˆ¡§</h1>
+            <h1 class="title">Ï†úÌíà ÏàòÏ†ï</h1>
 
             <form name="frm" method="post" action="goods_Proc.jsp?flag=update"
                 enctype="multipart/form-data" >
-                <!-- enctype="multipart/form-data" ¿œ∂ßø°¥¬ postπÊΩƒ¿∏∑Œ ∫∏≥Ω¥Ÿ. 
-            ¥ÎΩ≈ø° action¿ª ≈Î«ÿº≠ action="productProc.jsp?flag=insert" ∏¶ «ÿ¡‡æﬂ«—¥Ÿ.-->        
+                <!-- enctype="multipart/form-data" ÏùºÎïåÏóêÎäî postÎ∞©ÏãùÏúºÎ°ú Î≥¥ÎÇ∏Îã§. 
+            ÎåÄÏã†Ïóê actionÏùÑ ÌÜµÌï¥ÏÑú action="productProc.jsp?flag=insert" Î•º Ìï¥Ï§òÏïºÌïúÎã§.-->        
         
-        		<!--  input hidden ¿∏∑Œ flag ∞™ ≥—±‚∏È flag=update ¿¸¥ﬁ ∞°¥… 
+        		<!--  input hidden ÏúºÎ°ú flag Í∞í ÎÑòÍ∏∞Î©¥ flag=update Ï†ÑÎã¨ Í∞ÄÎä• 
         		<input type="hidden" value="update" name="flag">	-->
         
         
         
-                <h3 class="inner_title">±‚∫ª¡§∫∏</h3>
+                <h3 class="inner_title">Í∏∞Î≥∏Ï†ïÎ≥¥</h3>
                 
-                <input type="button" id="chgread1" value="∏ÆµÂø¬∏Æ«ÿ¡¶">
+                <input type="button" id="chgread1" value="Î¶¨ÎìúÏò®Î¶¨Ìï¥Ï†ú">
                 
                             <table class="mgr_table verHead">
         
                                 <tr>
-                                    <th>¡¶«∞ƒ⁄µÂ</th>
+                                    <th>Ï†úÌíàÏΩîÎìú</th>
                                     <td><input name="p_code" value="<%=bean.getP_code()%>" readonly>                                                            	
-                                    <th>¡¶«∞∏Ì</th>
+                                    <th>Ï†úÌíàÎ™Ö</th>
                                     <td><input class="1 readChange" name="p_name" value="<%=bean.getP_name()%>" readonly></td>
                                 </tr>
                                 <tr>
-                                    <th>¡¶«∞∞°∞›</th>
-                                    <td><input class="2 readChange" name="p_price" value="<%=bean.getP_price()%>" readonly>ø¯</td>
+                                    <th>Ï†úÌíàÍ∞ÄÍ≤©</th>
+                                    <td><input class="2 readChange" name="p_price" value="<%=bean.getP_price()%>" readonly>Ïõê</td>
                                 
-                                    <th>∆«∏≈ø©∫Œ</th>
+                                    <th>ÌåêÎß§Ïó¨Î∂Ä</th>
                                     <td>
                                     	<%if(bean.getP_on_sale()==1){%>
-                                    	<input  class="radio" type="radio" name="p_on_sale" value="1"checked readonly>∆«∏≈
-                                        <input  class="radio" type="radio" name="p_on_sale" value="0" readonly>º˚±‚±‚
+                                    	<input  class="radio" type="radio" name="p_on_sale" value="1"checked readonly>ÌåêÎß§
+                                        <input  class="radio" type="radio" name="p_on_sale" value="0" readonly>Ïà®Í∏∞Í∏∞
                                         <%}else{%>
-                                        <input  class="radio" type="radio" name="p_on_sale" value="1" readonly>∆«∏≈
-                                        <input  class="radio" type="radio" name="p_on_sale" value="0" checked readonly>º˚±‚±‚
+                                        <input  class="radio" type="radio" name="p_on_sale" value="1" readonly>ÌåêÎß§
+                                        <input  class="radio" type="radio" name="p_on_sale" value="0" checked readonly>Ïà®Í∏∞Í∏∞
                                         <%} %>
                                     </td>
                                 </tr>						
                                 <tr>
-                                    <th>ø¯¿Á∑·(1)</th>
+                                    <th>ÏõêÏû¨Î£å(1)</th>
                                     <td>
                                         <select name="rm_code1" >
-                                            <option value="" disabled selected>ø¯¿Á∑·∏Ì</option>
+                                            <option value="" disabled selected>ÏõêÏû¨Î£åÎ™Ö</option>
                                             <option value=""></option>
                                         </select>
-                                        <input class="5 readChange rm_pct" name="rm_percentage1" placeholder="«‘¿Ø¿≤" readonly>%
+                                        <input class="5 readChange rm_pct" name="rm_percentage1" placeholder="Ìï®Ïú†Ïú®" readonly>%
                                     
                                     </td>
                                     
-                                    <th>ø¯¿Á∑·(2)</th>
+                                    <th>ÏõêÏû¨Î£å(2)</th>
                                     <td>
                                         <select name="rm_code2">
-                                                <option value="" disabled selected>ø¯¿Á∑·∏Ì</option>
+                                                <option value="" disabled selected>ÏõêÏû¨Î£åÎ™Ö</option>
                                                 <option value=""></option>
                                         </select>
-                                        <input class="6 readChange rm_pct" name="rm_percentage2" placeholder="«‘¿Ø¿≤" readonly>%
+                                        <input class="6 readChange rm_pct" name="rm_percentage2" placeholder="Ìï®Ïú†Ïú®" readonly>%
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>ø¯¿Á∑·(3)</th>
+                                    <th>ÏõêÏû¨Î£å(3)</th>
                                     <td>
                                         <select name="rm_code3">
-                                                <option value="" disabled selected>ø¯¿Á∑·∏Ì</option>
+                                                <option value="" disabled selected>ÏõêÏû¨Î£åÎ™Ö</option>
                                                 <option value=""></option>
                                         </select>
-                                        <input class="7 readChange rm_pct" name="rm_percentage3" placeholder="«‘¿Ø¿≤" readonly>%
+                                        <input class="7 readChange rm_pct" name="rm_percentage3" placeholder="Ìï®Ïú†Ïú®" readonly>%
                                     </td>                                
-                                    <th>ø¯¿Á∑·(4)</th>
+                                    <th>ÏõêÏû¨Î£å(4)</th>
                                     <td>
                                         <select name="rm_code4">
-                                                <option value="" disabled selected>ø¯¿Á∑·∏Ì</option>
+                                                <option value="" disabled selected>ÏõêÏû¨Î£åÎ™Ö</option>
                                                 <option value=""></option>
                                         </select>
-                                        <input class="8 readChange rm_pct" name="rm_percentage4" placeholder="«‘¿Ø¿≤" readonly>%
+                                        <input class="8 readChange rm_pct" name="rm_percentage4" placeholder="Ìï®Ïú†Ïú®" readonly>%
                                     </td>
                                 </tr>
                             </table>
         
-                <h3 class="inner_title">ªÁ¡¯¡§∫∏</h3>
+                <h3 class="inner_title">ÏÇ¨ÏßÑÏ†ïÎ≥¥</h3>
                             <table class="mgr_table verHead" id="pht_table">
                                 <tr>
-                                    <th>∏ﬁ¿Œ¿ÃπÃ¡ˆ</th>
+                                    <th>Î©îÏù∏Ïù¥ÎØ∏ÏßÄ</th>
                                     <td><%=bean.getP_main_pht_name()%>
                                     <input class="9 readChange" type="file" name="upFile1" readonly></td>
                                 </tr>
                                 <tr>
-                                    <th>º≥∏Ì¿ÃπÃ¡ˆ</th>                                                                    
+                                    <th>ÏÑ§Î™ÖÏù¥ÎØ∏ÏßÄ</th>                                                                    
                                     <td> <%=bean.getP_detail_pht_name()%>
                                     <input class="10 readChange" type="file" name="upFile2" readonly></td>
                                 </tr>
                                 <tr>
-                                    <th>ªÛºº¿ÃπÃ¡ˆ</th>
+                                    <th>ÏÉÅÏÑ∏Ïù¥ÎØ∏ÏßÄ</th>
                                     <td> <%=bean.getP_info_pht_name()%>
                                     <input class="11 readChange" type="file" name="upFile3" readonly></td>
                                 </tr>
@@ -131,19 +131,21 @@
                             
 
             <div class="submit_wrapper">
-                <input class="btn" type="button" value="∏Ò∑œ¿∏∑Œ" onclick="location.href='goods_master.jsp'">
-                <input class="btn" type="submit" value="ºˆ¡§øœ∑·" >
-                <input class="btn" type="reset" value="¥ŸΩ√æ≤±‚">
+                <input class="btn" type="button" value="Î™©Î°ùÏúºÎ°ú" onclick="location.href='goods_master.jsp'">
+                <input class="btn" type="submit" value="ÏàòÏ†ïÏôÑÎ£å" >
+                <input class="btn" type="reset" value="Îã§ÏãúÏì∞Í∏∞">
             </div>
             </form>        
         </div>		
 <!----------------->
-<!--  ¿€æ˜ øµø™ ≥° -->
+<!--  ÏûëÏóÖ ÏòÅÏó≠ ÎÅù -->
 <!----------------->
 	
-</div> <!--  #btn_manager_wrapper (πˆ∆∞∏ﬁ¥∫ + manager) : admin_side.jsp ø°º≠ ø≠∏≤-->
-</div> <!-- #main (ªÛ¥‹ø‰æ‡ + πˆ∆∞ + manager) : admin_side.jsp ø°º≠ ø≠∏≤-->
+</div> <!--  #btn_manager_wrapper (Î≤ÑÌäºÎ©îÎâ¥ + manager) : admin_side.jsp ÏóêÏÑú Ïó¥Î¶º-->
+</div> <!-- #main (ÏÉÅÎã®ÏöîÏïΩ + Î≤ÑÌäº + manager) : admin_side.jsp ÏóêÏÑú Ïó¥Î¶º-->
 	<jsp:include page="../bottom.jsp"/>
+</body>
+
 <script>
 	window.onload = function(){
 		function btnInit(){
@@ -157,7 +159,7 @@
 						items.readOnly = false;
 					});
 					flag = 1;
-					button.value = '∏ÆµÂø¬∏Æ Ω«Ω√';
+					button.value = 'Î¶¨ÎìúÏò®Î¶¨ Ïã§Ïãú';
 					console.log(button);
 				}else{
 					reads.forEach(function(items){
@@ -165,7 +167,7 @@
 					});
 					flag = 0;
 					console.log("FFF");
-					button.value = '∏ÆµÂø¬∏Æ «ÿ¡¶';
+					button.value = 'Î¶¨ÎìúÏò®Î¶¨ Ìï¥Ï†ú';
 					console.log(button);
 				}
 			});
@@ -173,5 +175,4 @@
 		btnInit();
 	}
 </script>
-</body>
 </html>

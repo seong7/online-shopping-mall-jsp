@@ -4,27 +4,12 @@
 <jsp:useBean id="mBean" class="member.MemberBean" />
 <jsp:setProperty name="mBean" property="*" />
 <%
-String id = request.getParameter("id");
-String name = request.getParameter("name");
-String pwd = request.getParameter("pwd");
-String newPassword = request.getParameter("newPwd");
-String checkPassword = request.getParameter("checkPwd");
-String birthday = request.getParameter("birthday");
-String email = request.getParameter("email");
-String contact = request.getParameter("contact");
-String zipcode = request.getParameter("zipcode");
-String address = request.getParameter("address");
-String address_detail = request.getParameter("address_detail");
-
 boolean flag = mMgr.updateMember(mBean);
-%>
-
-
-<% 
+String id = request.getParameter("id");
 if(flag){%>
-<script>
+	<script>
 		alert("회원정보가 수정되었습니다.");
-		location.href="../index.jsp";
+		location.href="index.jsp";
 	</script>
 <%}else{%>
 	<script>
@@ -32,4 +17,3 @@ if(flag){%>
 		history.back();
 	</script>
 <%}%>
-

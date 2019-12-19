@@ -148,7 +148,7 @@
 									<a href="#"><i class="fas fa-shopping-cart"></i></a>
 								</li>
 								<li>
-									<form id="logout_form" action="/online-shopping-mall/MemberSignupServlet"  method="post">
+									<form id="logout_form" action="/online-shopping-mall/member/signup"  method="post">
 										<a onclick="logout_onclick()"><i class="fas fa-sign-in-alt"></i></a>
 									</form>
 								</li>

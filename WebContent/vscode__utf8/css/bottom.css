@@ -1,0 +1,146 @@
+@charset "UTF-8";
+/* 폰트 추가*/
+/* 굵음 */
+@font-face {
+  font-family: 'ON_IGothic';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 일반 */
+@font-face {
+  font-family: 'Handon3gyeopsal600g';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+#footer_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 100px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 10px -5px 10px rgba(204, 204, 204, 0.5);
+          box-shadow: 10px -5px 10px rgba(204, 204, 204, 0.5);
+  width: 100%;
+  min-width: 1050px;
+}
+
+#footer_wrapper ul {
+  width: 1050px;
+  height: 200px;
+  padding: 0px;
+  padding-top: 10px;
+  padding-bottom: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+#footer_wrapper ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#footer_wrapper ul li span {
+  display: block;
+}
+
+#footer_wrapper ul #footer_first {
+  font-family: "ON_IGothic";
+  color: gray;
+  width: 200px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#footer_wrapper ul #footer_first span, #footer_wrapper ul #footer_first a {
+  display: block;
+  margin-top: 0px;
+}
+
+#footer_wrapper ul #footer_first #title {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+#footer_wrapper ul #footer_first #middle {
+  font-size: 30px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+#footer_wrapper ul #footer_first #bottom {
+  display: inline-block;
+  border: 1.5px solid gray;
+  font-family: "ON_IGothic";
+  font-size: 15px;
+  width: 130px;
+  height: 45px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#footer_wrapper ul #footer_second {
+  margin-right: 100px;
+  font-family: "ON_IGothic";
+  color: #333;
+  font-size: 14px;
+}
+
+#footer_wrapper ul #footer_second span {
+  font-family: "ON_IGothic";
+  color: gray;
+}
+
+#footer_wrapper ul #footer_second div {
+  margin-bottom: 35px;
+}
+
+#footer_wrapper ul #footer_second #phone {
+  margin-top: 80px;
+}
+
+#footer_wrapper ul #footer_third {
+  font-family: "ON_IGothic";
+  color: gray;
+  font-size: 14px;
+}
+
+#footer_wrapper ul #footer_third div {
+  margin-top: 50px;
+}
+
+#footer_wrapper ul #footer_third div span {
+  margin-bottom: 13px;
+}
+
+#footer_wrapper ul #footer_third div img {
+  margin-right: 10px;
+  width: 40px;
+  height: auto;
+}
+/*# sourceMappingURL=bottom.css.map */

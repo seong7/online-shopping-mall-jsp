@@ -4,18 +4,16 @@
 <%
 	request.setCharacterEncoding("EUC-KR");
 %>
+<<<<<<< HEAD
+<link rel="stylesheet" type="text/css" href="css/index.css">
+=======
 <html>
 <head>
 <!-- <title>-관리자-제품 등록</title>  -->
 <script src="script.js"></script>
 </head>
-<body topmargin="100">
-	<form method="post" action="goods_Proc.jsp?flag=insert"
-		enctype="multipart/form-data">
-		<!-- enctype="multipart/form-data" 일때에는 post방식으로 보낸다. 
-	대신에 action을 통해서 action="productProc.jsp?flag=insert" 를 해줘야한다.-->
 
-
+>>>>>>> origin/dev
 <!-- <title>-관리자-제품 등록</title> -->
 
 <!-- <link rel="stylesheet" type="text/css" href="./css/mypage_orderlist.css"> -->
@@ -32,10 +30,14 @@
         
             <h1 class="title">제품 등록</h1>
 
-            <form method="post" action="goods_insertProc.jsp?flag=insert"
-                enctype="multipart/form-data">
-                <!-- enctype="multipart/form-data" 일때에는 post방식으로 보낸다. 
-            대신에 action을 통해서 action="productProc.jsp?flag=insert" 를 해줘야한다.-->
+			<form method="post" action="goods_Proc.jsp?flag=insert"
+				enctype="multipart/form-data">
+				<!-- enctype="multipart/form-data" 일때에는 post방식으로 보낸다. 
+			대신에 action을 통해서 action="productProc.jsp?flag=insert" 를 해줘야한다.-->
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/dev
         
                 <h3 class="inner_title">기본정보</h3>
 
@@ -66,7 +68,7 @@
                                             <option value="" disabled selected>원재료명</option>
                                             <option value=""></option>
                                         </select>
-                                        <input class="" name="rm_percentage1" placeholder="함유율">%
+                                        <input class="rm_pct" name="rm_percentage1" placeholder="함유율">%
                                     
                                     </td>
                                     
@@ -76,7 +78,7 @@
                                                 <option value="" disabled selected>원재료명</option>
                                                 <option value=""></option>
                                         </select>
-                                        <input name="rm_percentage2" placeholder="함유율">%
+                                        <input class="rm_pct" name="rm_percentage2" placeholder="함유율">%
                                     </td>
                                 </tr>
                                 <tr>
@@ -86,7 +88,7 @@
                                                 <option value="" disabled selected>원재료명</option>
                                                 <option value=""></option>
                                         </select>
-                                        <input name="rm_percentage3" placeholder="함유율">%
+                                        <input class="rm_pct" name="rm_percentage3" placeholder="함유율">%
                                     </td>
                                 
                                     <th>원재료(4)</td>
@@ -95,7 +97,7 @@
                                                 <option value="" disabled selected>원재료명</option>
                                                 <option value=""></option>
                                         </select>
-                                        <input name="rm_percentage4" placeholder="함유율">%
+                                        <input class="rm_pct" name="rm_percentage4" placeholder="함유율">%
                                     </td>
                                 </tr>
                             </table>

@@ -1,136 +1,140 @@
 <%@page import="member.MemberBean"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<jsp:useBean id="mgr" class="member.MemberMgr" />
+
+<%@ page language="java" contentType="text/html; charset="EUC-KR" pageEncoding="EUC-KR"%>
+<jsp:useBean id="mgr" class="member.MemberMgr"/>
+
 <%
-	String id = (String) session.getAttribute("idKey");
-	MemberBean bean = mgr.getMember(id);
+		String id = (String)session.getAttribute("idKey");
+		MemberBean bean = mgr.getMember("");
+		
 %>
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
- <script>
-            //º» ¿¹Á¦¿¡¼­´Â µµ·Î¸í ÁÖ¼Ò Ç¥±â ¹æ½Ä¿¡ ´ëÇÑ ¹ý·É¿¡ µû¶ó, ³»·Á¿À´Â µ¥ÀÌÅÍ¸¦ Á¶ÇÕÇÏ¿© ¿Ã¹Ù¸¥ ÁÖ¼Ò¸¦ ±¸¼ºÇÏ´Â ¹æ¹ýÀ» ¼³¸íÇÕ´Ï´Ù.
+      <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script>
+            //ë³¸ ì˜ˆì œì—ì„œëŠ” ë„ë¡œëª… ì£¼ì†Œ í‘œê¸° ë°©ì‹ì— ëŒ€í•œ ë²•ë ¹ì— ë”°ë¼, ë‚´ë ¤ì˜¤ëŠ” ë°ì´í„°ë¥¼ ì¡°í•©í•˜ì—¬ ì˜¬ë°”ë¥¸ ì£¼ì†Œë¥¼ êµ¬ì„±í•˜ëŠ” ë°©ë²•ì„ ì„¤ëª…í•©ë‹ˆë‹¤.
             function openDaumZipAddress() {
                 new daum.Postcode({
                     oncomplete: function(data) {
-                    	console.log("gd");
-                        // ÆË¾÷¿¡¼­ °Ë»ö°á°ú Ç×¸ñÀ» Å¬¸¯ÇßÀ»¶§ ½ÇÇàÇÒ ÄÚµå¸¦ ÀÛ¼ºÇÏ´Â ºÎºÐ.
+                        // íŒì—…ì—ì„œ ê²€ìƒ‰ê²°ê³¼ í•­ëª©ì„ í´ë¦­í–ˆì„ë•Œ ì‹¤í–‰í•  ì½”ë“œë¥¼ ìž‘ì„±í•˜ëŠ” ë¶€ë¶„.
         
-                        // µµ·Î¸í ÁÖ¼ÒÀÇ ³ëÃâ ±ÔÄ¢¿¡ µû¶ó ÁÖ¼Ò¸¦ Ç¥½ÃÇÑ´Ù.
-                        // ³»·Á¿À´Â º¯¼ö°¡ °ªÀÌ ¾ø´Â °æ¿ì¿£ °ø¹é('')°ªÀ» °¡Áö¹Ç·Î, ÀÌ¸¦ Âü°íÇÏ¿© ºÐ±â ÇÑ´Ù.
-                        var roadAddr = data.roadAddress; // µµ·Î¸í ÁÖ¼Ò º¯¼ö
-                        var extraRoadAddr = ''; // Âü°í Ç×¸ñ º¯¼ö
-                        // ¹ýÁ¤µ¿¸íÀÌ ÀÖÀ» °æ¿ì Ãß°¡ÇÑ´Ù. (¹ýÁ¤¸®´Â Á¦¿Ü)
-                        // ¹ýÁ¤µ¿ÀÇ °æ¿ì ¸¶Áö¸· ¹®ÀÚ°¡ "µ¿/·Î/°¡"·Î ³¡³­´Ù.
-                        if(data.bname !== '' && /[µ¿|·Î|°¡]$/g.test(data.bname)){
+                        // ë„ë¡œëª… ì£¼ì†Œì˜ ë…¸ì¶œ ê·œì¹™ì— ë”°ë¼ ì£¼ì†Œë¥¼ í‘œì‹œí•œë‹¤.
+                        // ë‚´ë ¤ì˜¤ëŠ” ë³€ìˆ˜ê°€ ê°’ì´ ì—†ëŠ” ê²½ìš°ì—” ê³µë°±('')ê°’ì„ ê°€ì§€ë¯€ë¡œ, ì´ë¥¼ ì°¸ê³ í•˜ì—¬ ë¶„ê¸° í•œë‹¤.
+                        var roadAddr = data.roadAddress; // ë„ë¡œëª… ì£¼ì†Œ ë³€ìˆ˜
+                        var extraRoadAddr = ''; // ì°¸ê³  í•­ëª© ë³€ìˆ˜
+             
+                        // ë²•ì •ë™ëª…ì´ ìžˆì„ ê²½ìš° ì¶”ê°€í•œë‹¤. (ë²•ì •ë¦¬ëŠ” ì œì™¸)
+                        // ë²•ì •ë™ì˜ ê²½ìš° ë§ˆì§€ë§‰ ë¬¸ìžê°€ "ë™/ë¡œ/ê°€"ë¡œ ëë‚œë‹¤.
+                        if(data.bname !== '' && /[ë™|ë¡œ|ê°€]$/g.test(data.bname)){
                             extraRoadAddr += data.bname;
                         }
-                        // °Ç¹°¸íÀÌ ÀÖ°í, °øµ¿ÁÖÅÃÀÏ °æ¿ì Ãß°¡ÇÑ´Ù.
+                        // ê±´ë¬¼ëª…ì´ ìžˆê³ , ê³µë™ì£¼íƒì¼ ê²½ìš° ì¶”ê°€í•œë‹¤.
                         if(data.buildingName !== '' && data.apartment === 'Y'){
                            extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
                         }
-                        // Ç¥½ÃÇÒ Âü°íÇ×¸ñÀÌ ÀÖÀ» °æ¿ì, °ýÈ£±îÁö Ãß°¡ÇÑ ÃÖÁ¾ ¹®ÀÚ¿­À» ¸¸µç´Ù.
+                        // í‘œì‹œí•  ì°¸ê³ í•­ëª©ì´ ìžˆì„ ê²½ìš°, ê´„í˜¸ê¹Œì§€ ì¶”ê°€í•œ ìµœì¢… ë¬¸ìžì—´ì„ ë§Œë“ ë‹¤.
                         if(extraRoadAddr !== ''){
                             extraRoadAddr = ' (' + extraRoadAddr + ')';
                         }
         
-                        // ¿ìÆí¹øÈ£¿Í ÁÖ¼Ò Á¤º¸¸¦ ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
+                        // ìš°íŽ¸ë²ˆí˜¸ì™€ ì£¼ì†Œ ì •ë³´ë¥¼ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
                         document.getElementById('input_zipcode').value = data.zonecode;
                         document.getElementById('input_addr').value = roadAddr + " " + data.jibunAddress;
                         
-                        // Âü°íÇ×¸ñ ¹®ÀÚ¿­ÀÌ ÀÖÀ» °æ¿ì ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
+                        // ì°¸ê³ í•­ëª© ë¬¸ìžì—´ì´ ìžˆì„ ê²½ìš° í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
                         if(roadAddr !== ''){
                             document.getElementById("input_detail").value = extraRoadAddr;
                         } else {
                             document.getElementById("input_detail").value = '"';
                         }
         
-                        // »ç¿ëÀÚ°¡ '¼±ÅÃ ¾ÈÇÔ'À» Å¬¸¯ÇÑ °æ¿ì, ¿¹»ó ÁÖ¼Ò¶ó´Â Ç¥½Ã¸¦ ÇØÁØ´Ù.
+                        // ì‚¬ìš©ìžê°€ 'ì„ íƒ ì•ˆí•¨'ì„ í´ë¦­í•œ ê²½ìš°, ì˜ˆìƒ ì£¼ì†Œë¼ëŠ” í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
                         if(data.autoRoadAddress) {
-                        	alert('ÀÔ·ÂÇØÁÖ¼¼¿ä');
+                        	alert('ìž…ë ¥í•´ì£¼ì„¸ìš”');
                         } 
                     }
                 }).open();
             }
         </script>
-<!-- form ½ÃÀÛ ºÎ -->
 <html>
 <head>
-<title>È¸¿øÁ¤º¸ ¼öÁ¤</title>
+<title>íšŒì›ì •ë³´ ìˆ˜ì •</title>
 </head>
 <body>
 	<div class="page_section_myinfo">
 		<div class="head_aticle">
-			<h2 class="tit">°³ÀÎ Á¤º¸ ¼öÁ¤</h2>
+			<h2 class="tit">ê°œì¸ ì •ë³´ ìˆ˜ì •</h2>
 			<hr>
 		</div>
 		<div class="myinfo">
-			<h4>*ÇÊ¼öÀÔ·Â»çÇ×</h4>
+			<h4>*í•„ìˆ˜ìž…ë ¥ì‚¬í•­</h4>
 			<form name="myinfoForm" method="post" action="mypage_myinfo_Proc.jsp">
 				<table class="Member_comm">
 					<tbody>
 						<tr>
-							<td class="member_id1">*¾ÆÀÌµð</td>
+							<td class="member_id1">ì•„ì´ë””</td>
 							<td class="member_id2"><input name="id"
 								value="<%=bean.getId()%>" ></td>
 						</tr>
 						<tr>
-							<td class="member_name1">*ÀÌ¸§</td>
-							<td class="member_name2"><input name="name"
-								value="<%=bean.getName()%>"></td>
+							<td class="member_name1">*ì´ë¦„</td>
+							<td class="member_name2"><input name="NAME"
+								value="<%=bean.getNAME()%>"></td>
 						</tr>
 						
 						<tr>
-							<td class="member_ori_pwd1">ÇöÀç ºñ¹Ð¹øÈ£</td>
+							<td class="member_ori_pwd1">í˜„ìž¬ ë¹„ë°€ë²ˆí˜¸</td>
 							<td class="member_ori_pwd2"><input type="password"
 								name="pwd"> <!-- <p class="txt_guide" style="display: block;">
-					<span class="txt_guide_pwd">ÇöÀç ºñ¹Ð¹øÈ£¸¦ È®ÀÎÇØÁÖ¼¼¿ä</span></p> --></td>
+					<span class="txt_guide_pwd">í˜„ìž¬ ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”.</span></p> --></td>
 						</tr>
 						
 						<tr class="member_new_pwd">
-							<td class="new_pwd1">»õ ºñ¹Ð¹øÈ£</td>
+							<td class="new_pwd1">ìƒˆ ë¹„ë°€ë²ˆí˜¸</td>
 							<td class="new_pwd2"><input type="password" name="newPwd"></td>
 						</tr>
 						
 						<tr class="member_new_pwd_check">
-							<td class="pwd_check1">»õ ºñ¹Ð¹øÈ£ È®ÀÎ</td>
+							<td class="pwd_check1">ìƒˆ ë¹„ë°€ë²ˆí˜¸ í™•ì¸</td>
 							<td class="pwd_check2"><input type="password"
 								name="checkPwd"></td>
 						</tr>
 						
 						<tr>
-							<td class="member_birthday1">»ý³â¿ùÀÏ</td>
+							<td class="member_birthday1">ìƒë…„ì›”ì¼</td>
 							<td class="member_birthday2"><input name="birthday"
 								placeholder="Ex)1900-01-01"></td>
 						</tr>
 						<tr>
-							<td class="member_email1">ÀÌ¸ÞÀÏ</td>
+							<td class="member_email1">ì´ë©”ì¼</td>
 							<td class="member_email2"><input name="email"
 								placeholder="Ex)mills@gmail.com"></td>
 						</tr>						
 						<tr>
-							<td class="member_contact1">¿¬¶ôÃ³</td>
+							<td class="member_contact1">ì—°ë½ì²˜</td>
 							<td class="member_contact2"><input name="contact"
 								placeholder="Ex)010-0000-0000"></td>
 						</tr>
 						<div id="address_section">
 							<tr>
-								<td class="member_zipcode1">*¿ìÆí¹øÈ£</td>
+								<td class="member_zipcode1">*ìš°íŽ¸ë²ˆí˜¸</td>
 								<td class="member_zipcode2"><input id="input_zipcode"name="zipcode"type="text" value="<%=bean.getZipcode()%>"  /> 
-								<input name="zip_btn" type="button" onclick="openDaumZipAddress();"value="ÁÖ¼Ò Ã£±â" /></br> 
+								<input name="zip_btn" type="button" onclick="openDaumZipAddress();"value="ì£¼ì†Œ" /></br> 
 								<input name="address" id="input_addr" type="text"
 									value="<%=bean.getAddress()%>" /></td>
 							</tr>
 							<tr>
-								<td class="member_addr_detail1">»ó¼¼ÁÖ¼Ò</td>
+								<td class="member_addr_detail1">ìƒì„¸ì£¼ì†Œ</td>
 								<td class="member_addr_detail2"><input name="address_detail" id="input_detail"
 									type="text" value="<%=bean.getAddress_detail()%>"></td>
 							</tr>
 						</div>
 					</tbody>
 				</table>
-				<input type="submit" class="myinfo_btn" value="È¸¿øÁ¤º¸¼öÁ¤">
+				<input type="submit" class="myinfo_btn" value="íšŒì›ì •ë³´ìˆ˜ì •">
 			</form>
 		</div>
 	</div>
+
+</div>
+</form>
 </body>
 </html>

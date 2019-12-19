@@ -8,7 +8,6 @@
 
 <jsp:include page="top.jsp"/>
 
-
         <!--******************-->
         <!--작업 및 복붙 구역-->
         <!--******************-->        	
@@ -34,7 +33,7 @@
                 <ul id="goodslist_best_ul">
                     <li>
                         <a href="#">
-                            <img src="img/index/product_sample/prod_sample1.PNG"/>
+                            <img src="img/index/product_sample/basil_main.jpg"/>
                         </a>
                         <div class="goods_info">
                             <a href="#">
