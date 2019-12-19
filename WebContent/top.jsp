@@ -111,7 +111,7 @@
 							</a>
 							<div id="nav_category">
 								<ul>
-									<li><a href="#" class="category_menu">전체보기</a></li>
+									<li><a href="${pageContext.request.contextPath}/product/goods_list.jsp?list=all" class="category_menu">전체보기</a></li>
 									<li><a href="#" class="category_menu">전통떡</a></li>
 									<li><a href="#" class="category_menu">퓨전떡</a></li>
 
