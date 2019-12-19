@@ -78,7 +78,7 @@ public class MemberMgr {
 			pstmt.setString(1, id);
 			pstmt.setString(2, pwd);
 			rs = pstmt.executeQuery();
-			System.out.println("¹Ù²ïÇÃ·¡±×");
+			System.out.println("ë°”ë€í”Œë˜ê·¸");
 			if(rs.next()) 
 				flag = 1;
 			
@@ -91,7 +91,7 @@ public class MemberMgr {
 	}
 	
 
-	//ÆĞ½º¿öµå Ã¼Å©
+	//íŒ¨ìŠ¤ì›Œë“œ ì²´í¬
 
 			public boolean checkPwd(String pwd) {
 				Connection con = null;
@@ -145,7 +145,7 @@ public class MemberMgr {
 			}
 
 				
-	//È¸¿øÁ¤º¸ ¼öÁ¤ÇÏ±â
+	//íšŒì›ì •ë³´ ìˆ˜ì •í•˜ê¸°
 			public boolean updateMember(MemberBean bean) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -217,7 +217,7 @@ public class MemberMgr {
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
 				String sql = null;
-				System.out.println("db¾È¿¡¼­ value´Â : " + value);
+				System.out.println("dbì•ˆì—ì„œ valueëŠ” : " + value);
 				Vector<MemberBean> vlist = new Vector<MemberBean>();
 				try {
 					con = pool.getConnection();
