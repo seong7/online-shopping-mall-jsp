@@ -61,12 +61,12 @@ document.write(today.getYear( ) ,
 function check() {
 	f = document.SearchFrm;
 	if(f.p_name.value.length==0){
-		alert("ì œí’ˆëª…ì„ ì„ íƒí•˜ì„¸ìš”");
+		alert("Á¦Ç°¸íÀ» ¼±ÅÃÇÏ¼¼¿ä");
 		f.p_name.focus();
 		return;
 	}
 	if(f.p_date1.value.length==0 || f.p_date1.value.length!=8){
-		alert("ê¸°ê°„ì„ ì˜¬ë°”ë¥´ê²Œ ì…ë ¥í•´ì£¼ì„¸ìš” ex) 20191217")
+		alert("±â°£À» ¿Ã¹Ù¸£°Ô ÀÔ·ÂÇØÁÖ¼¼¿ä ex) 20191217")
 		f.p_date1.focus();
 		return;
 	}
@@ -77,7 +77,7 @@ function check() {
 	}
 	
 	if(f.p_date2.value.length==0 || f.p_date2.value.length!=8){
-		alert("ê¸°ê°„ì„ ì˜¬ë°”ë¥´ê²Œ ì…ë ¥í•´ì£¼ì„¸ìš” ex) 20191217")
+		alert("±â°£À» ¿Ã¹Ù¸£°Ô ÀÔ·ÂÇØÁÖ¼¼¿ä ex) 20191217")
 		f.p_date2.focus();
 		return;
 	}f.submit();
@@ -95,28 +95,28 @@ function listSelect() {
 	f= document.rFrm;
 	if(f.allCh.checked){
 		for(i=0;i<f.fch.length;i++){
-				/*í•­ëª©ì˜ ì²´í¬ë²„íŠ¼(fch)ë“¤ì´ ë°°ì—´ì´ê¸°ì—*/
+				/*Ç×¸ñÀÇ Ã¼Å©¹öÆ°(fch)µéÀÌ ¹è¿­ÀÌ±â¿¡*/
 			f.fch[i].checked = true;
 		}
-		f.delete.disabled = false;//ë²„íŠ¼ì˜ í™œì„±í™”
+		f.delete.disabled = false;//¹öÆ°ÀÇ È°¼ºÈ­
 	}else{
 		for(i=0;i<f.fch.length;i++){
 			f.fch[i].checked = false;
 		}
-		f.delete.disabled = true;	//ë²„íŠ¼ì˜ ë¹„í™œì„±í™”			
+		f.delete.disabled = true;	//¹öÆ°ÀÇ ºñÈ°¼ºÈ­			
 	}
 }
  function chk(){
 		f=document.rFrm;
 		for(i=0; i<f.fch.length;i++){
 			//alert(f.fch[i].value);
-			if(f.fch[i].checked){ //fch ì²´í¬ë°•ìŠ¤ê°€ ì²´í¬ê°€ ëœ ê²½ìš°
+			if(f.fch[i].checked){ //fch Ã¼Å©¹Ú½º°¡ Ã¼Å©°¡ µÈ °æ¿ì
 				f.delete.disabled = false;
-			return; //ë°‘ì— ìˆëŠ” ì²´í¬ë°•ìŠ¤ì˜ ì²´í¬ ìœ ë¬´ëŠ” ë¬´ì˜ë¯¸
+			return; //¹Ø¿¡ ÀÖ´Â Ã¼Å©¹Ú½ºÀÇ Ã¼Å© À¯¹«´Â ¹«ÀÇ¹Ì
 			}
 		}
-		f.allCh.checked= false; //ì „ì²´ì²´í¬ë°•ìŠ¤ í•´ì œ
-		f.delete.disabled = true; //ë²„íŠ¼ ë¹„í™œì„±í™”
+		f.allCh.checked= false; //ÀüÃ¼Ã¼Å©¹Ú½º ÇØÁ¦
+		f.delete.disabled = true; //¹öÆ° ºñÈ°¼ºÈ­
 	}
 
  
@@ -124,7 +124,7 @@ function listSelect() {
 </head>
 
 <body>
-<h3>ì œí’ˆì •ë³´</h3>
+<h3>Á¦Ç°Á¤º¸</h3>
 
 <form name = "listFrm">
 	<input type ="hidden"  name ="reload" value="true">
@@ -134,13 +134,13 @@ function listSelect() {
 <form name ="SearchFrm" method="get" >
 <input type = "hidden" name ="fch" value="0">	
 <hr>
-<h4>ì œí’ˆì •ë³´ ê²€ìƒ‰</h4>
+<h4>Á¦Ç°Á¤º¸ °Ë»ö</h4>
 <table>
 	<tr>
-		<td >ì œí’ˆëª…</td>
+		<td >Á¦Ç°¸í</td>
 		<td>
 		<select name ="pnameList" onchange = "listSelect()">
-		<option value ="">ì œí’ˆëª… ì„ íƒ</option>
+		<option value ="">Á¦Ç°¸í ¼±ÅÃ</option>
 		<%for(int i=0; i<pnameList.length;i++){ %>
 		<option value ="<%=pnameList[i]%>"><%=pnameList[i]%></option>
 		<%} %>		
@@ -149,7 +149,7 @@ function listSelect() {
 		</td>		
 	</tr>
 	<tr>
-		<td>ê²€ìƒ‰ê¸°ê°„(ë“±ë¡ì¼)</td>
+		<td>°Ë»ö±â°£(µî·ÏÀÏ)</td>
 		<td>
 			<input name ="p_date1" size="20"  value="<%=p_date1%>"> &nbsp; ~ &nbsp;
 			<input name ="p_date2" size="20" value="<%=p_date2%>">			
@@ -175,18 +175,18 @@ function listSelect() {
 				out.println(p_date1);
 				out.println(p_date2);				
 				out.println(slist.size());				
-				out.println("ê²€ìƒ‰ê²°ê³¼ì—†ìŒ");
+				out.println("°Ë»ö°á°ú¾øÀ½");
 			}else{
 				
 		%>
 		<tr>
 			<th><input type ="checkbox" name="allCh" onclick="allChk()"></th>					
-			<th>ì œí’ˆì½”ë“œ</th>
-			<th>ìƒí’ˆëª…</th>
-			<th>ìƒí’ˆê°€ê²©</th>
-			<th>ë“±ë¡ì¼</th>
-			<th>íŒë§¤ì—¬ë¶€</th>
-			<th>ì¬ê³ ìˆ˜ëŸ‰</th>
+			<th>Á¦Ç°ÄÚµå</th>
+			<th>»óÇ°¸í</th>
+			<th>»óÇ°°¡°İ</th>
+			<th>µî·ÏÀÏ</th>
+			<th>ÆÇ¸Å¿©ºÎ</th>
+			<th>Àç°í¼ö·®</th>
 		</tr>			
 			<% 
 			for(int i=0; i<slist.size(); i++){
@@ -207,9 +207,9 @@ function listSelect() {
 	<%}//--else %>
 	
 		</table>
-		<input type ="button" name="update" id="update_btn" value="ìˆ˜ì •">
-		<input type="button" name="delete" id="delete_btn" value="ì‚­ì œ" disabled>
-		<input type ="button" value="ì¶”ê°€" onclick ="location.href='goods_insert.jsp'">	
+		<input type ="button" name="update" id="update_btn" value="¼öÁ¤">
+		<input type="button" name="delete" id="delete_btn" value="»èÁ¦" disabled>
+		<input type ="button" value="Ãß°¡" onclick ="location.href='goods_insert.jsp'">	
 		<input type ="hidden" name="buffer" id="buffer">
 	</form>
 	<script>
