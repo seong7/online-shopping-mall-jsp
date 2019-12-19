@@ -95,6 +95,7 @@
 	                        <input name="searchTerm" type="text" id="search_input" placeholder="상품을 입력하세요" autocomplete=”off”>
 	                        <i class="fas fa-search" onclick="document.getElementById('search_form').submit()"></i>
 	                    </label>
+	                        <input name="list" value="search" type="hidden">
 	                </form>
 	            </div>
 	            
