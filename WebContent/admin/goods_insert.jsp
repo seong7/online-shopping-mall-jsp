@@ -19,7 +19,7 @@
 <!-- <title>-包府磊-力前 殿废</title> -->
 
 <!-- <link rel="stylesheet" type="text/css" href="./css/mypage_orderlist.css"> -->
-<jsp:include page="../top.jsp"/>
+<jsp:include page="/../top.jsp"/>
 
 	<jsp:include page="./admin_side.jsp"/>
 

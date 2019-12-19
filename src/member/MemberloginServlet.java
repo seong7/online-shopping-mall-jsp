@@ -1,4 +1,4 @@
-package Member;
+package member;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/MemberLoginServlet")
-public class MemberLoginServlet extends HttpServlet {
+/**
+ * Servlet implementation class MemberloginServlet2
+ */
+@WebServlet("/member/login")
+public class MemberloginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,5 +30,4 @@ public class MemberLoginServlet extends HttpServlet {
 			response.getWriter().write(result + "");
 		}
 	}
-	
 }
