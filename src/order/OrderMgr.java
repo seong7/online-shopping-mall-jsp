@@ -176,7 +176,6 @@ public class OrderMgr {
 			if((keyWord.trim().equals("")||keyWord==null)&&
 			((keyDate1.trim().equals("")||keyDate1==null))&&
 			((keyDate2.trim().equals("")||keyDate2==null))){//검색이 아닌 경우
-				System.out.print(keyDate1);
 				sql = "select * from order_tb order by o_index desc, "
 						+ "o_index limit ?,?";
 				pstmt = con.prepareStatement(sql);
@@ -185,7 +184,6 @@ public class OrderMgr {
 			} else if((!keyDate1.trim().equals("")||keyDate1!=null) &&
 					  (!keyDate2.trim().equals("")||keyDate2!=null)&&
 					  (keyWord.trim().equals("")||keyWord==null)){//기간 검색인 경우
-				System.out.print(keyDate1);	
 				sql = "select * from order_tb WHERE o_date BETWEEN " +
 					  "? and ? order by o_index desc, o_index LIMIT ?,?"; 
 					pstmt = con.prepareStatement(sql); 
@@ -194,7 +192,6 @@ public class OrderMgr {
 					  pstmt.setInt(3, start);//게시물 시작번호 
 					  pstmt.setInt(4, cnt);//가져올 게시물개수 
 			}else if(!keyWord.trim().equals("")||keyWord!=null){//검색어 검색인 경우
-				System.out.print(keyDate1);
 				sql = "select * from order_tb where "+ keyField 
 						+" like ? order by o_index desc, o_index limit ?,?";
 				pstmt = con.prepareStatement(sql);
