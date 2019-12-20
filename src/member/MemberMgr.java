@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
+import order.OrderBean;
+
 public class MemberMgr {
 
 	private DBConnectionMgr pool;
@@ -244,5 +246,36 @@ public class MemberMgr {
 				}
 					return vlist;
 			}
+			public MemberBean getMemberDetail(String id) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = null;
+				MemberBean bean = new MemberBean();
+				try {
+					con = pool.getConnection();
+					sql = "select * from user_tb where id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, id);
+					rs = pstmt.executeQuery();
+					while(rs.next()){
+						bean.setId(rs.getString("id"));
+						bean.setNAME(rs.getString("NAME"));
+						bean.setBirthday(rs.getString("birthday"));
+						bean.setEmail(rs.getString("email"));
+						bean.setContact(rs.getString("contact"));
+						bean.setZipcode(rs.getInt("zipcode"));
+						bean.setAddress(rs.getString("address"));
+						bean.setAddress_detail(rs.getString("address_detail"));
+						bean.setJoin_date(rs.getString("join_date"));
+						}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt, rs);
+				}
+					return bean;
+			}
+	
 }
 

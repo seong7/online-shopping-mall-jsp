@@ -170,6 +170,7 @@ public class ProductMgr {
 		return vlist;
 	}	
 	
+
 	//model name list(for search bar ajax)
 	public Vector<String> getProductList(String searchValue) {
 		Connection con = null;
@@ -195,5 +196,4 @@ public class ProductMgr {
 		return vlist;
 	}
     
-	
 }

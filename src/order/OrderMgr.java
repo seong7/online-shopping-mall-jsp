@@ -358,6 +358,39 @@ public class OrderMgr {
 		}
 	}
 			
+	
+	//어드민창의 값 빼오기위한 mgr
+	public Vector<AdminOrderBean> getAdminOrder(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		Vector<AdminOrderBean> alist = new Vector<AdminOrderBean>();
+		try {
+			con = pool.getConnection();
+			sql = "SELECT O.o_index, D.p_code, O.o_del_date, O.o_status, COUNT(*), O.o_total_amount "
+					+ "FROM order_detail_tb D JOIN order_tb O ON D.o_index = O.o_index WHERE D.o_index "
+					+ "IN(SELECT o_index FROM order_tb WHERE o_id=?) LIMIT 1;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				AdminOrderBean bean = new AdminOrderBean();
+				bean.setO_index(rs.getInt(1));
+				bean.setP_code(rs.getInt(2));
+				bean.setO_del_date(rs.getString(3));
+				bean.setO_status(rs.getString(4));
+				bean.setProduct_count(rs.getInt(5));
+				bean.setO_total_amount(rs.getInt(6));
+				alist.addElement(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return alist;
+	}
 			//main
 			public static void main(String[] args) {
 				//OrderMgr mgr = new OrderMgr();
