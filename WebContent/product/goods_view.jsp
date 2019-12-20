@@ -21,7 +21,7 @@
 <main>
 	
 	<header>
-		<img id="main_pht" src="../img/product/<%=bean.getP_main_pht_name()%>">
+		<img id="main_pht" src="../img/product/<%=bean.getP_main_pht_name()%>" style="height: 400px;">
 		
 		<div id="header_info_wrapper">
 			<div class="header name">
@@ -41,6 +41,32 @@
 			<div class="header total">
 				<span class="title">총 상품 금액</span>
 				<span id="total"></span>
+			</div>
+			
+			
+			<!--  제품 추천 알고리즘 영역 -->
+			<div id="recom_wrapper" style="display:none;">
+				<div class="title">
+					<span>이 제품은 어떠세요?</span>
+				</div>
+				<ul>
+					<li>
+					</li>
+				</ul>
+			</div>
+			
+			<div id="detail">
+				<img id="detail_pht" src="../img/product/<%=bean.getP_detail_pht_name()%>">
+			</div>
+			
+			<div id="review">
+				<table>
+					<thead>
+						<td>
+						
+						</td>
+					</thead>
+				</table>
 			</div>
 			
 		</div>
