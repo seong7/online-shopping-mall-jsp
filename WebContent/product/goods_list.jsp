@@ -62,35 +62,46 @@
 
 	
 %>
+<link rel="stylesheet" type="text/css" href="../css/goodsList.css">
 <script>
 	
 </script>
 <jsp:include page="../top.jsp"/>
-<main>
-力前 荐 : <%=vlist.size()%>
 
-	<h3><%=listName %></h3>
+
+<main>
+
+<!-- 力前 荐 :  --><%--<%=vlist.size()%>--%>
 	
-		<table  border="1">					
-			<tr align="center">
+	<div class="goodslist">
+		<div class="goodslist_tit">
+			<h3 class = "goodslist_btn"><%=listName %></h3>
+			<span class = "goodslist_detail"></span>
+		</div>
+		
+		<ul>
 			<%
 			for (int i=0; i<vlist.size(); i++) {ProductBean pbean = vlist.get(i);
 			%>
-					<td>
-						<a href="#">
-							<img src="../img/product/<%=pbean.getP_main_pht_name()%>" height="150" width="150">
-						</a><br/>
-						<a href="#">
-							<span>
-								<%=pbean.getP_name()%>
-							</span>
-						</a><br/>
-							<span><%=pbean.getP_price()%>盔</span>
-					</td>	
-					<%} //--for%>					
-			</tr>								
-		</table>
-
+			<li>
+				<a href="#">
+					<img src="../img/product/<%=pbean.getP_main_pht_name()%>">
+				</a>
+				<div class="goods_info">
+					<a href="#">
+						<span class="name">
+							<%=pbean.getP_name()%>
+						</span>
+					</a>
+					<span class="price">
+						<%=pbean.getP_price()%>盔
+					</span>
+				</div>	
+			</li>
+			<%} //--for%>
+		</ul>
+	</div>
+	
 </main>
 	
 	<jsp:include page="../bottom.jsp"/>
