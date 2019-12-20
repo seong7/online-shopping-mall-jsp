@@ -60,11 +60,11 @@
 							}  //--if
 						%>
 						<li>
-							<a href="#">
+							<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
 								<img src="img/product/<%=pbean.getP_main_pht_name()%>">
 							</a>
 							<div class="goods_info">
-								<a href="#">
+								<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
 									<span class="name">
 										<%=pbean.getP_name()%>
 									</span>
