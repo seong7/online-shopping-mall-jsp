@@ -180,7 +180,7 @@ function listSelect() {
 				
 		%>
 		<tr>
-			<th><input type ="checkbox" name="allCh" onclick="allChk()"></th>					
+			<th><input type ="checkbox" name="allCh" onclick="allChk()" ></th>					
 			<th>제품코드</th>
 			<th>상품명</th>
 			<th>상품가격</th>
@@ -195,7 +195,7 @@ function listSelect() {
 		%>			
 			<tr>
 			<td>
-			<input type ="checkbox" name="fch" value="<%=p_code%>" onclick="chk()"></td>						
+			<input type ="checkbox" name="fch" value="<%=p_code%>" onclick="chk()" ></td>						
 			<td><a href="goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_code() %></a></td>
 			<td><%=pbean.getP_name() %></td>
 			<td><%=pbean.getP_price() %></td>
