@@ -1,50 +1,48 @@
-<%@page import="product.StockBean"%>
 <%@page import="product.ProductBean"%>
 <%@page import="java.util.Vector"%>
+<%@page import="product.UtilMgr"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
-<jsp:useBean id="mgr" class="admin.ProductMgr"/>
+<jsp:useBean id="aMgr" class="admin.ProductMgr"/>
+<jsp:useBean id="pMgr" class="product.ProductMgr"/>
 <%
-		request.setCharacterEncoding("EUC-KR");
-		String p_name = request.getParameter("p_name");
-		int p_date1 = Integer.parseInt(request.getParameter("p_date1"));
-		int p_date2 = Integer.parseInt(request.getParameter("p_date2"));
+	request.setCharacterEncoding("EUC-KR");
+	String p_code[]=request.getParameterValues("fch");
+	String type_check =request.getParameter("buffer");
+	int num[] = new int[p_code.length];
+	//System.out.println(type_check);
+	String msg = "수정페이지로 이동합니다";
+	String url = "goods_master.jsp";
+	System.out.println("체크된 개수" + p_code.length);
+	
+	if(type_check.equals("update") && p_code.length==1){
+	//update		
+		System.out.println("update1");
+		String q = "";
+		for(int i=0; i<p_code.length; i++){
+			System.out.println(p_code[i]);
+			num[i] = Integer.parseInt(p_code[i]);
+			q+="p_code="+p_code[i]+"&";
+		}
+			System.out.println(p_code);
+		url = "goods_view.jsp?"+q;
+	}else if(type_check.equals("update")&&p_code.length!=1){	
+		System.out.println("update2");
 		
-		Vector<ProductBean> slist = mgr.searchproduct(p_name, p_date1, p_date2);	
+		msg = "수정시에는 하나만 선택해주세요.";
+		
+	}else if(type_check.equals("delete")){
+		System.out.println("delete1");
+		msg = "선택하신 제품을 삭제합니다";
+		for(int i=0; i<p_code.length; i++){
+			System.out.println(p_code[i]);
+			num[i] = Integer.parseInt(p_code[i]);
+		}
+		aMgr.deleteproduct(num);
+		url="goods_master.jsp";
+	}else{}
+		System.out.println("--------------");
 %>
-<%=slist.size() %>
-<%=p_name %>
-<%=p_date1 %>
-<%=p_date2 %>
-
-<html>
-<head>
-<body>
-	<table>
-		<tr>					
-			<td>제품코드</td>
-			<td>상품명</td>
-			<td>상품가격</td>
-			<td>등록일</td>
-			<td>판매여부</td>
-			<td>재고수량</td>
-		</tr>			
-			<% 
-			for(int i=0; i<slist.size(); i++){
-				ProductBean pbean = slist.get(i);
-			%>
-			<tr>			
-			<td><%=pbean.getP_code() %></td>
-			<td><%=pbean.getP_name() %></td>
-			<td><%=pbean.getP_price() %></td>
-			<td><%=pbean.getP_date() %></td>
-			<td><%=pbean.getP_on_sale() %></td>
-			<td><%=pbean.getSt_ava_qty() %></td>		
-		</tr>
-	<%}//--for %>
-	</table>
-
-</body>
-
-</head>
-</html>
-
+<script type="text/javascript">	
+	alert("<%=msg%>");
+	location.href= "<%=url%>";
+</script>

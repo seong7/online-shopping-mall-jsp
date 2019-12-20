@@ -161,7 +161,7 @@ function listSelect() {
 </form>
 
 	<!-- <form name=rFrm action="goods_Proc.jsp?flag=delete" enctype="multipart/form-data"> -->
-	<form name=rFrm id="rFrame" action="goods_deleteProc.jsp" enctype="multipart/form-data">
+	<form name=rFrm id="rFrame" action="goods_masterProc.jsp" enctype="multipart/form-data">
 <table>
 	<tr>
 		<%
