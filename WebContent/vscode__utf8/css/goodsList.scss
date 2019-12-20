@@ -1,4 +1,4 @@
-@import '../../font/font-family'; 
+@import '../font/font-family'; 
 $brandColor: #fec084; 
 $titleColor: #333;
 $titleDetailColor: gray;
@@ -29,6 +29,8 @@ main{
             display: inline-block;
             color:$titleDetailColor;
             margin-top: 15px;
+            padding-bottom:15px;
+            border-bottom: 3px solid $brandColor;
         }
     }
     ul{
@@ -36,6 +38,7 @@ main{
         display: flex;
         flex-direction: row;
         margin-top: 20px;
+        margin-bottom: 20px;
         li{
             margin-right: 18px;
             // width: 200px;

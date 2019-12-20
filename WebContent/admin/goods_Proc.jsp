@@ -26,9 +26,9 @@
 			for(int i=0;i<p_code.length;i++){
 				p_code[i] = Integer.parseInt(snum[i]);
 		}
-			result = pMgr.deleteproduct(p_code);
+			/*result = pMgr.deleteproduct(p_code);
 			response.sendRedirect("goods_master.jsp");			
-			if(result) msg = "상품을 삭제하였습니다.";
+			if(result) msg = "상품을 삭제하였습니다.";*/
 		}
 %>
 <script>

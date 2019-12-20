@@ -9,6 +9,7 @@
 	request.setCharacterEncoding("EUC-KR");
 	
 	String listName = null;
+	String listDetail = null;
 	String searchTerm = null;
 	String flag = request.getParameter("list");
 	
@@ -19,12 +20,15 @@
 	switch (flag){
 	case "all":
 		listName ="전체상품";
+		listDetail = "밀스의 방앗간 모든 상품들입니다.";
 		break;
 	case "best":
 		listName ="베스트상품";
+		listDetail = "밀스의 방앗간에서 가장 많이 팔린 상품들입니다.";
 		break;		
 	case "new":
 		listName ="신상품";
+		listDetail = "밀스의 방앗간에서 새롭게 판매하는 상품들입니다.";
 		break;
 	/*case "review":
 		listName ="리뷰순";
@@ -48,8 +52,9 @@
 			vlist = null;
 			
 		}else{
-			listName = searchTerm + " 의 검색 결과";
+			listName = "\"" +searchTerm + "\"" + " 의 검색 결과";
 			vlist = mgr.getSearchList(searchTerm);
+			listDetail = "총 " +vlist.size() +" 개의 상품이 검색되었습니다.";
 			
 		}
 		
@@ -76,13 +81,21 @@
 	<div class="goodslist">
 		<div class="goodslist_tit">
 			<h3 class = "goodslist_btn"><%=listName %></h3>
-			<span class = "goodslist_detail"></span>
+			<span class = "goodslist_detail"><%=listDetail %></span>
 		</div>
 		
 		<ul>
 			<%
 			for (int i=0; i<vlist.size(); i++) {ProductBean pbean = vlist.get(i);
+				if(i%4==0 && i!=0 ){ 
+					System.out.println("work");
 			%>
+					</ul>
+					<ul>
+			<%		
+				}  //--if
+			%>
+			
 			<li>
 				<a href="#">
 					<img src="../img/product/<%=pbean.getP_main_pht_name()%>">
@@ -96,7 +109,7 @@
 					<span class="price">
 						<%=pbean.getP_price()%>원
 					</span>
-				</div>	
+				</div>
 			</li>
 			<%} //--for%>
 		</ul>
