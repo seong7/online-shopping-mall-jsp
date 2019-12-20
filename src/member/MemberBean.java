@@ -11,6 +11,14 @@ public class MemberBean {
 	private String address;
 	private String address_detail;
 	private String join_date;
+	private int point;
+	
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
 	public String getId() {
 		return id;
 	}
