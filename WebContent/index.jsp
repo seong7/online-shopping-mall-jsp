@@ -1,7 +1,18 @@
 <%@ page contentType="text/html; charset=EUC-KR"%>
+<%@page import="product.UtilMgr"%>
+<%@page import="product.ProductBean"%>
+<%@page import="java.util.Vector"%>
+<%@page import="java.text.DecimalFormat" %>
+<%@page import="product.productUtil"%>
+
+<jsp:useBean id="mgr" class="product.ProductMgr" />
 <%
 		request.setCharacterEncoding("EUC-KR");
 		
+		productUtil util = new productUtil();
+		//String flag = request.getParameter("list");
+		Vector<ProductBean> vlist;
+
 %>
 
 <link rel="stylesheet" type="text/css" href="css/goodsList.css">
@@ -23,6 +34,12 @@
             </div>
 
             <!-- 베스트상품 구역-->
+            
+            <%
+	            vlist = mgr.getGoodsList("indexBest");
+            %>
+            
+            
                 <div class="goodslist" id="goodslist_best">
 	                <div class="goodslist_tit">
 	                    <a href="${pageContext.request.contextPath}/product/goods_list.jsp?list=best" class="goodslist_btn">
@@ -32,69 +49,41 @@
 	                </div>
 	                
 	                <ul id="goodslist_best_ul">
-	                    <li>
-	                        <a href="#">
-	                            <img src="img/index/product_sample/basil_main.jpg"/>
-	                        </a>
-	                        <div class="goods_info">
-	                            <a href="#">
-	                                <span class="name">
-	                                    [CREAPAN] 아메리칸 스타일 팬케이트 240g
-	                                </span>
-	                            </a>
-	                            <span class="price">
-	                                4,900원
-	                            </span>
-	                        </div>
-	                    </li>
-	                    <li>
-	                        <a href="#">
-	                            <img src="img/index/product_sample/prod_sample1.PNG"/>
-	                        </a>
-	                        <div class="goods_info">
-	                            <a href="#">
-	                                <span class="name">
-	                                    [CREAPAN] 아메리칸 스타일 팬케이트 240g
-	                                </span>
-	                            </a>
-	                            <span class="price">
-	                                4,900원
-	                            </span>
-	                        </div>
-	                    </li>
-	                    <li>
-	                        <a href="#">
-	                            <img src="img/index/product_sample/prod_sample1.PNG"/>
-	                        </a>
-	                        <div class="goods_info">
-	                            <a href="#">
-	                                <span class="name">
-	                                    [CREAPAN] 아메리칸 스타일 팬케이트 240g
-	                                </span>
-	                            </a>
-	                            <span class="price">
-	                                4,900원
-	                            </span>
-	                        </div>
-	                    </li>
-	                    <li>
-	                        <a href="#">
-	                            <img src="img/index/product_sample/prod_sample1.PNG"/>
-	                        </a>
-	                        <div class="goods_info">
-	                            <a href="#">
-	                                <span class="name">
-	                                    [CREAPAN] 아메리칸 스타일 팬케이트 240g
-	                                </span>
-	                            </a>
-	                            <span class="price">
-	                                4,900원
-	                            </span>
-	                        </div>
-	                    </li>
-	                </ul>
-	            </div>
+	                	<%
+							for (int i=0; i<vlist.size(); i++) {ProductBean pbean = vlist.get(i);
+								if(i%4==0 && i!=0 ){ 
+									//System.out.println("work");
+						%>
+								</ul>
+								<ul>
+						<%		
+							}  //--if
+						%>
+						<li>
+							<a href="#">
+								<img src="img/product/<%=pbean.getP_main_pht_name()%>">
+							</a>
+							<div class="goods_info">
+								<a href="#">
+									<span class="name">
+										<%=pbean.getP_name()%>
+									</span>
+								</a>
+								<span class="price">
+									<%=util.price(pbean.getP_price())%>원
+								</span>
+							</div>
+						</li>
+						<%} //--for%>
+					</ul>
+				</div>
+	
 	           	 <!-- 신상품 구역-->
+	           	 
+	         <%
+	            vlist = mgr.getGoodsList("indexNew");
+            %>
+	           	 
 	            <div class="goodslist" id="goodslist_new">
 	                <div class="goodslist_tit">
 	                    <a href="${pageContext.request.contextPath}/product/goods_list.jsp?list=new" class="goodslist_btn">
@@ -103,68 +92,36 @@
 	                    <span class="goodslist_detail">밀스의 방앗간 새로운 상품들을 만나보세요.</span> 
 	                </div>
 	                <ul id="goodslist_new_ul">
-	                    <li>
-	                        <a href="#">
-	                            <img src="img/index/product_sample/prod_sample1.PNG"/>
-	                        </a>
-	                        <div class="goods_info">
-	                            <a href="#">
-	                                <span class="name">
-	                                    [CREAPAN] 아메리칸 스타일 팬케이트 240g
-	                                </span>
-	                            </a>
-	                            <span class="price">
-	                                4,900원
-	                            </span>
-	                        </div>
-	                    </li>
-	                    <li>
-	                        <a href="#">
-	                            <img src="img/index/product_sample/prod_sample1.PNG"/>
-	                        </a>
-	                        <div class="goods_info">
-	                            <a href="#">
-	                                <span class="name">
-	                                    [CREAPAN] 아메리칸 스타일 팬케이트 240g
-	                                </span>
-	                            </a>
-	                            <span class="price">
-	                                4,900원
-	                            </span>
-	                        </div>
-	                    </li>
-	                    <li>
-	                        <a href="#">
-	                            <img src="img/index/product_sample/prod_sample1.PNG"/>
-	                        </a>
-	                        <div class="goods_info">
-	                            <a href="#">
-	                                <span class="name">
-	                                    [CREAPAN] 아메리칸 스타일 팬케이트 240g
-	                                </span>
-	                            </a>
-	                            <span class="price">
-	                                4,900원
-	                            </span>
-	                        </div>
-	                    </li>
-	                    <li>
-	                        <a href="#">
-	                            <img src="img/index/product_sample/prod_sample1.PNG"/>
-	                        </a>
-	                        <div class="goods_info">
-	                            <a href="#">
-	                                <span class="name">
-	                                    [CREAPAN] 아메리칸 스타일 팬케이트 240g
-	                                </span>
-	                            </a>
-	                            <span class="price">
-	                                4,900원
-	                            </span>
-	                        </div>
-	                    </li>
-	                </ul>
-	            </div>
+	                	<%
+							for (int i=0; i<vlist.size(); i++) {ProductBean pbean = vlist.get(i);
+								if(i%4==0 && i!=0 ){ 
+									//System.out.println("work");
+						%>
+								</ul>
+								<ul>
+						<%		
+							}  //--if
+						%>
+						<li>
+							<a href="#">
+								<img src="img/product/<%=pbean.getP_main_pht_name()%>">
+							</a>
+							<div class="goods_info">
+								<a href="#">
+									<span class="name">
+										<%=pbean.getP_name()%>
+									</span>
+								</a>
+								<span class="price">
+									<%=util.price(pbean.getP_price())%>원
+								</span>
+							</div>
+						</li>
+						<%} //--for%>
+					</ul>
+				</div>
+				
+				
 	        </main>
 			<!--******************-->
 	        <!--작업 및 복붙 구역-->

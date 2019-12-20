@@ -2,18 +2,21 @@
 <%@page import="product.UtilMgr"%>
 <%@page import="product.ProductBean"%>
 <%@page import="java.util.Vector"%>
+<%@page import="java.text.DecimalFormat" %>
+<%@page import="product.productUtil"%>
 
 <jsp:useBean id="mgr" class="product.ProductMgr" />
 
 <%
 	request.setCharacterEncoding("EUC-KR");
 	
+	productUtil util = new productUtil();
 	String listName = null;
 	String listDetail = null;
 	String searchTerm = null;
 	String flag = request.getParameter("list");
 	
-	System.out.println(flag);
+	//System.out.println(flag);
 	
 	Vector<ProductBean> vlist;
 	
@@ -63,7 +66,11 @@
 		
 	}
 	
-
+	
+	
+	
+	
+	
 
 	
 %>
@@ -88,7 +95,7 @@
 			<%
 			for (int i=0; i<vlist.size(); i++) {ProductBean pbean = vlist.get(i);
 				if(i%4==0 && i!=0 ){ 
-					System.out.println("work");
+					//System.out.println("work");
 			%>
 					</ul>
 					<ul>
@@ -107,7 +114,7 @@
 						</span>
 					</a>
 					<span class="price">
-						<%=pbean.getP_price()%>¿ø
+						<%=util.price(pbean.getP_price())%>¿ø
 					</span>
 				</div>
 			</li>
