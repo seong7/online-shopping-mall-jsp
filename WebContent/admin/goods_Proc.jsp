@@ -30,6 +30,7 @@
 			response.sendRedirect("goods_master.jsp");			
 			if(result) msg = "상품을 삭제하였습니다.";*/
 		}
+		
 %>
 <script>
 	alert("<%=msg%>");
