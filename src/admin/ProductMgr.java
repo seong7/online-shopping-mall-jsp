@@ -112,7 +112,7 @@ public class ProductMgr {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
-		boolean flag = false;
+		boolean flag = false;			
 		try {
 			MultipartRequest multi = new MultipartRequest(req, UPLOAD, MAXSIZE, ENCTYPE, new DefaultFileRenamePolicy());
 			String upFile1 = multi.getFilesystemName("upFile1");
@@ -121,6 +121,15 @@ public class ProductMgr {
 			File f1 = multi.getFile("upFile1");
 			File f2 = multi.getFile("upFile2");
 			File f3 = multi.getFile("upFile3");
+			int p_code = Integer.parseInt(multi.getParameter("pcode"));
+			product.ProductMgr mgr = new product.ProductMgr();
+			ProductBean bean = mgr.getProduct(p_code);
+			String fa = bean.getP_main_pht_name();
+			String fb = bean.getP_detail_pht_name();
+			String fc = bean.getP_info_pht_name();
+			int faa = bean.getP_main_pht_size();
+			int fbb = bean.getP_detail_pht_size();
+			int fcc = bean.getP_info_pht_size();
 			con = pool.getConnection();
 			sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
 					+ "p_main_pht_name=?, p_main_pht_size=?, p_detail_pht_name=?, p_detail_pht_size=?, "
@@ -131,29 +140,54 @@ public class ProductMgr {
 			pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_on_sale")));
 
 			if (multi.getFilesystemName("upFile1") != null) {
+				//YES upload file, DELETE uploaded file
 				int size1 = (int) f1.length();					
 				pstmt.setString(4, upFile1);
-				pstmt.setInt(5, size1);
-			} else {
-				pstmt.setString(4, "ready.gif");
-				pstmt.setInt(5, 0);
-			}
-			if (multi.getFilesystemName("upFile2") != null) {
-				int size2 = (int) f2.length();
+				pstmt.setInt(5, size1);						
+				//delete code
+				File fd1 = new File(UPLOAD + fa);
+				if (fd1.exists() && !fa.equals("ready.gif")) {
+					fd1.delete();	}					
+			} else if(!fa.isEmpty() && !fa.equals("ready.gif") && multi.getFilesystemName("upFile1")==null ){
+				//NO upload file, YES uploaded file, nothing happen	
+				pstmt.setString(4, fa);
+				pstmt.setInt(5, faa);
+			} else if(multi.getFilesystemName("upFile1")==null && fa.equals("ready.gif"))
+				pstmt.setString(4, fa);
+				pstmt.setInt(5, faa);
+			
+			if (multi.getFilesystemName("upFile2")!= null) {
+				int size2 = (int) f2.length();					
 				pstmt.setString(6, upFile2);
-				pstmt.setInt(7, size2);
-			} else {
-				pstmt.setString(6, "ready.gif");
-				pstmt.setInt(7, 0);
-			}
-			if (multi.getFilesystemName("upFile3") != null) {
-				int size3 = (int) f3.length();
+				pstmt.setInt(7, size2);				
+				//delete code
+				File fd2 = new File(UPLOAD + fb);
+				if (fd2.exists()&& !fb.equals("ready.gif")) {
+					fd2.delete();}		
+			} else if(!fb.isEmpty() && !fb.equals("ready.gif") && multi.getFilesystemName("upFile2")==null ){
+				//NO upload file, YES uploaded file, nothing happen
+				pstmt.setString(6, fb);
+				pstmt.setInt(7, fbb);
+			}else if(multi.getFilesystemName("upFile2")==null && fb.equals("ready.gif"))
+				pstmt.setString(6, fb);
+				pstmt.setInt(7, fbb);
+				
+			if (multi.getFilesystemName("upFile3")!= null) {
+				int size3 = (int) f3.length();					
 				pstmt.setString(8, upFile3);
-				pstmt.setInt(9, size3);
-			} else {
-				pstmt.setString(8, "ready.gif");
-				pstmt.setInt(9, 0);
-			}
+				pstmt.setInt(9, size3);				
+				//delete code
+				File fd3 = new File(UPLOAD + fc);
+				if (fd3.exists()&& !fc.equals("ready.gif")) {
+					fd3.delete();}		
+			} else if(!fc.isEmpty() && !fc.equals("ready.gif") && multi.getFilesystemName("upFile3")==null ){					
+				//NO upload file, YES uploaded file, nothing happen
+				pstmt.setString(8, fc);
+				pstmt.setInt(9, fcc);
+			} else if(multi.getFilesystemName("upFile3")==null && fc.equals("ready.gif"))
+				pstmt.setString(8, fc);
+				pstmt.setInt(9, fcc);				
+			
 			pstmt.setInt(10, Integer.parseInt(multi.getParameter("p_code")));
 			int cnt = pstmt.executeUpdate();
 			if (cnt == 1) {
@@ -267,7 +301,7 @@ public class ProductMgr {
 		return flag;
 	}
 
-	// deleteproduct
+	// deleteproduct(more than 1)
 	public boolean deleteproduct(int p_code[]) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -285,9 +319,23 @@ public class ProductMgr {
 					continue;
 
 				String p_main_pht_name = rs.getString(1);
-				File f = new File(UPLOAD + p_main_pht_name);
-				if (f.exists())
-					f.delete();
+				String p_detail_pht_name = rs.getString(2);
+				String p_info_pht_name = rs.getString(3);
+				if(!p_main_pht_name.equals("ready.gif")) {
+				File f1 = new File(UPLOAD + p_main_pht_name);
+				if (f1.exists())
+					f1.delete();
+				}					
+				if(!p_detail_pht_name.equals("ready.gif")) {
+					File f2 = new File(UPLOAD + p_detail_pht_name);
+					if (f2.exists())
+						f2.delete();
+					}
+				if(!p_info_pht_name.equals("ready.gif")) {
+					File f3 = new File(UPLOAD + p_info_pht_name);
+					if (f3.exists())
+						f3.delete();
+					}
 
 				pstmt.close();
 
@@ -303,6 +351,54 @@ public class ProductMgr {
 		}
 		return flag;
 	}
+	// deleteproduct(1)
+		public boolean deleteproduct1(int p_code) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			boolean flag = false;
+			try {
+				con = pool.getConnection();				
+					sql = "select p_main_pht_name, p_detail_pht_name, p_info_pht_name from product_mst_tb where p_code=? ";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, p_code);
+					rs = pstmt.executeQuery();	
+					if (rs.next()) {
+						
+					String p_main_pht_name = rs.getString(1);
+					String p_detail_pht_name = rs.getString(2);
+					String p_info_pht_name = rs.getString(3);
+					if(!p_main_pht_name.equals("ready.gif")) {
+					File f1 = new File(UPLOAD + p_main_pht_name);
+					if (f1.exists())
+						f1.delete();
+					}					
+					if(!p_detail_pht_name.equals("ready.gif")) {
+						File f2 = new File(UPLOAD + p_detail_pht_name);
+						if (f2.exists())
+							f2.delete();
+						}
+					if(!p_info_pht_name.equals("ready.gif")) {
+						File f3 = new File(UPLOAD + p_info_pht_name);
+						if (f3.exists())
+							f3.delete();
+						}
+				
+					pstmt.close();
+
+					sql = "delete from product_mst_tb where p_code =?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, p_code);
+					pstmt.executeUpdate();
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pool.freeConnection(con, pstmt, rs);
+			}
+			return flag;
+		}
 
 	// 제품명 뽑아내기
 	public Vector<ProductBean> printPname() {

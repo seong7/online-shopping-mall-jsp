@@ -1,6 +1,5 @@
 function init(){
     const member_search_btn =  document.getElementById('select_value');
-      
     member_search_btn.addEventListener('keypress', function (e) {
         var key = e.which || e.keyCode;
         if (key === 13) { 
@@ -11,6 +10,7 @@ function init(){
     function ajaxEvent(){
         let select_type = document.getElementById('select_type').value;
         let select_value = member_search_btn.value;
+        
     	console.log('event in');
     	if(select_value){
     	    //member_ajax start
@@ -30,8 +30,12 @@ function init(){
     	    		
     	    		 $("#judgeRow").nextAll().remove();
     	    			for(let j =0; j<row_length; j++){
+        	    		let aTagStr = "<a href=./member_view.jsp?id="+ reulstParse[j].id +">";
+    	    			aTagStr += reulstParse[j].id;
+    	    			aTagStr += "</a>";
+    	    			
     	        		let row = result_table.insertRow(1);
-    	    			row.insertCell(0).innerHTML = reulstParse[j].id;
+    	    			row.insertCell(0).innerHTML = aTagStr;
     	    			row.insertCell(1).innerHTML = reulstParse[j].name;
     	    			row.insertCell(2).innerHTML = reulstParse[j].birthday;
     	    			row.insertCell(3).innerHTML = reulstParse[j].joindate;
@@ -65,7 +69,10 @@ function init(){
     	 		 $("#judgeRow").nextAll().remove();
     	 			for(let j =0; j<row_length; j++){
     	                let row = result_table.insertRow(1);
-    	                row.insertCell(0).innerHTML = reulstParse[j].id;
+    	    			let aTagStr2 = "<a href=./member_view.jsp?id="+ reulstParse[j].id +">";
+    	    			aTagStr2 += reulstParse[j].id;
+    	    			aTagStr2 += "</a>";
+    	                row.insertCell(0).innerHTML = aTagStr2;
     	                row.insertCell(1).innerHTML = reulstParse[j].name;
     	                row.insertCell(2).innerHTML = reulstParse[j].birthday;
     	                row.insertCell(3).innerHTML = reulstParse[j].joindate;
