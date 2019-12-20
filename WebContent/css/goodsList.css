@@ -1,6 +1,5 @@
-@charset "UTF-8";
-/* Ìè∞Ìä∏ Ï∂îÍ∞Ä*/
-/* ÍµµÏùå */
+/* ∆˘∆Æ √ﬂ∞°*/
+/* ±Ω¿Ω */
 @font-face {
   font-family: 'ON_IGothic';
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff") format("woff");
@@ -8,7 +7,7 @@
   font-style: normal;
 }
 
-/* ÏùºÎ∞ò */
+/* ¿œπ› */
 @font-face {
   font-family: 'Handon3gyeopsal600g';
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff") format("woff");
@@ -39,6 +38,16 @@ main .goodslist_tit {
   text-align: center;
   width: 1050px;
   font-family: "ON_IGothic";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 main .goodslist_tit .goodslist_btn {
@@ -52,6 +61,8 @@ main .goodslist_tit .goodslist_detail {
   display: inline-block;
   color: gray;
   margin-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #fec084;
 }
 
 main ul {
@@ -64,6 +75,7 @@ main ul {
       -ms-flex-direction: row;
           flex-direction: row;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 main ul li {
@@ -103,4 +115,4 @@ main ul li .goods_info .price {
   font-family: "ON_IGothic";
   margin-top: 6px;
 }
-/*# sourceMappingURL=index.css.map */
+/*# sourceMappingURL=goodsList.css.map */

@@ -1,4 +1,4 @@
-@import '../../font/font-family'; 
+@import '../font/font-family'; 
 $normalFont: 'ON_IGothic';
 
 .default_placeholder_red::-webkit-input-placeholder{ color: red !important;}
@@ -14,6 +14,17 @@ html{
     user-select:none;
 }
 
+.nav_a{
+    text-decoration: none;
+    color: #333;
+}
+// a {
+//     span{
+//       text-decoration: none;
+  
+//     }
+// }
+
 /*전체 컴포넌트 Wrapper 클래스(modal window 제외 Wrap)*/
 #top_wrapper{
     position: relative;
@@ -22,11 +33,17 @@ html{
     box-shadow:0px 8px 10px rgba(204,204,204, 0.5);
 }
 /*로고 이미지 position*/
-#homeLogo>img{
-    width: 200px;
-    display: block;
-    margin : 0px auto;
-    margin-top : 30px;
+#homeLogo{
+    text-align: center;
+    #logo_a{
+    display: inline-block;
+    #logoImg{
+        width: 250px;
+        display: block;
+        margin : 0px auto;
+        margin-top : 30px;
+    }
+}
 }
 /*search_form 위치 */
 #search_form{
@@ -464,6 +481,10 @@ input[id*='userPopup']{
     height: 100%;
     background-color: rgba(0, 0, 0, .7);
     z-index: 1;
+}
+
+#daumWrap{
+    left: 110%;
 }
 
 /*  테두리 임시 부여  */

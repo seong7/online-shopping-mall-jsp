@@ -40,6 +40,11 @@ html {
   user-select: none;
 }
 
+.nav_a {
+  text-decoration: none;
+  color: #333;
+}
+
 /*전체 컴포넌트 Wrapper 클래스(modal window 제외 Wrap)*/
 #top_wrapper {
   position: relative;
@@ -51,8 +56,16 @@ html {
 }
 
 /*로고 이미지 position*/
-#homeLogo > img {
-  width: 200px;
+#homeLogo {
+  text-align: center;
+}
+
+#homeLogo #logo_a {
+  display: inline-block;
+}
+
+#homeLogo #logo_a #logoImg {
+  width: 250px;
   display: block;
   margin: 0px auto;
   margin-top: 30px;
@@ -596,6 +609,10 @@ input[id*='userPopup'] {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1;
+}
+
+#daumWrap {
+  left: 110%;
 }
 
 /*  테두리 임시 부여  */
