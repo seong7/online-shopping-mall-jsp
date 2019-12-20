@@ -176,7 +176,6 @@ public class OrderMgr {
 			if((keyWord.trim().equals("")||keyWord==null)&&
 			((keyDate1.trim().equals("")||keyDate1==null))&&
 			((keyDate2.trim().equals("")||keyDate2==null))){//검색이 아닌 경우
-				System.out.print(keyDate1);
 				sql = "select * from order_tb order by o_index desc, "
 						+ "o_index limit ?,?";
 				pstmt = con.prepareStatement(sql);
@@ -185,7 +184,6 @@ public class OrderMgr {
 			} else if((!keyDate1.trim().equals("")||keyDate1!=null) &&
 					  (!keyDate2.trim().equals("")||keyDate2!=null)&&
 					  (keyWord.trim().equals("")||keyWord==null)){//기간 검색인 경우
-				System.out.print(keyDate1);	
 				sql = "select * from order_tb WHERE o_date BETWEEN " +
 					  "? and ? order by o_index desc, o_index LIMIT ?,?"; 
 					pstmt = con.prepareStatement(sql); 
@@ -194,7 +192,6 @@ public class OrderMgr {
 					  pstmt.setInt(3, start);//게시물 시작번호 
 					  pstmt.setInt(4, cnt);//가져올 게시물개수 
 			}else if(!keyWord.trim().equals("")||keyWord!=null){//검색어 검색인 경우
-				System.out.print(keyDate1);
 				sql = "select * from order_tb where "+ keyField 
 						+" like ? order by o_index desc, o_index limit ?,?";
 				pstmt = con.prepareStatement(sql);
@@ -368,20 +365,23 @@ public class OrderMgr {
 		Vector<AdminOrderBean> alist = new Vector<AdminOrderBean>();
 		try {
 			con = pool.getConnection();
-			sql = "SELECT O.o_index, D.p_code, O.o_del_date, O.o_status, COUNT(*), O.o_total_amount "
-					+ "FROM order_detail_tb D JOIN order_tb O ON D.o_index = O.o_index WHERE D.o_index "
-					+ "IN(SELECT o_index FROM order_tb WHERE o_id=?) LIMIT 1;";
+			sql = "SELECT O.o_index, O.o_del_date, O.o_status,  O.o_total_amount, P.p_name, COUNT(*), R.rt_qty"
+					+ " FROM order_tb O JOIN order_detail_tb D ON O.o_index = D.o_index "
+					+ "JOIN product_mst_tb P ON P.p_code = D.p_code LEFT OUTER "
+					+ "JOIN return_tb R ON R.o_index = D.o_index "
+					+ "WHERE o_id = ? GROUP BY D.o_index;";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				AdminOrderBean bean = new AdminOrderBean();
 				bean.setO_index(rs.getInt(1));
-				bean.setP_code(rs.getInt(2));
-				bean.setO_del_date(rs.getString(3));
-				bean.setO_status(rs.getString(4));
-				bean.setProduct_count(rs.getInt(5));
-				bean.setO_total_amount(rs.getInt(6));
+				bean.setO_del_date(rs.getString(2));
+				bean.setO_status(rs.getString(3));
+				bean.setO_total_amount(rs.getInt(4));
+				bean.setP_name(rs.getString(5));
+				bean.setProduct_count(rs.getInt(6));
+				bean.setRt_qty(rs.getInt(7));
 				alist.addElement(bean);
 			}
 		} catch (Exception e) {
