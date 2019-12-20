@@ -4,16 +4,9 @@
 <%
 	request.setCharacterEncoding("EUC-KR");
 %>
-<<<<<<< HEAD
-<link rel="stylesheet" type="text/css" href="css/index.css">
-=======
-<html>
-<head>
-<!-- <title>-관리자-제품 등록</title>  -->
-<script src="script.js"></script>
-</head>
 
->>>>>>> origin/dev
+<link rel="stylesheet" type="text/css" href="css/index.css">
+
 <!-- <title>-관리자-제품 등록</title> -->
 
 <!-- <link rel="stylesheet" type="text/css" href="./css/mypage_orderlist.css"> -->
@@ -34,10 +27,7 @@
 				enctype="multipart/form-data">
 				<!-- enctype="multipart/form-data" 일때에는 post방식으로 보낸다. 
 			대신에 action을 통해서 action="productProc.jsp?flag=insert" 를 해줘야한다.-->
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/dev
         
                 <h3 class="inner_title">기본정보</h3>
 
