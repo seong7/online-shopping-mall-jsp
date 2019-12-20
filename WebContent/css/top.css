@@ -610,6 +610,10 @@ input[id*='userPopup'] {
   z-index: 1;
 }
 
+#daumWrap {
+  left: 110%;
+}
+
 /*  테두리 임시 부여  */
 /* #modalDiv > #modalInnerFrame *{
     border: 1px solid orange;

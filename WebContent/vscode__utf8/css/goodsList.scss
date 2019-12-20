@@ -19,6 +19,9 @@ main{
         text-align: center;
         width:1050px;
         font-family:$normalFont;
+        display: flex;
+        flex-direction: column;
+        align-items:center;
         .goodslist_btn{
             display: block;
             text-decoration: none;

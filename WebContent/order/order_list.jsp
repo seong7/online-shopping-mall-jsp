@@ -106,8 +106,8 @@
 		document.readFrm.submit();
 	}
 	
-	function read(num) {
-		document.readFrm.num.value = num;
+	function read(o_index) {
+		document.readFrm.o_index.value = o_index;
 		document.readFrm.action = "order_view.jsp";
 		document.readFrm.submit();
 	}
@@ -123,10 +123,16 @@
 			document.readFrm.submit();
 		}
 </script>
+
 </head>
 <body>
+
+
 <div align="center"><br/>
+<h2>주문정보</h2>
+<hr width="60%">
 <form  name="searchFrm">
+<h3>주문정보 검색</h3>
 	<table>
  		<tr>
   			<td align="center" valign="bottom">
@@ -174,6 +180,7 @@
 	</table>
 	
 <hr width="60%">
+<h3>주문 리스트</h3>
 <table>
 	 <tr>
 	 		<th>번호</th>
@@ -256,7 +263,7 @@
 </form>
 
 <form name="readFrm">
-	<input type="hidden" name="num">
+	<input type="hidden" name="o_index">
 	<input type="hidden" name="nowPage" value="<%=nowPage%>">
 	<input type="hidden" name="keyField" value="<%=keyField%>">
 	<input type="hidden" name="keyWord" value="<%=keyWord%>">
