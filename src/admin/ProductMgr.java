@@ -112,7 +112,7 @@ public class ProductMgr {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
-		boolean flag = false;
+		boolean flag = false;			
 		try {
 			MultipartRequest multi = new MultipartRequest(req, UPLOAD, MAXSIZE, ENCTYPE, new DefaultFileRenamePolicy());
 			String upFile1 = multi.getFilesystemName("upFile1");
@@ -121,6 +121,12 @@ public class ProductMgr {
 			File f1 = multi.getFile("upFile1");
 			File f2 = multi.getFile("upFile2");
 			File f3 = multi.getFile("upFile3");
+			int p_code = Integer.parseInt(multi.getParameter("pcode"));
+			product.ProductMgr mgr = new product.ProductMgr();
+			ProductBean bean = mgr.getProduct(p_code);
+			String fa = bean.getP_main_pht_name();
+			String fb = bean.getP_detail_pht_name();
+			String fc = bean.getP_info_pht_name();
 			con = pool.getConnection();
 			sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
 					+ "p_main_pht_name=?, p_main_pht_size=?, p_detail_pht_name=?, p_detail_pht_size=?, "
@@ -134,7 +140,10 @@ public class ProductMgr {
 				int size1 = (int) f1.length();					
 				pstmt.setString(4, upFile1);
 				pstmt.setInt(5, size1);
-			} else {
+				//업로드 파일이 존재할때 기존에 있는 파일은 삭제
+				//삭제코드 만들기
+			} else if(!fa.isEmpty() && fa.equals("ready.gif") && multi.getFilesystemName("upFile1")==null ){
+				//업로드파일이 없을때, 기존에 있는 파일이 있다면, 아무일도 없어
 				pstmt.setString(4, "ready.gif");
 				pstmt.setInt(5, 0);
 			}
@@ -267,7 +276,7 @@ public class ProductMgr {
 		return flag;
 	}
 
-	// deleteproduct
+	// deleteproduct(more than 1)
 	public boolean deleteproduct(int p_code[]) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -285,9 +294,23 @@ public class ProductMgr {
 					continue;
 
 				String p_main_pht_name = rs.getString(1);
-				File f = new File(UPLOAD + p_main_pht_name);
-				if (f.exists())
-					f.delete();
+				String p_detail_pht_name = rs.getString(2);
+				String p_info_pht_name = rs.getString(3);
+				if(!p_main_pht_name.equals("ready.gif")) {
+				File f1 = new File(UPLOAD + p_main_pht_name);
+				if (f1.exists())
+					f1.delete();
+				}					
+				if(!p_detail_pht_name.equals("ready.gif")) {
+					File f2 = new File(UPLOAD + p_detail_pht_name);
+					if (f2.exists())
+						f2.delete();
+					}
+				if(!p_info_pht_name.equals("ready.gif")) {
+					File f3 = new File(UPLOAD + p_info_pht_name);
+					if (f3.exists())
+						f3.delete();
+					}
 
 				pstmt.close();
 
@@ -303,6 +326,54 @@ public class ProductMgr {
 		}
 		return flag;
 	}
+	// deleteproduct(1)
+		public boolean deleteproduct1(int p_code) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			boolean flag = false;
+			try {
+				con = pool.getConnection();				
+					sql = "select p_main_pht_name, p_detail_pht_name, p_info_pht_name from product_mst_tb where p_code=? ";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, p_code);
+					rs = pstmt.executeQuery();	
+					if (rs.next()) {
+						
+					String p_main_pht_name = rs.getString(1);
+					String p_detail_pht_name = rs.getString(2);
+					String p_info_pht_name = rs.getString(3);
+					if(!p_main_pht_name.equals("ready.gif")) {
+					File f1 = new File(UPLOAD + p_main_pht_name);
+					if (f1.exists())
+						f1.delete();
+					}					
+					if(!p_detail_pht_name.equals("ready.gif")) {
+						File f2 = new File(UPLOAD + p_detail_pht_name);
+						if (f2.exists())
+							f2.delete();
+						}
+					if(!p_info_pht_name.equals("ready.gif")) {
+						File f3 = new File(UPLOAD + p_info_pht_name);
+						if (f3.exists())
+							f3.delete();
+						}
+				
+					pstmt.close();
+
+					sql = "delete from product_mst_tb where p_code =?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, p_code);
+					pstmt.executeUpdate();
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pool.freeConnection(con, pstmt, rs);
+			}
+			return flag;
+		}
 
 	// 제품명 뽑아내기
 	public Vector<ProductBean> printPname() {
