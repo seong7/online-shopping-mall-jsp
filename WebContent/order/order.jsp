@@ -45,7 +45,7 @@
 								<td>상품금액</td>
 							</tr>
 								<%
-									Vector<CartBean> vlist = cMgr.getCart("u1");
+									Vector<CartBean> vlist = cMgr.getCart(id);
 									if(vlist.isEmpty()){
 								%>
 								<tr> 
@@ -103,7 +103,7 @@
 						<h3 class="order_subtitle">배송정보</h3>
 						<table>
 								<%
-									Vector<OrderBean> olist = oMgr.getOrder("u1");
+									Vector<OrderBean> olist = oMgr.getOrder(id);
 									OrderBean order = olist.get(0); //최근 주문 정보 
 								%>
 							<tr>
