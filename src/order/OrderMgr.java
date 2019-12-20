@@ -368,20 +368,23 @@ public class OrderMgr {
 		Vector<AdminOrderBean> alist = new Vector<AdminOrderBean>();
 		try {
 			con = pool.getConnection();
-			sql = "SELECT O.o_index, D.p_code, O.o_del_date, O.o_status, COUNT(*), O.o_total_amount "
-					+ "FROM order_detail_tb D JOIN order_tb O ON D.o_index = O.o_index WHERE D.o_index "
-					+ "IN(SELECT o_index FROM order_tb WHERE o_id=?) LIMIT 1;";
+			sql = "SELECT O.o_index, O.o_del_date, O.o_status,  O.o_total_amount, P.p_name, COUNT(*), R.rt_qty"
+					+ " FROM order_tb O JOIN order_detail_tb D ON O.o_index = D.o_index "
+					+ "JOIN product_mst_tb P ON P.p_code = D.p_code LEFT OUTER "
+					+ "JOIN return_tb R ON R.o_index = D.o_index "
+					+ "WHERE o_id = ? GROUP BY D.o_index;";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				AdminOrderBean bean = new AdminOrderBean();
 				bean.setO_index(rs.getInt(1));
-				bean.setP_code(rs.getInt(2));
-				bean.setO_del_date(rs.getString(3));
-				bean.setO_status(rs.getString(4));
-				bean.setProduct_count(rs.getInt(5));
-				bean.setO_total_amount(rs.getInt(6));
+				bean.setO_del_date(rs.getString(2));
+				bean.setO_status(rs.getString(3));
+				bean.setO_total_amount(rs.getInt(4));
+				bean.setP_name(rs.getString(5));
+				bean.setProduct_count(rs.getInt(6));
+				bean.setRt_qty(rs.getInt(7));
 				alist.addElement(bean);
 			}
 		} catch (Exception e) {

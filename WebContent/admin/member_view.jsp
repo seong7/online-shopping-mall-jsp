@@ -17,31 +17,34 @@
 		<table class="mgr_table verHead" id="search_table">
 		<tr >
 			<th>이름</th>
-			<td><input id="member_name" readonly></td>
+			<td><input class="disabled" id="member_name" readonly></td>
 			<th>아이디</th>
-			<td><input id="member_id" value=<%=request.getParameter("id")%> readonly></td>
+			<td><input class="disabled" id="member_id" value=<%=request.getParameter("id")%> readonly></td>
 		</tr>
 		<tr>
 			<th>생년월일</th>
-			<td><input id="member_birthday" readonly></td>
+			<td><input class="member_inputs disabled" id="member_birthday"  readonly></td>
 			<th>가입일</th>
-			<td><input id="member_joindate" readonly></td>
+			<td><input class="member_inputs disabled" id="member_joindate" readonly></td>
 		</tr>
 		<tr>
 			<th>연락처</th>
-			<td><input id="member_contact" readonly></td>
+			<td><input class="member_inputs disabled" id="member_contact" readonly></td>
 			<th>이메일</th>
-			<td><input id="member_email" readonly></td>
+			<td><input class="member_inputs disabled" id="member_email" readonly></td>
 		</tr>
 		<tr>
 			<th>보유포인트</th>
-			<td><input id="member_point" readonly></td>
+			<td><input class="member_inputs disabled" id="member_point" readonly></td>
 			<th>우편번호</th>
-			<td><input id="member_zipcode" readonly></td>
+			<td><input class="disabled" id="member_zipcode" readonly></td>
 		</tr>
 		<tr>
 			<th>주소</th>
-			<td colspan="3"><input id="member_address" readonly><input id="addr_btn" name="zip_btn" type="button" value="주소 찾기" /></td>
+			<td colspan="3"><input class="disabled" id="member_address" readonly><input id="addr_btn" name="zip_btn" type="button" value="주소 찾기" /></td>
+		</tr>			
+		<th>상세주소</th>
+			<td colspan="3"><input class="member_inputs disabled" id="member_address_detail" readonly></td>
 		</tr>
 		</table>
 		<div id="view_btn_wrapper">
