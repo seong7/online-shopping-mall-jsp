@@ -1,0 +1,10 @@
+#member_address{
+	width: 300px;
+}
+#addr_btn{
+	width: 120px;
+}
+#view_btn_wrapper{¡¡
+-webkit-flex-direction:row;
+¡¡flex-direction:row;
+}

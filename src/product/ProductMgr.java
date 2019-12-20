@@ -151,7 +151,7 @@ public class ProductMgr {
 		Vector<ProductBean> rlist = new Vector<ProductBean>();		
 		try {
 			con = pool.getConnection();
-			sql = "SELECT p.p_name, p.p_price, p.p_main_pht_name, p.p_on_sale "
+			sql = "SELECT p.p_name, p.p_price, p.p_main_pht_name, p.p_on_sale, O.o_total_amount "
 				+ "FROM product_mst_tb p JOIN review_tb r ON p.p_code = r.p_code "
 				+ "GROUP BY p.p_code having p_on_sale like '1' ORDER BY COUNT(r.p_code) DESC";
 			pstmt = con.prepareStatement(sql);
@@ -253,5 +253,6 @@ public class ProductMgr {
 			pool.freeConnection(con, pstmt, rs);
 		}
 		return pllist;
-  }
+	}
+	
 }
