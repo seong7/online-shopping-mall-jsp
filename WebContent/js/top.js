@@ -357,7 +357,7 @@ function searchInput(){
 			data: {userID: userID},
 //	         아이디 중복체크부
 			success : function(result) {
-				if(result == 1){
+				if(result == 0){
 					$('#id_section_input').css('border-bottom', 'solid 1px green');
 					$('#id_section_input').css('box-shadow', '0 4px 1px -3px green');
 					$('#id_section_btn').removeClass('top_modal_orange');
@@ -402,7 +402,7 @@ function searchInput(){
 				login_pwd : login_pwd
 			},
 			dataType: 'json',
-//	         아이디 중복체크부
+//	         로그인부
 			success : function(result) {
 				if(result == 1){
 					$('#login_span').removeClass('hidden');

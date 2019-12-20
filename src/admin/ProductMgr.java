@@ -80,7 +80,7 @@ public class ProductMgr {
 			int cnt = pstmt.executeUpdate();
 			if (cnt == 1) {
 				flag = true;
-				// ìœ í†µê¸°í•œ ë„£ê¸°
+				// À¯Åë±âÇÑ ³Ö±â
 				// sql2 = "insert STOCK_TB(p_code, st_exp_date) values(?,?)";
 				// pool.freeConnection(con, pstmt);
 				// con = pool.getConnection();
@@ -89,7 +89,7 @@ public class ProductMgr {
 				// pstmt.setString(2 , multi.getParameter("st_exp_date"));
 				// pstmt.executeUpdate();
 
-				// ì›ì¬ë£Œ ë„£ê¸°
+				// ¿øÀç·á ³Ö±â
 				sql3 = "insert RM_PCT_TB(p_code, rm_code, rm_percentage) values(?,?,?)";
 				pool.freeConnection(con, pstmt);
 				con = pool.getConnection();
@@ -112,7 +112,7 @@ public class ProductMgr {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
-		boolean flag = false;
+		boolean flag = false;			
 		try {
 			MultipartRequest multi = new MultipartRequest(req, UPLOAD, MAXSIZE, ENCTYPE, new DefaultFileRenamePolicy());
 			String upFile1 = multi.getFilesystemName("upFile1");
@@ -121,6 +121,12 @@ public class ProductMgr {
 			File f1 = multi.getFile("upFile1");
 			File f2 = multi.getFile("upFile2");
 			File f3 = multi.getFile("upFile3");
+			int p_code = Integer.parseInt(multi.getParameter("pcode"));
+			product.ProductMgr mgr = new product.ProductMgr();
+			ProductBean bean = mgr.getProduct(p_code);
+			String fa = bean.getP_main_pht_name();
+			String fb = bean.getP_detail_pht_name();
+			String fc = bean.getP_info_pht_name();
 			con = pool.getConnection();
 			sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
 					+ "p_main_pht_name=?, p_main_pht_size=?, p_detail_pht_name=?, p_detail_pht_size=?, "
@@ -134,7 +140,10 @@ public class ProductMgr {
 				int size1 = (int) f1.length();					
 				pstmt.setString(4, upFile1);
 				pstmt.setInt(5, size1);
-			} else {
+				//¾÷·Îµå ÆÄÀÏÀÌ Á¸ÀçÇÒ¶§ ±âÁ¸¿¡ ÀÖ´Â ÆÄÀÏÀº »èÁ¦
+				//»èÁ¦ÄÚµå ¸¸µé±â
+			} else if(!fa.isEmpty() && fa.equals("ready.gif") && multi.getFilesystemName("upFile1")==null ){
+				//¾÷·ÎµåÆÄÀÏÀÌ ¾øÀ»¶§, ±âÁ¸¿¡ ÀÖ´Â ÆÄÀÏÀÌ ÀÖ´Ù¸é, ¾Æ¹«ÀÏµµ ¾ø¾î
 				pstmt.setString(4, "ready.gif");
 				pstmt.setInt(5, 0);
 			}
@@ -183,7 +192,7 @@ public class ProductMgr {
 			File f3 = multi.getFile("upFile3");
 
 			con = pool.getConnection();
-			// ì´ë¯¸ì§€ íŒŒì¼ê¹Œì§€ ìˆ˜ì •
+			// ÀÌ¹ÌÁö ÆÄÀÏ±îÁö ¼öÁ¤
 			if (multi.getFilesystemName("upFile1") != null) {
 				int size1 = (int) f1.length();
 				sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
@@ -196,7 +205,7 @@ public class ProductMgr {
 				pstmt.setInt(5, size1);
 				pstmt.setInt(6, Integer.parseInt(multi.getParameter("p_code")));
 			} else {
-				// ì´ë¯¸ì§€ íŒŒì¼ ìˆ˜ì •ì´ ì•„ë‹˜
+				// ÀÌ¹ÌÁö ÆÄÀÏ ¼öÁ¤ÀÌ ¾Æ´Ô
 				sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
 						+ "p_main_pht_name=?, p_main_pht_size=? where p_code=?";
 				pstmt = con.prepareStatement(sql);
@@ -267,7 +276,7 @@ public class ProductMgr {
 		return flag;
 	}
 
-	// deleteproduct
+	// deleteproduct(more than 1)
 	public boolean deleteproduct(int p_code[]) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -285,9 +294,23 @@ public class ProductMgr {
 					continue;
 
 				String p_main_pht_name = rs.getString(1);
-				File f = new File(UPLOAD + p_main_pht_name);
-				if (f.exists())
-					f.delete();
+				String p_detail_pht_name = rs.getString(2);
+				String p_info_pht_name = rs.getString(3);
+				if(!p_main_pht_name.equals("ready.gif")) {
+				File f1 = new File(UPLOAD + p_main_pht_name);
+				if (f1.exists())
+					f1.delete();
+				}					
+				if(!p_detail_pht_name.equals("ready.gif")) {
+					File f2 = new File(UPLOAD + p_detail_pht_name);
+					if (f2.exists())
+						f2.delete();
+					}
+				if(!p_info_pht_name.equals("ready.gif")) {
+					File f3 = new File(UPLOAD + p_info_pht_name);
+					if (f3.exists())
+						f3.delete();
+					}
 
 				pstmt.close();
 
@@ -303,13 +326,61 @@ public class ProductMgr {
 		}
 		return flag;
 	}
+	// deleteproduct(1)
+		public boolean deleteproduct1(int p_code) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			boolean flag = false;
+			try {
+				con = pool.getConnection();				
+					sql = "select p_main_pht_name, p_detail_pht_name, p_info_pht_name from product_mst_tb where p_code=? ";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, p_code);
+					rs = pstmt.executeQuery();	
+					if (rs.next()) {
+						
+					String p_main_pht_name = rs.getString(1);
+					String p_detail_pht_name = rs.getString(2);
+					String p_info_pht_name = rs.getString(3);
+					if(!p_main_pht_name.equals("ready.gif")) {
+					File f1 = new File(UPLOAD + p_main_pht_name);
+					if (f1.exists())
+						f1.delete();
+					}					
+					if(!p_detail_pht_name.equals("ready.gif")) {
+						File f2 = new File(UPLOAD + p_detail_pht_name);
+						if (f2.exists())
+							f2.delete();
+						}
+					if(!p_info_pht_name.equals("ready.gif")) {
+						File f3 = new File(UPLOAD + p_info_pht_name);
+						if (f3.exists())
+							f3.delete();
+						}
+				
+					pstmt.close();
 
-	// ì œí’ˆëª… ë½‘ì•„ë‚´ê¸°
+					sql = "delete from product_mst_tb where p_code =?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, p_code);
+					pstmt.executeUpdate();
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pool.freeConnection(con, pstmt, rs);
+			}
+			return flag;
+		}
+
+	// Á¦Ç°¸í »Ì¾Æ³»±â
 	public Vector<ProductBean> printPname() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
-		// selectì¼ë•Œ í…Œì´ë¸” ìŠ¤í‚¤ë§ˆ(êµ¬ì¡°), ë ˆì½”ë“œ ë‹¨ìœ„
+		// selectÀÏ¶§ Å×ÀÌºí ½ºÅ°¸¶(±¸Á¶), ·¹ÄÚµå ´ÜÀ§
 		ResultSet rs = null;
 		String sql = null;
 		Vector<ProductBean> tlist = new Vector<ProductBean>();
@@ -317,13 +388,13 @@ public class ProductMgr {
 			con = pool.getConnection();
 			sql = "select distinct p_name from product_mst_tb";
 			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery(); // select ì‹¤í–‰
-			while (rs.next()) { // rsì˜ í¬ì»¤ìŠ¤ëŠ” í…Œì´ë¸”ì˜ ì²« í–‰
+			rs = pstmt.executeQuery(); // select ½ÇÇà
+			while (rs.next()) { // rsÀÇ Æ÷Ä¿½º´Â Å×ÀÌºíÀÇ Ã¹ Çà
 				String pname = rs.getString("p_name");
-				// í…Œì´ë¸”ì—ì„œ ê°€ì ¸ì˜¨ ê°’ë“¤ì„ ë¹ˆì¦ˆì— ì €ì¥
+				// Å×ÀÌºí¿¡¼­ °¡Á®¿Â °ªµéÀ» ºóÁî¿¡ ÀúÀå
 				ProductBean bean = new ProductBean();
 				bean.setP_name(pname);
-				// ë¹ˆì¦ˆë¥¼ Vectorì— ì €ì¥
+				// ºóÁî¸¦ Vector¿¡ ÀúÀå
 				tlist.addElement(bean);
 			}
 		} catch (Exception e) {
@@ -364,7 +435,7 @@ public class ProductMgr {
 		return list;
 	}
 
-	// goods_masterì—ì„œ p_nameê³¼ p_dateë¥¼ í†µí•œ ê²€ìƒ‰ê²°ê³¼ ì°¾ê¸°
+	// goods_master¿¡¼­ p_name°ú p_date¸¦ ÅëÇÑ °Ë»ö°á°ú Ã£±â
 	public Vector<ProductBean> searchproduct(String p_name, int p_date1, int p_date2) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
