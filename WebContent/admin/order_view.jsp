@@ -15,14 +15,17 @@
 
 <%
 		request.setCharacterEncoding("EUC-KR");
-		//int o_index = Integer.parseInt(request.getParameter("o_index"));
-		int o_index = 1; //확인용 데이터 
+		int o_index = Integer.parseInt(request.getParameter("o_index"));
+		//int o_index = 18; //확인용 데이터 
 		String nowPage = request.getParameter("nowPage");
 		String keyField = request.getParameter("keyField");
 		String keyWord = request.getParameter("keyWord");
 		String keyDate1 = request.getParameter("keyDate1");
 		String keyDate2 = request.getParameter("keyDate2");
 		String numPerPage = request.getParameter("numPerPage");
+		
+		
+		
 %>
 <html>
 <head>
@@ -31,6 +34,15 @@ function list() {//nowPage와 NumPerPage가지고 list.jsp로 이동
 	//기존에 action값이 지정이 되어있어도 수정 가능 
 	document.listFrm.action = "order_list.jsp";
 	document.listFrm.submit();
+}
+
+function confirmDel(){
+	if(confirm("order number <%=o_index%>를 삭제하시겠습니까?")==true){
+		document.listFrm.action = "orderDelete.jsp";
+		document.listFrm.submit();
+	}else{ //취소
+		return;
+	}
 }
 </script>
 </head>
@@ -141,16 +153,15 @@ function list() {//nowPage와 NumPerPage가지고 list.jsp로 이동
 	</table>
 	<table>
 	<tr>
-		<td><input type="submit"  value="수정" 
-		onclick="location.href='orderUpdate.jsp?nowPage=
-		<%=nowPage%>&o_index=<%=o_index%>'"></td>
-		<td><input type="submit" value="삭제" onclick=""></td>
-		<td><input type="submit" value="리스트" 
-		onclick="location.href='javascript:list()'"></td>
+		<td><a href="javascript:list()" >리스트</a></td>
+		<td><a href="orderUpdate.jsp">수정</a></td>
+		<td><a href="javascript:confirmDel()">삭제</a></td>
+		
 	</tr>
 	</table>
 </div>
 <form name="listFrm">
+	<input type="hidden" name="o_index" value="<%=o_index%>">
 	<input type="hidden" name="nowPage" value="<%=nowPage%>">
 	<input type="hidden" name="numPerPage" value="<%=numPerPage%>">
 	<%if(!(keyWord==null||keyWord.equals(""))){ %>

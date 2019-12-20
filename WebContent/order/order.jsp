@@ -17,6 +17,7 @@
 <%
 		request.setCharacterEncoding("EUC-KR");
 		String id = (String)session.getAttribute("idKey");
+		id = "u1"; // 확인용 
 		int priceTotal = 0;
 		int shippingPrice = 2500;
 %>
@@ -83,18 +84,18 @@
 						<table>
 							<tr>
 							<%
-								
+								MemberBean mbean = mMgr.getMember(id);
 							%>
 								<td>보내는 분</td>
-								<td>조은규</td>
+								<td><%=mbean.getNAME() %></td>
 							</tr>
 							<tr>
 								<td>휴대폰 </td>
-								<td>010-3841-0424</td>
+								<td><%=mbean.getContact() %></td>
 							</tr>
 							<tr>
 								<td>이메일 </td>
-								<td>mwchoi0428@gmail.com</td>
+								<td><%=mbean.getEmail() %></td>
 							</tr>
 						</table>
 						<hr/>
