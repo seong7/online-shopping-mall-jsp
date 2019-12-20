@@ -14,31 +14,20 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
- * Servlet implementation class MemberViewMemberlit
+ * Servlet implementation class MemberViewAllMember
  */
-@WebServlet("/member/memberlist")
-public class MemberViewMemberlist extends HttpServlet {
+@WebServlet("/member/allmember")
+public class MemberViewAllMember extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
+    
+	   
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=EUC-KR");
 		request.setCharacterEncoding("UTF-8");
 		
-		String type = request.getParameter("select_type");
-		String value = request.getParameter("select_value");
-		System.out.println("서블릿단 : " +value);
-		if(type.equals("ID")) {
-			type ="id";
-			}
-		else if (type.equals("이름")) {
-			type="NAME";
-		}
-		else {
-			type="email";
-		}
 		MemberMgr mgr = new MemberMgr();
-		Vector<MemberBean> vlist = mgr.getMemberList(type, value);
+		Vector<MemberBean> vlist = mgr.getAllMemberList();
 		JSONArray jsonarray = new JSONArray();
 		PrintWriter pw = response.getWriter();
 
@@ -57,6 +46,7 @@ public class MemberViewMemberlist extends HttpServlet {
 		pw.println(jsonarray);
 		pw.flush();
 		pw.close();
+		
 	}
 
 }

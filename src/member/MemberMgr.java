@@ -18,6 +18,7 @@ public class MemberMgr {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
+		int flag = 0;
 		try {
 			con = pool.getConnection();
 			sql = "select * from USER_TB where id=?";
@@ -25,16 +26,14 @@ public class MemberMgr {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			if(rs.next() || id.equals("")) { 
-				return 0; 
-			} else {
-				return 1; 
+				flag = 1; 
 			} 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
-		return -1;
+		return flag;
 	}
 	//INSERT INTO `user_tb` (`id`, `pwd`, `NAME`, `birthday`, `email`, `contact`, `zipcode`, `address`, `address_detail`, `join_date`) VALUES
 	public int signup_user(MemberBean bean) {

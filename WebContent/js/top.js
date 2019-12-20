@@ -379,7 +379,6 @@ function searchInput(){
 					 $('#id_section_input').focus();
 
 					 sign_up_id_flag = 0;
-
 				}
 			}, error : function(){
 				sign_up_id_flag = 0;
