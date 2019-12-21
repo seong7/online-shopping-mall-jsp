@@ -23,7 +23,7 @@
 	<header>
 		<img id="main_pht" src="../img/product/<%=bean.getP_main_pht_name()%>" style="height: 400px;">
 		
-		<div id="header_info_wrapper">
+		<form id="header_info_wrapper" method="get" action="../order/order.jsp">
 			<div class="header name">
 				<span><%=bean.getP_name() %></span>
 			</div>
@@ -42,6 +42,13 @@
 				<span class="title">총 상품 금액</span>
 				<span id="total"></span>
 			</div>
+			<div class="header btn">
+				<input type="button" class="btn" value="장바구니에 추가"> 
+				<input type="submit" class="btn" value="구매하기">
+			</div>
+		</form>			
+
+	</header>
 			
 			
 			<!--  제품 추천 알고리즘 영역 -->
@@ -55,22 +62,34 @@
 				</ul>
 			</div>
 			
+			<!-- 설명 이미지 영역 -->
 			<div id="detail">
 				<img id="detail_pht" src="../img/product/<%=bean.getP_detail_pht_name()%>">
 			</div>
 			
-			<div id="review">
-				<table>
+			<!-- 상세 이미지 영역    display : none -->
+			<div id="detail" style="display:none;">
+				<img id="detail_pht" src="../img/product/<%=bean.getP_info_pht_name()%>">
+			</div>
+			
+			
+			<!--  리뷰 영역   display : none -->
+			<div id="review" style="display: none;">
+				<table>	
 					<thead>
-						<td>
+						<th>
 						
-						</td>
+						</th>
 					</thead>
+					<tr>
+						<td>
+						</td>
+					</tr>
 				</table>
 			</div>
 			
 		</div>
-	</header>
+
 	
 
 

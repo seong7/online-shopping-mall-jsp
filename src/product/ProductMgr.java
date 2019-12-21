@@ -91,6 +91,7 @@ public class ProductMgr {
 				sql=  "SELECT p_code, p_name, p_price, p_main_pht_name "
 						+ "FROM product_mst_tb WHERE p_on_sale=1 ORDER BY p_date DESC "
 						+ "LIMIT 0, 4";
+				System.out.println(sql);
 				break;
 				
 			case "all" :
@@ -126,6 +127,7 @@ public class ProductMgr {
 				ProductBean bean = new ProductBean();
 				bean.setP_code(rs.getInt(1));
 				bean.setP_name(rs.getString(2));
+				System.out.println(bean.getP_name());
 				bean.setP_price(rs.getInt(3));
 				bean.setP_main_pht_name(rs.getString(4));
 				vlist.addElement(bean);
