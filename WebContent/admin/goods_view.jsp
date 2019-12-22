@@ -51,7 +51,7 @@
         
                                 <tr>
                                     <th>제품코드</th>
-                                    <td><input name="p_code" value="<%=bean.getP_code()%>" disabled>                                                            	
+                                    <td><input name="p_code" value="<%=bean.getP_code()%>" readonly>                                                            	
                                     <th>제품명</th>
                                     <td><input class="1 readChange" name="p_name" value="<%=bean.getP_name()%>" disabled></td>
                                 </tr>
@@ -132,8 +132,14 @@
 
             <div class="submit_wrapper">
                 <input class="btn" type="button" value="목록으로" onclick="location.href='goods_master.jsp'">
-                <input class="btn" type="submit" value="수정완료" >
+                <input class="btn readChange" type="submit" value="수정완료" disabled>
+                <%String q = "";
+                q+="p_code="+p_code+"&";
+                %>
+                <input class="btn" type="button" value="삭제하기" onclick="location.href='goods_Proc.jsp?flag=delete&pcode=<%=bean.getP_code()%>'">
                 <input class="btn" type="reset" value="다시쓰기">
+                <input type="hidden"  value="<%=bean.getP_code()%>" name="pcode">
+                
             </div>
             </form>        
         </div>		

@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
+import order.OrderBean;
+
 public class MemberMgr {
 
 	private DBConnectionMgr pool;
@@ -244,5 +246,41 @@ public class MemberMgr {
 				}
 					return vlist;
 			}
+			public MemberBean getMemberDetail(String id) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = null;
+				MemberBean bean = new MemberBean();
+				try {
+					con = pool.getConnection();
+					sql = "SELECT U.id, U.pwd, U.name, U.birthday, U.email, U.contact, U.zipcode, U.address, U.address_detail, U.join_date, SUM(pt_point) "
+							+ "FROM user_tb U JOIN POINT_tb P ON U.id = P.id "
+							+ "WHERE U.id=?;";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, id);
+					rs = pstmt.executeQuery();
+					while(rs.next()){
+						bean.setId(rs.getString(1));
+						bean.setPwd(rs.getString(2));
+						bean.setId(rs.getString(3));
+						bean.setNAME(rs.getString(4));
+						bean.setBirthday(rs.getString(4));
+						bean.setEmail(rs.getString(5));
+						bean.setContact(rs.getString(6));
+						bean.setZipcode(rs.getInt(7));
+						bean.setAddress(rs.getString(8));
+						bean.setAddress_detail(rs.getString(9));
+						bean.setJoin_date(rs.getString(10));
+						bean.setPoint(rs.getInt(11));
+						}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt, rs);
+				}
+					return bean;
+			}
+	
 }
 

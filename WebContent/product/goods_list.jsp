@@ -1,8 +1,6 @@
 <%@ page contentType="text/html; charset=EUC-KR"%>
-<%@page import="product.UtilMgr"%>
 <%@page import="product.ProductBean"%>
 <%@page import="java.util.Vector"%>
-<%@page import="java.text.DecimalFormat" %>
 <%@page import="product.productUtil"%>
 
 <jsp:useBean id="mgr" class="product.ProductMgr" />
@@ -50,6 +48,7 @@
 	
 	if(flag.equals("search")){
 		searchTerm = request.getParameter("searchTerm");
+		System.out.println("입력된 검색어 : " +searchTerm);
 		if(searchTerm.trim().equals("")  || searchTerm == null){
 			listName = "검색어를 입력해주세요.";
 			vlist = null;
@@ -104,11 +103,11 @@
 			%>
 			
 			<li>
-				<a href="#">
+				<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
 					<img src="../img/product/<%=pbean.getP_main_pht_name()%>">
 				</a>
 				<div class="goods_info">
-					<a href="#">
+					<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
 						<span class="name">
 							<%=pbean.getP_name()%>
 						</span>

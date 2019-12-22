@@ -99,11 +99,11 @@
                                     <td><input type="file" name="upFile1"></td>
                                 </tr>
                                 <tr>
-                                    <th>설명이미지</td>
+                                    <th>상세이미지</td>
                                     <td><input type="file" name="upFile2"></td>
                                 </tr>
                                 <tr>
-                                    <th>상세이미지</td>
+                                    <th>정보이미지</td>
                                     <td><input type="file" name="upFile3"></td>
                                 </tr>
                             </table>
