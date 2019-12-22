@@ -355,6 +355,42 @@ public class OrderMgr {
 		}
 	}
 			
+	
+	//어드민창의 값 빼오기위한 mgr
+	public Vector<AdminOrderBean> getAdminOrder(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		Vector<AdminOrderBean> alist = new Vector<AdminOrderBean>();
+		try {
+			con = pool.getConnection();
+			sql = "SELECT O.o_index, O.o_del_date, O.o_status,  O.o_total_amount, P.p_name, COUNT(*), R.rt_qty"
+					+ " FROM order_tb O JOIN order_detail_tb D ON O.o_index = D.o_index "
+					+ "JOIN product_mst_tb P ON P.p_code = D.p_code LEFT OUTER "
+					+ "JOIN return_tb R ON R.o_index = D.o_index "
+					+ "WHERE o_id = ? GROUP BY D.o_index;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				AdminOrderBean bean = new AdminOrderBean();
+				bean.setO_index(rs.getInt(1));
+				bean.setO_del_date(rs.getString(2));
+				bean.setO_status(rs.getString(3));
+				bean.setO_total_amount(rs.getInt(4));
+				bean.setP_name(rs.getString(5));
+				bean.setProduct_count(rs.getInt(6));
+				bean.setRt_qty(rs.getInt(7));
+				alist.addElement(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return alist;
+	}
 			//main
 			public static void main(String[] args) {
 				//OrderMgr mgr = new OrderMgr();
