@@ -48,6 +48,7 @@
 	
 	if(flag.equals("search")){
 		searchTerm = request.getParameter("searchTerm");
+		System.out.println("입력된 검색어 : " +searchTerm);
 		if(searchTerm.trim().equals("")  || searchTerm == null){
 			listName = "검색어를 입력해주세요.";
 			vlist = null;

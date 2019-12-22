@@ -10,7 +10,7 @@
 		request.setCharacterEncoding("EUC-KR");
 		
 		productUtil util = new productUtil();
-		//String flag = request.getParameter("list");
+		
 		Vector<ProductBean> vlist;
 
 %>
