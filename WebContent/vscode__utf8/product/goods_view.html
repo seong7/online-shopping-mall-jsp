@@ -168,35 +168,40 @@
 		<!--****************************-->
 		<!--****************************-->
 
-        
+<!-- goods_veiw CSS link -->
+<link rel="stylesheet" type="text/css" href="css/goods_view.css">
+<script type="text/javascript" src="js/goods_view.js"></script>       
 
 <main>
 	
 	<header>
-		<img id="main_pht" src="../img/product/fus_main1.jpg" alt="이미지 찾을 수 없음" style="height: 400px;">
+        <div id="img_wrapper">
+            <img id="main_pht" src="../img/product/fus_main1.jpg" alt="이미지 찾을 수 없음" style="height: 400px;">
+        </div>
 		
 		<form id="header_info_wrapper" method="get" action="../order/order.jsp">
 			<div class="header name">
 				<span>아이스 찰떡 3종</span>
 			</div>
 			<div class="header price">
-				<span>30,000</span>
+				<span class="title">가격</span>
+				<span class="content" id="price">30,000</span><span> 원</span>
 			</div>
 			<div class="header volume">
 				<span class="title">판매 용량</span>
 				<span class="content">1상자 / 600g</span>
 			</div>
-			<div class="header amount">
+			<div class="header quantity">
 				<span class="title">구매 수량</span>
-				<input type="number" value="1">
+                <input id="quantity" type="number" min="1" max="9" step="1" value="1">
 			</div>
 			<div class="header total">
 				<span class="title">총 상품 금액</span>
 				<span id="total"></span>
 			</div>
-			<div class="header btn">
+			<div class="header btn_wrapper">
 				<input type="button" class="btn" value="장바구니에 추가"> 
-				<input type="submit" class="btn" value="구매하기">
+				<input id="submit" type="submit" class="btn" value="구매하기">
 			</div>
 		</form>			
 

@@ -1,0 +1,101 @@
+@import '../../font/font-family'; 
+$brandColor: #fec084; 
+$titleColor: #333;
+$titleDetailColor: gray;
+$normalFont: 'ON_IGothic';
+
+
+main{
+    display: flex;
+    flex-direction: column;
+    max-width: 1050px;
+    min-width: 1050px;
+    width: 1050px;
+    margin: 0 auto;
+    align-items: center;
+    header{
+        display: flex;
+        width: 96%;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        #img_wrapper{
+            width: 150%;
+            img{
+                width:400px;
+                height: 552px;
+                margin-right: 30px;
+                display: inline-block;
+            }
+        }
+        form{
+            display: inline-block;
+            width: 100%;
+            font-family: $normalFont;
+            color: $titleColor;
+            display: flex;
+            flex-direction: column;
+            padding-left: 30px;
+            .header{
+                margin-bottom: 30px;
+                font-size: 20px;
+            }
+            .name{
+                margin-top: 10px;
+                margin-bottom: 50px;
+                font-size: 30px;
+                // text-align: center;
+                span{
+                    padding-bottom: 10px;
+                    border-bottom: 2px solid $brandColor;
+                    
+                }
+            }
+            .title{
+                display: inline-block;
+                width: 150px;
+                font-size: 20px;
+            }
+            #price{
+                color: #FB9832;
+                font-size: 25px;
+            }
+            #quantity{
+                width: 150px;
+                height: 45px;
+                padding: 10px;
+                text-align: center;
+                border-radius: 3px;
+                font-size: 20px;
+                border: 1px solid grey;
+                color: #333;
+                font-family: $normalFont;
+                &:focus{
+                    border: 3px solid #FB9832;
+                }
+            }
+            .btn_wrapper{
+                margin-top: 30px;
+                .btn{
+                    // height: 30px;
+                    background-color: #f09439;
+                    border: none;
+                    border-radius: 3px;
+                    color: white;
+                    // font-family: $normalFont;
+                    padding: 10px;
+                    font-size: 20px;
+                    // &:hover{
+                    //     background-color: #f09439;
+                    // }
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+                #submit{
+                    margin-left: 15px;
+                }
+
+            }
+        }
+    }
+}
