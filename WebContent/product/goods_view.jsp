@@ -18,33 +18,40 @@
 </script>
 <jsp:include page="../top.jsp"/>
 
+<link rel="stylesheet" type="text/css" href="css/goods_view.css">
+
 <main>
 	
 	<header>
-		<img id="main_pht" src="../img/product/<%=bean.getP_main_pht_name()%>" style="height: 400px;">
+		<div id="img_wrapper">
+			<img id="main_pht" src="../img/product/<%=bean.getP_main_pht_name()%>">
+		</div>
 		
 		<form id="header_info_wrapper" method="get" action="../order/order.jsp">
 			<div class="header name">
 				<span><%=bean.getP_name() %></span>
 			</div>
 			<div class="header price">
-				<span><%=util.price(bean.getP_price())%></span>
+				<span class="title">가격</span>
+				<span class="content" id="price"><%=util.price(bean.getP_price())%></span><span> 원</span>
+				<!-- <input class="content" id="price" type="text" value="30000" readonly><span> 원</span>  -->
 			</div>
 			<div class="header volume">
 				<span class="title">판매 용량</span>
 				<span class="content">1상자 / 600g</span>
 			</div>
-			<div class="header amount">
+			<div class="header quantity">
 				<span class="title">구매 수량</span>
-				<input type="number" value="1">
+				<input id="quantity" type="number" min="1" max="9" step="1" value="1">
 			</div>
 			<div class="header total">
 				<span class="title">총 상품 금액</span>
-				<span id="total"></span>
+				<!-- <span id="total"></span> -->
+				<input id="total" type="text" readonly>
 			</div>
-			<div class="header btn">
-				<input type="button" class="btn" value="장바구니에 추가"> 
-				<input type="submit" class="btn" value="구매하기">
+			<div class="header btn_wrapper">
+				<input id="cartBtn" type="button" class="btn" value="장바구니에 추가"> 
+				<input id="submit" type="submit" class="btn" value="구매하기">
 			</div>
 		</form>			
 
@@ -94,6 +101,8 @@
 
 
 </main>
+
+<script src="js/goods_view.js"></script>
 
 <jsp:include page="../bottom.jsp"/>
 

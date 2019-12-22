@@ -170,13 +170,13 @@
 
 <!-- goods_veiw CSS link -->
 <link rel="stylesheet" type="text/css" href="css/goods_view.css">
-<script type="text/javascript" src="js/goods_view.js"></script>       
+     
 
 <main>
 	
 	<header>
         <div id="img_wrapper">
-            <img id="main_pht" src="../img/product/fus_main1.jpg" alt="이미지 찾을 수 없음" style="height: 400px;">
+            <img id="main_pht" src="../img/product/fus_main1.jpg" alt="이미지 찾을 수 없음">
         </div>
 		
 		<form id="header_info_wrapper" method="get" action="../order/order.jsp">
@@ -197,10 +197,10 @@
 			</div>
 			<div class="header total">
 				<span class="title">총 상품 금액</span>
-				<span id="total"></span>
+				<input id="total" type="text" readonly>
 			</div>
 			<div class="header btn_wrapper">
-				<input type="button" class="btn" value="장바구니에 추가"> 
+				<input id="cartBtn" type="button" class="btn" value="장바구니에 추가"> 
 				<input id="submit" type="submit" class="btn" value="구매하기">
 			</div>
 		</form>			
@@ -251,6 +251,8 @@
 
 
 </main>
+
+<script src="js/goods_view.js"></script>
 
 
 
