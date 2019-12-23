@@ -1,11 +1,11 @@
 <!-- goods_view.jsp에서 p_code, 수량 넘겨오기 -->
-<%@page import="Order.CartBean"%>
-<%@page import="Product.ProductBean"%>
+<%@page import="order.CartBean"%>
+<%@page import="product.ProductBean"%>
 <%@page import="java.util.Vector"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
- <jsp:useBean id="pMgr" class="Product.ProductMgr"/>
- <jsp:useBean id="cMgr" class="Order.CartMgr"/>
+ <jsp:useBean id="pMgr" class="product.ProductMgr"/>
+ <jsp:useBean id="cMgr" class="order.CartMgr"/>
  <%
  		request.setCharacterEncoding("EUC-KR");
  		String id = (String)session.getAttribute("idKey");

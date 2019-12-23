@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=EUC-KR"%>
 <%request.setCharacterEncoding("EUC-KR");%>
-<jsp:useBean id="mMgr" class="Member.MemberMgr" />
-<jsp:useBean id="mBean" class="Member.MemberBean" />
+<jsp:useBean id="mMgr" class="member.MemberMgr" />
+<jsp:useBean id="mBean" class="member.MemberBean" />
 <jsp:setProperty name="mBean" property="*" />
 <%
 boolean flag = mMgr.updateMember(mBean);

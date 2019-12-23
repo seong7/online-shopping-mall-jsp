@@ -1,6 +1,6 @@
-<%@page import="Member.MemberBean"%>
+<%@page import="member.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-<jsp:useBean id="mgr" class="Member.MemberMgr"/>
+<jsp:useBean id="mgr" class="member.MemberMgr"/>
 
       <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script>

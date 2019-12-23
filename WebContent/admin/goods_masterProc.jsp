@@ -1,9 +1,9 @@
-<%@page import="Product.ProductBean"%>
+<%@page import="product.ProductBean"%>
 <%@page import="java.util.Vector"%>
-<%@page import="Product.UtilMgr"%>
+<%@page import="product.UtilMgr"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <jsp:useBean id="aMgr" class="admin.ProductMgr"/>
-<jsp:useBean id="pMgr" class="Product.ProductMgr"/>
+<jsp:useBean id="pMgr" class="product.ProductMgr"/>
 <%
 	request.setCharacterEncoding("EUC-KR");
 	String p_code[]=request.getParameterValues("fch");

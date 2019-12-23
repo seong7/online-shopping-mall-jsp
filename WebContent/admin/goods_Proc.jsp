@@ -1,5 +1,5 @@
 <!-- goods_Proc.jsp -->
-<%@page import="Product.UtilMgr"%>
+<%@page import="product.UtilMgr"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <jsp:useBean id="pMgr" class="admin.ProductMgr"/>
 

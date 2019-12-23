@@ -1,13 +1,13 @@
-<%@page import="Order.OrderDetailBean"%>
-<%@page import="Product.ProductBean"%>
-<%@page import="Order.OrderBean"%>
+<%@page import="order.OrderDetailBean"%>
+<%@page import="product.ProductBean"%>
+<%@page import="order.OrderBean"%>
 <%@page import="java.util.Vector"%>
 <%@page contentType="text/html; charset=EUC-KR"%>
 <%
 	request.setCharacterEncoding("EUC-KR");
 %>
-<jsp:useBean id="orderMgr" class="Order.OrderMgr"/>
-<jsp:useBean id="pMgr" class="Product.ProductMgr"/>
+<jsp:useBean id="orderMgr" class="order.OrderMgr"/>
+<jsp:useBean id="pMgr" class="product.ProductMgr"/>
 
 <%@ include file="../top.jsp" %>
 
