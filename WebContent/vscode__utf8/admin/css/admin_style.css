@@ -359,7 +359,7 @@ form {
 }
 
 /** goods_master.jsp 에만 **/
-#search_btn {
+#search_btn, #member_search_btn {
   background-color: white;
   color: #FB9832;
   width: 80px;
@@ -368,12 +368,12 @@ form {
   border: 2px solid #FB9832;
 }
 
-#search_btn:active {
+#search_btn:active, #member_search_btn:active {
   background-color: #f09439;
   color: white;
 }
 
-#search_btn:hover {
+#search_btn:hover, #member_search_btn:hover {
   cursor: pointer;
 }
 
