@@ -71,7 +71,7 @@ public class MemberSignupServlet extends HttpServlet {
 		}
 		else {
 			session.invalidate();
-			response.sendRedirect("http://localhost:8080/online-shopping-mall/index.jsp");
+			response.sendRedirect(request.getContextPath()+"/index.jsp");
 		}
 	}
 

@@ -653,6 +653,18 @@ input[id*='userPopup'] {
   zoom: 1;
 }
 
+.top_modal_red{
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#FD6F46), to(#FB9832)) !important;
+ 	background-image: linear-gradient(to bottom, #FD6F46, #FB9832) !important;
+}
+.top_modal_green{
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#bce0b4), to(#32a852)) !important;
+  background-image: linear-gradient(to bottom, #bce0b4, #32a852) !important;
+}
+.top_modal_red{
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ef3b39), to(#ff2123)) !important;
+  background-image: linear-gradient(to bottom, #ef3b39, #ff2123) !important;
+}
 /*inputform color*/
 strong {
   color: #0abde3;
