@@ -22,7 +22,7 @@
 			int p_code = Integer.parseInt(request.getParameter("pcode")); 
 			System.out.println("플래그는"+flag);
 			System.out.println(p_code);
-			pMgr.deleteproduct1(p_code);
+			pMgr.deleteproduc(p_code);
 			msg = "상품을 삭제하였습니다.";
 			
 		}else{}

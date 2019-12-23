@@ -364,7 +364,6 @@ public class ProductMgr {
 					pstmt.setInt(1, p_code);
 					rs = pstmt.executeQuery();	
 					if (rs.next()) {
-						
 					String p_main_pht_name = rs.getString(1);
 					String p_detail_pht_name = rs.getString(2);
 					String p_info_pht_name = rs.getString(3);

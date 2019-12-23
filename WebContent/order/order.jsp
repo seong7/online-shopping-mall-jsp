@@ -1,4 +1,4 @@
-<!-- 사용자 주문서 page -->
+<!-- 사용자 주문서 page: cart.jsp에서 수량가져옴. -->
 
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <%@page import="product.UtilMgr"%>
@@ -68,7 +68,8 @@
 								%>
 							<tr>
 								<td>
-								<img alt="제품사진" src="${pageContext.request.contextPath}/img/product/ready.gif">
+								<img alt="제품사진" src="${pageContext.request.contextPath}
+								/img/product/ready.gif">
 								</td>
 								<td><a><%=pbean.getP_name() %></a></td>
 								<td><%=cart.getC_qty() %>개</td>
