@@ -7,17 +7,18 @@
 	request.setCharacterEncoding("EUC-KR");
 	
 	productUtil util = new productUtil();
-	//int p_code = Integer.parseInt(request.getParameter("goods"));
-	int p_code = 1;//데이터 확인용
+	int p_code = Integer.parseInt(request.getParameter("goods"));
+	
 	
 	ProductBean bean = mgr.getProduct(p_code);
+
 %>
 <link rel="stylesheet" type="text/css" href="../css/goodsList.css">
 
 <%@ include file="../top.jsp" %>
 
 
-<link rel="stylesheet" type="text/css" href="css/goods_view.css">
+<link rel="stylesheet" type="text/css" href="./css/goods_view.css">
 
 <main>
 	

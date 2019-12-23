@@ -13,7 +13,7 @@ function numberFormat(inputNumber) {
 	   return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function getreult(){
+function getresult(){
 	 let priceValue = stringNumberToInt(price.innerHTML);
 	 let qtyValue = parseInt(quantity.value);
      if(qtyValue>=10){
@@ -35,7 +35,7 @@ function goodsView_init(){
 			 qtyValue -= 1;
 			 quantity.value = qtyValue;
 		}
-		getreult();
+		getresult();
 	});
 	
 		up_btn.addEventListener('click', function(){
@@ -44,12 +44,12 @@ function goodsView_init(){
 		 if(qtyValue==10)
 			 qtyValue=9;
 		  quantity.value = qtyValue;
-		getreult();
+		getresult();
 		console.log('¾÷');
 	});
 	
     quantity.addEventListener('change', function(){
-    	getreult();
+    	getresult();
     });
     
     $("#quantity").keyup(function(event){
