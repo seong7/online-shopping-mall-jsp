@@ -51,7 +51,9 @@
 				<!--<input id="total" type="text" readonly>-->
 			</div>
 			<div class="header btn_wrapper">
-				<input id="cartBtn" type="button" class="btn" value="장바구니에 추가"> 
+				<input id="cartBtn" type="button" class="btn" value="장바구니에 추가"
+				onclick="location.href='${pageContext.request.contextPath}
+				/order/cart.jsp?'"> 
 				<input id="submit" type="submit" class="btn" value="구매하기">
 			</div>
 		</form>			

@@ -8,8 +8,8 @@
  <jsp:useBean id="cMgr" class="order.CartMgr"/>
  <%
  		request.setCharacterEncoding("EUC-KR");
- 		//String id = (String)session.getAttribute("idKey");
- 		String id = "u1";//확인용 데이터
+ 		String id = (String)session.getAttribute("idKey");
+ 		//String id = "u1";//확인용 데이터
  		int p_code = 1;//확인용 데이터
  		int o_del_fee = 2500;
  			
