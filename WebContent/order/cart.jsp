@@ -25,73 +25,6 @@ input {
   text-align: center;
 }
 </style>
-<script>
-	
-	
-	function allChk(){//전체 체크시 활성화
-		f=document.frm;
-		if(f.allCh.checked){
-			for (var i = 0; i < f.fch.length; i++) {
-				f.fch[i].checked = true;
-			}
-			f.btn1.disabled = false;//버튼의 활성화
-			f.btn2.disabled = false;//버튼의 활성화
-		}else{
-			for (var i = 0; i < f.fch.length; i++) {
-				f.fch[i].checked = false;
-			}
-			f.btn1.disabled = true;//버튼의 비활성화
-			f.btn2.disabled = true;//버튼의 비활성화
-		}
-	}
-	
-	function chk(frm){
-		f=document.frm; 
-		let sum =0;
-		for (let i = 1; i < f.fch.length; i++) {
-			//alert(f.fch[i].value);
-			if(f.fch[i].checked){
-				f.btn1.disabled = false;//버튼의 활성화 
-				f.btn2.disabled = false;//버튼의 활성화
-				return;//밑에 있는 체크박스의 체크유무는 무의미함. 
-			}else {
-				
-			}
-		}
-		
-		f.allCh.checked = false;//개별 checkbox를 풀때 전체 checkbox도 해제 
-		f.btn1.disabled = true;//버튼의 비활성화()
-		f.btn2.disabled = true;//버튼의 비활성화()
-		document.getElementById("sumtext").innerHTML = sum;
-	}
-	
-  function qytChange(num){
-	  var y = document.getElementById("c_qty");
-	  if(y>1) {y.value=y+num;}
-  }
-  
-  function confirmDel(){
-		if(confirm("선택상품을 삭제하시겠습니까?")==true){
-			document.frm.action = "cartDelProc.jsp";
-			document.frm.submit();
-		}else{ //취소
-			return;
-		}
-	}
-  function calc(cart){
-	  f=document.frm; 
-		for (var i = 1; i < f.fch.length; i++) {
-			//alert(f.fch[i].value);
-			if(f.fch[i].checked){
-				sum += parseInt(cart.value);
-			}else 
-				  sum -= parseInt(cart.value);
-		}
-	  
-	  document.getElementById("sumtext").innerHTML = sum;
-  }
-  
-</script>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
@@ -101,10 +34,10 @@ input {
 			<p>주문하실 상품명 및 수량을 정확하게 확인해 주세요.</p>
 	<form name="frm" action="order.jsp">
 		<input type="hidden" name="fch" value="0">
-		<table border="1">
+		<table border="1" id="cart_table">
 		<tr>
 			<th><input type="checkbox" name="allCh" 
-			onclick="allChk()"></th>
+			></th>
 			<th>상품사진</th>
 			<th>상품명</th>
 			<th>수량</th>
@@ -124,16 +57,16 @@ input {
 		%>
 		<tr>
 			<td><input type="checkbox" name="fch" 
-			value="<%=p_code%>"  onclick="chk()"></td>
+			value="<%=p_code%>" ></td>
 			<td><img alt="제품사진" src="${pageContext.request.contextPath}
 			/img/product/ready.gif"></td>
-			<td><%=p_name %><br><%=p_price %>원</td>
+			<td><%=p_name %><br><span><%=p_price %></span>원</td>
 		
 			<td><input type="button" value="-" 
-			onclick="qytChange(-1)">
+			>
 			<input type="text" id="c_qty" value=<%=c_qty%>>
 			<input type="button" value="+" 
-			onclick="qytChange(1)"></td>
+			></td>
 			<td><%=totalPrice%></td>
 		</tr>
 				<%} %>	
@@ -152,13 +85,14 @@ input {
 			</tr>
 		</table>
 		<br>
-		<input type="button" name="btn1" value="선택 삭제하기" 
+		<input type="button" name="btn1" value="선택 삭제하기" id="delete_product"
 		disabled style ="width:150px" 
 		onclick="location.href='javascript:confirmDel()'">
-		<input type="submit" name="btn2" value="선택 주문하기" 
+		<input type="submit" name="btn2" value="선택 주문하기" id="order_product"
 		disabled	style ="width:150px">
 		<input type="hidden" name="id" value="<%=id %>">
 		</form>
 	</div>
+	<script src="js/cart.js"></script>
 </body>
 </html>
