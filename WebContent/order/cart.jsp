@@ -8,8 +8,8 @@
  <jsp:useBean id="cMgr" class="order.CartMgr"/>
  <%
  		request.setCharacterEncoding("EUC-KR");
- 		//String id = (String)session.getAttribute("idKey");
- 		String id = "u1";//확인용 데이터
+ 		String id = (String)session.getAttribute("idKey");
+ 		//String id = "u1";//확인용 데이터
  		int p_code = 1;//확인용 데이터
  		int o_del_fee = 2500;
  			
@@ -53,7 +53,6 @@ input {
 			if(f.fch[i].checked){
 				f.btn1.disabled = false;//버튼의 활성화 
 				f.btn2.disabled = false;//버튼의 활성화
-				console.log(f);
 				return;//밑에 있는 체크박스의 체크유무는 무의미함. 
 			}else {
 				

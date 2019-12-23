@@ -165,7 +165,7 @@
 									<a href="${pageContext.request.contextPath}/member/myinfo_check.jsp"><i class="fas fa-user"></i></a>
 								</li>
 								<li>
-									<a href="#"><i class="fas fa-shopping-cart"></i></a>
+									<a href="${pageContext.request.contextPath}/order/cart.jsp"><i class="fas fa-shopping-cart"></i></a>
 								</li>
 								<li>
 									<form id="logout_form" action="/online-shopping-mall/member/signup"  method="post">
