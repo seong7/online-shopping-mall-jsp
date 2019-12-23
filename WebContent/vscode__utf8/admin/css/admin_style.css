@@ -275,7 +275,7 @@ form {
 
 .mgr_table th {
   background-color: #f3f3f5;
-  width: 100px;
+  width: 150px;
   border: 0.5px solid #dcdbde;
 }
 
@@ -293,10 +293,36 @@ form {
   width: 180px;
 }
 
-.mgr_table td .radio {
+.mgr_table td .radio, .mgr_table td .checkbox {
   width: 50px;
-  margin-top: -1px;
   vertical-align: middle;
+}
+
+.mgr_table td .radio {
+  margin-top: -1px;
+}
+
+.horHead th {
+  height: 60px;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+.horHead td {
+  height: 50px;
+  vertical-align: middle;
+  text-align: center;
+  font-family: "MS Shell Dlg 2";
+  font-weight: 500;
+}
+
+.horHead td a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.horHead td a:hover {
+  color: #FB9832;
 }
 
 .submit_wrapper {
@@ -315,19 +341,45 @@ form {
 .btn {
   height: 30px;
   width: 70px;
-  background-color: #fec084;
-  border: none;
+  border: 2px solid #FB9832;
+  background-color: white;
   border-radius: 3px;
-  color: white;
+  color: #FB9832;
   font-weight: bold;
+  font-size: 16px;
 }
 
 .btn:active {
   background-color: #f09439;
+  color: white;
 }
 
 .btn:hover {
   cursor: pointer;
+}
+
+/** goods_master.jsp 에만 **/
+#search_btn, #member_search_btn {
+  background-color: white;
+  color: #FB9832;
+  width: 80px;
+  font-weight: bold;
+  font-size: 16px;
+  border: 2px solid #FB9832;
+}
+
+#search_btn:active, #member_search_btn:active {
+  background-color: #f09439;
+  color: white;
+}
+
+#search_btn:hover, #member_search_btn:hover {
+  cursor: pointer;
+}
+
+#p_select {
+  width: 200px;
+  margin-right: 21px;
 }
 
 /*** goods_insert.jsp 에만 ***/

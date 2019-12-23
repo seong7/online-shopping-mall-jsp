@@ -16,8 +16,6 @@ import org.json.simple.JSONObject;
 import order.AdminOrderBean;
 import order.OrderBean;
 import order.OrderMgr;
-import product.ProductBean;
-import product.ProductMgr;
 
 /**
  * Servlet implementation class MemberViewMemberDetail
@@ -33,7 +31,6 @@ public class MemberViewMemberDetail extends HttpServlet {
 		String member_id = request.getParameter("member_id");
 		MemberMgr membermgr = new MemberMgr();
 		OrderMgr ordermgr  = new OrderMgr();
-		ProductMgr productmgr = new ProductMgr();
 		MemberBean userDetail = membermgr.getMemberDetail(member_id);
 		
 		JSONArray jsonarray = new JSONArray();
@@ -47,6 +44,7 @@ public class MemberViewMemberDetail extends HttpServlet {
 		objectbuffer.put("contact", userDetail.getContact());
 		objectbuffer.put("address", userDetail.getAddress());
 		objectbuffer.put("address_detail", userDetail.getAddress_detail());
+		objectbuffer.put("zipcode", userDetail.getZipcode());
 		objectbuffer.put("joindate", userDetail.getJoin_date());
 		objectbuffer.put("point", userDetail.getPoint());
 		jsonarray.add(objectbuffer); //회원정보 data in (json array[0])

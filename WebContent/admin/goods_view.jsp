@@ -132,10 +132,7 @@
 
             <div class="submit_wrapper">
                 <input class="btn" type="button" value="목록으로" onclick="location.href='goods_master.jsp'">
-                <input class="btn readChange" type="submit" value="수정완료" disabled>
-                <%String q = "";
-                q+="p_code="+p_code+"&";
-                %>
+                <input class="btn readChange" type="submit" value="수정완료" disabled>                
                 <input class="btn" type="button" value="삭제하기" onclick="location.href='goods_Proc.jsp?flag=delete&pcode=<%=bean.getP_code()%>'">
                 <input class="btn" type="reset" value="다시쓰기">
                 <input type="hidden"  value="<%=bean.getP_code()%>" name="pcode">

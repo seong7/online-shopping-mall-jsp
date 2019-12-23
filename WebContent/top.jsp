@@ -9,6 +9,7 @@
 	<head>-->
 		<meta charset="EUC-KR">
 		<link rel="stylesheet" type="text/css" href= "${pageContext.request.contextPath}/css/reset.css">
+		<link rel="stylesheet" type="text/css" href= "${pageContext.request.contextPath}/css/util.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/top.css">
 		<script src="https://kit.fontawesome.com/115bcf1f34.js" crossorigin="anonymous"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
@@ -145,7 +146,7 @@
 								</li>
 							<%}else{ %>
 								<li>
-									<a href="#"><i class="fas fa-user"></i></a>
+									<a href="${pageContext.request.contextPath}/member/myinfo_check.jsp"><i class="fas fa-user"></i></a>
 								</li>
 								<li>
 									<a href="#"><i class="fas fa-shopping-cart"></i></a>
