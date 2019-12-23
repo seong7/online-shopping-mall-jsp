@@ -107,14 +107,6 @@ main header form input {
   border: none;
 }
 
-main header form #quantity {
-  border: 1px solid grey;
-}
-
-main header form #quantity:focus {
-  border: 3px solid #FB9832;
-}
-
 main header form #total {
   text-align: left;
   color: #f09439;
@@ -149,32 +141,44 @@ main header form .btn_wrapper #cartBtn {
   width: 200px;
 }
 
-#button_down, #button_up{
-	border-right: 1px solid #dddfe1;
-	overflow: hidden;
-	width: 22px;
-	height: 22px;
-	border: 0 none;
-	background: #FB9832;
-	font-size: 0;
-	line-height: 0;
-	text-indent: -9999px;
-	color: #333;
-	letter-spacing: 0;
-	-webkit-appearance: button;
-	cursor: pointer;
-	text-transform: none;
-	border-radius: 0;
-	padding: 0;
-	box-sizing: border-box;
+#button_down, #button_up {
+  overflow: visible;
+  font-size: 25px;
+  font-weight: lighter;
+  color: #333;
+  cursor: pointer;
+  border-radius: 0;
+  vertical-align: middle;
+  line-height: 22px;
+  z-index: 1;
+}
+
+#button_down:active, #button_up:active {
+  color: #FB9832;
+}
+
+#button_down {
+  margin-right: -40px;
+  position: relative;
+}
+
+#button_up {
+  margin-left: -40px;
+  position: relative;
+}
+
+#quantity {
+  z-index: 0;
+  border: 0px;
 }
 
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-input[type=number] { -moz-appearance:textfield;}
-
+input[type=number] {
+  -moz-appearance: textfield;
+}
 /*# sourceMappingURL=goods_view.css.map */
