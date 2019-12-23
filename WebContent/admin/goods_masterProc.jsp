@@ -26,10 +26,8 @@
 			System.out.println(p_code);
 		url = "goods_view.jsp?"+q;
 	}else if(type_check.equals("update")&&p_code.length!=1){	
-		System.out.println("update2");
-		
-		msg = "수정시에는 하나만 선택해주세요.";
-		
+		System.out.println("update2");		
+		msg = "수정시에는 하나만 선택해주세요.";	
 	}else if(type_check.equals("delete")){
 		System.out.println("delete1");
 		msg = "선택하신 제품을 삭제합니다";

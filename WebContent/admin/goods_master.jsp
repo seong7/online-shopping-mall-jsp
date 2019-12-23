@@ -23,7 +23,7 @@
 		int today2 = Integer.parseInt(sdf.format(cal2.getTime()));			
 		
 		//need to search variable 
-		String p_name = "";	int p_date1=today1;	int p_date2=today2;
+		String p_name = "";	int p_date1=0;	int p_date2=0;
 		
 		//if do Searching
 		if(request.getParameter("p_name")!=null){
@@ -99,11 +99,13 @@ function listSelect() {
 			f.fch[i].checked = true;
 		}
 		f.delete.disabled = false;//버튼의 활성화
+		f.update.disabled = false;//버튼의 활성화
 	}else{
 		for(i=0;i<f.fch.length;i++){
 			f.fch[i].checked = false;
 		}
 		f.delete.disabled = true;	//버튼의 비활성화			
+		f.update.disabled = true;	//버튼의 비활성화			
 	}
 }
  function chk(){
@@ -112,11 +114,13 @@ function listSelect() {
 			//alert(f.fch[i].value);
 			if(f.fch[i].checked){ //fch 체크박스가 체크가 된 경우
 				f.delete.disabled = false;
+				f.update.disabled = false;
 			return; //밑에 있는 체크박스의 체크 유무는 무의미
 			}
 		}
 		f.allCh.checked= false; //전체체크박스 해제
 		f.delete.disabled = true; //버튼 비활성화
+		f.update.disabled = true; //버튼 비활성화
 	}
 
  
@@ -149,10 +153,10 @@ function listSelect() {
 		</td>		
 	</tr>
 	<tr>
-		<td>검색기간(등록일)</td>
-		<td>
-			<input name ="p_date1" size="20"  value="<%=p_date1%>"> &nbsp; ~ &nbsp;
-			<input name ="p_date2" size="20" value="<%=p_date2%>">			
+		<td>검색기간(등록일)</td>		
+		<td>	
+			<input name ="p_date1" size="20"  placeholder="<%=today1%>" > &nbsp; ~ &nbsp;
+			<input name ="p_date2" size="20" placeholder="<%=today2%>" >			
 			<input type="button" value="search" onclick="check()">
 		</td>
 	</tr>	
@@ -180,7 +184,7 @@ function listSelect() {
 				
 		%>
 		<tr>
-			<th><input type ="checkbox" name="allCh" onclick="allChk()"></th>					
+			<th><input type ="checkbox" name="allCh" onclick="allChk()" checked></th>					
 			<th>제품코드</th>
 			<th>상품명</th>
 			<th>상품가격</th>
@@ -195,7 +199,7 @@ function listSelect() {
 		%>			
 			<tr>
 			<td>
-			<input type ="checkbox" name="fch" value="<%=p_code%>" onclick="chk()"></td>						
+			<input type ="checkbox" name="fch" value="<%=p_code%>" onclick="chk()" checked></td>						
 			<td><a href="goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_code() %></a></td>
 			<td><%=pbean.getP_name() %></td>
 			<td><%=pbean.getP_price() %></td>
@@ -207,7 +211,7 @@ function listSelect() {
 	<%}//--else %>
 	
 		</table>
-		<input type ="button" name="update" id="update_btn" value="수정">
+		<input type ="button" name="update" id="update_btn" value="수정" disabled>
 		<input type="button" name="delete" id="delete_btn" value="삭제" disabled>
 		<input type ="button" value="추가" onclick ="location.href='goods_insert.jsp'">	
 		<input type ="hidden" name="buffer" id="buffer">
