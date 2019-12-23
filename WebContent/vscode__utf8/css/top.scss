@@ -1,75 +1,5 @@
-/* 폰트 추가 noto-Sans*/
-
-@font-face{
-    font-family: 'noto_Bold';
-    src : url(../font/NotoSansCJKkr-Bold.otf);
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face{
-    font-family: 'noto_Black';
-    src : url(../font/NotoSansCJKkr-Black.otf);
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face{
-    font-family: 'noto_Demilight';
-    src : url(../font/NotoSansCJKkr-DemiLight.otf);
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face{
-    font-family: 'noto_Light';
-    src : url(../font/NotoSansCJKkr-Light.otf);
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face{
-    font-family: 'noto_Medium';
-    src : url(../font/NotoSansCJKkr-Medium.otf);
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face{
-    font-family: 'noto_Regular';
-    src : url(../font/NotoSansCJKkr-Regular.otf);
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face{
-    font-family: 'noto_Thin';
-    src : url(../font/NotoSansCJKkr-Thin.otf);
-    font-style: normal;
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: 'InkLipquid'; 
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff'); 
-    font-weight: normal; 
-    font-style: normal; 
-}
-
-@font-face { 
-    font-family: 'Cafe24Danjunghae'; 
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Danjunghae.woff') format('woff'); 
-    font-weight: normal; 
-    font-style: normal; 
-}
-
-@font-face {
-    font-family: 'BMHANNAAir'; 
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff') format('woff'); 
-    font-weight: normal; 
-    font-style: normal; 
-}
-
-@font-face { 
-    font-family: 'BBTreeGB'; 
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff') format('woff'); 
-    font-weight: normal; 
-    font-style: normal; 
-}
+@import '../font/font-family'; 
+$normalFont: 'ON_IGothic';
 
 .default_placeholder_red::-webkit-input-placeholder{ color: red !important;}
 .default_placeholder_red::-moz-placeholder{ color: red !important;}
@@ -84,6 +14,17 @@ html{
     user-select:none;
 }
 
+.nav_a{
+    text-decoration: none;
+    color: #333;
+}
+// a {
+//     span{
+//       text-decoration: none;
+  
+//     }
+// }
+
 /*전체 컴포넌트 Wrapper 클래스(modal window 제외 Wrap)*/
 #top_wrapper{
     position: relative;
@@ -92,11 +33,17 @@ html{
     box-shadow:0px 8px 10px rgba(204,204,204, 0.5);
 }
 /*로고 이미지 position*/
-#homeLogo>img{
-    width: 200px;
-    display: block;
-    margin : 0px auto;
-    margin-top : 30px;
+#homeLogo{
+    text-align: center;
+    #logo_a{
+    display: inline-block;
+    #logoImg{
+        width: 250px;
+        display: block;
+        margin : 0px auto;
+        // margin-top : 30px;
+    }
+}
 }
 /*search_form 위치 */
 #search_form{
@@ -126,7 +73,7 @@ html{
     outline: none;
     color: #2f3542;
     font-size: 20px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: $normalFont;
     padding-left: 35px;
     padding-right: 40px;
     background-color: #f4f4f4;
@@ -154,7 +101,7 @@ html{
     height: 55px;
     margin-left: auto;
     margin-right: auto;
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: $normalFont;
     z-index: 100;
 }
 
@@ -199,7 +146,7 @@ html{
 /*text font, spacing set*/
 .txt{
     letter-spacing: 2px;
-    font-family: 'noto_Bold';
+    font-family: $normalFont;
 }
 
 
@@ -281,7 +228,7 @@ input[id*='userPopup']{
     color: gray;
     text-decoration: none;
     font-size: 18px;
-    font-family: 'noto_Regular'; 
+    font-family: $normalFont; 
     font-weight: lighter;
 }
 #nav_start li:hover a{
@@ -325,7 +272,7 @@ input[id*='userPopup']{
     flex-direction: column;
     align-items: center;
     font-size:20px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: $normalFont;
     font-weight: bolder;
 
 }
@@ -467,7 +414,7 @@ input[id*='userPopup']{
 
 
 #modalInnerFrame h3{
-    font-family: 'BBTreeGB';
+    font-family: $normalFont;
     text-align: center;
     margin-bottom:10px;
     letter-spacing: 5px;
@@ -534,6 +481,10 @@ input[id*='userPopup']{
     height: 100%;
     background-color: rgba(0, 0, 0, .7);
     z-index: 1;
+}
+
+#daumWrap{
+    left: 110%;
 }
 
 /*  테두리 임시 부여  */

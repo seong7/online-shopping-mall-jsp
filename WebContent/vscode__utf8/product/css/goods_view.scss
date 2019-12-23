@@ -1,0 +1,150 @@
+@import '../../font/font-family'; 
+$brandColor1: #fec084; 
+$brandColor2: #FB9832;
+$titleColor: #333;
+$titleDetailColor: gray;
+$normalFont: 'ON_IGothic';
+
+
+main{
+    display: flex;
+    flex-direction: column;
+    max-width: 1050px;
+    min-width: 1050px;
+    width: 1050px;
+    margin: 0 auto;
+    align-items: center;
+    header{
+        display: flex;
+        width: 96%;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        #img_wrapper{
+            width: 150%;
+            img{
+                width:500px;
+                height: auto;
+                margin-right: 30px;
+                display: inline-block;
+            }
+        }
+        form{
+            display: inline-block;
+            width: 100%;
+            font-family: $normalFont;
+            color: $titleColor;
+            display: flex;
+            flex-direction: column;
+            .header{
+                margin-bottom: 70px;
+                font-size: 20px;
+            }
+            .name{
+                margin-top: 10px;
+                margin-bottom: 80px;
+                font-size: 32px;
+                // text-align: center;
+                span{
+                    padding-bottom: 10px;
+                    border-bottom: 3px solid $brandColor1;
+                    
+                }
+            }
+            .title{
+                display: inline-block;
+                width: 150px;
+                font-size: 20px;
+            }
+            #price{
+                color: #FB9832;
+                font-size: 30px;
+                text-align: left;
+                width: 80px;
+
+            }
+            input{
+                width: 150px;
+                height: 45px;
+                padding: 10px;
+                text-align: center;
+                border-radius: 3px;
+                font-size: 20px;
+                color: #333;
+                font-family: $normalFont;
+                border: none;
+            }
+            #total{
+                text-align: left;
+                color: #f09439;
+                font-size: 40px;
+            }
+            .btn_wrapper{
+                // margin-top: 5px;
+                .btn{
+                    // height: 30px;
+                    background-color: #f09439;
+                    border: 3px solid #f09439;;
+                    border-radius: 3px;
+                    color: white;
+                    font-family: $normalFont;
+                    padding: 10px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    font-size: 20px;
+                    height: 80px;
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+                #submit{
+                    margin-left: 15px;
+                }
+                #cartBtn{
+                    background-color: white;
+                    color: #f09439;
+                    border: 2px solid #f09439;
+                    width: 200px;
+                    
+                }
+            }
+        }
+    }
+}
+
+#button_down, #button_up{
+
+	overflow: visible;
+    font-size: 25px;
+    font-weight: lighter;
+    color: #333;
+	cursor: pointer;
+    border-radius: 0;
+    vertical-align: middle;
+    line-height:22px;
+    z-index: 1;
+    &:active{
+        color: $brandColor2;
+    }
+}
+#button_down{
+    margin-right: -40px;
+    position: relative;
+}
+
+#button_up{
+    margin-left: -40px;
+    position: relative;
+}
+#quantity{
+    z-index: 0;
+    border:0px;
+}
+
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] { -moz-appearance:textfield;}

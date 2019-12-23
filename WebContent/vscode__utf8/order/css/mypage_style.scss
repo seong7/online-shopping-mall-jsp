@@ -1,0 +1,372 @@
+@import '../../font/font-family';
+$brandFont: 'ON_IGothic';
+$testFont: 'Handon3gyeopsal600g';
+$brandColor1: #fec084;
+$brandColor2:  #FB9832;
+$tableBorder: 0.5px solid #dcdbde;
+
+
+#main{
+	max-width: 1050px;
+	min-width: 1050px;
+	width: 1050px;
+	margin:0 auto;
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+    
+    header{  // mypage 요약창 구역
+        width: 100%;
+        min-width: 1050px;
+    }
+    #btn_mypage_wrapper{  // 버튼메뉴 + mypage 내용 wrapper (flex container)
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+        min-height: 600px;
+
+        #mypage_side{     // 버튼메뉴 구역
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height:600px;
+            width: 150px;
+        }
+    }
+}
+
+#section{
+    display: block;
+    font-size: 30px;
+    font-family: $brandFont;
+    color: #4A4439;
+    height: 53px;
+    overflow: visible;
+}
+
+/*************************/
+/***** 메뉴 버튼 부분 *****/
+/*************************/
+#mypage_btn_wrapper{
+    
+    /****  위치 다시 잡기 (html 전체 기준임) ****/
+    /* 미디어 쿼리 사용 예정 */
+    // z-index: -100;
+    
+    // display: inline-block;
+    // position: fixed;
+    position: sticky;
+    top: 268px;
+    border: 0.5px solid #dcdbde;
+    border-radius: 5px;
+    // left: 200px;
+    font-family: $brandFont;
+    font-size: 14px;
+    width: 150px;
+    ul{
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-items: center;
+        margin: 0px;
+        padding: 0px;
+        a{
+            text-decoration: none;
+            li{
+                display: block;
+                position: relative;
+                list-style: none;
+                padding-top: 30px;
+                padding-bottom: 30px;
+                padding-left: 20px;
+                padding-right: 50px;
+                // border-top: 0.5px solid $brandColor;
+                color: gray;
+                transition: all 0.3s;
+                
+                .icon{
+                    position: absolute;
+                    top: 32px;
+                    right: 10px;
+                }
+                &:hover{
+                    background-color: #f3f3f5;
+                    color: #FB9832;
+                    i{
+                        transform: rotate(0.5turn);
+                        transition: transform 0.2s;
+                    }
+                }
+            }
+           
+        }
+    }
+}
+
+#btn_first{
+    li:first-of-type{
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+}
+#btn_last{
+    li:first-of-type{
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}
+
+
+
+/**********************/
+/***** 요약창 부분 *****/
+/**********************/
+#mypage_summ{
+    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-left: 500px;
+    display: inline-block;
+    ul{
+        display: flex;
+        flex-direction: row;
+        border: 0.5px solid #dcdbde;
+        border-radius: 3px;
+        margin: 0px;
+        padding: 0px;
+        background-color: rgba(254, 192, 132,0.4);
+        
+        li{
+            list-style: none;
+            border-left: 0.5px solid #dcdbde;
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            text-align: center;
+            padding-top: 15px;
+            font-family: $brandFont;
+            color: #333333;
+            margin: 10px;
+            
+            div{
+                display: block;
+                width: 150px;
+                height: 50px;
+                text-align: center;
+            }
+            .bold{
+                font-size: 24px;
+                font-family: $brandFont;
+                color: #EB7A36;
+            }
+            #point_top, #del_top{
+                position: relative;
+                top: 8px;
+            }
+            #name_bottom{
+                position: relative;
+                top: 7px;
+            }
+        }
+    }
+    
+    #mypage_summ_ul{
+        li:first-of-type{
+            border-left: none;
+        }
+    }
+}
+
+
+
+// mypage 모든 페이지에 공통 적용 부분
+
+#mypage{
+    height: 100%;
+    width: 80%;
+    min-width: 80%;
+    font-family: $brandFont;
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    form{
+        width: 97%;
+        padding-left: 20px;
+    }
+    
+}  
+
+.title{
+    display: inline-block;
+    width: 100%;
+    color: #333;
+    font-size: 24px;
+    border-bottom: 3px solid $brandColor1;
+    padding-bottom: 20px;
+}
+
+.inner_title{
+    display: block;
+    color: #333;
+    font-size: 23px;
+    padding-bottom: 20px;
+    margin-top: 30px;
+}
+
+input{
+    display: inline-block;
+    width: 210px;
+    padding-left: 10px;
+    height: 50px;
+    font-size: 16px;
+    border-radius:3px;
+    border: 1px solid grey;
+    &:focus{
+        border: 2px solid $brandColor2;
+    }
+}
+    
+.mypage_table {
+    margin-top: 20px;
+    border-collapse:collapse;
+    width: 100%;
+    text-align:center;
+    color: #333;
+
+    th{
+        font-size: 20px;
+        padding-top: 13px;
+    }
+
+    td{
+        border-bottom: 0.5px solid #dcdbde;
+        font-size: 16px;
+        height: 100px;
+        padding-top:40px;
+    }
+
+    // a 태그 걸린 td 속성
+    .btn_td{
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+        &:hover a{
+            color: #fec084;
+        }
+    }
+}
+
+.horHead{
+    th{
+        border-top: 0.5px solid #dcdbde;
+        border-bottom: 0.5px solid #dcdbde;
+        height: 50px;
+    }
+}
+.verHead{
+    tr{
+        height: 50px;
+    }
+    th, td{
+        height: 30px;
+        padding: 0px;
+    }
+    th{
+        font-size: 16px;
+        width: 150px;
+    }
+    input{
+        height: 40px;
+    }
+}
+
+.btn{
+    height: 40px;
+    width: 70px;
+    border:2px solid $brandColor2;
+    background-color: white;
+    // border: none;
+    border-radius: 3px;
+    color: $brandColor2;
+    font-weight: bold;
+    font-size: 18px;
+    
+    &:active{
+        background-color: #f09439;
+        color: white;
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}
+.mypage_btn_wrapper{
+    margin-top: 30px;
+    .mypage_submit{
+        width: 150px;
+    }
+}
+
+
+
+/** myinfo_check.jsp 만 사용  **/
+#pwdCheck_form{
+    display: inline-block;
+    // flex-direction: column;
+    // align-items: center;
+    padding-top: 30px;
+
+    .inner_title{
+        display: inline-block;
+    }
+    #title_wrapper{
+        
+        padding-left: 250px;
+    }
+    #btn_group{
+        display: flex;
+        flex-direction: row;
+        padding-top: 10px;
+        padding-left: 250px;
+        #pwdCheckInput{
+            margin-right: 20px;
+            margin-top: -1px;
+        }
+        #pwdcheckBtn{
+            height: 50px;
+        }
+    }
+}
+
+/** mypage_myinfo.jsp 만 사용 **/
+#myinfo_table{
+    
+    th, td{
+        border: none;
+        text-align: left;
+    }
+    #address_th{
+        padding-top: 5px;
+        vertical-align: top;
+    }
+    #address_td{
+        display: flex;
+        flex-direction: column;
+        padding-top: 5px;
+        height: 200px;
+        #zip_btn{
+            margin-bottom: 5px;
+
+        }
+    }
+    .input_zipcode{
+        margin-top:5px;
+        margin-bottom:5px;
+        width: 400px;
+    }
+}
+#adrress_submit{
+    margin-left: 400px;
+}

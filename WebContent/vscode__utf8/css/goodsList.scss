@@ -1,0 +1,79 @@
+@import '../font/font-family'; 
+$brandColor: #fec084; 
+$titleColor: #333;
+$titleDetailColor: gray;
+$normalFont: 'ON_IGothic';
+
+
+main{
+    display: flex;
+    max-width: 1050px;
+    min-width: 1050px;
+    width: 1050px;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    .goodslist_tit{
+        margin-top: 100px;
+        margin-bottom: 60px;
+        text-align: center;
+        width:1050px;
+        font-family:$normalFont;
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        .goodslist_btn{
+            display: block;
+            text-decoration: none;
+            color: $titleColor;
+            font-size: 30px;
+        }
+        .goodslist_detail{
+            display: inline-block;
+            color:$titleDetailColor;
+            margin-top: 15px;
+            padding-bottom:15px;
+            border-bottom: 3px solid $brandColor;
+        }
+    }
+    ul{
+        width: 1050px;
+        display: flex;
+        flex-direction: row;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        li{
+            margin-right: 18px;
+            // width: 200px;
+            img{
+                width: 249px;
+                height: 320px;
+                max-width:1050px;
+                // background-image: url('../img/index/product_sample/prod_sample1.PNG');
+                // background-repeat: no-repeat;
+                // background-size: cover;
+                &:hover{
+                    transform: scale(1.02);
+                    transition: all 0.3s ease-in-out;
+                }
+            }
+            .goods_info{
+                width: 249px;
+                a{
+                    text-decoration: none;
+                }
+                .name{
+                    font-family:$normalFont;
+                    color:$titleDetailColor;
+                    line-height: 1.5em;
+                    font-size: 18px;
+                }
+                .price{
+                    display: block;
+                    font-family: $normalFont;
+                    margin-top: 6px;
+                }
+            }
+        }
+    }
+}

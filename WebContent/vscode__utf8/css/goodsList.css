@@ -1,0 +1,119 @@
+@charset "UTF-8";
+/* 폰트 추가*/
+/* 굵음 */
+@font-face {
+  font-family: 'ON_IGothic';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 일반 */
+@font-face {
+  font-family: 'Handon3gyeopsal600g';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 1050px;
+  min-width: 1050px;
+  width: 1050px;
+  margin: 0 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .goodslist_tit {
+  margin-top: 100px;
+  margin-bottom: 60px;
+  text-align: center;
+  width: 1050px;
+  font-family: "ON_IGothic";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .goodslist_tit .goodslist_btn {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  font-size: 30px;
+}
+
+main .goodslist_tit .goodslist_detail {
+  display: inline-block;
+  color: gray;
+  margin-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #fec084;
+}
+
+main ul {
+  width: 1050px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+main ul li {
+  margin-right: 18px;
+}
+
+main ul li img {
+  width: 249px;
+  height: 320px;
+  max-width: 1050px;
+}
+
+main ul li img:hover {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+main ul li .goods_info {
+  width: 249px;
+}
+
+main ul li .goods_info a {
+  text-decoration: none;
+}
+
+main ul li .goods_info .name {
+  font-family: "ON_IGothic";
+  color: gray;
+  line-height: 1.5em;
+  font-size: 18px;
+}
+
+main ul li .goods_info .price {
+  display: block;
+  font-family: "ON_IGothic";
+  margin-top: 6px;
+}
+/*# sourceMappingURL=goodsList.css.map */

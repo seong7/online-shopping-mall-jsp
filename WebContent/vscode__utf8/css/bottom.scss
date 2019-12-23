@@ -1,8 +1,8 @@
-@import './font-family'; 
+@import '../../font/font-family'; 
 $brandColor: #fec084; 
 $titleColor: #333;
 $titleDetailColor: gray;
-$normalFont: 'noto_Bold';
+$normalFont: 'ON_IGothic';
 
 #footer_wrapper{
     display: flex;
@@ -30,7 +30,7 @@ $normalFont: 'noto_Bold';
             }
         }
         #footer_first{
-            font-family: 'noto_Bold';
+            font-family: $normalFont;
             color: gray;
             width: 200px;
             justify-content: center;
@@ -46,15 +46,15 @@ $normalFont: 'noto_Bold';
             #middle{
                 font-size: 30px;
                 margin-bottom: 30px;
-                color: #333;
+                color: $titleColor;
             }
             #bottom{
                 display: inline-block;
                 border: 1.5px solid gray;
-                font-family: 'noto_Demilight';
-                font-size: 20px;
-                width: 150px;
-                height: 50px;
+                font-family: $normalFont;
+                font-size: 15px;
+                width: 130px;
+                height: 45px;
                 padding: 10px;
                 border-radius: 5px;
                 
@@ -62,22 +62,22 @@ $normalFont: 'noto_Bold';
         }
         #footer_second{
             margin-right: 100px;
-            font-family: 'noto_Demilight';
+            font-family: $normalFont;
             color: #333;
             font-size: 14px;
             span{
-                font-family: 'noto_Medium';
+                font-family: $normalFont;
                 color: gray;
             }
             div{
-                margin-bottom: 40px;
+                margin-bottom: 35px;
             }
             #phone{
                 margin-top: 80px;
             }
         }
         #footer_third{
-            font-family: 'noto_Demilight';
+            font-family: $normalFont;
             color: gray;
             font-size: 14px;
             div{

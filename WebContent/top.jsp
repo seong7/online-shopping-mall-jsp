@@ -2,14 +2,15 @@
 <%
 		request.setCharacterEncoding("EUC-KR");
 		String id = (String)session.getAttribute("idKey");
+		String admin_id = (String)session.getAttribute("adminKey");
 
 %>
-
 <!--<!DOCTYPE html>
 <html>
 	<head>-->
 		<meta charset="EUC-KR">
 		<link rel="stylesheet" type="text/css" href= "${pageContext.request.contextPath}/css/reset.css">
+		<link rel="stylesheet" type="text/css" href= "${pageContext.request.contextPath}/css/util.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/top.css">
 		<script src="https://kit.fontawesome.com/115bcf1f34.js" crossorigin="anonymous"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
@@ -38,7 +39,7 @@
 						<div id="lost_id_pwd_wrapper">
 							<a href="#">아이디나 비밀번호를 잊어버렸습니까?</a>
 						</div>
-						<button type="button" class="top_modal_button top_modal_button_style" id="login_submit_btn">
+						<button type="button" class="top_modal_button top_modal_button_style top_modal_orange" id="login_submit_btn">
 							<span id="login_span">로그인</span>
 						</button>
 					</form>
@@ -48,26 +49,26 @@
 						<div id="id_section">
 							<input type="text" class="signup_input" id="id_section_input" autocomplete="off" placeholder="아이디를 입력하세요.">
 							<!-- ajax 필요 ?-->
-							<button type="button" class="signup_util_btn top_modal_button_style top_modal_button" id="id_section_btn"><span>중복확인</span></button>
+							<button type="button" class="signup_util_btn top_modal_button_style top_modal_orange top_modal_button" id="id_section_btn"><span>중복확인</span></button>
 						</div>
 						<input type="password" class="signup_input signup_long_input" id="signup_pwd"autocomplete="off" placeholder="비밀번호를 입력하세요.">
 						<input type="password" class="signup_input signup_long_input" id="signup_pwd_check" autocomplete="off" placeholder="비밀번호를 한번 더 입력하세요.">
 						<input type="text" class="signup_input signup_long_input" id="signup_name" autocomplete="off" placeholder="이름을 입력하세요.">
 						<input type="text" class="signup_input signup_long_input" id="signup_birth" autocomplete="off" placeholder="생년월일을 입력하세요. Ex)1900-01-01">
-						<input type="text" class="signup_input signup_long_input" id="signup_email" autocomplete="off" placeholder="이메일을 입력하세요. Ex)timi2030@gmail.com">
+						<input type="text" class="signup_input signup_long_input" id="signup_email" autocomplete="off" placeholder="이메일을 입력하세요. Ex)timi@page.net">
 						<input type="text" class="signup_input signup_long_input" id="signup_phone" autocomplete="off" placeholder="연락처를 입력하세요. Ex)010-0000-0000">
 						<div id="address_section">
 							<div id ="address_section_header">
 							    <input id="address_section_zipcode" class="signup_input" type="text" value="" readOnly/>
-							    <input id="address_section_btn" class="signup_util_btn top_modal_button_style top_modal_button" type="button" onClick="openDaumZipAddress();" value = "주소 찾기"/>
+								<button type="button" id="address_section_btn" class="signup_util_btn top_modal_button_style top_modal_button" onclick="openDaumZipAddress();"><span>주소 찾기</span></button>
 							
 							    <!-- 다음 우편번호 찾기 리스트를 띄울 영역을 지정 -->
-							
+						
 							    <input type="text" class="signup_input signup_long_input" id="signup_addr" readOnly/>
 							    <input type="text" class="signup_input signup_long_input" id="signup_addr_detail" placeholder="상세주소를 입력하세요."/>
 							</div>
 						</div>
-						<button type="button" class="top_modal_button top_modal_button_style" id="signup_submit_btn" >
+						<button type="button" class="top_modal_button top_modal_button_style top_modal_orange" id="signup_submit_btn" >
 							<span id="submit_span" class="box">회원가입</span>
 						</button>
 					</form>
@@ -85,15 +86,18 @@
 	            </div>
 	            <!--로고 이미지 Div-->
 	            <div id="homeLogo">
-	                <img src="${pageContext.request.contextPath}/img/index/logo/mills_logo.png" alt="이미지 로딩 불가!">
-	                <!--LOGO-->
+	            	<a id="logo_a" href="${pageContext.request.contextPath}/index.jsp">
+		                <img id="logoImg" src="${pageContext.request.contextPath}/img/index/logo/mills_logo.png" alt="이미지 로딩 불가!">
+		                <!--LOGO-->
+	            	</a>
 	            </div>
 	            <div id="search_div">
-	                <form action="" id="search_form">
+	                <form  id="search_form" action="${pageContext.request.contextPath}/product/goods_list.jsp">
 	                    <label>
-	                        <input type="text" id="search_input" placeholder="상품을 입력하세요" autocomplete=”off”>
-	                        <i class="fas fa-search"></i>
+	                        <input name="searchTerm" type="text" id="search_input" placeholder="상품을 입력하세요" autocomplete=”off”>
+	                        <i class="fas fa-search" onclick="document.getElementById('search_form').submit()"></i>
 	                    </label>
+	                        <input name="list" value="search" type="hidden">
 	                </form>
 	            </div>
 	            
@@ -110,7 +114,7 @@
 							</a>
 							<div id="nav_category">
 								<ul>
-									<li><a href="#" class="category_menu">전체보기</a></li>
+									<li><a href="${pageContext.request.contextPath}/product/goods_list.jsp?list=all" class="category_menu">전체보기</a></li>
 									<li><a href="#" class="category_menu">전통떡</a></li>
 									<li><a href="#" class="category_menu">퓨전떡</a></li>
 
@@ -118,40 +122,58 @@
 							</div>
 	                    </li>
 	                    <li>
-	                        <a class="nav_a">
+	                        <a class="nav_a" href="${pageContext.request.contextPath}/product/goods_list.jsp?list=best">
 	                            <span class="txt">베스트</span>
 	                        </a>
 	                    </li>
 	                    <li>
-	                        <a class="nav_a">
+	                        <a class="nav_a" href="${pageContext.request.contextPath}/product/goods_list.jsp?list=new">
 	                            <span class="txt">신상품</span>
 	                        </a>
 	                    </li>
 	                    <li>
-	                        <a class="nav_a">
+	                        <a class="nav_a"  href="#">
 	                            <span class="txt">고객지원</span>
 	                        </a>
 	                    </li>
 						<li id="active_btn_li">
 							<ul id="active_btn_wrapper">
-							<%if(id==null){ %>
+							<%if(id==null && admin_id==null){ %>
 								<li>
 									<input type="checkbox" id="userPopup">
 									<label for="userPopup" id="userPopup_label">
 										<i class="fas fa-user"></i>
 									</label>
 								</li>
-							<%}else{ %>
-								<li>
-									<a href="#"><i class="fas fa-user"></i></a>
+							<%}else if(id==null && admin_id!=null){ %>
+							<li>
+									<a href="${pageContext.request.contextPath}/member/myinfo_check.jsp"><i class="fas fa-user"></i></a>
 								</li>
 								<li>
 									<a href="#"><i class="fas fa-shopping-cart"></i></a>
 								</li>
 								<li>
-									<a href="#"><i class="fas fa-sign-in-alt"></i></a>
+									<form id="logout_admin" action="/online-shopping-mall/member/signup"  method="post">
+										<a onclick="logout_admin()"><i class="fas fa-sign-in-alt"></i></a>
+									</form>
 								</li>
-							<%} %>
+								<li>
+									<a href="#"><i class="fas fa-cog"></i></a>
+								</li>
+							<%}else if(id!=null && admin_id==null){ %>
+								<li>
+									<a href="${pageContext.request.contextPath}/member/myinfo_check.jsp"><i class="fas fa-user"></i></a>
+								</li>
+								<li>
+									<a href="${pageContext.request.contextPath}/order/cart.jsp"><i class="fas fa-shopping-cart"></i></a>
+								</li>
+								<li>
+									<form id="logout_form" action="/online-shopping-mall/member/signup"  method="post">
+										<a onclick="logout_onclick()"><i class="fas fa-sign-in-alt"></i></a>
+									</form>
+								</li>
+								
+								<%} %>
 							</ul>
 						</li>
 					</ul>

@@ -56,9 +56,10 @@
 						<input type="text" class="signup_input signup_long_input" id="signup_phone" autocomplete="off" placeholder="연락처를 입력하세요. Ex)010-0000-0000">
 						<div id="address_section">
 							<div id ="address_section_header">
-							    <input id="address_section_zipcode" class="signup_input" type="text" value="" readOnly/>
-							    <input id="address_section_btn" class="signup_util_btn top_modal_button_style top_modal_button" type="button" onClick="openDaumZipAddress();" value = "주소 찾기"/>
-							
+								<input id="address_section_zipcode" class="signup_input" type="text" value="" readOnly/>
+							    
+								<button type="button" id="address_section_btn" class="signup_util_btn top_modal_button_style top_modal_button" onclick="openDaumZipAddress();"><span>주소 찾기</span></button>
+								
 							    <!-- 다음 우편번호 찾기 리스트를 띄울 영역을 지정 -->
 							
 							    <input type="text" class="signup_input signup_long_input" id="signup_addr" readOnly/>
@@ -85,8 +86,10 @@
 	            </div>
 	            <!--로고 이미지 Div-->
 	            <div id="homeLogo">
-	                <img src="img/index/logo/mills_logo.png" alt="이미지 로딩 불가!">
-	                <!--LOGO-->
+					<a id="logo_a" href="index.html">
+						<img id="logoImg" src="img/index/logo/mills_logo.png" alt="이미지 로딩 불가!">
+						<!--LOGO-->
+					</a>
 	            </div>
 	            <div id="search_div">
 	                <form action="" id="search_form">
@@ -134,13 +137,13 @@
 	                    </li>
 						<li id="active_btn_li">
 							<ul id="active_btn_wrapper">
-								<!-- <li>
+								<li>
 									<input type="checkbox" id="userPopup">
 									<label for="userPopup" id="userPopup_label">
 										<i class="fas fa-user"></i>
 									</label>
-								</li> -->
-								<li>
+								</li>
+								<!-- <li>
 									<a href="#"><i class="fas fa-user"></i></a> 
 								</li>
 								<li>
@@ -148,7 +151,7 @@
 								</li>
 								<li>
 									<a href="#"><i class="fas fa-sign-in-alt"></i></a>
-								</li>
+								</li> -->
 							</ul>
 						</li>
 					</ul>

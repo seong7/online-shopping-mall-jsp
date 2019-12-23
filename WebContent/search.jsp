@@ -1,29 +1,38 @@
+<%@page import="java.net.URLDecoder"%>
+<%@page import="product.ProductMgr"%>
+<%@page import="java.util.Vector" %>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+	
+<%! 
+public String makeKor(String s) throws java.io.UnsupportedEncodingException{ 
+	String kor=""; 
+	if (s==null) 
+		kor=null; 
+	else 
+		kor=new String(s.getBytes("ISO-8859-1"),"EUC-KR"); 
+	return kor; 
+} 
+%>
 <%
-	String searchValue = request.getParameter("searchValue"); 
+	request.setCharacterEncoding("EUC-KR");
+	String searchValue = URLDecoder.decode(request.getParameter("searchValue"), "UTF-8"); 
+	System.out.println("search.jsp¿¡¼­´Â : "+searchValue);
 	JSONArray arrayObj=new JSONArray();
 	JSONObject jsonObj = null;
-	 //////////// ì„ì˜ì˜ë°ì´í„°(dbë¼ ê°€ì •í•˜ì) //////////// 
-	 ArrayList<String> dblist = new ArrayList<String>(); 
-	 ArrayList<String> resultlist = new ArrayList<String>();
-	dblist.add("Afghanistan"); 
-	dblist.add("Albania"); 
-	dblist.add("Algeria");
-	dblist.add("American"); 
-	dblist.add("Samoa"); 
-	dblist.add("Andorra");
-	for(String str : dblist) { 
-		if(str.toLowerCase().startsWith(searchValue)){
-			 resultlist.add(str); 
-		}
-	} ///////////resultlistë¥¼ dbì—ì„œ ì¡°íšŒí›„ ë½‘ì•„ì˜¨ listë¼ê³  ê°€ì •í•œë‹¤.
-	/////////// //ë½‘ì€ í›„ jsoníŒŒì‹± 
-	for(String str : resultlist) { 
+	 Vector<String> modellist = new Vector<String>(); 
+	 Vector<String> resultlist = new Vector<String>(); 
+	 ProductMgr mgr = new ProductMgr();
+	 modellist = mgr.getProductList(searchValue);
+	for(String str : modellist) { 
+			resultlist.add(str); 
+	} ///////////resultlist¸¦ db¿¡¼­ Á¶È¸ÈÄ »Ì¾Æ¿Â list¶ó°í °¡Á¤ÇÑ´Ù.
+	/////////// //»ÌÀº ÈÄ jsonÆÄ½Ì
+	for(String str : modellist) { 
 		jsonObj = new JSONObject(); 
 		jsonObj.put("data", str);
 		arrayObj.add(jsonObj);
