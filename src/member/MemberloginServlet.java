@@ -16,6 +16,8 @@ public class MemberloginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=EUC-KR");
+		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("login_id");
 		String pwd = request.getParameter("login_pwd");
 		System.out.println(id);

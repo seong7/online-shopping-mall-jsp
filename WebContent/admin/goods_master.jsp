@@ -9,7 +9,7 @@
 		request.setCharacterEncoding("EUC-KR");
 		Vector<ProductBean> list = amgr.printPname();
 		String pnameList[] = amgr.readPname();
-		out.println(list.size());		   
+		//out.println(list.size());		   
 		
 		//Printing yymmdd
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
@@ -36,7 +36,7 @@
 		if(request.getParameter("reload")!=null&&
 		request.getParameter("reload").equals("true")){
 			p_name = ""; p_date1=0; p_date2=0; 
-		}
+		}	
 %>
 
 
@@ -70,7 +70,7 @@
 					<td>
 						<select id="p_select" name ="pnameList" onchange = "listSelect()">
 						<option value ="">제품명 선택</option>
-						<%for(int i=0; i<pnameList.length;i++){ %>
+						<%for(int i=0; i<pnameList.length;i++){  %>
 						<option value ="<%=pnameList[i]%>"><%=pnameList[i]%></option>
 						<%} %>		
 						</select>		
@@ -80,8 +80,11 @@
 				<tr>
 					<th>검색기간(등록일)</th>
 					<td>
-						<input name ="p_date1" size="20"  placeholder="<%=today1%>"> &nbsp; ~ &nbsp;
-						<input name ="p_date2" size="20" placeholder="<%=today2%>">			
+						<input name ="p_date1" size="20"  <%if(p_date1==0){ %>placeholder="<%=today1%>"
+						<%}else{ %> value="<%=p_date1%>" <%} %>> &nbsp; ~ &nbsp;
+						<input name ="p_date2" size="20" <%if(p_date2==0) { %>placeholder="<%=today2%>" 
+						<%}else{ %> value="<%=p_date2%>" <%} %>>
+								
 						<input id="search_btn" type="button" value="검색" onclick="check()">
 					</td>
 				</tr>	
@@ -98,13 +101,13 @@
 					//p_name = request.getParameter("p_name");
 					//p_date1 = Integer.parseInt(request.getParameter("p_date1"));
 					//p_date2 = Integer.parseInt(request.getParameter("p_date2"));
-					Vector<ProductBean> slist = amgr.searchproduct(p_name, p_date1, p_date2);
+					Vector<ProductBean> slist = amgr.searchproduct(p_name, p_date1, p_date2);					
 					int listSize = slist.size();
 					if(slist.isEmpty()){
-						out.println(p_name);
-						out.println(p_date1);
-						out.println(p_date2);				
-						out.println(slist.size());				
+						//out.println(p_name);
+						//out.println(p_date1);
+						//out.println(p_date2);				
+						//out.println(slist.size());				
 						out.println("검색결과없음");
 					}else{
 						
