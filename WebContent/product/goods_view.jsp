@@ -17,7 +17,7 @@
 <%@ include file="../top.jsp" %>
 
 
-<link rel="stylesheet" type="text/css" href="css/goods_view.css">
+<link rel="stylesheet" type="text/css" href="./css/goods_view.css">
 
 <main>
 	

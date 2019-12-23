@@ -6,7 +6,7 @@
 <!-- <link rel="stylesheet" type="text/css" href="./css/mypage_orderlist.css"> -->
 <%@ include file="../top.jsp" %>
 
-	<%@ include file="./admin_side.jsp"%> 
+<%@ include file="./admin_side.jsp"%> 
 
 <!--------------->
 <!--  작업 영역  -->
