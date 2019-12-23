@@ -30,27 +30,31 @@ document.write(today.getYear( ) ,
 
 function check() {
 	f = document.SearchFrm;
-	if(f.p_name.value.length==0){
+	if(f.p_name.value.length==0 && f.p_date1.value.length==0 && f.p_date2.value.length==0){
 		alert("제품명을 선택하세요");
 		f.p_name.focus();
 		return;
 	}
-	if(f.p_date1.value.length==0 || f.p_date1.value.length!=8){
+	if(f.p_date1.value.length!=8 && f.p_date2.value.length==8){
+		alert("기간을 올바르게 입력해주세요 ex) 20191217")
+		f.p_date1.focus();
+		return;
+	}	
+	if(f.p_date1.value.length==8 && f.p_date2.value.length!=8){
+		alert("기간을 올바르게 입력해주세요 ex) 20191217")
+		f.p_date2.focus();
+		return;
+	}
+	function list() {
+		document.listFrm.action = "goods_master.jsp";
+		document.listFrm.submit();
+	}	
+	if(f.p_date1.value.length!=8 || f.p_date1.value.length!=8){
 		alert("기간을 올바르게 입력해주세요 ex) 20191217")
 		f.p_date1.focus();
 		return;
 	}
-	
-	function list() {
-		document.listFrm.action = "goods_master.jsp";
-		document.listFrm.submit();
-	}
-	
-	if(f.p_date2.value.length==0 || f.p_date2.value.length!=8){
-		alert("기간을 올바르게 입력해주세요 ex) 20191217")
-		f.p_date2.focus();
-		return;
-	}f.submit();
+	f.submit();
 }
 
 function listSelect() {

@@ -459,7 +459,7 @@ public class ProductMgr {
 		return list;
 	}
 
-	// goods_master에서 p_name과 p_date를 통한 검색결과 찾기
+	// Searching product list by p_name, p_date in (goods_master.jsp)
 	public Vector<ProductBean> searchproduct(String p_name, int p_date1, int p_date2) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -469,13 +469,25 @@ public class ProductMgr {
 		try {
 			String p1 = Integer.toString(p_date1);
 			String p2 = Integer.toString(p_date2);
-			con = pool.getConnection();
-			
-			if(p_name.trim().equals("") || p1.trim().equals("0") || p2.trim().equals("0")) {
+			con = pool.getConnection();			
+			if(p_name.trim().equals("") && p1.trim().equals("0") && p2.trim().equals("0")) {
 				sql = "SELECT p.p_code, p.p_name, p.p_price, p.p_date, p.p_on_sale, SUM(s.st_ava_qty) "
 						+ "FROM product_mst_tb p JOIN stock_tb s ON p.p_code = s.p_code GROUP BY p.p_code "
 						+ "order by p.p_date desc";
 				pstmt = con.prepareStatement(sql);
+			//}else if(!p_name.trim().equals("") && p1.trim().equals("0") && p2.trim().equals("0")){
+			//	sql = 	"SELECT p.p_code, p.p_name, p.p_price, p.p_date, p.p_on_sale, SUM(s.st_ava_qty) "
+			//			+ "FROM product_mst_tb p JOIN stock_tb s ON p.p_code = s.p_code GROUP BY p.p_code "
+			//			+ "having p_name LIKE ? order by p.p_date desc";
+			//	pstmt = con.prepareStatement(sql);
+			//	pstmt.setString(1, "%" + p_name + "%");
+			}else if(p_name.trim().equals("") || !p1.trim().equals("0") || !p2.trim().equals("0") ){
+				sql = 	"SELECT p.p_code, p.p_name, p.p_price, p.p_date, p.p_on_sale, SUM(s.st_ava_qty) "
+						+ "FROM product_mst_tb p JOIN stock_tb s ON p.p_code = s.p_code GROUP BY p.p_code "
+						+ "having p_date BETWEEN ? AND ? order by p.p_date desc";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, p_date1);
+				pstmt.setInt(2, p_date2);			
 			}else {
 			// sql = "SELECT p_code, p_name, p_price, p_date, p_on_sale "
 			// + "FROM product_mst_tb "
