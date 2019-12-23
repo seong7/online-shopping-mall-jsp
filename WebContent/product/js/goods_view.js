@@ -16,11 +16,15 @@ function numberFormat(inputNumber) {
 function getresult(){
 	 let priceValue = stringNumberToInt(price.innerHTML);
 	 let qtyValue = parseInt(quantity.value);
-     if(qtyValue>=10){
-     	alert('9개 까지만 주문이 가능합니다.');
-        quantity.value = 9;
-        qtyValue = 9;
+     if(qtyValue>=100){
+     	alert('99개 까지만 주문이 가능합니다.');
+        quantity.value = 99;
+        qtyValue = 99;
      }
+     if(qtyValue<1){
+         quantity.value = 1;
+         qtyValue = 1;
+      }
         total.innerHTML = numberFormat(priceValue * qtyValue);
 }
 
@@ -41,11 +45,11 @@ function goodsView_init(){
 		up_btn.addEventListener('click', function(){
 		let qtyValue = parseInt(quantity.value);
 		 qtyValue += 1;
-		 if(qtyValue==10)
-			 qtyValue=9;
+		 if(qtyValue==100)
+			 qtyValue=99;
 		  quantity.value = qtyValue;
 		getresult();
-		console.log('업');
+//		console.log('업');
 	});
 	
     quantity.addEventListener('change', function(){

@@ -42,9 +42,9 @@
 			</div>
 			<div class="header quantity">
 				<span class="title">구매 수량</span>
-				<button id="button_down" type="button"></button>
-				<input id="quantity" class="quantity" type="number" min="1" max="9" step="1" value="1">
-				<button id="button_up" type="button"></button>
+				<i id="button_down" class="far fa-minus-square"></i>
+				<input id="quantity" class="quantity" type="number" min="1" max="99" step="1" value="1">
+				<i id="button_up" class="far fa-plus-square"></i>
 			</div>
 			<div class="header total">
 				<span class="title">총 상품 금액</span>
