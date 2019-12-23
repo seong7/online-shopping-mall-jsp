@@ -21,9 +21,9 @@
 <!-- <title>-관리자-제품 등록</title> -->
 
 <!-- <link rel="stylesheet" type="text/css" href="./css/mypage_orderlist.css"> -->
-<jsp:include page="../top.jsp"/>
+<%@ include file="../top.jsp" %>
 
-	<jsp:include page="./admin_side.jsp"/>
+	<%@ include file="./admin_side.jsp"%> 
 
 <!--------------->
 <!--  작업 영역  -->
@@ -45,7 +45,7 @@
         
                 <h3 class="inner_title">기본정보</h3>
                 
-                <input type="button" id="chgread1" value="수정">
+                <input id="chgread1" class="btn" type="button" value="수정">
                 
                             <table class="mgr_table verHead">
         
@@ -146,7 +146,7 @@
 	
 </div> <!--  #btn_manager_wrapper (버튼메뉴 + manager) : admin_side.jsp 에서 열림-->
 </div> <!-- #main (상단요약 + 버튼 + manager) : admin_side.jsp 에서 열림-->
-	<jsp:include page="../bottom.jsp"/>
+	<%@ include file="../bottom.jsp" %>
 </body>
 
 <script>
