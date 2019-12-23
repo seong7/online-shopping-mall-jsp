@@ -12,23 +12,20 @@
  		//String id = "u1";//확인용 데이터
  		int p_code = 1;//확인용 데이터
  		int o_del_fee = 2500;
- 			
- %>
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-input {
-  width:30px;
-  height:30px;
-  font-size:15px;
-  text-align: center;
-}
-</style>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
+ 		if(id==null){%>
+ 			<script>
+ 			alert("로그인 정보가 없습니다.");
+ 			document.location.href="${pageContext.request.contextPath}/index.jsp";
+ 			</script>
+ 		<%}%>
+ 
+<link rel="stylesheet" type="text/css" href="./css/cart.css">
+
+<jsp:include page="../top.jsp"/> 
+		<!--******************-->
+        <!--작업 및 복붙 구역-->
+        <!--******************-->        	
+         <main>
 	<div align="center">
 		<h2 class="layout-page-title">장바구니</h2>
 			<p>주문하실 상품명 및 수량을 정확하게 확인해 주세요.</p>
@@ -94,5 +91,7 @@ input {
 		</form>
 	</div>
 	<script src="js/cart.js"></script>
-</body>
+</main>
+		<jsp:include page="../bottom.jsp"/>
+		</body>
 </html>
