@@ -82,9 +82,9 @@
 </script>
 
 
-<jsp:include page="../top.jsp"/>
+<%@ include file="../top.jsp" %>
 
-	<jsp:include page="./admin_side.jsp"/>
+	<%@ include file="./admin_side.jsp"%> 
 
 	<div id="manager">
 	
@@ -232,7 +232,7 @@
 
 </div> <!--  #btn_manager_wrapper (버튼메뉴 + manager) : admin_side.jsp 에서 열림-->
 </div> <!-- #main (상단요약 + 버튼 + manager) : admin_side.jsp 에서 열림-->
-	<jsp:include page="../bottom.jsp"/>	
+	<%@ include file="../bottom.jsp" %>
 	
 </body>	
 </html>

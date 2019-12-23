@@ -8,29 +8,10 @@
 %>
 <jsp:useBean id="orderMgr" class="order.OrderMgr"/>
 <jsp:useBean id="pMgr" class="product.ProductMgr"/>
-<%
-		String id = (String)session.getAttribute("idKey");
-		String msg = "";
 
-		//if(session.getAttribute("idKey")==null){
-		//	msg="로그인이 필요한 페이지 입니다.";
-		//}
-		
-		
-		/*  test ( u1 의 값을 가져옴 )  */
-		id ="u1";
-%>
-<script>
-	//alert("<%=msg%>");
-	//location.href = "../index.jsp";
-	
-</script>
+<%@ include file="../top.jsp" %>
 
-
-<jsp:include page="../top.jsp"/>
-
-
-	<jsp:include page="./mypage_side.jsp"/>
+	<%@ include file="../order/mypage_side.jsp"%> 
 	
 	
 	<div id="mypage">
@@ -82,9 +63,10 @@
 				
 		</table>
 	</div>
+	
 </div> <!--  #btn_mypage_wrapper (버튼메뉴 + mypage) : mypage_side.jsp 에서 열림-->
 </div> <!-- #main (상단요약 + 버튼 + mypage) : mypage_side.jsp 에서 열림-->
-		<jsp:include page="../bottom.jsp"/>
+	<%@ include file="../bottom.jsp" %>
 </body>
 </html>
 

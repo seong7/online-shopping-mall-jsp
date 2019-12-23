@@ -46,11 +46,10 @@
 <script type ="text/javascript" src="./js/goods_master.js"></script>
 <link rel="stylesheet" href="./css/admin_style.css">
 
+<%@ include file="../top.jsp" %>
 
-<jsp:include page="../top.jsp"/>
-
-	<jsp:include page="./admin_side.jsp"/>
-
+	<%@ include file="./admin_side.jsp"%> 
+	
 	<div id="manager">
 	
 		<h1 class="title">제품목록</h1>
@@ -155,7 +154,7 @@
 
 </div> <!--  #btn_manager_wrapper (버튼메뉴 + manager) : admin_side.jsp 에서 열림-->
 </div> <!-- #main (상단요약 + 버튼 + manager) : admin_side.jsp 에서 열림-->
-	<jsp:include page="../bottom.jsp"/>	
+	<%@ include file="../bottom.jsp" %>
 	
 </body>	
 </html>
