@@ -91,7 +91,6 @@ public class ProductMgr {
 				sql=  "SELECT p_code, p_name, p_price, p_main_pht_name "
 						+ "FROM product_mst_tb WHERE p_on_sale=1 ORDER BY p_date DESC "
 						+ "LIMIT 0, 4";
-				System.out.println(sql);
 				break;
 				
 			case "all" :
@@ -127,7 +126,6 @@ public class ProductMgr {
 				ProductBean bean = new ProductBean();
 				bean.setP_code(rs.getInt(1));
 				bean.setP_name(rs.getString(2));
-				System.out.println(bean.getP_name());
 				bean.setP_price(rs.getInt(3));
 				bean.setP_main_pht_name(rs.getString(4));
 				vlist.addElement(bean);
@@ -171,7 +169,6 @@ public class ProductMgr {
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
-//		System.out.println("DB ¿Ï·á ÈÄ vlist size   :   " + vlist.size());
 		return vlist;
 	}	
 	
@@ -183,7 +180,7 @@ public class ProductMgr {
 		ResultSet rs = null;
 		Vector<String> vlist = new Vector<String>();
 		String sql = null;
-		System.out.println("searchdata :" +searchValue);
+//		System.out.println("searchdata :" +searchValue);
 		try {
 			con = pool.getConnection();
 			sql = "select p_name from PRODUCT_MST_TB where p_on_sale=1 and p_name like ?";

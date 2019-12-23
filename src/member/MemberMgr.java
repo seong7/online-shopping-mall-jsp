@@ -94,26 +94,31 @@ public class MemberMgr {
 
 	//패스워드 체크
 
-			public boolean checkPwd(String pwd) {
+			public int checkPwd(String id, String pwd) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
 				String sql = null;
-				boolean flag = false;
+				int count = 0;
 				try {
 					con = pool.getConnection();
-					sql = "select pwd from user_tb where pwd=?";
+					sql = "select * from user_tb where id= ? and pwd=?";
 					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, pwd);
+					pstmt.setString(1, id);
+					pstmt.setString(2, pwd);
 					rs = pstmt.executeQuery();
-					flag = rs.next();
+					while(rs.next()) {
+						count++;
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				} finally {
 					pool.freeConnection(con, pstmt, rs);
 				}
-				return flag;
+				return count;
 			}
+			
+			
 			public MemberBean getMember(String id) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -263,8 +268,7 @@ public class MemberMgr {
 					while(rs.next()){
 						bean.setId(rs.getString(1));
 						bean.setPwd(rs.getString(2));
-						bean.setId(rs.getString(3));
-						bean.setNAME(rs.getString(4));
+						bean.setNAME(rs.getString(3));
 						bean.setBirthday(rs.getString(4));
 						bean.setEmail(rs.getString(5));
 						bean.setContact(rs.getString(6));
@@ -281,6 +285,51 @@ public class MemberMgr {
 				}
 					return bean;
 			}
-	
+			//admin 회원정보 수정(for ajax)
+			public int updateMemberAdmin(MemberBean bean) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				String sql = null;
+				int flag = 0;
+				try {
+					con = pool.getConnection();
+					sql = "update user_tb set birthday=?, join_date=?, contact=? , email=?,zipcode=?,address=?,address_detail=? where id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, bean.getBirthday());
+					pstmt.setString(2, bean.getJoin_date());
+					pstmt.setString(3, bean.getContact());
+					pstmt.setString(4, bean.getEmail());
+					pstmt.setInt(5, bean.getZipcode());
+					pstmt.setString(6, bean.getAddress());
+					pstmt.setString(7, bean.getAddress_detail());
+					pstmt.setString(8, bean.getId());
+					if(pstmt.executeUpdate()==1)
+						flag = 1;
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt);
+				}
+				return flag;
+			}
+			public int deleteMember(String userid) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				String sql = null;
+				int flag = 0;
+				try {
+					con = pool.getConnection();
+					sql = "delete from user_tb where id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, userid);
+					if(pstmt.executeUpdate()==1)
+						flag = 1;
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt);
+				}
+				return  flag;
+			}
 }
 

@@ -1,6 +1,6 @@
 <%@page import="member.MemberBean"%>
 
-<%@ page language="java" contentType="text/html; charset="EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <jsp:useBean id="mgr" class="member.MemberMgr"/>
 
 <%
@@ -61,7 +61,7 @@
 <body>
 	<div class="page_section_myinfo">
 		<div class="head_aticle">
-			<h2 class="tit">개인 정보 수정</h2>
+			<h2>개인 정보 수정</h2>
 			<hr>
 		</div>
 		<div class="myinfo">

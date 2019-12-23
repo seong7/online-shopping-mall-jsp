@@ -46,7 +46,13 @@ function confirmDel(){
 }
 </script>
 </head>
-<body>
+
+
+<%@ include file="../top.jsp" %>
+
+	<%@ include file="./admin_side.jsp"%> 
+	
+	
 <div align="center"><br/>
 <h2 >주문 상세 정보</h2>
 <hr width="60%">
@@ -56,8 +62,8 @@ function confirmDel(){
 		Vector<OrderBean> olist = oMgr.getOrderDetail(o_index);
 		for(int i =0; i<olist.size(); i++){
 			OrderBean order = olist.get(i);
-			String id = order.getO_id();
-			MemberBean mbean = mMgr.getMember(id);
+			String oId = order.getO_id();
+			MemberBean mbean = mMgr.getMember(oId);
 	%>
 	<tr>
 		<th>주문번호<th>
@@ -174,6 +180,11 @@ function confirmDel(){
 	<input type="hidden" name="keyDate2" value="<%=keyDate2%>">
 	<%}%>
 </form>
+
+	</div> <!--  #btn_mypage_wrapper (버튼메뉴 + mypage) : mypage_side.jsp 에서 열림-->
+	</div> <!-- #main (상단요약 + 버튼 + mypage) : mypage_side.jsp 에서 열림-->
+	<%@ include file="../bottom.jsp" %>
+
 </body>
 </html>
 

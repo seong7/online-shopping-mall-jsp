@@ -1,26 +1,34 @@
 <%@ page contentType="text/html; charset=EUC-KR"%>
-<%request.setCharacterEncoding("EUC-KR");%>
-<html>
-<head>
-</head>
-<body>
-<div class="page_section section_myinfo">
-<div class="head_aticle">
-<h2 class="tit">ê°œì¸ ì •ë³´ ìˆ˜ì •</h2>
-</div>
-<div class="conf_pw">
-<form name="confirmForm" method="post" action="myinfo_check_Proc.jsp">
-<div class="field_pw">
-<input type="text" id="login_id_input" class="login_input" name="id" placeholder="ì•„ì´ë””ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”." >
-<input type="password" id="login_pwd_input" class="login_input" name="pwd" placeholder="ë¹„ë°€ë²ˆí˜¸ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”.">
+<%
+	request.setCharacterEncoding("EUC-KR");
+%>
 
-</div>
-<div class="group_btn">
-<span class="inner_groupbtn">
-</br>
-<button type="submit" class="btn btn_positive">í™•ì¸</button>
-</span>
-</div>
-</form>
-</div>
-</div>
+
+<%@ include file="../top.jsp" %>
+
+	<%@ include file="../order/mypage_side.jsp"%> 
+
+		<div id="mypage">
+
+			<h1 class="title">°³ÀÎ Á¤º¸ ¼öÁ¤</h1>
+			
+			<!-- <div class="conf_pw">  -->
+				<form name="confirmForm" method="post" action="myinfo_check_Proc.jsp">
+					
+						<!-- <input type="text" id="login_id_input" class="login_input" name="id" placeholder="¾ÆÀÌµð¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä." > -->
+						<span>ºñ¹Ð¹øÈ£ È®ÀÎ</span>
+						<input type="password" id="login_pwd_input" class="login_input" name="pwd" placeholder="ºñ¹Ð¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.">
+					
+					<div class="group_btn">
+
+						<input type="submit" class="btn btn_positive" value="È®ÀÎ">
+					</div>
+				</form>
+			<!-- </div>  -->
+		</div>
+	</div> <!--  #btn_mypage_wrapper (¹öÆ°¸Þ´º + mypage) : mypage_side.jsp ¿¡¼­ ¿­¸²-->
+	</div> <!-- #main (»ó´Ü¿ä¾à + ¹öÆ° + mypage) : mypage_side.jsp ¿¡¼­ ¿­¸²-->
+	<%@ include file="../bottom.jsp" %>
+</body>
+</html>
+	

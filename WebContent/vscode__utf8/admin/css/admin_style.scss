@@ -1,7 +1,8 @@
 @import '../../font/font-family';
 $brandFont: 'ON_IGothic';
 $testFont: 'Handon3gyeopsal600g';
-$brandColor: #fec084;
+$brandColor1: #fec084;
+$brandColor2:  #FB9832;
 $tableBorder: 0.5px solid #dcdbde;
 
 /* include 하는 각각의 페이지에서 div #main 선언해야함 */
@@ -200,7 +201,7 @@ $tableBorder: 0.5px solid #dcdbde;
     width: 100%;
     color: #333;
     font-size: 24px;
-    border-bottom: 3px solid $brandColor;
+    border-bottom: 3px solid $brandColor1;
     padding-bottom: 20px;
 }
 
@@ -228,7 +229,7 @@ form{
     margin-bottom: 20px;
     th{
         background-color: #f3f3f5;
-        width: 100px;
+        width: 150px;
         border: $tableBorder;
         
     }
@@ -243,10 +244,34 @@ form{
             margin-right: 5px;
             width: 180px;
         }
-        .radio{
+        .radio, .checkbox{
             width: 50px;
-            margin-top: -1px;
             vertical-align: middle;
+        }
+        .radio{
+            margin-top: -1px;
+        }
+    }
+}
+
+.horHead{
+    th{
+        height: 60px;
+        font-size: 18px;
+        vertical-align: middle;
+    }
+    td{
+        height: 50px;
+        vertical-align: middle;
+        text-align: center;
+        font-family: "MS Shell Dlg 2";
+        font-weight: 500;
+        a{
+            text-decoration: none;
+            color: inherit;
+            &:hover{
+                color: $brandColor2;
+            }
         }
     }
 }
@@ -266,14 +291,17 @@ form{
 .btn{
     height: 30px;
     width: 70px;
-    background-color: $brandColor;
-    border: none;
+    border:2px solid $brandColor2;
+    background-color: white;
+    // border: none;
     border-radius: 3px;
-    color: white;
+    color: $brandColor2;
     font-weight: bold;
+    font-size: 16px;
     
     &:active{
         background-color: #f09439;
+        color: white;
     }
     &:hover{
         cursor: pointer;
@@ -281,6 +309,31 @@ form{
 }
 
 
+/** goods_master.jsp 에만 **/
+#search_btn, #member_search_btn{
+    background-color: white;
+    color: $brandColor2;
+    width: 80px;
+    font-weight: bold;
+    font-size: 16px;
+    border:2px solid $brandColor2;
+    &:active{
+        background-color: #f09439;
+        color: white;
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}
+#p_select{
+    width: 200px;
+    margin-right: 21px;
+}
+
+/** goods_view.jsp 에서만 **/
+#chgread1{
+    margin-left: 600px;
+}
 
 
 /*** goods_insert.jsp 에만 ***/

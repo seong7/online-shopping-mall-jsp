@@ -1,0 +1,534 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type ="text/javascript" src="./js/goods_master.js"></script>
+
+
+
+
+
+<!--<!DOCTYPE html>
+<html>
+	<head>-->
+		<meta charset="EUC-KR">
+		<link rel="stylesheet" type="text/css" href= "/../css/reset.css">
+		<link rel="stylesheet" type="text/css" href= "/../css/util.css">
+		<link rel="stylesheet" href="/../css/top.css">
+		<script src="https://kit.fontawesome.com/115bcf1f34.js" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <!--</head>
+	<body> -->
+	        
+			    <div id="wrap" style="display:none;border:1px solid #DDDDDD;width:500px;margin-top:500px; margin-left: 200px, z-index: 200"></div>
+    	<div style="height:10px;"></div>
+	    <div id="modalDiv">
+	        <div id="modalInnerFrame">
+				<div id="modal_elements_wrapper">
+					<!-- modal_header : 로그인 / 회원가입 버튼-->
+					<div id="modal_header">
+						<input type="radio" id="login_btn" class="login_signup_btns" name="login_signup_btns" onclick="login_signup('login')" checked>
+						<label for="login_btn" id="login_btn_label" class="login_signup_btns_label" >&nbsp로그인&nbsp</label>
+						<span id="modal_header_span">&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+						<input type="radio" id="signup_btn" class="login_signup_btns" name="login_signup_btns" onclick="login_signup('signup')">
+						<label for="signup_btn" id="signup_btn_label" class="login_signup_btns_label">회원가입</label>
+					</div>
+					<form method="POST" id="login_form" action="#">
+						<h3>어서오세요!</h3>
+						<input type="text" id="login_id_input" class="login_input" name="id" placeholder="아이디를 입력해주세요." autocomplete="off">
+						<input type="password" id="login_pwd_input" class="login_input" name="pwd" placeholder="비밀번호를 입력해주세요."autocomplete="off">
+						<div id="lost_id_pwd_wrapper">
+							<a href="#">아이디나 비밀번호를 잊어버렸습니까?</a>
+						</div>
+						<button type="button" class="top_modal_button top_modal_button_style top_modal_orange" id="login_submit_btn">
+							<span id="login_span">로그인</span>
+						</button>
+					</form>
+					<form id="signup_form">
+						<h3>처음이세요?</h3>
+						<div id="daumWrap"></div>
+						<div id="id_section">
+							<input type="text" class="signup_input" id="id_section_input" autocomplete="off" placeholder="아이디를 입력하세요.">
+							<!-- ajax 필요 ?-->
+							<button type="button" class="signup_util_btn top_modal_button_style top_modal_orange top_modal_button" id="id_section_btn"><span>중복확인</span></button>
+						</div>
+						<input type="password" class="signup_input signup_long_input" id="signup_pwd"autocomplete="off" placeholder="비밀번호를 입력하세요.">
+						<input type="password" class="signup_input signup_long_input" id="signup_pwd_check" autocomplete="off" placeholder="비밀번호를 한번 더 입력하세요.">
+						<input type="text" class="signup_input signup_long_input" id="signup_name" autocomplete="off" placeholder="이름을 입력하세요.">
+						<input type="text" class="signup_input signup_long_input" id="signup_birth" autocomplete="off" placeholder="생년월일을 입력하세요. Ex)1900-01-01">
+						<input type="text" class="signup_input signup_long_input" id="signup_email" autocomplete="off" placeholder="이메일을 입력하세요. Ex)timi2030@gmail.com">
+						<input type="text" class="signup_input signup_long_input" id="signup_phone" autocomplete="off" placeholder="연락처를 입력하세요. Ex)010-0000-0000">
+						<div id="address_section">
+							<div id ="address_section_header">
+							    <input id="address_section_zipcode" class="signup_input" type="text" value="" readOnly/>
+								<button type="button" id="address_section_btn" class="signup_util_btn top_modal_button_style top_modal_button" onclick="openDaumZipAddress();"><span>주소 찾기</span></button>
+							
+							    <!-- 다음 우편번호 찾기 리스트를 띄울 영역을 지정 -->
+						
+							    <input type="text" class="signup_input signup_long_input" id="signup_addr" readOnly/>
+							    <input type="text" class="signup_input signup_long_input" id="signup_addr_detail" placeholder="상세주소를 입력하세요."/>
+							</div>
+						</div>
+						<button type="button" class="top_modal_button top_modal_button_style top_modal_orange" id="signup_submit_btn" >
+							<span id="submit_span" class="box">회원가입</span>
+						</button>
+					</form>
+				</div>
+	        </div>
+	        <label for="userPopup"></label>
+	    </div>
+	    	    <!--전체 페이지 Wrapper-->
+	    <div id="top_wrapper">
+	        <!--header Wrapper(로고 상단 Div(추가 Contents 대비용), Hompage Logo)-->
+	        <div id="header">
+	            <!--ADD CONTENTS-->
+	            <div id="headerTopMenu">
+	                <!--필요시 문의-->
+	            </div>
+	            <!--로고 이미지 Div-->
+	            <div id="homeLogo">
+	            	<a id="logo_a" href="/online-shopping-mall/index.jsp">
+		                <img id="logoImg" src="/online-shopping-mall/img/index/logo/mills_logo.png" alt="이미지 로딩 불가!">
+		                <!--LOGO-->
+	            	</a>
+	            </div>
+	            <div id="search_div">
+	                <form  id="search_form" action="/online-shopping-mall/product/goods_list.jsp">
+	                    <label>
+	                        <input name="searchTerm" type="text" id="search_input" placeholder="상품을 입력하세요" autocomplete=”off”>
+	                        <i class="fas fa-search" onclick="document.getElementById('search_form').submit()"></i>
+	                    </label>
+	                        <input name="list" value="search" type="hidden">
+	                </form>
+	            </div>
+	            
+	        </div>
+	        <!--메뉴 네비게이션(sticky)-->
+	        <div id="menuNav">
+	            <!--nav 구성 :1개의 슬라이드 메뉴, 베스트, 신상품, 고객지원, 검색창(search icon), shopping icon(장바구니)-->
+	            <div id="nav_Div">
+	                <ul class="nav_main">
+	                    <li id="nav_start">
+	                        <a class="nav_a" id="ricecakeNav">
+	                            <i class="fas fa-bars"></i>
+	                            <span class="txt">떡</span>
+							</a>
+							<div id="nav_category">
+								<ul>
+									<li><a href="/online-shopping-mall/product/goods_list.jsp?list=all" class="category_menu">전체보기</a></li>
+									<li><a href="#" class="category_menu">전통떡</a></li>
+									<li><a href="#" class="category_menu">퓨전떡</a></li>
+
+								</ul>
+							</div>
+	                    </li>
+	                    <li>
+	                        <a class="nav_a" href="/online-shopping-mall/product/goods_list.jsp?list=best">
+	                            <span class="txt">베스트</span>
+	                        </a>
+	                    </li>
+	                    <li>
+	                        <a class="nav_a" href="/online-shopping-mall/product/goods_list.jsp?list=new">
+	                            <span class="txt">신상품</span>
+	                        </a>
+	                    </li>
+	                    <li>
+	                        <a class="nav_a"  href="#">
+	                            <span class="txt">고객지원</span>
+	                        </a>
+	                    </li>
+						<li id="active_btn_li">
+							<ul id="active_btn_wrapper">
+							
+								<li>
+									<input type="checkbox" id="userPopup">
+									<label for="userPopup" id="userPopup_label">
+										<i class="fas fa-user"></i>
+									</label>
+								</li>
+							
+							</ul>
+						</li>
+					</ul>
+				</div>
+	        </div>
+	</div>
+
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript" src="/online-shopping-mall/js/top.js"></script>
+
+<!-- </body>
+
+	
+
+
+
+<link rel="stylesheet" type="text/css" href="css/admin_style.css">
+<script src="https://kit.fontawesome.com/115bcf1f34.js" crossorigin="anonymous"></script>
+  
+
+  	<!-- top, bottom 제외 페이지 전체-->
+    <div id="main">
+  
+        <header>
+
+
+        <!-- 요약창 부분 -->
+        <div id="manager_summ">
+              <ul id="manager_summ_ul">
+                  <li id="summ_first">
+                  	
+                  	  <!-- 임시 메모  :: -->
+                      <span style="font-size: 12px; color: red;">관리자 모드의 요약창 <br/>(사용 여부: 미정 / 내용: 미정)</span>
+                  
+                      <div class="top">
+                          <span id="name" class="bold">김성진</span>
+                          <span id="name_top" class="text">님</span>
+                      </div>
+                      <div class="bottom">
+                          <span id="name_bottom" class="text">환영합니다.</span>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="top">
+                          <span id="point_top" class="text">사용가능 포인트</span>
+                      </div>
+                      <div class="bottom">
+                          <span id="point" class="bold">1,000</span>
+                          <span id="point_bottm" class="text">원</span>
+                      </div>
+                  </li>
+                  <li id="summ_last">
+                      <div class="top">
+                          <span id="del_top" class="text">배송중인 주문</span>
+                      </div>
+                      <div class="bottom">
+                          <span id="del" class="bold">2</span>
+                          <span id="del_bottom" class="text">건</span>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+
+
+    </header>
+
+
+    
+    <div id="btn_manager_wrapper">  
+    <!-- (버튼메뉴 + manager) -->
+
+
+        <div id="admin_side">
+
+            <div id="section">
+                관리자모드
+            </div>
+    
+            <!-- 메뉴 부분 -->
+            <div id="manager_btn_wrapper">
+                <ul>
+                    <a id="btn_first" href="#">
+                        <li>
+                            <span class="text">통계</span>
+                            
+                            <!-- default 아이콘 -->
+                            <span class="icon"><i class="fas fa-chevron-left"></i></span>
+                        
+                             <!-- chart.jsp :: -->
+                            <!-- <span class="icon"><i class="fas fa-chevron-right"></i></span> -->
+                        
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <span class="text">회원관리</span>
+        
+                            <!-- default 아이콘 -->
+                            <span class="icon"><i class="fas fa-chevron-left"></i></span>
+        
+                            <!-- member_list.jsp / member_view.jsp :: -->
+                            <!-- <span class="icon"><i class="fas fa-chevron-right"></i></span> -->
+                       
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <span class="text">주문관리</span>
+                            
+                            <!-- default 아이콘 -->
+                            <span class="icon"><i class="fas fa-chevron-left"></i></span>
+        
+                             <!-- order_list.jsp / order_view.jsp :: -->
+                            <!-- <span class="icon"><i class="fas fa-chevron-right"></i></span> -->
+        
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <span class="text">제품관리</span>
+                            
+                            <!-- default 아이콘 -->
+                            <span class="icon"><i class="fas fa-chevron-left"></i></span>
+                        
+                             <!-- goods_master.jsp, goods_insert.jsp, goods_view.jsp, goods_stock.jsp :: -->
+                            <!-- <span class="icon"><i class="fas fa-chevron-right"></i></span> -->
+                        
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <span class="text">접속관리</span>
+                            
+                            <!-- default 아이콘 -->
+                            <span class="icon"><i class="fas fa-chevron-left"></i></span>
+                        
+                             <!-- 접속관리 페이지 누락됨 :: -->
+                            <!-- <span class="icon"><i class="fas fa-chevron-right"></i></span> -->
+                        
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <span class="text">QnA</span>
+                            
+                            <!-- default 아이콘 -->
+                            <span class="icon"><i class="fas fa-chevron-left"></i></span>
+                        
+                             <!-- qna_list.jsp / qna_view.jsp :: -->
+                            <!-- <span class="icon"><i class="fas fa-chevron-right"></i></span> -->
+                        
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <span class="text">공지사항</span>
+                            
+                            <!-- default 아이콘 -->
+                            <span class="icon"><i class="fas fa-chevron-left"></i></span>
+                        
+                             <!-- notice_list.jsp / notice_view.jsp :: -->
+                            <!-- <span class="icon"><i class="fas fa-chevron-right"></i></span> -->
+                        
+                        </li>
+                    </a>
+                    <a id="btn_last" href="#">
+                        <li>
+                            <span class="text">FAQ</span>
+                            
+                            <!-- default 아이콘 -->
+                            <span class="icon"><i class="fas fa-chevron-left"></i></span>
+                        
+                             <!-- faq_list.jsp / faq_view.jsp :: -->
+                            <!-- <span class="icon"><i class="fas fa-chevron-right"></i></span> -->
+                        
+                        </li>
+                    </a>
+                </ul>
+            </div>
+        
+
+        </div>   <!-- #btn_wrapper -->
+
+
+    <!--</div>   #btn_manager_wrapper (버튼메뉴 + manager) : 하위 페이지에서 닫아야함-->
+    
+   <!--</div>  #main (상단요약 + 버튼 + manager) : 하위페이지에서 닫아야함-->
+
+
+
+
+	<div id="manager">
+	
+		<h1 class="title">제품목록</h1>
+
+		<form name = "listFrm">
+			<input type ="hidden"  name ="reload" value="true">
+		</form>
+
+
+		<form name ="SearchFrm" method="get" >
+		
+			<input type = "hidden" name ="fch" value="0">	
+			
+			<h3 class="inner_title">제품명 검색</h3>
+			
+			<table class="mgr_table verHead">
+				<tr>
+					<th>제품명</th>
+					<td>
+						<select id="p_select" name ="pnameList" onchange = "listSelect()">
+						<option value ="">제품명 선택</option>
+						
+						<option value ="흰콩 쑥개떡">흰콩 쑥개떡</option>
+						
+						<option value ="오색찹쌀떡">오색찹쌀떡</option>
+						
+						<option value ="망개떡">망개떡</option>
+						
+						<option value ="수고했어 찹쌀떡">수고했어 찹쌀떡</option>
+						
+						<option value ="크림치즈 찰떡 2종">크림치즈 찰떡 2종</option>
+						
+						<option value ="오색보리앙금절편 2종">오색보리앙금절편 2종</option>
+						
+						<option value ="아이스 찰떡 3종">아이스 찰떡 3종</option>
+						
+						<option value ="방울떡">방울떡</option>
+						
+						<option value ="[제주특산품] 오메기떡">[제주특산품] 오메기떡</option>
+						
+						<option value ="찰편 2종">찰편 2종</option>
+								
+						</select>		
+						<input name ="p_name" value="">
+					</td>		
+				</tr>
+				<tr>
+                    <th>
+                        검색기간
+                        (등록일)
+                    </th>
+					<td>
+                        <input name ="p_date1" size="20"  value="20191123"> &nbsp; ~ &nbsp;
+						<input name ="p_date2" size="20" value="20191223">			
+                        <input id="search_btn" type="button"  value="검색" onclick="check()">
+					</td>
+				</tr>	
+			</table>
+				
+		</form>
+
+	<!-- <form name=rFrm action="goods_Proc.jsp?flag=delete" enctype="multipart/form-data"> -->
+	<form name=rFrm id="rFrame" action="goods_masterProc.jsp" enctype="multipart/form-data">
+		<table class="mgr_table horHead">
+			<tr>
+				
+				<tr>
+					<td>
+						<input class="checkbox" type ="checkbox" name="allCh" onclick="allChk()" >
+					</td>					
+					<th>제품코드</th>
+					<th>상품명</th>
+					<th>상품가격</th>
+					<th>등록일</th>
+					<th>판매여부</th>
+					<th>재고수량</th>
+				</tr>			
+								
+					<tr>
+					<td>
+						<input class="checkbox" type ="checkbox" name="fch" value="4" onclick="chk()" >
+					</td>						
+					<td><a href="goods_view.jsp?p_code=4">4</a></td>
+					<td>흰콩 쑥개떡</td>
+					<td>13500</td>
+					<td>2019-12-20</td>
+					<td>1</td>
+					<td>1</td>		
+				</tr>
+						
+					<tr>
+					<td>
+						<input class="checkbox" type ="checkbox" name="fch" value="6" onclick="chk()" >
+					</td>						
+					<td><a href="goods_view.jsp?p_code=6">6</a></td>
+					<td>망개떡</td>
+					<td>10000</td>
+					<td>2019-12-20</td>
+					<td>1</td>
+					<td>0</td>		
+				</tr>
+						
+					<tr>
+					<td>
+						<input class="checkbox" type ="checkbox" name="fch" value="10" onclick="chk()" >
+					</td>						
+					<td><a href="goods_view.jsp?p_code=10">10</a></td>
+					<td><a href="goods_view.jsp?p_code=10">아이스 찰떡 3종</a></td>
+					<td>4200</td>
+					<td>2019-12-20</td>
+					<td>1</td>
+					<td>10</td>		
+				</tr>
+						
+					<tr>
+					<td>
+						<input class="checkbox" type ="checkbox" name="fch" value="11" onclick="chk()" >
+					</td>						
+					<td><a href="goods_view.jsp?p_code=11">11</a></td>
+					<td>방울떡</td>
+					<td>3900</td>
+					<td>2019-12-20</td>
+					<td>1</td>
+					<td>10</td>		
+				</tr>
+						
+					<tr>
+					<td>
+						<input class="checkbox" type ="checkbox" name="fch" value="13" onclick="chk()" >
+					</td>						
+					<td><a href="goods_view.jsp?p_code=13">13</a></td>
+					<td>[제주특산품] 오메기떡</td>
+					<td>5000000</td>
+					<td>2019-12-20</td>
+					<td>0</td>
+					<td>1</td>		
+				</tr>
+			
+			
+			
+        </table>
+        <div class="submit_wrapper">
+            <input class="btn" type ="button" name="update" id="update_btn" value="수정">
+            <input class="btn" type="button" name="delete" id="delete_btn" value="삭제" disabled>
+            <input class="btn" type ="button" value="추가" onclick ="location.href='goods_insert.jsp'">	
+            <input type ="hidden" name="buffer" id="buffer">
+        </div>
+	</form>
+
+	</div>
+
+
+</div> <!--  #btn_manager_wrapper (버튼메뉴 + manager) : admin_side.jsp 에서 열림-->
+</div> <!-- #main (상단요약 + 버튼 + manager) : admin_side.jsp 에서 열림-->
+	
+
+<link rel="stylesheet" type="text/css" href="../css/bottom.css">
+<footer>
+	<div id="footer_wrapper">
+	    <ul>
+	        <li id="footer_first">
+	            <span id="title">고객센터</span>
+	            <span id="middle">1600-1234</span>
+	            <button onclick="location.href='#'" id="bottom">1:1문의</button>
+	        </li>
+	        <li id="footer_second">
+	            <div class="second" id="phone">
+	                365고객콜센터
+	                <span>오전 8시 - 오후 6시</span>
+	            </div>
+	            <div class="second" id="qnaboard">
+	                24시간 QnA 게시판
+	                <span>고객센터 운영시간에 순차적으로 답변해드리겠습니다.</span>
+	            </div>
+	        </li>
+	        <li id="footer_third">
+	            <div id="business_info">
+	                <span>법인명 (상호) : 밀스의 방앗간</span>
+	                <span>사업자등록번호 : 111-11-11111</span>
+	                <span>주소 : 부산광역시 부산진구 중앙대로 708 부산파이낸스센터 4F, 5F</span>
+	                <span>팩스 : 070-111-1111 | 이메일 : xxx@xxxxx.com</span>
+	                <a href="#"><img src="/online-shopping-mall/img/index/footer/ico_fb.webp"></a>
+	                <a href="#"><img src="/online-shopping-mall/img/index/footer/ico_instagram.webp"></a>
+	                <a href="#"><img src="/online-shopping-mall/img/index/footer/ico_blog.webp"></a>
+	                <a href="#"><img src="/online-shopping-mall/img/index/footer/ico_youtube.webp"></a>
+	            </div>
+	        </li>
+	    </ul>
+	</div>
+</footer>	
+	
+</body>	
+</html>

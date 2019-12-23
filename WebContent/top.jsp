@@ -146,7 +146,7 @@
 								</li>
 							<%}else{ %>
 								<li>
-									<a href="#"><i class="fas fa-user"></i></a>
+									<a href="${pageContext.request.contextPath}/member/myinfo_check.jsp"><i class="fas fa-user"></i></a>
 								</li>
 								<li>
 									<a href="#"><i class="fas fa-shopping-cart"></i></a>
