@@ -23,16 +23,27 @@ public class MemberloginServlet extends HttpServlet {
 		System.out.println(id);
 		System.out.println(pwd);
 		MemberMgr mgr = new MemberMgr();
+		int admin_result = mgr.adminlogin(id, pwd);
+		if(admin_result==0) {
 		int result = mgr.login(id, pwd);
 		if(result==0) {
-			System.out.println("로그인 실패");
+				System.out.println("로그인 실패");
+			}else {
+				HttpSession session = request.getSession();
+			    session.setAttribute("idKey",id);
+				System.out.println("로그인 성공 " +id);
+				System.out.println("로그인 성공 " +pwd);
+				
+				response.getWriter().write(result + "");
+			}
 		}else {
+			//관리자 로그인 성공 시 
 			HttpSession session = request.getSession();
-		    session.setAttribute("idKey",id);
-			System.out.println("로그인 성공 " +id);
-			System.out.println("로그인 성공 " +pwd);
+			session.setAttribute("adminKey", id);
+			System.out.println("관리자 로그인 성공");
 			
-			response.getWriter().write(result + "");
+			response.getWriter().write(admin_result + "");
+			
 		}
 	}
 }

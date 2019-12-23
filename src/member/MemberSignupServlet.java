@@ -25,8 +25,8 @@ public class MemberSignupServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Object obj =session.getAttribute("idKey");
-		
-		if(obj==null) {
+		Object admin = session.getAttribute("adminKey");
+		if(obj==null && admin==null) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();
 		

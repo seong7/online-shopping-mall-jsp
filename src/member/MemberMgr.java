@@ -326,5 +326,32 @@ public class MemberMgr {
 				}
 				return  flag;
 			}
+			
+			//관리자 로그인
+			
+			public int adminlogin(String id, String pwd) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = null;
+				int flag = 0;
+				try {
+					con = pool.getConnection();
+					sql = "SELECT * from manager_tb where mgr_id=? and mgr_pwd=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, id);
+					pstmt.setString(2, pwd);
+					rs = pstmt.executeQuery();
+					System.out.println("관리자로그인");
+					if(rs.next()) 
+						flag = 1;
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt, rs);
+				}
+				return flag;
+			}
 }
 

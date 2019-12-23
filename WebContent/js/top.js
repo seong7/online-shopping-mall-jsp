@@ -40,6 +40,10 @@ function logout_onclick(){
 	const logout_form =  document.querySelector('#logout_form');
 	logout_form.submit();
 }
+function logout_admin(){
+	const logout_admin_form =  document.querySelector('#logout_admin');
+	logout_admin_form.submit();
+}
 function init(){
 	openDaumZipAddress();
 	 $("#signup_addr").val('');
@@ -460,7 +464,7 @@ function searchInput(){
 				if(result == 1){
 					$('#login_span').removeClass('hidden');
 					$('#login_span').addClass('box');
-					$('#login_span').text('로그인 성공!');
+					$('#login_submit_btn').text('로그인 성공');
 					$('#login_submit_btn').css( 'font-weight' , 'bold' );
 					$('#login_submit_btn').removeClass('top_modal_orange');
 					$('#login_submit_btn').removeClass('top_modal_red');
@@ -470,7 +474,7 @@ function searchInput(){
 					$('#login_span').attr("disabled","disabled");
 					setTimeout(function(){
 						//인덱스로 이동
-					   	 location.href=ctx + '/index.jsp';
+					   	 location.href= window.location.href;
 				     }, 500);
 				}
 			}, error : function(){

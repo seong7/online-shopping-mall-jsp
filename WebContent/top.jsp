@@ -2,6 +2,7 @@
 <%
 		request.setCharacterEncoding("EUC-KR");
 		String id = (String)session.getAttribute("idKey");
+		String admin_id = (String)session.getAttribute("adminKey");
 
 %>
 <!--<!DOCTYPE html>
@@ -137,14 +138,29 @@
 	                    </li>
 						<li id="active_btn_li">
 							<ul id="active_btn_wrapper">
-							<%if(id==null){ %>
+							<%if(id==null && admin_id==null){ %>
 								<li>
 									<input type="checkbox" id="userPopup">
 									<label for="userPopup" id="userPopup_label">
 										<i class="fas fa-user"></i>
 									</label>
 								</li>
-							<%}else{ %>
+							<%}else if(id==null && admin_id!=null){ %>
+							<li>
+									<a href="${pageContext.request.contextPath}/member/myinfo_check.jsp"><i class="fas fa-user"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fas fa-shopping-cart"></i></a>
+								</li>
+								<li>
+									<form id="logout_admin" action="/online-shopping-mall/member/signup"  method="post">
+										<a onclick="logout_admin()"><i class="fas fa-sign-in-alt"></i></a>
+									</form>
+								</li>
+								<li>
+									<a href="#"><i class="fas fa-cog"></i></a>
+								</li>
+							<%}else if(id!=null && admin_id==null){ %>
 								<li>
 									<a href="${pageContext.request.contextPath}/member/myinfo_check.jsp"><i class="fas fa-user"></i></a>
 								</li>
@@ -156,7 +172,8 @@
 										<a onclick="logout_onclick()"><i class="fas fa-sign-in-alt"></i></a>
 									</form>
 								</li>
-							<%} %>
+								
+								<%} %>
 							</ul>
 						</li>
 					</ul>
