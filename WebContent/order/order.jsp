@@ -8,6 +8,7 @@
 <%@page import="order.CartMgr"%>
 <%@page import="order.CartBean"%>
 <%@page import="java.util.Vector"%>
+<%@page import="product.productUtil"%>
 
 <jsp:useBean id="mMgr" class="member.MemberMgr"/>
 <jsp:useBean id="pMgr" class="product.ProductMgr"/>
@@ -16,8 +17,10 @@
 
 <%
 		request.setCharacterEncoding("EUC-KR");
+		productUtil util = new productUtil();
 		int priceTotal = 0;
-		int shippingPrice = 2500;
+		String shippingPrice = util.price(2500);
+		
 
 %>
 
@@ -29,7 +32,7 @@
 </head>
 <body>
  -->
-<link rel="stylesheet" type="text/css" href="../css/index.css">
+
 <script type="text/javascript" src="js/order.js"></script>
 <link rel="stylesheet" type="text/css" href="css/order.css"/>
 
