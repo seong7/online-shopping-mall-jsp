@@ -17,7 +17,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/goodsList.css">
 
-<jsp:include page="top.jsp"/>
+<%@ include file="/top.jsp" %>
 
         <!--******************-->
         <!--작업 및 복붙 구역-->
@@ -126,7 +126,7 @@
 			<!--******************-->
 	        <!--작업 및 복붙 구역-->
 	        <!--******************-->        
-		<jsp:include page="bottom.jsp"/>
+		<%@ include file="/bottom.jsp" %>
 </body>
 </html>
 	

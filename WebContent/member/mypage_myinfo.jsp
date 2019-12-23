@@ -3,11 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <jsp:useBean id="mgr" class="member.MemberMgr"/>
 
-<%
-		String id = (String)session.getAttribute("idKey");
-		MemberBean bean = mgr.getMember("");
-		
-%>
       <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script>
             //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
@@ -53,88 +48,103 @@
                     }
                 }).open();
             }
+
         </script>
-<html>
-<head>
-<title>회원정보 수정</title>
-</head>
-<body>
-	<div class="page_section_myinfo">
-		<div class="head_aticle">
-			<h2>개인 정보 수정</h2>
-			<hr>
-		</div>
-		<div class="myinfo">
-			<h4>*필수입력사항</h4>
+        
+        
+        <script type="text/javascript" src="./js/myinfo.js"></script>
+        
+        
+<%@ include file="../top.jsp" %>
+
+	<%@ include file="../order/mypage_side.jsp"%> 
+
+	<%
+		String access = (String)session.getAttribute("myinfo_access");
+		MemberBean bean = null;	
+	
+		if(access==null || access.length()==0){
+			response.sendRedirect(cpath+"/member/myinfo_check.jsp");
+			return;
+		}else{
+			session.removeAttribute("myinfo_access");
+			bean = mgr.getMember(id);
+		}
+	%>
+
+
+       <div id="mypage">
+
+			<h1 class="title">개인 정보 수정</h1>
+
+
 			<form name="myinfoForm" method="post" action="mypage_myinfo_Proc.jsp">
-				<table class="Member_comm">
-					<tbody>
+				<table class="mypage_table verHead" id="myinfo_table">
+					<tr>
+						<th>아이디</th>
+						<td>
+							<input name="id" id="myinfo_id" value="<%=bean.getId()%>" readonly>
+						</td>
+					</tr>
+					<tr>
+						<th>이름</th>
+						<td>
+							<input name="NAME" id="myinfo_name" value="<%=bean.getNAME()%>">
+						</td>
+					</tr>
+					<tr>
+						<th>새 비밀번호</th>
+						<td>
+							<input type="password" id="myinfo_pwd1" name="newPwd">
+						</td>
+					</tr>
+					<tr>
+						<th>새 비밀번호 확인</th>
+						<td>
+							<input type="password" id="myinfo_pwd2" name="pwd">
+						</td>
+					</tr>
+					
+					<tr>
+						<th>생년월일</th>
+						<td>
+							<input name="birthday" id="myinfo_birthday" placeholder="Ex)1900-01-01" value="<%=bean.getBirthday()%>">
+						</td>
+					</tr>
+					<tr>
+						<th>이메일</th>
+						<td>
+							<input name="email" id="myinfo_email" placeholder="Ex)mills@gmail.com" value="<%=bean.getEmail()%>">
+						</td>
+					</tr>						
+					<tr>
+						<th>연락처</th>
+						<td>
+							<input name="contact" id="myinfo_contact"  placeholder="Ex)010-0000-0000" value="<%=bean.getContact()%>">
+						</td>
+					</tr>
+					<!-- <div id="address_section"> -->
 						<tr>
-							<td class="member_id1">아이디</td>
-							<td class="member_id2"><input name="id"
-								value="<%=bean.getId()%>" ></td>
+							<th id="address_th">우편번호</th>
+							<td id="address_td">
+								<input id="zip_btn" class="btn" name="zip_btn" type="button" onclick="openDaumZipAddress();"value="주소" />
+								<input class="input_zipcode" name="zipcode"type="text" value="<%=bean.getZipcode()%>" readonly /> 
+								<input class="input_zipcode" name="address" type="text" value="<%=bean.getAddress()%>" readonly />
+								<input class="input_zipcode" id="myinfo_detail_addr" name="address_detail" type="text" value="<%=bean.getAddress_detail()%>" placeholder="상세주소를 입력하세요.">
+							</td>
 						</tr>
-						<tr>
-							<td class="member_name1">*이름</td>
-							<td class="member_name2"><input name="NAME"
-								value="<%=bean.getNAME()%>"></td>
-						</tr>
-						
-						<tr>
-							<td class="member_ori_pwd1">현재 비밀번호</td>
-							<td class="member_ori_pwd2"><input type="password"
-								name="pwd"> <!-- <p class="txt_guide" style="display: block;">
-					<span class="txt_guide_pwd">현재 비밀번호를 확인해주세요.</span></p> --></td>
-						</tr>
-						
-						<tr class="member_new_pwd">
-							<td class="new_pwd1">새 비밀번호</td>
-							<td class="new_pwd2"><input type="password" name="newPwd"></td>
-						</tr>
-						
-						<tr class="member_new_pwd_check">
-							<td class="pwd_check1">새 비밀번호 확인</td>
-							<td class="pwd_check2"><input type="password"
-								name="checkPwd"></td>
-						</tr>
-						
-						<tr>
-							<td class="member_birthday1">생년월일</td>
-							<td class="member_birthday2"><input name="birthday"
-								placeholder="Ex)1900-01-01"></td>
-						</tr>
-						<tr>
-							<td class="member_email1">이메일</td>
-							<td class="member_email2"><input name="email"
-								placeholder="Ex)mills@gmail.com"></td>
-						</tr>						
-						<tr>
-							<td class="member_contact1">연락처</td>
-							<td class="member_contact2"><input name="contact"
-								placeholder="Ex)010-0000-0000"></td>
-						</tr>
-						<div id="address_section">
-							<tr>
-								<td class="member_zipcode1">*우편번호</td>
-								<td class="member_zipcode2"><input id="input_zipcode"name="zipcode"type="text" value="<%=bean.getZipcode()%>"  /> 
-								<input name="zip_btn" type="button" onclick="openDaumZipAddress();"value="주소" /></br> 
-								<input name="address" id="input_addr" type="text"
-									value="<%=bean.getAddress()%>" /></td>
-							</tr>
-							<tr>
-								<td class="member_addr_detail1">상세주소</td>
-								<td class="member_addr_detail2"><input name="address_detail" id="input_detail"
-									type="text" value="<%=bean.getAddress_detail()%>"></td>
-							</tr>
-						</div>
-					</tbody>
-				</table>
-				<input type="submit" class="myinfo_btn" value="회원정보수정">
+					<!-- </div> -->
+                </table>
+                <div class="mypage_btn_wrapper">
+                    <input id="adrress_submit" class="btn mypage_submit" type="button" onclick="info_check();"value="회원정보수정">
+                </div>
 			</form>
 		</div>
-	</div>
+		<script type="text/javascript" src="./js/mypage_myinfo.js"></script>
 
-</div>
-</form>
+
+	</div> <!--  #btn_mypage_wrapper (버튼메뉴 + mypage) : mypage_side.jsp 에서 열림-->
+	</div> <!-- #main (상단요약 + 버튼 + mypage) : mypage_side.jsp 에서 열림-->
+	<%@ include file="../bottom.jsp" %>
 </body>
 </html>

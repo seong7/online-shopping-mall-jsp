@@ -12,6 +12,7 @@
 	
 	int count = mgr.checkPwd(id, pwd);
 	if(count==1){
+		session.setAttribute("myinfo_access", "approved");
 		response.sendRedirect(cpath+"/member/mypage_myinfo.jsp");
 	}else{
 %>

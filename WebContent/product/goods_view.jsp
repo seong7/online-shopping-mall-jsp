@@ -11,6 +11,7 @@
 	int p_code = 1;//데이터 확인용
 	
 	ProductBean bean = mgr.getProduct(p_code);
+
 %>
 <link rel="stylesheet" type="text/css" href="../css/goodsList.css">
 
