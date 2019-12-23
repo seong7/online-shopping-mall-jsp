@@ -149,4 +149,35 @@ main header form .btn_wrapper #cartBtn {
   border: 2px solid #f09439;
   width: 200px;
 }
+
+#button_down, #button_up {
+  border-right: 1px solid #dddfe1;
+  overflow: hidden;
+  width: 22px;
+  height: 22px;
+  border: 0 none;
+  background: #FB9832;
+  font-size: 0;
+  line-height: 0;
+  text-indent: -9999px;
+  color: #333;
+  letter-spacing: 0;
+  -webkit-appearance: button;
+  cursor: pointer;
+  text-transform: none;
+  border-radius: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
 /*# sourceMappingURL=goods_view.css.map */
