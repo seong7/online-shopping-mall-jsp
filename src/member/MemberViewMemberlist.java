@@ -54,6 +54,7 @@ public class MemberViewMemberlist extends HttpServlet {
 			objectbuffer.put("joindate", bean.getJoin_date());
 			jsonarray.add(objectbuffer);
 		}
+		
 		pw.println(jsonarray);
 		pw.flush();
 		pw.close();

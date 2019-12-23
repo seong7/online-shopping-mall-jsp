@@ -1,4 +1,5 @@
 <!-- 사용자 주문서 page -->
+
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <%@page import="product.UtilMgr"%>
 <%@page import="order.OrderBean"%>
@@ -16,6 +17,7 @@
 <%
 		request.setCharacterEncoding("EUC-KR");
 		String id = (String)session.getAttribute("idKey");
+		id = "u1"; // 확인용 
 		int priceTotal = 0;
 		int shippingPrice = 2500;
 %>
@@ -45,7 +47,7 @@
 								<td>상품금액</td>
 							</tr>
 								<%
-									Vector<CartBean> vlist = cMgr.getCart("u1");
+									Vector<CartBean> vlist = cMgr.getCart(id);
 									if(vlist.isEmpty()){
 								%>
 								<tr> 
@@ -82,18 +84,18 @@
 						<table>
 							<tr>
 							<%
-								
+								MemberBean mbean = mMgr.getMember(id);
 							%>
 								<td>보내는 분</td>
-								<td>조은규</td>
+								<td><%=mbean.getNAME() %></td>
 							</tr>
 							<tr>
 								<td>휴대폰 </td>
-								<td>010-3841-0424</td>
+								<td><%=mbean.getContact() %></td>
 							</tr>
 							<tr>
 								<td>이메일 </td>
-								<td>mwchoi0428@gmail.com</td>
+								<td><%=mbean.getEmail() %></td>
 							</tr>
 						</table>
 						<hr/>
@@ -103,7 +105,7 @@
 						<h3 class="order_subtitle">배송정보</h3>
 						<table>
 								<%
-									Vector<OrderBean> olist = oMgr.getOrder("u1");
+									Vector<OrderBean> olist = oMgr.getOrder(id);
 									OrderBean order = olist.get(0); //최근 주문 정보 
 								%>
 							<tr>

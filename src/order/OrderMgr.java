@@ -5,11 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
-
-
-
-
-
 public class OrderMgr {
 	
 	private DBConnectionMgr pool;
@@ -237,30 +232,105 @@ public class OrderMgr {
 	}
 	
 	
-	//Order detail 
-	public OrderBean getOrderDetail(int O_index) {
+	//Order detail(1개 주문정보 가져오기)
+	public Vector<OrderBean> getOrderDetail(int O_index) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
-		OrderBean order = new OrderBean();
+		Vector<OrderBean> vlist = new Vector<OrderBean>();
 		try {
 			con = pool.getConnection();
-			sql = "";
+			sql = "select * from order_tb where o_index=?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, O_index);
 			rs = pstmt.executeQuery();
-
+			while(rs.next()) {
+				OrderBean order = new OrderBean();
+				order.setO_index(rs.getInt(1));
+				order.setO_id(rs.getString(2));
+				order.setO_recpt_name(rs.getString(3));
+				order.setO_recpt_contact(rs.getString(4));
+				order.setO_recpt_zipcode(rs.getString(5));
+				order.setO_recpt_add(rs.getString(6));
+				order.setO_recpt_add_det(rs.getString(7));
+				order.setO_del_msg(rs.getString(8));
+				order.setO_date(rs.getString(9));
+				order.setO_date(rs.getString(9));
+				order.setO_prod_amount(rs.getInt(10));
+				order.setO_del_fee(rs.getInt(11));
+				order.setO_total_amount(rs.getInt(12));
+				order.setO_pay_method(rs.getString(13));
+				order.setO_mgr_note(rs.getString(14));
+				order.setO_status(rs.getString(15));
+				order.setO_del_num(rs.getString(16));
+				order.setO_del_date(rs.getString(17));
+				vlist.addElement(order);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
-		return order;
+		return vlist;
 	}
 	//Order update
+	public boolean updateOrder(OrderBean bean) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		boolean flag = false;
+		try {
+			con = pool.getConnection();
+			sql = "UPDATE order_tb SET o_recpt_name=?, o_recpt_contact =?, o_recpt_add=?, " + 
+					"o_recpt_add_det=?, o_del_msg = ?, o_date =?, o_prod_amount = ?, " + 
+					"o_del_fee = ?, o_total_amount = ?, o_pay_method = ?, o_mgr_note =?, " + 
+					"o_status = ?, o_del_num =?, o_del_date = ? WHERE o_index=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,bean.getO_recpt_name());
+			pstmt.setString(2,bean.getO_recpt_contact());
+			pstmt.setString(3,bean.getO_recpt_add());
+			pstmt.setString(4,bean.getO_recpt_add_det());
+			pstmt.setString(5,bean.getO_del_msg());
+			pstmt.setString(6,bean.getO_date());
+			pstmt.setInt(7,bean.getO_prod_amount());
+			pstmt.setInt(8,bean.getO_del_fee());
+			pstmt.setInt(9,bean.getO_total_amount());
+			pstmt.setString(10,bean.getO_pay_method());
+			pstmt.setString(11,bean.getO_mgr_note());
+			pstmt.setString(12,bean.getO_status());
+			pstmt.setString(13,bean.getO_del_num());
+			pstmt.setString(14,bean.getO_del_date());
+			pstmt.setInt(15,bean.getO_index());
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		return flag;
+	}
 	
 	//Order delete
-	
+	public boolean deleteOrder(int o_index) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		boolean flag = false;
+		try {
+			con = pool.getConnection();
+			sql = "delete from order_tb where o_index = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, o_index);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		return flag;
+	}
 	//Refund insert
 	//Refund update
 	//Refund delete 
@@ -285,6 +355,42 @@ public class OrderMgr {
 		}
 	}
 			
+	
+	//어드민창의 값 빼오기위한 mgr
+	public Vector<AdminOrderBean> getAdminOrder(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		Vector<AdminOrderBean> alist = new Vector<AdminOrderBean>();
+		try {
+			con = pool.getConnection();
+			sql = "SELECT O.o_index, O.o_del_date, O.o_status,  O.o_total_amount, P.p_name, COUNT(*), R.rt_qty"
+					+ " FROM order_tb O JOIN order_detail_tb D ON O.o_index = D.o_index "
+					+ "JOIN product_mst_tb P ON P.p_code = D.p_code LEFT OUTER "
+					+ "JOIN return_tb R ON R.o_index = D.o_index "
+					+ "WHERE o_id = ? GROUP BY D.o_index;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				AdminOrderBean bean = new AdminOrderBean();
+				bean.setO_index(rs.getInt(1));
+				bean.setO_del_date(rs.getString(2));
+				bean.setO_status(rs.getString(3));
+				bean.setO_total_amount(rs.getInt(4));
+				bean.setP_name(rs.getString(5));
+				bean.setProduct_count(rs.getInt(6));
+				bean.setRt_qty(rs.getInt(7));
+				alist.addElement(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return alist;
+	}
 			//main
 			public static void main(String[] args) {
 				//OrderMgr mgr = new OrderMgr();
