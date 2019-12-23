@@ -8,8 +8,8 @@
  <jsp:useBean id="cMgr" class="order.CartMgr"/>
  <%
  		request.setCharacterEncoding("EUC-KR");
- 		//String id = (String)session.getAttribute("idKey");
- 		String id = "u1";//확인용 데이터
+ 		String id = (String)session.getAttribute("idKey");
+ 		//String id = "u1";//확인용 데이터
  		int p_code = 1;//확인용 데이터
  		int o_del_fee = 2500;
  			
@@ -26,6 +26,8 @@ input {
 }
 </style>
 <script>
+	
+	
 	function allChk(){//전체 체크시 활성화
 		f=document.frm;
 		if(f.allCh.checked){
@@ -43,19 +45,24 @@ input {
 		}
 	}
 	
-	function chk(){
+	function chk(frm){
 		f=document.frm; 
-		for (var i = 1; i < f.fch.length; i++) {
-			alert(f.fch[i].value);
+		let sum =0;
+		for (let i = 1; i < f.fch.length; i++) {
+			//alert(f.fch[i].value);
 			if(f.fch[i].checked){
 				f.btn1.disabled = false;//버튼의 활성화 
-				f.btn2.disabled = false;//버튼의 활성화 
+				f.btn2.disabled = false;//버튼의 활성화
 				return;//밑에 있는 체크박스의 체크유무는 무의미함. 
+			}else {
+				
 			}
 		}
+		
 		f.allCh.checked = false;//개별 checkbox를 풀때 전체 checkbox도 해제 
 		f.btn1.disabled = true;//버튼의 비활성화()
 		f.btn2.disabled = true;//버튼의 비활성화()
+		document.getElementById("sumtext").innerHTML = sum;
 	}
 	
   function qytChange(num){
@@ -65,12 +72,24 @@ input {
   
   function confirmDel(){
 		if(confirm("선택상품을 삭제하시겠습니까?")==true){
-			document.frm.action = "cartProc.jsp";
+			document.frm.action = "cartDelProc.jsp";
 			document.frm.submit();
 		}else{ //취소
 			return;
 		}
 	}
+  function calc(cart){
+	  f=document.frm; 
+		for (var i = 1; i < f.fch.length; i++) {
+			//alert(f.fch[i].value);
+			if(f.fch[i].checked){
+				sum += parseInt(cart.value);
+			}else 
+				  sum -= parseInt(cart.value);
+		}
+	  
+	  document.getElementById("sumtext").innerHTML = sum;
+  }
   
 </script>
 <meta charset="EUC-KR">
@@ -101,6 +120,7 @@ input {
 			 		String p_name = product.getP_name();
 					int p_price = product.getP_price();
 					int c_qty = cart.getC_qty();
+					int totalPrice = p_price* c_qty;
 		%>
 		<tr>
 			<td><input type="checkbox" name="fch" 
@@ -114,7 +134,7 @@ input {
 			<input type="text" id="c_qty" value=<%=c_qty%>>
 			<input type="button" value="+" 
 			onclick="qytChange(1)"></td>
-			<td ><%=p_price* c_qty%></td>
+			<td><%=totalPrice%></td>
 		</tr>
 				<%} %>	
 		</table>
@@ -126,7 +146,7 @@ input {
 			<th>결제예정금액</th>
 		</tr>
 		<tr>
-			<td>금액</td>
+			<td id="sumtext">0</td>
 			<td><%=o_del_fee %></td>
 			<td>결제금액</td>
 			</tr>
@@ -137,6 +157,7 @@ input {
 		onclick="location.href='javascript:confirmDel()'">
 		<input type="submit" name="btn2" value="선택 주문하기" 
 		disabled	style ="width:150px">
+		<input type="hidden" name="id" value="<%=id %>">
 		</form>
 	</div>
 </body>
