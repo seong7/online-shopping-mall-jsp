@@ -56,8 +56,6 @@ function goodsView_init(){
         let inputVal = $(this).val();
         $(this).val(inputVal.replace(/[^0-9]/gi,''));
     });
-    
-    
 }
-
+	
 goodsView_init();
