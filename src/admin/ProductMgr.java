@@ -364,7 +364,6 @@ public class ProductMgr {
 					pstmt.setInt(1, p_code);
 					rs = pstmt.executeQuery();	
 					if (rs.next()) {
-						
 					String p_main_pht_name = rs.getString(1);
 					String p_detail_pht_name = rs.getString(2);
 					String p_info_pht_name = rs.getString(3);
@@ -475,19 +474,22 @@ public class ProductMgr {
 						+ "FROM product_mst_tb p JOIN stock_tb s ON p.p_code = s.p_code GROUP BY p.p_code "
 						+ "order by p.p_date desc";
 				pstmt = con.prepareStatement(sql);
+// p_name searching
 			//}else if(!p_name.trim().equals("") && p1.trim().equals("0") && p2.trim().equals("0")){
 			//	sql = 	"SELECT p.p_code, p.p_name, p.p_price, p.p_date, p.p_on_sale, SUM(s.st_ava_qty) "
 			//			+ "FROM product_mst_tb p JOIN stock_tb s ON p.p_code = s.p_code GROUP BY p.p_code "
 			//			+ "having p_name LIKE ? order by p.p_date desc";
 			//	pstmt = con.prepareStatement(sql);
 			//	pstmt.setString(1, "%" + p_name + "%");
+// p_date searching
 			}else if(p_name.trim().equals("") || !p1.trim().equals("0") || !p2.trim().equals("0") ){
 				sql = 	"SELECT p.p_code, p.p_name, p.p_price, p.p_date, p.p_on_sale, SUM(s.st_ava_qty) "
 						+ "FROM product_mst_tb p JOIN stock_tb s ON p.p_code = s.p_code GROUP BY p.p_code "
 						+ "having p_date BETWEEN ? AND ? order by p.p_date desc";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, p_date1);
-				pstmt.setInt(2, p_date2);			
+				pstmt.setInt(2, p_date2);	
+// p_name, p_date searching
 			}else {
 			// sql = "SELECT p_code, p_name, p_price, p_date, p_on_sale "
 			// + "FROM product_mst_tb "

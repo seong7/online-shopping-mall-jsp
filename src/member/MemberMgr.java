@@ -94,26 +94,31 @@ public class MemberMgr {
 
 	//패스워드 체크
 
-			public boolean checkPwd(String pwd) {
+			public int checkPwd(String id, String pwd) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
 				String sql = null;
-				boolean flag = false;
+				int count = 0;
 				try {
 					con = pool.getConnection();
-					sql = "select pwd from user_tb where pwd=?";
+					sql = "select * from user_tb where id= ? and pwd=?";
 					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, pwd);
+					pstmt.setString(1, id);
+					pstmt.setString(2, pwd);
 					rs = pstmt.executeQuery();
-					flag = rs.next();
+					while(rs.next()) {
+						count++;
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				} finally {
 					pool.freeConnection(con, pstmt, rs);
 				}
-				return flag;
+				return count;
 			}
+			
+			
 			public MemberBean getMember(String id) {
 				Connection con = null;
 				PreparedStatement pstmt = null;

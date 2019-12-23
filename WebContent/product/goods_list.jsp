@@ -77,7 +77,7 @@
 <script>
 	
 </script>
-<jsp:include page="../top.jsp"/>
+<%@ include file="../top.jsp" %>
 
 
 <main>
@@ -123,7 +123,7 @@
 	
 </main>
 	
-	<jsp:include page="../bottom.jsp"/>
+	<%@ include file="../bottom.jsp" %>
 	
 	
 </body>

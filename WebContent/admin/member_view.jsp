@@ -3,9 +3,10 @@
 <link rel="stylesheet" type="text/css" href="css/index.css">
 <!-- <title>-관리자-제품 등록</title> -->
 
-<jsp:include page="../top.jsp"/>
 
-<jsp:include page="./admin_side.jsp"/>
+<%@ include file="../top.jsp" %>
+
+	<%@ include file="./admin_side.jsp"%> 
 <!--------------->
 <!--  작업 영역  -->
 <!--------------->
@@ -83,5 +84,13 @@
 		  </div>
 		</main>
 		<script src="js/member_view.js"></script>
+		
+		
+</div> <!--  #btn_manager_wrapper (버튼메뉴 + manager) : admin_side.jsp 에서 열림-->
+</div> <!-- #main (상단요약 + 버튼 + manager) : admin_side.jsp 에서 열림-->
+
+	<%@ include file="../bottom.jsp" %>
+	
+	
 </body>
 </html>

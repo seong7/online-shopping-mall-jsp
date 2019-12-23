@@ -1,22 +1,21 @@
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <%@page import="product.productUtil"%>
 <%@page import="product.ProductBean"%>
-
 <jsp:useBean id="mgr" class="product.ProductMgr" />
 
 <%
 	request.setCharacterEncoding("EUC-KR");
 	
 	productUtil util = new productUtil();
-	int p_code = Integer.parseInt(request.getParameter("goods"));
+	//int p_code = Integer.parseInt(request.getParameter("goods"));
+	int p_code = 1;//데이터 확인용
 	
 	ProductBean bean = mgr.getProduct(p_code);
 %>
 <link rel="stylesheet" type="text/css" href="../css/goodsList.css">
-<script>
-	
-</script>
-<jsp:include page="../top.jsp"/>
+
+<%@ include file="../top.jsp" %>
+
 
 <link rel="stylesheet" type="text/css" href="css/goods_view.css">
 
@@ -104,7 +103,7 @@
 
 <script src="js/goods_view.js"></script>
 
-<jsp:include page="../bottom.jsp"/>
+	<%@ include file="../bottom.jsp" %>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-<!-- 사용자 주문서 page -->
+<!-- 사용자 주문서 page: cart.jsp에서 수량가져옴. -->
 
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <%@page import="product.UtilMgr"%>
@@ -16,10 +16,9 @@
 
 <%
 		request.setCharacterEncoding("EUC-KR");
-		String id = (String)session.getAttribute("idKey");
-		id = "u1"; // 확인용 
 		int priceTotal = 0;
 		int shippingPrice = 2500;
+
 %>
 
 <!-- 
@@ -34,7 +33,12 @@
 <script type="text/javascript" src="js/order.js"></script>
 <link rel="stylesheet" type="text/css" href="css/order.css"/>
 
-<jsp:include page="../top.jsp"/>
+<%@ include file="../top.jsp" %>
+<%
+	// sample 용 id
+	id="u1";
+%>
+
 		<main>
 			<div id="orderWapper">
 				<h2>주문서</h2>
@@ -68,7 +72,8 @@
 								%>
 							<tr>
 								<td>
-								<img alt="제품사진" src="${pageContext.request.contextPath}/img/product/ready.gif">
+								<img alt="제품사진" src="${pageContext.request.contextPath}
+								/img/product/ready.gif">
 								</td>
 								<td><a><%=pbean.getP_name() %></a></td>
 								<td><%=cart.getC_qty() %>개</td>
@@ -228,6 +233,11 @@
 				</form>
 			</div>
 		</main>
+		
+		</div> <!--  #btn_mypage_wrapper (버튼메뉴 + mypage) : mypage_side.jsp 에서 열림-->
+	</div> <!-- #main (상단요약 + 버튼 + mypage) : mypage_side.jsp 에서 열림-->
+	<%@ include file="../bottom.jsp" %>
+	
 	</body>
 </html>
 
