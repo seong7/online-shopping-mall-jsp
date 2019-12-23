@@ -17,13 +17,6 @@
 		typeCheck();
 	}
 
-
-
-
-
-
-
-
 var today = new Date( ) 
 document.write(today.getYear( ) , 
                today.getMonth( )+1 , today.getDate( )) 
