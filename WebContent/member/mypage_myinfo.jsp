@@ -1,5 +1,4 @@
 <%@page import="member.MemberBean"%>
-
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <jsp:useBean id="mgr" class="member.MemberMgr"/>
 
@@ -54,24 +53,28 @@
         
         <script type="text/javascript" src="./js/myinfo.js"></script>
         
-        
 <%@ include file="../top.jsp" %>
 
 	<%@ include file="../order/mypage_side.jsp"%> 
 
 	<%
+		request.setCharacterEncoding("EUC-KR");
 		String access = (String)session.getAttribute("myinfo_access");
 		MemberBean bean = null;	
 	
 		if(access==null || access.length()==0){
-			response.sendRedirect(cpath+"/member/myinfo_check.jsp");
-			return;
+			if(id==null || id.length()==0){
+				response.sendRedirect(cpath+"/index.jsp");
+				return;   // return 꼭 넣어야함
+			}else{
+				response.sendRedirect(cpath+"/member/myinfo_check.jsp");
+				return;
+			}
 		}else{
 			session.removeAttribute("myinfo_access");
 			bean = mgr.getMember(id);
 		}
 	%>
-
 
        <div id="mypage">
 
