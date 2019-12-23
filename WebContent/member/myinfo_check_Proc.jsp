@@ -1,5 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<jsp:useBean id="mgr" class="member.MemberMgr" />
+<jsp:useBean id="mgr" class="Member.MemberMgr" />
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cpath = request.getContextPath();

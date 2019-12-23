@@ -1,19 +1,19 @@
 <!-- 사용자 주문서 page: cart.jsp에서 수량가져옴. -->
 
 <%@ page contentType="text/html; charset=EUC-KR"%>
-<%@page import="product.UtilMgr"%>
-<%@page import="order.OrderBean"%>
-<%@page import="member.MemberBean"%>
-<%@page import="product.ProductBean"%>
-<%@page import="order.CartMgr"%>
-<%@page import="order.CartBean"%>
+<%@page import="Product.UtilMgr"%>
+<%@page import="Order.OrderBean"%>
+<%@page import="Member.MemberBean"%>
+<%@page import="Product.ProductBean"%>
+<%@page import="Order.CartMgr"%>
+<%@page import="Order.CartBean"%>
 <%@page import="java.util.Vector"%>
-<%@page import="product.productUtil"%>
+<%@page import="Product.productUtil"%>
 
-<jsp:useBean id="mMgr" class="member.MemberMgr"/>
-<jsp:useBean id="pMgr" class="product.ProductMgr"/>
-<jsp:useBean id="oMgr" class="order.OrderMgr"/>
-<jsp:useBean id="cMgr" class="order.CartMgr"/>
+<jsp:useBean id="mMgr" class="Member.MemberMgr"/>
+<jsp:useBean id="pMgr" class="Product.ProductMgr"/>
+<jsp:useBean id="oMgr" class="Order.OrderMgr"/>
+<jsp:useBean id="cMgr" class="Order.CartMgr"/>
 
 <%
 		request.setCharacterEncoding("EUC-KR");

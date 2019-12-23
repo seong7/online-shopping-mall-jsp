@@ -1,9 +1,9 @@
 <%@ page contentType="text/html; charset=EUC-KR"%>
-<%@page import="product.ProductBean"%>
+<%@page import="Product.ProductBean"%>
 <%@page import="java.util.Vector"%>
-<%@page import="product.productUtil"%>
+<%@page import="Product.productUtil"%>
 
-<jsp:useBean id="mgr" class="product.ProductMgr" />
+<jsp:useBean id="mgr" class="Product.ProductMgr" />
 
 <%
 	request.setCharacterEncoding("EUC-KR");

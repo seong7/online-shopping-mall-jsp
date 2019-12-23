@@ -1,9 +1,9 @@
 <!-- goods_view.jsp -->
-<%@page import="product.ProductBean"%>
+<%@page import="Product.ProductBean"%>
 <%@page import="java.util.Vector"%>
 <%@page import="java.sql.Date"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
-<jsp:useBean id="mgr" class="product.ProductMgr"/>
+<jsp:useBean id="mgr" class="Product.ProductMgr"/>
 <%
 	request.setCharacterEncoding("EUC-KR");
 	int p_code = Integer.parseInt(request.getParameter("p_code"));

@@ -2,7 +2,7 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <%@page import="java.util.Vector"%>
-<%@page import="product.ProductBean"%>
+<%@page import="Product.ProductBean"%>
 <jsp:useBean id="amgr" class="admin.ProductMgr"/>
 
 <%
