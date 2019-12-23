@@ -36,7 +36,7 @@
 	
 	<div id="mypage">
 
-            <h1 class="title">林巩郴开</h1>
+            <h1 class="title">林巩包府</h1>
             
             <table class="mypage_table">
                 <tr id="column_tr">

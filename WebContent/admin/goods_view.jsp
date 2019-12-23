@@ -45,7 +45,7 @@
         
                 <h3 class="inner_title">기본정보</h3>
                 
-                <input type="button" id="chgread1" value="수정">
+                <input id="chgread1" class="btn" type="button" value="수정">
                 
                             <table class="mgr_table verHead">
         
