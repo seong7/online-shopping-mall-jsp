@@ -23,7 +23,7 @@
 		int today2 = Integer.parseInt(sdf.format(cal2.getTime()));			
 		
 		//need to search variable 
-		String p_name = "";	int p_date1=today1;	int p_date2=today2;
+		String p_name = "";	int p_date1=0;	int p_date2=0;
 		
 		//if do Searching
 		if(request.getParameter("p_name")!=null){
@@ -51,7 +51,6 @@
 
 	<jsp:include page="./admin_side.jsp"/>
 
-
 	<div id="manager">
 	
 		<h1 class="title">제품목록</h1>
@@ -59,7 +58,6 @@
 		<form name = "listFrm">
 			<input type ="hidden"  name ="reload" value="true">
 		</form>
-
 
 		<form name ="SearchFrm" method="get" >
 		
@@ -83,8 +81,8 @@
 				<tr>
 					<th>검색기간(등록일)</th>
 					<td>
-						<input name ="p_date1" size="20"  value="<%=p_date1%>"> &nbsp; ~ &nbsp;
-						<input name ="p_date2" size="20" value="<%=p_date2%>">			
+						<input name ="p_date1" size="20"  placeholder="<%=today1%>"> &nbsp; ~ &nbsp;
+						<input name ="p_date2" size="20" placeholder="<%=today2%>">			
 						<input id="search_btn" type="button" value="검색" onclick="check()">
 					</td>
 				</tr>	
@@ -94,6 +92,7 @@
 
 	<!-- <form name=rFrm action="goods_Proc.jsp?flag=delete" enctype="multipart/form-data"> -->
 	<form name=rFrm id="rFrame" action="goods_masterProc.jsp" enctype="multipart/form-data">
+
 		<table class="mgr_table horHead">
 			<tr>
 				<%
@@ -148,6 +147,7 @@
 			<input class="btn" type ="button" value="제품 추가" onclick ="location.href='goods_insert.jsp'">	
 			<input type ="hidden" name="buffer" id="buffer">
 		</div>
+
 	</form>
 
 	</div>

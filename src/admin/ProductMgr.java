@@ -12,8 +12,6 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import product.ProductBean;
-import product.StockBean;
-import product.UtilMgr;
 
 public class ProductMgr {
 
@@ -88,7 +86,9 @@ public class ProductMgr {
 				// pstmt.setString(2 , multi.getParameter("st_exp_date"));
 				// pstmt.executeUpdate();
 
-//				// 원재료 넣기
+
+				// 원재료 넣기
+
 //				sql3 = "insert RM_PCT_TB(p_code, rm_code, rm_percentage) values(?,?,?)";
 //				pool.freeConnection(con, pstmt);
 //				con = pool.getConnection();
@@ -146,7 +146,7 @@ public class ProductMgr {
 				//delete code
 				File fd1 = new File(UPLOAD + fa);
 				if (fd1.exists() && !fa.equals("ready.gif")) {
-					fd1.delete();	}					
+					fd1.delete();}					
 			} else if(!fa.isEmpty() && !fa.equals("ready.gif") && multi.getFilesystemName("upFile1")==null ){
 				//NO upload file, YES uploaded file, nothing happen	
 				pstmt.setString(4, fa);
@@ -467,7 +467,16 @@ public class ProductMgr {
 		String sql = null;
 		Vector<ProductBean> slist = new Vector<>();
 		try {
+			String p1 = Integer.toString(p_date1);
+			String p2 = Integer.toString(p_date2);
 			con = pool.getConnection();
+			
+			if(p_name.trim().equals("") || p1.trim().equals("0") || p2.trim().equals("0")) {
+				sql = "SELECT p.p_code, p.p_name, p.p_price, p.p_date, p.p_on_sale, SUM(s.st_ava_qty) "
+						+ "FROM product_mst_tb p JOIN stock_tb s ON p.p_code = s.p_code GROUP BY p.p_code "
+						+ "order by p.p_date desc";
+				pstmt = con.prepareStatement(sql);
+			}else {
 			// sql = "SELECT p_code, p_name, p_price, p_date, p_on_sale "
 			// + "FROM product_mst_tb "
 			// + "where p_name LIKE ? AND p_date BETWEEN ? AND ? ;";
@@ -478,6 +487,7 @@ public class ProductMgr {
 			pstmt.setString(1, "%" + p_name + "%");
 			pstmt.setInt(2, p_date1);
 			pstmt.setInt(3, p_date2);
+			}
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				ProductBean bean = new ProductBean();

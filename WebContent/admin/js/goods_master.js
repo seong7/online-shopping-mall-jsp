@@ -69,11 +69,13 @@ function listSelect() {
 			f.fch[i].checked = true;
 		}
 		f.delete.disabled = false;//버튼의 활성화
+		f.update.disabled = false;//버튼의 활성화
 	}else{
 		for(i=0;i<f.fch.length;i++){
 			f.fch[i].checked = false;
 		}
-		f.delete.disabled = true;	//버튼의 비활성화			
+		f.delete.disabled = true;//버튼의 비활성화	
+		f.update.disabled = true;//버튼의 활성화
 	}
 }
  function chk(){
@@ -82,9 +84,11 @@ function listSelect() {
 			//alert(f.fch[i].value);
 			if(f.fch[i].checked){ //fch 체크박스가 체크가 된 경우
 				f.delete.disabled = false;
+				f.update.disabled = false;//버튼의 활성화
 			return; //밑에 있는 체크박스의 체크 유무는 무의미
 			}
 		}
 		f.allCh.checked= false; //전체체크박스 해제
 		f.delete.disabled = true; //버튼 비활성화
+		f.update.disabled = true;//버튼의 활성화
 	}
