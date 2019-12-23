@@ -8,8 +8,9 @@ function getContextPath() {
 }
 console.log(ctx+"는 컨테스트 패스");
 const login_submit_btn  = document.querySelector('#login_submit_btn');
-
 const login_id_input  = document.querySelector('#login_id_input');
+const login_pwd_input  = document.querySelector('#login_pwd_input');
+const signup_id = document.querySelector('#id_section_input');
 const signup_pwd = document.querySelector('#signup_pwd');
 const signup_pwd_check = document.querySelector('#signup_pwd_check');
 const signup_name = document.querySelector('#signup_name');
@@ -30,9 +31,18 @@ let sign_up_phone_flag  = 0;
 let sign_up_detail_flag  = 0;
 let regist_flag = 0;
 
+function inputReset(target){
+	target.classList.remove('default_placeholder_red');
+	target.style.borderBottom = "solid 1px #FB9832 "
+	target.style.boxShadow = "0 4px 1px -3px #FB9832";
+}
 function logout_onclick(){
 	const logout_form =  document.querySelector('#logout_form');
 	logout_form.submit();
+}
+function logout_admin(){
+	const logout_admin_form =  document.querySelector('#logout_admin');
+	logout_admin_form.submit();
 }
 function init(){
 	openDaumZipAddress();
@@ -56,6 +66,51 @@ function init(){
 //    const session_id = "<%=id%>";
 
     userCheckBox.addEventListener('change', function(){
+    	login_id_input.value = '';
+    	login_pwd_input.value = '';
+    	signup_id.value = '';
+    	signup_pwd.value = '';
+    	signup_pwd_check.value = '';
+    	signup_name.value = '';
+    	signup_birth.value = '';
+    	signup_email.value = '';
+    	signup_phone.value = '';
+    	signup_addr.value = '';
+    	address_section_zipcode.value = '';
+    	signup_addr_detail.value = '';
+
+    	inputReset(login_id_input);
+    	inputReset(login_pwd_input);
+    	inputReset(signup_id);
+    	inputReset(signup_pwd);
+    	inputReset(signup_pwd_check);
+    	inputReset(signup_name);
+    	inputReset(signup_birth);
+    	inputReset(signup_email);
+    	inputReset(signup_phone);
+    	inputReset(signup_addr);
+    	inputReset(address_section_zipcode);
+    	inputReset(signup_addr_detail);
+
+		$('#login_submit_btn').removeClass('hidden');
+		$('#login_submit_btn').addClass('box');
+		$('#login_submit_btn').text('로그인');
+		$('#login_submit_btn').css( 'font-size' , '18px' );
+		$('#login_submit_btn').css( 'font-weight' , 'bolder' );
+		$('#login_submit_btn').css("color", "white");
+
+		$('#login_submit_btn').addClass('top_modal_orange');
+		$('#login_submit_btn').removeClass('top_modal_red');
+		$('#login_submit_btn').removeClass('top_modal_green');	
+		
+		$('#id_section_btn').addClass('top_modal_orange');
+		$('#id_section_btn').removeClass('top_modal_red');
+		$('#id_section_btn').removeClass('top_modal_green');	
+		
+		$('#signup_submit_btn').addClass('top_modal_orange');
+		$('#signup_submit_btn').removeClass('top_modal_red');
+		$('#signup_submit_btn').removeClass('top_modal_green');	
+		$('#submit_span').text('회원가입');
         modalInnerFrame.style.width = "0px";
         modalInnerFrame.style.height = "0px";
         if(!modaltrigger){
@@ -140,10 +195,12 @@ function login_signup(id){
         const inputTarget = event.target;
         	if(!inputTarget.value){
         		inputTarget.classList.remove('default_placeholder_red');
+        		inputTarget.classList.remove('')
         		inputTarget.style.borderBottom = "solid 1px #FB9832 "
         		inputTarget.style.boxShadow = "0 4px 1px -3px #FB9832";
         	}
         }
+    
         
         //target bottom green
         function inputBottomGreen(event){
@@ -271,7 +328,7 @@ function login_signup(id){
 		signup_phone.addEventListener('focusout', function(){
 			const regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
 			if(!regExp.test($('#signup_phone').val())){
-				signup_phone.placeholder = "정확한 형식으로 입력해주세요.";
+				signup_phone.placeholder = "010-0000-0000 형식으로 입력해주세요.";
             	signup_phone.value = '';
             	signup_phone.classList.add('default_placeholder_red');
             	signup_phone.style.borderBottom = "solid 1px red "
@@ -407,7 +464,7 @@ function searchInput(){
 				if(result == 1){
 					$('#login_span').removeClass('hidden');
 					$('#login_span').addClass('box');
-					$('#login_span').text('로그인 성공!');
+					$('#login_submit_btn').text('로그인 성공');
 					$('#login_submit_btn').css( 'font-weight' , 'bold' );
 					$('#login_submit_btn').removeClass('top_modal_orange');
 					$('#login_submit_btn').removeClass('top_modal_red');
@@ -416,7 +473,8 @@ function searchInput(){
 					$('#login_span').addClass('top_modal_green');					
 					$('#login_span').attr("disabled","disabled");
 					setTimeout(function(){
-					   	 location.href='http://localhost/online-shopping-mall/index.jsp'
+						//인덱스로 이동
+					   	 location.href= window.location.href;
 				     }, 500);
 				}
 			}, error : function(){

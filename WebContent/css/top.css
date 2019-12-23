@@ -135,9 +135,14 @@ html {
   transition: background-color .35s;
 }
 
+.signup_long_input{
+	width: 360px !important;
+}
+
 #search_input:focus {
   background-color: white;
 }
+
 
 /*search icon position, color set */
 .fa-search {
@@ -518,6 +523,7 @@ input[id*='userPopup'] {
   margin-top: 15px;
   width: 80%;
   display: none;
+  margin-left: -15px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -541,6 +547,12 @@ input[id*='userPopup'] {
   margin-bottom: 10px;
   letter-spacing: 5px;
   color: #FB9832;
+}
+#login_form h3, #signup_form h3{
+	font-size: 28px;
+}
+#signup_form h3{
+	margin-top: 20px;
 }
 
 .signup_form_title {
@@ -583,7 +595,7 @@ input[id*='userPopup'] {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   height: 40px;
-  margin-top: 10px;
+  margin-top: 13px;
   margin-left: 30px;
   padding-left: 15px;
   padding-right: 15px;
@@ -653,6 +665,18 @@ input[id*='userPopup'] {
   zoom: 1;
 }
 
+.top_modal_red{
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#FD6F46), to(#FB9832)) !important;
+ 	background-image: linear-gradient(to bottom, #FD6F46, #FB9832) !important;
+}
+.top_modal_green{
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#bce0b4), to(#32a852)) !important;
+  background-image: linear-gradient(to bottom, #bce0b4, #32a852) !important;
+}
+.top_modal_red{
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ef3b39), to(#ff2123)) !important;
+  background-image: linear-gradient(to bottom, #ef3b39, #ff2123) !important;
+}
 /*inputform color*/
 strong {
   color: #0abde3;
