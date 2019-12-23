@@ -254,20 +254,25 @@ public class MemberMgr {
 				MemberBean bean = new MemberBean();
 				try {
 					con = pool.getConnection();
-					sql = "select * from user_tb where id=?";
+					sql = "SELECT U.id, U.pwd, U.name, U.birthday, U.email, U.contact, U.zipcode, U.address, U.address_detail, U.join_date, SUM(pt_point) "
+							+ "FROM user_tb U JOIN POINT_tb P ON U.id = P.id "
+							+ "WHERE U.id=?;";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, id);
 					rs = pstmt.executeQuery();
 					while(rs.next()){
-						bean.setId(rs.getString("id"));
-						bean.setNAME(rs.getString("NAME"));
-						bean.setBirthday(rs.getString("birthday"));
-						bean.setEmail(rs.getString("email"));
-						bean.setContact(rs.getString("contact"));
-						bean.setZipcode(rs.getInt("zipcode"));
-						bean.setAddress(rs.getString("address"));
-						bean.setAddress_detail(rs.getString("address_detail"));
-						bean.setJoin_date(rs.getString("join_date"));
+						bean.setId(rs.getString(1));
+						bean.setPwd(rs.getString(2));
+						bean.setId(rs.getString(3));
+						bean.setNAME(rs.getString(4));
+						bean.setBirthday(rs.getString(4));
+						bean.setEmail(rs.getString(5));
+						bean.setContact(rs.getString(6));
+						bean.setZipcode(rs.getInt(7));
+						bean.setAddress(rs.getString(8));
+						bean.setAddress_detail(rs.getString(9));
+						bean.setJoin_date(rs.getString(10));
+						bean.setPoint(rs.getInt(11));
 						}
 				} catch (Exception e) {
 					e.printStackTrace();

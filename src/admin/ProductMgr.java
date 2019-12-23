@@ -86,7 +86,9 @@ public class ProductMgr {
 				// pstmt.setString(2 , multi.getParameter("st_exp_date"));
 				// pstmt.executeUpdate();
 
+
 				// 원재료 넣기
+
 //				sql3 = "insert RM_PCT_TB(p_code, rm_code, rm_percentage) values(?,?,?)";
 //				pool.freeConnection(con, pstmt);
 //				con = pool.getConnection();

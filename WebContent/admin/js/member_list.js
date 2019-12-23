@@ -23,25 +23,25 @@ function init(){
     	            },                              //key value
     	        success : function(data) {
     	    		let result = [];
-    	    		let reulstParse = JSON.parse(data);
-    	    		 console.log(reulstParse);
+    	    		let resultParse = JSON.parse(data);
+    	    		 console.log(resultParse);
     	    		let result_table = document.getElementById('result_table');
-    	    		let row_length = reulstParse.length;
+    	    		let row_length = resultParse.length;
     	    		
     	    		 $("#judgeRow").nextAll().remove();
     	    			for(let j =0; j<row_length; j++){
-        	    		let aTagStr = "<a href=./member_view.jsp?id="+ reulstParse[j].id +">";
-    	    			aTagStr += reulstParse[j].id;
+        	    		let aTagStr = "<a href=./member_view.jsp?id="+ resultParse[j].id +">";
+    	    			aTagStr += resultParse[j].id;
     	    			aTagStr += "</a>";
     	    			
     	        		let row = result_table.insertRow(1);
     	    			row.insertCell(0).innerHTML = aTagStr;
-    	    			row.insertCell(1).innerHTML = reulstParse[j].name;
-    	    			row.insertCell(2).innerHTML = reulstParse[j].birthday;
-    	    			row.insertCell(3).innerHTML = reulstParse[j].joindate;
-    	    			row.insertCell(4).innerHTML = reulstParse[j].email;
-    	    			row.insertCell(5).innerHTML = reulstParse[j].contact;
-    	    			row.insertCell(6).innerHTML = reulstParse[j].address;
+    	    			row.insertCell(1).innerHTML = resultParse[j].name;
+    	    			row.insertCell(2).innerHTML = resultParse[j].birthday;
+    	    			row.insertCell(3).innerHTML = resultParse[j].joindate;
+    	    			row.insertCell(4).innerHTML = resultParse[j].email;
+    	    			row.insertCell(5).innerHTML = resultParse[j].contact;
+    	    			row.insertCell(6).innerHTML = resultParse[j].address;
     				}
     			 }, error : function(){
     	            //에러경우
@@ -59,26 +59,26 @@ function init(){
     	        },                              //key value
     	     success : function(data) {
     	 		const result = [];
-    	 		const reulstParse = JSON.parse(data);
+    	 		const resultParse = JSON.parse(data);
     	 		 
     	 		const result_table = document.getElementById('result_table');
-    	 		const row_length = reulstParse.length;
+    	 		const row_length = resultParse.length;
     	 		
     	 		const rowno = result_table.rows.length;
     	 		console.log('row_length' + row_length);
     	 		 $("#judgeRow").nextAll().remove();
     	 			for(let j =0; j<row_length; j++){
     	                let row = result_table.insertRow(1);
-    	    			let aTagStr2 = "<a href=./member_view.jsp?id="+ reulstParse[j].id +">";
-    	    			aTagStr2 += reulstParse[j].id;
+    	    			let aTagStr2 = "<a href=./member_view.jsp?id="+ resultParse[j].id +">";
+    	    			aTagStr2 += resultParse[j].id;
     	    			aTagStr2 += "</a>";
     	                row.insertCell(0).innerHTML = aTagStr2;
-    	                row.insertCell(1).innerHTML = reulstParse[j].name;
-    	                row.insertCell(2).innerHTML = reulstParse[j].birthday;
-    	                row.insertCell(3).innerHTML = reulstParse[j].joindate;
-    	                row.insertCell(4).innerHTML = reulstParse[j].email;
-    	                row.insertCell(5).innerHTML = reulstParse[j].contact;
-    	                row.insertCell(6).innerHTML = reulstParse[j].address;
+    	                row.insertCell(1).innerHTML = resultParse[j].name;
+    	                row.insertCell(2).innerHTML = resultParse[j].birthday;
+    	                row.insertCell(3).innerHTML = resultParse[j].joindate;
+    	                row.insertCell(4).innerHTML = resultParse[j].email;
+    	                row.insertCell(5).innerHTML = resultParse[j].contact;
+    	                row.insertCell(6).innerHTML = resultParse[j].address;
     			    }
     		    }, error : function(){
     	            //에러경우
