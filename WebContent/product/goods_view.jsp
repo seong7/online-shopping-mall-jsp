@@ -13,9 +13,12 @@
 	ProductBean bean = mgr.getProduct(p_code);
 
 %>
+
 <link rel="stylesheet" type="text/css" href="../css/goodsList.css">
 
 <%@ include file="../top.jsp" %>
+
+
 
 
 <link rel="stylesheet" type="text/css" href="./css/goods_view.css">
@@ -27,7 +30,7 @@
 			<img id="main_pht" src="../img/product/<%=bean.getP_main_pht_name()%>">
 		</div>
 		
-		<form id="header_info_wrapper" method="post" action="../order/order.jsp">
+		<form id="header_info_wrapper" name="orderFrm" method="post" action="../order/order.jsp">
 			<input type="hidden" name="flag" value="oneProduct">
 			<input type="hidden" name="p_code" value="<%=bean.getP_code() %>">
 			<div class="header name">
@@ -57,7 +60,7 @@
 				<input id="cartBtn" type="button" class="btn" value="장바구니에 추가"
 				onclick="location.href='${pageContext.request.contextPath}
 				/order/cart.jsp?'"> 
-				<input id="submit" type="submit" class="btn" value="구매하기">
+				<input id="submit_btn" type="button" onclick="logincheck_goods()" class="btn" value="구매하기">
 			</div>
 		</form>			
 
@@ -112,5 +115,24 @@
 
 	<%@ include file="../bottom.jsp" %>
 
+
+<script>
+	// order.jsp 이동 전 로그인 체크
+	function logincheck_goods(){
+		const orderFrm = document.getElementById("header_info_wrapper");
+		<%
+			String id_goods = (String)session.getAttribute("idKey");
+			if(id_goods==null || id_goods.length() ==0){
+		%>
+			alert('구매를 위해서는 로그인이 필요합니다.');
+			return;
+		<%
+			}else{
+		%>	
+			orderFrm.submit();
+		<%}%>
+	}
+
+</script>
 </body>
 </html>
