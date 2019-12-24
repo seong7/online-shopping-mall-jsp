@@ -12,7 +12,6 @@ public class CartMgr {
 	public CartMgr() {
 		pool = DBConnectionMgr.getInstance();
 	}
-	//Cart Insert(
 	
 	//id, 수량, 코드 가져오기 
 	public Vector<CartBean> getCart(String id){
@@ -63,7 +62,5 @@ public class CartMgr {
 			pool.freeConnection(con, pstmt);
 		}
 	}
-	
-	
 	
 }
