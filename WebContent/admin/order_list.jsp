@@ -73,6 +73,7 @@
 %>
 
 <script type="text/javascript">
+	
 	function block(block) {//prev...or ...next시 nowPage값을 지정
 		document.readFrm.nowPage.value = 
 			<%=pagePerBlock%>*(block-1)+1;
