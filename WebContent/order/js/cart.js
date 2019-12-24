@@ -6,6 +6,7 @@ function init(){
 	const allCheckbox = cart_rows[0].childNodes[1].firstChild;
 	const sumtext = document.querySelector('#sumtext');
 	
+	delete_btn.addEventListener('click',confirmDel);
 	let trArray = [];
 	let sum = 0;
 	//tr Array에 tr 배열 넣어줌(첫행 제외)
@@ -103,7 +104,7 @@ function init(){
 		sumtext.innerHTML = 0;
 	}
 });	// 전체 체크박스
-
+	
   function confirmDel(){
 		if(confirm("선택상품을 삭제하시겠습니까?")==true){
 			document.frm.action = "cartDelProc.jsp";

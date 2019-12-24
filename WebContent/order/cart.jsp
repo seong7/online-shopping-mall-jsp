@@ -82,9 +82,9 @@
 			</tr>
 		</table>
 		<br>
-		<input type="button" name="btn1" value="선택 삭제하기" id="delete_product"
+		<input type="button" name="btn1"  value="선택 삭제하기" id="delete_product"
 		disabled style ="width:150px" 
-		onclick="location.href='javascript:confirmDel()'">
+		>
 		<input type="submit" name="btn2" value="선택 주문하기" id="order_product"
 		disabled	style ="width:150px">
 		<input type="hidden" name="id" value="<%=id %>">

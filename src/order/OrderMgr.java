@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
+
 public class OrderMgr {
 	
 	private DBConnectionMgr pool;
@@ -24,8 +25,8 @@ public class OrderMgr {
 			sql = "insert order_tb(o_id,o_recpt_name,o_recpt_contact,"
 					+ "o_recpt_zipcode,o_recpt_add,o_recpt_add_det,"
 					+ "o_del_msg,o_date,o_prod_amount,o_del_fee,"
-					+ "o_total_amount,o_pay_method) "
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?, now(), ?, ?, ?, ?)";
+					+ "o_total_amount,o_pay_method, o_status) "
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, now(), ?, ?, ?, ?,?)";
 			pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, order.getO_id());
 				pstmt.setString(2, order.getO_recpt_name());
@@ -38,7 +39,65 @@ public class OrderMgr {
 				pstmt.setInt(9, order.getO_del_fee());
 				pstmt.setInt(10, order.getO_total_amount());
 				pstmt.setString(11, order.getO_pay_method());
-				pstmt.executeUpdate();
+				pstmt.setString(12, order.getO_status());
+				int cnt = pstmt.executeUpdate();
+				if(cnt==1)
+					flag=true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		return flag;
+	}
+	
+	//order detail insert 
+	public boolean insertDetailOrder(OrderDetailBean order) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		ResultSet rs = null;
+		boolean flag = false;
+		try {
+				//o_ index값 설정
+				con = pool.getConnection();
+				sql = "select max(o_index) from order_tb";//가장 높은 o_index값 
+				pstmt = con.prepareStatement(sql);
+				rs= pstmt.executeQuery();
+				int ref = 0;
+				if(rs.next())
+					ref = rs.getInt(1);
+				pstmt.close();
+				rs.close();
+			////////////////////////////////////////////////////////////////
+				sql = "select count(p_code) from order_detail_tb "
+						+ "WHERE o_index =?"; 
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, ref);
+				rs= pstmt.executeQuery();
+				int refCount = 0;
+				if(rs.next())
+					refCount = rs.getInt(1);
+				pstmt.close();
+				rs.close();
+			////////////////////////////////////////////////////////////////
+			sql = "insert order_detail_tb(o_index, p_code, o_qty) " + 
+					"VALUES (?,?,?)";
+			pstmt = con.prepareStatement(sql);
+				int cnt = 0;
+				int p_codes[] = order.getP_code();
+				int o_qtys[] = order.getO_qty();
+				for (int i = 0; i < p_codes.length; i++) {
+					pstmt.setInt(1, ref);
+					pstmt.setInt(2, p_codes[i]);
+					pstmt.setInt(3, o_qtys[i]);
+					cnt = pstmt.executeUpdate();
+					System.out.print("ref:"+ref);
+					System.out.print("p_codes: "+p_codes[i]);
+					System.out.print("o_qtys: "+o_qtys[i]);
+				}
+				if(cnt==1)
+					flag=true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -99,16 +158,40 @@ public class OrderMgr {
 		Vector<OrderDetailBean> vlist = new Vector<OrderDetailBean>();
 		try {
 			con = pool.getConnection();
+			sql = "select count(p_code) from order_detail_tb "
+					+ "WHERE o_index =?"; 
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, o_index);
+			rs= pstmt.executeQuery();
+			int ref = 0;
+			if(rs.next())
+				ref = rs.getInt(1);
+			//System.out.print(ref);
+			pstmt.close();
+			rs.close();
+			/////////////////////////////////////////////////////////////////
 			sql = "SELECT p_code,o_qty from order_detail_tb "
 					+ "WHERE o_index = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, o_index);
 			rs = pstmt.executeQuery();
+			int i=0;
 			while(rs.next()) {
 				OrderDetailBean order = new OrderDetailBean();
-				order.setP_code(rs.getInt(1));
-				order.setO_qty(rs.getInt(2));
-				vlist.add(order);
+				int p_code = rs.getInt(1); 
+				int o_qty = rs.getInt(2);
+//				System.out.print("p_code: "+p_code);
+				int p_codes[] = new int[ref];
+				int o_qtys[] = new int[ref];
+				p_codes[i] = p_code;
+				o_qtys[i] = o_qty;
+//				System.out.print(p_codes[i]);
+//				System.out.print("pcode1: "+p_codes[i]);
+//				System.out.print("qty1: "+o_qtys[i]);
+				order.setP_code(p_codes);
+				order.setO_qty(o_qtys);
+				vlist.addElement(order);
+				i++;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -117,8 +200,6 @@ public class OrderMgr {
 		}
 		return vlist;
 	}
-	
-	
 	
 
 	//***Admin 기능설계***
@@ -233,7 +314,7 @@ public class OrderMgr {
 	
 	
 	//Order detail(1개 주문정보 가져오기)
-	public Vector<OrderBean> getOrderDetail(int O_index) {
+	public Vector<OrderBean> getOrderDetail(int o_index) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -243,7 +324,7 @@ public class OrderMgr {
 			con = pool.getConnection();
 			sql = "select * from order_tb where o_index=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, O_index);
+			pstmt.setInt(1, o_index);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				OrderBean order = new OrderBean();
@@ -302,7 +383,9 @@ public class OrderMgr {
 			pstmt.setString(13,bean.getO_del_num());
 			pstmt.setString(14,bean.getO_del_date());
 			pstmt.setInt(15,bean.getO_index());
-			pstmt.executeUpdate();
+			int cnt = pstmt.executeUpdate();
+			if(cnt==1)
+				flag = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -365,7 +448,8 @@ public class OrderMgr {
 		Vector<AdminOrderBean> alist = new Vector<AdminOrderBean>();
 		try {
 			con = pool.getConnection();
-			sql = "SELECT O.o_index, O.o_del_date, O.o_status,  O.o_total_amount, P.p_name, COUNT(*), R.rt_qty"
+			sql = "SELECT O.o_index, O.o_del_date, O.o_status,  O.o_total_amount, "
+					+ "P.p_name, COUNT(*), R.rt_qty, O.o_pay_method,O.o_date"
 					+ " FROM order_tb O JOIN order_detail_tb D ON O.o_index = D.o_index "
 					+ "JOIN product_mst_tb P ON P.p_code = D.p_code LEFT OUTER "
 					+ "JOIN return_tb R ON R.o_index = D.o_index "
@@ -382,6 +466,8 @@ public class OrderMgr {
 				bean.setP_name(rs.getString(5));
 				bean.setProduct_count(rs.getInt(6));
 				bean.setRt_qty(rs.getInt(7));
+				bean.setO_paymethod(rs.getString(8));
+				bean.setO_date(rs.getString(9));
 				alist.addElement(bean);
 			}
 		} catch (Exception e) {

@@ -80,8 +80,8 @@
 
 			<h1 class="title">개인 정보 수정</h1>
 
-
-			<form name="myinfoForm" method="post" action="mypage_myinfo_Proc.jsp">
+				<div id="daumWrap3"></div>
+			<form id="myinfo_form" name="myinfoForm" method="post" action="mypage_myinfo_Proc.jsp">
 				<table class="mypage_table verHead" id="myinfo_table">
 					<tr>
 						<th>아이디</th>
@@ -98,13 +98,13 @@
 					<tr>
 						<th>새 비밀번호</th>
 						<td>
-							<input type="password" id="myinfo_pwd1" name="newPwd">
+							<input type="password" id="myinfo_pwd1" name="newPwd"> 
 						</td>
 					</tr>
 					<tr>
 						<th>새 비밀번호 확인</th>
 						<td>
-							<input type="password" id="myinfo_pwd2" name="pwd">
+							<input type="password" id="myinfo_pwd2" name="pwd"><span id="pwd_alert"></span>
 						</td>
 					</tr>
 					
@@ -130,16 +130,16 @@
 						<tr>
 							<th id="address_th">우편번호</th>
 							<td id="address_td">
-								<input id="zip_btn" class="btn" name="zip_btn" type="button" onclick="openDaumZipAddress();"value="주소" />
-								<input class="input_zipcode" name="zipcode"type="text" value="<%=bean.getZipcode()%>" readonly /> 
-								<input class="input_zipcode" name="address" type="text" value="<%=bean.getAddress()%>" readonly />
+								<input id="zip_btn" class="btn" name="zip_btn" type="button" value="주소" />
+								<input class="input_zipcode" id="myinfo_zipcode" name="zipcode"type="text" value="<%=bean.getZipcode()%>" readonly /> 
+								<input class="input_zipcode" id="myinfo_addr" name="address" type="text" value="<%=bean.getAddress()%>" readonly />
 								<input class="input_zipcode" id="myinfo_detail_addr" name="address_detail" type="text" value="<%=bean.getAddress_detail()%>" placeholder="상세주소를 입력하세요.">
 							</td>
 						</tr>
 					<!-- </div> -->
                 </table>
                 <div class="mypage_btn_wrapper">
-                    <input id="adrress_submit" class="btn mypage_submit" type="button" onclick="info_check();"value="회원정보수정">
+                    <input id="adrress_submit" class="btn mypage_submit" type="button" value="회원정보수정">
                 </div>
 			</form>
 		</div>
