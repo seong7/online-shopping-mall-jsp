@@ -18,12 +18,26 @@
 <%
 		request.setCharacterEncoding("EUC-KR");
 
+
+		String flag = request.getParameter("flag");
+		String pCode = null;
+		int qty = 0;
+		
+		if(flag.equals("oneProduct")){
+			pCode = request.getParameter("p_code");
+			qty = Integer.parseInt(request.getParameter("quantity"));
+		}
+
+		/// check 필요
 		String o_id = (String)session.getAttribute("idKey");
 		o_id = "u1"; // 확인용 
 		String o_status = "결재완료";
 		int p_code=0;
 		int o_qty =0;
 		int countPart = 0;
+		////
+		
+		
 		int priceTotal = 0;
 
 		productUtil util = new productUtil();
@@ -41,10 +55,10 @@
 <body>
  -->
 
-<script type="text/javascript" src="js/order.js"></script>
 <link rel="stylesheet" type="text/css" href="css/order.css"/>
 
-<jsp:include page="../top.jsp"/>
+<%@ include file="../top.jsp" %>
+
 		<main>
 			<div id="orderWapper">
 				<h2>주문서</h2>
@@ -248,6 +262,14 @@
 					
 			</div>
 		</main>
+		
+	</div> <!--  #btn_mypage_wrapper (버튼메뉴 + mypage) : mypage_side.jsp 에서 열림-->
+	</div> <!-- #main (상단요약 + 버튼 + mypage) : mypage_side.jsp 에서 열림-->
+	<%@ include file="../bottom.jsp" %>
+	
+	<script type="text/javascript" src="js/order.js"></script>
+	
+
 	</body>
 </html>
 
