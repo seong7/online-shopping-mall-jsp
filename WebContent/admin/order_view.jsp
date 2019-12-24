@@ -15,8 +15,8 @@
 
 <%
 		request.setCharacterEncoding("EUC-KR");
-		int o_index = Integer.parseInt(request.getParameter("o_index"));
-		//int o_index = 18; //확인용 데이터 
+		//int o_index = Integer.parseInt(request.getParameter("o_index"));
+		int o_index = 18; //확인용 데이터 
 		String nowPage = request.getParameter("nowPage");
 		String keyField = request.getParameter("keyField");
 		String keyWord = request.getParameter("keyWord");
