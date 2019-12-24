@@ -1,10 +1,58 @@
+<%@page import="admin.UtilMgr"%>
 <%@page import="product.ProductBean"%>
 <%@page import="java.util.Vector"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <jsp:useBean id="bean" class="admin.StockBean"/>
 <jsp:useBean id="amgr" class="admin.ProductMgr"/>
+<jsp:useBean id="smgr" class ="admin.StockMgr"/>
 <%
 		request.setCharacterEncoding("EUC-KR");
+		int totalRecord = 0;//총게시물 개수
+		int numPerPage = 10;//페이지당 레코드 개수 (5,10,15,30)
+		int pagePerBlock = 15;//블럭당 페이지 개수
+		int totalPage = 0;//총 페이지 개수
+		int totalBlock = 0;//총 블럭 개수
+		int nowPage = 1;//현재 페이지
+		int nowBlock = 1;//현재 블럭
+		
+		//page에 보여줄 게시물 개수값
+		if(request.getParameter("numPerPage")!=null&&
+		!request.getParameter("numPerPage").equals("null")){
+		numPerPage = UtilMgr.parseInt(request, "numPerPage");
+	}		
+		int start = 0;//테이블에 시작 번호
+		int cnt = numPerPage;
+				
+		//검색에 필요한 변수
+		String keyField = "" , keyWord = "";
+				
+		//검색일때 
+		if(request.getParameter("keyWord")!=null){
+		keyField = request.getParameter("keyField");
+		keyWord = request.getParameter("keyWord");
+	}
+				
+		//검색 후에 다시 처음화면으로 요청
+		if(request.getParameter("reload")!=null&&
+		request.getParameter("reload").equals("true")){
+		keyField = "";  keyWord = "";
+	}
+		totalRecord = smgr.getTotalCount(keyField, keyWord);
+
+		//nowPage를 요청한 경우
+		if(request.getParameter("nowPage")!=null){
+					nowPage = UtilMgr.parseInt(request, "nowPage");
+	}
+		//테이블 시작 번호
+		start = (nowPage*numPerPage)-numPerPage;
+				
+		//전체페이지수 (전체레코드개수/페이지당 레코드 개수) 올림.
+		 totalPage = (int)Math.ceil((double)totalRecord/numPerPage);
+		//전체블럭수 (전체페이지수/블럭당 페이지 개수) 올림.
+		 totalBlock = (int)Math.ceil((double)totalPage/pagePerBlock);
+		//현재블럭 (현재페이지수/블럭당 페이지 개수) 올림.
+		 nowBlock = (int)Math.ceil((double)nowPage/pagePerBlock);
+		
 		int p_code = bean.getP_code();
 		int st_enter_qty = bean.getSt_enter_qty();
 		String st_exp_date = bean.getSt_exp_date();				
@@ -19,7 +67,7 @@ thead{background:lightgray;}
 </style>
  
  </head>
-    <div id="myModal" class="modal">
+    <div>
  <form name="stfrm" method="get" action="goods_stockProc.jsp">
       <div >
       			<h2>입고등록</h2>
@@ -71,6 +119,13 @@ thead{background:lightgray;}
  		</table>
  	</form>
  
+ <form name="readFrm">
+	<input type="hidden" name="num">
+	<input type="hidden" name="nowPage" value="<%=nowPage%>">
+	<input type="hidden" name="keyField" value="<%=keyField%>">
+	<input type="hidden" name="keyWord" value="<%=keyWord%>">
+	<input type="hidden" name="numPerPage" value="<%=numPerPage%>">
+</form>
  </div>
  
     <script type="text/javascript">      
