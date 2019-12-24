@@ -53,12 +53,12 @@
 								<td>상품금액</td>
 							</tr>
 								<%
-									OrderDetailBean detailOrder = oMgr.getOrderCode(o_index);
-									int p_codes[] = detailOrder.getP_code();
-									int o_qtys[] = detailOrder.getO_qty();
-									for(int i=0; i<p_codes.length; i++){
-										int p_code = p_codes[i];
-										ProductBean pbean = pMgr.getProduct(p_code);
+									Vector<OrderDetailBean> vlist = oMgr.getOrderCode(o_index);
+									for(int i=0; i<vlist.size(); i++){
+										OrderDetailBean detailOrder = vlist.get(i);
+										int p_code[] = detailOrder.getP_code();
+										int o_qtys[] = detailOrder.getO_qty();
+										ProductBean pbean = pMgr.getProduct(p_code[i]);
 										int price = pbean.getP_price();
 										int o_qty = o_qtys[i];
 										priceTotal += price * o_qty;

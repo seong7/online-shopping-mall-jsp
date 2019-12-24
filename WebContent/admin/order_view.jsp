@@ -138,15 +138,17 @@ function confirmDel(){
 		Vector<OrderDetailBean> dvlist = oMgr.getOrderCode(o_index);
 		for(int j=0; j<dvlist.size(); j++){
 			OrderDetailBean detailOrder = dvlist.get(j);
-			int p_code = detailOrder.getP_code();
-			ProductBean pbean = pMgr.getProduct(p_code);
+			int p_code[] = detailOrder.getP_code();
+			int o_qtys[] = detailOrder.getO_qty();
+			ProductBean pbean = pMgr.getProduct(p_code[j]);
+			int o_qty = o_qtys[j];
 	%>
 	<tr>
 		<td><%=j+1 %></td>
 		<td><input name="p_name"  
 		value="<%=pbean.getP_name() %>"></td>
 		<td><input name="o_qyt"  
-		value="<%=detailOrder.getO_qty() %>"></td>
+		value="<%=o_qty %>"></td>
 		<td><input name="o_del_num"  
 		value="<%=order.getO_del_num() %>"></td>
 		<td><input name="o_status"  

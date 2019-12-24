@@ -18,11 +18,14 @@
 		int o_del_fee =Integer.parseInt(request.getParameter("o_del_fee"));
 		int o_total_amount = Integer.parseInt(request.getParameter("o_total_amount"));
 		String o_pay_method = request.getParameter("o_pay_method");
-		String qty[] = request.getParameterValues("o_qty");
-		String code[] = request.getParameterValues("p_code");
+		String o_qty[] = request.getParameterValues("o_qty");
+		String p_code[] = request.getParameterValues("p_code");
 		int countPart =Integer.parseInt(request.getParameter("countPart"));
-		//int p_code = Integer.parseInt(request.getParameter("p_code"));
-		
+		out.print(o_qty.length);//10
+		out.print("qty[0]:"+o_qty[0]);//10
+		out.print("qty[1]:"+o_qty[1]);//10
+		out.print("code[0]:"+p_code[0]);//2
+		out.print("code[1]: "+p_code[1]);//2 
 		//order insert
 		bean.setO_id(o_id);
 		bean.setO_recpt_name(o_recpt_name);
@@ -39,26 +42,32 @@
 		boolean orderResult=mgr.insertOrder(bean);
 		
 		//orderDetail insert
-		int o_qty[] = new int[countPart];
-		int p_code[] = new int[countPart];
+		int o_qtys[] = new int[countPart];
+		int p_codes[] = new int[countPart];
 		for(int i =0; i<countPart;i++){
-			o_qty[i] = Integer.parseInt(qty[i]);
-			p_code[i] = Integer.parseInt(code[i]);
+			o_qtys[i] = Integer.parseInt(qty[i]);
+			p_codes[i] = Integer.parseInt(code[i]);
 		}
-		odbean.setO_qty(o_qty);
-		odbean.setP_code(p_code);
+		/* out.print("qty[0]:"+qty[0]);//10
+		out.print("qty[1]:"+qty[1]);//10
+		out.print("code[0]:"+code[0]);//2
+		out.print("code[1]: "+code[1]);//2 */
+		odbean.setO_qty(o_qtys);
+		odbean.setP_code(p_codes);
 		boolean orderDetailResult=mgr.insertDetailOrder(odbean);
 		
 		String msg = "";
 		 if(orderResult&&orderDetailResult){
-			msg = "결재가 완료되었습니다." + countPart;
+			msg = "결재가 완료되었습니다.";
 			//response.sendRedirect("mypage_orderlist.jsp");
 		}else{
 			msg = "결재실패";
-			out.println("history.back();");
+			out.println("order.jsp");
 		}
 %>
-
+<%-- <%=orderResult %>
+<%=orderDetailResult %>
+<%=countPart %> --%>
 <script>
 	alert("<%=msg%>");
 	location.href = "mypage_orderlist.jsp";
