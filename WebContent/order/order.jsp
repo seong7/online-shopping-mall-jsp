@@ -8,7 +8,6 @@
 <%@page import="order.CartMgr"%>
 <%@page import="order.CartBean"%>
 <%@page import="java.util.Vector"%>
-<%@page import="product.productUtil"%>
 
 <jsp:useBean id="mMgr" class="member.MemberMgr" />
 <jsp:useBean id="pMgr" class="product.ProductMgr" />
@@ -16,28 +15,39 @@
 <jsp:useBean id="cMgr" class="order.CartMgr" />
 
 <%
-	request.setCharacterEncoding("EUC-KR");
 
-	String flag = request.getParameter("flag");
-	flag = "aaa";// 확인용 
-	String pCode = null;
-	int qty = 0;
+		request.setCharacterEncoding("EUC-KR");
+		String cpath = request.getContextPath();
+		
+		int p_code = 0;
+		int o_qty = 0;
+		int price = 0;
+		int countPart = 0;
+		int totalPrice = 0;
 
-	if (flag.equals("oneProduct")) {
-		pCode = request.getParameter("p_code");
-		qty = Integer.parseInt(request.getParameter("quantity"));
-	}
+		String o_id = (String)session.getAttribute("idKey");
 
-	/// check 필요
-	String o_id = (String) session.getAttribute("idKey");
-	o_id = "u1"; // 확인용 
-	String o_status = "결재완료";
-	int p_code = 0;
-	//int o_qty = 0;
-	int countPart = 0;
-	int priceTotal = 0;
-	productUtil util = new productUtil();
-	int shippingPrice = 2500;
+		String flag = request.getParameter("flag");
+		
+		Vector goods = new Vector();
+	
+		
+		// flag (카트인지 제품 하나 구매인지 구분 )  에 따라 Vector goods 에 정보 넣어줌
+		if(flag.equals("oneProduct")){
+			p_code = Integer.parseInt(request.getParameter("p_code"));
+			ProductBean pbean = pMgr.getProduct(p_code);
+			goods.add(pbean);
+			
+		}else if(flag.equals("cart")){
+			
+			goods = cMgr.getCart(o_id);
+		}
+		
+
+		/// sample용
+		String o_status = "결제완료";
+		int shippingPrice = 2500;
+
 %>
 
 <!-- 
@@ -56,6 +66,7 @@
 <main>
 <div id="orderWapper">
 	<h2>주문서</h2>
+	<form name="orderFrm" method="get" action="orderProc.jsp">
 	<section id="order_product">
 		<h3 class="order_subtitle">상품정보</h3>
 		<table>
@@ -124,7 +135,7 @@
 		</table>
 		<hr />
 	</section>
-	<form name="orderFrm" method="post" action="orderProc.jsp">
+	
 		<section id="order_delivery">
 			<h3 class="order_subtitle">배송정보</h3>
 			<table>
@@ -267,7 +278,6 @@
 			<input type="submit" value="결재완료" onclick="agreement()">
 	</form>
 	</section>
-
 
 </div>
 </main>

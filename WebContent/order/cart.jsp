@@ -20,12 +20,13 @@
  		<%}%>
  
 <link rel="stylesheet" type="text/css" href="./css/cart.css">
-
 <jsp:include page="../top.jsp"/> 
 		<!--******************-->
         <!--작업 및 복붙 구역-->
-        <!--******************-->        	
-         <main>
+        <!--******************-->
+        <div id="loader">
+        </div>        	
+         <main id="main_contents">
 	<div align="center">
 		<h2 class="layout-page-title">장바구니</h2>
 			<p>주문하실 상품명 및 수량을 정확하게 확인해 주세요.</p>
@@ -87,7 +88,7 @@
 		>
 		<input type="submit" name="btn2" value="선택 주문하기" id="order_product"
 		disabled	style ="width:150px">
-		<input type="hidden" name="id" value="<%=id %>">
+		<input type="hidden" name="id" id="user_id" value="<%=id %>">
 		</form>
 	</div>
 	<script src="js/cart.js"></script>

@@ -63,4 +63,27 @@ public class CartMgr {
 		}
 	}
 	
+	//qty업데이트(cart에서 페이지 이동 시 호출)
+	public void updateCart(int  c_qty[], int p_code[], String id) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+				try {
+						con = pool.getConnection();
+						for (int i = 0; i < p_code.length; i++) {
+						sql = "update cart_tb set c_qty=? WHERE id=? and p_code=?;";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, c_qty[i]);
+						pstmt.setString(2, id);
+						pstmt.setInt(3, p_code[i]);
+						pstmt.executeUpdate();
+
+						}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt);
+				}
+		}
+		
 }

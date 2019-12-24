@@ -1,10 +1,41 @@
 function init(){	
+	window.onload = function(){
+		setTimeout(call_qty, 2500);
+	}
+	
+	if (window.attachEvent) {
+	    /*IE and Opera*/
+	    window.attachEvent("onunload", function() {
+	    	update_qty();
+	    	console.log('hi');
+	    });
 
+	} else if (document.addEventListener) {
+	    /*Chrome, FireFox*/
+	    window.onbeforeunload = function() {
+	    	update_qty();
+	    	console.log('hi');
+	    };
+	    /*IE 6, Mobile Safari, Chrome Mobile*/
+	    window.addEventListener("unload", function() {
+	    	update_qty();
+	    	console.log('hi');
+	    }, false);
+	} else {
+	    /*etc*/
+	    document.addEventListener("unload", function() {
+	    	update_qty();
+	    	console.log('hi');
+	    }, false);
+	}
+
+    
 	const cart_rows = document.getElementById("cart_table").rows;
 	const delete_btn = document.querySelector('#delete_product');
 	const order_btn = document.querySelector('#order_product');
 	const allCheckbox = cart_rows[0].childNodes[1].firstChild;
 	const sumtext = document.querySelector('#sumtext');
+	const id = document.querySelector('#user_id').value;
 	
 	delete_btn.addEventListener('click',confirmDel);
 	let trArray = [];
@@ -122,6 +153,7 @@ function init(){
 	function undisableFunction(element) {
 			element.disabled = false;
 	}
+	
 	function zeroCheck(){
 		const total_cash_value = parseInt(document.querySelector('#sumtext').innerHTML);
 		if(total_cash_value===0){
@@ -132,5 +164,72 @@ function init(){
 			}
 		}
 	}
+	
+	
+	//주문삭제
+	delete_btn.addEventListener('click', confirmDel);
+	
+	//업데이트 
+	function update_qty(){
+		let p_code = new Array();
+		let c_qty = new Array();
+		for(let i=0; i<trArray.length; i++){
+			p_code.push(trArray[i].childNodes[1].childNodes[0].value);
+			c_qty.push(trArray[i].childNodes[7].childNodes[2].value);
+		}
+		
+		console.log(p_code);
+		console.log(c_qty);
+		console.log(id);
+		
+  	  //페이지 로딩 이벤트
+  	    $.ajax({
+  	        type: 'POST',                   //post or get
+  	        url:ctx+'/order/qtychange',   //servlet mapping addr
+  	        data: {
+  	        	p_code : p_code,
+  	        	c_qty : c_qty,
+  	        	id : id
+  	            },                              //key value
+  	        success : function(data) {
+  	        	alert('업데이트 완료');
+  			 }, error : function(){
+  	            //에러경우
+  	            console.log('에러');
+  	        }
+  	    })
+	}
+	
+	//업데이트 
+	function call_qty(){
+		console.log(id);
+  	  //페이지 로딩 이벤트
+  	    $.ajax({
+  	        type: 'POST',                   //post or get
+  	        url:ctx+'/order/qtycall',   //servlet mapping addr
+  	        data: {
+  	        	id : id
+  	            },                              //key value
+  	        success : function(data) {
+
+    	 		const result = [];
+    	 		const resultParse = JSON.parse(data);
+  	  		for(let i=0; i<trArray.length; i++){
+  	  			console.log(resultParse[i].c_qty);
+  	  			trArray[i].childNodes[7].childNodes[2].value = parseInt(resultParse[i].c_qty);
+  	  			trArray[i].childNodes[9].innerHTML = parseInt(trArray[i].childNodes[5].childNodes[2].innerHTML) * parseInt(resultParse[i].c_qty);
+  	  		console.log(trArray[i].childNodes[5].childNodes[2].innerHTML);
+  	  		}
+
+  	  		$('#main_contents').css("opacity","1");
+  	  		$('#loader').css("display","none");
+  	         }, error : function(){
+  	            //에러경우
+  	            console.log('에러');
+  	        }
+  	    })
+	}
+	
+	
 }
 init();
