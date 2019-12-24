@@ -6,6 +6,10 @@ public class StockBean {
 	private int st_enter_qty;
 	private int st_ava_qty;
 	private int st_waste_qty;
+	private String p_name;
+	private int TimestampDiff;
+	
+	
 	public int getP_code() {
 		return p_code;
 	}
@@ -36,7 +40,18 @@ public class StockBean {
 	public void setSt_waste_qty(int st_waste_qty) {
 		this.st_waste_qty = st_waste_qty;
 	}
-	
+	public String getP_name() {
+		return p_name;
+	}
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
+	}
+	public int getTimestampDiff() {
+		return TimestampDiff;
+	}
+	public void setTimestampDiff(int timestampDiff) {
+		TimestampDiff = timestampDiff;
+	}
 	
 	
 }
