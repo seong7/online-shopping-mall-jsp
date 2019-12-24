@@ -56,6 +56,7 @@
 <main>
 <div id="orderWapper">
 	<h2>주문서</h2>
+	<form name="orderFrm" method="get" action="orderProc.jsp">
 	<section id="order_product">
 		<h3 class="order_subtitle">상품정보</h3>
 		<table>
@@ -124,7 +125,7 @@
 		</table>
 		<hr />
 	</section>
-	<form name="orderFrm" method="post" action="orderProc.jsp">
+	
 		<section id="order_delivery">
 			<h3 class="order_subtitle">배송정보</h3>
 			<table>
