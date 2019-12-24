@@ -382,6 +382,11 @@ form {
   margin-right: 21px;
 }
 
+/** goods_view.jsp 에서만 **/
+#chgread1 {
+  margin-left: 600px;
+}
+
 /*** goods_insert.jsp 에만 ***/
 #pht_table input {
   width: 300px;

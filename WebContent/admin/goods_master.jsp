@@ -4,12 +4,12 @@
 <%@page import="java.util.Vector"%>
 <%@page import="product.ProductBean"%>
 <jsp:useBean id="amgr" class="admin.ProductMgr"/>
-
+<link rel="stylesheet" type="text/css" href="../css/util.css">
 <%
 		request.setCharacterEncoding("EUC-KR");
 		Vector<ProductBean> list = amgr.printPname();
 		String pnameList[] = amgr.readPname();
-		out.println(list.size());		   
+		//out.println(list.size());		   
 		
 		//Printing yymmdd
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
@@ -36,21 +36,20 @@
 		if(request.getParameter("reload")!=null&&
 		request.getParameter("reload").equals("true")){
 			p_name = ""; p_date1=0; p_date2=0; 
-		}
+		}	
 %>
 
-
+<link rel="stylesheet"  type="text/css" href="../css/util.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script type ="text/javascript" src="./js/goods_master.js"></script>
 <link rel="stylesheet" href="./css/admin_style.css">
 
+<%@ include file="../top.jsp" %>
 
-<jsp:include page="../top.jsp"/>
-
-	<jsp:include page="./admin_side.jsp"/>
-
+	<%@ include file="./admin_side.jsp"%> 
+	
 	<div id="manager">
 	
 		<h1 class="title">제품목록</h1>
@@ -71,7 +70,7 @@
 					<td>
 						<select id="p_select" name ="pnameList" onchange = "listSelect()">
 						<option value ="">제품명 선택</option>
-						<%for(int i=0; i<pnameList.length;i++){ %>
+						<%for(int i=0; i<pnameList.length;i++){  %>
 						<option value ="<%=pnameList[i]%>"><%=pnameList[i]%></option>
 						<%} %>		
 						</select>		
@@ -81,8 +80,11 @@
 				<tr>
 					<th>검색기간(등록일)</th>
 					<td>
-						<input name ="p_date1" size="20"  placeholder="<%=today1%>"> &nbsp; ~ &nbsp;
-						<input name ="p_date2" size="20" placeholder="<%=today2%>">			
+						<input name ="p_date1" size="20"  <%if(p_date1==0){ %>placeholder="<%=today1%>"
+						<%}else{ %> value="<%=p_date1%>" <%} %>> &nbsp; ~ &nbsp;
+						<input name ="p_date2" size="20" <%if(p_date2==0) { %>placeholder="<%=today2%>" 
+						<%}else{ %> value="<%=p_date2%>" <%} %>>
+								
 						<input id="search_btn" type="button" value="검색" onclick="check()">
 					</td>
 				</tr>	
@@ -99,20 +101,22 @@
 					//p_name = request.getParameter("p_name");
 					//p_date1 = Integer.parseInt(request.getParameter("p_date1"));
 					//p_date2 = Integer.parseInt(request.getParameter("p_date2"));
-					Vector<ProductBean> slist = amgr.searchproduct(p_name, p_date1, p_date2);
+					Vector<ProductBean> slist = amgr.searchproduct(p_name, p_date1, p_date2);					
 					int listSize = slist.size();
 					if(slist.isEmpty()){
-						out.println(p_name);
-						out.println(p_date1);
-						out.println(p_date2);				
-						out.println(slist.size());				
+						//out.println(p_name);
+						//out.println(p_date1);
+						//out.println(p_date2);				
+						//out.println(slist.size());				
 						out.println("검색결과없음");
 					}else{
 						
 				%>
 				<tr>
 					<td>
-						<input class="checkbox" type ="checkbox" name="allCh" onclick="allChk()" >
+					    <input class="checkbox" type ="checkbox" name="allCh" onclick="allChk()" >
+
+
 					</td>					
 					<th>제품코드</th>
 					<th>상품명</th>
@@ -128,7 +132,7 @@
 				%>			
 					<tr>
 					<td>
-						<input class="checkbox" type ="checkbox" name="fch" value="<%=p_code%>" onclick="chk()" >
+					     <input class="checkbox" type ="checkbox" name="fch" value="<%=p_code%>" onclick="chk()" >
 					</td>						
 					<td><a href="goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_code() %></a></td>
 					<td><a href="goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_name() %></a></td>
@@ -155,7 +159,7 @@
 
 </div> <!--  #btn_manager_wrapper (버튼메뉴 + manager) : admin_side.jsp 에서 열림-->
 </div> <!-- #main (상단요약 + 버튼 + manager) : admin_side.jsp 에서 열림-->
-	<jsp:include page="../bottom.jsp"/>	
+	<%@ include file="../bottom.jsp" %>
 	
 </body>	
 </html>

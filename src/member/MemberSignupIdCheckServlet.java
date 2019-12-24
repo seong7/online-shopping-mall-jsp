@@ -16,7 +16,7 @@ public class MemberSignupIdCheckServlet extends HttpServlet {
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=EUC-KR");
-		request.setCharacterEncoding("EUC-KR");
+		request.setCharacterEncoding("UTF-8");
 		String userID = request.getParameter("userID");
 		response.getWriter().write(new MemberMgr().duplicationCheck(userID)+ "");
 	}

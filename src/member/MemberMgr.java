@@ -94,26 +94,31 @@ public class MemberMgr {
 
 	//패스워드 체크
 
-			public boolean checkPwd(String pwd) {
+			public int checkPwd(String id, String pwd) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
 				String sql = null;
-				boolean flag = false;
+				int count = 0;
 				try {
 					con = pool.getConnection();
-					sql = "select pwd from user_tb where pwd=?";
+					sql = "select * from user_tb where id= ? and pwd=?";
 					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, pwd);
+					pstmt.setString(1, id);
+					pstmt.setString(2, pwd);
 					rs = pstmt.executeQuery();
-					flag = rs.next();
+					while(rs.next()) {
+						count++;
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				} finally {
 					pool.freeConnection(con, pstmt, rs);
 				}
-				return flag;
+				return count;
 			}
+			
+			
 			public MemberBean getMember(String id) {
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -154,25 +159,17 @@ public class MemberMgr {
 				boolean flag = false;
 				try {
 					con = pool.getConnection();
-					sql = "update user_tb set pwd=?,NAME=?,birthday=?,email=?,zipcode=?,address=?,address_detail=? where id=?";
-					pstmt = con.prepareStatement(sql);
-					System.out.println(bean.getAddress());
-					System.out.println(bean.getAddress_detail());
-					System.out.println(bean.getBirthday());
-					System.out.println(bean.getContact());
-					System.out.println(bean.getEmail());
-					System.out.println(bean.getId());
-					System.out.println(bean.getPwd());
-					System.out.println(bean.getZipcode());
-					System.out.println(bean.getNAME());					
-					pstmt.setString(1, bean.getPwd());
-					pstmt.setString(2, bean.getNAME());
+					sql = "update user_tb set NAME=?, pwd=?, birthday=?,email=?, contact=?, zipcode=?,address=?,address_detail=? where id=?";
+					pstmt = con.prepareStatement(sql);				
+					pstmt.setString(1, bean.getNAME());
+					pstmt.setString(2, bean.getPwd());
 					pstmt.setString(3, bean.getBirthday());
 					pstmt.setString(4, bean.getEmail());
-					pstmt.setInt(5, bean.getZipcode());
-					pstmt.setString(6, bean.getAddress());
-					pstmt.setString(7, bean.getAddress_detail());
-					pstmt.setString(8, bean.getId()) ;
+					pstmt.setString(5, bean.getContact());
+					pstmt.setInt(6, bean.getZipcode());
+					pstmt.setString(7, bean.getAddress());
+					pstmt.setString(8, bean.getAddress_detail());
+					pstmt.setString(9, bean.getId()) ;
 					if(pstmt.executeUpdate()==1)
 						flag = true;
 				} catch (Exception e) {
@@ -182,6 +179,8 @@ public class MemberMgr {
 				}
 				return flag;
 			}
+			
+			
 			public Vector<MemberBean> getAllMemberList(){
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -263,8 +262,7 @@ public class MemberMgr {
 					while(rs.next()){
 						bean.setId(rs.getString(1));
 						bean.setPwd(rs.getString(2));
-						bean.setId(rs.getString(3));
-						bean.setNAME(rs.getString(4));
+						bean.setNAME(rs.getString(3));
 						bean.setBirthday(rs.getString(4));
 						bean.setEmail(rs.getString(5));
 						bean.setContact(rs.getString(6));
@@ -281,6 +279,78 @@ public class MemberMgr {
 				}
 					return bean;
 			}
-	
+			//admin 회원정보 수정(for ajax)
+			public int updateMemberAdmin(MemberBean bean) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				String sql = null;
+				int flag = 0;
+				try {
+					con = pool.getConnection();
+					sql = "update user_tb set birthday=?, join_date=?, contact=? , email=?,zipcode=?,address=?,address_detail=? where id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, bean.getBirthday());
+					pstmt.setString(2, bean.getJoin_date());
+					pstmt.setString(3, bean.getContact());
+					pstmt.setString(4, bean.getEmail());
+					pstmt.setInt(5, bean.getZipcode());
+					pstmt.setString(6, bean.getAddress());
+					pstmt.setString(7, bean.getAddress_detail());
+					pstmt.setString(8, bean.getId());
+					if(pstmt.executeUpdate()==1)
+						flag = 1;
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt);
+				}
+				return flag;
+			}
+			public int deleteMember(String userid) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				String sql = null;
+				int flag = 0;
+				try {
+					con = pool.getConnection();
+					sql = "delete from user_tb where id=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, userid);
+					if(pstmt.executeUpdate()==1)
+						flag = 1;
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt);
+				}
+				return  flag;
+			}
+			
+			//관리자 로그인
+			
+			public int adminlogin(String id, String pwd) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = null;
+				int flag = 0;
+				try {
+					con = pool.getConnection();
+					sql = "SELECT * from manager_tb where mgr_id=? and mgr_pwd=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, id);
+					pstmt.setString(2, pwd);
+					rs = pstmt.executeQuery();
+					System.out.println("관리자로그인");
+					if(rs.next()) 
+						flag = 1;
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt, rs);
+				}
+				return flag;
+			}
 }
 

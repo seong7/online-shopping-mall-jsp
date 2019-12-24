@@ -1,6 +1,15 @@
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <%
 		request.setCharacterEncoding("EUC-KR");
+		String cpath = request.getContextPath();
+		
+
+
+		if(id==null || id.length()==0){
+			response.sendRedirect(cpath+"/index.jsp");
+			return;
+		}
+		
 %>
 
 
