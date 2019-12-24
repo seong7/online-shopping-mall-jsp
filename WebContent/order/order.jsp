@@ -8,6 +8,7 @@
 <%@page import="order.CartMgr"%>
 <%@page import="order.CartBean"%>
 <%@page import="java.util.Vector"%>
+<%@page import="product.productUtil"%>
 
 <jsp:useBean id="mMgr" class="member.MemberMgr"/>
 <jsp:useBean id="pMgr" class="product.ProductMgr"/>
@@ -16,6 +17,7 @@
 
 <%
 		request.setCharacterEncoding("EUC-KR");
+
 		String o_id = (String)session.getAttribute("idKey");
 		o_id = "u1"; // 확인용 
 		String o_status = "결재완료";
@@ -23,7 +25,11 @@
 		int o_qty =0;
 		int countPart = 0;
 		int priceTotal = 0;
-		int shippingPrice = 2500;
+
+		productUtil util = new productUtil();
+
+		String shippingPrice = util.price(2500);
+		
 %>
 
 <!-- 
@@ -34,7 +40,7 @@
 </head>
 <body>
  -->
-<link rel="stylesheet" type="text/css" href="../css/index.css">
+
 <script type="text/javascript" src="js/order.js"></script>
 <link rel="stylesheet" type="text/css" href="css/order.css"/>
 

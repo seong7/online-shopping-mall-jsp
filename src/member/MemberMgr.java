@@ -159,25 +159,17 @@ public class MemberMgr {
 				boolean flag = false;
 				try {
 					con = pool.getConnection();
-					sql = "update user_tb set pwd=?,NAME=?,birthday=?,email=?,zipcode=?,address=?,address_detail=? where id=?";
-					pstmt = con.prepareStatement(sql);
-					System.out.println(bean.getAddress());
-					System.out.println(bean.getAddress_detail());
-					System.out.println(bean.getBirthday());
-					System.out.println(bean.getContact());
-					System.out.println(bean.getEmail());
-					System.out.println(bean.getId());
-					System.out.println(bean.getPwd());
-					System.out.println(bean.getZipcode());
-					System.out.println(bean.getNAME());					
-					pstmt.setString(1, bean.getPwd());
-					pstmt.setString(2, bean.getNAME());
+					sql = "update user_tb set NAME=?, pwd=?, birthday=?,email=?, contact=?, zipcode=?,address=?,address_detail=? where id=?";
+					pstmt = con.prepareStatement(sql);				
+					pstmt.setString(1, bean.getNAME());
+					pstmt.setString(2, bean.getPwd());
 					pstmt.setString(3, bean.getBirthday());
 					pstmt.setString(4, bean.getEmail());
-					pstmt.setInt(5, bean.getZipcode());
-					pstmt.setString(6, bean.getAddress());
-					pstmt.setString(7, bean.getAddress_detail());
-					pstmt.setString(8, bean.getId()) ;
+					pstmt.setString(5, bean.getContact());
+					pstmt.setInt(6, bean.getZipcode());
+					pstmt.setString(7, bean.getAddress());
+					pstmt.setString(8, bean.getAddress_detail());
+					pstmt.setString(9, bean.getId()) ;
 					if(pstmt.executeUpdate()==1)
 						flag = true;
 				} catch (Exception e) {
@@ -187,6 +179,8 @@ public class MemberMgr {
 				}
 				return flag;
 			}
+			
+			
 			public Vector<MemberBean> getAllMemberList(){
 				Connection con = null;
 				PreparedStatement pstmt = null;

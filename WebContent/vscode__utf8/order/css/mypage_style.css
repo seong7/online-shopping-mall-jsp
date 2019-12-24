@@ -70,7 +70,6 @@
   font-family: "ON_IGothic";
   color: #4A4439;
   height: 53px;
-  padding-top: 20px;
   overflow: visible;
 }
 
@@ -158,7 +157,7 @@
 /**********************/
 #mypage_summ {
   margin-top: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   margin-left: 500px;
   display: inline-block;
 }
@@ -226,8 +225,26 @@
 #mypage {
   height: 100%;
   width: 80%;
+  min-width: 80%;
   font-family: "ON_IGothic";
   padding-left: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#mypage form {
+  width: 97%;
+  padding-left: 20px;
 }
 
 .title {
@@ -237,11 +254,32 @@
   font-size: 24px;
   border-bottom: 3px solid #fec084;
   padding-bottom: 20px;
-  margin-top: 20px;
+}
+
+.inner_title {
+  display: block;
+  color: #333;
+  font-size: 23px;
+  padding-bottom: 20px;
+  margin-top: 30px;
+}
+
+input {
+  display: inline-block;
+  width: 210px;
+  padding-left: 10px;
+  height: 50px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 1px solid grey;
+}
+
+input:focus {
+  border: 2px solid #FB9832;
 }
 
 .mypage_table {
-  margin-top: 80px;
+  margin-top: 20px;
   border-collapse: collapse;
   width: 100%;
   text-align: center;
@@ -249,10 +287,7 @@
 }
 
 .mypage_table th {
-  border-top: 0.5px solid #dcdbde;
-  border-bottom: 0.5px solid #dcdbde;
   font-size: 20px;
-  height: 50px;
   padding-top: 13px;
 }
 
@@ -265,10 +300,134 @@
 
 .mypage_table .btn_td a {
   text-decoration: none;
-  color: #333;
+  color: inherit;
 }
 
 .mypage_table .btn_td:hover a {
   color: #fec084;
+}
+
+.horHead th {
+  border-top: 0.5px solid #dcdbde;
+  border-bottom: 0.5px solid #dcdbde;
+  height: 50px;
+}
+
+.verHead tr {
+  height: 50px;
+}
+
+.verHead th, .verHead td {
+  height: 30px;
+  padding: 0px;
+}
+
+.verHead th {
+  font-size: 16px;
+  width: 150px;
+}
+
+.verHead input {
+  height: 40px;
+}
+
+.btn {
+  height: 40px;
+  width: 70px;
+  border: 2px solid #FB9832;
+  background-color: white;
+  border-radius: 3px;
+  color: #FB9832;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.btn:active {
+  background-color: #f09439;
+  color: white;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.mypage_btn_wrapper {
+  margin-top: 30px;
+}
+
+.mypage_btn_wrapper .mypage_submit {
+  width: 150px;
+}
+
+/** myinfo_check.jsp 만 사용  **/
+#pwdCheck_form {
+  display: inline-block;
+  padding-top: 30px;
+}
+
+#pwdCheck_form .inner_title {
+  display: inline-block;
+}
+
+#pwdCheck_form #title_wrapper {
+  padding-left: 250px;
+}
+
+#pwdCheck_form #btn_group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-top: 10px;
+  padding-left: 250px;
+}
+
+#pwdCheck_form #btn_group #pwdCheckInput {
+  margin-right: 20px;
+  margin-top: -1px;
+}
+
+#pwdCheck_form #btn_group #pwdcheckBtn {
+  height: 50px;
+}
+
+/** mypage_myinfo.jsp 만 사용 **/
+#myinfo_table th, #myinfo_table td {
+  border: none;
+  text-align: left;
+}
+
+#myinfo_table #address_th {
+  padding-top: 5px;
+  vertical-align: top;
+}
+
+#myinfo_table #address_td {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-top: 5px;
+  height: 200px;
+}
+
+#myinfo_table #address_td #zip_btn {
+  margin-bottom: 5px;
+}
+
+#myinfo_table .input_zipcode {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 400px;
+}
+
+#adrress_submit {
+  margin-left: 400px;
 }
 /*# sourceMappingURL=mypage_style.css.map */

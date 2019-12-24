@@ -17,7 +17,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/goodsList.css">
 
-<jsp:include page="top.jsp"/>
+<%@ include file="/top.jsp" %>
 
         <!--******************-->
         <!--작업 및 복붙 구역-->
@@ -107,7 +107,7 @@
 								<img src="img/product/<%=pbean.getP_main_pht_name()%>">
 							</a>
 							<div class="goods_info">
-								<a href="#">
+								<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
 									<span class="name">
 										<%=pbean.getP_name()%>
 									</span>
@@ -126,7 +126,7 @@
 			<!--******************-->
 	        <!--작업 및 복붙 구역-->
 	        <!--******************-->        
-		<jsp:include page="bottom.jsp"/>
+		<%@ include file="/bottom.jsp" %>
 </body>
 </html>
 	

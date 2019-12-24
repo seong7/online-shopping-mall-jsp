@@ -108,14 +108,6 @@ main header form input {
   border: none;
 }
 
-main header form #quantity {
-  border: 1px solid grey;
-}
-
-main header form #quantity:focus {
-  border: 3px solid #FB9832;
-}
-
 main header form #total {
   text-align: left;
   color: #f09439;
@@ -148,5 +140,46 @@ main header form .btn_wrapper #cartBtn {
   color: #f09439;
   border: 2px solid #f09439;
   width: 200px;
+}
+
+#button_down, #button_up {
+  overflow: visible;
+  font-size: 25px;
+  font-weight: lighter;
+  color: #333;
+  cursor: pointer;
+  border-radius: 0;
+  vertical-align: middle;
+  line-height: 22px;
+  z-index: 1;
+}
+
+#button_down:active, #button_up:active {
+  color: #FB9832;
+}
+
+#button_down {
+  margin-right: -40px;
+  position: relative;
+}
+
+#button_up {
+  margin-left: -40px;
+  position: relative;
+}
+
+#quantity {
+  z-index: 0;
+  border: 0px;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }
 /*# sourceMappingURL=goods_view.css.map */
