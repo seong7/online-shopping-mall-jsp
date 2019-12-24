@@ -32,6 +32,7 @@ main {
   text-align: center;
   color: #333;
   font-family: "ON_IGothic";
+  letter-spacing: 0.5px;
 }
 
 main #main_wrapper {
@@ -63,6 +64,8 @@ section .order_subtitle {
   color: #333;
   margin: 0 auto;
   text-align: left;
+  border-bottom: 2px solid #fec084;
+  padding-bottom: 20px;
 }
 
 section img {
@@ -81,201 +84,68 @@ section a:hover {
   color: #fec084;
 }
 
-section table td {
-  vertical-align: middle;
-  text-align: center;
-}
-
-section table tr:nth-of-type(1) td {
-  border-top: 3px solid #fec084 !important;
-  padding-top: 15px;
-}
-
-section table tr:last-of-type td {
-  border-bottom: 2px solid #dcdbde;
-  padding-bottom: 15px;
-}
-
-main {
-  letter-spacing: 0.5px;
-}
-
-main table {
+section table {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-collapse: collapse;
-  margin-top: 30px;
-  font-family: "ON_IGothic";
-  color: #333;
+  color: inherit;
   margin-bottom: 50px;
+  width: 100%;
 }
 
-main table td {
-  font-family: "ON_IGothic";
+section table td {
+  vertical-align: middle;
+  text-align: center;
   font-size: 18px;
 }
 
-main input[type=button], main input[type=submit] {
-  margin-left: 25px;
-  height: 30px;
-  width: 70px;
-  background-color: #fec084;
-  border: none;
-  color: white;
-  font-weight: bold;
+.horHead tr {
+  border-bottom: 1px solid #dcdbde;
 }
 
-main input[type=button]:active, main input[type=submit]:active {
-  background-color: #FB9832;
-}
-
-#order_product table tr:nth-of-type(1) td:nth-of-type(1) {
-  text-align: center;
-}
-
-#order_product table tr:nth-of-type(1) td:nth-of-type(2) {
-  text-align: center;
-}
-
-#order_product table tr:nth-of-type(1) td:nth-of-type(3) {
-  text-align: center;
-}
-
-#order_product table tr, #order_product table td {
-  padding: 15px;
-  text-align: left;
-}
-
-#order_product table td:first-of-type {
-  padding-left: 20px;
-}
-
-#order_product table td:nth-of-type(2) {
-  width: 600px;
-}
-
-#order_product table td:nth-of-type(3) {
-  text-align: center;
-}
-
-#order_product table td:nth-of-type(4) {
-  text-align: center;
-}
-
-#order_member table tr td {
-  height: 25px;
-  padding: 30px;
-}
-
-#order_delivery table tr td {
-  border-top: none;
-  border-bottom: none;
-  height: 35px;
-  padding: 5px;
-}
-
-#order_delivery table tr td input {
-  font-family: "ON_IGothic";
-  padding-left: 8px;
-  border: 1px solid #dcdbde;
-  height: 28px;
-}
-
-#order_delivery table tr td input[name=o_recpt_add] {
-  width: 600px;
-}
-
-#order_delivery table tr td input[name=o_recpt_zipcode] {
-  width: 50px;
-  padding-left: 0px;
-  text-align: center;
-}
-
-#order_delivery table tr td input[name=o_recpt_add_det] {
-  width: 617px;
-  margin-left: 25px;
-}
-
-#order_delivery table tr td textarea[name=o_del_msg] {
-  font-family: "ON_IGothic";
-  font-size: 14px;
-  padding: 8px;
-  border: 1px solid #dcdbde;
-  height: 40px;
-  width: 688px;
-  resize: none;
-}
-
-#order_delivery table tr td:first-of-type {
-  padding-left: 20px;
-}
-
-#order_delivery table tr:first-of-type td {
+.horHead tr th, .horHead tr td {
   padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-#order_delivery table tr:last-of-type {
+.horHead td:nth-child(2) {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.horHead tr:last-of-type {
   border-bottom: 2px solid #dcdbde;
 }
 
-#order_delivery table tr:last-of-type td {
-  padding-bottom: 20px;
+.verHead th {
+  width: 200px;
 }
 
-#order_point tr td:first-of-type {
-  padding-left: 30px;
-  width: 130px;
-}
-
-#order_point tr td {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-#order_point tr td input {
-  width: 400px;
-  height: 23px;
-  padding: 8px;
-  border: 1px solid #dcdbde;
-}
-
-#order_pay table {
-  font-family: "ON_IGothic";
-}
-
-#order_pay table tr td {
+.btn {
+  height: 40px;
+  width: 70px;
+  border: 2px solid #FB9832;
+  border-radius: 3px;
+  font-weight: bold;
   font-size: 18px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  background-color: #f09439;
+  color: white;
 }
 
-#order_pay table tr td input {
-  border: none;
-  font-family: "ON_IGothic";
-  font-size: 18px;
-  text-align: end;
-  padding-right: 10px;
+.btn:active {
+  background-color: white;
+  color: #FB9832;
 }
 
-#order_pay table tr td:nth-of-type(1) {
-  width: 170px;
-  text-align: center;
+.btn:hover {
+  cursor: pointer;
 }
 
-#order_pay table tr td:nth-of-type(2) {
-  text-align: end;
-  padding-right: 50px;
+.order_btn_wrapper {
+  margin-top: 30px;
 }
 
-#order_pay table tr:last-child td:last-child {
-  font-size: 12px;
-}
-
-#order_howpay table tr td:nth-of-type(2) {
-  text-align: center;
-}
-
-#order_howpay table tr:nth-of-type(2) td {
-  padding-top: 20px;
+.order_btn_wrapper .order_submit {
+  width: 150px;
 }
 /*# sourceMappingURL=order.css.map */
