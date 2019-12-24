@@ -2,6 +2,7 @@
 <%
 		request.setCharacterEncoding("EUC-KR");
 		String id = (String)session.getAttribute("idKey");
+		String admin_id = (String)session.getAttribute("adminKey");
 
 %>
 <!--<!DOCTYPE html>
@@ -54,7 +55,7 @@
 						<input type="password" class="signup_input signup_long_input" id="signup_pwd_check" autocomplete="off" placeholder="비밀번호를 한번 더 입력하세요.">
 						<input type="text" class="signup_input signup_long_input" id="signup_name" autocomplete="off" placeholder="이름을 입력하세요.">
 						<input type="text" class="signup_input signup_long_input" id="signup_birth" autocomplete="off" placeholder="생년월일을 입력하세요. Ex)1900-01-01">
-						<input type="text" class="signup_input signup_long_input" id="signup_email" autocomplete="off" placeholder="이메일을 입력하세요. Ex)timi2030@gmail.com">
+						<input type="text" class="signup_input signup_long_input" id="signup_email" autocomplete="off" placeholder="이메일을 입력하세요. Ex)timi@page.net">
 						<input type="text" class="signup_input signup_long_input" id="signup_phone" autocomplete="off" placeholder="연락처를 입력하세요. Ex)010-0000-0000">
 						<div id="address_section">
 							<div id ="address_section_header">
@@ -137,26 +138,42 @@
 	                    </li>
 						<li id="active_btn_li">
 							<ul id="active_btn_wrapper">
-							<%if(id==null){ %>
+							<%if(id==null && admin_id==null){ %>
 								<li>
 									<input type="checkbox" id="userPopup">
 									<label for="userPopup" id="userPopup_label">
 										<i class="fas fa-user"></i>
 									</label>
 								</li>
-							<%}else{ %>
-								<li>
+							<%}else if(id==null && admin_id!=null){ %>
+							<li>
 									<a href="${pageContext.request.contextPath}/member/myinfo_check.jsp"><i class="fas fa-user"></i></a>
 								</li>
 								<li>
 									<a href="#"><i class="fas fa-shopping-cart"></i></a>
 								</li>
 								<li>
+									<form id="logout_admin" action="/online-shopping-mall/member/signup"  method="post">
+										<a onclick="logout_admin()"><i class="fas fa-sign-in-alt"></i></a>
+									</form>
+								</li>
+								<li>
+									<a href="#"><i class="fas fa-cog"></i></a>
+								</li>
+							<%}else if(id!=null && admin_id==null){ %>
+								<li>
+									<a href="${pageContext.request.contextPath}/member/myinfo_check.jsp"><i class="fas fa-user"></i></a>
+								</li>
+								<li>
+									<a href="${pageContext.request.contextPath}/order/cart.jsp"><i class="fas fa-shopping-cart"></i></a>
+								</li>
+								<li>
 									<form id="logout_form" action="/online-shopping-mall/member/signup"  method="post">
 										<a onclick="logout_onclick()"><i class="fas fa-sign-in-alt"></i></a>
 									</form>
 								</li>
-							<%} %>
+								
+								<%} %>
 							</ul>
 						</li>
 					</ul>
@@ -169,5 +186,3 @@
 
 <!-- </body>    --- index.jsp 에서 닫아줌
 </html> -->
-
-<!-- test - juhong -->

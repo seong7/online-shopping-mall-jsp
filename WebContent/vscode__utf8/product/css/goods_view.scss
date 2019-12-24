@@ -1,5 +1,6 @@
 @import '../../font/font-family'; 
-$brandColor: #fec084; 
+$brandColor1: #fec084; 
+$brandColor2: #FB9832;
 $titleColor: #333;
 $titleDetailColor: gray;
 $normalFont: 'ON_IGothic';
@@ -45,7 +46,7 @@ main{
                 // text-align: center;
                 span{
                     padding-bottom: 10px;
-                    border-bottom: 3px solid $brandColor;
+                    border-bottom: 3px solid $brandColor1;
                     
                 }
             }
@@ -71,12 +72,6 @@ main{
                 color: #333;
                 font-family: $normalFont;
                 border: none;
-            }
-            #quantity{
-                border: 1px solid grey;
-                &:focus{
-                    border: 3px solid #FB9832;
-                }
             }
             #total{
                 text-align: left;
@@ -115,3 +110,41 @@ main{
         }
     }
 }
+
+#button_down, #button_up{
+
+	overflow: visible;
+    font-size: 25px;
+    font-weight: lighter;
+    color: #333;
+	cursor: pointer;
+    border-radius: 0;
+    vertical-align: middle;
+    line-height:22px;
+    z-index: 1;
+    &:active{
+        color: $brandColor2;
+    }
+}
+#button_down{
+    margin-right: -40px;
+    position: relative;
+}
+
+#button_up{
+    margin-left: -40px;
+    position: relative;
+}
+#quantity{
+    z-index: 0;
+    border:0px;
+}
+
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] { -moz-appearance:textfield;}

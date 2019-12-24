@@ -1,7 +1,10 @@
 @import '../../font/font-family';
 $brandFont: 'ON_IGothic';
 $testFont: 'Handon3gyeopsal600g';
-$brandColor: #fec084;
+$brandColor1: #fec084;
+$brandColor2:  #FB9832;
+$tableBorder: 0.5px solid #dcdbde;
+
 
 #main{
 	max-width: 1050px;
@@ -39,8 +42,6 @@ $brandColor: #fec084;
     font-family: $brandFont;
     color: #4A4439;
     height: 53px;
-    // text-align: center;
-    padding-top: 20px;
     overflow: visible;
 }
 
@@ -123,7 +124,7 @@ $brandColor: #fec084;
 /**********************/
 #mypage_summ{
     margin-top: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     margin-left: 500px;
     display: inline-block;
     ul{
@@ -183,8 +184,18 @@ $brandColor: #fec084;
 #mypage{
     height: 100%;
     width: 80%;
+    min-width: 80%;
     font-family: $brandFont;
     padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    form{
+        width: 97%;
+        padding-left: 20px;
+    }
+    
 }  
 
 .title{
@@ -192,23 +203,40 @@ $brandColor: #fec084;
     width: 100%;
     color: #333;
     font-size: 24px;
-    border-bottom: 3px solid $brandColor;
+    border-bottom: 3px solid $brandColor1;
     padding-bottom: 20px;
-    margin-top: 20px;
+}
+
+.inner_title{
+    display: block;
+    color: #333;
+    font-size: 23px;
+    padding-bottom: 20px;
+    margin-top: 30px;
+}
+
+input{
+    display: inline-block;
+    width: 210px;
+    padding-left: 10px;
+    height: 50px;
+    font-size: 16px;
+    border-radius:3px;
+    border: 1px solid grey;
+    &:focus{
+        border: 2px solid $brandColor2;
+    }
 }
     
 .mypage_table {
-    margin-top: 80px;
+    margin-top: 20px;
     border-collapse:collapse;
     width: 100%;
     text-align:center;
     color: #333;
 
     th{
-        border-top: 0.5px solid #dcdbde;
-        border-bottom: 0.5px solid #dcdbde;
         font-size: 20px;
-        height: 50px;
         padding-top: 13px;
     }
 
@@ -223,10 +251,122 @@ $brandColor: #fec084;
     .btn_td{
         a{
             text-decoration: none;
-            color: #333;
+            color: inherit;
         }
         &:hover a{
             color: #fec084;
         }
     }
-}    
+}
+
+.horHead{
+    th{
+        border-top: 0.5px solid #dcdbde;
+        border-bottom: 0.5px solid #dcdbde;
+        height: 50px;
+    }
+}
+.verHead{
+    tr{
+        height: 50px;
+    }
+    th, td{
+        height: 30px;
+        padding: 0px;
+    }
+    th{
+        font-size: 16px;
+        width: 150px;
+    }
+    input{
+        height: 40px;
+    }
+}
+
+.btn{
+    height: 40px;
+    width: 70px;
+    border:2px solid $brandColor2;
+    background-color: white;
+    // border: none;
+    border-radius: 3px;
+    color: $brandColor2;
+    font-weight: bold;
+    font-size: 18px;
+    
+    &:active{
+        background-color: #f09439;
+        color: white;
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}
+.mypage_btn_wrapper{
+    margin-top: 30px;
+    .mypage_submit{
+        width: 150px;
+    }
+}
+
+
+
+/** myinfo_check.jsp 만 사용  **/
+#pwdCheck_form{
+    display: inline-block;
+    // flex-direction: column;
+    // align-items: center;
+    padding-top: 30px;
+
+    .inner_title{
+        display: inline-block;
+    }
+    #title_wrapper{
+        
+        padding-left: 250px;
+    }
+    #btn_group{
+        display: flex;
+        flex-direction: row;
+        padding-top: 10px;
+        padding-left: 250px;
+        #pwdCheckInput{
+            margin-right: 20px;
+            margin-top: -1px;
+        }
+        #pwdcheckBtn{
+            height: 50px;
+        }
+    }
+}
+
+/** mypage_myinfo.jsp 만 사용 **/
+#myinfo_table{
+    
+    th, td{
+        border: none;
+        text-align: left;
+    }
+    #address_th{
+        padding-top: 5px;
+        vertical-align: top;
+    }
+    #address_td{
+        display: flex;
+        flex-direction: column;
+        padding-top: 5px;
+        height: 200px;
+        #zip_btn{
+            margin-bottom: 5px;
+
+        }
+    }
+    .input_zipcode{
+        margin-top:5px;
+        margin-bottom:5px;
+        width: 400px;
+    }
+}
+#adrress_submit{
+    margin-left: 400px;
+}

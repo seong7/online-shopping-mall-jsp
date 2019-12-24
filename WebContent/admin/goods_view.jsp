@@ -58,7 +58,7 @@
                                 <tr>
                                     <th>제품가격</th>
                                     <td><input class="2 readChange" name="p_price" value="<%=bean.getP_price()%>" disabled>원</td>
-                                
+                                    
                                     <th>판매여부</th>
                                     <td>
                                     	<%if(bean.getP_on_sale()==1){%>

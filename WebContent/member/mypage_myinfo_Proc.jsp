@@ -9,11 +9,11 @@ String id = request.getParameter("id");
 if(flag){%>
 	<script>
 		alert("회원정보가 수정되었습니다.");
-		location.href="index.jsp";
+		location.href="${pageContext.request.contextPath}/index.jsp";
 	</script>
 <%}else{%>
 	<script>
 		alert("수정도중 에러가 발생하였습니다.");
-		history.back();
+		location.href="${pageContext.request.contextPath}/member/myinfo_check.jsp";
 	</script>
 <%}%>

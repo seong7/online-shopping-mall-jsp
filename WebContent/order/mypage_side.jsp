@@ -6,6 +6,7 @@
 
 		if(id==null || id.length()==0){
 			response.sendRedirect(cpath+"/index.jsp");
+			return;
 		}
 %>
 
