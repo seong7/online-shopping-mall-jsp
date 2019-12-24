@@ -34,10 +34,13 @@
 <body>
  -->
 <link rel="stylesheet" type="text/css" href="../css/index.css">
-<script type="text/javascript" src="js/order.js"></script>
 <link rel="stylesheet" type="text/css" href="css/order.css"/>
 
-<jsp:include page="../top.jsp"/>
+
+<%@ include file="../top.jsp" %>
+
+	<%@ include file="../order/mypage_side.jsp"%> 
+	
 		<main>
 			<div id="orderWapper">
 				<h2>주문서</h2>
@@ -169,7 +172,14 @@
 					
 			</div>
 		</main>
+		
+</div> <!--  #btn_mypage_wrapper (버튼메뉴 + mypage) : mypage_side.jsp 에서 열림-->
+</div> <!-- #main (상단요약 + 버튼 + mypage) : mypage_side.jsp 에서 열림-->
+	<%@ include file="../bottom.jsp" %>		
 	</body>
+	
+	<script type="text/javascript" src="js/order.js"></script>
+	
 </html>
 
 
