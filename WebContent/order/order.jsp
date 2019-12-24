@@ -18,6 +18,7 @@
 <%
 		request.setCharacterEncoding("EUC-KR");
 
+
 		String flag = request.getParameter("flag");
 		String pCode = null;
 		int qty = 0;
@@ -27,11 +28,22 @@
 			qty = Integer.parseInt(request.getParameter("quantity"));
 		}
 
-		productUtil util = new productUtil();
+		/// check 필요
+		String o_id = (String)session.getAttribute("idKey");
+		o_id = "u1"; // 확인용 
+		String o_status = "결재완료";
+		int p_code=0;
+		int o_qty =0;
+		int countPart = 0;
+		////
+		
+		
 		int priceTotal = 0;
+
+		productUtil util = new productUtil();
+
 		String shippingPrice = util.price(2500);
 		
-
 %>
 
 <!-- 
@@ -46,10 +58,6 @@
 <link rel="stylesheet" type="text/css" href="css/order.css"/>
 
 <%@ include file="../top.jsp" %>
-<%
-	// sample 용 id
-	id="u1";
-%>
 
 		<main>
 			<div id="orderWapper">
@@ -63,7 +71,7 @@
 								<td>상품금액</td>
 							</tr>
 								<%
-									Vector<CartBean> vlist = cMgr.getCart(id);
+									Vector<CartBean> vlist = cMgr.getCart(o_id);
 									if(vlist.isEmpty()){
 								%>
 								<tr> 
@@ -76,20 +84,20 @@
 									}
 									for(int i=0; i<vlist.size(); i++){
 										CartBean cart = vlist.get(i);
-										int p_code = cart.getP_code();
+										p_code = cart.getP_code();
 										ProductBean pbean = pMgr.getProduct(p_code);
 										int price = pbean.getP_price();
-										int quantity = cart.getC_qty();
-										priceTotal += price * quantity;
+										o_qty = cart.getC_qty();
+										priceTotal += price * o_qty;
+										countPart = vlist.size();
 								%>
 							<tr>
 								<td>
-								<img alt="제품사진" src="${pageContext.request.contextPath}
-								/img/product/ready.gif">
+								<img alt="제품사진" src="${pageContext.request.contextPath}/img/product/ready.gif">
 								</td>
 								<td><a><%=pbean.getP_name() %></a></td>
-								<td><%=cart.getC_qty() %>개</td>
-								<td><%=UtilMgr.intFormat(pbean.getP_price()) %>원</td>
+								<td><%=o_qty %>개</td>
+								<td><%=UtilMgr.intFormat(price) %>원</td>
 							</tr>
 							<%
 									}
@@ -101,7 +109,7 @@
 						<table>
 							<tr>
 							<%
-								MemberBean mbean = mMgr.getMember(id);
+								MemberBean mbean = mMgr.getMember(o_id);
 							%>
 								<td>보내는 분</td>
 								<td><%=mbean.getNAME() %></td>
@@ -117,12 +125,12 @@
 						</table>
 						<hr/>
 						</section>
+						<form name="orderFrm" method="post" action="mypage_orderProc.jsp">
 						<section id="order_delivery">
-						<form name="orderFrm" method="post" action="orderProc.jsp">
 						<h3 class="order_subtitle">배송정보</h3>
 						<table>
 								<%
-									Vector<OrderBean> olist = oMgr.getOrder(id);
+									Vector<OrderBean> olist = oMgr.getOrder(o_id);
 									OrderBean order = olist.get(0); //최근 주문 정보 
 								%>
 							<tr>
@@ -240,18 +248,28 @@
 								<td>&nbsp;&nbsp;&nbsp;<a href="">약관확인></a></td>
 							</tr>
 						</table>
+						<input type="hidden" name="o_id" value="<%=o_id%>">
+						<input type="hidden" name="o_status" value="<%=o_status%>">
+						<input type="hidden" name="countPart" value="<%=countPart%>">
+						<%for(int i =0; i<countPart;i++){ %>
+						<input type="hidden" name="o_qty" value="<%=o_qty%>">
+						<input type="hidden" name="p_code" value="<%=p_code%>">
+						<%} %>
+						<input type="submit" value="결재완료" onclick="agreement()">
+						</form>
 					</section>
-					<input type="submit" value="결재완료" onclick="agreement()">
-				</form>
+					
+					
 			</div>
 		</main>
 		
-		</div> <!--  #btn_mypage_wrapper (버튼메뉴 + mypage) : mypage_side.jsp 에서 열림-->
+	</div> <!--  #btn_mypage_wrapper (버튼메뉴 + mypage) : mypage_side.jsp 에서 열림-->
 	</div> <!-- #main (상단요약 + 버튼 + mypage) : mypage_side.jsp 에서 열림-->
 	<%@ include file="../bottom.jsp" %>
 	
 	<script type="text/javascript" src="js/order.js"></script>
 	
+
 	</body>
 </html>
 

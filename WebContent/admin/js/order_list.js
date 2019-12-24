@@ -1,4 +1,4 @@
-function check() {
+	function check() {
 		if(document.searchFrm.keyWord.value==""){
 			alert("검색어를 입력하세요.");
 			document.searchFrm.keyWord.focus();
@@ -35,7 +35,7 @@ function check() {
 		document.readFrm.action = "order_view.jsp";
 		document.readFrm.submit();
 	}
-		
+				
 	function pageing(page) {//pageStart 값을 가져옴??
 			document.readFrm.nowPage.value = page;
 			document.readFrm.submit();
