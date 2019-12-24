@@ -68,22 +68,22 @@ public class CartMgr {
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			String sql = null;
-			try {
-				for (int i = 0; i < p_code.length; i++) {
-					con = pool.getConnection();
-					sql = "update cart_tb set c_qty=? WHERE id=? and p_code=?;";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, c_qty[i]);
-					pstmt.setString(2, id);
-					pstmt.setInt(3, p_code[i]);
-					pstmt.executeUpdate();
+				try {
+						con = pool.getConnection();
+						for (int i = 0; i < p_code.length; i++) {
+						sql = "update cart_tb set c_qty=? WHERE id=? and p_code=?;";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, c_qty[i]);
+						pstmt.setString(2, id);
+						pstmt.setInt(3, p_code[i]);
+						pstmt.executeUpdate();
+
+						}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt);
 				}
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				pool.freeConnection(con, pstmt);
-			}
 		}
 		
 }

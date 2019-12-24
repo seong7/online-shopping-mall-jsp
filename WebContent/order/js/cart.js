@@ -1,7 +1,8 @@
 function init(){	
 	window.onload = function(){
-		setTimeout(call_qty, 50);
+		setTimeout(call_qty, 2500);
 	}
+	
 	if (window.attachEvent) {
 	    /*IE and Opera*/
 	    window.attachEvent("onunload", function() {
@@ -219,13 +220,16 @@ function init(){
   	  			trArray[i].childNodes[9].innerHTML = parseInt(trArray[i].childNodes[5].childNodes[2].innerHTML) * parseInt(resultParse[i].c_qty);
   	  		console.log(trArray[i].childNodes[5].childNodes[2].innerHTML);
   	  		}
-  	        	console.log(data);
-  			 }, error : function(){
+
+  	  		$('#main_contents').css("opacity","1");
+  	  		$('#loader').css("display","none");
+  	         }, error : function(){
   	            //에러경우
   	            console.log('에러');
   	        }
   	    })
 	}
+	
 	
 }
 init();
