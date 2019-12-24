@@ -1,3 +1,15 @@
+#bannerWrapper img{
+	width: 2000px;
+	height: 400px;
+	position: absolute;
+	left: 50%;
+	margin-left: -1000px;
+}
+
+#goodslist_best{
+	margin-top: 400px;	
+}
+
 .arrow i{ 
 	color: #fec084; text-decoration: none; 
 }
@@ -12,14 +24,14 @@
   -moz-animation: bounce1 2s infinite;
   -webkit-animation: bounce1 2s infinite;
   animation: bounce1 2s infinite;
-  left: 3%
+  left: 30px;
 }
 
 .bounce2 {
   -moz-animation: bounce2 2s infinite;
   -webkit-animation: bounce2 2s infinite;
   animation: bounce2 2s infinite;
-  right: 3%
+  right: 30px;
 }
 
 

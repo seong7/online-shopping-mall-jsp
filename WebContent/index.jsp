@@ -23,21 +23,19 @@
         <!--작업 및 복붙 구역-->
         <!--******************-->   
             <!-- 배너 구역--> 
-        <div class="arrow bounce1">
+         <main>
+                 <div class="arrow bounce1">
 			<i class="fa fa-arrow-left fa-2x"  onclick="plusDivs(-1)"></i>
 		</div>
 		<div class="arrow bounce2">
 			<i class="fa fa-arrow-right fa-2x"  onclick="plusDivs(-1)"></i>
 		</div>    
         <div id="bannerWrapper">
-				
             	<img class="mySlides" src="./img/index/banner/banner_new.jpg">
 				<img class="mySlides" src="./img/index/banner/banner_open.jpg">
 				<img class="mySlides" src="./img/index/banner/banner_sample2.png">
 				<img class="mySlides" src="./img/index/banner/banner_sample3.png">
-            </div>	
-         <main>
-            
+           </div>	
             <%
 	            vlist = mgr.getGoodsList("indexBest");
             %>
