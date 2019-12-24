@@ -7,6 +7,20 @@ public class AdminOrderBean {
 	private String p_name;
 	private String o_status;
 	private int product_count;
+	private String o_paymethod;
+	private String o_date;
+	public String getO_date() {
+		return o_date;
+	}
+	public void setO_date(String o_date) {
+		this.o_date = o_date;
+	}
+	public String getO_paymethod() {
+		return o_paymethod;
+	}
+	public void setO_paymethod(String o_paymethod) {
+		this.o_paymethod = o_paymethod;
+	}
 	public String getP_name() {
 		return p_name;
 	}

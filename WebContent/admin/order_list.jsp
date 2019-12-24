@@ -72,7 +72,6 @@
 		nowBlock = (int)Math.ceil((double)nowPage/pagePerBlock);
 %>
 
-<script type="text/javascript" src="./js/order_list.js"></script>
 <script type="text/javascript">
 	function block(block) {//prev...or ...next시 nowPage값을 지정
 		document.readFrm.nowPage.value = 
@@ -81,50 +80,51 @@
 	}
 </script>
 
-
 <%@ include file="../top.jsp" %>
 
 	<%@ include file="./admin_side.jsp"%> 
 
-	<div id="manager">
-	
-		<h1 class="title">주문관리</h1>
 
+	<div id="manager">
+		<h1 class="title">주문관리</h1>
+		
 		<form  name="searchFrm">
+		
 		<h3 class="inner_title">주문정보 검색</h3>
-			<table class="mgr_table verHead">
-		 		<tr>
-		  			<th>
-		  				분류별 검색
-		  			</th>
-		  			<td>
-		   				<select id="p_select" name="keyField" size="1" >
-		    				<option value="o_id"> 주문자 ID</option>
-		    				<option value="o_index">주문번호</option>
-		    				<option value="o_status"> 주문상태</option>
-		   				</select>
-		   				<input size="16" name="keyWord">
-		   				<input id="search_btn" type="button"  value="검색" onClick="javascript:check()">
-		   				<input type="hidden" name="nowPage" value="1">
-		  			</td>
-		  		</tr>
-		  		<tr>
-			  		<th>기간 검색</th>
-					<td>
-						<input name ="keyDate1" size="10" placeholder="20190101"> &nbsp; ~ &nbsp;
-						<input name ="keyDate2" size="10" placeholder="20191231">			
-						<input id="search_btn" type="button" value="검색" onClick="javascript:dateCheck()">
-						<input type="hidden" name="nowPage" value="1">
-					</td>
-		  		</tr>
-		  	</table>
-		  </form>
-		  	
+		
+		<table class="mgr_table verHead">
+ 			<tr>
+ 				<th>
+ 					분류별 검색
+ 				</th>
+	  			<td>
+	   				<select id="p_select" name="keyField">
+	    				<option value="o_id"> 주문자 ID</option>
+	    				<option value="o_index">주문번호</option>
+	    				<option value="o_status"> 주문상태</option>
+	   				</select>
+	   				<input name="keyWord">
+	   				<input id="search_btn" type="button"  value="검색" onClick="check()">
+	   				<input type="hidden" name="nowPage" value="1">
+	  			</td>
+	  		</tr>
+	  		<tr>
+	  			<th>기간검색</th>
+				<td>
+					<input name ="keyDate1" placeholder="20190101"> &nbsp; ~ &nbsp;
+					<input name ="keyDate2" placeholder="20191231">			
+					<input id="search_btn" type="button" value="search" onClick="dateCheck()">
+					<input type="hidden" name="nowPage" value="1">
+				</td>
+	  		</tr>
+  	</table>
+  </form>
+  	
 		 	<table class="mgr_table horHead">
 		 		<tr>
 					<td>
 						<form name="npFrm" method="post">
-								<select name="numPerPage" 
+								<select name="numPerPage"
 								onchange="numPerFn(this.form.numPerPage.value)">
 			    					<option value="5">5개 보기</option>
 			    					<option value="10" selected>10개 보기</option>
@@ -138,7 +138,7 @@
 					</td>
 				</tr>
 			</table>
-			
+	
 		<h3 class="inner_title">주문 리스트</h3>
 		<table class="mgr_table horHead">
 			 <tr>
@@ -148,14 +148,14 @@
 		          <th>주문번호</th>
 		          <th>주문금액</th>
 		          <th>주문상태</th>
-		          <th>반품여부</th>
+		           <th>반품여부</th>
 		     </tr>
-			<%
-				Vector<OrderBean> vlist = 
-				orderMgr.getOrderList(keyField, keyWord, 
-						keyDate1, keyDate2, start, cnt);
-				if(vlist.isEmpty()){
-			%>
+				<%
+					Vector<OrderBean> vlist = 
+					orderMgr.getOrderList(keyField, keyWord, 
+							keyDate1, keyDate2, start, cnt);
+					if(vlist.isEmpty()){
+				%>
 			<tr>
 				<td colspan="5">
 					검색결과가 없습니다.
@@ -164,29 +164,29 @@
 				<%} else{
 					for(int i=0;i<vlist.size();i++){
 					OrderBean order = vlist.get(i);
+					int o_total_amount = order.getO_total_amount();
 				%>
 			<tr>
 				<td><%=totalRecord-start-i %></td>
 				<td><%=order.getO_id()%></td>
 				<td><%=order.getO_date()%></td>
-				<td><a href="javascript:read('<%=order.getO_index()%>')">
+				<td><a href="read('<%=order.getO_index()%>')">
 				<%=order.getO_index()%></a></td>
-				<td><%=order.getO_total_amount()%></td>
+				<td><%=UtilMgr.monFormat(o_total_amount)%>원</td>
 				<td><%=order.getO_status()%></td>
-				<td></td>
 			</tr>
 				<%
 					}//---for
 				}//---else
 						%>
-			</table>
-			<table>
-			<tr >
+		</table>
+		<table>
+			<tr>
 				<td>
 				<%if(totalPage>0){ %>
 						<!-- 이전 블럭 -->
 						<%if(nowBlock>1){ %>
-							<a href="javascript:block('<%=nowBlock-1%>')">prev...</a>
+							<a href="block('<%=nowBlock-1%>')">prev...</a>
 						<%} %>
 		
 						<!-- 페이징(블럭수 설정) -->
@@ -198,7 +198,7 @@
 									pageStart+pagePerBlock:totalPage+1;
 							for(;pageStart<pageEnd;pageStart++){
 						%>
-							<a href="javascript:pageing('<%=pageStart%>')">
+							<a href="pageing('<%=pageStart%>')">
 							<%if(pageStart==nowPage){ %><font color="red"><%} %>
 							[<%=pageStart %>]
 							<%if(pageStart==nowPage){ %></font><%} %>
@@ -206,18 +206,18 @@
 						<%}//---for %>	
 						<!-- 다음블럭 -->
 						<%if(totalBlock>nowBlock){ %>
-							<a href="javascript:block('<%=nowBlock+1%>')">...next</a>
+							<a href="block('<%=nowBlock+1%>')">...next</a>
 						<%} %>
 					<%} %>
 				</td>
 			</tr>
 		</table>
-		
+
 		<form name="listFrm" method="post">
 			<input type="hidden" name="reload" value="true">
 			<input type="hidden" name="nowPage" value="1">
 		</form>
-		
+
 		<form name="readFrm">
 			<input type="hidden" name="o_index">
 			<input type="hidden" name="nowPage" value="<%=nowPage%>">
@@ -227,12 +227,14 @@
 			<input type="hidden" name="keyDate2" value="<%=keyDate2%>">
 			<input type="hidden" name="numPerPage" value="<%=numPerPage%>">
 		</form>
-		
-	</div>
+
+</div>
 
 </div> <!--  #btn_manager_wrapper (버튼메뉴 + manager) : admin_side.jsp 에서 열림-->
 </div> <!-- #main (상단요약 + 버튼 + manager) : admin_side.jsp 에서 열림-->
 	<%@ include file="../bottom.jsp" %>
-	
-</body>	
+
+<script type="text/javascript" src="./js/order_list.js"></script>
+
+</body>
 </html>
