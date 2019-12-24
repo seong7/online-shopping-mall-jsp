@@ -1,66 +1,169 @@
 @charset "UTF-8";
-@import url(c:\Jsp\online-shopping-mall-jsp\WebContent\vscode__utf8\css\font-family.css);
-main #orderWrapper {
+/* 폰트 추가*/
+/* 굵음 */
+@font-face {
+  font-family: 'ON_IGothic';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 일반 */
+@font-face {
+  font-family: 'Handon3gyeopsal600g';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+/*공통 속성 제어부*/
+main {
   min-width: 1050px;
   max-width: 1050px;
   min-height: 1000px;
   width: 1050px;
   margin: 0px auto;
-  margin: 0px auto;
-}
-
-main #orderWrapper h2 {
-  margin-top: 50px;
-  width: 100%;
-  font-size: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-align: center;
-  font-family: "ON-IGothic";
   color: #333;
-  letter-spacing: 1px;
+  font-family: "ON_IGothic";
 }
 
-main #order_product table tr:nth-of-type(1) td:nth-of-type(1) {
+main #main_wrapper {
+  margin-top: 50px;
+}
+
+main .title_wrapper {
+  margin-bottom: 30px;
+}
+
+main .title_wrapper .title {
+  font-size: 30px;
   text-align: center;
+  font-family: inherit;
 }
 
-main #order_product table tr:nth-of-type(1) td:nth-of-type(2) {
+main .title_wrapper .description {
+  display: inline-block;
+  color: grey;
+  margin-top: 20px;
+  padding-bottom: 15px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+section .order_subtitle {
+  font-size: 23px;
+  font-family: "ON_IGothic";
+  color: #333;
+  margin: 0 auto;
+  text-align: left;
+}
+
+section img {
   width: 100px;
+  height: 0 auto;
+}
+
+section a {
+  font-weight: 520;
+  text-decoration: underline;
+  color: #333;
+  cursor: pointer;
+}
+
+section a:hover {
+  color: #fec084;
+}
+
+section table td {
+  vertical-align: middle;
   text-align: center;
 }
 
-main #order_product table tr:nth-of-type(1) td:nth-of-type(3) {
-  width: 100px;
+section table tr:nth-of-type(1) td {
+  border-top: 3px solid #fec084 !important;
+  padding-top: 15px;
+}
+
+section table tr:last-of-type td {
+  border-bottom: 2px solid #dcdbde;
+  padding-bottom: 15px;
+}
+
+main {
+  letter-spacing: 0.5px;
+}
+
+main table {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-collapse: collapse;
+  margin-top: 30px;
+  font-family: "ON_IGothic";
+  color: #333;
+  margin-bottom: 50px;
+}
+
+main table td {
+  font-family: "ON_IGothic";
+  font-size: 18px;
+}
+
+main input[type=button], main input[type=submit] {
+  margin-left: 25px;
+  height: 30px;
+  width: 70px;
+  background-color: #fec084;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+main input[type=button]:active, main input[type=submit]:active {
+  background-color: #FB9832;
+}
+
+#order_product table tr:nth-of-type(1) td:nth-of-type(1) {
   text-align: center;
 }
 
-main #order_product table tr, main #order_product table td {
+#order_product table tr:nth-of-type(1) td:nth-of-type(2) {
+  text-align: center;
+}
+
+#order_product table tr:nth-of-type(1) td:nth-of-type(3) {
+  text-align: center;
+}
+
+#order_product table tr, #order_product table td {
   padding: 15px;
   text-align: left;
 }
 
-main #order_product table td:first-of-type {
+#order_product table td:first-of-type {
   padding-left: 20px;
 }
 
-main #order_product table td:nth-of-type(1) {
-  width: 100px;
-}
-
-main #order_product table td:nth-of-type(2) {
+#order_product table td:nth-of-type(2) {
   width: 600px;
 }
 
-main #order_product table td:nth-of-type(3) {
-  width: 100px;
+#order_product table td:nth-of-type(3) {
   text-align: center;
 }
 
-main #order_product table td:nth-of-type(4) {
-  width: 100px;
+#order_product table td:nth-of-type(4) {
   text-align: center;
 }
 
-main #order_member table tr td {
+#order_member table tr td {
   height: 25px;
   padding: 30px;
 }
@@ -73,7 +176,7 @@ main #order_member table tr td {
 }
 
 #order_delivery table tr td input {
-  font-family: "ON-IGothic";
+  font-family: "ON_IGothic";
   padding-left: 8px;
   border: 1px solid #dcdbde;
   height: 28px;
@@ -95,7 +198,7 @@ main #order_member table tr td {
 }
 
 #order_delivery table tr td textarea[name=o_del_msg] {
-  font-family: "ON-IGothic";
+  font-family: "ON_IGothic";
   font-size: 14px;
   padding: 8px;
   border: 1px solid #dcdbde;
@@ -138,7 +241,7 @@ main #order_member table tr td {
 }
 
 #order_pay table {
-  font-family: "ON-IGothic";
+  font-family: "ON_IGothic";
 }
 
 #order_pay table tr td {
@@ -149,7 +252,7 @@ main #order_member table tr td {
 
 #order_pay table tr td input {
   border: none;
-  font-family: "ON-IGothic";
+  font-family: "ON_IGothic";
   font-size: 18px;
   text-align: end;
   padding-right: 10px;
@@ -169,76 +272,11 @@ main #order_member table tr td {
   font-size: 12px;
 }
 
-#order_howpay table tr td:nth-of-type(1) {
-  width: 100px;
-}
-
 #order_howpay table tr td:nth-of-type(2) {
   text-align: center;
 }
 
 #order_howpay table tr:nth-of-type(2) td {
   padding-top: 20px;
-}
-
-/*전체 속성 제어부*/
-table tr:nth-of-type(1) td {
-  border-top: 3px solid #FB9832 !important;
-  padding-top: 15px;
-}
-
-table tr:last-of-type td {
-  border-bottom: 2px solid #dcdbde;
-  padding-bottom: 15px;
-}
-
-.order_subtitle {
-  font-size: 25px;
-  font-family: "ON-IGothic";
-  color: #333;
-  margin: 0 auto;
-}
-
-a {
-  font-weight: 520;
-  cursor: pointer;
-}
-
-a:hover {
-  color: #FB9832;
-}
-
-main {
-  letter-spacing: 0.5px;
-}
-
-main table {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 30px;
-  font-family: "ON-IGothic";
-  color: #333;
-  margin-bottom: 50px;
-}
-
-main table td {
-  font-family: "ON-IGothic";
-  font-size: 18px;
-}
-
-main input[type=button], main input[type=submit] {
-  margin-left: 25px;
-  height: 30px;
-  width: 70px;
-  background-color: #FB9832;
-  border: none;
-  color: white;
-  font-weight: bold;
-}
-
-main input[type=button]:active, main input[type=submit]:active {
-  background-color: #f09439;
 }
 /*# sourceMappingURL=order.css.map */
