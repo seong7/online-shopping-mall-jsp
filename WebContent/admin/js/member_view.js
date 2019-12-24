@@ -194,7 +194,6 @@ function openDaumZipAddress() {
 function offDaumZipAddress() {
 	// 슬라이드 업 기능을 이용해 레이어 창을 닫는다.
     $("#daumWrap2").slideUp();
-
 }
 
 init();
