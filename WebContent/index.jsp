@@ -25,7 +25,7 @@
          <main>
             <!-- 배너 구역-->
             <div id="bannerWrapper">
-                <img src="./img/index/banner/banner_sample1.png" alt="banner slider">
+                <img src="./img/index/banner/banner_new.jpg" alt="banner slider">
                 <div id="banner_btn_wrapper">
                     <span>
                         
