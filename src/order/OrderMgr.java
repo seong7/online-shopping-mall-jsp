@@ -84,12 +84,18 @@ public class OrderMgr {
 			sql = "insert order_detail_tb(o_index, p_code, o_qty) " + 
 					"VALUES (?,?,?)";
 			pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, ref);
-				//String p_codes[] = order.getP_code();
+				int cnt = 0;
+				int p_codes[] = order.getP_code();
 				int o_qtys[] = order.getO_qty();
-				//pstmt.setInt(2, p_codes[refCount]);
-				pstmt.setInt(3, o_qtys[refCount]);
-				int cnt = pstmt.executeUpdate();
+				for (int i = 0; i < p_codes.length; i++) {
+					pstmt.setInt(1, ref);
+					pstmt.setInt(2, p_codes[i]);
+					pstmt.setInt(3, o_qtys[i]);
+					cnt = pstmt.executeUpdate();
+					System.out.print("ref:"+ref);
+					System.out.print("p_codes: "+p_codes[i]);
+					System.out.print("o_qtys: "+o_qtys[i]);
+				}
 				if(cnt==1)
 					flag=true;
 		} catch (Exception e) {
@@ -144,12 +150,12 @@ public class OrderMgr {
 	}
 	
 	//Order detail code, 수량 확인 
-	public OrderDetailBean getOrderCode(int o_index) {
+	public Vector<OrderDetailBean> getOrderCode(int o_index) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
-		OrderDetailBean order = new OrderDetailBean();
+		Vector<OrderDetailBean> vlist = new Vector<OrderDetailBean>();
 		try {
 			con = pool.getConnection();
 			sql = "select count(p_code) from order_detail_tb "
@@ -169,31 +175,31 @@ public class OrderMgr {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, o_index);
 			rs = pstmt.executeQuery();
+			int i=0;
 			while(rs.next()) {
-				int p_code = rs.getInt(1);//11이 들어온다. 
+				OrderDetailBean order = new OrderDetailBean();
+				int p_code = rs.getInt(1); 
 				int o_qty = rs.getInt(2);
-				//System.out.print(p_code);
+//				System.out.print("p_code: "+p_code);
 				int p_codes[] = new int[ref];
 				int o_qtys[] = new int[ref];
-				for(int i =0; i<ref;i++) {
-					p_codes[i] = p_code;
-					o_qtys[i] = o_qty;
-					//System.out.print(p_codes[i]);
-				}
-				System.out.print(p_codes[0]);
-				System.out.print(p_codes[1]);
+				p_codes[i] = p_code;
+				o_qtys[i] = o_qty;
+//				System.out.print(p_codes[i]);
+//				System.out.print("pcode1: "+p_codes[i]);
+//				System.out.print("qty1: "+o_qtys[i]);
 				order.setP_code(p_codes);
 				order.setO_qty(o_qtys);
+				vlist.addElement(order);
+				i++;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
-		return order;
+		return vlist;
 	}
-	
-	
 	
 
 	//***Admin 기능설계***
