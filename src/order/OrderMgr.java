@@ -144,12 +144,12 @@ public class OrderMgr {
 	}
 	
 	//Order detail code, 수량 확인 
-	public OrderDetailBean getOrderCode(int o_index) {
+	public Vector<OrderDetailBean> getOrderCode(int o_index) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
-		OrderDetailBean order = new OrderDetailBean();
+		Vector<OrderDetailBean> vlist = new Vector<OrderDetailBean>();
 		try {
 			con = pool.getConnection();
 			sql = "select count(p_code) from order_detail_tb "
@@ -170,9 +170,10 @@ public class OrderMgr {
 			pstmt.setInt(1, o_index);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
+				OrderDetailBean order = new OrderDetailBean();
 				int p_code = rs.getInt(1);//11이 들어온다. 
 				int o_qty = rs.getInt(2);
-				//System.out.print(p_code);
+				System.out.print("p_code: "+p_code);
 				int p_codes[] = new int[ref];
 				int o_qtys[] = new int[ref];
 				for(int i =0; i<ref;i++) {
@@ -180,17 +181,20 @@ public class OrderMgr {
 					o_qtys[i] = o_qty;
 					//System.out.print(p_codes[i]);
 				}
-				System.out.print(p_codes[0]);
-				System.out.print(p_codes[1]);
+				System.out.print("pcode1: "+p_codes[0]);
+				System.out.print("pcode2: "+p_codes[1]);
+				System.out.print("qty1: "+o_qtys[0]);
+				System.out.print("qty2: "+o_qtys[1]);
 				order.setP_code(p_codes);
 				order.setO_qty(o_qtys);
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
-		return order;
+		return vlist;
 	}
 	
 	

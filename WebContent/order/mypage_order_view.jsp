@@ -20,7 +20,7 @@
 		String o_id = (String)session.getAttribute("idKey");
 		o_id = "u1"; // 확인용 
 		int o_index = Integer.parseInt(request.getParameter("o_index"));
-		String o_status = "결재완료";
+		String o_status = "결재완료";//최초 주문시 default 값으로 입력 
 		int priceTotal = 0;
 		int shippingPrice = 2500;
 %>
