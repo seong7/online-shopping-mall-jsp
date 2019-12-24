@@ -21,7 +21,8 @@
 
         <!--******************-->
         <!--작업 및 복붙 구역-->
-        <!--******************-->    
+        <!--******************-->   
+            <!-- 배너 구역--> 
         <div class="arrow bounce1">
 			<i class="fa fa-arrow-left fa-2x"  onclick="plusDivs(-1)"></i>
 		</div>
@@ -36,9 +37,6 @@
 				<img class="mySlides" src="./img/index/banner/banner_sample3.png">
             </div>	
          <main>
-            <!-- 배너 구역-->
-            
-            <!-- 베스트상품 구역-->
             
             <%
 	            vlist = mgr.getGoodsList("indexBest");

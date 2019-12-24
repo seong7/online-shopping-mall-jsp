@@ -73,11 +73,13 @@
 %>
 
 <script type="text/javascript">
+	
 	function block(block) {//prev...or ...next시 nowPage값을 지정
 		document.readFrm.nowPage.value = 
 			<%=pagePerBlock%>*(block-1)+1;
 		document.readFrm.submit();
 	}
+
 </script>
 
 <%@ include file="../top.jsp" %>
@@ -104,7 +106,7 @@
 	    				<option value="o_status"> 주문상태</option>
 	   				</select>
 	   				<input name="keyWord">
-	   				<input id="search_btn" type="button"  value="검색" onClick="check()">
+	   				<input id="search_btn" type="button"  value="검색" onClick="javascript:check()">
 	   				<input type="hidden" name="nowPage" value="1">
 	  			</td>
 	  		</tr>
@@ -113,7 +115,7 @@
 				<td>
 					<input name ="keyDate1" placeholder="20190101"> &nbsp; ~ &nbsp;
 					<input name ="keyDate2" placeholder="20191231">			
-					<input id="search_btn" type="button" value="search" onClick="dateCheck()">
+					<input id="search_btn" type="button" value="search" onClick="javascript:dateCheck()">
 					<input type="hidden" name="nowPage" value="1">
 				</td>
 	  		</tr>
@@ -125,7 +127,7 @@
 					<td>
 						<form name="npFrm" method="post">
 								<select name="numPerPage"
-								onchange="numPerFn(this.form.numPerPage.value)">
+								onchange="javascript:numPerFn(this.form.numPerPage.value)">
 			    					<option value="5">5개 보기</option>
 			    					<option value="10" selected>10개 보기</option>
 			    					<option value="15">15개 보기</option>
@@ -170,7 +172,7 @@
 				<td><%=totalRecord-start-i %></td>
 				<td><%=order.getO_id()%></td>
 				<td><%=order.getO_date()%></td>
-				<td><a href="read('<%=order.getO_index()%>')">
+				<td><a href="javascript:read('<%=order.getO_index()%>')">
 				<%=order.getO_index()%></a></td>
 				<td><%=UtilMgr.monFormat(o_total_amount)%>원</td>
 				<td><%=order.getO_status()%></td>
@@ -186,7 +188,7 @@
 				<%if(totalPage>0){ %>
 						<!-- 이전 블럭 -->
 						<%if(nowBlock>1){ %>
-							<a href="block('<%=nowBlock-1%>')">prev...</a>
+							<a href="javascript:block('<%=nowBlock-1%>')">prev...</a>
 						<%} %>
 		
 						<!-- 페이징(블럭수 설정) -->
@@ -198,7 +200,7 @@
 									pageStart+pagePerBlock:totalPage+1;
 							for(;pageStart<pageEnd;pageStart++){
 						%>
-							<a href="pageing('<%=pageStart%>')">
+							<a href="javascript:pageing('<%=pageStart%>')">
 							<%if(pageStart==nowPage){ %><font color="red"><%} %>
 							[<%=pageStart %>]
 							<%if(pageStart==nowPage){ %></font><%} %>
@@ -206,7 +208,7 @@
 						<%}//---for %>	
 						<!-- 다음블럭 -->
 						<%if(totalBlock>nowBlock){ %>
-							<a href="block('<%=nowBlock+1%>')">...next</a>
+							<a href="javascript:block('<%=nowBlock+1%>')">...next</a>
 						<%} %>
 					<%} %>
 				</td>

@@ -8,42 +8,46 @@
 <%@page import="order.CartMgr"%>
 <%@page import="order.CartBean"%>
 <%@page import="java.util.Vector"%>
-<%@page import="product.productUtil"%>
 
-<jsp:useBean id="mMgr" class="member.MemberMgr"/>
-<jsp:useBean id="pMgr" class="product.ProductMgr"/>
-<jsp:useBean id="oMgr" class="order.OrderMgr"/>
-<jsp:useBean id="cMgr" class="order.CartMgr"/>
+<jsp:useBean id="mMgr" class="member.MemberMgr" />
+<jsp:useBean id="pMgr" class="product.ProductMgr" />
+<jsp:useBean id="oMgr" class="order.OrderMgr" />
+<jsp:useBean id="cMgr" class="order.CartMgr" />
 
 <%
-		request.setCharacterEncoding("EUC-KR");
 
+		request.setCharacterEncoding("EUC-KR");
+		String cpath = request.getContextPath();
+		
+		int p_code = 0;
+		int o_qty = 0;
+		int price = 0;
+		int countPart = 0;
+		int totalPrice = 0;
+
+		String o_id = (String)session.getAttribute("idKey");
 
 		String flag = request.getParameter("flag");
-		String pCode = null;
-		int qty = 0;
 		
+		Vector goods = new Vector();
+	
+		
+		// flag (카트인지 제품 하나 구매인지 구분 )  에 따라 Vector goods 에 정보 넣어줌
 		if(flag.equals("oneProduct")){
-			pCode = request.getParameter("p_code");
-			qty = Integer.parseInt(request.getParameter("quantity"));
+			p_code = Integer.parseInt(request.getParameter("p_code"));
+			ProductBean pbean = pMgr.getProduct(p_code);
+			goods.add(pbean);
+			
+		}else if(flag.equals("cart")){
+			
+			goods = cMgr.getCart(o_id);
 		}
-
-		/// check 필요
-		String o_id = (String)session.getAttribute("idKey");
-		o_id = "u1"; // 확인용 
-		String o_status = "결재완료";
-		int p_code=0;
-		int o_qty =0;
-		int countPart = 0;
-		////
 		
-		
-		int priceTotal = 0;
 
-		productUtil util = new productUtil();
+		/// sample용
+		String o_status = "결제완료";
+		int shippingPrice = 2500;
 
-		String shippingPrice = util.price(2500);
-		
 %>
 
 <!-- 
@@ -55,9 +59,10 @@
 <body>
  -->
 
-<link rel="stylesheet" type="text/css" href="css/order.css"/>
+<link rel="stylesheet" type="text/css" href="css/order.css" />
 
-<%@ include file="../top.jsp" %>
+<%@ include file="../top.jsp"%>
+
 
 		<main>
 			<div id="orderWapper">
@@ -71,29 +76,32 @@
 								<td>상품금액</td>
 							</tr>
 								<%
-									Vector<CartBean> vlist = cMgr.getCart(o_id);
-									if(vlist.isEmpty()){
-								%>
-								<tr> 
-									<tr>
-										<td colspan="4">
-										주문하신 물품이 없습니다.
-										</td>
-									</tr>
-								<%
-									}
-									for(int i=0; i<vlist.size(); i++){
-										CartBean cart = vlist.get(i);
-										p_code = cart.getP_code();
-										ProductBean pbean = pMgr.getProduct(p_code);
-										int price = pbean.getP_price();
-										o_qty = cart.getC_qty();
-										priceTotal += price * o_qty;
-										countPart = vlist.size();
+											
+											ProductBean pbean =null;
+											CartBean cbean = null;
+	
+											for(int i=0; i<goods.size(); i++){			
+												
+												/* 물건 하나 구매할 때*/
+												if(flag.equals("oneProduct")){
+													pbean = (ProductBean)goods.get(i);	
+													o_qty = Integer.parseInt(request.getParameter("quantity"));
+													
+												/* 장바구니 구매할 때 */
+												}else if(flag.equals("cart")){
+													
+													cbean = (CartBean)goods.get(i);
+													o_qty = cbean.getC_qty();
+													pbean = pMgr.getProduct(cbean.getP_code());
+												}
+												
+												price = pbean.getP_price();
+												totalPrice += price * o_qty;
+												countPart = goods.size();
 								%>
 							<tr>
 								<td>
-								<img alt="제품사진" src="${pageContext.request.contextPath}/img/product/ready.gif">
+									<img alt="제품사진" src="${pageContext.request.contextPath}/img/product/<%=pbean.getP_main_pht_name()%>">
 								</td>
 								<td><a><%=pbean.getP_name() %></a></td>
 								<td><%=o_qty %>개</td>
@@ -110,17 +118,22 @@
 							<tr>
 							<%
 								MemberBean mbean = mMgr.getMember(o_id);
+								
+								String mName = mbean.getNAME();
+								String mContact = mbean.getContact();
+								String mEmail = mbean.getEmail();
+								
 							%>
 								<td>보내는 분</td>
-								<td><%=mbean.getNAME() %></td>
+								<td><%=mName %></td>
 							</tr>
 							<tr>
 								<td>휴대폰 </td>
-								<td><%=mbean.getContact() %></td>
+								<td><%=mContact%></td>
 							</tr>
 							<tr>
 								<td>이메일 </td>
-								<td><%=mbean.getEmail() %></td>
+								<td><%=mEmail%></td>
 							</tr>
 						</table>
 						<hr/>
@@ -174,18 +187,18 @@
 							<table>
 								<tr>
 									<td>상품금액&nbsp;&nbsp;&nbsp;</td>
-									<td><input name="o_prod_amount" readonly size="13" 	value="<%=priceTotal%>">원</td>
+									<td><input name="o_prod_amount" readonly size="13" 	value="<%=UtilMgr.intFormat(totalPrice)%>">원</td>
 								</tr>
 								<tr>
 									<td>배송비&nbsp;&nbsp;&nbsp;</td>
-									<td><input name="o_del_fee" readonly size="13" 	value="<%=shippingPrice%>">원</td>
+									<td><input name="o_del_fee" readonly size="13" 	value="<%=UtilMgr.intFormat(shippingPrice)%>">원</td>
 								</tr>
 								<tr>
 									<td>최종결재금액&nbsp;&nbsp;&nbsp;</td>
-									<td><input name="o_total_amount" readonly size="13" value="<%=priceTotal+shippingPrice%>">원</td>
+									<td><input name="o_total_amount" readonly size="13" value="<%=UtilMgr.intFormat(totalPrice+shippingPrice)%>">원</td>
 								</tr>
 								<tr>
-									<td>구매 시 <%=UtilMgr.intFormat(priceTotal)%>P 적립</td>
+									<td>구매 시 <%=UtilMgr.intFormat(totalPrice)%>P 적립</td>
 								</tr>
 							</table>
 						</section>
@@ -241,36 +254,39 @@
 							</tr>
 							<tr>
 								<td>&nbsp;&nbsp;&nbsp;개인정보 수집/이용동의(필수)</td>
-								<td>&nbsp;&nbsp;&nbsp;<a href="">약관확인></a></td>
+								<td>&nbsp;&nbsp;&nbsp;<a href="#">약관확인></a></td>
 							</tr>
 							<tr>
 								<td>&nbsp;&nbsp;&nbsp;결재대행 서비스 약관 동의(필수)</td>
-								<td>&nbsp;&nbsp;&nbsp;<a href="">약관확인></a></td>
+								<td>&nbsp;&nbsp;&nbsp;<a href="#">약관확인></a></td>
 							</tr>
 						</table>
 						<input type="hidden" name="o_id" value="<%=o_id%>">
 						<input type="hidden" name="o_status" value="<%=o_status%>">
 						<input type="hidden" name="countPart" value="<%=countPart%>">
 						<%for(int i =0; i<countPart;i++){ %>
-						<input type="hidden" name="o_qty" value="<%=o_qty%>">
-						<input type="hidden" name="p_code" value="<%=p_code%>">
+							<input type="hidden" name="o_qty" value="<%=o_qty%>">
+							<input type="hidden" name="p_code" value="<%=p_code%>">
 						<%} %>
 						<input type="submit" value="결재완료" onclick="agreement()">
 						</form>
 					</section>
 					
-					
-			</div>
-		</main>
-		
-	</div> <!--  #btn_mypage_wrapper (버튼메뉴 + mypage) : mypage_side.jsp 에서 열림-->
-	</div> <!-- #main (상단요약 + 버튼 + mypage) : mypage_side.jsp 에서 열림-->
-	<%@ include file="../bottom.jsp" %>
-	
-	<script type="text/javascript" src="js/order.js"></script>
-	
 
-	</body>
+
+</div>
+</main>
+
+</div>
+<!--  #btn_mypage_wrapper (버튼메뉴 + mypage) : mypage_side.jsp 에서 열림-->
+</div>
+<!-- #main (상단요약 + 버튼 + mypage) : mypage_side.jsp 에서 열림-->
+<%@ include file="../bottom.jsp"%>
+
+<script type="text/javascript" src="js/order.js"></script>
+
+
+</body>
 </html>
 
 
