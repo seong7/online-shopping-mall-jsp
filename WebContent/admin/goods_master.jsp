@@ -4,7 +4,7 @@
 <%@page import="java.util.Vector"%>
 <%@page import="product.ProductBean"%>
 <jsp:useBean id="amgr" class="admin.ProductMgr"/>
-
+<link rel="stylesheet" type="text/css" href="../css/util.css">
 <%
 		request.setCharacterEncoding("EUC-KR");
 		Vector<ProductBean> list = amgr.printPname();
@@ -114,7 +114,12 @@
 				%>
 				<tr>
 					<td>
-						<input class="checkbox" type ="checkbox" name="allCh" onclick="allChk()" >
+					<label class="checkbox">
+					    <input class="checkbox" type ="checkbox" name="allCh" onclick="allChk()" >
+					    <span class="icon"></span>
+					    <span class="text"></span>
+					</label>
+		<!-- 				<input class="checkbox" type ="checkbox" name="allCh" onclick="allChk()" >-->
 					</td>					
 					<th>力前内靛</th>
 					<th>惑前疙</th>
@@ -130,7 +135,12 @@
 				%>			
 					<tr>
 					<td>
-						<input class="checkbox" type ="checkbox" name="fch" value="<%=p_code%>" onclick="chk()" >
+					<label class="checkbox">
+					     <input class="checkbox" type ="checkbox" name="fch" value="<%=p_code%>" onclick="chk()" >
+					    <span class="icon"></span>
+					    <span class="text"></span>
+					</label>
+						<!--  <input class="checkbox" type ="checkbox" name="fch" value="<%=p_code%>" onclick="chk()" > -->
 					</td>						
 					<td><a href="goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_code() %></a></td>
 					<td><a href="goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_name() %></a></td>

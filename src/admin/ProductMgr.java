@@ -458,6 +458,8 @@ public class ProductMgr {
 		}
 		return list;
 	}
+	
+	
 
 	// Searching product list by p_name, p_date in (goods_master.jsp)
 	public Vector<ProductBean> searchproduct(String p_name, int p_date1, int p_date2) {
