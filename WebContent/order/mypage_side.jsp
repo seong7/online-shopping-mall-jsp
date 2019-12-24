@@ -2,52 +2,54 @@
 <%
 		request.setCharacterEncoding("EUC-KR");
 		String cpath = request.getContextPath();
+		
 
 
 		if(id==null || id.length()==0){
 			response.sendRedirect(cpath+"/index.jsp");
 			return;
 		}
+		
 %>
 
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/order/css/mypage_style.css">
 <script src="https://kit.fontawesome.com/115bcf1f34.js" crossorigin="anonymous"></script>
   
-  	<!-- top, bottom ¡¶ø‹ ∆‰¿Ã¡ˆ ¿¸√º-->
+  	<!-- top, bottom Ï†úÏô∏ ÌéòÏù¥ÏßÄ Ï†ÑÏ≤¥-->
     <div id="main">
   
         <header>
 
 
-        <!-- ø‰æ‡√¢ ∫Œ∫– -->
+        <!-- ÏöîÏïΩÏ∞Ω Î∂ÄÎ∂Ñ -->
         <div id="mypage_summ">
               <ul id="mypage_summ_ul">
                   <li id="summ_first">
                       <div class="top">
-                          <span id="name" class="bold">±Ëº∫¡¯</span>
-                          <span id="name_top" class="text">¥‘</span>
+                          <span id="name" class="bold">ÍπÄÏÑ±ÏßÑ</span>
+                          <span id="name_top" class="text">Îãò</span>
                       </div>
                       <div class="bottom">
-                          <span id="name_bottom" class="text">»Øøµ«’¥œ¥Ÿ.</span>
+                          <span id="name_bottom" class="text">ÌôòÏòÅÌï©ÎãàÎã§.</span>
                       </div>
                   </li>
                   <li>
                       <div class="top">
-                          <span id="point_top" class="text">ªÁøÎ∞°¥… ∆˜¿Œ∆Æ</span>
+                          <span id="point_top" class="text">ÏÇ¨Ïö©Í∞ÄÎä• Ìè¨Ïù∏Ìä∏</span>
                       </div>
                       <div class="bottom">
                           <span id="point" class="bold">1,000</span>
-                          <span id="point_bottm" class="text">ø¯</span>
+                          <span id="point_bottm" class="text">Ïõê</span>
                       </div>
                   </li>
                   <li id="summ_last">
                       <div class="top">
-                          <span id="del_top" class="text">πËº€¡ﬂ¿Œ ¡÷πÆ</span>
+                          <span id="del_top" class="text">Î∞∞ÏÜ°Ï§ëÏù∏ Ï£ºÎ¨∏</span>
                       </div>
                       <div class="bottom">
                           <span id="del" class="bold">2</span>
-                          <span id="del_bottom" class="text">∞«</span>
+                          <span id="del_bottom" class="text">Í±¥</span>
                       </div>
                   </li>
               </ul>
@@ -59,24 +61,24 @@
 
     
     <div id="btn_mypage_wrapper">  
-    <!-- (πˆ∆∞∏ﬁ¥∫ + mypage) -->
+    <!-- (Î≤ÑÌäºÎ©îÎâ¥ + mypage) -->
 
 
         <div id="mypage_side">
         
         	<div id="section">
-              	  ∏∂¿Ã∆‰¿Ã¡ˆ
+              	  ÎßàÏù¥ÌéòÏù¥ÏßÄ
             </div>
     
     
-            <!-- ∏ﬁ¥∫ ∫Œ∫– -->
+            <!-- Î©îÎâ¥ Î∂ÄÎ∂Ñ -->
             <div id="mypage_btn_wrapper">
                 <ul>
                     <a id="btn_first" href="#">
                         <li>
-                            <span class="text">¡÷πÆ∞¸∏Æ</span>
+                            <span class="text">Ï£ºÎ¨∏Í¥ÄÎ¶¨</span>
         
-                            <!-- default æ∆¿Ãƒ‹ -->
+                            <!-- default ÏïÑÏù¥ÏΩò -->
                             <span class="icon"><i class="fas fa-chevron-left"></i></span>
         
                             <!-- mypage_orderlist.jsp / order_view.jsp :: -->
@@ -86,9 +88,9 @@
                     </a>
                     <a href="#">
                         <li>
-                            <span class="text">∏Æ∫‰∞¸∏Æ</span>
+                            <span class="text">Î¶¨Î∑∞Í¥ÄÎ¶¨</span>
                             
-                            <!-- default æ∆¿Ãƒ‹ -->
+                            <!-- default ÏïÑÏù¥ÏΩò -->
                             <span class="icon"><i class="fas fa-chevron-left"></i></span>
         
                              <!-- mypage_review.jsp / review_write.jsp :: -->
@@ -98,9 +100,9 @@
                     </a>
                     <a href="#">
                         <li>
-                            <span class="text">∆˜¿Œ∆Æ∞¸∏Æ</span>
+                            <span class="text">Ìè¨Ïù∏Ìä∏Í¥ÄÎ¶¨</span>
                             
-                            <!-- default æ∆¿Ãƒ‹ -->
+                            <!-- default ÏïÑÏù¥ÏΩò -->
                             <span class="icon"><i class="fas fa-chevron-left"></i></span>
                         
                              <!-- mypage_point.jsp :: -->
@@ -110,9 +112,9 @@
                     </a>
                     <a id="btn_last" href="#">
                         <li>
-                            <span class="text">»∏ø¯¡§∫∏</span>
+                            <span class="text">ÌöåÏõêÏ†ïÎ≥¥</span>
                             
-                            <!-- default æ∆¿Ãƒ‹ -->
+                            <!-- default ÏïÑÏù¥ÏΩò -->
                             <span class="icon"><i class="fas fa-chevron-left"></i></span>
                         
                              <!-- myinfo_check.jsp / mypage_myinfo.jsp :: -->
@@ -127,6 +129,6 @@
         </div>   <!-- #btn_wrapper -->
 
 
-    <!-- </div>   #btn_mypage_wrapper (πˆ∆∞∏ﬁ¥∫ + mypage) : «œ¿ß ∆‰¿Ã¡ˆø°º≠ ¥›æ∆æﬂ«‘-->
+    <!-- </div>   #btn_mypage_wrapper (Î≤ÑÌäºÎ©îÎâ¥ + mypage) : ÌïòÏúÑ ÌéòÏù¥ÏßÄÏóêÏÑú Îã´ÏïÑÏïºÌï®-->
     
-   <!-- </div>  #main (ªÛ¥‹ø‰æ‡ + πˆ∆∞ + mypage) : «œ¿ß∆‰¿Ã¡ˆø°º≠ ¥›æ∆æﬂ«‘-->
+   <!-- </div>  #main (ÏÉÅÎã®ÏöîÏïΩ + Î≤ÑÌäº + mypage) : ÌïòÏúÑÌéòÏù¥ÏßÄÏóêÏÑú Îã´ÏïÑÏïºÌï®-->
