@@ -90,18 +90,21 @@ function init(){
 	
 		//버튼이벤트
 		down_btn.addEventListener('click', function(){
-			let innerData = parseInt(qty_input.value)-1;
-			qty_input.value = innerData;
-			total_cash.innerHTML = innerData * product_cash;
-			if(trArray[j].childNodes[1].firstChild.checked){
-				sumtext.innerHTML = parseInt(sumtext.innerHTML) - product_cash;
-				sum -= product_cash;
-			}
-			
+			if(parseInt(qty_input.value)>1){
+				let innerData = parseInt(qty_input.value)-1;
+				qty_input.value = innerData;
+				total_cash.innerHTML = innerData * product_cash;
+				if(trArray[j].childNodes[1].firstChild.checked){
+					sumtext.innerHTML = parseInt(sumtext.innerHTML) - product_cash;
+					sum -= product_cash;
+				}
 			zeroCheck();
+			}
 		});
 		
+		
 		up_btn.addEventListener('click', function(){
+			if(parseInt(qty_input.value)<99){
 			let innerData = parseInt(qty_input.value)+1;
 			qty_input.value = innerData;
 			total_cash.innerHTML = innerData * product_cash;
@@ -109,7 +112,8 @@ function init(){
 				sumtext.innerHTML = parseInt(sumtext.innerHTML) + product_cash;
 				sum += product_cash;
 			}
-			zeroCheck();
+				zeroCheck();
+			}
 		});
 	}
 
