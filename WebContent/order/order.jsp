@@ -17,6 +17,16 @@
 
 <%
 		request.setCharacterEncoding("EUC-KR");
+
+		String flag = request.getParameter("flag");
+		String pCode = null;
+		int qty = 0;
+		
+		if(flag.equals("oneProduct")){
+			pCode = request.getParameter("p_code");
+			qty = Integer.parseInt(request.getParameter("quantity"));
+		}
+
 		productUtil util = new productUtil();
 		int priceTotal = 0;
 		String shippingPrice = util.price(2500);
@@ -33,7 +43,6 @@
 <body>
  -->
 
-<script type="text/javascript" src="js/order.js"></script>
 <link rel="stylesheet" type="text/css" href="css/order.css"/>
 
 <%@ include file="../top.jsp" %>
@@ -240,6 +249,8 @@
 		</div> <!--  #btn_mypage_wrapper (버튼메뉴 + mypage) : mypage_side.jsp 에서 열림-->
 	</div> <!-- #main (상단요약 + 버튼 + mypage) : mypage_side.jsp 에서 열림-->
 	<%@ include file="../bottom.jsp" %>
+	
+	<script type="text/javascript" src="js/order.js"></script>
 	
 	</body>
 </html>
