@@ -1,0 +1,60 @@
+#bannerWrapper img{
+	width: 2000px;
+	height: 400px;
+	position: absolute;
+	left: 50%;
+	margin-left: -1000px;
+}
+
+#goodslist_best{
+	margin-top: 400px;	
+}
+
+.arrow i{ 
+	color: #fec084; text-decoration: none; 
+}
+.arrow{
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  margin-top: 180px;	
+  z-index: 1;
+}
+.bounce1 {
+  -moz-animation: bounce1 2s infinite;
+  -webkit-animation: bounce1 2s infinite;
+  animation: bounce1 2s infinite;
+  left: 30px;
+}
+
+.bounce2 {
+  -moz-animation: bounce2 2s infinite;
+  -webkit-animation: bounce2 2s infinite;
+  animation: bounce2 2s infinite;
+  right: 30px;
+}
+
+
+@keyframes bounce1 {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateX(-15px);
+  }
+  60% {
+    transform: translateX(-7px);
+  }
+}
+
+@keyframes bounce2 {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateX(7px);
+  }
+  60% {
+    transform: translateX(15px);
+  }
+}

@@ -131,7 +131,7 @@ main header form .btn_wrapper .btn:hover {
   cursor: pointer;
 }
 
-main header form .btn_wrapper #submit {
+main header form .btn_wrapper #submit_btn {
   margin-left: 15px;
 }
 

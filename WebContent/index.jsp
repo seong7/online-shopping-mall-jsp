@@ -16,25 +16,26 @@
 %>
 
 <link rel="stylesheet" type="text/css" href="css/goodsList.css">
-
+<link rel="stylesheet" type="text/css" href="css/index.css">
 <%@ include file="/top.jsp" %>
 
         <!--******************-->
         <!--작업 및 복붙 구역-->
-        <!--******************-->        	
+        <!--******************-->   
+            <!-- 배너 구역--> 
          <main>
-            <!-- 배너 구역-->
-            <div id="bannerWrapper">
-                <img src="./img/index/banner/banner_sample1.png" alt="banner slider">
-                <div id="banner_btn_wrapper">
-                    <span>
-                        
-                    </span>
-                </div>
-            </div>
-
-            <!-- 베스트상품 구역-->
-            
+                 <div class="arrow bounce1">
+			<i class="fa fa-arrow-left fa-2x"  onclick="plusDivs(-1)"></i>
+		</div>
+		<div class="arrow bounce2">
+			<i class="fa fa-arrow-right fa-2x"  onclick="plusDivs(-1)"></i>
+		</div>    
+        <div id="bannerWrapper">
+            	<img class="mySlides" src="./img/index/banner/banner_new.jpg">
+				<img class="mySlides" src="./img/index/banner/banner_open.jpg">
+				<img class="mySlides" src="./img/index/banner/banner_sample2.png">
+				<img class="mySlides" src="./img/index/banner/banner_sample3.png">
+           </div>	
             <%
 	            vlist = mgr.getGoodsList("indexBest");
             %>
@@ -123,6 +124,8 @@
 				
 				
 	        </main>
+	        
+			<script src="./js/index.js"></script>
 			<!--******************-->
 	        <!--작업 및 복붙 구역-->
 	        <!--******************-->        
