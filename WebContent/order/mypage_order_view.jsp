@@ -20,7 +20,7 @@
 		String o_id = (String)session.getAttribute("idKey");
 		o_id = "u1"; // 확인용 
 		int o_index = Integer.parseInt(request.getParameter("o_index"));
-		String o_status = "결재완료";
+		String o_status = "결재완료";//최초 주문시 default 값으로 입력 
 		int priceTotal = 0;
 		int shippingPrice = 2500;
 %>
@@ -53,12 +53,12 @@
 								<td>상품금액</td>
 							</tr>
 								<%
-									OrderDetailBean detailOrder = oMgr.getOrderCode(o_index);
-									int p_codes[] = detailOrder.getP_code();
-									int o_qtys[] = detailOrder.getO_qty();
-									for(int i=0; i<p_codes.length; i++){
-										int p_code = p_codes[i];
-										ProductBean pbean = pMgr.getProduct(p_code);
+									Vector<OrderDetailBean> vlist = oMgr.getOrderCode(o_index);
+									for(int i=0; i<vlist.size(); i++){
+										OrderDetailBean detailOrder = vlist.get(i);
+										int p_code[] = detailOrder.getP_code();
+										int o_qtys[] = detailOrder.getO_qty();
+										ProductBean pbean = pMgr.getProduct(p_code[i]);
 										int price = pbean.getP_price();
 										int o_qty = o_qtys[i];
 										priceTotal += price * o_qty;

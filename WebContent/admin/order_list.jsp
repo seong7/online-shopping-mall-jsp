@@ -79,6 +79,7 @@
 			<%=pagePerBlock%>*(block-1)+1;
 		document.readFrm.submit();
 	}
+
 </script>
 
 <%@ include file="../top.jsp" %>
