@@ -33,10 +33,11 @@ main {
   text-align: center;
   color: #333;
   font-family: "ON_IGothic";
+  letter-spacing: 0.5px;
 }
 
 main #main_wrapper {
-  margin-top: 50px;
+  margin-top: 90px;
 }
 
 main .title_wrapper {
@@ -64,6 +65,8 @@ section .order_subtitle {
   color: #333;
   margin: 0 auto;
   text-align: left;
+  border-bottom: 2px solid #fec084;
+  padding-bottom: 20px;
 }
 
 section img {
@@ -82,201 +85,207 @@ section a:hover {
   color: #fec084;
 }
 
+section table {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-collapse: collapse;
+  color: inherit;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
 section table td {
   vertical-align: middle;
   text-align: center;
 }
 
-section table tr:nth-of-type(1) td {
-  border-top: 3px solid #fec084 !important;
-  padding-top: 15px;
-}
-
-section table tr:last-of-type td {
+section table tr:last-of-type {
   border-bottom: 2px solid #dcdbde;
-  padding-bottom: 15px;
 }
 
-main {
-  letter-spacing: 0.5px;
+.horHead tr {
+  border-bottom: 1px solid #dcdbde;
 }
 
-main table {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border-collapse: collapse;
-  margin-top: 30px;
-  font-family: "ON_IGothic";
-  color: #333;
-  margin-bottom: 50px;
+.horHead tr th, .horHead tr td {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-main table td {
-  font-family: "ON_IGothic";
+.horHead tr td {
   font-size: 18px;
 }
 
-main input[type=button], main input[type=submit] {
-  margin-left: 25px;
-  height: 30px;
-  width: 70px;
-  background-color: #fec084;
-  border: none;
-  color: white;
-  font-weight: bold;
-}
-
-main input[type=button]:active, main input[type=submit]:active {
-  background-color: #FB9832;
-}
-
-#order_product table tr:nth-of-type(1) td:nth-of-type(1) {
-  text-align: center;
-}
-
-#order_product table tr:nth-of-type(1) td:nth-of-type(2) {
-  text-align: center;
-}
-
-#order_product table tr:nth-of-type(1) td:nth-of-type(3) {
-  text-align: center;
-}
-
-#order_product table tr, #order_product table td {
-  padding: 15px;
+.horHead td:nth-child(2) {
   text-align: left;
+  padding-left: 10px;
 }
 
-#order_product table td:first-of-type {
-  padding-left: 20px;
-}
-
-#order_product table td:nth-of-type(2) {
-  width: 600px;
-}
-
-#order_product table td:nth-of-type(3) {
-  text-align: center;
-}
-
-#order_product table td:nth-of-type(4) {
-  text-align: center;
-}
-
-#order_member table tr td {
-  height: 25px;
-  padding: 30px;
-}
-
-#order_delivery table tr td {
-  border-top: none;
-  border-bottom: none;
-  height: 35px;
-  padding: 5px;
-}
-
-#order_delivery table tr td input {
-  font-family: "ON_IGothic";
-  padding-left: 8px;
-  border: 1px solid #dcdbde;
-  height: 28px;
-}
-
-#order_delivery table tr td input[name=o_recpt_add] {
-  width: 600px;
-}
-
-#order_delivery table tr td input[name=o_recpt_zipcode] {
+.verHead .radio, .verHead .checkbox {
   width: 50px;
-  padding-left: 0px;
-  text-align: center;
+  position: relative;
+  top: 2px;
 }
 
-#order_delivery table tr td input[name=o_recpt_add_det] {
-  width: 617px;
-  margin-left: 25px;
+.verHead th {
+  width: 150px;
 }
 
-#order_delivery table tr td textarea[name=o_del_msg] {
-  font-family: "ON_IGothic";
-  font-size: 14px;
-  padding: 8px;
+.verHead td {
+  font-family: "MS Shell Dlg 2";
+  font-weight: 500;
+}
+
+.verHead td input, .verHead td select {
+  padding: 10px;
   border: 1px solid #dcdbde;
-  height: 40px;
-  width: 688px;
-  resize: none;
+  border-radius: 3px;
+  margin-right: 5px;
+  width: 180px;
 }
 
-#order_delivery table tr td:first-of-type {
-  padding-left: 20px;
-}
-
-#order_delivery table tr:first-of-type td {
-  padding-top: 20px;
-}
-
-#order_delivery table tr:last-of-type {
-  border-bottom: 2px solid #dcdbde;
-}
-
-#order_delivery table tr:last-of-type td {
-  padding-bottom: 20px;
-}
-
-#order_point tr td:first-of-type {
-  padding-left: 30px;
-  width: 130px;
-}
-
-#order_point tr td {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-#order_point tr td input {
-  width: 400px;
-  height: 23px;
-  padding: 8px;
-  border: 1px solid #dcdbde;
-}
-
-#order_pay table {
-  font-family: "ON_IGothic";
-}
-
-#order_pay table tr td {
-  font-size: 18px;
-  padding-top: 10px;
+.verHead th, .verHead td {
   padding-bottom: 10px;
+  text-align: left;
+  padding-left: 20px;
+  vertical-align: middle;
 }
 
-#order_pay table tr td input {
-  border: none;
-  font-family: "ON_IGothic";
+.verHead th:first-of-type, .verHead td:first-of-type {
+  padding-top: 10px;
+}
+
+.verHead #addr_btn {
+  color: white;
+  height: 38px;
+  width: auto;
+  position: relative;
+  top: 1.7px;
+  font-weight: bold;
+  font-size: 16px;
+  border: 2px solid #FB9832;
+  line-height: 1;
+  margin-left: 20px;
+}
+
+.verHead #addr_btn:active {
+  background-color: white;
+  color: #FB9832;
+}
+
+.verHead .input_zipcode {
+  width: 400px;
+}
+
+.btn {
+  height: 50px;
+  width: 70px;
+  border: 2px solid #FB9832;
+  border-radius: 3px;
+  font-weight: bold;
   font-size: 18px;
-  text-align: end;
+  background-color: #f09439;
+  color: white;
+}
+
+.btn:active {
+  background-color: white;
+  color: #FB9832;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.order_btn_wrapper {
+  margin-top: 30px;
+}
+
+.order_btn_wrapper .order_submit {
+  width: 150px;
+}
+
+#point_price_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  /* 적립금 구역 */
+  /* 결제 금액 구역 */
+}
+
+#point_price_wrapper section:first-of-type {
+  margin-right: 30px;
+  width: 60%;
+}
+
+#point_price_wrapper section:last-of-type {
+  background-color: rgba(254, 192, 132, 0.7);
+  color: grey;
+  padding: 10px;
+  height: 250px;
+  border-radius: 10px;
+  position: relative;
+  bottom: 10px;
+}
+
+#point_price_wrapper section:last-of-type th {
+  width: 120px;
+}
+
+#point_price_wrapper section:last-of-type td {
+  width: 200px;
+  text-align: right;
+  padding-top: 15px;
+  padding-bottom: 10px;
   padding-right: 10px;
 }
 
-#order_pay table tr td:nth-of-type(1) {
-  width: 170px;
-  text-align: center;
+#point_price_wrapper section:last-of-type .order_subtitle {
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid coral;
 }
 
-#order_pay table tr td:nth-of-type(2) {
-  text-align: end;
-  padding-right: 50px;
+#point_price_wrapper section:last-of-type span {
+  color: coral;
+  font-size: 17px;
+  font-weight: bold;
+  padding-right: 10px;
 }
 
-#order_pay table tr:last-child td:last-child {
-  font-size: 12px;
+#point_price_wrapper section:last-of-type #total_point {
+  display: block;
+  margin-top: 5px;
+  margin-left: 5px;
+  color: coral;
+  width: 100%;
+  font-size: 16px;
 }
 
-#order_howpay table tr td:nth-of-type(2) {
-  text-align: center;
+#point_price_wrapper section:last-of-type #o_total_amount {
+  font-size: 23px;
 }
 
-#order_howpay table tr:nth-of-type(2) td {
+#point_price_wrapper section:last-of-type table tr:last-of-type {
+  border-bottom: 2px solid coral;
+}
+
+#point_price_wrapper section:last-of-type table #total_price_th {
   padding-top: 20px;
+  color: #333;
+}
+
+#point_price_wrapper section:last-of-type table #total_price_td {
+  padding-top: 40px;
+  color: #333;
+}
+
+#order_private table th {
+  width: 50%;
 }
 /*# sourceMappingURL=order.css.map */

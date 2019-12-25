@@ -50,6 +50,7 @@
 		/// sample용
 		String o_status = "결제완료";
 		int shippingPrice = 2500;
+		double pointRate = 0.05;  /* 5% 적립으로 가정 */
 
 %>
 
@@ -62,7 +63,8 @@
 <body>
  -->
 
-<link rel="stylesheet" type="text/css" href="css/order.css" />
+
+<link rel="stylesheet" type="text/css" href="css/order.css"/>
 
 <%@ include file="../top.jsp"%>
 
@@ -77,11 +79,11 @@
 
         <section id="order_product">
             <h3 class="order_subtitle">상품정보</h3>
-            <table>
+            <table class="horHead">
                 <tr>
-                    <td colspan="2">상품정보</td>
-                    <td>상품수량</td>
-                    <td>상품금액</td>
+                    <th colspan="2">상품정보</th>
+                    <th>상품수량</th>
+                    <th>상품금액</th>
                 </tr>
                 <%
                 
@@ -112,7 +114,11 @@
                             <img alt="제품사진" src="../img/product/fus_main1.jpg">
                             <!-- <img alt="제품사진" src="${pageContext.request.contextPath}/img/product/<%=pbean.getP_main_pht_name()%>"> -->
                             </td>
-                            <td><a><%=pbean.getP_name() %></a></td>
+                            <td>
+                            	<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
+                            		<%=pbean.getP_name() %>
+                            	</a>
+                            </td>
                             <td><%=o_qty %>개</td>
                             <td><%=UtilMgr.intFormat(price) %>원</td>
                         </tr>
@@ -126,7 +132,8 @@
 
         <section id="order_member">
             <h3 class="order_subtitle">주문자 정보</h3>
-            <table>
+            <table class="verHead">
+
                 <tr>
                 <%
                     MemberBean mbean = mMgr.getMember(o_id);
@@ -134,103 +141,117 @@
                     String mName = mbean.getNAME();
                     String mContact = mbean.getContact();
                     String mEmail = mbean.getEmail();
-                    
+					                    
                 %>
-                        <td>보내는 분</td>
+                        <th>보내는 분</th>
                         <td><%=mName %></td>
                     </tr>
                     <tr>
-                        <td>휴대폰 </td>
+                        <th>휴대폰 </th>
                         <td><%=mContact%></td>
                     </tr>
                     <tr>
-                        <td>이메일 </td>
+                        <th>이메일 </th>
                         <td><%=mEmail%></td>
                     </tr>
                 </table>
-                <hr/>
+
             </section>
 
             <form name="orderFrm" method="post" action="mypage_orderProc.jsp">
 
                 <section id="order_delivery">
                     <h3 class="order_subtitle">배송정보</h3>
-                    <table>
+                    <table class="verHead">
                             <%
                                 Vector<OrderBean> olist = oMgr.getOrder(o_id);
                                 OrderBean order = olist.get(0); //최근 주문 정보 
                             %>
                         <tr>
-                            <td>배송주소</td>
-                            <td><input name="o_recpt_add" readonly="readonly" value="<%=order.getO_recpt_add()%>"><input type="button" value="주소검색"></td>
+                            <th>배송주소</th>
+                            <td><input class="input_zipcode" name="o_recpt_add" readonly="readonly" value="<%=order.getO_recpt_add()%>"><input id="addr_btn" class="btn" type="button" value="주소검색"></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input name="o_recpt_add_det"  value="<%=order.getO_recpt_add_det()%>"></td>
+                            <td><input class="input_zipcode" name="o_recpt_add_det"  value="<%=order.getO_recpt_add_det()%>"></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input name="o_recpt_zipcode" readonly="readonly" value="<%=order.getO_recpt_zipcode()%>"></td>
+                            <td><input class="input_zipcode" name="o_recpt_zipcode" readonly="readonly" value="<%=order.getO_recpt_zipcode()%>"></td>
                         </tr>
                         <tr>
-                            <td>수령인 이름</td>
+                            <th>수령인 이름</th>
                             <td><input name="o_recpt_name" value="<%=order.getO_recpt_name()%>"></td>
                         </tr>
                         <tr>
-                            <td>휴대폰</td>
+                            <th>휴대폰</th>
                             <td><input name="o_recpt_contact"  value="<%=order.getO_recpt_contact()%>"></td>
                         </tr>
                         
                         <tr>
-                            <td>배송요청사항</td>
+                            <th>배송요청사항</th>
                             <td><textarea name="o_del_msg" rows="5" cols="50"></textarea></td>
                         </tr>
                     </table>
                 </section>
 
-                <section id="order_point">
-                    <h3 class="order_subtitle">적립금</h3>
-                    <table>
-                        <tr>
-                            <td>적립급 적용</td>
-                            <td><input placeholder="사용가능한 적립금 : 5000원"></td>
-                        </tr>
-                    </table>
-                </section>
-
-                <section id="order_pay">
-                    <h3 class="order_subtitle">결제금액</h3>
-                    <table>
-                        <tr>
-                            <td>상품금액&nbsp;&nbsp;&nbsp;</td>
-                            <td><input name="o_prod_amount" readonly size="13" 	value="<%=UtilMgr.intFormat(totalPrice)%>">원</td>
-                        </tr>
-                        <tr>
-                            <td>배송비&nbsp;&nbsp;&nbsp;</td>
-                            <td><input name="o_del_fee" readonly size="13" 	value="<%=UtilMgr.intFormat(shippingPrice)%>">원</td>
-                        </tr>
-                        <tr>
-                            <td>최종결재금액&nbsp;&nbsp;&nbsp;</td>
-                            <td><input name="o_total_amount" readonly size="13" value="<%=UtilMgr.intFormat(totalPrice+shippingPrice)%>">원</td>
-                        </tr>
-                        <tr>
-                            <td>구매 시 <%=UtilMgr.intFormat(totalPrice)%>P 적립</td>
-                        </tr>
-                    </table>
-                </section>
+				<div id="point_price_wrapper">
+	                <section id="order_point">
+	                    <h3 class="order_subtitle">적립금</h3>
+	                    <table class="verHead"> 
+	                        <tr>
+	                            <th>적립급 적용</th>
+	                            <td><input placeholder="사용가능한 적립금 : 5000">원</td>
+	                        </tr>
+	                    </table>
+	                </section>
+	
+	                <section id="order_pay">
+	                    <h3 class="order_subtitle">결제금액</h3>
+	                    <table class="verHead">
+	                        <tr>
+	                            <th>상품금액</th>
+	                            <td>
+	                            	<span id="o_prod_amount"><%=UtilMgr.intFormat(totalPrice)%></span>원
+	                            	<input type="hidden" name="o_prod_amount" value="<%=totalPrice%>">
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <th>배송비</th>
+	                            <td>
+	                            	<span id="o_del_fee"><%=UtilMgr.intFormat(shippingPrice)%></span>원
+	                            	<input type="hidden" name="o_del_fee" value="<%=shippingPrice%>">
+	                            </td>
+	                            
+	                        </tr>
+	                        <tr>
+	                            <th id="total_price_th">최종결제금액</th>
+	                            <td id="total_price_td">
+  	                                <span id="o_total_amount"><%=UtilMgr.intFormat(totalPrice+shippingPrice)%></span>원
+  	                                <input type="hidden" name="o_total_amount" value="<%=totalPrice+shippingPrice%>">
+	                                <span id="total_point">(구매 시 <%=UtilMgr.intFormat((int)(totalPrice*pointRate))%>P 적립)</span>
+	                            </td>
+	                        </tr>
+	                        <!-- <tr>
+	                            <td></td>
+	                        </tr> -->
+	                    </table>
+	                </section>
+				</div>
 
                 <section id="order_howpay">
                     <h3 class="order_subtitle">결제수단</h3>
-                    <table>
+                    <table class="verHead">
                         <tr>
-                            <td>일반결재 &nbsp;&nbsp;&nbsp;</td>
+                            <th>일반결재 &nbsp;&nbsp;&nbsp;</th>
                             <td> 신용카드
-                            <input type=radio name="o_pay_method" value="신용카드" onclick='paymentMethod(this.value);' checked>
-                            &nbsp;&nbsp;&nbsp; 휴대폰
-                            <input type=radio name="o_pay_method" value="휴대폰" onclick='paymentMethod(this.value);'>
-                                </td>
+	                            <input type="radio" class="radio" name="o_pay_method" value="신용카드" onclick='paymentMethod(this.value);' checked>
+	                            &nbsp;&nbsp;&nbsp; 휴대폰
+	                            <input type="radio" class="radio" name="o_pay_method" value="휴대폰" onclick='paymentMethod(this.value);'>
+                            </td>
                         </tr>
                         <tr id='tr1'>
+                        	<td></td>
                             <td>
                                 <select id="card">
                                     <option value="0">카드를 선택해주세요.</option>
@@ -255,28 +276,33 @@
                             <td><input name="cellphone1" size="13" placeholder="010-1234-1234"><td>
                         </tr>
                         <tr>
-                            <td>간편결제 &nbsp;&nbsp;&nbsp;</td>
-                            <td>네이버 페이<input type=radio name="o_pay_method" value="네이버페이" onclick='paymentMethod(this.value);'></td>
+                            <th>간편결제 &nbsp;&nbsp;&nbsp;</th>
+                            <td>네이버 페이<input type="radio" class="radio" name="o_pay_method" value="네이버페이" onclick='paymentMethod(this.value);'></td>
                         </tr>
                     </table>
                 </section>
 
                 <section id="order_private">
                     <h3 class="order_subtitle">개인정보 수집/제공*</h3>
-                    <table>
+                    <table class="verHead">
+                       <!--  <tr>
+                            <th>개인정보 수집/제공*</th>
+                        </tr> -->
                         <tr>
-                            <td>개인정보 수집/제공*</td>
+                            <th>
+                            	<span>결재진행 필수동의</span>
+                            	<input class="checkbox" id="agreement" type="checkbox" value=1>
+                            </th>
+                            <td>
+                            </td>
                         </tr>
                         <tr>
-                            <td><input id="agreement" type=checkbox value=1>결재진행 필수동의</td>
+                            <th>개인정보 수집/이용동의(필수)</th>
+                            <th><a href="#">약관확인 ></a></th>
                         </tr>
                         <tr>
-                            <td>&nbsp;&nbsp;&nbsp;개인정보 수집/이용동의(필수)</td>
-                            <td>&nbsp;&nbsp;&nbsp;<a href="#">약관확인></a></td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;&nbsp;&nbsp;결재대행 서비스 약관 동의(필수)</td>
-                            <td>&nbsp;&nbsp;&nbsp;<a href="#">약관확인></a></td>
+                            <th>결재대행 서비스 약관 동의(필수)</th>
+                            <th><a href="#">약관확인 ></a></th>
                         </tr>
                     </table>
                     <input type="hidden" name="o_id" value="<%=o_id%>">
@@ -286,13 +312,17 @@
                         <input type="hidden" name="o_qty" value="<%=o_qty%>">
                         <input type="hidden" name="p_code" value="<%=p_code%>">
                     <%} %>
-                    <input type="submit" value="결재완료" onclick="agreement()">
+                    <div class="order_btn_wrapper">
+                        <input type="submit" class="btn order_submit" value="결제하기" onclick="agreement()">
+                    </div>
                 </section>
             </form>
             
 
+
 </div>
 </main>
+
 
 </div>
 <!--  #btn_mypage_wrapper (버튼메뉴 + mypage) : mypage_side.jsp 에서 열림-->
