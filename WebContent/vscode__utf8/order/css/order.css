@@ -121,6 +121,12 @@ section table tr:last-of-type {
   padding-left: 10px;
 }
 
+.verHead .radio, .verHead .checkbox {
+  width: 50px;
+  position: relative;
+  top: 2px;
+}
+
 .verHead th {
   width: 150px;
 }
@@ -134,17 +140,8 @@ section table tr:last-of-type {
   padding: 10px;
   border: 1px solid #dcdbde;
   border-radius: 3px;
-  margin-left: 5px;
   margin-right: 5px;
   width: 180px;
-}
-
-.verHead td .radio, .verHead td .checkbox {
-  width: 50px;
-}
-
-.verHead td .radio {
-  margin-top: -1px;
 }
 
 .verHead th, .verHead td {
@@ -160,11 +157,15 @@ section table tr:last-of-type {
 
 .verHead #addr_btn {
   color: white;
-  height: 30px;
-  width: 80px;
+  height: 38px;
+  width: auto;
+  position: relative;
+  top: 1.7px;
   font-weight: bold;
   font-size: 16px;
   border: 2px solid #FB9832;
+  line-height: 1;
+  margin-left: 20px;
 }
 
 .verHead #addr_btn:active {
@@ -202,5 +203,89 @@ section table tr:last-of-type {
 
 .order_btn_wrapper .order_submit {
   width: 150px;
+}
+
+#point_price_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  /* 적립금 구역 */
+  /* 결제 금액 구역 */
+}
+
+#point_price_wrapper section:first-of-type {
+  margin-right: 30px;
+  width: 60%;
+}
+
+#point_price_wrapper section:last-of-type {
+  background-color: rgba(254, 192, 132, 0.7);
+  color: grey;
+  padding: 10px;
+  height: 250px;
+  border-radius: 10px;
+  position: relative;
+  bottom: 10px;
+}
+
+#point_price_wrapper section:last-of-type th {
+  width: 120px;
+}
+
+#point_price_wrapper section:last-of-type td {
+  width: 200px;
+  text-align: right;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
+#point_price_wrapper section:last-of-type .order_subtitle {
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid coral;
+}
+
+#point_price_wrapper section:last-of-type span {
+  color: coral;
+  font-size: 17px;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+#point_price_wrapper section:last-of-type #total_point {
+  display: block;
+  margin-top: 5px;
+  margin-left: 5px;
+  color: coral;
+  width: 100%;
+  font-size: 16px;
+}
+
+#point_price_wrapper section:last-of-type #o_total_amount {
+  font-size: 23px;
+}
+
+#point_price_wrapper section:last-of-type table tr:last-of-type {
+  border-bottom: 2px solid coral;
+}
+
+#point_price_wrapper section:last-of-type table #total_price_th {
+  padding-top: 20px;
+  color: #333;
+}
+
+#point_price_wrapper section:last-of-type table #total_price_td {
+  padding-top: 40px;
+  color: #333;
+}
+
+#order_private table th {
+  width: 50%;
 }
 /*# sourceMappingURL=order.css.map */
