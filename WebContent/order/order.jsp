@@ -158,7 +158,7 @@
 
             </section>
 
-            <form name="orderFrm" method="post" action="mypage_orderProc.jsp">
+            <form name="orderFrm" method="post" action="./orderProc.jsp">
 
                 <section id="order_delivery">
                     <h3 class="order_subtitle">배송정보</h3>
@@ -169,7 +169,9 @@
                             %>
                         <tr>
                             <th>배송주소</th>
-                            <td><input class="input_zipcode" name="o_recpt_add" readonly="readonly" value="<%=order.getO_recpt_add()%>"><input id="addr_btn" class="btn" type="button" value="주소검색"></td>
+                            <td>
+                            	<input class="input_zipcode" name="o_recpt_add" readonly value="<%=order.getO_recpt_add()%>"><input id="addr_btn" class="btn" type="button" value="주소검색">
+                            </td>
                         </tr>
                         <tr>
                             <td></td>
@@ -177,7 +179,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input class="input_zipcode" name="o_recpt_zipcode" readonly="readonly" value="<%=order.getO_recpt_zipcode()%>"></td>
+                            <td><input class="input_zipcode" name="o_recpt_zipcode" readonly value="<%=order.getO_recpt_zipcode()%>"></td>
                         </tr>
                         <tr>
                             <th>수령인 이름</th>
@@ -320,7 +322,7 @@
             
 
 
-</div>
+	</div>
 </main>
 
 
