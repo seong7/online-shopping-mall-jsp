@@ -245,7 +245,7 @@
                     <h3 class="order_subtitle">결제수단</h3>
                     <table class="verHead">
                         <tr>
-                            <th>일반결재 &nbsp;&nbsp;&nbsp;</th>
+                            <th>일반결제 &nbsp;&nbsp;&nbsp;</th>
                             <td> 신용카드
 	                            <input type="radio" class="radio" name="o_pay_method" value="신용카드" onclick='paymentMethod(this.value);' checked>
 	                            &nbsp;&nbsp;&nbsp; 휴대폰
@@ -292,7 +292,7 @@
                         </tr> -->
                         <tr>
                             <th>
-                            	<span>결재진행 필수동의</span>
+                            	<span>결제진행 필수동의</span>
                             	<input class="checkbox" id="agreement" type="checkbox" value=1>
                             </th>
                             <td>
@@ -303,7 +303,7 @@
                             <th><a href="#">약관확인 ></a></th>
                         </tr>
                         <tr>
-                            <th>결재대행 서비스 약관 동의(필수)</th>
+                            <th>결제대행 서비스 약관 동의(필수)</th>
                             <th><a href="#">약관확인 ></a></th>
                         </tr>
                     </table>
