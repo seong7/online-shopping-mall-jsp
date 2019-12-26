@@ -1,41 +1,57 @@
+
+let submitflag = '';
 function init(){	
+	const cart_rows = document.getElementById("cart_table").rows;
+	const delete_btn = document.querySelector('#delete_product');
+	const order_btn = document.querySelector('#order_product');
+	const allCheckbox = cart_rows[0].childNodes[1].firstChild;
+	const sumtext = document.querySelector('#sumtext');
+	let id = '';
+	order_btn.addEventListener('click', function(){
+		goOrder();
+	});
+	
 	window.onload = function(){
+		id = document.querySelector('#user_id').value;
 		setTimeout(call_qty, 2500);
 	}
 	
 	if (window.attachEvent) {
 	    /*IE and Opera*/
 	    window.attachEvent("onunload", function() {
-	    	update_qty();
-	    	console.log('hi');
+			if(!submitflag){
+				update_qty();
+				console.log('업데이트 실행1');
+			}
 	    });
 
 	} else if (document.addEventListener) {
 	    /*Chrome, FireFox*/
 	    window.onbeforeunload = function() {
-	    	update_qty();
-	    	console.log('hi');
+			if(!submitflag){
+				update_qty();
+				console.log('업데이트 실행2');
+			}
 	    };
 	    /*IE 6, Mobile Safari, Chrome Mobile*/
 	    window.addEventListener("unload", function() {
-	    	update_qty();
-	    	console.log('hi');
+			if(!submitflag){
+				update_qty();
+				console.log('업데이트 실행3');
+			}
 	    }, false);
 	} else {
 	    /*etc*/
 	    document.addEventListener("unload", function() {
-	    	update_qty();
-	    	console.log('hi');
+			if(!submitflag){
+				update_qty();
+				console.log('업데이트 실행4');
+			}
 	    }, false);
 	}
 
+
     
-	const cart_rows = document.getElementById("cart_table").rows;
-	const delete_btn = document.querySelector('#delete_product');
-	const order_btn = document.querySelector('#order_product');
-	const allCheckbox = cart_rows[0].childNodes[1].firstChild;
-	const sumtext = document.querySelector('#sumtext');
-	const id = document.querySelector('#user_id').value;
 	
 	delete_btn.addEventListener('click',confirmDel);
 	let trArray = [];
@@ -181,11 +197,6 @@ function init(){
 			p_code.push(trArray[i].childNodes[1].childNodes[0].value);
 			c_qty.push(trArray[i].childNodes[7].childNodes[2].value);
 		}
-		
-		console.log(p_code);
-		console.log(c_qty);
-		console.log(id);
-		
   	  //페이지 로딩 이벤트
   	    $.ajax({
   	        type: 'POST',                   //post or get
@@ -215,11 +226,9 @@ function init(){
   	        	id : id
   	            },                              //key value
   	        success : function(data) {
-
-    	 		const result = [];
-    	 		const resultParse = JSON.parse(data);
+    	 	const result = [];
+    	 	const resultParse = JSON.parse(data);
   	  		for(let i=0; i<trArray.length; i++){
-  	  			console.log(resultParse[i].c_qty);
   	  			trArray[i].childNodes[7].childNodes[2].value = parseInt(resultParse[i].c_qty);
   	  			trArray[i].childNodes[9].innerHTML = parseInt(trArray[i].childNodes[5].childNodes[2].innerHTML) * parseInt(resultParse[i].c_qty);
   	  		console.log(trArray[i].childNodes[5].childNodes[2].innerHTML);
@@ -233,7 +242,36 @@ function init(){
   	        }
   	    })
 	}
-	
+	//주문페이지 이동 시
+	function goOrder(){
+		let p_code2 = new Array();
+		let c_qty2 = new Array();
+		for(let i=0; i<trArray.length; i++){
+			p_code2.push(trArray[i].childNodes[1].childNodes[0].value);
+			c_qty2.push(trArray[i].childNodes[7].childNodes[2].value);
+		}
+  	  //페이지 로딩 이벤트
+  	    $.ajax({
+  	        type: 'POST',                   //post or get
+  	        url:ctx+'/order/goorder',   //servlet mapping addr
+  	        data: {
+  	        	p_code : p_code2,
+  	        	c_qty : c_qty2,
+  	        	id : id
+  	            },                              //key value
+  	        success : function(data) {
+  	        	if(parseInt(data)===1){
+  	        		const go_order_form = document.getElementById('go_order_form');
+  	        		go_order_form.submit();
+  	        	}else{
+  	        		console.log("업데이트 실패");
+  	        	}
+  			 }, error : function(){
+  	            //에러경우
+  	            console.log('에러');
+  	        }
+  	    })
+	}
 	
 }
 init();
