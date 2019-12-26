@@ -30,7 +30,8 @@
 	<div align="center">
 		<h2 class="layout-page-title">장바구니</h2>
 			<p>주문하실 상품명 및 수량을 정확하게 확인해 주세요.</p>
-	<form name="frm" action="order.jsp">
+	<form name="frm" id="go_order_form" action="order.jsp">
+		<input type="hidden" value="cart" name="flag">
 		<input type="hidden" name="fch" value="0">
 		<table border="1" id="cart_table">
 		<tr>
@@ -86,7 +87,7 @@
 		<input type="button" name="btn1"  value="선택 삭제하기" id="delete_product"
 		disabled style ="width:150px" 
 		>
-		<input type="submit" name="btn2" value="선택 주문하기" id="order_product"
+		<input type="button" name="btn2" value="선택 주문하기" id="order_product"
 		disabled	style ="width:150px">
 		<input type="hidden" name="id" id="user_id" value="<%=id %>">
 		</form>
