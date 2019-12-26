@@ -22,7 +22,6 @@ public class CartCallqtyServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		CartMgr mgr = new CartMgr();
 		Vector<CartBean> result = mgr.getCart(id);
-
 		JSONArray jsonarray = new JSONArray();
 		PrintWriter pw = response.getWriter();
 		

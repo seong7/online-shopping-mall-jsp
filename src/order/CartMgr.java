@@ -115,17 +115,50 @@ public class CartMgr {
 						for (int i = 0; i < p_code.length; i++) {
 						sql = "update cart_tb set c_qty=? WHERE id=? and p_code=?;";
 						pstmt = con.prepareStatement(sql);
+						System.out.println("검증시작");
+						System.out.println("qty는" + c_qty[i]);
+						System.out.println("id는" + id);
+						System.out.println("pcode는" + p_code[i]);
 						pstmt.setInt(1, c_qty[i]);
 						pstmt.setString(2, id);
 						pstmt.setInt(3, p_code[i]);
 						pstmt.executeUpdate();
 
 						}
+						System.out.println("검증끝");
 				} catch (Exception e) {
 					e.printStackTrace();
 				} finally {
 					pool.freeConnection(con, pstmt);
 				}
 		}
+	
+	public CartBean getCartOneOrder(String id, int code) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		CartBean clist = new CartBean();
+		try {
+			con = pool.getConnection();
+			System.out.println(id);
+			System.out.println(code);
+			sql = "select * from cart_tb where id=? and p_code=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, code);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				clist.setId(rs.getString(1));
+				clist.setP_code(rs.getInt(2));
+				clist.setC_qty(rs.getInt(3));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return clist;
+	}
 		
 }
