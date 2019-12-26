@@ -39,20 +39,20 @@
 			goods.add(pbean);
 			
 		}else if(flag.equals("cart")){
-			String value1 = request.getParameter("flag");
+			//String value1 = request.getParameter("flag");
 			String[] value2 = request.getParameterValues("fch");
-			System.out.println(o_id);
-			CartMgr mgr = new CartMgr();
-			Vector<CartBean> cvlist = new  Vector<CartBean>();
+			//System.out.println(o_id);
+			//CartMgr mgr = new CartMgr();
+			//Vector<CartBean> cvlist = new  Vector<CartBean>();
 			for(int i=1; i<value2.length; i++){
-				cvlist.add(mgr.getCartOneOrder(o_id, Integer.parseInt(value2[i])));
+				goods.add(cMgr.getCartOneOrder(o_id, Integer.parseInt(value2[i])));
 			}
 			//여기에서 플래그값 판단해서 시작
 			//플래그는 getparameter
 			//선택제품에대한 정보 넘겨줘야함
 			//카트 피코드 삭제도 해야함
 			//request 데이터 넣어줄것: pcode 배열과 user id 
-			goods = cvlist;
+			//goods = cvlist;
 		}
 		
 
@@ -85,7 +85,7 @@
             <span class="description">주문하실 상품명 및 수량을 정확하게 확인해주세요.</span>
         </div>
 
-
+ <form name="orderFrm" method="get" action="./orderProc.jsp">
         <section id="order_product">
             <h3 class="order_subtitle">상품정보</h3>
             <table class="horHead" id="order_table">
@@ -110,11 +110,9 @@
                     }else if(flag.equals("cart")){
                         cbean = (CartBean)goods.get(i);
                         o_qty = cbean.getC_qty();
-                        System.out.println("큐티와이는" + o_qty);
                         pbean = pMgr.getProduct(cbean.getP_code());
-                        System.out.println("큐" + cbean.getP_code());
                         %>
-                        <input type="hidden" value="<%=cbean.getP_code()%>" name="p_code_array">
+                        <%=o_qty %>
                         <%
                     }
                     unitPrice = pbean.getP_price();
@@ -133,6 +131,10 @@
                             	</a>
                             </td>
                             <td name="tr_qty"><%=o_qty %>개</td>
+                            <td>
+                             <input type="hidden" value="<%=cbean.getP_code()%>" name="p_code">
+                      		  <input type="hidden" value="<%=o_qty%>" name="o_qty">
+                            </td>
                             <td name="tr_price"><%=UtilMgr.intFormat(totalPrice) %>원</td>
                             <input type="hidden" name="p_price" value="<%=totalPrice %>">
                         </tr>
@@ -171,8 +173,6 @@
                 </table>
 
             </section>
-
-            <form name="orderFrm" method="post" action="./orderProc.jsp">
 
                 <section id="order_delivery">
                     <h3 class="order_subtitle">배송정보</h3>

@@ -44,6 +44,16 @@
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script type ="text/javascript" src="./js/goods_master.js"></script>
+<script>
+function yesorno(){
+	if(confirm("삭제하시겠습니까?")==true){
+		document.rFrm.action = "goods_masterProc.jsp";
+		document.rFrm.submit();
+	}else{ //취소
+		return;
+	}
+}
+</script>
 <link rel="stylesheet" href="./css/admin_style.css">
 
 <%@ include file="../top.jsp" %>
@@ -103,6 +113,7 @@
 					//p_date2 = Integer.parseInt(request.getParameter("p_date2"));
 					Vector<ProductBean> slist = amgr.searchproduct(p_name, p_date1, p_date2);					
 					int listSize = slist.size();
+					System.out.print(listSize);
 					if(slist.isEmpty()){
 						//out.println(p_name);
 						//out.println(p_date1);
@@ -129,13 +140,14 @@
 					for(int i=0; i<slist.size(); i++){
 						ProductBean pbean = slist.get(i);
 						int p_code = pbean.getP_code();
-				%>			
+				%>
+							
 					<tr>
 					<td>
 					     <input class="checkbox" type ="checkbox" name="fch" value="<%=p_code%>" onclick="chk()" >
 					</td>						
 					<td><a href="goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_code() %></a></td>
-					<td><a href="goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_name() %></a></td>
+					<td><a href="../product/goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_name() %></a></td>
 					<td><%=pbean.getP_price() %></td>
 					<td><%=pbean.getP_date() %></td>
 					<td><%=pbean.getP_on_sale() %></td>
@@ -149,7 +161,7 @@
 			<input class="btn" type ="button" name="update" id="update_btn" value="선택 수정" disabled>
 			<input class="btn" type="button" name="delete" id="delete_btn" value="선택 삭제" disabled>
 			<input class="btn" type ="button" value="제품 추가" onclick ="location.href='goods_insert.jsp'">	
-			<input type ="hidden" name="buffer" id="buffer">			
+			<input type ="hidden" name="buffer" id="buffer">	
 		</div>
 
 	</form>
@@ -160,6 +172,5 @@
 </div> <!--  #btn_manager_wrapper (버튼메뉴 + manager) : admin_side.jsp 에서 열림-->
 </div> <!-- #main (상단요약 + 버튼 + manager) : admin_side.jsp 에서 열림-->
 	<%@ include file="../bottom.jsp" %>
-	
 </body>	
 </html>

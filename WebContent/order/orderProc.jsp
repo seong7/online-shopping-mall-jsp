@@ -59,19 +59,24 @@
 		
 		String msg = "";
 		 if(orderResult&&orderDetailResult){
-			msg = "결재가 완료되었습니다.";
+			//msg = "결재가 완료되었습니다.";
 			response.sendRedirect("order_end.jsp");
 			
 		}else{
 			msg = "결재실패";
+			%>
+		<script>
+			alert("<%=msg%>");
+		</script>
+		<%
 			response.sendRedirect("order.jsp");
 		}
-%>
+		%>
 <%-- <%=orderResult %>
 <%=orderDetailResult %>
 <%=countPart %> --%>
-<script>
-	alert("<%=msg%>");
+<!-- <script>
+
 	location.href = "mypage_orderlist.jsp";
-</script>
+</script> -->
 
