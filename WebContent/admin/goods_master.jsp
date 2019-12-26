@@ -103,6 +103,7 @@
 					//p_date2 = Integer.parseInt(request.getParameter("p_date2"));
 					Vector<ProductBean> slist = amgr.searchproduct(p_name, p_date1, p_date2);					
 					int listSize = slist.size();
+					System.out.print(listSize);
 					if(slist.isEmpty()){
 						//out.println(p_name);
 						//out.println(p_date1);
@@ -129,7 +130,8 @@
 					for(int i=0; i<slist.size(); i++){
 						ProductBean pbean = slist.get(i);
 						int p_code = pbean.getP_code();
-				%>			
+				%>
+							
 					<tr>
 					<td>
 					     <input class="checkbox" type ="checkbox" name="fch" value="<%=p_code%>" onclick="chk()" >
