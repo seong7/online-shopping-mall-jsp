@@ -4,14 +4,22 @@
 			const update_btn = document.querySelector('#update_btn');
 			const delete_btn = document.querySelector('#delete_btn');
 			
+			function deletecompelete(){
+				$('#buffer').val('delete');
+				$('#rFrame').submit();
+			}
 			update_btn.addEventListener('click', function(){
 				const inputdata = 
 				$('#buffer').val('update');
 				$('#rFrame').submit();
 			});
 			delete_btn.addEventListener('click',function(){
-				$('#buffer').val('delete');
-				$('#rFrame').submit();
+				if(confirm("삭제하시겠습니까?")==true){
+					console.log("삭제했어요");
+					deletecompelete();
+				}else{
+					return;
+				}
 			});
 		}
 		typeCheck();
@@ -84,4 +92,4 @@ function listSelect() {
 		f.allCh.checked= false; //전체체크박스 해제
 		f.delete.disabled = true; //버튼 비활성화
 		f.update.disabled = true;//버튼의 활성화
-	}
+	} 

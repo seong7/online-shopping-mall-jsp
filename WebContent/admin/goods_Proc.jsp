@@ -30,4 +30,5 @@
 <script>
 	alert("<%=msg%>");
 	location.href = "goods_master.jsp";
+
 </script>
