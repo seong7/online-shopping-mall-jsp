@@ -39,11 +39,20 @@
 			goods.add(pbean);
 			
 		}else if(flag.equals("cart")){
+			String value1 = request.getParameter("flag");
+			String[] value2 = request.getParameterValues("fch");
+			System.out.println(o_id);
+			CartMgr mgr = new CartMgr();
+			Vector<CartBean> cvlist = new  Vector<CartBean>();
+			for(int i=1; i<value2.length; i++){
+				cvlist.add(mgr.getCartOneOrder(o_id, Integer.parseInt(value2[i])));
+			}
 			//여기에서 플래그값 판단해서 시작
 			//플래그는 getparameter
 			//선택제품에대한 정보 넘겨줘야함
 			//카트 피코드 삭제도 해야함
-			goods = cMgr.getCart(o_id);
+			//request 데이터 넣어줄것: pcode 배열과 user id 
+			goods = cvlist;
 		}
 		
 
@@ -69,7 +78,8 @@
 <%@ include file="../top.jsp"%>
 
 
-<main>
+<div id="loader"></div>        	
+<main id="main_contents">
     <div id="main_wrapper">
         <div class="title_wrapper">
             <h1 class="title">주문서</h1>
@@ -79,7 +89,7 @@
 
         <section id="order_product">
             <h3 class="order_subtitle">상품정보</h3>
-            <table class="horHead">
+            <table class="horHead" id="order_table">
                 <tr>
                     <th colspan="2">상품정보</th>
                     <th>상품수량</th>
@@ -103,6 +113,9 @@
                         cbean = (CartBean)goods.get(i);
                         o_qty = cbean.getC_qty();
                         pbean = pMgr.getProduct(cbean.getP_code());
+                        %>
+                        <input type="hidden" value="<%=cbean.getP_code()%>" name="p_code_array">
+                        <%
                     }
                     
                     price = pbean.getP_price();
@@ -119,8 +132,9 @@
                             		<%=pbean.getP_name() %>
                             	</a>
                             </td>
-                            <td><%=o_qty %>개</td>
-                            <td><%=UtilMgr.intFormat(price) %>원</td>
+                            <td name="tr_qty"><%=o_qty %>개</td>
+                            <td name="tr_price"><%=UtilMgr.intFormat(price) %>원</td>
+                            <input type="hidden" name="p_price" value="<%=price %>">
                         </tr>
                         <%
                                 }
@@ -247,7 +261,7 @@
                         <tr>
                             <th>일반결제 &nbsp;&nbsp;&nbsp;</th>
                             <td> 신용카드
-	                            <input type="radio" class="radio" name="o_pay_method" value="신용카드" onclick='paymentMethod(this.value);' checked>
+	                            <input type="radio" class="radio" name="o_pay_method" value="신용카드" onclick='paymentMethod(this.value);' checked>1
 	                            &nbsp;&nbsp;&nbsp; 휴대폰
 	                            <input type="radio" class="radio" name="o_pay_method" value="휴대폰" onclick='paymentMethod(this.value);'>
                             </td>
@@ -307,7 +321,7 @@
                             <th><a href="#">약관확인 ></a></th>
                         </tr>
                     </table>
-                    <input type="hidden" name="o_id" value="<%=o_id%>">
+                    <input type="hidden" name="o_id" id="order_id" value="<%=o_id%>">
                     <input type="hidden" name="o_status" value="<%=o_status%>">
                     <input type="hidden" name="countPart" value="<%=countPart%>">
                     <%for(int i =0; i<countPart;i++){ %>
