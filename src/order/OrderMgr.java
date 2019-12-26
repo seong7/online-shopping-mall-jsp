@@ -81,9 +81,9 @@ public class OrderMgr {
 				pstmt.close();
 				rs.close();
 			////////////////////////////////////////////////////////////////
-			sql = "insert order_detail_tb(o_index, p_code, o_qty) " + 
+				sql = "insert order_detail_tb(o_index, p_code, o_qty) " + 
 					"VALUES (?,?,?)";
-			pstmt = con.prepareStatement(sql);
+				pstmt = con.prepareStatement(sql);
 				int cnt = 0;
 				int p_codes[] = order.getP_code();
 				int o_qtys[] = order.getO_qty();
