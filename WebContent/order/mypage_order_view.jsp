@@ -37,8 +37,8 @@
 <body>
  -->
 
-<link rel="stylesheet" type="text/css" href="css/order.css"/>
-
+<!-- <link rel="stylesheet" type="text/css" href="css/order.css"/> -->
+<link rel="stylesheet" type="text/css" href="../vscode__utf8/order/css/order.css"/>
 
 
 <%@ include file="../top.jsp" %>
@@ -46,9 +46,10 @@
 	<%@ include file="../order/mypage_side.jsp"%> 
 	<div id="mypage">
 
-		<main>
+		
 			<div id="main_wrapper_mypage">
 		        <div class="title_wrapper">
+                	<h1 class="mypage_title">주문서 상세보기</h1>
 		        </div>
 		
 		
@@ -69,15 +70,18 @@
 								ProductBean pbean = pMgr.getProduct(p_code[i]);
 								int price = pbean.getP_price();
 								int o_qty = o_qtys[i];
-								priceTotal += price * o_qty;
+								priceTotal = price * o_qty;
+								sum += priceTotal;
 						%>
-						<%=p_code %>
-						<%=o_qty %>
 						<tr>
 							<td>
 							<img alt="제품사진" src="${pageContext.request.contextPath}/img/product/ready.gif">
 							</td>
-							<td><a><%=pbean.getP_name() %></a></td>
+							<td class="btn_td">
+								<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
+                            		<%=pbean.getP_name() %>
+                            	</a>
+                            </td>
 							<td><%=o_qty %>개</td>
 							<td><%=UtilMgr.intFormat(price) %>원</td>
 						</tr>
@@ -90,7 +94,7 @@
 				
 		       <section id="order_member">
 		            <h3 class="order_subtitle">주문자 정보</h3>
-		            <table class="verHead">
+		            <table class="order_verHead">
 		
 		                <tr>
 		                <%
@@ -119,7 +123,7 @@
 		            
 	                <section id="order_delivery">
 	                    <h3 class="order_subtitle">배송정보</h3>
-	                    <table class="verHead">
+	                    <table class="order_verHead">
 								<%
 									Vector<OrderBean> olist = oMgr.getOrderDetail(o_index);
 									OrderBean order = olist.get(0); //최근 주문 정보 
@@ -147,7 +151,7 @@
 							
 							<tr>
 								<th>배송요청사항</th>
-								<td><textarea name="o_del_msg" readonly rows="5" cols="50"></textarea></td>
+								<td><textarea class="mypage_textarea" name="o_del_msg" readonly rows="5" cols="50"></textarea></td>
 							</tr>
 						</table>
 					</section>
@@ -155,17 +159,17 @@
 				<div id="point_price_wrapper">
 	                <section id="order_point">
 	                    <h3 class="order_subtitle">적립금</h3>
-	                    <table class="verHead"> 
+	                    <table class="order_verHead"> 
 	                        <tr>
-	                            <th>적립급 적용</th>
-	                            <td><input placeholder="사용가능한 적립금 : 5000">원</td>
+	                            <th>적용된 적립금</th>
+	                            <td><input readonly placeholder="0">원</td>
 	                        </tr>
 	                    </table>
 	                </section>
 	
 	                <section id="order_pay">
 	                    <h3 class="order_subtitle">결제금액</h3>
-	                    <table class="verHead">
+	                    <table class="order_verHead">
 	                        <tr>
 	                            <th>상품금액</th>
 	                            <td>
@@ -186,7 +190,7 @@
 	                            <td id="total_price_td">
   	                                <span id="o_total_amount"><%=UtilMgr.intFormat(sum+shippingPrice)%></span>원
   	                                <input type="hidden" name="o_total_amount" value="<%=sum+shippingPrice%>">
-	                                <span id="total_point">(구매 시 <%=UtilMgr.intFormat((int)(sum*pointRate))%>P 적립)</span>
+	                                <span id="total_point">구매 시 <%=UtilMgr.intFormat((int)(sum*pointRate))%>P 적립</span>
 	                            </td>
 	                        </tr>
 							</table>
@@ -195,24 +199,30 @@
 					
 						<section id="order_howpay">
 							<h3 class="order_subtitle">결제수단</h3>
-							<%=order.getO_pay_method() %>
+							<table class="order_verHead">
+	                        	<tr>
+	                        		<th>
+										<%=order.getO_pay_method() %>
+	                        		</th>
+	                        	</tr>
+	                        </table>
+	                        	
   						</section>
 					
 					 <div class="order_btn_wrapper">
-                        <input type="submit" class="btn order_submit" value="주문내역으로 이동" onclick="location.href='mypage_orderlist.jsp'">
+                        <input type="submit" class="order_btn order_submit" value="주문내역 이동" onclick="location.href='mypage_orderlist.jsp'">
                     </div>
 					
 					
 			</div>
-		</main>
-	</div>
+		</div>
+	
 		
 </div> <!--  #btn_mypage_wrapper (버튼메뉴 + mypage) : mypage_side.jsp 에서 열림-->
 </div> <!-- #main (상단요약 + 버튼 + mypage) : mypage_side.jsp 에서 열림-->
 	<%@ include file="../bottom.jsp" %>		
 	</body>
 	
-	<script type="text/javascript" src="js/order.js"></script>
 	
 </html>
 

@@ -58,7 +58,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100%;
   min-height: 600px;
   width: 150px;
 }
@@ -270,11 +269,11 @@ input {
   height: 50px;
   font-size: 16px;
   border-radius: 3px;
-  border: 1px solid grey;
+  border: 1px solid #dcdbde;
 }
 
 input:focus {
-  border: 2px solid #FB9832;
+  border: 1px solid #FB9832;
 }
 
 .mypage_table {
@@ -334,7 +333,7 @@ input:focus {
 .btn {
   height: 40px;
   width: 70px;
-  border: 2px solid #FB9832;
+  border: 1px solid #FB9832;
   background-color: white;
   border-radius: 3px;
   color: #FB9832;

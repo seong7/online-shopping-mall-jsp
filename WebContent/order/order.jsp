@@ -65,7 +65,8 @@
  -->
 
 
-<link rel="stylesheet" type="text/css" href="css/order.css"/>
+<!-- <link rel="stylesheet" type="text/css" href="css/order.css"/>-->
+<link rel="stylesheet" type="text/css" href="../vscode__utf8/order/css/order.css"/>
 
 <%@ include file="../top.jsp"%>
 
@@ -116,7 +117,7 @@
                             <img alt="제품사진" src="../img/product/fus_main1.jpg">
                             <!-- <img alt="제품사진" src="${pageContext.request.contextPath}/img/product/<%=pbean.getP_main_pht_name()%>"> -->
                             </td>
-                            <td>
+                            <td class="btn_td">
                             	<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
                             		<%=pbean.getP_name() %>
                             	</a>
@@ -233,7 +234,7 @@
 	                            <td id="total_price_td">
   	                                <span id="o_total_amount"><%=UtilMgr.intFormat(sum+shippingPrice)%></span>원
   	                                <input type="hidden" name="o_total_amount" value="<%=sum+shippingPrice%>">
-	                                <span id="total_point">(구매 시 <%=UtilMgr.intFormat((int)(sum*pointRate))%>P 적립)</span>
+	                                <span id="total_point">구매 시 <%=UtilMgr.intFormat((int)(sum*pointRate))%>P 적립</span>
 	                            </td>
 	                        </tr>
 	                        <!-- <tr>
