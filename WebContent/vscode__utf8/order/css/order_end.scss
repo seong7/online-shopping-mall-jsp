@@ -1,0 +1,24 @@
+@import '../../font/font-family';
+
+$brandColor1: #fec084;
+$brandColor2: #FB9832;
+$brandFont : 'ON_IGothic';
+$main-blackcolor: #333;
+$table-graycolor:#dcdbde;
+$tableBorder: 0.5px solid #dcdbde;
+
+
+#end_wrapper{
+    width:100%;
+    min-width: 1050px;
+    min-height: 600px;
+    background-color: rgb(202, 199, 199);
+    
+    div{
+        margin-top: 10px;
+    }
+    a{
+        margin-left: 20px;
+    }
+
+}

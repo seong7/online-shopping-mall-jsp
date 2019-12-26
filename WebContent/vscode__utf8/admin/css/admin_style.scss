@@ -194,6 +194,12 @@ $tableBorder: 0.5px solid #dcdbde;
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
+    form{
+        width: 97%;
+        padding-left: 20px;
+        // padding-right: 30px;
+    
+    }
 }
 
 .title{
@@ -205,12 +211,7 @@ $tableBorder: 0.5px solid #dcdbde;
     padding-bottom: 20px;
 }
 
-form{
-    width: 97%;
-    padding-left: 20px;
-    // padding-right: 30px;
 
-}
 
 .inner_title{
     display: inline-block;

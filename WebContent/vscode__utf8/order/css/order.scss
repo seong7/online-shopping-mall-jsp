@@ -1,277 +1,266 @@
-@import '../../font-family.css';
+@import '../../font/font-family';
 
-$main-color: #FB9832;
-$main-active: #f09439;
-$main-font : 'ON-IGothic';
+$brandColor1: #fec084;
+$brandColor2: #FB9832;
+$brandFont : 'ON_IGothic';
 $main-blackcolor: #333;
 $table-graycolor:#dcdbde;
+$tableBorder: 0.5px solid #dcdbde;
+
+
+
+/*공통 속성 제어부*/
 main{
-    #orderWrapper{
     min-width: 1050px;
     max-width: 1050px;
     min-height: 1000px;
     width: 1050px;
     margin: 0px auto;
-        h2{
-            margin-top: 50px;
-            width: 100%;
-            font-size: 40px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: $main-blackcolor;
+    font-family: $brandFont;
+    letter-spacing: 0.5px;
+    #main_wrapper{
+        margin-top: 90px;
+    }
+    .title_wrapper{
+        margin-bottom: 30px;
+        .title{
+            font-size: 30px;
             text-align: center;
-            font-family: $main-font;
-            color:$main-blackcolor;
-            letter-spacing: 1px;
+            font-family: inherit;
         }
-        margin: 0px auto;
-    }
- 
-    //상품 정보 section
-    #order_product{
-        table{
-            tr:nth-of-type(1){
-                td:nth-of-type(1){
-                    text-align: center;
-                }
-                td:nth-of-type(2){
-                    width: 100px;
-                    text-align: center;
-                }
-                td:nth-of-type(3){
-                    width: 100px;
-                    text-align: center;
-                }
-            }
-            tr, td{
-                padding: 15px;
-                text-align: left;
-            }
-            td:first-of-type{
-                padding-left: 20px;
-            }
-            td:nth-of-type(1){
-                width: 100px;
-            }
-            td:nth-of-type(2){
-                width: 600px;
-            }
-            td:nth-of-type(3){
-                width: 100px;
-                text-align: center;
-            }
-            td:nth-of-type(4){
-                width: 100px;
-                text-align: center;
-            }            
+        .description{
+            display: inline-block;
+            color: grey;
+            margin-top: 20px;
+            padding-bottom:15px;
+            font-family: inherit;
+            font-size: 16px;
         }
-    }
-    //주문자 정보 section
-    #order_member{
-        table{ 
-            tr{
-                td{
-                    height: 25px;
-                    padding: 30px;
-                }
-            }
-            
-        }
+
     }
 }
-//배송정보
-#order_delivery{
-    table{
-        tr{
-            td{
-                input{
-                    font-family: $main-font;
-                    padding-left: 8px;
-                    border: 1px solid $table-graycolor;
-                    height: 28px;
-                }
-                input[name=o_recpt_add]{
-                    width: 600px;
-                }
-                
-                input[name=o_recpt_zipcode]{
-                    width: 50px;
-                    padding-left: 0px;
-                    text-align: center;
-                }
-                input[name=o_recpt_add_det]{
-                    width: 617px;
-                    margin-left: 25px;
-                }
-                textarea[name=o_del_msg]{
-                    font-family: $main-font;
-                    font-size: 14px;
-                    padding: 8px;
-                    border: 1px solid $table-graycolor;
-                    height: 40px;
-                    width: 688px;
-                    resize: none;
-                }
-                border-top: none;
-                border-bottom: none;
-                height: 35px;
-                padding: 5px;
-            }
-            td:first-of-type{
-                padding-left: 20px;
-            }
+section{
+    
+    .order_subtitle{
+        font-size: 23px;
+        font-family: $brandFont;
+        color: $main-blackcolor;
+        margin: 0 auto;
+        text-align: left;
+        border-bottom: 2px solid $brandColor1;
+        padding-bottom: 20px;
+    }
+    img{
+        width: 100px;
+        height: 0 auto;
+    }
+    a{
+        font-weight: 520;
+        text-decoration: underline;
+        color: $main-blackcolor;
+        cursor: pointer;
+        &:hover{
+            color: $brandColor1;
         }
-        tr:first-of-type{
-            td{
-                padding-top: 20px;
-            }
+    }
+    table{
+        box-sizing: border-box;
+        border-collapse: collapse;
+        color:inherit;
+        margin-bottom: 50px;
+        width: 100%;
+
+        td{
+            vertical-align: middle;
+            text-align: center;
+            // border-bottom: 1px solid $table-graycolor;
+
         }
         tr:last-of-type{
             border-bottom: 2px solid $table-graycolor;
-            td{
-                padding-bottom: 20px;
-            }
         }
+    
     }
 }
-//적립금
-#order_point{
+
+.horHead{
     tr{
-        td:first-of-type{
-            padding-left: 30px;
-            width: 130px;
-        }
-        td{
+        border-bottom: 1px solid $table-graycolor;
+        th, td{
             padding-top: 20px;
             padding-bottom: 20px;
-            input{
-                width: 400px;
-                height: 23px;
-                padding: 8px;
-                border: 1px solid $table-graycolor;
-            }
+            
         }
-    }
-}
-//결제금액
-#order_pay{
-    table{
-        font-family: $main-font;
-        tr{
-            td{
-                font-size: 18px;
-                input{
-                    border: none;
-                    font-family: $main-font;
-                    font-size: 18px;
-                    text-align: end;
-                    padding-right: 10px;
-                }
-                padding-top: 10px;
-                padding-bottom: 10px;
-            }
-            td:nth-of-type(1){
-                width: 170px;
-                text-align: center;
-            }
-            td:nth-of-type(2){
-                text-align: end;
-                padding-right: 50px;
-            }
-        }
-        tr:last-child{
-            td:last-child{
-                font-size: 12px;
-            }
-        }
-    }
-}
-//결제수단
-#order_howpay{
-    table{
-        tr{
-            td:nth-of-type(1){
-                width: 100px;
-            }
-
-            td:nth-of-type(2){
-                text-align: center;
-            }
-        }
-        tr:nth-of-type(1){
-            td{
-            }
-        }
-        tr:nth-of-type(2){
-            td{
-                padding-top: 20px;
-            }
-        }
-        tr:nth-of-type(3){
-            td{
-            }
-        }
-        tr:nth-of-type(4){
-            td{
-            }
-        }
-        
-        
-    }
-}
-
-/*전체 속성 제어부*/
-table{
-    tr:nth-of-type(1){
         td{
-            border-top: 3px solid $main-color !important;
-            padding-top: 15px;
-        }
-    }
-    tr:last-of-type{
-        td{
-            border-bottom: 2px solid $table-graycolor;
-            padding-bottom: 15px;
-        }
-    }
-}
-.order_subtitle{
-    font-size: 25px;
-    font-family: $main-font;
-    color: $main-blackcolor;
-    margin: 0 auto;
-}
-a{
-    font-weight: 520;
-    cursor: pointer;
-    &:hover{
-        color: $main-color;
-    }
-}
-main{
-    letter-spacing: 0.5px;
-    table{
-        box-sizing: border-box;
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 30px;
-        font-family: $main-font;
-        color:$main-blackcolor;
-        margin-bottom: 50px;
-        td{
-            font-family: $main-font;
             font-size: 18px;
         }
     }
-    
-    input[type=button], input[type=submit]{
-        margin-left: 25px;
-        height: 30px;
-        width: 70px;
-        background-color: $main-color;
-        border: none;
+    td:nth-child(2){
+        text-align: left;
+        padding-left: 10px;
+    }
+}
+
+.verHead{
+    .radio, .checkbox{
+        width: 50px;
+        position: relative;
+        top:2px;
+    }
+    th{
+        width: 150px;
+    }
+    td{
+        font-family: "MS Shell Dlg 2";
+        font-weight: 500;
+        input, select{
+            padding: 10px;
+            border: 1px solid #dcdbde;
+            border-radius: 3px;
+            margin-right: 5px;
+            width: 180px;
+        }
+    }
+    th, td{
+        // padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: left;
+        padding-left: 20px;
+        vertical-align: middle;
+    }
+    th:first-of-type, td:first-of-type{
+        padding-top: 10px;
+    }
+    #addr_btn{
         color: white;
+        height: 38px;
+        width: auto;
+        position: relative;
+        top: 1.7px;
         font-weight: bold;
-        
+        font-size: 16px;
+        border:2px solid $brandColor2;
+        line-height: 1;
+        margin-left: 20px;
         &:active{
-            background-color: $main-active;
+            background-color: white;
+            color: $brandColor2;
+        }
+    }
+    .input_zipcode{
+        width: 400px;
+    }
+}
+
+
+
+
+.btn{
+    height: 50px;
+    width: 70px;
+    border:2px solid $brandColor2;
+    // border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #f09439;
+    color: white;
+    
+    &:active{
+        background-color: white;
+        color: $brandColor2;
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}
+.order_btn_wrapper{
+    margin-top: 30px;
+    .order_submit{
+        width: 150px;
+    }
+}
+
+// 적립금, 결제금액 구역
+#point_price_wrapper{
+    display: flex;
+    flex-direction: row;
+
+    /* 적립금 구역 */
+    section:first-of-type{
+        margin-right: 30px;
+        width: 60%;
+    }
+
+    /* 결제 금액 구역 */
+    section:last-of-type{
+        background-color: rgba($color: #fec084, $alpha: 0.7);
+        color: grey;
+        padding: 10px;
+        height: 250px;
+        border-radius: 10px;
+        position: relative;
+        bottom: 10px;
+        th{
+            width: 120px;
+        }
+        td{
+            width:200px;
+            text-align: right;
+            padding-top: 15px;
+            padding-bottom: 10px;
+            padding-right: 10px;
+        }
+        .order_subtitle{
+            padding-left: 10px;
+            padding-top: 10px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid coral;
+        }
+        span{
+            color: coral;
+            font-size: 17px;
+            font-weight: bold;
+            padding-right: 10px;
+        }
+        #total_point{
+            display: block;
+            margin-top: 5px;
+            margin-left: 5px;
+            color: coral;
+            width: 100%;
+            font-size: 16px;
+        }
+        #o_total_amount{
+            font-size: 23px;
+        }
+        table{
+            tr:last-of-type{
+                border-bottom: 2px solid coral;
+            }
+            #total_price_th{
+                padding-top:20px;
+                color: $main-blackcolor;
+            }
+            #total_price_td{
+                padding-top:40px;
+                color: $main-blackcolor;
+            }
+        }
+    }
+}
+
+
+// 개인정보 수집/제공 영역
+#order_private{
+    table{
+        th{
+            width: 50%;
+
         }
     }
 }

@@ -1,0 +1,33 @@
+@charset "UTF-8";
+/* 폰트 추가*/
+/* 굵음 */
+@font-face {
+  font-family: 'ON_IGothic';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 일반 */
+@font-face {
+  font-family: 'Handon3gyeopsal600g';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+#end_wrapper {
+  width: 100%;
+  min-width: 1050px;
+  min-height: 600px;
+  background-color: #cac7c7;
+}
+
+#end_wrapper div {
+  margin-top: 10px;
+}
+
+#end_wrapper a {
+  margin-left: 20px;
+}
+/*# sourceMappingURL=order_end.css.map */

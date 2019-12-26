@@ -62,7 +62,7 @@
 		
 			<td><input type="button" value="-" 
 			>
-			<input type="text" id="c_qty" value=<%=c_qty%>>
+			<input type="text" id="c_qty" value=<%=c_qty%> readonly="readonly">
 			<input type="button" value="+" 
 			></td>
 			<td><%=totalPrice%></td>
