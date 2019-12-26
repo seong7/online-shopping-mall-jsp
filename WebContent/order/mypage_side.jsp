@@ -74,7 +74,7 @@
             <!-- 메뉴 부분 -->
             <div id="mypage_btn_wrapper">
                 <ul>
-                    <a id="btn_first" href="#">
+                    <a id="btn_first" href="../order/mypage_orderlist.jsp">
                         <li>
                             <span class="text">주문관리</span>
         
@@ -110,7 +110,7 @@
                         
                         </li>
                     </a>
-                    <a id="btn_last" href="#">
+                    <a id="btn_last" href="../member/mypage_myinfo.jsp">
                         <li>
                             <span class="text">회원정보</span>
                             
