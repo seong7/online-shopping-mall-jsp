@@ -37,8 +37,8 @@
     	  </form>
       </div>
       <hr>
-	  <form name="stfrm" method="get" >
-	  <div >			
+	  <form name="stfrm" method="get"  action="goods_stockProc.jsp">
+	  <div>			
 			<p>力前疙 <input name ="p_name" id="stfrm_name" ></p>
             <p>力前内靛 <input name ="p_code" id="stfrm_code" ></p> 						
             <p>荐樊 <input name ="st_enter_qty"></p>
@@ -68,7 +68,6 @@
 			</thead>
 		</table>
 	</form>
- 
  
 
  </div>
