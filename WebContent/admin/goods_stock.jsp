@@ -37,7 +37,7 @@ thead{background:lightgray;}
     	  </form>
       </div>
       			<hr>
-<form name="stfrm" method="get" >
+<form name="stfrm" method="get" action="goods_stockProc.jsp">
 	  <div >			
 				<p>力前疙 <input name ="p_name" ></p>
                 <p>力前内靛 <input name ="p_code" ></p> 						
