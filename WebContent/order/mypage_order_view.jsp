@@ -10,10 +10,10 @@
 <%@page import="order.CartBean"%>
 <%@page import="java.util.Vector"%>
 
-<%-- <jsp:useBean id="mMgr" class="member.MemberMgr"/> --%>
 <jsp:useBean id="pMgr" class="product.ProductMgr"/>
-<%-- <jsp:useBean id="oMgr" class="order.OrderMgr"/> --%>
 <jsp:useBean id="cMgr" class="order.CartMgr"/>
+<%-- <jsp:useBean id="mMgr" class="member.MemberMgr"/> --%>
+<%-- <jsp:useBean id="oMgr" class="order.OrderMgr"/> --%>
 
 <%
 		request.setCharacterEncoding("EUC-KR");
@@ -37,8 +37,8 @@
 <body>
  -->
 
-<!-- <link rel="stylesheet" type="text/css" href="css/order.css"/> -->
-<link rel="stylesheet" type="text/css" href="../vscode__utf8/order/css/order.css"/>
+<link rel="stylesheet" type="text/css" href="css/order.css"/>
+
 
 
 <%@ include file="../top.jsp" %>

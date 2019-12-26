@@ -435,4 +435,10 @@ input:focus {
 #column_tr th {
   border-top: none;
 }
+
+#daumWrap3 {
+  left: 60%;
+  top: 65%;
+  border: 1px solid #fec084;
+}
 /*# sourceMappingURL=mypage_style.css.map */
