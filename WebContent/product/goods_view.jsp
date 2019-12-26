@@ -6,9 +6,11 @@
 <%
 	request.setCharacterEncoding("EUC-KR");
 	
-	productUtil util = new productUtil();
-	int p_code = Integer.parseInt(request.getParameter("goods"));
+	String id_goods = (String)session.getAttribute("idKey");
 	
+	productUtil util = new productUtil();
+	//int p_code = Integer.parseInt(request.getParameter("goods"));
+	int p_code = 5;//확인용 
 	
 	ProductBean bean = mgr.getProduct(p_code);
 
@@ -48,7 +50,8 @@
 			<div class="header quantity">
 				<span class="title">구매 수량</span>
 				<i id="button_down" class="far fa-minus-square"></i>
-				<input id="quantity" class="quantity" name="quantity" type="number" min="1" max="99" step="1" value="1">
+				<input id="quantity" class="quantity" name="quantity" 
+				type="number" min="1" max="99" step="1" value="1">
 				<i id="button_up" class="far fa-plus-square"></i>
 			</div>
 			<div class="header total">
@@ -58,14 +61,18 @@
 			</div>
 			<div class="header btn_wrapper">
 				<input id="cartBtn" type="button" class="btn" value="장바구니에 추가"
-				onclick="location.href='${pageContext.request.contextPath}
-				/order/cart.jsp?'"> 
-				<input id="submit_btn" type="button" onclick="logincheck_goods()" class="btn" value="구매하기">
+				onclick="addCart()";> 
+				<input id="submit_btn" type="button" 
+				onclick="logincheck_goods()" class="btn" value="구매하기">
 			</div>
 		</form>			
 
 	</header>
-			
+	<form name="cartFrm" method="get"> 
+	<input type="hidden" name="id_goods" value="<%=id_goods %>">
+	<input type="hidden" name="p_code" value="<%=p_code %>">
+	<input type="hidden" name="c_qty" value="">
+	</form>
 			
 			<!--  제품 추천 알고리즘 영역 -->
 			<div id="recom_wrapper" style="display:none;">
@@ -121,7 +128,7 @@
 	function logincheck_goods(){
 		const orderFrm = document.getElementById("header_info_wrapper");
 		<%
-			String id_goods = (String)session.getAttribute("idKey");
+			//String id_goods = (String)session.getAttribute("idKey");
 			if(id_goods==null || id_goods.length() ==0){
 		%>
 			alert('구매를 위해서는 로그인이 필요합니다.');
@@ -132,7 +139,22 @@
 			orderFrm.submit();
 		<%}%>
 	}
-
+	
+	function addCart(){
+		<%
+		if(id_goods==null || id_goods.length() ==0){
+	%>
+		alert('로그인이 필요합니다.');
+		return;
+	<%
+		}else{
+	%>
+		const quantity = document.getElementById('quantity');
+		document.cartFrm.c_qty.value=quantity.value;
+		document.cartFrm.action = "goods_viewProc.jsp";
+		document.cartFrm.submit();
+		<%}%>
+	}
 </script>
 </body>
 </html>

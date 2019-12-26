@@ -15,8 +15,8 @@
 
 <%
 		request.setCharacterEncoding("EUC-KR");
-		//int o_index = Integer.parseInt(request.getParameter("o_index"));
-		int o_index = 18; //확인용 데이터 
+		int o_index = Integer.parseInt(request.getParameter("o_index"));
+		//int o_index = 18; //확인용 데이터 
 		String nowPage = request.getParameter("nowPage");
 		String keyField = request.getParameter("keyField");
 		String keyWord = request.getParameter("keyWord");
@@ -38,7 +38,7 @@ function list() {//nowPage와 NumPerPage가지고 list.jsp로 이동
 
 function confirmDel(){
 	if(confirm("삭제하시겠습니까?")==true){
-		document.listFrm.action = "orderDelete.jsp";
+		document.listFrm.action = "orderDelProc.jsp";
 		document.listFrm.submit();
 	}else{ //취소
 		return;
@@ -51,7 +51,7 @@ function confirmDel(){
 <h2 >주문 상세 정보</h2>
 <hr width="60%">
 <h3>구매 및 배송정보</h3>
-<form name="updateFrm" method="post" action="orderUpdate.jsp">
+<form name="updateFrm" method="post" action="orderUpProc.jsp">
 <table>
 	<%
 		Vector<OrderBean> olist = oMgr.getOrderDetail(o_index);

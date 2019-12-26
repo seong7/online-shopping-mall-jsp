@@ -310,13 +310,12 @@ public class ProductMgr {
 		try {
 			con = pool.getConnection();
 			for (int i = 0; i < p_code.length; i++) {
-				sql = "select p_main_pht_name from product_mst_tb where p_code=? ";
+				sql = "select p_main_pht_name, p_detail_pht_name, p_info_pht_name from product_mst_tb where p_code=? ";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, p_code[i]);
 				rs = pstmt.executeQuery();
 				if (!rs.next())
 					continue;
-
 				String p_main_pht_name = rs.getString(1);
 				String p_detail_pht_name = rs.getString(2);
 				String p_info_pht_name = rs.getString(3);

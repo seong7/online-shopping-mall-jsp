@@ -5,7 +5,7 @@
 		String cpath = request.getContextPath();
 		
 		
-		if(id==null || id.length()==0){
+		if(admin_id==null || admin_id.length()==0){
 			response.sendRedirect(cpath+"/index.jsp");
 		}
 %>
@@ -88,7 +88,7 @@
                         
                         </li>
                     </a>
-                    <a href="#">
+                    <a href="member_list.jsp">
                         <li>
                             <span class="text">雀盔包府</span>
         
@@ -100,7 +100,7 @@
                        
                         </li>
                     </a>
-                    <a href="#">
+                    <a href="order_list.jsp">
                         <li>
                             <span class="text">林巩包府</span>
                             
@@ -112,7 +112,7 @@
         
                         </li>
                     </a>
-                    <a href="#">
+                    <a href="goods_master.jsp">
                         <li>
                             <span class="text">力前包府</span>
                             
@@ -148,7 +148,7 @@
                         
                         </li>
                     </a>
-                    <a href="#">
+                    <a href="notice_list.jsp">
                         <li>
                             <span class="text">傍瘤荤亲</span>
                             
