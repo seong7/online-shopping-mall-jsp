@@ -122,26 +122,22 @@
   	</table>
   </form>
   	
-		 	<table class="mgr_table horHead">
-		 		<tr>
-					<td>
-						<form name="npFrm" method="post">
-								<select name="numPerPage"
-								onchange="javascript:numPerFn(this.form.numPerPage.value)">
-			    					<option value="5">5개 보기</option>
-			    					<option value="10" selected>10개 보기</option>
-			    					<option value="15">15개 보기</option>
-			    					<option value="30">30개 보기</option>
-			   				</select>
-			   			</form>
-			   			<!-- "10"으로 fix 된 값을 선택된 numPerPage값으로 유지 -->
-			   			<script>document.npFrm.numPerPage.value=
-			   				"<%=numPerPage%>"</script>
-					</td>
-				</tr>
-			</table>
+
+	<form id="order_number_frm" name="npFrm" method="post">
+			<select name="numPerPage"
+			onchange="javascript:numPerFn(this.form.numPerPage.value)">
+					<option value="5">5개 보기</option>
+					<option value="10" selected>10개 보기</option>
+					<option value="15">15개 보기</option>
+					<option value="30">30개 보기</option>
+			</select>
+	</form>
+	<!-- "10"으로 fix 된 값을 선택된 numPerPage값으로 유지 -->
+	<script>document.npFrm.numPerPage.value=
+		"<%=numPerPage%>"</script>
+
 	
-		<h3 class="inner_title">주문 리스트</h3>
+		<h3 id="order_list_title" class="inner_title" >주문 리스트</h3>
 		<table class="mgr_table horHead">
 			 <tr>
 			 		<th>번호</th>
@@ -159,7 +155,7 @@
 					if(vlist.isEmpty()){
 				%>
 			<tr>
-				<td colspan="5">
+				<td colspan="7">
 					검색결과가 없습니다.
 				</td>
 			</tr>
@@ -176,13 +172,14 @@
 				<%=order.getO_index()%></a></td>
 				<td><%=UtilMgr.monFormat(o_total_amount)%>원</td>
 				<td><%=order.getO_status()%></td>
+				<td></td>
 			</tr>
 				<%
 					}//---for
 				}//---else
 						%>
 		</table>
-		<table>
+		<table  id="pagination">
 			<tr>
 				<td>
 				<%if(totalPage>0){ %>
@@ -201,9 +198,13 @@
 							for(;pageStart<pageEnd;pageStart++){
 						%>
 							<a href="javascript:pageing('<%=pageStart%>')">
-							<%if(pageStart==nowPage){ %><font color="red"><%} %>
-							[<%=pageStart %>]
-							<%if(pageStart==nowPage){ %></font><%} %>
+								<span id="page_btn">
+									<%if(pageStart==nowPage){ %><span id="nowPage_btn"><%} %>
+									
+									<%=pageStart %>
+									
+									<%if(pageStart==nowPage){ %></span><%} %>
+								</span>
 							</a>
 						<%}//---for %>	
 						<!-- 다음블럭 -->

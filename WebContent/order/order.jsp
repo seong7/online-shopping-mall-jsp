@@ -21,9 +21,10 @@
 		
 		int p_code = 0;
 		int o_qty = 0;
-		int price = 0;
+		int unitPrice = 0;
+		int totalPrice =0;
+		int sum = 0;
 		int countPart = 0;
-		int totalPrice = 0;
 
 		String o_id = (String)session.getAttribute("idKey");
 
@@ -105,8 +106,9 @@
                         pbean = pMgr.getProduct(cbean.getP_code());
                     }
                     
-                    price = pbean.getP_price();
-                    totalPrice += price * o_qty;
+                    unitPrice = pbean.getP_price();
+                    totalPrice = unitPrice * o_qty;
+                    sum += totalPrice;
                     countPart = goods.size();
                     %>
                     <tr>
@@ -120,7 +122,7 @@
                             	</a>
                             </td>
                             <td><%=o_qty %>개</td>
-                            <td><%=UtilMgr.intFormat(price) %>원</td>
+                            <td><%=UtilMgr.intFormat(totalPrice) %>원</td>
                         </tr>
                         <%
                                 }
@@ -214,8 +216,8 @@
 	                        <tr>
 	                            <th>상품금액</th>
 	                            <td>
-	                            	<span id="o_prod_amount"><%=UtilMgr.intFormat(totalPrice)%></span>원
-	                            	<input type="hidden" name="o_prod_amount" value="<%=totalPrice%>">
+	                            	<span id="o_prod_amount"><%=UtilMgr.intFormat(sum)%></span>원
+	                            	<input type="hidden" name="o_prod_amount" value="<%=sum%>">
 	                            </td>
 	                        </tr>
 	                        <tr>
@@ -229,9 +231,9 @@
 	                        <tr>
 	                            <th id="total_price_th">최종결제금액</th>
 	                            <td id="total_price_td">
-  	                                <span id="o_total_amount"><%=UtilMgr.intFormat(totalPrice+shippingPrice)%></span>원
-  	                                <input type="hidden" name="o_total_amount" value="<%=totalPrice+shippingPrice%>">
-	                                <span id="total_point">(구매 시 <%=UtilMgr.intFormat((int)(totalPrice*pointRate))%>P 적립)</span>
+  	                                <span id="o_total_amount"><%=UtilMgr.intFormat(sum+shippingPrice)%></span>원
+  	                                <input type="hidden" name="o_total_amount" value="<%=sum+shippingPrice%>">
+	                                <span id="total_point">(구매 시 <%=UtilMgr.intFormat((int)(sum*pointRate))%>P 적립)</span>
 	                            </td>
 	                        </tr>
 	                        <!-- <tr>

@@ -394,4 +394,37 @@
 .rm_pct {
   margin-top: 5px;
 }
+
+/*** member_list.jsp ¿¡¼­¸¸ ***/
+#order_number_frm {
+  display: inline-block;
+  position: relative;
+  left: 650px;
+  top: 60px;
+}
+
+#order_number_frm select {
+  padding: 10px;
+  border: 1px solid #dcdbde;
+  border-radius: 3px;
+  width: 120px;
+}
+
+#order_list_title {
+  margin-top: none;
+}
+
+#pagination a {
+  color: #333;
+  text-decoration: none;
+  display: inline-block;
+  margin: 3px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+
+#pagination #nowPage_btn {
+  color: coral;
+}
 /*# sourceMappingURL=admin_style.css.map */
