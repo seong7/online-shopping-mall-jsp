@@ -115,7 +115,7 @@
 				<td>
 					<input name ="keyDate1" placeholder="20190101"> &nbsp; ~ &nbsp;
 					<input name ="keyDate2" placeholder="20191231">			
-					<input id="search_btn" type="button" value="search" onClick="javascript:dateCheck()">
+					<input id="search_btn" type="button" value="검색" onClick="javascript:dateCheck()">
 					<input type="hidden" name="nowPage" value="1">
 				</td>
 	  		</tr>
@@ -136,7 +136,7 @@
 	<script>document.npFrm.numPerPage.value=
 		"<%=numPerPage%>"</script>
 
-	
+	<div>
 		<h3 id="order_list_title" class="inner_title" >주문 리스트</h3>
 		<table class="mgr_table horHead">
 			 <tr>
@@ -168,7 +168,7 @@
 				<td><%=totalRecord-start-i %></td>
 				<td><%=order.getO_id()%></td>
 				<td><%=order.getO_date()%></td>
-				<td><a href="javascript:read('<%=order.getO_index()%>')">
+				<td><a class="order_num_btn" href="javascript:read('<%=order.getO_index()%>')">
 				<%=order.getO_index()%></a></td>
 				<td><%=UtilMgr.monFormat(o_total_amount)%>원</td>
 				<td><%=order.getO_status()%></td>
@@ -179,7 +179,8 @@
 				}//---else
 						%>
 		</table>
-		<table  id="pagination">
+	</div>	
+		<table  class="pagination_tb">
 			<tr>
 				<td>
 				<%if(totalPage>0){ %>
@@ -198,7 +199,7 @@
 							for(;pageStart<pageEnd;pageStart++){
 						%>
 							<a href="javascript:pageing('<%=pageStart%>')">
-								<span id="page_btn">
+								<span class="page_btn">
 									<%if(pageStart==nowPage){ %><span id="nowPage_btn"><%} %>
 									
 									<%=pageStart %>
@@ -230,6 +231,7 @@
 			<input type="hidden" name="keyDate2" value="<%=keyDate2%>">
 			<input type="hidden" name="numPerPage" value="<%=numPerPage%>">
 		</form>
+
 
 </div>
 

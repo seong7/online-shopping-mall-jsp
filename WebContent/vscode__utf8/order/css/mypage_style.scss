@@ -1,6 +1,6 @@
 @import '../../font/font-family';
 $brandFont: 'ON_IGothic';
-$testFont: 'Handon3gyeopsal600g';
+$thinFont :  'MS Shell Dlg 2';
 $brandColor1: #fec084;
 $brandColor2:  #FB9832;
 $tableBorder: 0.5px solid #dcdbde;
@@ -242,6 +242,7 @@ input{
 
     td{
         border-bottom: 0.5px solid #dcdbde;
+        font-family: $thinFont;
         font-size: 16px;
         height: 100px;
         padding-top:40px;
@@ -369,4 +370,12 @@ input{
 }
 #adrress_submit{
     margin-left: 400px;
+}
+
+
+/** mypage_orderlist.jsp 만 **/
+#column_tr{
+    th{
+        border-top:none;
+    }
 }

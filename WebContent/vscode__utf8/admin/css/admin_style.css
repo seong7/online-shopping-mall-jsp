@@ -319,6 +319,7 @@
 .horHead td a {
   text-decoration: none;
   color: inherit;
+  border-bottom: 0.5px solid #333;
 }
 
 .horHead td a:hover {
@@ -356,6 +357,21 @@
 
 .btn:hover {
   cursor: pointer;
+}
+
+/** 페이지네이션 버튼 테이블 **/
+.pagination_tb a {
+  color: #333;
+  text-decoration: none;
+  display: inline-block;
+  margin: 3px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+
+.pagination_tb #nowPage_btn {
+  color: coral;
 }
 
 /** goods_master.jsp 에만 **/
@@ -398,10 +414,10 @@
 
 /*** member_list.jsp 에서만 ***/
 #order_number_frm {
-  display: inline-block;
+  display: inline;
   position: relative;
   left: 650px;
-  top: 60px;
+  top: 30px;
 }
 
 #order_number_frm select {
@@ -411,21 +427,8 @@
   width: 120px;
 }
 
+/** order_list.jsp 에서만 **/
 #order_list_title {
-  margin-top: none;
-}
-
-#pagination a {
-  color: #333;
-  text-decoration: none;
-  display: inline-block;
-  margin: 3px;
-  width: 20px;
-  height: 20px;
-  text-align: center;
-}
-
-#pagination #nowPage_btn {
-  color: coral;
+  margin-top: 0px;
 }
 /*# sourceMappingURL=admin_style.css.map */

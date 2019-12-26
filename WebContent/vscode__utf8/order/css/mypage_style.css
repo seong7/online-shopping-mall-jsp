@@ -293,6 +293,7 @@ input:focus {
 
 .mypage_table td {
   border-bottom: 0.5px solid #dcdbde;
+  font-family: "MS Shell Dlg 2";
   font-size: 16px;
   height: 100px;
   padding-top: 40px;
@@ -429,5 +430,10 @@ input:focus {
 
 #adrress_submit {
   margin-left: 400px;
+}
+
+/** mypage_orderlist.jsp 만 **/
+#column_tr th {
+  border-top: none;
 }
 /*# sourceMappingURL=mypage_style.css.map */

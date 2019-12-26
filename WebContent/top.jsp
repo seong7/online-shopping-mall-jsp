@@ -157,7 +157,7 @@
 								</li>
 							<%}else if(id!=null && admin_id==null){ %>
 								<li>
-									<a href="${pageContext.request.contextPath}/member/myinfo_check.jsp"><i class="fas fa-user"></i></a>
+									<a href="${pageContext.request.contextPath}/order/mypage_orderlist.jsp"><i class="fas fa-user"></i></a>
 								</li>
 								<li>
 									<a href="${pageContext.request.contextPath}/order/cart.jsp"><i class="fas fa-shopping-cart"></i></a>
