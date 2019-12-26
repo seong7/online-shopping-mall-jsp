@@ -8,9 +8,9 @@
 <html>
 	<head>-->
 		<meta charset="EUC-KR">
-		<link rel="stylesheet" type="text/css" href= "/online-shopping-mall/css/reset.css">
-		<link rel="stylesheet" type="text/css" href= "/online-shopping-mall/css/util.css">
-		<link rel="stylesheet" href="/online-shopping-mall/css/top.css">
+		<link rel="stylesheet" type="text/css" href= "/../css/reset.css">
+		<link rel="stylesheet" type="text/css" href= "/../css/util.css">
+		<link rel="stylesheet" href="/../css/top.css">
 		<script src="https://kit.fontawesome.com/115bcf1f34.js" crossorigin="anonymous"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -139,18 +139,12 @@
 							<ul id="active_btn_wrapper">
 							
 								<li>
-									<a href="/online-shopping-mall/member/myinfo_check.jsp"><i class="fas fa-user"></i></a>
+									<input type="checkbox" id="userPopup">
+									<label for="userPopup" id="userPopup_label">
+										<i class="fas fa-user"></i>
+									</label>
 								</li>
-								<li>
-									<a href="/online-shopping-mall/order/cart.jsp"><i class="fas fa-shopping-cart"></i></a>
-								</li>
-								<li>
-									<form id="logout_form" action="/online-shopping-mall/member/signup"  method="post">
-										<a onclick="logout_onclick()"><i class="fas fa-sign-in-alt"></i></a>
-									</form>
-								</li>
-								
-								
+							
 							</ul>
 						</li>
 					</ul>
@@ -161,13 +155,31 @@
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript" src="/online-shopping-mall/js/top.js"></script>
 
-<!-- </body>    --- index.jsp 에서 닫아줌
-</html> -->
 
-	<main>
-		<div>
-			<span>주문 완료</span>
-			<!-- <a class="btn" href="../index.jsp"> 홈으로 이동 </a> -->
+
+<link rel="stylesheet" href="css/order_end.css">
+	
+	
+	<main id="end_wrapper">
+		<div id="end_modal">
+			<!-- <div id="end_modal_wrapper"> -->
+				<header>
+					<div id="end_modal_icon">
+						<i class="fas fa-ellipsis-h"></i>
+						<i class="fas fa-truck"></i>
+					</div>
+					<span id="name">김성진</span><span>님의 주문이 완료되었습니다.</span>
+				</header>
+				<div id="end_modal_summ">
+					<span>결제금액</span>
+					<span>(금액)원</span>
+					<span>(포인트)원 적립</span>
+				</div>
+				<div id="end_modal_btn_wrapper">
+					<a class="btn" href="../index.jsp"> 홈으로 이동 </a>
+					<a class="btn" href="../mypage_oderlist.jsp"> 주문내역으로 이동 </a>
+				</div>
+			<!-- </div> -->
 		</div>
 		
 	</main>
@@ -176,7 +188,7 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="/online-shopping-mall/css/bottom.css">
+<link rel="stylesheet" type="text/css" href="../css/bottom.css">
 <footer>
 	<div id="footer_wrapper">
 	    <ul>
