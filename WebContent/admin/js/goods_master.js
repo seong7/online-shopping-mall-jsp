@@ -15,11 +15,15 @@
 			});
 		}
 		typeCheck();
-	}
-
-var today = new Date( ) 
-document.write(today.getYear( ) , 
-               today.getMonth( )+1 , today.getDate( )) 
+	}	
+	
+function confirm1(){	
+	if(confirm("제발떠라응?")){
+		alert("yes");
+	}else{
+		alert("no");
+	}	
+}    
 
 function check() {
 	f = document.SearchFrm;
