@@ -21,10 +21,10 @@
 		
 		int p_code = 0;
 		int o_qty = 0;
-		int price = 0;
-		int countPart = 0;
+		int unitPrice = 0;
 		int totalPrice = 0;
-
+		int sum = 0;
+		int countPart = 0; 
 		String o_id = (String)session.getAttribute("idKey");
 
 		String flag = request.getParameter("flag");
@@ -78,8 +78,7 @@
 <%@ include file="../top.jsp"%>
 
 
-<div id="loader"></div>        	
-<main id="main_contents">
+<main>
     <div id="main_wrapper">
         <div class="title_wrapper">
             <h1 class="title">주문서</h1>
@@ -109,17 +108,18 @@
                         
                         /* 장바구니 구매할 때 */
                     }else if(flag.equals("cart")){
-                        
                         cbean = (CartBean)goods.get(i);
                         o_qty = cbean.getC_qty();
+                        System.out.println("큐티와이는" + o_qty);
                         pbean = pMgr.getProduct(cbean.getP_code());
+                        System.out.println("큐" + cbean.getP_code());
                         %>
                         <input type="hidden" value="<%=cbean.getP_code()%>" name="p_code_array">
                         <%
                     }
-                    
-                    price = pbean.getP_price();
-                    totalPrice += price * o_qty;
+                    unitPrice = pbean.getP_price();
+                    totalPrice = unitPrice * o_qty;
+                    sum += totalPrice;
                     countPart = goods.size();
                     %>
                     <tr>
@@ -133,8 +133,8 @@
                             	</a>
                             </td>
                             <td name="tr_qty"><%=o_qty %>개</td>
-                            <td name="tr_price"><%=UtilMgr.intFormat(price) %>원</td>
-                            <input type="hidden" name="p_price" value="<%=price %>">
+                            <td name="tr_price"><%=UtilMgr.intFormat(totalPrice) %>원</td>
+                            <input type="hidden" name="p_price" value="<%=totalPrice %>">
                         </tr>
                         <%
                                 }
@@ -228,8 +228,8 @@
 	                        <tr>
 	                            <th>상품금액</th>
 	                            <td>
-	                            	<span id="o_prod_amount"><%=UtilMgr.intFormat(totalPrice)%></span>원
-	                            	<input type="hidden" name="o_prod_amount" value="<%=totalPrice%>">
+	                            	<span id="o_prod_amount"><%=UtilMgr.intFormat(sum)%></span>원
+	                            	<input type="hidden" name="o_prod_amount" value="<%=sum%>">
 	                            </td>
 	                        </tr>
 	                        <tr>
@@ -243,9 +243,9 @@
 	                        <tr>
 	                            <th id="total_price_th">최종결제금액</th>
 	                            <td id="total_price_td">
-  	                                <span id="o_total_amount"><%=UtilMgr.intFormat(totalPrice+shippingPrice)%></span>원
-  	                                <input type="hidden" name="o_total_amount" value="<%=totalPrice+shippingPrice%>">
-	                                <span id="total_point">(구매 시 <%=UtilMgr.intFormat((int)(totalPrice*pointRate))%>P 적립)</span>
+  	                                <span id="o_total_amount"><%=UtilMgr.intFormat(sum+shippingPrice)%></span>원
+  	                                <input type="hidden" name="o_total_amount" value="<%=sum+shippingPrice%>">
+	                                <span id="total_point">(구매 시 <%=UtilMgr.intFormat((int)(sum*pointRate))%>P 적립)</span>
 	                            </td>
 	                        </tr>
 	                        <!-- <tr>
@@ -261,7 +261,7 @@
                         <tr>
                             <th>일반결제 &nbsp;&nbsp;&nbsp;</th>
                             <td> 신용카드
-	                            <input type="radio" class="radio" name="o_pay_method" value="신용카드" onclick='paymentMethod(this.value);' checked>1
+	                            <input type="radio" class="radio" name="o_pay_method" value="신용카드" onclick='paymentMethod(this.value);' checked>
 	                            &nbsp;&nbsp;&nbsp; 휴대폰
 	                            <input type="radio" class="radio" name="o_pay_method" value="휴대폰" onclick='paymentMethod(this.value);'>
                             </td>

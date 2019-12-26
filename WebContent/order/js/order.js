@@ -41,43 +41,12 @@ function init(){
 		console.log(c_data);
 		console.log(order_id);
 		
-		setTimeout(call_cart, 4000);
+	
 	}
 	function numberWithCommas(x) {
 	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 
-	function call_cart(){
-  	  //페이지 로딩 이벤트
-  	    $.ajax({
-  	        type: 'POST',                   //post or get
-  	        url:ctx2+'/order/call_cart',   //servlet mapping addr
-  	        data: {
-  	        	data : c_data
-  	            },                              //key value
-  	        success : function(data) {
-  	        	console.log(data);
-	    		let resultParse = JSON.parse(data);
-	    		console.log(resultParse[0]);
-	    		const tr_qty =  document.getElementsByName('tr_qty');
-	    		const tr_price = document.getElementsByName('tr_price');
-	    		const p_price =  document.getElementsByName('p_price');
-	    		const ho_qty =  document.getElementsByName('o_qty');
-	    		
-	    		for(let j=0; j<resultParse.length;j++){
-	    			tr_qty[j].innerHTML = resultParse[j].qty+"개";
-	    			const price_innerValue = numberWithCommas(resultParse[j].qty * parseInt(p_price[j].value));
-	    			tr_price[j].innerHTML = price_innerValue+"원"; 
-	    			ho_qty[j].value = resultParse[j].qty;
-	    		}
-  	  		$('#main_contents').css("opacity","1");
-  	  		$('#loader').css("display","none");
-  	         }, error : function(){
-  	            //에러경우
-  	            console.log('에러');
-  	        }
-  	    })
-	}
 }
 
 init();
