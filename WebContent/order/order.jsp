@@ -135,7 +135,7 @@
                          <!--  td 태그의  name ? :  확인 필요 -->
                             <td name="tr_qty"><%=o_qty %>개</td>
                             <td>
-                             <input type="hidden" value="<%=cbean.getP_code()%>" name="p_code">
+                             <input type="hidden" value="<%=pbean.getP_code()%>" name="p_code">
                       		  <input type="hidden" value="<%=o_qty%>" name="o_qty">
                             </td>
                          <!--  td 태그의  name ? :  확인 필요 -->
