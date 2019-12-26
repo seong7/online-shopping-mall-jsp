@@ -40,13 +40,10 @@
 			goods.add(pbean);
 			
 		}else if(flag.equals("cart")){
-			//String value1 = request.getParameter("flag");
-			String[] value2 = request.getParameterValues("fch");
-			//System.out.println(o_id);
-			//CartMgr mgr = new CartMgr();
-			//Vector<CartBean> cvlist = new  Vector<CartBean>();
-			for(int i=1; i<value2.length; i++){
-				goods.add(cMgr.getCartOneOrder(o_id, Integer.parseInt(value2[i])));
+			String[] checked_Pcode = request.getParameterValues("fch");
+
+			for(int i=1; i<checked_Pcode.length; i++){
+				goods.add(cMgr.getCartOneOrder(o_id, Integer.parseInt(checked_Pcode[i])));
 			}
 			//여기에서 플래그값 판단해서 시작
 			//플래그는 getparameter
@@ -113,9 +110,7 @@
                         cbean = (CartBean)goods.get(i);
                         o_qty = cbean.getC_qty();
                         pbean = pMgr.getProduct(cbean.getP_code());
-                        %>
-                        <%=o_qty %>
-                        <%
+
                     }
                     unitPrice = pbean.getP_price();
                     totalPrice = unitPrice * o_qty;
@@ -132,14 +127,12 @@
                             		<%=pbean.getP_name() %>
                             	</a>
                             </td>
-                         <!--  td 태그의  name ? :  확인 필요 -->
-                            <td name="tr_qty"><%=o_qty %>개</td>
+                            <td><%=o_qty %>개</td>
                             <td>
                              <input type="hidden" value="<%=pbean.getP_code()%>" name="p_code">
                       		  <input type="hidden" value="<%=o_qty%>" name="o_qty">
                             </td>
-                         <!--  td 태그의  name ? :  확인 필요 -->
-                            <td name="tr_price">
+                            <td>
                             	<%=UtilMgr.intFormat(totalPrice) %>원
 	                            <input type="hidden" name="p_price" value="<%=totalPrice %>">
                             </td>
