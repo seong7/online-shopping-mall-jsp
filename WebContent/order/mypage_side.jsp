@@ -6,7 +6,7 @@
 		request.setCharacterEncoding("EUC-KR");
 		String cpath = request.getContextPath();
 		MemberBean bean = null;
-		int countDeliever = oMgr.countDeliver(id);
+		int countDeliver = oMgr.countDeliver(id);
 
 		if(id==null || id.length()==0){
 			response.sendRedirect(cpath+"/index.jsp");
@@ -52,7 +52,7 @@
                           <span id="del_top" class="text">배송중인 주문</span>
                       </div>
                       <div class="bottom">
-                          <span id="del" class="bold"><%=countDeliever%></span>
+                          <span id="del" class="bold"><%=countDeliver%></span>
                           <span id="del_bottom" class="text">건</span>
                       </div>
                   </li>

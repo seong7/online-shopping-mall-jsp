@@ -15,15 +15,7 @@
 			});
 		}
 		typeCheck();
-	}	
-	
-function confirm1(){	
-	if(confirm("제발떠라응?")){
-		alert("yes");
-	}else{
-		alert("no");
-	}	
-}    
+	}	   
 
 function check() {
 	f = document.SearchFrm;
