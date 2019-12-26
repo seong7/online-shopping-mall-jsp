@@ -81,9 +81,9 @@ public class OrderMgr {
 				pstmt.close();
 				rs.close();
 			////////////////////////////////////////////////////////////////
-			sql = "insert order_detail_tb(o_index, p_code, o_qty) " + 
+				sql = "insert order_detail_tb(o_index, p_code, o_qty) " + 
 					"VALUES (?,?,?)";
-			pstmt = con.prepareStatement(sql);
+				pstmt = con.prepareStatement(sql);
 				int cnt = 0;
 				int p_codes[] = order.getP_code();
 				int o_qtys[] = order.getO_qty();
@@ -483,6 +483,28 @@ public class OrderMgr {
 				//mgr.post1000();
 				System.out.println("성공~~");
 			}
-		
-	
+		//counting order status "deliver-ing"
+			public int countDeliver(String id) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = null;
+				int count = 0;
+				try {
+					con = pool.getConnection();
+					sql = "SELECT COUNT(*) FROM order_tb WHERE o_status = '배송중' and o_id= ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, id);
+					rs = pstmt.executeQuery();					
+					if (rs.next()) {
+						count = rs.getInt(1);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt, rs);
+				}
+				return count;
+				
+			}	
 }

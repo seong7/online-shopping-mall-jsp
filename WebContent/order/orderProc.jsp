@@ -59,12 +59,12 @@
 		
 		String msg = "";
 		 if(orderResult&&orderDetailResult){
-			//msg = "결재가 완료되었습니다.";
+			msg = "결재가 완료되었습니다.";
 			response.sendRedirect("order_end.jsp");
 			
 		}else{
 			msg = "결재실패";
-			out.println("order.jsp");
+			response.sendRedirect("order.jsp");
 		}
 %>
 <%-- <%=orderResult %>

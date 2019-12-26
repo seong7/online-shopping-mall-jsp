@@ -12,7 +12,28 @@ public class ProductBean {
 	private int p_info_pht_size;
 	private String p_date;
 	private int p_on_sale;
+	public int getSt_enter_qty() {
+		return st_enter_qty;
+	}
+	public void setSt_enter_qty(int st_enter_qty) {
+		this.st_enter_qty = st_enter_qty;
+	}
+	public int getSt_waste_qty() {
+		return st_waste_qty;
+	}
+	public void setSt_waste_qty(int st_waste_qty) {
+		this.st_waste_qty = st_waste_qty;
+	}
+	public String getSt_exp_date() {
+		return st_exp_date;
+	}
+	public void setSt_exp_date(String st_exp_date) {
+		this.st_exp_date = st_exp_date;
+	}
 	private int st_ava_qty;
+	private int st_enter_qty;
+	private int st_waste_qty;
+	private String st_exp_date;
 	
 	public int getP_code() {
 		return p_code;

@@ -1,15 +1,19 @@
+<%@page import="member.MemberBean"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
+<jsp:useBean id="mMgr" class="member.MemberMgr"/>
+<jsp:useBean id="oMgr" class="order.OrderMgr"/>
 <%
 		request.setCharacterEncoding("EUC-KR");
 		String cpath = request.getContextPath();
-		
-	
+		MemberBean bean = null;
+		int countDeliver = oMgr.countDeliver(id);
 
 		if(id==null || id.length()==0){
 			response.sendRedirect(cpath+"/index.jsp");
 			return;
-		}
-		
+		}else{
+			bean = mMgr.getMember(id);			
+		}		
 %>
 
 
@@ -27,7 +31,7 @@
               <ul id="mypage_summ_ul">
                   <li id="summ_first">
                       <div class="top">
-                          <span id="name" class="bold">김성진</span>
+                          <span id="name" class="bold"><%=bean.getNAME() %></span>
                           <span id="name_top" class="text">님</span>
                       </div>
                       <div class="bottom">
@@ -48,7 +52,7 @@
                           <span id="del_top" class="text">배송중인 주문</span>
                       </div>
                       <div class="bottom">
-                          <span id="del" class="bold">2</span>
+                          <span id="del" class="bold"><%=countDeliver%></span>
                           <span id="del_bottom" class="text">건</span>
                       </div>
                   </li>

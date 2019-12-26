@@ -14,16 +14,7 @@
 		bean.setP_code(p_code);
 		bean.setSt_enter_qty(st_enter_qty);
 		bean.setSt_exp_date(st_exp_date);
-		//mgr.insertStock(bean);
-		
-		//System.out.println(opname);
-		//System.out.println(opcode);
-		System.out.println(p_code);
-		System.out.println(p_name);
-		System.out.println(st_enter_qty);
-		System.out.println(st_exp_date);
-		
-		
+		mgr.insertStock(bean);		
 %>
 <script>
 	location.href="goods_stock.jsp";
