@@ -22,9 +22,10 @@
 		int p_code = 0;
 		int o_qty = 0;
 		int unitPrice = 0;
-		int totalPrice = 0;
+		int totalPrice =0;
 		int sum = 0;
 		int countPart = 0; 
+
 		String o_id = (String)session.getAttribute("idKey");
 
 		String flag = request.getParameter("flag");
@@ -73,7 +74,8 @@
  -->
 
 
-<link rel="stylesheet" type="text/css" href="css/order.css"/>
+<!-- <link rel="stylesheet" type="text/css" href="css/order.css"/>-->
+<link rel="stylesheet" type="text/css" href="../vscode__utf8/order/css/order.css"/>
 
 <%@ include file="../top.jsp"%>
 
@@ -125,18 +127,22 @@
                             <img alt="제품사진" src="../img/product/fus_main1.jpg">
                             <!-- <img alt="제품사진" src="${pageContext.request.contextPath}/img/product/<%=pbean.getP_main_pht_name()%>"> -->
                             </td>
-                            <td>
+                            <td class="btn_td">
                             	<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
                             		<%=pbean.getP_name() %>
                             	</a>
                             </td>
+                         <!--  td 태그의  name ? :  확인 필요 -->
                             <td name="tr_qty"><%=o_qty %>개</td>
                             <td>
-                             <input type="hidden" value="<%=cbean.getP_code()%>" name="p_code">
+                             <input type="hidden" value="<%=pbean.getP_code()%>" name="p_code">
                       		  <input type="hidden" value="<%=o_qty%>" name="o_qty">
                             </td>
-                            <td name="tr_price"><%=UtilMgr.intFormat(totalPrice) %>원</td>
-                            <input type="hidden" name="p_price" value="<%=totalPrice %>">
+                         <!--  td 태그의  name ? :  확인 필요 -->
+                            <td name="tr_price">
+                            	<%=UtilMgr.intFormat(totalPrice) %>원
+	                            <input type="hidden" name="p_price" value="<%=totalPrice %>">
+                            </td>
                         </tr>
                         <%
                                 }
@@ -245,7 +251,8 @@
 	                            <td id="total_price_td">
   	                                <span id="o_total_amount"><%=UtilMgr.intFormat(sum+shippingPrice)%></span>원
   	                                <input type="hidden" name="o_total_amount" value="<%=sum+shippingPrice%>">
-	                                <span id="total_point">(구매 시 <%=UtilMgr.intFormat((int)(sum*pointRate))%>P 적립)</span>
+	                                <span id="total_point">구매 시 <%=UtilMgr.intFormat((int)(sum*pointRate))%>P 적립</span>
+
 	                            </td>
 	                        </tr>
 	                        <!-- <tr>
@@ -301,9 +308,7 @@
                 <section id="order_private">
                     <h3 class="order_subtitle">개인정보 수집/제공*</h3>
                     <table class="verHead">
-                       <!--  <tr>
-                            <th>개인정보 수집/제공*</th>
-                        </tr> -->
+
                         <tr>
                             <th>
                             	<span>결제진행 필수동의</span>

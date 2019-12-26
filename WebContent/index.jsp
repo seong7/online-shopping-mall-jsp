@@ -5,7 +5,7 @@
 <%@page import="java.text.DecimalFormat" %>
 <%@page import="product.productUtil"%>
 
-<jsp:useBean id="mgr" class="product.ProductMgr" />
+<jsp:useBean id="index_mgr" class="product.ProductMgr" />
 <%
 		request.setCharacterEncoding("EUC-KR");
 		
@@ -37,7 +37,7 @@
 				<img class="mySlides" src="./img/index/banner/banner_sample3.png">
            </div>	
             <%
-	            vlist = mgr.getGoodsList("indexBest");
+	            vlist = index_mgr.getGoodsList("indexBest");
             %>
             
             
@@ -82,7 +82,7 @@
 	           	 <!-- 신상품 구역-->
 	           	 
 	         <%
-	            vlist = mgr.getGoodsList("indexNew");
+	            vlist = index_mgr.getGoodsList("indexNew");
             %>
 	           	 
 	            <div class="goodslist" id="goodslist_new">
