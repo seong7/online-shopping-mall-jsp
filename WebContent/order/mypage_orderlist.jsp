@@ -34,7 +34,6 @@
 					
 					if(vlist.isEmpty()){
 				%>
-				<tr> 
 					<tr>
 						<td colspan="5">
 						주문하신 물품이 없습니다.

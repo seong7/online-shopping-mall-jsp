@@ -26,24 +26,24 @@
 		int sum = 0;
 		int countPart = 0; 
 		String o_id = (String)session.getAttribute("idKey");
-
 		String flag = request.getParameter("flag");
 		
 		Vector goods = new Vector();
-	
 		
 		// flag (카트인지 제품 하나 구매인지 구분 )  에 따라 Vector goods 에 정보 넣어줌
 		if(flag.equals("oneProduct")){
+			System.out.print(flag);
 			p_code = Integer.parseInt(request.getParameter("p_code"));
 			ProductBean pbean = pMgr.getProduct(p_code);
 			goods.add(pbean);
 			
 		}else if(flag.equals("cart")){
-			//String value1 = request.getParameter("flag");
+			System.out.print(flag);
+			String value1 = request.getParameter("flag");
 			String[] value2 = request.getParameterValues("fch");
 			//System.out.println(o_id);
-			//CartMgr mgr = new CartMgr();
-			//Vector<CartBean> cvlist = new  Vector<CartBean>();
+			CartMgr mgr = new CartMgr();
+			Vector<CartBean> cvlist = new  Vector<CartBean>();
 			for(int i=1; i<value2.length; i++){
 				goods.add(cMgr.getCartOneOrder(o_id, Integer.parseInt(value2[i])));
 			}
@@ -62,7 +62,7 @@
 		double pointRate = 0.05;  /* 5% 적립으로 가정 */
 
 %>
-
+<%=flag %>
 <!-- 
 <!DOCTYPE html>
 <html>
@@ -71,7 +71,6 @@
 </head>
 <body>
  -->
-
 
 <link rel="stylesheet" type="text/css" href="css/order.css"/>
 
@@ -103,7 +102,7 @@
                     
                     /* 물건 하나 구매할 때*/
                     if(flag.equals("oneProduct")){
-                        pbean = (ProductBean)goods.get(i);	
+                     	pbean = (ProductBean)goods.get(i);	
                         o_qty = Integer.parseInt(request.getParameter("quantity"));
                         
                         /* 장바구니 구매할 때 */
@@ -112,7 +111,6 @@
                         o_qty = cbean.getC_qty();
                         pbean = pMgr.getProduct(cbean.getP_code());
                         %>
-                        <%=o_qty %>
                         <%
                     }
                     unitPrice = pbean.getP_price();
@@ -132,11 +130,11 @@
                             </td>
                             <td name="tr_qty"><%=o_qty %>개</td>
                             <td>
-                             <input type="hidden" value="<%=cbean.getP_code()%>" name="p_code">
+                             <input type="hidden" value="<%=pbean.getP_code()%>" name="p_code">
                       		  <input type="hidden" value="<%=o_qty%>" name="o_qty">
                             </td>
                             <td name="tr_price"><%=UtilMgr.intFormat(totalPrice) %>원</td>
-                            <input type="hidden" name="p_price" value="<%=totalPrice %>">
+                            <td><input type="hidden" name="p_price" value="<%=totalPrice %>"></td>
                         </tr>
                         <%
                                 }
@@ -184,20 +182,67 @@
                         <tr>
                             <th>배송주소</th>
                             <td>
-                            	<input class="input_zipcode" name="o_recpt_add" readonly value="<%=order.getO_recpt_add()%>"><input id="addr_btn" class="btn" type="button" value="주소검색">
+                            <input type="text" id="o_recpt_zipcode"  name="o_recpt_zipcode" readonly	value="<%=order.getO_recpt_zipcode()%>">
+							<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+							<input type="text" id="o_recpt_add" name="o_recpt_add" readonly value="<%=order.getO_recpt_add()%>"><br>
+							<input type="text" id="o_recpt_add_det" name="o_recpt_add_det" value="<%=order.getO_recpt_add_det()%>">
+							<input type="text" id="sample6_extraAddress" placeholder="참고항목">
+							<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+							<script>
+							    function sample6_execDaumPostcode() {
+							        new daum.Postcode({
+							            oncomplete: function(data) {
+							                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+							
+							                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+							                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+							                var addr = ''; // 주소 변수
+							                var extraAddr = ''; // 참고항목 변수
+							
+							                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+							                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+							                    addr = data.roadAddress;
+							                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+							                    addr = data.jibunAddress;
+							                }
+							
+							                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+							                if(data.userSelectedType === 'R'){
+							                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+							                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+							                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+							                        extraAddr += data.bname;
+							                    }
+							                    // 건물명이 있고, 공동주택일 경우 추가한다.
+							                    if(data.buildingName !== '' && data.apartment === 'Y'){
+							                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+							                    }
+							                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+							                    if(extraAddr !== ''){
+							                        extraAddr = ' (' + extraAddr + ')';
+							                    }
+							                    // 조합된 참고항목을 해당 필드에 넣는다.
+							                    document.getElementById("sample6_extraAddress").value = extraAddr;
+							                
+							                } else {
+							                    document.getElementById("sample6_extraAddress").value = '';
+							                }
+							
+							                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+							                document.getElementById('o_recpt_zipcode').value = data.zonecode;
+							                document.getElementById("o_recpt_add").value = addr;
+							                // 커서를 상세주소 필드로 이동한다.
+							                document.getElementById("o_recpt_add_det").focus();
+							            }
+							        }).open();
+							    }
+							</script>
                             </td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td><input class="input_zipcode" name="o_recpt_add_det"  value="<%=order.getO_recpt_add_det()%>"></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><input class="input_zipcode" name="o_recpt_zipcode" readonly value="<%=order.getO_recpt_zipcode()%>"></td>
-                        </tr>
-                        <tr>
                             <th>수령인 이름</th>
-                            <td><input name="o_recpt_name" value="<%=order.getO_recpt_name()%>"></td>
+                            <td><input name="o_recpt_name" 
+                            value="<%=order.getO_recpt_name()%>"></td>
                         </tr>
                         <tr>
                             <th>휴대폰</th>
@@ -324,12 +369,22 @@
                     <input type="hidden" name="o_id" id="order_id" value="<%=o_id%>">
                     <input type="hidden" name="o_status" value="<%=o_status%>">
                     <input type="hidden" name="countPart" value="<%=countPart%>">
-                    <%for(int i =0; i<countPart;i++){ %>
-                        <input type="hidden" name="o_qty" value="<%=o_qty%>">
-                        <input type="hidden" name="p_code" value="<%=p_code%>">
-                    <%} %>
+                    <input type="hidden" name="mName" value="<%=mName%>">
+                
                     <div class="order_btn_wrapper">
-                        <input type="submit" class="btn order_submit" value="결제하기" onclick="agreement()">
+                        <input type="button" class="btn order_submit" 
+                        value="결제하기" onclick="location.href='javascript:agreement()'">
+                        <script>
+                        function agreement(){//약관 미 동의시 진행안됨. 
+                    		var chk = document.getElementById("agreement");
+                    		if(chk.checked){
+                    			document.orderFrm.submit();
+                    			}else{ 
+                    			alert("약관에 동의해주세요.");
+                    			return;
+                    		}
+                    	}
+                        </script>
                     </div>
                 </section>
             </form>

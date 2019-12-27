@@ -22,11 +22,7 @@
 		String[] o_qty = request.getParameterValues("o_qty");
 		String[] p_code = request.getParameterValues("p_code");
 		int countPart =Integer.parseInt(request.getParameter("countPart"));
-		/* out.print(o_qty.length);
-		out.print("qty[0]:"+o_qty[0]);
-		out.print("qty[1]:"+o_qty[1]);
-		out.print("code[0]:"+p_code[0]);
-		out.print("code[1]: "+p_code[1]); */
+		String mName =request.getParameter("mName");
 		
 		//order insert
 		bean.setO_id(o_id);
@@ -60,7 +56,7 @@
 		String msg = "";
 		 if(orderResult&&orderDetailResult){
 			//msg = "결재가 완료되었습니다.";
-			response.sendRedirect("order_end.jsp");
+			response.sendRedirect("order_end.jsp?mName="+mName+"&o_total_amount="+o_total_amount);
 			
 		}else{
 			msg = "결재실패";
@@ -72,11 +68,4 @@
 			response.sendRedirect("order.jsp");
 		}
 		%>
-<%-- <%=orderResult %>
-<%=orderDetailResult %>
-<%=countPart %> --%>
-<!-- <script>
-
-	location.href = "mypage_orderlist.jsp";
-</script> -->
 

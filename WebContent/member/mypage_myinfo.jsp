@@ -60,7 +60,7 @@
 	<%
 		request.setCharacterEncoding("EUC-KR");
 		String access = (String)session.getAttribute("myinfo_access");
-		MemberBean bean = null;	
+		MemberBean mbean = null;	 //bean 객체 중복으로 이름변경 bean->mbean
 	
 		if(access==null || access.length()==0){
 			if(id==null || id.length()==0){
@@ -72,7 +72,7 @@
 			}
 		}else{
 			session.removeAttribute("myinfo_access");
-			bean = mgr.getMember(id);
+			mbean = mgr.getMember(id);
 		}
 	%>
 
