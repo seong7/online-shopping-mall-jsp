@@ -51,7 +51,7 @@
         
                                 <tr>
                                     <th>力前内靛</th>
-                                    <td><input name="p_code" value="<%=bean.getP_code()%>" readonly>                                                            	
+                                    <td><input name="p_code" value="<%=bean.getP_code()%>" readonly></td>                                                         	
                                     <th>力前疙</th>
                                     <td><input class="1 readChange" name="p_name" value="<%=bean.getP_name()%>" disabled></td>
                                 </tr>
