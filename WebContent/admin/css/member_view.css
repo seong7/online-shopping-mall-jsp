@@ -1,16 +1,3 @@
-#member_address{
-	width: 360px;
-}
-#member_address_detail{
-	width: 480px;
-}
-#addr_btn{
-	width: 110px;
-}
-#view_btn_wrapper{¡¡
--webkit-flex-direction:row;
-¡¡flex-direction:row;
-}
 .disabled {
     pointer-events: none;
     background-color: #eee;

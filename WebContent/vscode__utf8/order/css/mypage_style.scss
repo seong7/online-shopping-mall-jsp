@@ -228,7 +228,7 @@ input{
     }
 }
     
-.mypage_table {
+.mypage_table .memInfo_table{
     margin-top: 20px;
     border-collapse:collapse;
     width: 100%;
@@ -385,4 +385,11 @@ input{
     left:60%;
     top:65%;
     border: 1px solid $brandColor1;
+}
+
+.disabled {
+    pointer-events: none;
+    background-color: #eee;
+    color: #555;
+    opacity: 1;
 }

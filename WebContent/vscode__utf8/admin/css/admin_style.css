@@ -347,15 +347,22 @@
   font-size: 17px;
 }
 
+.submit_wrapper #delete {
+  background: rgba(255, 95, 89, 0.2);
+  width: auto;
+  border: 1px solid #FF5F59;
+  color: #FF5F59;
+}
+
 .btn {
-  height: 30px;
-  width: 70px;
-  border: 2px solid #FB9832;
+  height: 40px;
+  width: 100px;
+  border: 1px solid #FB9832;
   background-color: white;
   border-radius: 3px;
   color: #FB9832;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .btn:active {
@@ -365,6 +372,10 @@
 
 .btn:hover {
   cursor: pointer;
+}
+
+#addr_btn {
+  width: auto;
 }
 
 /** 페이지네이션 버튼 테이블 **/
@@ -408,7 +419,9 @@
 
 /** goods_view.jsp 에서만 **/
 #chgread1 {
-  margin-left: 600px;
+  position: relative;
+  top: 5px;
+  left: 550px;
 }
 
 /*** goods_insert.jsp 에만 ***/
@@ -444,5 +457,53 @@
   left: 63%;
   top: 65%;
   border: 1px solid #fec084;
+}
+
+/** member_view.jsp 에서만 **/
+.memInfo_table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+  color: #333;
+}
+
+.memInfo_table th {
+  font-size: 16px;
+  width: 150px;
+}
+
+.memInfo_table td {
+  font-family: "MS Shell Dlg 2";
+  font-size: 16px;
+}
+
+.memInfo_table tr {
+  height: 50px;
+}
+
+.memInfo_table th, .memInfo_table td {
+  height: 30px;
+  padding: 0px;
+}
+
+.memInfo_table input {
+  display: inline-block;
+  width: 210px;
+  padding-left: 10px;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 1px solid #dcdbde;
+}
+
+.memInfo_table input:focus {
+  border: 1px solid #FB9832;
+}
+
+.memInfo_table .input_zipcode {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 400px;
 }
 /*# sourceMappingURL=admin_style.css.map */
