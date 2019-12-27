@@ -1,5 +1,6 @@
 <!--주문내역 저장 및 카트 삭제  -->
-<%@page contentType="text/html; charset=EUC-KR"%>
+<%@page import="java.net.URLEncoder"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <jsp:useBean id="mgr" class="order.OrderMgr"/>
 <jsp:useBean id="cmgr" class="order.CartMgr"/>
 <jsp:useBean id="bean" class="order.OrderBean"/>
@@ -23,7 +24,6 @@
 		String[] p_code = request.getParameterValues("p_code");
 		int countPart =Integer.parseInt(request.getParameter("countPart"));
 		String mName =request.getParameter("mName");
-		
 		//order insert
 		bean.setO_id(o_id);
 		bean.setO_recpt_name(o_recpt_name);
@@ -56,8 +56,9 @@
 		String msg = "";
 		 if(orderResult&&orderDetailResult){
 			//msg = "결재가 완료되었습니다.";
+			mName = URLEncoder.encode(mName);
 			response.sendRedirect("order_end.jsp?mName="+mName+"&o_total_amount="+o_total_amount);
-			
+
 		}else{
 			msg = "결재실패";
 			%>
