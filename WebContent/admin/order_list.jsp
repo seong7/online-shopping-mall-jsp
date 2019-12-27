@@ -100,7 +100,7 @@
  					분류별 검색
  				</th>
 	  			<td>
-	   				<select id="p_select" name="keyField">
+	   				<select id="m_select" name="keyField">
 	    				<option value="o_id"> 주문자 ID</option>
 	    				<option value="o_index">주문번호</option>
 	    				<option value="o_status"> 주문상태</option>
@@ -141,9 +141,9 @@
 		<table class="mgr_table horHead">
 			 <tr>
 			 		<th>번호</th>
+		          <th>주문번호</th>
 		          <th>주문자 ID</th>
 		          <th>주문일시</th>
-		          <th>주문번호</th>
 		          <th>주문금액</th>
 		          <th>주문상태</th>
 		           <th>반품여부</th>
@@ -166,10 +166,10 @@
 				%>
 			<tr>
 				<td><%=totalRecord-start-i %></td>
+				<td class="btn_td"><a class="order_num_btn" href="javascript:read('<%=order.getO_index()%>')">
+				<%=order.getO_index()%></a></td>
 				<td><%=order.getO_id()%></td>
 				<td><%=order.getO_date()%></td>
-				<td><a class="order_num_btn" href="javascript:read('<%=order.getO_index()%>')">
-				<%=order.getO_index()%></a></td>
 				<td><%=UtilMgr.monFormat(o_total_amount)%>원</td>
 				<td><%=order.getO_status()%></td>
 				<td></td>

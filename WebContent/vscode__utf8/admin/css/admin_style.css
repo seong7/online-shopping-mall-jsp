@@ -60,7 +60,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100%;
   min-height: 600px;
   width: 150px;
 }
@@ -243,7 +242,7 @@
           box-sizing: border-box;
 }
 
-#manager form {
+#manager form, #manager .form_wrapper {
   width: 97%;
   padding-left: 20px;
 }
@@ -319,11 +318,20 @@
 .horHead td a {
   text-decoration: none;
   color: inherit;
-  border-bottom: 0.5px solid #333;
 }
 
 .horHead td a:hover {
   color: #FB9832;
+}
+
+.btn_td a {
+  font-family: "ON_IGothic";
+  text-decoration: none;
+  color: inherit;
+}
+
+.btn_td:hover a {
+  color: #fec084;
 }
 
 .submit_wrapper {
@@ -393,7 +401,7 @@
   cursor: pointer;
 }
 
-#p_select {
+#m_select {
   width: 200px;
   margin-right: 21px;
 }
