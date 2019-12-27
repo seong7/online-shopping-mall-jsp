@@ -1,22 +1,10 @@
+<!-- member connect -->
 <%@page import="admin.UtilMgr"%>
 <%@page import="java.util.Vector"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
 	<jsp:useBean id="bean" class="admin.StockBean"/>
 	<jsp:useBean id="amgr" class="admin.ProductMgr"/>
 	<jsp:useBean id="smgr" class ="admin.StockMgr"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
-	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
-	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-	<link rel="stylesheet" type="text/css" href="./css/goods_stock.css">
-	
-
-		
 <%
 	request.setCharacterEncoding("EUC-KR");
 	
@@ -24,9 +12,13 @@
 	int st_enter_qty = bean.getSt_enter_qty	();
 	String st_exp_date = bean.getSt_exp_date();				
 %>
- <html>
- <head> 
- </head>
+<%@ include file="../top.jsp" %>
+
+<%@ include file="./admin_side.jsp"%> 
+<!--------------->
+<!--  작업 영역  -->
+<!--------------->
+	<div id="manager">
  <!-- 모달 -->
  <div id="modalDiv2">
     <div id="modalInnerFrame2">
@@ -74,8 +66,7 @@
       			</p>      			 
     	  </form>
       </div>
-      <hr>
-	  <form name="stfrm" method="get"  action="goods_stockProc.jsp">
+  <form name="stfrm" method="get"  action="goods_stockProc.jsp">
 	  <div>			
 			<p>제품명 <input name ="p_name" id="stfrm_name" ></p>
             <p>제품코드 <input name ="p_code" id="stfrm_code" ></p> 						
@@ -85,7 +76,6 @@
       </div>
  </form>
     
- <hr>
  <h2>검색결과</h2>
  <label>
  <input type="checkbox" id="waste_qty_include"> 폐기 제품 포함
@@ -115,6 +105,9 @@
  
 
  </div>
+ 
+ </div>
+ 
  <script src="./js/goods_stock.js"></script>
     <script type="text/javascript">      
 	function submitStock() {
@@ -136,5 +129,13 @@
  		document.searchFrm.submit();
  	}    
       </script>
-
+<!----------------->
+<!--  작업 영역 끝 -->
+<!----------------->
+	
+</div> <!--  #btn_manager_wrapper (버튼메뉴 + manager) : admin_side.jsp 에서 열림-->
+</div> <!-- #main (상단요약 + 버튼 + manager) : admin_side.jsp 에서 열림-->
+	<%@ include file="../bottom.jsp" %>
+<script src="js/member_connect.js"></script>
+</body>
 </html>
