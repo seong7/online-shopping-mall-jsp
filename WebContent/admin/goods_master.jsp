@@ -76,7 +76,7 @@
 				<tr>
 					<th>제품명</th>
 					<td>
-						<select id="p_select" name ="pnameList" onchange = "listSelect()">
+						<select id="m_select" name ="pnameList" onchange = "listSelect()">
 						<option value ="">제품명 선택</option>
 						<%for(int i=0; i<pnameList.length;i++){  %>
 						<option value ="<%=pnameList[i]%>"><%=pnameList[i]%></option>
@@ -140,10 +140,11 @@
 					<tr>
 					<td>
 					     <input class="checkbox" type ="checkbox" name="fch" value="<%=p_code%>" onclick="chk()" >
-					</td>						
-					<td><a href="goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_code() %></a></td>
-					<td><a href="../product/goods_view.jsp?goods=<%=pbean.getP_code()%>"><%=pbean.getP_name() %></a></td>
+					</td>
+					<td class="btn_td"><a href="goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_code() %></a></td>
+					<td class="btn_td"><a href="../product/goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_name() %></a></td>
 					<td><%=UtilMgr.monFormat(pbean.getP_price())%>원</td>
+
 					<td><%=pbean.getP_date() %></td>
 <!--if p_on_sale is 1 then ○ else X  -->
 					<%if(pbean.getP_on_sale()==1){ %>
