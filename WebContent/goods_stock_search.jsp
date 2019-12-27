@@ -29,7 +29,6 @@ public String makeKor(String s) throws java.io.UnsupportedEncodingException{
 	request.setCharacterEncoding("UTF-8");
 	String searchValue = URLDecoder.decode(request.getParameter("searchValue"), "UTF-8"); 
 	String type = request.getParameter("searchType");
-	
 	System.out.println("타입은" + type);
 	System.out.println("search.jsp에서는 : "+searchValue);
 	JSONArray arrayObj = new JSONArray();
