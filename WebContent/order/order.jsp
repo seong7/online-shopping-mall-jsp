@@ -1,6 +1,7 @@
 <!-- 사용자 주문서 page: cart.jsp에서 수량가져옴. -->
 
-<%@ page contentType="text/html; charset=EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@page import="product.UtilMgr"%>
 <%@page import="order.OrderBean"%>
 <%@page import="member.MemberBean"%>
@@ -25,6 +26,11 @@
 		int totalPrice =0;
 		int sum = 0;
 		int countPart = 0; 
+		String name;
+		String contact;
+		int zipcode;
+		String add;
+		String addDetail;
 
 		String o_id = (String)session.getAttribute("idKey");
 		String flag = request.getParameter("flag");
@@ -84,7 +90,7 @@
             <span class="description">주문하실 상품명 및 수량을 정확하게 확인해주세요.</span>
         </div>
 
- <form name="orderFrm" method="get" action="./orderProc.jsp">
+ <form name="orderFrm" method="post" action="./orderProc.jsp">
         <section id="order_product">
             <h3 class="order_subtitle">상품정보</h3>
             <table class="horHead" id="order_table">
@@ -156,8 +162,11 @@
                     String mName = mbean.getNAME();
                     String mContact = mbean.getContact();
                     String mEmail = mbean.getEmail();
-					                    
+                    int mZipcode = mbean.getZipcode();
+                    String mAdd = mbean.getAddress();
+                    String mAddDetail = mbean.getAddress_detail();
                 %>
+                
                         <th>보내는 분</th>
                         <td><%=mName %></td>
                     </tr>
@@ -178,15 +187,28 @@
                     <table class="verHead">
                             <%
                                 Vector<OrderBean> olist = oMgr.getOrder(o_id);
-                                OrderBean order = olist.get(0); //최근 주문 정보 
+                            if(olist.isEmpty()){//회원정보 
+                            	name = mName;
+                        		contact =mContact;
+                        		zipcode = mZipcode;
+                        		add = mAdd;
+                        		addDetail =mAddDetail;
+                            }else{
+                            	OrderBean order = olist.get(0); //최근 주문 정보
+                            	name = order.getO_recpt_name();
+                        		contact =order.getO_recpt_contact();
+                        		zipcode = Integer.parseInt(order.getO_recpt_zipcode());
+                        		add = order.getO_recpt_add();
+                        		addDetail =order.getO_recpt_add_det();
+                            }
                             %>
                         <tr>
                             <th>배송주소</th>
                             <td>
-                            <input type="text" id="o_recpt_zipcode"  name="o_recpt_zipcode" readonly	value="<%=order.getO_recpt_zipcode()%>">
+                            <input type="text" id="o_recpt_zipcode"  name="o_recpt_zipcode" readonly	value="<%=zipcode%>">
 							<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-							<input type="text" id="o_recpt_add" name="o_recpt_add" readonly value="<%=order.getO_recpt_add()%>"><br>
-							<input type="text" id="o_recpt_add_det" name="o_recpt_add_det" value="<%=order.getO_recpt_add_det()%>">
+							<input type="text" id="o_recpt_add" name="o_recpt_add" readonly value="<%=add%>"><br>
+							<input type="text" id="o_recpt_add_det" name="o_recpt_add_det" value="<%=addDetail%>">
 							<input type="text" id="sample6_extraAddress" placeholder="참고항목">
 							<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 							<script>
@@ -243,11 +265,11 @@
                         <tr>
                             <th>수령인 이름</th>
                             <td><input name="o_recpt_name" 
-                            value="<%=order.getO_recpt_name()%>"></td>
+                            value="<%=name%>"></td>
                         </tr>
                         <tr>
                             <th>휴대폰</th>
-                            <td><input name="o_recpt_contact"  value="<%=order.getO_recpt_contact()%>"></td>
+                            <td><input name="o_recpt_contact"  value="<%=contact%>"></td>
                         </tr>
                         
                         <tr>
