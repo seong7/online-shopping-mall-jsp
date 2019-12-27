@@ -17,20 +17,20 @@
        
        	<div class="form_wrapper">
             <h3 class="inner_title">회원정보 검색</h3>
-                        <table class="mgr_table verHead" id="search_table">
-                            <tr>
-                                <th>검색어</th>
-                                <td>
-                                    <select id="select_type">
-                                        <option>ID</option>
-                                        <option>이름</option>
-                                        <option>Email</option>
-                                    </select>
-                                    <input  placeholder="내용을 입력해주세요" id="select_value">
-                                    <input type="button" value="검색" id="member_search_btn">
-                                </td>
-                            </tr>
-                        </table>
+	             <table class="mgr_table verHead" id="search_table">
+	                 <tr>
+	                     <th>검색어</th>
+                         <td>
+	                         <select id="select_type">
+	                             <option>ID</option>
+	                             <option>이름</option>
+	                             <option>Email</option>
+	                    	 </select>
+	                         <input  placeholder="내용을 입력해주세요" id="select_value">
+	                         <input type="button" value="검색" id="member_search_btn">
+                     </td>
+                 </tr>
+             </table>
        	</div>
     
     	<div class="form_wrapper">
