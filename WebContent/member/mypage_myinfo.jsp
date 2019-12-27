@@ -81,8 +81,9 @@
 			<h1 class="title">개인 정보 수정</h1>
 
 				<div id="daumWrap3"></div>
+				
 			<form id="myinfo_form" name="myinfoForm" method="post" action="mypage_myinfo_Proc.jsp">
-				<table class="mypage_table verHead" id="myinfo_table">
+				<table class="mypage_table verHead memInfo_table" id="myinfo_table">
 					<tr>
 						<th>아이디</th>
 						<td>
@@ -128,9 +129,9 @@
 					</tr>
 					<!-- <div id="address_section"> -->
 						<tr>
-							<th id="address_th">우편번호</th>
+							<th id="address_th">주소</th>
 							<td id="address_td">
-								<input id="zip_btn" class="btn" name="zip_btn" type="button" value="주소" />
+								<input id="zip_btn" class="btn" name="zip_btn" type="button" value="주소 찾기" />
 								<input class="input_zipcode" id="myinfo_zipcode" name="zipcode"type="text" value="<%=myInfoBean.getZipcode()%>" readonly /> 
 								<input class="input_zipcode" id="myinfo_addr" name="address" type="text" value="<%=myInfoBean.getAddress()%>" readonly />
 								<input class="input_zipcode" id="myinfo_detail_addr" name="address_detail" type="text" value="<%=myInfoBean.getAddress_detail()%>" placeholder="상세주소를 입력하세요.">
