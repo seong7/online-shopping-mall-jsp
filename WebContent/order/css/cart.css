@@ -4,3 +4,8 @@ input {
   font-size:15px;
   text-align: center;
 }
+img {
+  width: 100px;
+  height: 0 auto;
+  
+}
