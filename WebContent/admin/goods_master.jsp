@@ -5,7 +5,6 @@
 <%@page import="java.util.Vector"%>
 <%@page import="product.ProductBean"%>
 <jsp:useBean id="amgr" class="admin.ProductMgr"/>
-<jsp:useBean id="util" class="admin.UtilMgr"/>
 <link rel="stylesheet" type="text/css" href="../css/util.css">
 <%
 		request.setCharacterEncoding("EUC-KR");
