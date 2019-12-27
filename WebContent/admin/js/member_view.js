@@ -16,10 +16,10 @@ function init(){
     console.log('업데이트 완료');
     let update_btn_readonly_off = 0;
     let page_loading_flag = 0;	//페이지 로딩여부
-    
-    member_delete_btn.style.backgroundColor = "#FF5F59";
 
+	addr_btn.disabled = true; // 주소버튼 disabled 초기화 
     openDaumZipAddress();
+    
     function ajaxEvent(){
     	if(!page_loading_flag){
     		console.log("ajax inn");
@@ -116,15 +116,16 @@ function init(){
     	    })
     	}
     	else{
-    		alert('삭제가 취소되었습니다.');
+//    		alert('삭제가 취소되었습니다.');
     	}
     })
     member_update_btn.addEventListener('click', function(){
     	if(update_btn_readonly_off===1){
     		update_btn_readonly_off = 0;	//수정완료(데이터 전송)
-    		member_update_btn.value = "수정";
+    		member_update_btn.value = "수정하기";
 			addr_btn.disabled = true;
-    		member_update_btn.style.backgroundColor = "#fec084";
+    		member_update_btn.style.backgroundColor = "white";
+    		member_update_btn.style.color = "#FB9832";
     		member_inputs.forEach(function(items){
     		items.readOnly = true;
     		items.classList.add('disabled');
@@ -137,7 +138,8 @@ function init(){
     		member_update_btn.value = "수정완료";
 			addr_btn.disabled = false;
     		console.log('수정시작!');
-    		member_update_btn.style.backgroundColor = "#EB6B1C";
+    		member_update_btn.style.backgroundColor = "#FB9832";
+    		member_update_btn.style.color = "white";
     		member_inputs.forEach(function(items){
     			items.readOnly = false;
     			items.classList.remove('disabled');

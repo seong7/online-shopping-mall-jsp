@@ -12,7 +12,6 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import admin.NoticeBean;
-import admin.UtilMgr2;
 import member.DBConnectionMgr;
 
 public class AdminMgr {
@@ -261,5 +260,32 @@ public class AdminMgr {
 			} finally {
 				pool.freeConnection(con, pstmt);
 			}
+		}
+		
+		public Vector<IpBean> getipdata(){
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			Vector<IpBean> vlist = new Vector<IpBean>();
+			try {
+				con = pool.getConnection();
+				sql = "SELECT * FROM page_connection_tb";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				while(rs.next()){
+					IpBean bean = new IpBean();
+					bean.setC_index(rs.getInt(1));
+					bean.setC_id(rs.getString(2));
+					bean.setC_time(rs.getString(3));
+					bean.setC_ip(rs.getString(4));
+					vlist.add(bean);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pool.freeConnection(con, pstmt, rs);
+			}
+			return vlist;
 		}
 }

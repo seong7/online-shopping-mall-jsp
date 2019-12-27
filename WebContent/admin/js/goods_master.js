@@ -23,15 +23,19 @@
 			});
 		}
 		typeCheck();
-	}	   
-
-function check() {
-	f = document.SearchFrm;
-	if(f.p_name.value.length==0 && f.p_date1.value.length==0 && f.p_date2.value.length==0){
-		alert("제품명을 선택하세요");
-		f.p_name.focus();
-		return;
 	}
+
+function check() {	
+	console.log(!document.getElementById('p_date1').value);
+	if(!document.getElementById('p_date1').value && !document.getElementById('p_date2').value){
+		document.getElementById('p_date1').value = 0;
+		document.getElementById('p_date2').value = 0;
+	}
+	submit();
+}
+
+function submit(){
+	f = document.SearchFrm;
 	if(f.p_date1.value.length!=8 && f.p_date2.value.length==8){
 		alert("기간을 올바르게 입력해주세요 ex) 20191217")
 		f.p_date1.focus();
@@ -41,16 +45,11 @@ function check() {
 		alert("기간을 올바르게 입력해주세요 ex) 20191217")
 		f.p_date2.focus();
 		return;
-	}
+	}	
 	function list() {
 		document.listFrm.action = "goods_master.jsp";
 		document.listFrm.submit();
 	}	
-	if(f.p_date1.value.length!=8 || f.p_date1.value.length!=8){
-		alert("기간을 올바르게 입력해주세요 ex) 20191217")
-		f.p_date1.focus();
-		return;
-	}
 	f.submit();
 }
 

@@ -30,9 +30,7 @@
               <ul id="manager_summ_ul">
                   <li id="summ_first">
                   	
-                  	  <!-- 임시 메모  :: -->
-                      <span style="font-size: 12px; color: red;">관리자 모드의 요약창 <br/>(사용 여부: 미정 / 내용: 미정)</span>
-                  
+                  	                  
                       <div class="top">
                           <span id="name" class="bold">관리자</span>
                           <span id="name_top" class="text">님</span>
@@ -43,10 +41,10 @@
                   </li>                  
                   <li id="summ_last">
                       <div class="top">
-                          <span id="del_top" class="text">결제완료된 주문</span>
+                          <span id="del_top" class="text">배송 대기중인 주문</span>
                       </div>
                       <div class="bottom">
-                          <span id="del" class="bold"><%=countPayComplete%></span>
+                          <span id="del" class="bold"><a href="order_list.jsp"><%=countPayComplete%></a></span>
                           <span id="del_bottom" class="text">건</span>
                       </div>
                   </li>

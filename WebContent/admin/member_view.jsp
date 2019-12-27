@@ -3,7 +3,6 @@
 <link rel="stylesheet" type="text/css" href="css/index.css">
 <!-- <title>-관리자-제품 등록</title> -->
 
-
 <%@ include file="../top.jsp" %>
 
 	<%@ include file="./admin_side.jsp"%> 
@@ -20,47 +19,72 @@
 
 
 
-	<main>
+	
 	<div id="daumWrap2"></div>
+	
+	
 	  <div id="manager">   
-       <h3 class="inner_title">회원 정보</h3>
-		<table class="mgr_table verHead" id="search_table">
-		<tr >
-			<th>이름</th>
-			<td><input class="disabled" id="member_name" readonly></td>
-			<th>아이디</th>
-			<td><input class="disabled" id="member_id" value=<%=request.getParameter("id")%> readonly></td>
-		</tr>
-		<tr>
-			<th>생년월일</th>
-			<td><input class="member_inputs disabled" id="member_birthday"  readonly></td>
-			<th>가입일</th>
-			<td><input class="member_inputs disabled" id="member_joindate" readonly></td>
-		</tr>
-		<tr>
-			<th>연락처</th>
-			<td><input class="member_inputs disabled" id="member_contact" readonly></td>
-			<th>이메일</th>
-			<td><input class="member_inputs disabled" id="member_email" readonly></td>
-		</tr>
-		<tr>
-			<th>보유포인트</th>
-			<td><input class="disabled" id="member_point" readonly></td>
-			<th>우편번호</th>
-			<td><input class="disabled" id="member_zipcode" readonly></td>
-		</tr>
-		<tr>
-			<th>주소</th>
-			<td colspan="3"><input class="disabled" id="member_address" readonly><input id="addr_btn" name="zip_btn" type="button" value="주소 찾기" disabled="disabled" onclick="openDaumZipAddress();"/></td>
-		</tr>			
-			<th>상세주소</th>
-			<td colspan="3"><input class="member_inputs disabled" id="member_address_detail" readonly></td>
-		</tr>
-		</table>
-		<div id="view_btn_wrapper">
-			<input class="btn" id="update" type="button" value="수정"> 
+	  
+       <h1 class="title">회원 정보</h1>
+       
+       <div class="form_wrapper">
+       
+			<table class="verHead memInfo_table" id="search_table">
+				<tr >
+					<th>아이디</th>
+					<td><input class="disabled" id="member_id" value=<%=request.getParameter("id")%> readonly></td>
+				</tr>
+				<tr>
+					<th>이름</th>
+					<td><input class="disabled" id="member_name" readonly></td>
+				</tr>
+				<tr>
+					<th>생년월일</th>
+					<td><input class="member_inputs disabled" id="member_birthday"  readonly></td>
+				</tr>
+				<tr>
+					<th>가입일</th>
+					<td><input class="member_inputs disabled" id="member_joindate" readonly></td>
+				</tr>
+				<tr>
+					<th>연락처</th>
+					<td><input class="member_inputs disabled" id="member_contact" readonly></td>
+				</tr>
+				<tr>
+					<th>이메일</th>
+					<td><input class="member_inputs disabled" id="member_email" readonly></td>
+				</tr>
+				<tr>
+					<th>보유포인트</th>
+					<td><input class="disabled" id="member_point" readonly></td>
+				</tr>
+				<tr>
+					<th rowspan="4">주소</th>
+					<td>
+						<input class="btn" id="addr_btn" name="zip_btn" type="button" value="주소 찾기" onclick="openDaumZipAddress();"/>
+					</td>
+				</tr>
+				<tr>
+					<td><input class="disabled input_zipcode" id="member_zipcode" readonly></td>
+				</tr>
+				<tr>
+					<td>
+						<input class="disabled input_zipcode" id="member_address" readonly>
+					</td>
+				</tr>	
+				<tr>		
+					<td>
+						<input class="member_inputs disabled input_zipcode" id="member_address_detail" readonly>
+					</td>
+				</tr>
+			</table>
+       
+       
+       </div>
+		<div id="view_btn_wrapper" class="submit_wrapper">
+			<input class="btn" id="update" type="button" value="수정하기"> 
+			<input class="btn" id="search_order" type="button" onclick="location.href='order_list.jsp?keyField=o_id&keyWord=<%=request.getParameter("id")%>&nowPage=1'" value="주문정보">
 			<input class="btn" id="delete" type="button" value="회원 정보 삭제">
-			<input class="btn" id="search_order" type="button" value="주문정보">
 		</div>
 		<!--
 	<h3 class="inner_title">구매내역</h3>
@@ -82,7 +106,6 @@
 		</table>
 		  -->
 		  </div>
-		</main>
 		<script src="js/member_view.js"></script>
 		
 		
