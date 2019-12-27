@@ -15,6 +15,7 @@
     
         <h1 class="title">회원 정보</h1>
        
+       	<div class="form_wrapper">
             <h3 class="inner_title">회원정보 검색</h3>
                         <table class="mgr_table verHead" id="search_table">
                             <tr>
@@ -25,18 +26,16 @@
                                         <option>이름</option>
                                         <option>Email</option>
                                     </select>
-                                </td>
-                                <td>
                                     <input  placeholder="내용을 입력해주세요" id="select_value">
-                                </td>
-                                <td>
-                                    <input class="btn" type="button" value="검색" id="member_search_btn">
+                                    <input type="button" value="검색" id="member_search_btn">
                                 </td>
                             </tr>
                         </table>
+       	</div>
     
+    	<div class="form_wrapper">
             <h3 class="inner_title">회원 정보 List</h3>
-                        <table class="mgr_table verHead" id="result_table">
+                        <table  class="mgr_table horHead" id="result_table">
                             <tr id="judgeRow">
                                 <th>ID</th>
                                 <th>이름</th>
@@ -44,9 +43,10 @@
                                 <th>회원가입일</th>
                                 <th>이메일</th>
                                 <th>연락처</th>
-                                <th>주소</th>
+                                <!-- <th>주소</th> -->
                             </tr>
                         </table>
+          </div>
     </div>	
     
     
