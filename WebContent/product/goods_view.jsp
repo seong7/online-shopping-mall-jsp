@@ -9,8 +9,7 @@
 	String id_goods = (String)session.getAttribute("idKey");
 	
 	productUtil util = new productUtil();
-	//int p_code = Integer.parseInt(request.getParameter("goods"));
-	int p_code = 5;//È®ÀÎ¿ë 
+	int p_code = Integer.parseInt(request.getParameter("goods"));
 	
 	ProductBean bean = mgr.getProduct(p_code);
 

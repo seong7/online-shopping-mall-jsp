@@ -60,7 +60,7 @@
 	<%
 		request.setCharacterEncoding("EUC-KR");
 		String access = (String)session.getAttribute("myinfo_access");
-		MemberBean bean = null;	
+		MemberBean myInfoBean = null;	
 	
 		if(access==null || access.length()==0){
 			if(id==null || id.length()==0){
@@ -72,7 +72,7 @@
 			}
 		}else{
 			session.removeAttribute("myinfo_access");
-			bean = mgr.getMember(id);
+			myInfoBean = mgr.getMember(id);
 		}
 	%>
 
@@ -86,13 +86,13 @@
 					<tr>
 						<th>아이디</th>
 						<td>
-							<input name="id" id="myinfo_id" value="<%=bean.getId()%>" readonly>
+							<input name="id" id="myinfo_id" value="<%=myInfoBean.getId()%>" readonly>
 						</td>
 					</tr>
 					<tr>
 						<th>이름</th>
 						<td>
-							<input name="NAME" id="myinfo_name" value="<%=bean.getNAME()%>">
+							<input name="NAME" id="myinfo_name" value="<%=myInfoBean.getNAME()%>">
 						</td>
 					</tr>
 					<tr>
@@ -111,19 +111,19 @@
 					<tr>
 						<th>생년월일</th>
 						<td>
-							<input name="birthday" id="myinfo_birthday" placeholder="Ex)1900-01-01" value="<%=bean.getBirthday()%>">
+							<input name="birthday" id="myinfo_birthday" placeholder="Ex)1900-01-01" value="<%=myInfoBean.getBirthday()%>">
 						</td>
 					</tr>
 					<tr>
 						<th>이메일</th>
 						<td>
-							<input name="email" id="myinfo_email" placeholder="Ex)mills@gmail.com" value="<%=bean.getEmail()%>">
+							<input name="email" id="myinfo_email" placeholder="Ex)mills@gmail.com" value="<%=myInfoBean.getEmail()%>">
 						</td>
 					</tr>						
 					<tr>
 						<th>연락처</th>
 						<td>
-							<input name="contact" id="myinfo_contact"  placeholder="Ex)010-0000-0000" value="<%=bean.getContact()%>">
+							<input name="contact" id="myinfo_contact"  placeholder="Ex)010-0000-0000" value="<%=myInfoBean.getContact()%>">
 						</td>
 					</tr>
 					<!-- <div id="address_section"> -->
@@ -131,9 +131,9 @@
 							<th id="address_th">우편번호</th>
 							<td id="address_td">
 								<input id="zip_btn" class="btn" name="zip_btn" type="button" value="주소" />
-								<input class="input_zipcode" id="myinfo_zipcode" name="zipcode"type="text" value="<%=bean.getZipcode()%>" readonly /> 
-								<input class="input_zipcode" id="myinfo_addr" name="address" type="text" value="<%=bean.getAddress()%>" readonly />
-								<input class="input_zipcode" id="myinfo_detail_addr" name="address_detail" type="text" value="<%=bean.getAddress_detail()%>" placeholder="상세주소를 입력하세요.">
+								<input class="input_zipcode" id="myinfo_zipcode" name="zipcode"type="text" value="<%=myInfoBean.getZipcode()%>" readonly /> 
+								<input class="input_zipcode" id="myinfo_addr" name="address" type="text" value="<%=myInfoBean.getAddress()%>" readonly />
+								<input class="input_zipcode" id="myinfo_detail_addr" name="address_detail" type="text" value="<%=myInfoBean.getAddress_detail()%>" placeholder="상세주소를 입력하세요.">
 							</td>
 						</tr>
 					<!-- </div> -->

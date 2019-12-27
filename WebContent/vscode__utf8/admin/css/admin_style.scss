@@ -270,6 +270,7 @@ $tableBorder: 0.5px solid #dcdbde;
         a{
             text-decoration: none;
             color: inherit;
+            border-bottom: 0.5px solid #333;
             &:hover{
                 color: $brandColor2;
             }
@@ -309,6 +310,23 @@ $tableBorder: 0.5px solid #dcdbde;
     }
 }
 
+/** 페이지네이션 버튼 테이블 **/
+.pagination_tb{
+    a{
+        color:#333;
+        text-decoration: none;
+        display: inline-block;
+        margin:3px;
+        width:20px;
+        height:20px;
+        text-align:center;
+    }
+    #nowPage_btn{
+        color:coral;
+    }
+  }
+
+
 
 /** goods_master.jsp 에만 **/
 #search_btn, #member_search_btn{
@@ -345,4 +363,31 @@ $tableBorder: 0.5px solid #dcdbde;
 }
 .rm_pct{
     margin-top: 5px;
+}
+
+
+/*** member_list.jsp 에서만 ***/
+#order_number_frm{
+    display: inline;
+    position: relative;
+    left: 650px;
+    top: 30px;
+    select{
+        padding: 10px;
+        border: 1px solid #dcdbde;
+        border-radius: 3px;
+        width: 120px;
+    }
+}
+
+/** order_list.jsp 에서만 **/
+#order_list_title{
+    margin-top:0px;
+    
+}
+
+#daumWrap2{
+    left:63%;
+    top:65%;
+    border: 1px solid $brandColor1;
 }

@@ -20,7 +20,7 @@
 
             <h1 class="title">주문내역</h1>
             
-            <table class="mypage_table">
+            <table class="mypage_table horHead">
                 <tr id="column_tr">
                     <th>주문번호</th>
                     <th>제품명</th>
@@ -47,9 +47,10 @@
 						int count = order.getProduct_count();//제품갯수  
 				%>			
 				<tr>
-					<td class="btn_td"><a href="mypage_order_view.jsp?o_index=
+					<td class="btn_td"><a href="mypage_order_view.jsp?order=
 					<%=o_index%>"><%=o_index %></a></td>
-					<td class="btn_td"><a href="#"><%=order.getP_name()%>
+					<td class="btn_td"><a href="mypage_order_view.jsp?order=
+					<%=o_index%>"><%=order.getP_name()%>
 					<%if(count>1){%>
 					외<%=count-1 %>개</a></td>
 					<%}%>
