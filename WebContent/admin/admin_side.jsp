@@ -46,7 +46,7 @@
                           <span id="del_top" class="text">결제완료된 주문</span>
                       </div>
                       <div class="bottom">
-                          <span id="del" class="bold"><%=countPayComplete%></span>
+                          <span id="del" class="bold"><a href="order_list.jsp"><%=countPayComplete%></a></span>
                           <span id="del_bottom" class="text">건</span>
                       </div>
                   </li>

@@ -24,7 +24,7 @@ public class ProductMgr {
 		pool = DBConnectionMgr.getInstance();
 	}
 
-	// insertProduct
+	// insert Product
 	public boolean insertProduct(HttpServletRequest req) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -106,7 +106,7 @@ public class ProductMgr {
 		return flag;
 	}
 
-	// updateproduct
+	// update product
 	public boolean updateProduct(HttpServletRequest req) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -148,7 +148,7 @@ public class ProductMgr {
 				if (fd1.exists() && !fa.equals("ready.gif")) {
 					fd1.delete();}					
 			} else if(!fa.isEmpty() && !fa.equals("ready.gif") && multi.getFilesystemName("upFile1")==null ){
-				//NO upload file, YES uploaded file, nothing happen	
+				//NO upload file, YES uploaded file, will nothing happen	
 				pstmt.setString(4, fa);
 				pstmt.setInt(5, faa);
 			} else if(multi.getFilesystemName("upFile1")==null && fa.equals("ready.gif"))
@@ -164,7 +164,7 @@ public class ProductMgr {
 				if (fd2.exists()&& !fb.equals("ready.gif")) {
 					fd2.delete();}		
 			} else if(!fb.isEmpty() && !fb.equals("ready.gif") && multi.getFilesystemName("upFile2")==null ){
-				//NO upload file, YES uploaded file, nothing happen
+				//NO upload file, YES uploaded file, will nothing happen
 				pstmt.setString(6, fb);
 				pstmt.setInt(7, fbb);
 			}else if(multi.getFilesystemName("upFile2")==null && fb.equals("ready.gif"))
@@ -180,7 +180,7 @@ public class ProductMgr {
 				if (fd3.exists()&& !fc.equals("ready.gif")) {
 					fd3.delete();}		
 			} else if(!fc.isEmpty() && !fc.equals("ready.gif") && multi.getFilesystemName("upFile3")==null ){					
-				//NO upload file, YES uploaded file, nothing happen
+				//NO upload file, YES uploaded file, will nothing happen
 				pstmt.setString(8, fc);
 				pstmt.setInt(9, fcc);
 			} else if(multi.getFilesystemName("upFile3")==null && fc.equals("ready.gif"))
@@ -198,109 +198,9 @@ public class ProductMgr {
 			pool.freeConnection(con, pstmt);
 		}
 		return flag;
-	}
+	}	
 
-	// updateproduct2
-	public boolean updateProduct2(HttpServletRequest req) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		String sql = null;
-		boolean flag = false;
-		try {
-			MultipartRequest multi = new MultipartRequest(req, UPLOAD, MAXSIZE, ENCTYPE, new DefaultFileRenamePolicy());
-			String upFile1 = multi.getFilesystemName("upFile1");
-			String upFile2 = multi.getFilesystemName("upFile2");
-			String upFile3 = multi.getFilesystemName("upFile3");
-			File f1 = multi.getFile("upFile1");
-			File f2 = multi.getFile("upFile2");
-			File f3 = multi.getFile("upFile3");
-
-			con = pool.getConnection();
-			// 이미지 파일까지 수정
-			if (multi.getFilesystemName("upFile1") != null) {
-				int size1 = (int) f1.length();
-				sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
-						+ "p_main_pht_name=?, p_main_pht_size=? where p_code=? ";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, multi.getParameter("p_name"));
-				pstmt.setInt(2, Integer.parseInt(multi.getParameter("p_price")));
-				pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_on_sale")));
-				pstmt.setString(4, upFile1);
-				pstmt.setInt(5, size1);
-				pstmt.setInt(6, Integer.parseInt(multi.getParameter("p_code")));
-			} else {
-				// 이미지 파일 수정이 아님
-				sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
-						+ "p_main_pht_name=?, p_main_pht_size=? where p_code=?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, multi.getParameter("p_name"));
-				pstmt.setInt(2, Integer.parseInt(multi.getParameter("p_price")));
-				pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_on_sale")));
-				pstmt.setString(4, "ready.gif");
-				pstmt.setInt(5, 0);
-				pstmt.setInt(6, Integer.parseInt(multi.getParameter("p_code")));
-			}
-			if (multi.getFilesystemName("upFile2") != null) {
-				int size2 = (int) f2.length();
-				sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
-						+ "p_detail_pht_name=?, p_detail_pht_size=? where p_code=?";
-				pool.freeConnection(con, pstmt);
-				con = pool.getConnection();
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, multi.getParameter("p_name"));
-				pstmt.setInt(2, Integer.parseInt(multi.getParameter("p_price")));
-				pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_on_sale")));
-				pstmt.setString(4, upFile2);
-				pstmt.setInt(5, size2);
-				pstmt.setInt(6, Integer.parseInt(multi.getParameter("p_code")));
-			} else {
-				sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
-						+ "p_detail_pht_name=?, p_detail_pht_size=? where p_code=?";
-				pool.freeConnection(con, pstmt);
-				con = pool.getConnection();
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, multi.getParameter("p_name"));
-				pstmt.setInt(2, Integer.parseInt(multi.getParameter("p_price")));
-				pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_on_sale")));
-				pstmt.setString(4, "ready.gif");
-				pstmt.setInt(5, 0);
-				pstmt.setInt(6, Integer.parseInt(multi.getParameter("p_code")));
-			}
-			if (multi.getFilesystemName("upFile3") != null) {
-				int size3 = (int) f3.length();
-				sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
-						+ "p_info_pht_name=?, p_info_pht_size=? where p_code=?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, multi.getParameter("p_name"));
-				pstmt.setInt(2, Integer.parseInt(multi.getParameter("p_price")));
-				pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_on_sale")));
-				pstmt.setString(4, upFile3);
-				pstmt.setInt(5, size3);
-				pstmt.setInt(6, Integer.parseInt(multi.getParameter("p_code")));
-			} else {
-				sql = "update product_mst_tb set p_name=?, p_price=?, p_on_sale=?, "
-						+ "p_info_pht_name=?, p_info_pht_size=? where p_code=?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, multi.getParameter("p_name"));
-				pstmt.setInt(2, Integer.parseInt(multi.getParameter("p_price")));
-				pstmt.setInt(3, Integer.parseInt(multi.getParameter("p_on_sale")));
-				pstmt.setString(4, "ready.gif");
-				pstmt.setInt(5, 0);
-				pstmt.setInt(6, Integer.parseInt(multi.getParameter("p_code")));
-			}
-			int cnt = pstmt.executeUpdate();
-			if (cnt == 1)
-				flag = true;
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			pool.freeConnection(con, pstmt);
-		}
-		return flag;
-	}
-
-	// deleteproduct(more than 1)
+	// delete Product(more than 1)
 	public boolean deleteproduct(int p_code[]) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -349,7 +249,7 @@ public class ProductMgr {
 		}
 		return flag;
 	}
-	// deleteproduct(1)
+	// delete Product(only 1)
 		public boolean deleteproduct1(int p_code) {
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -380,8 +280,7 @@ public class ProductMgr {
 						File f3 = new File(UPLOAD + p_info_pht_name);
 						if (f3.exists())
 							f3.delete();
-						}
-				
+						}				
 					pstmt.close();
 
 					sql = "delete from product_mst_tb where p_code =?";
@@ -397,12 +296,10 @@ public class ProductMgr {
 			return flag;
 		}
 
-	// 제품명 뽑아내기
+	// printing product name
 	public Vector<ProductBean> printPname() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-
-		// select일때 테이블 스키마(구조), 레코드 단위
 		ResultSet rs = null;
 		String sql = null;
 		Vector<ProductBean> tlist = new Vector<ProductBean>();
@@ -410,13 +307,11 @@ public class ProductMgr {
 			con = pool.getConnection();
 			sql = "select distinct p_name from product_mst_tb";
 			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery(); // select 실행
-			while (rs.next()) { // rs의 포커스는 테이블의 첫 행
-				String pname = rs.getString("p_name");
-				// 테이블에서 가져온 값들을 빈즈에 저장
+			rs = pstmt.executeQuery(); 
+			while (rs.next()) { 
+				String pname = rs.getString("p_name");				
 				ProductBean bean = new ProductBean();
-				bean.setP_name(pname);
-				// 빈즈를 Vector에 저장
+				bean.setP_name(pname);				
 				tlist.addElement(bean);
 			}
 		} catch (Exception e) {
@@ -455,9 +350,7 @@ public class ProductMgr {
 			pool.freeConnection(con, pstmt, rs);
 		}
 		return list;
-	}
-	
-	
+	}	
 
 	// Searching product list by p_name, p_date in (goods_master.jsp)
 	public Vector<ProductBean> searchproduct(String p_name, int p_date1, int p_date2) {
@@ -466,24 +359,29 @@ public class ProductMgr {
 		ResultSet rs = null;
 		String sql = null;
 		Vector<ProductBean> slist = new Vector<>();
+		System.out.println("-----admin--------");
+		System.out.println("apname :"+p_name);
+		System.out.println("apname :"+p_date1);
+		System.out.println("apname :"+p_date2);
+		System.out.println("-------------");
 		try {
-			String p1 = Integer.toString(p_date1);
-			String p2 = Integer.toString(p_date2);
+			//String p1 = Integer.toString(p_date1);
+			//String p2 = Integer.toString(p_date2);
 			con = pool.getConnection();			
-			if(p_name.trim().equals("") && p1.trim().equals("0") && p2.trim().equals("0")) {
-				sql = "SELECT p.p_code, p.p_name, p.p_price, p.p_date, p.p_on_sale, SUM(s.st_ava_qty) "
-						+ "FROM product_mst_tb p JOIN stock_tb s ON p.p_code = s.p_code GROUP BY p.p_code "
-						+ "order by p.p_date desc";
+			if(p_name.trim().equals("") && p_date1==0 && p_date2==0) {
+				sql = "SELECT p.p_code, p.p_name, p.p_price, p.p_date, p.p_on_sale, IfNULL(SUM(s.st_ava_qty),99999) "
+						+ "FROM product_mst_tb p left JOIN stock_tb s ON p.p_code = s.p_code GROUP BY p.p_code "
+						+ "order BY 1";
 				pstmt = con.prepareStatement(sql);
 // p_name searching
-			//}else if(!p_name.trim().equals("") && p1.trim().equals("0") && p2.trim().equals("0")){
-			//	sql = 	"SELECT p.p_code, p.p_name, p.p_price, p.p_date, p.p_on_sale, SUM(s.st_ava_qty) "
-			//			+ "FROM product_mst_tb p JOIN stock_tb s ON p.p_code = s.p_code GROUP BY p.p_code "
-			//			+ "having p_name LIKE ? order by p.p_date desc";
-			//	pstmt = con.prepareStatement(sql);
-			//	pstmt.setString(1, "%" + p_name + "%");
+			}else if(p_name.trim()!=null && p_date1==0 && p_date2==0){
+				sql = 	"SELECT p.p_code, p.p_name, p.p_price, p.p_date, p.p_on_sale, SUM(s.st_ava_qty) "
+						+ "FROM product_mst_tb p JOIN stock_tb s ON p.p_code = s.p_code GROUP BY p.p_code "
+						+ "having p_name LIKE ? order by p.p_date desc";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%" + p_name + "%");
 // p_date searching
-			}else if(p_name.trim().equals("") || !p1.trim().equals("0") || !p2.trim().equals("0") ){
+			}else if(p_name.trim().equals("") || p_date1!=0 || p_date2!=0 ){
 				sql = 	"SELECT p.p_code, p.p_name, p.p_price, p.p_date, p.p_on_sale, SUM(s.st_ava_qty) "
 						+ "FROM product_mst_tb p JOIN stock_tb s ON p.p_code = s.p_code GROUP BY p.p_code "
 						+ "having p_date BETWEEN ? AND ? order by p.p_date desc";

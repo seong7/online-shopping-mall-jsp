@@ -12,7 +12,6 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import admin.NoticeBean;
-import admin.UtilMgr2;
 import member.DBConnectionMgr;
 
 public class AdminMgr {
