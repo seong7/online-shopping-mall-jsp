@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 //post.jsp에 입력한 게시물을 저장 처리하기 위한 기능의 메소드
-@WebServlet("/admin/noticePost")
+@WebServlet("/admin/notice_post")
 public class NoticePostServlet extends HttpServlet {
 
 	@Override	
@@ -16,7 +16,7 @@ public class NoticePostServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("EUC-KR");
 		AdminMgr mgr = new AdminMgr();
-		mgr.insertBoard(request);
+		mgr.insertNotice(request);
 		response.sendRedirect("notice_list.jsp");
 	}
 }

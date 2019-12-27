@@ -62,8 +62,7 @@
 		<tr>
 			<td><input type="checkbox" name="fch" 
 			value="<%=p_code%>" ></td>
-			<td><img alt="제품사진" src="${pageContext.request.contextPath}
-			/img/product/ready.gif"></td>
+			<td><img alt="제품사진" src="${pageContext.request.contextPath}/img/product/<%=p_main_pht_name%>"></td>
 			<td><%=p_name %><br><span><%=p_price %></span>원</td>
 		
 			<td><input type="button" value="-" 

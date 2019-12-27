@@ -72,7 +72,7 @@
 		</form>			
 
 	</header>
-	<form name="cartFrm" method="get"> 
+	<form name="cartFrm" method="post"> 
 	<input type="hidden" name="id_goods" value="<%=id_goods %>">
 	<input type="hidden" name="p_code" value="<%=p_code %>">
 	<input type="hidden" name="c_qty" value="">

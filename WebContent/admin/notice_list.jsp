@@ -1,6 +1,5 @@
-<!-- list.jsp -->
 <%@page import="admin.NoticeBean"%>
-<%@page import="admin.UtilMgr2"%>
+<%@page import="admin.UtilMgr"%>
 <%@page import="java.util.Vector"%>
 <%@page contentType="text/html; charset=EUC-KR" %>
 <jsp:useBean id="mgr" class="admin.AdminMgr"/>
@@ -14,13 +13,12 @@
 		int nowPage = 1;//현재 페이지
 		int nowBlock = 1;//현재 블럭
 		
-		//page에 보여질 게시물 개수 값
 		if(request.getParameter("numPerPage")!=null&&
 				!request.getParameter("numPerPage").equals("null")){
-			numPerPage = UtilMgr2.parseInt(request, "numPerPage");
+			numPerPage = UtilMgr.parseInt(request, "numPerPage");
 		}
 		
-		int start = 0;//테이블에 시작 번호
+		int start = 0;
 		int cnt = numPerPage;
 		
 		//검색에 필요한 변수
@@ -39,11 +37,10 @@
 		}
 		
 		totalRecord = mgr.getTotalCount(keyField, keyWord);
-		//out.print(totalRecord);
 		
 		//nowPage를 요청한 경우
 		if(request.getParameter("nowPage")!=null){
-			nowPage = UtilMgr2.parseInt(request, "nowPage");
+			nowPage = UtilMgr.parseInt(request, "nowPage");
 		}
 		//테이블 시작 번호
 		start = (nowPage*numPerPage)-numPerPage;
@@ -55,6 +52,7 @@
 		//현재블럭 (현재페이지수/블럭당 페이지 개수) 올림.
 		nowBlock = (int)Math.ceil((double)nowPage/pagePerBlock);
  %>
+ 
 <html>
 <head>
 <title>
@@ -105,23 +103,22 @@
 	<tr>
 		<td align="center" colspan="2">
 		<%
-				Vector<NoticeBean> vlist = mgr.getBoardList(keyField, keyWord, start, cnt);
-				int listSize = vlist.size();//브라우저 화면에 표시될 게시물 번호
+				Vector<NoticeBean> vlist = mgr.getNoticeList(keyField, keyWord, start, cnt);
+				int listSize = vlist.size();
 				if(vlist.isEmpty()){
 					out.println("등록된 게시물이 없습니다.");
 				}else{
 		%>
 		<table cellspacing="0">
-			<tr align="center" bgcolor="#D0D0D0">
+			<tr align="left">
 				<td width="100">번 호</td>
 				<td width="250">제 목</td>
 				<td width="100">이 름</td>
 				<td width="150">날 짜</td>
-				<td width="100">조회수</td>
 			</tr>
 		<%
 				for(int i=0;i<numPerPage;i++){
-					if(i==listSize) break; //제일 마지막 페이지가 10가 아닌 경우
+					if(i==listSize) break; 
 					NoticeBean bean = vlist.get(i);
 					int n_index = bean.getN_index ();
 					String n_id = bean.getN_id();
@@ -132,14 +129,20 @@
 					String n_file_name = bean.getN_file_name ();
 					int n_file_size = bean.getN_file_size();
 		%>
-		
+		<tr align="center">
+			<td><%=totalRecord-start-i%></td>
+			<td align="left">
+			<a href="javascript:read('<%=n_index%>')"><%=n_title%></a>
+			<%if(n_file_name!=null&&!n_file_name.equals("")){%>
+			<%}%>
+			</td>
+			<td><%=n_id%></td> 
+			<td><%=n_date%></td>
+		</tr>
 		<%}//---for%>	
 		</table>
 		<%}//----if-else%>	
 		</td>
-	</tr>
-	<tr>
-		<td colspan="2"><br/><br/></td>
 	</tr>
 	<tr>
 		<td >
@@ -166,33 +169,16 @@
 				<a href="javascript:block('<%=nowBlock+1%>')">...next</a>
 			<%}%>
 		<%}%>
-		</td>
-		<td align="right">
-			<a href="notice_post.jsp">[글쓰기]</a>
-			<a href="javascript:list()">[처음으로]</a>
-		</td>
+		</td>	
+	</tr>
+	<tr align="right">
+		<td><input type="button" value="글쓰기" onclick="location.href='notice_post.jsp'">
 	</tr>
 </table>
 <form name="listFrm" method="post">
 	<input type="hidden" name="reload" value="true">
 	<input type="hidden" name="nowPage" value="1">
 </form>
-<form  name="searchFrm">
-	<table  width="600" cellpadding="4" cellspacing="0">
- 		<tr>
-  			<td align="center" valign="bottom">
-   				<select name="keyField" size="1" >
-    				<option value="subject"> 제 목</option>
-    				<option value="content"> 내 용</option>
-   				</select>
-   				<input size="16" name="keyWord">
-   				<input type="button"  value="찾기" onClick="javascript:check()">
-   				<input type="hidden" name="nowPage" value="1">
-  			</td>
- 		</tr>
-	</table>
-</form>
-
 <form name="readFrm">
 	<input type="hidden" name="num">
 	<input type="hidden" name="nowPage" value="<%=nowPage%>">
