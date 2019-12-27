@@ -23,7 +23,7 @@ email CHAR(40) NOT NULL,
 contact CHAR(13) NOT NULL,
 zipcode INT(5) NOT NULL,
 address CHAR(50) NOT NULL,
-address_detail CHAR(20) NOT NULL,
+address_detail CHAR(50) NOT NULL,
 join_date DATE NOT NULL,
 PRIMARY KEY (id)
 )COLLATE='euckr_korean_ci';
