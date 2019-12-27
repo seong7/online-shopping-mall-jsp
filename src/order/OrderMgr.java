@@ -517,9 +517,8 @@ public class OrderMgr {
 				int count = 0;
 				try {
 					con = pool.getConnection();
-					sql = "SELECT COUNT(*) FROM order_tb WHERE o_status = '결제완료' and o_id= ?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, id);
+					sql = "SELECT COUNT(*) FROM order_tb WHERE o_status = '결제완료'";
+					pstmt = con.prepareStatement(sql);					
 					rs = pstmt.executeQuery();					
 					if (rs.next()) {
 						count = rs.getInt(1);
@@ -529,7 +528,6 @@ public class OrderMgr {
 				} finally {
 					pool.freeConnection(con, pstmt, rs);
 				}
-				return count;
-				
+				return count;				
 			}	
 }
