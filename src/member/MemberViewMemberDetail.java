@@ -30,7 +30,7 @@ public class MemberViewMemberDetail extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String member_id = request.getParameter("member_id");
 		MemberMgr membermgr = new MemberMgr();
-		OrderMgr ordermgr  = new OrderMgr();
+		OrderMgr ordermgr  = new OrderMgr(); 
 		MemberBean userDetail = membermgr.getMemberDetail(member_id);
 		
 		JSONArray jsonarray = new JSONArray();

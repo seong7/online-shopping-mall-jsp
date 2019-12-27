@@ -5,7 +5,7 @@
 <%@page import="java.text.DecimalFormat" %>
 <%@page import="product.productUtil"%>
 
-<jsp:useBean id="mgr" class="product.ProductMgr" />
+<jsp:useBean id="index_mgr" class="product.ProductMgr" />
 <%
 		request.setCharacterEncoding("EUC-KR");
 		
@@ -16,27 +16,28 @@
 %>
 
 <link rel="stylesheet" type="text/css" href="css/goodsList.css">
-
+<link rel="stylesheet" type="text/css" href="css/index.css">
 <%@ include file="/top.jsp" %>
 
         <!--******************-->
         <!--작업 및 복붙 구역-->
-        <!--******************-->        	
+        <!--******************-->   
+            <!-- 배너 구역--> 
          <main>
-            <!-- 배너 구역-->
-            <div id="bannerWrapper">
-                <img src="./img/index/banner/banner_new.jpg" alt="banner slider">
-                <div id="banner_btn_wrapper">
-                    <span>
-                        
-                    </span>
-                </div>
-            </div>
-
-            <!-- 베스트상품 구역-->
-            
+                 <div class="arrow bounce1">
+			<i class="fa fa-arrow-left fa-2x"  onclick="plusDivs(-1)"></i>
+		</div>
+		<div class="arrow bounce2">
+			<i class="fa fa-arrow-right fa-2x"  onclick="plusDivs(-1)"></i>
+		</div>    
+        <div id="bannerWrapper">
+            	<img class="mySlides" src="./img/index/banner/banner_new.jpg">
+				<img class="mySlides" src="./img/index/banner/banner_open.jpg">
+				<img class="mySlides" src="./img/index/banner/banner_sample2.png">
+				<img class="mySlides" src="./img/index/banner/banner_sample3.png">
+           </div>	
             <%
-	            vlist = mgr.getGoodsList("indexBest");
+	            vlist = index_mgr.getGoodsList("indexBest");
             %>
             
             
@@ -60,11 +61,11 @@
 							}  //--if
 						%>
 						<li>
-							<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
+							<a href="${pageContext.request.contextPath}/product/goods_view.jsp?p_code=<%=pbean.getP_code()%>">
 								<img src="img/product/<%=pbean.getP_main_pht_name()%>">
 							</a>
 							<div class="goods_info">
-								<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
+								<a href="${pageContext.request.contextPath}/product/goods_view.jsp?p_code=<%=pbean.getP_code()%>">
 									<span class="name">
 										<%=pbean.getP_name()%>
 									</span>
@@ -81,7 +82,7 @@
 	           	 <!-- 신상품 구역-->
 	           	 
 	         <%
-	            vlist = mgr.getGoodsList("indexNew");
+	            vlist = index_mgr.getGoodsList("indexNew");
             %>
 	           	 
 	            <div class="goodslist" id="goodslist_new">
@@ -103,11 +104,11 @@
 							}  //--if
 						%>
 						<li>
-							<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
+							<a href="${pageContext.request.contextPath}/product/goods_view.jsp?p_code=<%=pbean.getP_code()%>">
 								<img src="img/product/<%=pbean.getP_main_pht_name()%>">
 							</a>
 							<div class="goods_info">
-								<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
+								<a href="${pageContext.request.contextPath}/product/goods_view.jsp?p_code=<%=pbean.getP_code()%>">
 									<span class="name">
 										<%=pbean.getP_name()%>
 									</span>
@@ -123,6 +124,8 @@
 				
 				
 	        </main>
+	        
+			<script src="./js/index.js"></script>
 			<!--******************-->
 	        <!--작업 및 복붙 구역-->
 	        <!--******************-->        

@@ -1,245 +1,407 @@
-@charset "UTF-8";
-@import url(c:\Jsp\online-shopping-mall-jsp\WebContent\vscode__utf8\css\font-family.css);
+/* ∆˘∆Æ √ﬂ∞°*/
+/* ±Ω¿Ω */
+@font-face {
+  font-family: 'ON_IGothic';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
-main #orderWrapper {
+/* ¿œπ› */
+@font-face {
+  font-family: 'Handon3gyeopsal600g';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+/* function º±æ */
+/*∞¯≈Î º”º∫ ¡¶æÓ∫Œ*/
+main {
   min-width: 1050px;
   max-width: 1050px;
-  min-height: 1000px;
   width: 1050px;
+  min-height: 1000px;
   margin: 0px auto;
-  margin: 0px auto;
-}
-
-main #orderWrapper h2 {
-  margin-top: 50px;
-  width: 100%;
-  font-size: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-align: center;
-  font-family: "ON-IGothic";
   color: #333;
-  letter-spacing: 1px;
-}
-
-main #order_product table tr:nth-of-type(1) td:nth-of-type(1) {
-  text-align: center;
-}
-
-main #order_product table tr:nth-of-type(1) td:nth-of-type(2) {
-  width: 100px;
-  text-align: center;
-}
-
-main #order_product table tr:nth-of-type(1) td:nth-of-type(3) {
-  width: 100px;
-  text-align: center;
-}
-
-main #order_product table tr, main #order_product table td {
-  padding: 15px;
-  text-align: left;
-}
-
-main #order_product table td:first-of-type {
-  padding-left: 20px;
-}
-
-main #order_product table td:nth-of-type(1) {
-  width: 100px;
-}
-
-main #order_product table td:nth-of-type(2) {
-  width: 600px;
-}
-
-main #order_product table td:nth-of-type(3) {
-  width: 100px;
-  text-align: center;
-}
-
-main #order_product table td:nth-of-type(4) {
-  width: 100px;
-  text-align: center;
-}
-
-main #order_member table tr td {
-  height: 25px;
-  padding: 30px;
-}
-
-#order_delivery table tr td {
-  border-top: none;
-  border-bottom: none;
-  height: 35px;
-  padding: 5px;
-}
-
-#order_delivery table tr td input {
-  font-family: "ON-IGothic";
-  padding-left: 8px;
-  border: 1px solid #dcdbde;
-  height: 28px;
-}
-
-#order_delivery table tr td input[name=o_recpt_add] {
-  width: 600px;
-}
-
-#order_delivery table tr td input[name=o_recpt_zipcode] {
-  width: 50px;
-  padding-left: 0px;
-  text-align: center;
-}
-
-#order_delivery table tr td input[name=o_recpt_add_det] {
-  width: 617px;
-  margin-left: 25px;
-}
-
-#order_delivery table tr td textarea[name=o_del_msg] {
-  font-family: "ON-IGothic";
-  font-size: 14px;
-  padding: 8px;
-  border: 1px solid #dcdbde;
-  height: 40px;
-  width: 688px;
-  resize: none;
-}
-
-#order_delivery table tr td:first-of-type {
-  padding-left: 20px;
-}
-
-#order_delivery table tr:first-of-type td {
-  padding-top: 20px;
-}
-
-#order_delivery table tr:last-of-type {
-  border-bottom: 2px solid #dcdbde;
-}
-
-#order_delivery table tr:last-of-type td {
-  padding-bottom: 20px;
-}
-
-#order_point tr td:first-of-type {
-  padding-left: 30px;
-  width: 130px;
-}
-
-#order_point tr td {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-#order_point tr td input {
-  width: 400px;
-  height: 23px;
-  padding: 8px;
-  border: 1px solid #dcdbde;
-}
-
-#order_pay table {
-  font-family: "ON-IGothic";
-}
-
-#order_pay table tr td {
-  font-size: 18px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-#order_pay table tr td input {
-  border: none;
-  font-family: "ON-IGothic";
-  font-size: 18px;
-  text-align: end;
-  padding-right: 10px;
-}
-
-#order_pay table tr td:nth-of-type(1) {
-  width: 170px;
-  text-align: center;
-}
-
-#order_pay table tr td:nth-of-type(2) {
-  text-align: end;
-  padding-right: 50px;
-}
-
-#order_pay table tr:last-child td:last-child {
-  font-size: 12px;
-}
-
-#order_howpay table tr td:nth-of-type(1) {
-  width: 100px;
-}
-
-#order_howpay table tr td:nth-of-type(2) {
-  text-align: center;
-}
-
-#order_howpay table tr:nth-of-type(2) td {
-  padding-top: 20px;
-}
-
-/*Ï†ÑÏ≤¥ ÏÜçÏÑ± Ï†úÏñ¥Î∂Ä*/
-table tr:nth-of-type(1) td {
-  border-top: 3px solid #FB9832 !important;
-  padding-top: 15px;
-}
-
-table tr:last-of-type td {
-  border-bottom: 2px solid #dcdbde;
-  padding-bottom: 15px;
-}
-
-.order_subtitle {
-  font-size: 25px;
-  font-family: "ON-IGothic";
-  color: #333;
-  margin: 0 auto;
-}
-
-a {
-  font-weight: 520;
-  cursor: pointer;
-}
-
-a:hover {
-  color: #FB9832;
-}
-
-main {
+  font-family: "ON_IGothic";
   letter-spacing: 0.5px;
 }
 
-main table {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 30px;
-  font-family: "ON-IGothic";
-  color: #333;
-  margin-bottom: 50px;
+main .btn_td a {
+  text-decoration: none;
+  color: inherit;
 }
 
-main table td {
-  font-family: "ON-IGothic";
+main .btn_td:hover a {
+  color: #fec084;
+}
+
+main #main_wrapper {
+  margin-top: 90px;
+}
+
+main .title_wrapper {
+  margin-bottom: 30px;
+}
+
+main .title_wrapper .title {
+  font-size: 30px;
+  text-align: center;
+  font-family: inherit;
+}
+
+main .title_wrapper .mypage_title {
+  font-size: 30px;
+  text-align: left;
+  font-family: inherit;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+main .title_wrapper .description {
+  display: inline-block;
+  color: grey;
+  margin-top: 20px;
+  padding-bottom: 15px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+#main_wrapper_mypage {
+  min-width: 100%;
+  max-width: 100%;
+  width: 100%;
+  min-height: 1000px;
+  margin: 0px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  color: #333;
+  font-family: "ON_IGothic";
+  letter-spacing: 0.5px;
+}
+
+#main_wrapper_mypage .btn_td a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#main_wrapper_mypage .btn_td:hover a {
+  color: #fec084;
+}
+
+#main_wrapper_mypage #main_wrapper {
+  margin-top: 90px;
+}
+
+#main_wrapper_mypage .title_wrapper {
+  margin-bottom: 30px;
+}
+
+#main_wrapper_mypage .title_wrapper .title {
+  font-size: 30px;
+  text-align: center;
+  font-family: inherit;
+}
+
+#main_wrapper_mypage .title_wrapper .mypage_title {
+  font-size: 30px;
+  text-align: left;
+  font-family: inherit;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#main_wrapper_mypage .title_wrapper .description {
+  display: inline-block;
+  color: grey;
+  margin-top: 20px;
+  padding-bottom: 15px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+section .order_subtitle {
+  font-size: 23px;
+  font-family: "ON_IGothic";
+  color: #333;
+  margin: 0 auto;
+  text-align: left;
+  border-bottom: 2px solid #fec084;
+  padding-bottom: 20px;
+}
+
+section img {
+  width: 100px;
+  height: 0 auto;
+}
+
+section a {
+  font-weight: 520;
+  text-decoration: underline;
+  color: #333;
+  cursor: pointer;
+}
+
+section a:hover {
+  color: #fec084;
+}
+
+section table {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-collapse: collapse;
+  color: inherit;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+section table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+section table tr:last-of-type {
+  border-bottom: 2px solid #dcdbde;
+}
+
+.horHead tr {
+  border-bottom: 1px solid #dcdbde;
+}
+
+.horHead tr th, .horHead tr td {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.horHead tr td {
   font-size: 18px;
 }
 
-main input[type=button], main input[type=submit] {
-  margin-left: 25px;
-  height: 30px;
-  width: 70px;
-  background-color: #FB9832;
-  border: none;
-  color: white;
-  font-weight: bold;
+.horHead td:nth-child(2) {
+  text-align: left;
+  padding-left: 10px;
 }
 
-main input[type=button]:active, main input[type=submit]:active {
+.order_verHead .radio, .order_verHead .checkbox, .verHead .radio, .verHead .checkbox {
+  width: 50px;
+  position: relative;
+  top: 2px;
+}
+
+.order_verHead th, .verHead th {
+  width: 150px;
+}
+
+.order_verHead td, .verHead td {
+  font-family: "MS Shell Dlg 2";
+  font-weight: 500;
+}
+
+.order_verHead td input, .order_verHead td select, .verHead td input, .verHead td select {
+  padding: 10px;
+  border: 1px solid #dcdbde;
+  border-radius: 3px;
+  margin-right: 5px;
+  width: 180px;
+}
+
+.order_verHead td textarea, .verHead td textarea {
+  padding: 10px;
+  border: 1px solid #dcdbde;
+  border-radius: 3px;
+}
+
+.order_verHead td input:focus, .order_verHead td select:focus, .order_verHead td textarea:focus, .verHead td input:focus, .verHead td select:focus, .verHead td textarea:focus {
+  border: 1px solid #FB9832;
+}
+
+.order_verHead th, .order_verHead td, .verHead th, .verHead td {
+  padding-bottom: 10px;
+  text-align: left;
+  padding-left: 20px;
+  vertical-align: middle;
+}
+
+.order_verHead th:first-of-type, .order_verHead td:first-of-type, .verHead th:first-of-type, .verHead td:first-of-type {
+  padding-top: 10px;
+}
+
+.order_verHead #addr_btn, .verHead #addr_btn {
+  color: white;
+  height: 38px;
+  width: auto;
+  position: relative;
+  top: 1.7px;
+  font-weight: bold;
+  font-size: 16px;
+  border: 2px solid #FB9832;
+  line-height: 1;
+  margin-left: 20px;
+}
+
+.order_verHead #addr_btn:active, .verHead #addr_btn:active {
+  background-color: white;
+  color: #FB9832;
+}
+
+.order_verHead .input_zipcode, .verHead .input_zipcode {
+  width: 400px;
+}
+
+.btn, .order_btn {
+  height: 50px;
+  width: 70px;
+  border: 2px solid #FB9832;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 18px;
   background-color: #f09439;
+  color: white;
+}
+
+.btn:active, .order_btn:active {
+  background-color: white;
+  color: #FB9832;
+}
+
+.btn:hover, .order_btn:hover {
+  cursor: pointer;
+}
+
+.order_btn_wrapper {
+  margin-top: 30px;
+}
+
+.order_btn_wrapper .order_submit {
+  width: 150px;
+}
+
+#point_price_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  /* ¿˚∏≥±› ±∏ø™ */
+  /* ∞·¡¶ ±›æ◊ ±∏ø™ */
+}
+
+#point_price_wrapper section:first-of-type {
+  margin-right: 30px;
+  width: 60%;
+}
+
+#point_price_wrapper section:last-of-type {
+  background-color: rgba(254, 192, 132, 0.7);
+  color: grey;
+  padding: 10px;
+  height: 250px;
+  border-radius: 10px;
+  position: relative;
+  bottom: 10px;
+}
+
+#point_price_wrapper section:last-of-type th {
+  width: 120px;
+}
+
+#point_price_wrapper section:last-of-type td {
+  width: 200px;
+  text-align: right;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
+#point_price_wrapper section:last-of-type .order_subtitle {
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid coral;
+}
+
+#point_price_wrapper section:last-of-type span {
+  color: coral;
+  font-size: 17px;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+#point_price_wrapper section:last-of-type #total_point {
+  display: block;
+  margin-top: 5px;
+  margin-left: 5px;
+  color: coral;
+  width: 100%;
+  font-size: 14px;
+}
+
+#point_price_wrapper section:last-of-type #o_total_amount {
+  font-size: 23px;
+}
+
+#point_price_wrapper section:last-of-type table tr:last-of-type {
+  border-bottom: 2px solid coral;
+}
+
+#point_price_wrapper section:last-of-type table #total_price_th {
+  padding-top: 20px;
+  color: #333;
+}
+
+#point_price_wrapper section:last-of-type table #total_price_td {
+  padding-top: 40px;
+  color: #333;
+}
+
+#order_private table th {
+  width: 50%;
+}
+
+/*∑Œ¥ı∫Œ(¡∂¿∫±‘)*/
+#main_contents{
+	opacity: 0;
+}
+#loader{
+	position: absolute;
+	left: 50%;
+	top: 70%;
+	z-index: 1;
+	width: 75px;
+	height: 75px;
+	margin: -75px 0 0 -75px;
+	border: 16px solid #f3f3f3;
+	border-radius: 50%;
+	border-top: 16px solid #fec084;
+	width: 60px;
+	height: 60px;
+	-webkit-animation: spin 2s linear infinite;
+	animation: spin 2s linear infinite;	
+}
+
+@keyframes spin{
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(360deg);}
+}
+@-webkit-keyframes spin{
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(360deg);}
 }
 /*# sourceMappingURL=order.css.map */

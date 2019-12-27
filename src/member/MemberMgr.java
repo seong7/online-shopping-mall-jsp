@@ -352,5 +352,28 @@ public class MemberMgr {
 				}
 				return flag;
 			}
+			//·Î±×ÀÎ
+			public int loginconnectiondata(String id, String date, String ip) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				String sql = "INSERT INTO page_connection_tb(c_id, c_time, c_ip) VALUES (?,?, ?)";
+				int flag = 0;
+				try {
+					con = pool.getConnection();
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, id);
+					pstmt.setString(2, date);
+					pstmt.setString(3, ip);
+					
+					flag = pstmt.executeUpdate();
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt);
+				}
+				return flag;
+			}
+			
 }
 

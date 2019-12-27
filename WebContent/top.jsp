@@ -16,6 +16,13 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+		<link rel="stylesheet" type="text/css" href="./css/goods_stock.css">
     <!--</head>
 	<body> -->
 	        
@@ -146,23 +153,18 @@
 									</label>
 								</li>
 							<%}else if(id==null && admin_id!=null){ %>
-							<li>
-									<a href="${pageContext.request.contextPath}/member/myinfo_check.jsp"><i class="fas fa-user"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fas fa-shopping-cart"></i></a>
-								</li>
+								
 								<li>
 									<form id="logout_admin" action="/online-shopping-mall/member/signup"  method="post">
 										<a onclick="logout_admin()"><i class="fas fa-sign-in-alt"></i></a>
 									</form>
 								</li>
 								<li>
-									<a href="#"><i class="fas fa-cog"></i></a>
+									<a href="${pageContext.request.contextPath}/admin/member_list.jsp"><i class="fas fa-cog"></i></a>
 								</li>
 							<%}else if(id!=null && admin_id==null){ %>
 								<li>
-									<a href="${pageContext.request.contextPath}/member/myinfo_check.jsp"><i class="fas fa-user"></i></a>
+									<a href="${pageContext.request.contextPath}/order/mypage_orderlist.jsp"><i class="fas fa-user"></i></a>
 								</li>
 								<li>
 									<a href="${pageContext.request.contextPath}/order/cart.jsp"><i class="fas fa-shopping-cart"></i></a>

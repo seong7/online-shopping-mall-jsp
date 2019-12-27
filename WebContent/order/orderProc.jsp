@@ -1,6 +1,7 @@
 <!--주문내역 저장 및 카트 삭제  -->
 <%@page contentType="text/html; charset=EUC-KR"%>
 <jsp:useBean id="mgr" class="order.OrderMgr"/>
+<jsp:useBean id="cmgr" class="order.CartMgr"/>
 <jsp:useBean id="bean" class="order.OrderBean"/>
 <jsp:useBean id="odbean" class="order.OrderDetailBean"/>
 <%
@@ -18,14 +19,11 @@
 		int o_del_fee =Integer.parseInt(request.getParameter("o_del_fee"));
 		int o_total_amount = Integer.parseInt(request.getParameter("o_total_amount"));
 		String o_pay_method = request.getParameter("o_pay_method");
-		String o_qty[] = request.getParameterValues("o_qty");
-		String p_code[] = request.getParameterValues("p_code");
+		String[] o_qty = request.getParameterValues("o_qty");
+		String[] p_code = request.getParameterValues("p_code");
 		int countPart =Integer.parseInt(request.getParameter("countPart"));
-		out.print(o_qty.length);//10
-		out.print("qty[0]:"+o_qty[0]);//10
-		out.print("qty[1]:"+o_qty[1]);//10
-		out.print("code[0]:"+p_code[0]);//2
-		out.print("code[1]: "+p_code[1]);//2 
+		String mName =request.getParameter("mName");
+		
 		//order insert
 		bean.setO_id(o_id);
 		bean.setO_recpt_name(o_recpt_name);
@@ -45,31 +43,29 @@
 		int o_qtys[] = new int[countPart];
 		int p_codes[] = new int[countPart];
 		for(int i =0; i<countPart;i++){
-			o_qtys[i] = Integer.parseInt(qty[i]);
-			p_codes[i] = Integer.parseInt(code[i]);
+			o_qtys[i] = Integer.parseInt(o_qty[i]);
+			p_codes[i] = Integer.parseInt(p_code[i]);
 		}
-		/* out.print("qty[0]:"+qty[0]);//10
-		out.print("qty[1]:"+qty[1]);//10
-		out.print("code[0]:"+code[0]);//2
-		out.print("code[1]: "+code[1]);//2 */
 		odbean.setO_qty(o_qtys);
 		odbean.setP_code(p_codes);
 		boolean orderDetailResult=mgr.insertDetailOrder(odbean);
 		
+		//cart Delete
+		cmgr.deleteCart(o_id, p_codes);
+		
 		String msg = "";
 		 if(orderResult&&orderDetailResult){
-			msg = "결재가 완료되었습니다.";
-			//response.sendRedirect("mypage_orderlist.jsp");
+			//msg = "결재가 완료되었습니다.";
+			response.sendRedirect("order_end.jsp?mName="+mName+"&o_total_amount="+o_total_amount);
+			
 		}else{
 			msg = "결재실패";
-			out.println("order.jsp");
+			%>
+		<script>
+			alert("<%=msg%>");
+		</script>
+		<%
+			response.sendRedirect("order.jsp");
 		}
-%>
-<%-- <%=orderResult %>
-<%=orderDetailResult %>
-<%=countPart %> --%>
-<script>
-	alert("<%=msg%>");
-	location.href = "mypage_orderlist.jsp";
-</script>
+		%>
 

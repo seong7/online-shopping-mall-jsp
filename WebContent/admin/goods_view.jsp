@@ -131,10 +131,11 @@
                             
 
             <div class="submit_wrapper">
+            
                 <input class="btn" type="button" value="목록으로" onclick="location.href='goods_master.jsp'">
                 <input class="btn readChange" type="submit" value="수정완료" disabled>                
-                <input class="btn" type="button" value="삭제하기" onclick="location.href='goods_Proc.jsp?flag=delete&pcode=<%=bean.getP_code()%>'">
                 <input class="btn" type="reset" value="다시쓰기">
+                <input class="btn" id="delete" type="button" value="삭제하기" onclick="location.href='javascript:confirmDel(<%=bean.getP_code()%>)'">
                 <input type="hidden"  value="<%=bean.getP_code()%>" name="pcode">
                 
             </div>
@@ -176,6 +177,14 @@
 			});
 		}
 		btnInit();
+	}
+	
+	function confirmDel(p_code){
+		if(confirm("삭제하시겠습니까?")==true){
+			location.href="goods_Proc.jsp?flag=delete&pcode="+p_code;
+		}else{
+			return;
+		}
 	}
 </script>
 </html>

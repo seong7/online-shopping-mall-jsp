@@ -197,5 +197,58 @@ public class ProductMgr {
 		}
 		return vlist;
 	}
+	
+	
+	//good_stock
+		public Vector<ProductBean> getstockdata(String type, String searchvalue){
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			Vector<ProductBean> vlist = new Vector<ProductBean>();		
+			try {
+				System.out.print("type은"  +type);
+				con = pool.getConnection();
+				if(type.equals("flag")) {
+					sql = "SELECT P.p_code, P.p_name, S.st_enter_qty, S.st_ava_qty, S.st_waste_qty, S.st_exp_date  from PRODUCT_MST_TB P JOIN STOCK_TB S ON P.p_code = S.p_code";
+				}
+				else if(type.equals("code")) {
+					sql = "SELECT p_code, p_name from PRODUCT_MST_TB STOCK_TB WHERE p_code = ?";
+				}else{
+					sql = "SELECT p_code, p_name from PRODUCT_MST_TB STOCK_TB WHERE p_name LIKE ?";
+				}
+				pstmt = con.prepareStatement(sql);
+				if(type.equals("flag")) {
+					System.out.println("디비플래그");
+				}
+				else if(type.equals("code")) {
+					pstmt.setInt(1, Integer.parseInt(searchvalue));
+				}else {
+					pstmt.setString(1, "%"+searchvalue+"%");
+				}
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {				
+					ProductBean bean = new ProductBean();		
+					bean.setP_code(rs.getInt(1));
+					bean.setP_name(rs.getString(2));
+					if(type.equals("flag")) {
+						bean.setSt_enter_qty(rs.getInt(3));
+						bean.setSt_ava_qty(rs.getInt(4));
+						bean.setSt_waste_qty(rs.getInt(5));
+						bean.setSt_exp_date(rs.getString(6));
+					}else {
+						System.out.println("플래그 예외(검색)");
+					}
+					vlist.addElement(bean);
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pool.freeConnection(con, pstmt, rs);
+			}
+			return vlist;
+		}	
 
 }

@@ -1,0 +1,109 @@
+@import '../../font/font-family';
+
+$brandColor1: #fec084;
+$brandColor2: #FB9832;
+$brandColor3: coral;
+$brandFont : 'ON_IGothic';
+$thinFont :  'MS Shell Dlg 2';
+$main-blackcolor: #333;
+$sub-blackcolor: rgb(70, 68, 68);
+$table-graycolor:#dcdbde;
+$tableBorder: 0.5px solid #dcdbde;
+
+
+#end_wrapper{
+    width:100%;
+    min-width: 1050px;
+    min-height: 600px;
+    background: linear-gradient(to top, white 1px, rgb(233, 233, 233) 200px, rgb(212, 211, 211) 500px);
+    height:600px;
+    position:relative;
+    font-family: $brandFont;
+    font-size: 20px;
+    color: $sub-blackcolor;
+    letter-spacing: 0.3;
+    box-sizing: border-box;
+    #end_modal{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 3px solid $brandColor1;
+        border-radius: 7px;
+        width: 400px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -40%);
+        background-color: #f8eadc;
+        padding-left: 30px;
+        padding-right: 30px;
+        // background-color: rgba($color: #FFD278, $alpha: 0.7);
+        header{
+            margin-top: 40px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            text-align: center;
+            font-family: $thinFont;
+            font-weight: 500;
+            border-bottom: 3px solid rgb(180, 180, 180);
+            width: 100%;
+            #end_modal_icon{
+                font-size: 60px;
+                display: block;
+                color: $brandColor1;
+                margin-bottom: 20px;
+                .fa-ellipsis-h{
+                    position: relative;
+                    top: 15px;
+                }
+            }
+            #name{
+                font-size: 22px;
+            }
+        }
+        #end_modal_summ{
+            width: 100%;
+            padding-left: 20%;
+            margin-bottom: 30px;
+            span:first-of-type{
+                display: block;
+                margin-bottom: 10px;
+                color: rgb(122, 122, 122);
+                font-family: $thinFont;
+            }
+            span:nth-of-type(2){
+                margin-right: 60px;
+                font-size: 30px;
+            }
+            span:last-of-type{
+                color: $brandColor2;
+                font-size: 18px;
+            }
+        }
+        #end_modal_btn_wrapper{
+            display: block;
+            width: 90%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+            a:first-of-type{
+                margin-bottom: 15px;
+                color: white;
+                background-color: rgba($color:$brandColor2, $alpha:0.8);
+                border: 2px solid rgba($color:$brandColor2, $alpha:0.8);
+            }
+            a{
+                display: block;
+                text-decoration: none;
+                color: $brandColor2;
+                text-align: center;
+                padding :15px;
+                background: white;
+                border: 2px solid $brandColor2;
+                border-radius: 5px;
+
+            }
+        }
+    }
+
+}
