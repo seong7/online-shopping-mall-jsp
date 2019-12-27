@@ -24,6 +24,8 @@
 		String[] p_code = request.getParameterValues("p_code");
 		int countPart =Integer.parseInt(request.getParameter("countPart"));
 		String mName =request.getParameter("mName");
+		System.out.print(mName);
+		
 		//order insert
 		bean.setO_id(o_id);
 		bean.setO_recpt_name(o_recpt_name);
@@ -54,13 +56,28 @@
 		cmgr.deleteCart(o_id, p_codes);
 		
 		String msg = "";
-		 if(orderResult&&orderDetailResult){
-			//msg = "결재가 완료되었습니다.";
-			mName = URLEncoder.encode(mName);
-			response.sendRedirect("order_end.jsp?mName="+mName+"&o_total_amount="+o_total_amount);
-
+		if(orderResult&&orderDetailResult){
+			//msg = "결제가 완료되었습니다.";
+			/* mName = URLEncoder.encode(mName,"utf-8"); */
+			/* System.out.print(mName); */
+			/* response.sendRedirect("order_end.jsp?mName="+mName+"&o_total_amount="+o_total_amount); */
+		%>
+		
+			<html>
+				<form id="order_end_frm" name="order_end_frm" method="post" action="order_end.jsp">
+					<input type="hidden" name="mName" value="<%=mName %>" >
+					<input type="hidden" name="o_total_amount" value="<%=o_total_amount %>" >
+				</form>
+			</html>
+			
+			<script>
+				const frmToSubmit = document.getElementById('order_end_frm');
+				frmToSubmit.submit();
+			</script>
+			
+		<%
 		}else{
-			msg = "결재실패";
+			msg = "결제실패";
 			%>
 		<script>
 			alert("<%=msg%>");
@@ -69,4 +86,5 @@
 			response.sendRedirect("order.jsp");
 		}
 		%>
+		
 
