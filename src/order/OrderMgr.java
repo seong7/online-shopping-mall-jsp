@@ -507,4 +507,27 @@ public class OrderMgr {
 				return count;
 				
 			}	
+			
+			//counting order status "pay-complete"
+			public int countPayComplete(String id) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = null;
+				int count = 0;
+				try {
+					con = pool.getConnection();
+					sql = "SELECT COUNT(*) FROM order_tb WHERE o_status = '결제완료'";
+					pstmt = con.prepareStatement(sql);					
+					rs = pstmt.executeQuery();					
+					if (rs.next()) {
+						count = rs.getInt(1);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt, rs);
+				}
+				return count;				
+			}	
 }

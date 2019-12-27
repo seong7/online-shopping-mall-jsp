@@ -5,7 +5,7 @@
 <%@page import="java.text.DecimalFormat" %>
 <%@page import="product.productUtil"%>
 
-<jsp:useBean id="mgr" class="product.ProductMgr" />
+<jsp:useBean id="index_mgr" class="product.ProductMgr" />
 <%
 		request.setCharacterEncoding("EUC-KR");
 		
@@ -37,7 +37,7 @@
 				<img class="mySlides" src="./img/index/banner/banner_sample3.png">
            </div>	
             <%
-	            vlist = mgr.getGoodsList("indexBest");
+	            vlist = index_mgr.getGoodsList("indexBest");
             %>
             
             
@@ -61,11 +61,11 @@
 							}  //--if
 						%>
 						<li>
-							<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
+							<a href="${pageContext.request.contextPath}/product/goods_view.jsp?p_code=<%=pbean.getP_code()%>">
 								<img src="img/product/<%=pbean.getP_main_pht_name()%>">
 							</a>
 							<div class="goods_info">
-								<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
+								<a href="${pageContext.request.contextPath}/product/goods_view.jsp?p_code=<%=pbean.getP_code()%>">
 									<span class="name">
 										<%=pbean.getP_name()%>
 									</span>
@@ -82,7 +82,7 @@
 	           	 <!-- 신상품 구역-->
 	           	 
 	         <%
-	            vlist = mgr.getGoodsList("indexNew");
+	            vlist = index_mgr.getGoodsList("indexNew");
             %>
 	           	 
 	            <div class="goodslist" id="goodslist_new">
@@ -104,11 +104,11 @@
 							}  //--if
 						%>
 						<li>
-							<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
+							<a href="${pageContext.request.contextPath}/product/goods_view.jsp?p_code=<%=pbean.getP_code()%>">
 								<img src="img/product/<%=pbean.getP_main_pht_name()%>">
 							</a>
 							<div class="goods_info">
-								<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
+								<a href="${pageContext.request.contextPath}/product/goods_view.jsp?p_code=<%=pbean.getP_code()%>">
 									<span class="name">
 										<%=pbean.getP_name()%>
 									</span>

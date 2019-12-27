@@ -74,12 +74,14 @@ function init(){
     	    			aTagStr2 += "</a>";
     	                row.insertCell(0).innerHTML = aTagStr2;
     	                row.insertCell(1).innerHTML = resultParse[j].name;
+    	                row.childNodes[0].classList.add('btn_td');
     	                row.insertCell(2).innerHTML = resultParse[j].birthday;
     	                row.insertCell(3).innerHTML = resultParse[j].joindate;
     	                row.insertCell(4).innerHTML = resultParse[j].email;
     	                row.insertCell(5).innerHTML = resultParse[j].contact;
-    	                row.insertCell(6).innerHTML = resultParse[j].address;
+//    	                row.insertCell(6).innerHTML = resultParse[j].address;
     			    }
+    	 			//체크포인트
     		    }, error : function(){
     	            //에러경우
     	            console.log('에러');

@@ -16,12 +16,13 @@
   font-style: normal;
 }
 
+/* function 선언 */
 /*공통 속성 제어부*/
 main {
   min-width: 1050px;
   max-width: 1050px;
-  min-height: 1000px;
   width: 1050px;
+  min-height: 1000px;
   margin: 0px auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -34,6 +35,15 @@ main {
   color: #333;
   font-family: "ON_IGothic";
   letter-spacing: 0.5px;
+}
+
+main .btn_td a {
+  text-decoration: none;
+  color: inherit;
+}
+
+main .btn_td:hover a {
+  color: #fec084;
 }
 
 main #main_wrapper {
@@ -50,7 +60,74 @@ main .title_wrapper .title {
   font-family: inherit;
 }
 
+main .title_wrapper .mypage_title {
+  font-size: 30px;
+  text-align: left;
+  font-family: inherit;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 main .title_wrapper .description {
+  display: inline-block;
+  color: grey;
+  margin-top: 20px;
+  padding-bottom: 15px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+#main_wrapper_mypage {
+  min-width: 100%;
+  max-width: 100%;
+  width: 100%;
+  min-height: 1000px;
+  margin: 0px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  color: #333;
+  font-family: "ON_IGothic";
+  letter-spacing: 0.5px;
+}
+
+#main_wrapper_mypage .btn_td a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#main_wrapper_mypage .btn_td:hover a {
+  color: #fec084;
+}
+
+#main_wrapper_mypage #main_wrapper {
+  margin-top: 90px;
+}
+
+#main_wrapper_mypage .title_wrapper {
+  margin-bottom: 30px;
+}
+
+#main_wrapper_mypage .title_wrapper .title {
+  font-size: 30px;
+  text-align: center;
+  font-family: inherit;
+}
+
+#main_wrapper_mypage .title_wrapper .mypage_title {
+  font-size: 30px;
+  text-align: left;
+  font-family: inherit;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#main_wrapper_mypage .title_wrapper .description {
   display: inline-block;
   color: grey;
   margin-top: 20px;
@@ -121,22 +198,22 @@ section table tr:last-of-type {
   padding-left: 10px;
 }
 
-.verHead .radio, .verHead .checkbox {
+.order_verHead .radio, .order_verHead .checkbox, .verHead .radio, .verHead .checkbox {
   width: 50px;
   position: relative;
   top: 2px;
 }
 
-.verHead th {
+.order_verHead th, .verHead th {
   width: 150px;
 }
 
-.verHead td {
+.order_verHead td, .verHead td {
   font-family: "MS Shell Dlg 2";
   font-weight: 500;
 }
 
-.verHead td input, .verHead td select {
+.order_verHead td input, .order_verHead td select, .verHead td input, .verHead td select {
   padding: 10px;
   border: 1px solid #dcdbde;
   border-radius: 3px;
@@ -144,18 +221,28 @@ section table tr:last-of-type {
   width: 180px;
 }
 
-.verHead th, .verHead td {
+.order_verHead td textarea, .verHead td textarea {
+  padding: 10px;
+  border: 1px solid #dcdbde;
+  border-radius: 3px;
+}
+
+.order_verHead td input:focus, .order_verHead td select:focus, .order_verHead td textarea:focus, .verHead td input:focus, .verHead td select:focus, .verHead td textarea:focus {
+  border: 1px solid #FB9832;
+}
+
+.order_verHead th, .order_verHead td, .verHead th, .verHead td {
   padding-bottom: 10px;
   text-align: left;
   padding-left: 20px;
   vertical-align: middle;
 }
 
-.verHead th:first-of-type, .verHead td:first-of-type {
+.order_verHead th:first-of-type, .order_verHead td:first-of-type, .verHead th:first-of-type, .verHead td:first-of-type {
   padding-top: 10px;
 }
 
-.verHead #addr_btn {
+.order_verHead #addr_btn, .verHead #addr_btn {
   color: white;
   height: 38px;
   width: auto;
@@ -168,16 +255,16 @@ section table tr:last-of-type {
   margin-left: 20px;
 }
 
-.verHead #addr_btn:active {
+.order_verHead #addr_btn:active, .verHead #addr_btn:active {
   background-color: white;
   color: #FB9832;
 }
 
-.verHead .input_zipcode {
+.order_verHead .input_zipcode, .verHead .input_zipcode {
   width: 400px;
 }
 
-.btn {
+.btn, .order_btn {
   height: 50px;
   width: 70px;
   border: 2px solid #FB9832;
@@ -188,12 +275,12 @@ section table tr:last-of-type {
   color: white;
 }
 
-.btn:active {
+.btn:active, .order_btn:active {
   background-color: white;
   color: #FB9832;
 }
 
-.btn:hover {
+.btn:hover, .order_btn:hover {
   cursor: pointer;
 }
 
@@ -264,7 +351,7 @@ section table tr:last-of-type {
   margin-left: 5px;
   color: coral;
   width: 100%;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 #point_price_wrapper section:last-of-type #o_total_amount {

@@ -68,7 +68,7 @@
 				<tr>
 					<th>제품명</th>
 					<td>
-						<select id="p_select" name ="pnameList" onchange = "listSelect()">
+						<select id="m_select" name ="pnameList" onchange = "listSelect()">
 						<option value ="">제품명 선택</option>
 						<%for(int i=0; i<pnameList.length;i++){  %>
 						<option value ="<%=pnameList[i]%>"><%=pnameList[i]%></option>
@@ -103,6 +103,7 @@
 					//p_date2 = Integer.parseInt(request.getParameter("p_date2"));
 					Vector<ProductBean> slist = amgr.searchproduct(p_name, p_date1, p_date2);					
 					int listSize = slist.size();
+					System.out.print(listSize);
 					if(slist.isEmpty()){
 						//out.println(p_name);
 						//out.println(p_date1);
@@ -129,13 +130,14 @@
 					for(int i=0; i<slist.size(); i++){
 						ProductBean pbean = slist.get(i);
 						int p_code = pbean.getP_code();
-				%>			
+				%>
+							
 					<tr>
 					<td>
 					     <input class="checkbox" type ="checkbox" name="fch" value="<%=p_code%>" onclick="chk()" >
 					</td>						
-					<td><a href="goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_code() %></a></td>
-					<td><a href="goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_name() %></a></td>
+					<td class="btn_td"><a href="goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_code() %></a></td>
+					<td class="btn_td"><a href="../product/goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_name() %></a></td>
 					<td><%=pbean.getP_price() %></td>
 					<td><%=pbean.getP_date() %></td>
 					<td><%=pbean.getP_on_sale() %></td>
@@ -149,7 +151,7 @@
 			<input class="btn" type ="button" name="update" id="update_btn" value="선택 수정" disabled>
 			<input class="btn" type="button" name="delete" id="delete_btn" value="선택 삭제" disabled>
 			<input class="btn" type ="button" value="제품 추가" onclick ="location.href='goods_insert.jsp'">	
-			<input type ="hidden" name="buffer" id="buffer">			
+			<input type ="hidden" name="buffer" id="buffer">	
 		</div>
 
 	</form>
@@ -160,6 +162,5 @@
 </div> <!--  #btn_manager_wrapper (버튼메뉴 + manager) : admin_side.jsp 에서 열림-->
 </div> <!-- #main (상단요약 + 버튼 + manager) : admin_side.jsp 에서 열림-->
 	<%@ include file="../bottom.jsp" %>
-	
 </body>	
 </html>

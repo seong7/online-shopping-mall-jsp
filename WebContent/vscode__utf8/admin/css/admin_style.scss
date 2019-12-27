@@ -29,7 +29,7 @@ $tableBorder: 0.5px solid #dcdbde;
         #admin_side{     // 버튼메뉴 구역
             display: flex;
             flex-direction: column;
-            height: 100%;
+            // height: 100%;
             min-height:600px;
             width: 150px;
         } 
@@ -194,7 +194,7 @@ $tableBorder: 0.5px solid #dcdbde;
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
-    form{
+    form, .form_wrapper{
         width: 97%;
         padding-left: 20px;
         // padding-right: 30px;
@@ -277,6 +277,18 @@ $tableBorder: 0.5px solid #dcdbde;
     }
 }
 
+// a 태그 걸린 td 속성
+.btn_td{
+    a{
+        font-family: $brandFont;
+        text-decoration: none;
+        color: inherit;
+    }
+    &:hover a{
+        color: #fec084;
+    }
+}
+
 .submit_wrapper{
     display: block;
     text-align: center;
@@ -309,6 +321,23 @@ $tableBorder: 0.5px solid #dcdbde;
     }
 }
 
+/** 페이지네이션 버튼 테이블 **/
+.pagination_tb{
+    a{
+        color:#333;
+        text-decoration: none;
+        display: inline-block;
+        margin:3px;
+        width:20px;
+        height:20px;
+        text-align:center;
+    }
+    #nowPage_btn{
+        color:coral;
+    }
+  }
+
+
 
 /** goods_master.jsp 에만 **/
 #search_btn, #member_search_btn{
@@ -326,7 +355,7 @@ $tableBorder: 0.5px solid #dcdbde;
         cursor: pointer;
     }
 }
-#p_select{
+#m_select{
     width: 200px;
     margin-right: 21px;
 }
@@ -345,4 +374,31 @@ $tableBorder: 0.5px solid #dcdbde;
 }
 .rm_pct{
     margin-top: 5px;
+}
+
+
+/*** member_list.jsp 에서만 ***/
+#order_number_frm{
+    display: inline;
+    position: relative;
+    left: 650px;
+    top: 30px;
+    select{
+        padding: 10px;
+        border: 1px solid #dcdbde;
+        border-radius: 3px;
+        width: 120px;
+    }
+}
+
+/** order_list.jsp 에서만 **/
+#order_list_title{
+    margin-top:0px;
+    
+}
+
+#daumWrap2{
+    left:63%;
+    top:65%;
+    border: 1px solid $brandColor1;
 }

@@ -9,13 +9,14 @@ $table-graycolor:#dcdbde;
 $tableBorder: 0.5px solid #dcdbde;
 
 
-
-/*공통 속성 제어부*/
-main{
-    min-width: 1050px;
-    max-width: 1050px;
+/* function 선언 */
+    // order.jsp : 1050px  
+    // mypage_order_view.jsp : 100%
+@mixin order_frame($width){
+    min-width: $width;
+    max-width: $width;
+    width: $width;
     min-height: 1000px;
-    width: 1050px;
     margin: 0px auto;
     display: flex;
     flex-direction: column;
@@ -23,6 +24,16 @@ main{
     color: $main-blackcolor;
     font-family: $brandFont;
     letter-spacing: 0.5px;
+    // a 태그 걸린 td 속성
+    .btn_td{
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+        &:hover a{
+            color: #fec084;
+        }
+    }
     #main_wrapper{
         margin-top: 90px;
     }
@@ -32,6 +43,13 @@ main{
             font-size: 30px;
             text-align: center;
             font-family: inherit;
+        }
+        .mypage_title{
+            font-size: 30px;
+            text-align: left;
+            font-family: inherit;
+            margin-top:10px;
+            margin-bottom:20px;
         }
         .description{
             display: inline-block;
@@ -44,8 +62,19 @@ main{
 
     }
 }
+
+
+/*공통 속성 제어부*/
+    //order.jsp
+main{
+    @include order_frame(1050px);
+}
+    //mypage_order_view.jsp
+#main_wrapper_mypage{
+    @include order_frame(100%);
+}
+
 section{
-    
     .order_subtitle{
         font-size: 23px;
         font-family: $brandFont;
@@ -106,7 +135,7 @@ section{
     }
 }
 
-.verHead{
+.order_verHead, .verHead{
     .radio, .checkbox{
         width: 50px;
         position: relative;
@@ -124,6 +153,16 @@ section{
             border-radius: 3px;
             margin-right: 5px;
             width: 180px;
+        }
+        textarea{
+            padding: 10px;
+            border: 1px solid #dcdbde;
+            border-radius: 3px;
+        }
+        input, select, textarea{
+            &:focus{
+                border: 1px solid $brandColor2;
+            }
         }
     }
     th, td{
@@ -160,7 +199,7 @@ section{
 
 
 
-.btn{
+.btn, .order_btn{
     height: 50px;
     width: 70px;
     border:2px solid $brandColor2;
@@ -234,7 +273,7 @@ section{
             margin-left: 5px;
             color: coral;
             width: 100%;
-            font-size: 16px;
+            font-size: 14px;
         }
         #o_total_amount{
             font-size: 23px;
@@ -265,3 +304,5 @@ section{
         }
     }
 }
+
+
