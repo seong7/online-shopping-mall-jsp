@@ -44,16 +44,6 @@
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script type ="text/javascript" src="./js/goods_master.js"></script>
-<script>
-function yesorno(){
-	if(confirm("삭제하시겠습니까?")==true){
-		document.rFrm.action = "goods_masterProc.jsp";
-		document.rFrm.submit();
-	}else{ //취소
-		return;
-	}
-}
-</script>
 <link rel="stylesheet" href="./css/admin_style.css">
 
 <%@ include file="../top.jsp" %>
