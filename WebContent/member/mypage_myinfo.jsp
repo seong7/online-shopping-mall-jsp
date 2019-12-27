@@ -60,6 +60,7 @@
 	<%
 		request.setCharacterEncoding("EUC-KR");
 		String access = (String)session.getAttribute("myinfo_access");
+
 		MemberBean myInfoBean = null;	
 	
 		if(access==null || access.length()==0){
@@ -72,7 +73,9 @@
 			}
 		}else{
 			session.removeAttribute("myinfo_access");
+
 			myInfoBean = mgr.getMember(id);
+
 		}
 	%>
 

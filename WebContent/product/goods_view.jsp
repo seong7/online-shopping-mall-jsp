@@ -9,7 +9,9 @@
 	String id_goods = (String)session.getAttribute("idKey");
 	
 	productUtil util = new productUtil();
+
 	int p_code = Integer.parseInt(request.getParameter("p_code"));
+
 	
 	ProductBean bean = mgr.getProduct(p_code);
 
@@ -31,7 +33,7 @@
 			<img id="main_pht" src="../img/product/<%=bean.getP_main_pht_name()%>">
 		</div>
 		
-		<form id="header_info_wrapper" name="orderFrm" method="post" action="../order/order.jsp">
+		<form id="header_info_wrapper" name="orderFrm" method="get" action="../order/order.jsp">
 			<input type="hidden" name="flag" value="oneProduct">
 			<input type="hidden" name="p_code" value="<%=bean.getP_code() %>">
 			<div class="header name">

@@ -14,8 +14,8 @@ function paymentMethod(value){//결제방법 변경 시 입력창 변경
 	function agreement(){//약관 미 동의시 진행안됨. 
 		var chk = document.getElementById("agreement");
 		if(chk.checked){
-			document.write("<h3>결재가 완료되었습니다.</h3>");
-		}else{ 
+			document.orderFrm.submit();
+			}else{ 
 			alert("약관에 동의해주세요.");
 			return;
 		}
@@ -46,6 +46,8 @@ function init(){
 	function numberWithCommas(x) {
 	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
+	
+
 
 }
 
