@@ -631,11 +631,11 @@ input[id*='userPopup'] {
 } */
 /**********************/
 /*autosearch css*/
-#ui-id-1 {
+#top_wrapper+ul {
   background-color: #f3f1f1;
 }
 
-.ui-menu-item {
+#top_wrapper+ul.ui-menu-item {
   margin: 0;
   padding: 0;
   zoom: 1;
@@ -644,20 +644,20 @@ input[id*='userPopup'] {
   width: 100%;
 }
 
-.ui-autocomplete li.ui-menu-item {
+.ui-autocomplete ul > li.ui-menu-item {
   padding: 1px;
   width: 524px;
   background-color: #f4f4f4 !important;
 }
 
-.ui-menu-item .ui-menu-item-wrapper.ui-state-active {
+.ui-menu-item #top_wrapper+.ui-menu-item-wrapper.ui-state-active {
   background: #cfcfcf !important;
   font-weight: bold !important;
   color: #000000 !important;
   border: none;
 }
 
-.ui-menu-item a {
+ul > .ui-menu-item a {
   text-decoration: none;
   display: block;
   padding: .2em .4em;

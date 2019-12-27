@@ -1,3 +1,4 @@
+<%@page import="admin.StockMgr"%>
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <%@page import="product.productUtil"%>
 <%@page import="product.ProductBean"%>
@@ -12,6 +13,9 @@
 
 	int p_code = Integer.parseInt(request.getParameter("p_code"));
 
+	StockMgr stmgr = new StockMgr();
+	
+	int stqty = stmgr.getStockAva(p_code);
 	
 	ProductBean bean = mgr.getProduct(p_code);
 
@@ -20,7 +24,6 @@
 <link rel="stylesheet" type="text/css" href="../css/goodsList.css">
 
 <%@ include file="../top.jsp" %>
-
 
 
 
@@ -52,7 +55,7 @@
 				<span class="title">구매 수량</span>
 				<i id="button_down" class="far fa-minus-square"></i>
 				<input id="quantity" class="quantity" name="quantity" 
-				type="number" min="1" max="99" step="1" value="1">
+				type="number" min="1" max="<%=stqty %>" step="1" value="1">
 				<i id="button_up" class="far fa-plus-square"></i>
 			</div>
 			<div class="header total">

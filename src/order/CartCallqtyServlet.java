@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import admin.StockMgr;
+
 @WebServlet("/order/qtycall")
 public class CartCallqtyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -24,12 +26,12 @@ public class CartCallqtyServlet extends HttpServlet {
 		Vector<CartBean> result = mgr.getCart(id);
 		JSONArray jsonarray = new JSONArray();
 		PrintWriter pw = response.getWriter();
-		
 		for(int i=0; i<result.size(); i++) {
 			JSONObject objectbuffer = new JSONObject();
 			CartBean bean = result.get(i);
 			objectbuffer.put("p_code",bean.getP_code());
 			objectbuffer.put("c_qty",bean.getC_qty());
+			objectbuffer.put("s_ava",new StockMgr().getStockAva(bean.getP_code()));
 			jsonarray.add(objectbuffer);
 		}
 

@@ -4,7 +4,8 @@ const total = document.getElementById('total');
 const firstData = stringNumberToInt(price.innerHTML) * parseInt(quantity.value);
 const down_btn = document.getElementById('button_down');
 const up_btn = document.getElementById('button_up');
-
+let maxqty = quantity.max;
+console.log(maxqty);
 function stringNumberToInt(stringNumber){
     return parseInt(stringNumber.replace(/,/g , ''));
 }
@@ -16,10 +17,10 @@ function numberFormat(inputNumber) {
 function getresult(){
 	 let priceValue = stringNumberToInt(price.innerHTML);
 	 let qtyValue = parseInt(quantity.value);
-     if(qtyValue>=100){
-     	alert('99개 까지만 주문이 가능합니다.');
-        quantity.value = 99;
-        qtyValue = 99;
+     if(qtyValue>maxqty){
+     	alert(maxqty+'개 까지만 주문이 가능합니다.');
+        quantity.value = maxqty;
+        qtyValue = maxqty;
      }
      if(qtyValue<1){
          quantity.value = 1;
