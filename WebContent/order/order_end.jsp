@@ -6,9 +6,9 @@
 		request.setCharacterEncoding("EUC-KR");
 
 		/****  데이터 전달 받아야하는 부분 !!!  *****/
-		String mName = null; 				//이름
-		int o_total_amount = 0;		    //총 결제 금액
-		double pointRate = 0;             //포인트 비율
+		String mName = request.getParameter("mName"); 				//이름
+		int o_total_amount = Integer.parseInt(request.getParameter("o_total_amount"));		    //총 결제 금액
+		double pointRate = 0.3;             //포인트 비율
 		/*******************************/		
 
 %>
@@ -35,7 +35,7 @@
 				</div>
 				<div id="end_modal_btn_wrapper">
 					<a class="btn" href="../index.jsp"> 홈으로 이동 </a>
-					<a class="btn" href="../mypage_oderlist.jsp"> 주문내역으로 이동 </a>
+					<a class="btn" href="mypage_orderlist.jsp"> 주문내역으로 이동 </a>
 				</div>
 			<!-- </div> -->
 		</div>
