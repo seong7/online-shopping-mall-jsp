@@ -7,8 +7,9 @@ function init(){
 		const hostIndex = location.href.indexOf( location.host ) + location.host.length;
 		return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
 	}
-	document.getElementById('stock_delete_btn').addEventListener('click',function(){
-		
+	
+	function waste_function(){
+
 		let hidden_select_data = document.getElementById('selected_data').value;
 		let hidden_select_array = JSON.parse(hidden_select_data);
 		//삭제하기 위해 필요한 데이터들
@@ -36,14 +37,24 @@ function init(){
 	        },                              //key value
 	     success : function(data) {
 	    	 console.log(data);
+			location.reload(true); 
 	     }, error : function(){
 	            //에러경우
 	            console.log('에러');
 	        }
 	    });
+	}
+	document.getElementById('stock_delete_btn').addEventListener('click',function(){
+	    const con_test = confirm("폐기처리 하시겠습니까?");
+	    if(con_test == true){
+			waste_function();
+	    }
+	    else if(con_test == false){
+	    	console.log("취소하셨습니다.");
+	    }
 		
-	})
-	
+	});
+	console.log("펑션");
 	function searchInput(){
 	    $("#product_search").autocomplete({ 
 	            source : function( request, response ) {

@@ -159,5 +159,26 @@ public class StockMgr {
 			return totalCount;
 		}
 		
-		
+		//waste update mgr
+				public void waste(String [] date, int [] code, int [] enter) {
+					Connection con = null;
+					PreparedStatement pstmt = null;
+					String sql = null;
+					try {
+						con = pool.getConnection();
+						sql = "UPDATE stock_tb SET st_ava_qty=0, st_waste_qty=? WHERE p_code=? AND st_exp_date=?";
+						for(int i=0; i<code.length; i++) {
+							pstmt = con.prepareStatement(sql);
+							pstmt.setInt(1, enter[i]);
+							pstmt.setInt(2, code[i]);
+							pstmt.setString(3, date[i]);
+							pstmt.executeUpdate();
+						}
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						pool.freeConnection(con, pstmt);
+					}
+				}
 }
