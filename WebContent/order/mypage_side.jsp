@@ -52,7 +52,7 @@
                           <span id="del_top" class="text">배송중인 주문</span>
                       </div>
                       <div class="bottom">
-                          <span id="del" class="bold"><%=countDeliver%></span>
+                          <span id="del" class="bold"><a href="mypage_orderlist.jsp"><%=countDeliver%></a></span>
                           <span id="del_bottom" class="text">건</span>
                       </div>
                   </li>
