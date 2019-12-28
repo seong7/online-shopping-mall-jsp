@@ -90,7 +90,7 @@
                        
                         </li>
                     </a>
-                    <a href="#">
+                    <a href="../product/mypage_review.jsp">
                         <li>
                             <span class="text">¸®ºä°ü¸®</span>
                             
