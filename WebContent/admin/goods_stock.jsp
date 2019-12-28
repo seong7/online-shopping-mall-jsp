@@ -41,7 +41,7 @@
       		<input type="text" class="signup_input signup_long_input" id="modal_waste">
 	      </div>
 	      <div id="modal_date_div">
-      		<span>입고일 :</span>
+      		<span>유통기한 :</span>
       		<input type="date" class="signup_input signup_long_input" id="modal_date" readonly="readonly">
 	      </div>
 	      <div>
@@ -78,7 +78,7 @@
     
  <h2>검색결과</h2>
  <label>
- <input type="checkbox" id="waste_qty_include"> 폐기 제품 포함
+ <input type="checkbox" id="waste_qty_include"> 유통기한 지난 제품 숨기기
 </label>
 <input type="button" id="stock_delete_btn" value="선택 폐기">
 <input type="button" id="stock_update_btn" value="제품 수정">

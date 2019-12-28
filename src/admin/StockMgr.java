@@ -22,11 +22,12 @@ public class StockMgr {
 			try {
 				con = pool.getConnection();
 				sql = "insert stock_tb(p_code, st_exp_date, st_enter_qty, st_ava_qty, st_waste_qty) "
-					+ "VALUES (?,?,?,0,0)";
+					+ "VALUES (?,?,?,?,0)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, bean.getP_code());
 				pstmt.setString(2, bean.getSt_exp_date());
 				pstmt.setInt(3, bean.getSt_enter_qty());
+				pstmt.setInt(4, bean.getSt_enter_qty());
 				pstmt.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -204,5 +205,27 @@ public class StockMgr {
 						pool.freeConnection(con, pstmt);
 					}
 					return flag;
+				}
+				
+				public int getStockAva(int code) {
+					Connection con = null;
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					String sql = null;
+					int qty = 0;
+					try {
+						con = pool.getConnection();
+						sql = "SELECT SUM(st_ava_qty) FROM stock_tb WHERE p_code = ?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, code);
+						rs = pstmt.executeQuery();
+						if(rs.next()) 
+							qty = rs.getInt(1);
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						pool.freeConnection(con, pstmt, rs);
+					}
+					return qty;
 				}
 }

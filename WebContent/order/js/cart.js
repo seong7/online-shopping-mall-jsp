@@ -13,7 +13,7 @@ function init(){
 	
 	window.onload = function(){
 		id = document.querySelector('#user_id').value;
-		setTimeout(call_qty, 2500);
+		setTimeout(call_qty, 1000);
 	}
 	
 	if (window.attachEvent) {
@@ -64,7 +64,7 @@ function init(){
 	    cart_rows[i].childNodes[1].firstChild.checked = false;
 	}
     console.log('체크박스 전체 해제 완료');
-    
+  
 	for(let j=0; j<trArray.length; j++){
 		const tr7 = trArray[j].childNodes[7];
 		const down_btn = tr7.childNodes[0];
@@ -228,12 +228,14 @@ function init(){
   	        success : function(data) {
     	 	const result = [];
     	 	const resultParse = JSON.parse(data);
-  	  		for(let i=0; i<trArray.length; i++){
-  	  			trArray[i].childNodes[7].childNodes[2].value = parseInt(resultParse[i].c_qty);
-  	  			trArray[i].childNodes[9].innerHTML = parseInt(trArray[i].childNodes[5].childNodes[2].innerHTML) * parseInt(resultParse[i].c_qty);
-  	  		console.log(trArray[i].childNodes[5].childNodes[2].innerHTML);
-  	  		}
-
+    	 	if(result.length!==0){
+	  	  		for(let i=0; i<trArray.length; i++){
+	  	  			trArray[i].childNodes[7].childNodes[2].value = parseInt(resultParse[i].c_qty);
+	  	  			trArray[i].childNodes[7].childNodes[2].max =  parseInt(resultParse[i].s_ava);
+	  	  			trArray[i].childNodes[9].innerHTML = parseInt(trArray[i].childNodes[5].childNodes[2].innerHTML) * parseInt(resultParse[i].c_qty);
+	  	  		console.log(trArray[i].childNodes[5].childNodes[2].innerHTML);
+	  	  		}
+    	 	}
   	  		$('#main_contents').css("opacity","1");
   	  		$('#loader').css("display","none");
   	         }, error : function(){

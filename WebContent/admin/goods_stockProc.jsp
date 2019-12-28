@@ -8,6 +8,11 @@
 		String p_name = request.getParameter("p_name");
 		int st_enter_qty = Integer.parseInt(request.getParameter("st_enter_qty"));
 		String st_exp_date = request.getParameter("st_exp_date");
+		System.out.println("데이터 출력 stock저장");
+		System.out.println(p_code);
+		System.out.println(p_name);
+		System.out.println(st_enter_qty);
+		System.out.println(st_exp_date);
 		//String opname = request.getParameter("opname");
 		//int opcode = Integer.parseInt(request.getParameter("opcode"));
 		//StockBean bean = new StockBean();				

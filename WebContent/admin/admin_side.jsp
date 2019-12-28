@@ -117,7 +117,7 @@
                         
                         </li>
                     </a>
-                    <a href="#">
+                    <a href="member_connect.jsp">
                         <li>
                             <span class="text">立加包府</span>
                             
