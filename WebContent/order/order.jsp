@@ -52,12 +52,6 @@
 				goods.add(cMgr.getCartOneOrder(o_id, Integer.parseInt(checked_Pcode[i])));
 
 			}
-			//여기에서 플래그값 판단해서 시작
-			//플래그는 getparameter
-			//선택제품에대한 정보 넘겨줘야함
-			//카트 피코드 삭제도 해야함
-			//request 데이터 넣어줄것: pcode 배열과 user id 
-			//goods = cvlist;
 		}
 		
 
@@ -124,6 +118,8 @@
                     %>
                     <tr>
                         <td>
+                        	<input type="hidden" value="<%=pbean.getP_code()%>" name="p_code">
+              		  		<input type="hidden" value="<%=o_qty%>" name="o_qty">
                         	<img alt="제품사진" src="${pageContext.request.contextPath}/img/product/<%=pbean.getP_main_pht_name()%>">
                         </td>
                         <td class="btn_td">
@@ -134,16 +130,10 @@
                         <td>
                         	<%=o_qty %>개
                        	</td>
-                        <td>
-                        	<input type="hidden" value="<%=pbean.getP_code()%>" name="p_code">
-              		  		<input type="hidden" value="<%=o_qty%>" name="o_qty">
-                        </td>
-
                   		<td>
                        		<%=UtilMgr.intFormat(totalPrice) %>원
    	                    	<input type="hidden" name="p_price" value="<%=totalPrice %>">
                         </td>
-
                     </tr>
                     <%
                             }
@@ -155,9 +145,8 @@
 
         <section id="order_member">
             <h3 class="order_subtitle">주문자 정보</h3>
-            <table class="verHead">
+            	<table class="verHead">
 
-                <tr>
                 <%
                     MemberBean mbean = mMgr.getMember(o_id);
                     
@@ -169,6 +158,7 @@
                     String mAddDetail = mbean.getAddress_detail();
                 %>
                 
+	                <tr>
                         <th>보내는 분</th>
                         <td><%=mName %></td>
                     </tr>
@@ -208,10 +198,10 @@
                             <th>배송주소</th>
                             <td>
                             <input type="text" id="o_recpt_zipcode"  name="o_recpt_zipcode" readonly	value="<%=zipcode%>">
-							<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+							<input type="button" onclick="sample6_execDaumPostcode()" value="주소 찾기"><br>
 							<input type="text" id="o_recpt_add" name="o_recpt_add" readonly value="<%=add%>"><br>
 							<input type="text" id="o_recpt_add_det" name="o_recpt_add_det" value="<%=addDetail%>">
-							<input type="text" id="sample6_extraAddress" placeholder="참고항목">
+							<input type="text" id="sample6_extraAddress" placeholder="참고항목" readonly>
 							<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 							<script>
 							    function sample6_execDaumPostcode() {
@@ -330,10 +320,11 @@
                     <h3 class="order_subtitle">결제수단</h3>
                     <table class="verHead">
                         <tr>
-                            <th>일반결제 &nbsp;&nbsp;&nbsp;</th>
-                            <td> 신용카드
+                            <th>일반결제 </th>
+                            <td> 
+                            	신용카드
 	                            <input type="radio" class="radio" name="o_pay_method" value="신용카드" onclick='paymentMethod(this.value);' checked>
-	                            &nbsp;&nbsp;&nbsp; 휴대폰
+	                                                               휴대폰
 	                            <input type="radio" class="radio" name="o_pay_method" value="휴대폰" onclick='paymentMethod(this.value);'>
                             </td>
                         </tr>
@@ -363,7 +354,7 @@
                             <td><input name="cellphone1" size="13" placeholder="010-1234-1234"><td>
                         </tr>
                         <tr>
-                            <th>간편결제 &nbsp;&nbsp;&nbsp;</th>
+                            <th>간편결제</th>
                             <td>네이버 페이<input type="radio" class="radio" name="o_pay_method" value="네이버페이" onclick='paymentMethod(this.value);'></td>
                         </tr>
                     </table>
@@ -394,20 +385,21 @@
                     <input type="hidden" name="o_status" value="<%=o_status%>">
                     <input type="hidden" name="countPart" value="<%=countPart%>">
                     <input type="hidden" name="mName" value="<%=mName%>">
+                    <input type="hidden" name="flag" value="<%=flag%>">
                 
                     <div class="order_btn_wrapper">
                         <input type="button" class="btn order_submit" 
                         value="결제하기" onclick="location.href='javascript:agreement()'">
                         <script>
-                        function agreement(){//약관 미 동의시 진행안됨. 
-                    		var chk = document.getElementById("agreement");
-                    		if(chk.checked){
-                    			document.orderFrm.submit();
-                    			}else{ 
-                    			alert("약관에 동의해주세요.");
-                    			return;
-                    		}
-                    	}
+	                        function agreement(){//약관 미 동의시 진행안됨. 
+	                    		var chk = document.getElementById("agreement");
+	                    		if(chk.checked){
+	                    			document.orderFrm.submit();
+	                    			}else{ 
+	                    			alert("약관에 동의해주세요.");
+	                    			return;
+	                    		}
+	                    	}
                         </script>
                     </div>
                 </section>

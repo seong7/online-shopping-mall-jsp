@@ -70,16 +70,16 @@ public class OrderMgr {
 				pstmt.close();
 				rs.close();
 			////////////////////////////////////////////////////////////////
-				sql = "select count(p_code) from order_detail_tb "
-						+ "WHERE o_index =?"; 
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, ref);
-				rs= pstmt.executeQuery();
-				int refCount = 0;
-				if(rs.next())
-					refCount = rs.getInt(1);
-				pstmt.close();
-				rs.close();
+//				sql = "select count(p_code) from order_detail_tb "
+//						+ "WHERE o_index =?"; 
+//				pstmt = con.prepareStatement(sql);
+//				pstmt.setInt(1, ref);
+//				rs= pstmt.executeQuery();
+//				int refCount = 0;
+//				if(rs.next())
+//					refCount = rs.getInt(1);
+//				pstmt.close();
+//				rs.close();
 			////////////////////////////////////////////////////////////////
 				sql = "insert order_detail_tb(o_index, p_code, o_qty) " + 
 					"VALUES (?,?,?)";
