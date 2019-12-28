@@ -228,4 +228,75 @@ public class StockMgr {
 					}
 					return qty;
 				}
+				
+				
+				public boolean subtractStock(int p_code, int o_qty) {
+					Connection con = null;
+					PreparedStatement pstmt = null;
+					String sql = null;
+					ResultSet rs = null;
+					int ava_qty = 0;
+					int remainStock = 0;
+					String exp_date = null;			
+					int count = 0;
+					boolean flag = false;
+					
+					try {
+						con = pool.getConnection();
+						sql = "SELECT st_ava_qty,st_exp_date from stock_tb "
+								+ "where p_code=? AND st_exp_date-CURDATE()>0 order by st_exp_date";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, p_code);
+						rs= pstmt.executeQuery();
+						while(rs.next()) {
+							ava_qty = rs.getInt(1);//재고수량 
+							exp_date = rs.getString(2);//날짜 
+							remainStock = ava_qty-o_qty;
+							
+							if(remainStock > 0 || remainStock == 0) { // 현재 tuple의 재고 수량 > 주문 수량  || 현재 tuple의 재고수량 = 주문 수량 
+
+								count = updateStockQty(remainStock, p_code, exp_date);
+								if(count==1) { // 재고 수량 업데이트 성공
+									flag = true;
+									break;
+								}
+								
+							} else if(remainStock < 0) { // 현재 tuple의 재고 수량 < 주문 수량
+								count = updateStockQty(0, p_code, exp_date);
+								if(count==1) { // 재고 수량 업데이트 성공
+									o_qty -= ava_qty; // 주문 수량 차감
+									continue;         // 차감 후 continue
+								}
+							}
+							
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						pool.freeConnection(con, pstmt,rs);
+					}
+					return flag;
+				}
+				
+				//stock qty update (p_code , st_ava_qty, st_exp_date 만 필요)
+				public int updateStockQty(int st_ava_qty, int p_code, String st_ext_date) {
+					Connection con = null;
+					PreparedStatement pstmt = null;
+					String sql = null;
+					int count = 0;
+					try {
+						con = pool.getConnection();
+						sql = "UPDATE stock_tb SET st_ava_qty=? WHERE p_code=? AND st_exp_date=?;";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, st_ava_qty);
+						pstmt.setInt(2, p_code);
+						pstmt.setString(3, st_ext_date);
+						count = pstmt.executeUpdate();
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						pool.freeConnection(con, pstmt);
+					}
+					return count;
+				}
 }

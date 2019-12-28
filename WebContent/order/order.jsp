@@ -14,11 +14,15 @@
 <jsp:useBean id="pMgr" class="product.ProductMgr" />
 <jsp:useBean id="oMgr" class="order.OrderMgr" />
 <jsp:useBean id="cMgr" class="order.CartMgr" />
+<jsp:useBean id="polMgr" class="admin.PolicyMgr" />
+<jsp:useBean id="pointMgr" class="order.PointMgr"/>
 
 <%
 
 		request.setCharacterEncoding("EUC-KR");
 		String cpath = request.getContextPath();
+		String o_id = (String)session.getAttribute("idKey");
+		String flag = request.getParameter("flag");
 		
 		int p_code = 0;
 		int o_qty = 0;
@@ -32,14 +36,12 @@
 		String add;
 		String addDetail;
 
-		String o_id = (String)session.getAttribute("idKey");
-		String flag = request.getParameter("flag");
-		
+		int point = pointMgr.getPoint(o_id);
 		Vector goods = new Vector();
 		
 		// flag (카트인지 제품 하나 구매인지 구분 )  에 따라 Vector goods 에 정보 넣어줌
 		if(flag.equals("oneProduct")){
-			System.out.print(flag);
+			
 			p_code = Integer.parseInt(request.getParameter("p_code"));
 			ProductBean pbean = pMgr.getProduct(p_code);
 			goods.add(pbean);
@@ -58,7 +60,8 @@
 		/// sample용
 		String o_status = "결제완료";
 		int shippingPrice = 2500;
-		double pointRate = 0.05;  /* 5% 적립으로 가정 */
+		//double pointRate = 0.05;  /* 5% 적립으로 가정 */
+		double pointRate = polMgr.getRate(); /* 5% _ db 에서 가져옴 */
 
 %>
 
@@ -277,7 +280,8 @@
 	                    <table class="verHead"> 
 	                        <tr>
 	                            <th>적립급 적용</th>
-	                            <td><input placeholder="사용가능한 적립금 : 5000">원</td>
+	                            <!-- <td><input placeholder="사용가능한 적립금 : 5000">원</td> -->
+	                            <td><input type="text" name="usedPoint" placeholder="사용가능 적립금 : <%=UtilMgr.intFormat(point)%>">원</td>
 	                        </tr>
 	                    </table>
 	                </section>

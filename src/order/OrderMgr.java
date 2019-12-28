@@ -14,6 +14,30 @@ public class OrderMgr {
 		pool = DBConnectionMgr.getInstance();
 	}
 	//***User 기능설계***
+	
+	//Maxnum of order
+	public int getOrderMax(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int orderNum = 0;
+		try {
+			con = pool.getConnection();
+			sql = "select max(o_index) from order_tb";//가장 높은 o_index값 
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				orderNum = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return orderNum;
+	}
+	
 	//insert 
 	public boolean insertOrder(OrderBean order) {
 		Connection con = null;
@@ -70,17 +94,6 @@ public class OrderMgr {
 				pstmt.close();
 				rs.close();
 			////////////////////////////////////////////////////////////////
-//				sql = "select count(p_code) from order_detail_tb "
-//						+ "WHERE o_index =?"; 
-//				pstmt = con.prepareStatement(sql);
-//				pstmt.setInt(1, ref);
-//				rs= pstmt.executeQuery();
-//				int refCount = 0;
-//				if(rs.next())
-//					refCount = rs.getInt(1);
-//				pstmt.close();
-//				rs.close();
-			////////////////////////////////////////////////////////////////
 				sql = "insert order_detail_tb(o_index, p_code, o_qty) " + 
 					"VALUES (?,?,?)";
 				pstmt = con.prepareStatement(sql);
@@ -92,9 +105,6 @@ public class OrderMgr {
 					pstmt.setInt(2, p_codes[i]);
 					pstmt.setInt(3, o_qtys[i]);
 					cnt = pstmt.executeUpdate();
-					System.out.print("ref:"+ref);
-					System.out.print("p_codes: "+p_codes[i]);
-					System.out.print("o_qtys: "+o_qtys[i]);
 				}
 				if(cnt==1)
 					flag=true;

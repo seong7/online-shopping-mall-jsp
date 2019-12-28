@@ -235,7 +235,7 @@ ON UPDATE CASCADE ON DELETE CASCADE
 
 /* 포인트 내역 테이블 */
 CREATE TABLE IF NOT EXISTS POINT_TB(
-pt_index INT,
+pt_index INT auto_increment,
 id CHAR(20) NOT NULL,
 o_index INT NOT NULL,
 pt_detail CHAR(50) NOT NULL default '',
