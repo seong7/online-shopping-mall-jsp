@@ -228,4 +228,40 @@ public class StockMgr {
 					}
 					return qty;
 				}
+				public void subtractStock(int p_code, int o_qty) {
+					Connection con = null;
+					PreparedStatement pstmt = null;
+					String sql = null;
+					ResultSet rs = null;
+					try {
+							//o_ index값 설정
+							con = pool.getConnection();
+							sql = "SELECT st_ava_qty,st_exp_date from stock_tb "
+									+ "where p_code=? order by st_exp_date";
+							pstmt = con.prepareStatement(sql);
+							pstmt.setInt(1, p_code);
+							rs= pstmt.executeQuery();
+							int ava_qty = 0;
+							String exp_date;							
+							while(rs.next()) {
+								ava_qty = rs.getInt(1);//재고수량 
+								exp_date = rs.getString(2);//날짜 
+								int remainStock = ava_qty-o_qty;
+								if(remainStock>0) {//재고가 남아 있을때 
+									sql = "UPDATE stock_tb SET st_ava_qty=? WHERE "
+											+ "p_code=? AND st_exp_date=?";
+									pstmt = con.prepareStatement(sql);
+									pstmt.setInt(1,remainStock);
+									pstmt.setInt(2, p_code);
+									pstmt.setString(3, exp_date);
+									pstmt.executeUpdate();
+									break;
+								}
+							}
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						pool.freeConnection(con, pstmt,rs);
+					}
+				}
 }

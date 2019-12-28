@@ -1,13 +1,15 @@
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <%@page import="product.UtilMgr"%>
-
+<jsp:useBean id="polMgr" class="admin.PolicyMgr" />
 <%
 		request.setCharacterEncoding("EUC-KR");
 
 		/****  데이터 전달 받아야하는 부분 !!!  *****/
-		String mName = request.getParameter("mName"); //이름
-		int o_total_amount = Integer.parseInt(request.getParameter("o_total_amount")); //총 결제 금액
-		double pointRate = 0.3;             //포인트 비율
+		String mName = request.getParameter("mName"); 				//이름
+						//이름
+
+		int o_total_amount = Integer.parseInt(request.getParameter("o_total_amount"));		    //총 결제 금액
+		double pointRate = polMgr.getRate();     //포인트 비율
 		/*******************************/		
 
 %>

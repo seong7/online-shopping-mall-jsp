@@ -2,11 +2,13 @@
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <jsp:useBean id="mMgr" class="member.MemberMgr"/>
 <jsp:useBean id="oMgr" class="order.OrderMgr"/>
+<jsp:useBean id="pointMgr" class="order.PointMgr"/>
 <%
 		request.setCharacterEncoding("EUC-KR");
 		String cpath = request.getContextPath();
 		MemberBean myPageSide_bean = null;
 		int countDeliver = oMgr.countDeliver(id);
+		int point = pointMgr.getPoint(id); //포인트 가져오기. 
 
 		if(id==null || id.length()==0){
 			response.sendRedirect(cpath+"/index.jsp");
@@ -43,7 +45,7 @@
                           <span id="point_top" class="text">사용가능 포인트</span>
                       </div>
                       <div class="bottom">
-                          <span id="point" class="bold">1,000</span>
+                          <span id="point" class="bold"><%=point %></span>
                           <span id="point_bottm" class="text">원</span>
                       </div>
                   </li>
@@ -90,7 +92,7 @@
                        
                         </li>
                     </a>
-                    <a href="../product/mypage_review.jsp">
+                    <a href="#">
                         <li>
                             <span class="text">리뷰관리</span>
                             
