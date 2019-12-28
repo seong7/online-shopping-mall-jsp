@@ -99,9 +99,13 @@
 			</table>
 				
 		</form>
+		
+		
 
 	<!-- <form name=rFrm action="goods_Proc.jsp?flag=delete" enctype="multipart/form-data"> -->
 	<form name=rFrm id="rFrame" action="goods_masterProc.jsp" enctype="multipart/form-data">
+	
+	<h3 class="inner_title">제품 리스트</h3>
 
 		<table class="mgr_table horHead">
 			<tr>
@@ -141,17 +145,18 @@
 					     <input class="checkbox" type ="checkbox" name="fch" value="<%=p_code%>" onclick="chk()" >
 					</td>
 					<td class="btn_td"><a href="goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_code() %></a></td>
-					<td class="btn_td"><a href="../product/goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_name() %></a></td>
+					<td class="btn_td"><a href="goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_name() %></a></td>
+					<%-- <td class="btn_td"><a href="../product/goods_view.jsp?p_code=<%=pbean.getP_code()%>"><%=pbean.getP_name() %></a></td> --%>
 					<td><%=UtilMgr.monFormat(pbean.getP_price())%>원</td>
 
 					<td><%=pbean.getP_date() %></td>
 <!--if p_on_sale is 1 then ○ else X  -->
 					<%if(pbean.getP_on_sale()==1){ %>
-					<td>○</td><%}else{ %>
+					<td>O</td><%}else{ %>
 					<td>X</td><%} %>					
 <!--if no stock then print '재고미등록'   -->
 					<%if(pbean.getSt_ava_qty()==99999){ %>
-					<td>재고미등록</td><%}else{ %>
+					<td>미등록</td><%}else{ %>
 					<td><%=pbean.getSt_ava_qty() %></td><%} %>		
 				</tr>
 			<%}//--for %>

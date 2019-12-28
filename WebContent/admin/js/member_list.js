@@ -41,7 +41,7 @@ function init(){
     	    			row.insertCell(3).innerHTML = resultParse[j].joindate;
     	    			row.insertCell(4).innerHTML = resultParse[j].email;
     	    			row.insertCell(5).innerHTML = resultParse[j].contact;
-    	    			row.insertCell(6).innerHTML = resultParse[j].address;
+//    	    			row.insertCell(6).innerHTML = resultParse[j].address;
     				}
     			 }, error : function(){
     	            //에러경우

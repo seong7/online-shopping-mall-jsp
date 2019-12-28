@@ -34,7 +34,7 @@
        	</div>
     
     	<div class="form_wrapper">
-            <h3 class="inner_title">회원 정보 List</h3>
+            <h3 class="inner_title">회원 정보 리스트</h3>
                         <table  class="mgr_table horHead" id="result_table">
                             <tr id="judgeRow">
                                 <th>ID</th>

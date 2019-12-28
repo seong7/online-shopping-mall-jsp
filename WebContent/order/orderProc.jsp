@@ -5,6 +5,17 @@
 <jsp:useBean id="cmgr" class="order.CartMgr"/>
 <jsp:useBean id="bean" class="order.OrderBean"/>
 <jsp:useBean id="odbean" class="order.OrderDetailBean"/>
+
+<script>
+	// order insert 또는 order detail insert 실패 시 호출되는 function
+	function err(){
+		alert("알 수 없는 오류로 결제가 실패하였습니다.");
+		history.go(-1);  /* 1페이지 뒤로보냄 (order.jsp 로 )*/
+		// ==>  location.href  또는   response.sendRedirect 사용하면 request 값 보낼 수 없으므로  에러 발생함
+	}
+</script>
+
+
 <%
 		request.setCharacterEncoding("EUC-KR");
 		
@@ -24,7 +35,11 @@
 		String[] p_code = request.getParameterValues("p_code");
 		int countPart =Integer.parseInt(request.getParameter("countPart"));
 		String mName =request.getParameter("mName");
-		//order insert
+		String flag = request.getParameter("flag");
+		
+		
+		
+		//order_tb insert
 		bean.setO_id(o_id);
 		bean.setO_recpt_name(o_recpt_name);
 		bean.setO_recpt_contact(o_recpt_contact);
@@ -37,36 +52,56 @@
 		bean.setO_total_amount(o_total_amount);
 		bean.setO_pay_method(o_pay_method);
 		bean.setO_status(o_status);
-		boolean orderResult=mgr.insertOrder(bean);
+		boolean orderResult = mgr.insertOrder(bean);
 		
-		//orderDetail insert
-		int o_qtys[] = new int[countPart];
-		int p_codes[] = new int[countPart];
-		for(int i =0; i<countPart;i++){
-			o_qtys[i] = Integer.parseInt(o_qty[i]);
-			p_codes[i] = Integer.parseInt(p_code[i]);
-		}
-		odbean.setO_qty(o_qtys);
-		odbean.setP_code(p_codes);
-		boolean orderDetailResult=mgr.insertDetailOrder(odbean);
-		
-		//cart Delete
-		cmgr.deleteCart(o_id, p_codes);
-		
-		String msg = "";
-		 if(orderResult&&orderDetailResult){
-			//msg = "결재가 완료되었습니다.";
-			mName = URLEncoder.encode(mName);
-			response.sendRedirect("order_end.jsp?mName="+mName+"&o_total_amount="+o_total_amount);
-
-		}else{
-			msg = "결재실패";
-			%>
-		<script>
-			alert("<%=msg%>");
-		</script>
+		if(orderResult){
+			
+			//orderDetail_tb insert
+			int o_qtys[] = new int[countPart];
+			int p_codes[] = new int[countPart];
+			for(int i =0; i<countPart;i++){
+				o_qtys[i] = Integer.parseInt(o_qty[i]);
+				p_codes[i] = Integer.parseInt(p_code[i]);
+			}
+			odbean.setO_qty(o_qtys);
+			odbean.setP_code(p_codes);
+			boolean orderDetailResult=mgr.insertDetailOrder(odbean);
+			
+			
+			if(orderDetailResult){ /* order 생성 성공 시 */
+				
+				if(flag.equals("cart")){ /* flag = cart 일 경우 */
+					//cart Delete
+					cmgr.deleteCart(o_id, p_codes);
+				} %>
+				
+				<!-- order_end.jsp 에 보내는 form -->
+				<form id="order_end_frm" name="order_end_frm" method="post" action="order_end.jsp">
+					<input type="hidden" name="mName" value="<%=mName %>" >
+					<input type="hidden" name="o_total_amount" value="<%=o_total_amount %>" >
+				</form>
+				
+				<script>
+					const frmToSubmit = document.getElementById('order_end_frm');
+					frmToSubmit.submit();
+				</script>
+					
+			<%  return;
+				
+			} else{  // orderDetailResult = false 일 때  %> 
+				<script>
+					err();
+				</script>
+			<% }
+		 } else{  // orderResult = false 일 때 %>
+			<script>
+				err();
+			</script>
 		<%
-			response.sendRedirect("order.jsp");
-		}
-		%>
+		 } %>
+		
+		
+
+		
+		
 
