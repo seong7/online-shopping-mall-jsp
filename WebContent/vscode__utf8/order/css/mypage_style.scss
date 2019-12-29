@@ -191,7 +191,7 @@ $tableBorder: 0.5px solid #dcdbde;
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
-    form{
+    form, .mypage_wrapper{
         width: 97%;
         padding-left: 20px;
     }
@@ -227,8 +227,12 @@ input{
         border: 1px solid $brandColor2;
     }
 }
+img{
+    width: 100px;
+    height: auto;
+}
     
-.mypage_table .memInfo_table{
+.mypage_table{
     margin-top: 20px;
     border-collapse:collapse;
     width: 100%;

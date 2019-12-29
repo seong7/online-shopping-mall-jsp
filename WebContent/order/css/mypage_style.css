@@ -240,7 +240,7 @@
           box-sizing: border-box;
 }
 
-#mypage form {
+#mypage form, #mypage .mypage_wrapper {
   width: 97%;
   padding-left: 20px;
 }
@@ -274,6 +274,11 @@ input {
 
 input:focus {
   border: 1px solid #FB9832;
+}
+
+img {
+  width: 100px;
+  height: auto;
 }
 
 .mypage_table {
@@ -439,5 +444,12 @@ input:focus {
   left: 60%;
   top: 65%;
   border: 1px solid #fec084;
+}
+
+.disabled {
+  pointer-events: none;
+  background-color: #eee;
+  color: #555;
+  opacity: 1;
 }
 /*# sourceMappingURL=mypage_style.css.map */

@@ -241,7 +241,7 @@
           box-sizing: border-box;
 }
 
-#mypage form {
+#mypage form, #mypage .mypage_wrapper {
   width: 97%;
   padding-left: 20px;
 }
@@ -277,7 +277,12 @@ input:focus {
   border: 1px solid #FB9832;
 }
 
-.mypage_table .memInfo_table {
+img {
+  width: 100px;
+  height: auto;
+}
+
+.mypage_table {
   margin-top: 20px;
   border-collapse: collapse;
   width: 100%;
@@ -285,12 +290,12 @@ input:focus {
   color: #333;
 }
 
-.mypage_table .memInfo_table th {
+.mypage_table th {
   font-size: 20px;
   padding-top: 13px;
 }
 
-.mypage_table .memInfo_table td {
+.mypage_table td {
   border-bottom: 0.5px solid #dcdbde;
   font-family: "MS Shell Dlg 2";
   font-size: 16px;
@@ -298,12 +303,12 @@ input:focus {
   padding-top: 40px;
 }
 
-.mypage_table .memInfo_table .btn_td a {
+.mypage_table .btn_td a {
   text-decoration: none;
   color: inherit;
 }
 
-.mypage_table .memInfo_table .btn_td:hover a {
+.mypage_table .btn_td:hover a {
   color: #fec084;
 }
 
