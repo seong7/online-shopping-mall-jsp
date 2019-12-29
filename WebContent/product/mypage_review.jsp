@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page import="product.ReviewBean" %>
+<%@ page import="java.util.Vector" %>
 
-
+<jsp:useBean id="reviewMgr" class="product.ReviewMgr"/>
 
 
 <%@include  file="../top.jsp"%>
@@ -14,23 +16,101 @@
 		<input id="" class="btn" type="button" value="나의 리뷰 목록">
 		<input id="" class="btn" type="button" value="작성 가능 리뷰">
 		
-		<table class="mypage_table horHead">
-			<tr>
-				<th>주문번호</th>
-				<th colspan="2">제품정보</th>
-				<th>구매일</th>
-				<th>주문상태</th>
-			</tr>
-			<tr>
-				<td>
-					
-				</td>
-				<td>
-					
-				</td>
-			</tr>
+		<form name="reviewWriteFrm" method="post" action="">
+		
+			<h3 class="inner_title">작성 가능한 리뷰</h3>
+            <span class="review_detail">구매 후 31일 이내의 제품에 대해서만 리뷰 작성이 가능합니다.</span>
 			
-		</table>
+			
+			<table class="mypage_table horHead">
+				<tr id="column_tr">
+					<th>주문번호</th>
+					<th colspan="2">제품정보</th>
+					<th>구매일</th>
+					<th>주문상태</th>
+					<th></th>
+				</tr>
+
+				<%
+					// 작성 가능 리뷰 목록 가져오기 
+					Vector<ReviewBean> reBeanList = reviewMgr.getAvaReview(id);
+				
+					if(reBeanList.isEmpty()){
+				%>
+					
+					<tr>
+						<td colspan="5">
+							작성 가능한 리뷰가 없습니다.
+						</td>
+					</tr>
+					
+				<%		
+					} // --if 
+					else{
+						
+						
+					for(ReviewBean reBean: reBeanList){
+						
+						int o_index = reBean.getO_index();
+						String p_main_pht_name = reBean.getP_main_pht_name();
+						String p_name = reBean.getP_name();
+						String o_date = reBean.getO_date();
+						String o_status = reBean.getO_status();
+						int p_code = reBean.getP_code();
+				%>
+				
+					<tr>
+						<td class="btn_td">
+							<a href="${pageContext.request.contextPath}/order/mypage_order_view.jsp?order=<%=o_index%>">
+								<%=o_index%>
+							</a>
+						</td>
+						<td>
+							<img alt="제품사진" src="${pageContext.request.contextPath}/img/product/<%=p_main_pht_name%>">
+						</td>
+						<td class="btn_td">
+							<a href="${pageContext.request.contextPath}/product/goods_view.jsp?p_code=<%=p_code%>">
+                           		<%=p_name %>
+                           	</a>
+                       	</td>
+                       	<td>
+                       		<%=o_date %>
+                       	</td>			
+                       	<td>
+                       		<%=o_status %>
+                       	</td>
+                       	<td>
+                       		<input type="button" class="btn" value="작성">
+                       	</td>		
+					</tr>
+				
+				<%		
+					} // -- for
+				} // -- else
+				%>
+
+			</table>
+		</form>
+		
+		
+		<form name="reviewReadFrm" method="post" action="">
+			
+			<h3 class="inner_title">내가 작성한 리뷰</h3>
+            <span class="review_detail">구매 후 31일 이내의 제품에 대해서만 리뷰 작성이 가능합니다.</span>
+			
+			
+			<table class="mypage_table horHead">
+				<tr id="column_tr">
+					<th>주문번호</th>
+					<th colspan="2">제품정보</th>
+					<th>구매일</th>
+					<th>주문상태</th>
+					<th></th>
+				</tr>
+				
+			</table>
+				
+		</form>
 		
 		
 	</div>

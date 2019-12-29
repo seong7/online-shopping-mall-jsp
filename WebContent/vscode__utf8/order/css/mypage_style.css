@@ -277,6 +277,11 @@ input:focus {
   border: 1px solid #FB9832;
 }
 
+img {
+  width: 100px;
+  height: auto;
+}
+
 .mypage_table .memInfo_table {
   margin-top: 20px;
   border-collapse: collapse;
