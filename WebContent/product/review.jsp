@@ -82,7 +82,7 @@
 						<td>
 							<% 
 								for(int j=0; j<5; j++){
-									if(j <= r_rate){
+									if(j+1 <= r_rate){
 							%>
 										<i class="yStar fas fa-star"></i>
 							<%		

@@ -4,6 +4,7 @@
 
 <jsp:useBean id="reviewMgr" class="product.ReviewMgr"/>
 
+<link rel="stylesheet" type="text/css" href="./css/review.css">
 
 <%@include  file="../top.jsp"%>
 
@@ -16,7 +17,7 @@
 		<input id="" class="btn" type="button" value="나의 리뷰 목록">
 		<input id="" class="btn" type="button" value="작성 가능 리뷰">
 		
-		<div>
+		<div class="mypage_wrapper">
 
 		
 			<h3 class="inner_title">작성 가능한 리뷰</h3>
@@ -80,28 +81,37 @@
                        	<td>
                        		<%=o_status %>
                        	</td>
-                       	<td>
-                       		<input type="button" class="btn" value="작성">
-                       	</td>		
 					</tr>
 					<!--  작성 칸 -->
 					<tr>
-						<td></td>
-						<td class="rateField" colspan="2">
-							<%
-								for(int i=0; i<5; i++){
-							%>
-								<i class="nStar far fa-star"></i>
-							<%
-								}
-							%>
-						</td>	
-						<td class="writeField" colspan="3">
-                           	<form name="reviewWriteFrm" method="post" action="./reviewProc.jsp">
-	                           	<input type="hidden" name="o_index" value="<%= o_index%>">
-	                           	<input type="hidden" name="p_code" value="<%=p_code%>">
-								<textarea name="review"></textarea>
+						<td class="rateField" colspan="4">
+	                    	<form name="reviewWriteFrm" method="post" action="./reviewProc.jsp">
+								<%
+									for(int i=0; i<5; i++){
+								%>
+									<input type="radio" class="rate_star" id="rate_star<%=i+1%>_<%=o_index%>_<%=p_code%>" name="r_rate" value="<%=i+1%>">
+									
+									<script>
+										const rate_star<%=i+1 %>_<%=o_index%>_<%=p_code%> = document.getElementById('rate_star<%=i+1 %>_<%=o_index%>_<%=p_code%>');
+									</script>
+									
+									<label for="rate_star<%=i+1%>_<%=o_index%>_<%=p_code%>">
+										<i class="nStar far fa-star"></i>
+									</label>
+								<%
+									}
+								%>
+		                           	<input type="hidden" name="o_index" value="<%= o_index%>">
+		                           	<input type="hidden" name="p_code" value="<%=p_code%>">
+		                           	<input type="hidden" name="id" value="<%=id %>">
+									<textarea name="r_content" id="reviewText"></textarea>
+									<script>
+										const reviewText_<%=o_index%>_<%=p_code%> = document.getElementById('reviewText_<%=o_index%>_<%=p_code%>');
+									</script>
+                       		<input type="submit" class="btn" value="작성">
 							</form>
+						</td>
+						<td>
 						</td>
 					</tr>
 				
@@ -111,6 +121,8 @@
 				%>
 
 			</table>
+
+			
 		</div>
 		
 		
@@ -134,5 +146,7 @@
 </div> <!-- #main (상단요약 + 버튼 + mypage) : mypage_side.jsp 에서 열림-->
 	<%@ include file="../bottom.jsp" %>
 	
+<script type="text/javascript" charset="EUC-KR" src="js/review.js"></script>
+
 </body>
 </html>

@@ -129,7 +129,7 @@ public class ReviewMgr {
 	}
 	
 	/* insert Review */
-	public boolean insertReview() {
+	public boolean insertReview(ReviewBean reBean) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
@@ -139,7 +139,11 @@ public class ReviewMgr {
 			sql = "INSERT into review_tb (o_index, p_code, id, r_content, r_rate) " + 
 				  "VALUES (?, ?, ?, ?, ?);";
 			pstmt = con.prepareStatement(sql);
-			//pstmt.setInt();
+			pstmt.setInt(1, reBean.getO_index());
+			pstmt.setInt(2, reBean.getP_code());
+			pstmt.setString(3, reBean.getId());
+			pstmt.setString(4, reBean.getR_content());
+			pstmt.setInt(5, reBean.getR_rate());
 			int count = pstmt.executeUpdate();
 			if(count==1) {
 				flag = true;

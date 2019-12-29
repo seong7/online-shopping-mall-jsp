@@ -1,7 +1,9 @@
 eclipse.preferences.version=1
+encoding//WebContent/js/top.js=EUC-KR
 encoding//WebContent/order/js/cart.js=EUC-KR
 encoding//WebContent/order/js/order.js=EUC-KR
 encoding//WebContent/product/js/goods_view.js=EUC-KR
+encoding//WebContent/product/js/review.js=EUC-KR
 encoding//WebContent/sql/Insert_Sample_Data.sql=UTF-8
 encoding//WebContent/vscode__utf8=UTF-8
 encoding//src/admin/DBConnectionMgr.java=EUC-KR
