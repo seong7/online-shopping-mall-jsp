@@ -16,7 +16,8 @@
 		<input id="" class="btn" type="button" value="나의 리뷰 목록">
 		<input id="" class="btn" type="button" value="작성 가능 리뷰">
 		
-		<form name="reviewWriteFrm" method="post" action="">
+		<div>
+
 		
 			<h3 class="inner_title">작성 가능한 리뷰</h3>
             <span class="review_detail">구매 후 31일 이내의 제품에 대해서만 리뷰 작성이 가능합니다.</span>
@@ -83,6 +84,26 @@
                        		<input type="button" class="btn" value="작성">
                        	</td>		
 					</tr>
+					<!--  작성 칸 -->
+					<tr>
+						<td></td>
+						<td class="rateField" colspan="2">
+							<%
+								for(int i=0; i<5; i++){
+							%>
+								<i class="nStar far fa-star"></i>
+							<%
+								}
+							%>
+						</td>	
+						<td class="writeField" colspan="3">
+                           	<form name="reviewWriteFrm" method="post" action="./reviewProc.jsp">
+	                           	<input type="hidden" name="o_index" value="<%= o_index%>">
+	                           	<input type="hidden" name="p_code" value="<%=p_code%>">
+								<textarea name="review"></textarea>
+							</form>
+						</td>
+					</tr>
 				
 				<%		
 					} // -- for
@@ -90,25 +111,19 @@
 				%>
 
 			</table>
-		</form>
+		</div>
 		
 		
 		<form name="reviewReadFrm" method="post" action="">
 			
 			<h3 class="inner_title">내가 작성한 리뷰</h3>
-            <span class="review_detail">구매 후 31일 이내의 제품에 대해서만 리뷰 작성이 가능합니다.</span>
 			
-			
-			<table class="mypage_table horHead">
-				<tr id="column_tr">
-					<th>주문번호</th>
-					<th colspan="2">제품정보</th>
-					<th>구매일</th>
-					<th>주문상태</th>
-					<th></th>
-				</tr>
-				
-			</table>
+			<% 
+				String reviewList = "mypage";
+				int p_code = 0; // mypage 에서 넘어갈 때 에러 생기지 않도록 임의 값 부여해야함
+			%>
+			<%@include file = "review.jsp" %>
+
 				
 		</form>
 		
