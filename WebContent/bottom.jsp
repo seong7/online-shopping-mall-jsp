@@ -28,10 +28,10 @@
 	                <span>사업자등록번호 : 111-11-11111</span>
 	                <span>주소 : 부산광역시 부산진구 중앙대로 708 부산파이낸스센터 4F, 5F</span>
 	                <span>팩스 : 070-111-1111 | 이메일 : xxx@xxxxx.com</span>
-	                <a href="#"><img src="${pageContext.request.contextPath}/img/index/footer/ico_fb.webp"></a>
-	                <a href="#"><img src="${pageContext.request.contextPath}/img/index/footer/ico_instagram.webp"></a>
-	                <a href="#"><img src="${pageContext.request.contextPath}/img/index/footer/ico_blog.webp"></a>
-	                <a href="#"><img src="${pageContext.request.contextPath}/img/index/footer/ico_youtube.webp"></a>
+	                <a href="https://www.facebook.com/"><img src="${pageContext.request.contextPath}/img/index/footer/ico_fb.webp"></a>
+	                <a href="https://www.instagram.com/?hl=ko"><img src="${pageContext.request.contextPath}/img/index/footer/ico_instagram.webp"></a>
+	                <a href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&currentPage=1&groupId=0"><img src="${pageContext.request.contextPath}/img/index/footer/ico_blog.webp"></a>
+	                <a href="https://www.youtube.com/"><img src="${pageContext.request.contextPath}/img/index/footer/ico_youtube.webp"></a>
 	            </div>
 	        </li>
 	    </ul>
