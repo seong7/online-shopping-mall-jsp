@@ -12,7 +12,7 @@
 
 
 
-	<table class="mypage_table horHead">
+	<table class="mypage_table horHead review_table">
 		<tr id="column_tr">
 			<th>¹øÈ£</th>
 			

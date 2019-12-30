@@ -1,4 +1,5 @@
-
+/* 폰트 추가*/
+/* 굵음 */
 @font-face {
   font-family: 'ON_IGothic';
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff") format("woff");
@@ -6,6 +7,7 @@
   font-style: normal;
 }
 
+/* 일반 */
 @font-face {
   font-family: 'Handon3gyeopsal600g';
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff") format("woff");
@@ -37,6 +39,7 @@ main header {
   width: 96%;
   margin-top: 30px;
   margin-bottom: 30px;
+  border-bottom: 3px solid #fec084;
 }
 
 main header #img_wrapper {
@@ -139,6 +142,11 @@ main header form .btn_wrapper #cartBtn {
   width: 200px;
 }
 
+main #detail {
+  position: relative;
+  bottom: 30px;
+}
+
 #button_down, #button_up {
   overflow: visible;
   font-size: 25px;
@@ -179,10 +187,4 @@ input[type=number]::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
-
-
-.disable_press_effect:active{
-	top: 0 !important; 
-}
-
 /*# sourceMappingURL=goods_view.css.map */

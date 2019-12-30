@@ -19,6 +19,7 @@ main{
         width: 96%;
         margin-top: 30px;
         margin-bottom: 30px;
+        border-bottom: 3px solid $brandColor1;
         #img_wrapper{
             width: 150%;
             img{
@@ -108,6 +109,10 @@ main{
                 }
             }
         }
+    }
+    #detail{
+        position: relative;
+        bottom: 30px;
     }
 }
 
