@@ -139,8 +139,8 @@
 	                        </a>
 	                    </li>
 	                    <li>
-	                        <a class="nav_a"  href="#">
-	                            <span class="txt">고객지원</span>
+	                        <a class="nav_a"  href="${pageContext.request.contextPath}/notice_list.jsp">
+	                            <span class="txt">공지사항</span>
 	                        </a>
 	                    </li>
 						<li id="active_btn_li">

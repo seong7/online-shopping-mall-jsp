@@ -300,7 +300,8 @@ img {
   font-family: "MS Shell Dlg 2";
   font-size: 16px;
   height: 100px;
-  padding-top: 40px;
+  vertical-align: middle;
+  padding: 10px;
 }
 
 .mypage_table .btn_td a {

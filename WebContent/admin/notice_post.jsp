@@ -1,53 +1,64 @@
 <%@ page contentType="text/html; charset=EUC-KR" %>
+
+<%
+		request.setCharacterEncoding("EUC-KR");
+		String n_id = request.getParameter("n_id");
+%>
 <html>
 <head>
-<title>
-</title>
+		<style>
+		table {border: 1px solid; border-collapse:collapse; 
+					width: 70%; text-align:center;}
+		td{border: 1px solid;}
+		thead{background:lightgray;}
+		</style>
 </head>
-<body >
-<div>
+<body>
+
 <h2>공지사항 작성하기</h2>
-<form method="post" action="notice_Proc.jsp?flag=insert" 
-enctype="multipart/form-data">
 <hr>
-<br/>
-<table width="600" cellpadding="3">
-</table>
-<br/>
-<table width="600" cellpadding="3">
-	<tr>
-		<td >
+
+<form name="postFrm" method="post" action="notice_Proc.jsp?flag=insert" enctype="multipart/form-data">		
+<input type="hidden" name ="n_id" value="<%=n_id%>">		
 		<table>
 			<tr>
-				<td width="20%">이 름</td>
-				<td width="80%">
-				<input name="name" size="10" ></td>
+				<td>작성자</td>
+				<td><%=n_id%></td>
 			</tr>
+			
 			<tr>
 				<td>제 목</td>
 				<td>
-				<input name="subject" size="50" ></td>
+				<input name="n_title"></td>
 			</tr>
 			<tr>
+			<td>카테고리</td>
+			<td>
+			<select name="n_category">
+			<option>선택</option>
+			<option value="주문/결제">주문/결제</option>
+			<option value="회원문의">회원</option>
+			<option value="취소/교환/반품">취소/교환/반품</option>
+			<option value="배송문의">배송</option>
+			<option value="기타">기타</option>
+			</select>
+			</td>
+			</tr>
+			
+			<tr>
 				<td>내 용</td>
-				<td><textarea name="content" rows="10" cols="50"></textarea></td>
+				<td><input name="n_content"></td>
 			 <tr>
+			 
      			<td>첨부파일</td> 
-     			<td><input type="file" name="FileUp" size="50" maxlength="50"></td>
-				<td colspan="2"></td>
-			</tr>
-			<tr align="right">
-				<td colspan="2">
-					 <input type="submit" value="등록">
-					 <input type="button" value="리스트" onClick="javascript:location.href='notice_list.jsp'">
-				</td>
-			</tr>
-		</table>
-		</td>
-	</tr>
-</table>
+     			<td><input type="file" name="noticeFile" size="50"></td>
+				<td></td>
+			</tr>				
+		</table>	
+				<input type="submit" value="등록">
+				<input type="button" value="작성취소" onClick="javascript:location.href='notice_list.jsp'">	
 <input type="hidden" name="ip" value="<%=request.getRemoteAddr()%>">
 </form>
-</div>
+
 </body>
 </html>
