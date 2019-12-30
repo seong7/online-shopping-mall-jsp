@@ -129,7 +129,6 @@ input[type*="radio"] {
 
 .review_table .rateField form .rate_star_wrapper i {
   margin-right: 5px;
-  color: #cccccc;
 }
 
 .review_table .rateField form .rate_star_wrapper i:hover {
@@ -154,18 +153,34 @@ input[type*="radio"] {
   border: 1px solid #FB9832;
 }
 
+.yStar {
+  color: #fec084;
+}
+
+.nStar {
+  color: #cccccc;
+}
+
+.nStar:hover {
+  color: #fec084;
+  cursor: pointer;
+}
+
+.active_btn {
+  height: 40px;
+  width: 70px;
+  border: 1px solid #FB9832;
+  background-color: #FB9832;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
 #review_read_tb th {
   vertical-align: middle;
   padding-left: 10px;
   height: 50px;
   font-family: "ON_IGothic";
-}
-
-#review_read_tb td .yStar {
-  color: #fec084;
-}
-
-#review_read_tb td .nStar {
-  color: #cccccc;
 }
 /*# sourceMappingURL=review.css.map */

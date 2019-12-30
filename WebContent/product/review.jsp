@@ -78,10 +78,7 @@
 						<td>
 							<%= i %>
 						</td>
-						<td>
-							<img alt="제품사진" src="${pageContext.request.contextPath}/img/product/<%=p_main_pht_name%>">
-						</td>
-						<td class="btn_td">
+						<td colspan="2" class="btn_td">
 							<a href="${pageContext.request.contextPath}/product/goods_view.jsp?p_code=<%=rP_code%>">
 								<%=p_name %>
 							</a>
