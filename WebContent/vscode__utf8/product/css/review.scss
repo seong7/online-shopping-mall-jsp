@@ -1,0 +1,100 @@
+@import '../../font/font-family'; 
+$brandColor1: #fec084; 
+$brandColor2: #FB9832;
+$titleColor: #333;
+$titleDetailColor: gray;
+$normalFont: 'ON_IGothic';
+$thinFont :  'MS Shell Dlg 2';
+
+input[type*="radio"] {
+    display: none;
+}
+
+// mypage_review.jsp 부분
+#mypage{
+    #review_btn_wrapper{
+        display: block;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid $brandColor1;
+        margin-top: 20px;
+        padding-bottom: 10px;
+        span{
+            font-family: inherit;
+            font-size: 18px;
+            display: inline-block;
+            width: 200px;
+            letter-spacing: 1;
+            line-height: 2.1;
+        }
+        span:first-of-type{
+            margin-right: 10px;
+        }
+        span:last-of-type{
+            margin-left:10px;
+        }
+    }
+    #review_inner_title{
+        margin-bottom: 0px;
+    }
+    .review_detail{
+        color: gray;
+        padding-left: 10px;
+    }
+}
+
+.review_table{
+    margin-top: 30px !important;
+    th{
+        background-color: #f3f3f3;
+        color: rgb(107, 107, 107);
+        // vertical-align: middle;
+        font-size:18px !important;
+        height:40px !important;
+        padding-top:0px !important;
+    }
+    td{
+        vertical-align: center;
+        padding: 10px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    .rateField{
+        form{
+            margin-bottom:0px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            .rate_star_wrapper{
+                margin-right: 20px;
+                font-size: 25px;
+                color: $titleColor;
+                i{
+                    margin-right: 5px;
+                    &:hover {
+                        color:$brandColor1;
+                        cursor: pointer;
+                        
+                    }
+                }
+            }
+            .r_content_wrapper{
+                margin-right: 40px;
+                textarea{
+                    width: 300px;
+                    padding:10px;
+                    font-family: $thinFont;
+                    color: $titleColor;
+                    border-radius: 5px;
+                    border: 1px solid #dcdbde;
+                    &:focus{
+                        border: 1px solid $brandColor2;
+                    }
+                }
+            }
+        }
+
+    }
+}
