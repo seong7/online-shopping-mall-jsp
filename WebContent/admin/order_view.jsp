@@ -9,13 +9,14 @@
 <%@page import="order.CartBean"%>
 <%@page import="java.util.Vector"%>
 <%-- <jsp:useBean id="mMgr" class="member.MemberMgr"/> --%>
-<%-- <jsp:useBean id="oMgr" class="order.OrderMgr"/> --%>
 <jsp:useBean id="pMgr" class="product.ProductMgr"/>
 <jsp:useBean id="cMgr" class="order.CartMgr"/>
+<jsp:useBean id="oMgr2" class="order.OrderMgr"/>
 
 <%
 		request.setCharacterEncoding("EUC-KR");
-		int o_index = Integer.parseInt(request.getParameter("o_index"));
+		int o_index = Integer.parseInt(request.getParameter("o_index"));	
+		int usedPoint = oMgr2.usedpoint(o_index);			
 		//int o_index = 18; //확인용 데이터 
 		String nowPage = request.getParameter("nowPage");
 		String keyField = request.getParameter("keyField");
@@ -38,7 +39,8 @@
 		<div align="center">
 		<h2 class="title">주문 상세 정보</h2>
 		<div id="order_date_no_view">
-			<span id="span_start">주문번호 : <span class="input_to_span" id="order_number_input"></span>
+			<span id="span_start">주문번호 : <span class="input_to_span" id="order_number_input"></span>	
+			주문자ID : <span class="input_to_span" id="order_id_input"></span>		
 			<span>주문일자 : <span class="input_to_span" id="order_date_input"></span>
 		</div>
 		<form name="updateFrm" method="post" action="orderUpProc.jsp">
@@ -54,25 +56,25 @@
 					int o_total_amount=order.getO_total_amount();
 			%>
 			<input type="hidden" id="hidden_order_date" name="o_date" value="<%=order.getO_date() %>">
+			<input type="hidden" id="hidden_order_id" name="o_id" value="<%=order.getO_id() %>">
 			<input type="hidden" id="hidden_order_number" name="o_index" readonly value="<%=o_index%>">
 			<input type="hidden" id="hidden_pay_method" name="o_pay_method" readonly value="<%=order.getO_pay_method() %>">
 			<tr>
-				<th>주문자 ID</th>
-				<td><input class="input_full" name="o_id" readonly value="<%=order.getO_id()%>"></td>
+				<th>주문자명</th>
+				<td><input class="input_full" name="NEME" readonly value="<%=mbean.getNAME()%>"></td>
 				<th>전화번호(주문자)</th>
 				<td><input class="input_full" name="o_id" readonly value="<%=mbean.getContact()%>"></td>
 			</tr>
 			<tr>
-				<th>주문자명</th>
-				<td><input class="input_full" name="NEME" readonly value="<%=mbean.getNAME()%>"></td>
+				
 				<th>수령자명</th>
 				<td><input class="input_full" name="o_recpt_name" value="<%=order.getO_recpt_name()%>"></td>
-			</tr>
-			<tr>
 				<th>전화번호(수령자)</th>
 				<td><input class="input_full" name="o_recpt_contact" value="<%=order.getO_recpt_contact()%>"></td>
+			</tr>
+			<tr>				
 				<th>주소</th>
-				<td><input class="input_full" name="o_recpt_add" readonly="readonly" value="<%=order.getO_recpt_add()%>"></td>
+				<td colspan="3"><input class="input_full" name="o_recpt_add" readonly="readonly" value="<%=order.getO_recpt_add()%>"></td>
 			</tr>
 			<tr>
 				<th>상세주소</th>
@@ -84,13 +86,13 @@
 			</tr>
 			<tr>
 				<th>상품금액</th>
-				<td><input class="input_full" name="o_prod_amount" value="<%=o_prod_amount%>"></td>
+				<td><input class="input_full" name="o_prod_amount" value="<%=UtilMgr.monFormat(o_prod_amount)%>"></td>
 				<th>배송비</th>
-				<td><input class="input_full" name="o_del_fee" value="<%=o_del_fee%>"></td>
+				<td><input class="input_full" name="o_del_fee" value="<%=UtilMgr.monFormat(o_del_fee)%>"></td>
 			</tr>
 			<tr>
-				<th>결재금액</th>
-				<td><input class="input_full" name="o_total_amount" value="<%=o_total_amount %>"></td>
+				<th>사용포인트</th>
+				<td><input class="input_full" name="pt_point" value="<%=UtilMgr.monFormat(usedPoint)%>"></td>
 				<th>결제방법</th>
 				<td>
 				<select id="pay_method_select">
@@ -99,6 +101,10 @@
 					<option value="네이버페이">네이버페이</option>
 				</select>
 				</td>
+			</tr>
+			<tr>
+			<th>결재금액</th>
+				<td colspan="3"><input class="input_full" name="o_total_amount" value="<%=UtilMgr.monFormat(o_total_amount)%>"></td>
 			</tr>
 		
 		</table>
@@ -114,7 +120,7 @@
 					<th class="min_remove">주문상태</th>
 					<th class="min_remove">발송일</th>
 				</tr>
-				<%
+				<%					
 					Vector<OrderDetailBean> dvlist = oMgr.getOrderCode(o_index);
 					for(int j=0; j<dvlist.size(); j++){
 						OrderDetailBean detailOrder = dvlist.get(j);
