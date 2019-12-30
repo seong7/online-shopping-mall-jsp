@@ -106,11 +106,9 @@ input[type*="radio"] {
                 color: $titleColor;
                 i{
                     margin-right: 5px;
-                    color:  rgb(204, 204, 204);
                     &:hover {
                         color:$brandColor1;
                         cursor: pointer;
-                        
                     }
                 }
             }
@@ -133,6 +131,17 @@ input[type*="radio"] {
     }
 }
 
+.yStar{
+    color: $brandColor1;
+}
+.nStar{
+    color: rgb(204, 204, 204);
+    &:hover {
+        color:$brandColor1;
+        cursor: pointer;
+    }
+}
+
 #review_read_tb{
     th{
         vertical-align: middle;
@@ -140,13 +149,5 @@ input[type*="radio"] {
         height: 50px;
         font-family: $normalFont;
 
-    }
-    td{
-        .yStar{
-            color: $brandColor1;
-        }
-        .nStar{
-            color: rgb(204, 204, 204);
-        }
     }
 }

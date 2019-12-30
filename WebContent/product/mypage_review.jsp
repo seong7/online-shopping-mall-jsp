@@ -115,7 +115,7 @@
 											const rate_star<%=i+1 %>_<%=o_index%>_<%=p_code%> = document.getElementById('rate_star<%=i+1 %>_<%=o_index%>_<%=p_code%>');
 										</script>
 										
-										<label for="rate_star<%=i+1%>_<%=o_index%>_<%=p_code%>">
+										<label for="rate_star<%=i+1%>_<%=o_index%>_<%=p_code%>" id="lable_star<%=i+1%>_<%=o_index%>_<%=p_code%>">
 											<i class="nStar far fa-star"></i>
 										</label>
 									<%
@@ -132,7 +132,7 @@
 									<script>
 										const reviewText_<%=o_index%>_<%=p_code%> = document.getElementById('reviewText_<%=o_index%>_<%=p_code%>');
 									</script>
-                       		<input type="submit" class="btn" value="작성">
+                       		<input type="button" class="btn" value="작성">
 							</form>
 						</td>
 						<td>
@@ -169,7 +169,7 @@
 </div> <!--  #btn_mypage_wrapper (버튼메뉴 + mypage) : mypage_side.jsp 에서 열림-->
 </div> <!-- #main (상단요약 + 버튼 + mypage) : mypage_side.jsp 에서 열림-->
 	<%@ include file="../bottom.jsp" %>
-	
+<script src="js/mypage_review.js"></script>
 <script type="text/javascript" charset="EUC-KR" src="js/review.js"></script>
 
 <!-- 작업용 : 삭제 예정 -->
