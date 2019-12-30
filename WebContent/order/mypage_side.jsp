@@ -46,6 +46,8 @@
                           <span id="point_top" class="text">사용가능 포인트</span>
                       </div>
                       <div class="bottom">
+                      	<a href="${pageContext.request.contextPath}/member/">
+                      	</a>
                            <span id="point" class="bold"><%=UtilMgr.intFormat(point) %></span>
                           <span id="point_bottm" class="text">원</span>
                       </div>

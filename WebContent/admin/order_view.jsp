@@ -35,7 +35,6 @@
 	<link rel="stylesheet" type="text/css" href="../css/util_btn.css">
 
 	<div id="viewmanager">
-		<div align="center">
 		<h2 class="title">주문 상세 정보</h2>
 		<div id="order_date_no_view">
 			<span id="span_start">주문번호 : <span class="input_to_span" id="order_number_input"></span>
@@ -142,7 +141,6 @@
 				<input type="button" class="btn-gradient maincolor small button_items" value="삭제" onclick="location.href = 'javascript:confirmDel()'">
 			</div>
 			</form>
-		</div>
 		<form name="listFrm">
 			<input type="hidden" name="o_index" value="<%=o_index%>">
 			<input type="hidden" name="nowPage" value="<%=nowPage%>">
