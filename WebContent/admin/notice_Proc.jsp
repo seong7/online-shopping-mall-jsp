@@ -6,19 +6,15 @@
 	request.setCharacterEncoding("EUC-KR");
 
  	String flag = request.getParameter("flag");
- 	String msg = "오류발생";
- 	System.out.println(flag);
- 	boolean result = false;
+ 	String msg = "오류발생"; 	
+ 	boolean result = false; 	
  	
- 	if(flag.equals("delete")){
- 		int n_index = Integer.parseInt(request.getParameter("n_index"));
- 		System.out.println(n_index);
+ 	if(flag.equals("delete")){ 	 
+ 	 	int n_index = Integer.parseInt(request.getParameter("n_index"));
  		aMgr.deleteNotice(n_index);
  		msg = "삭제 되었습니다.";
  	}else if(flag.equals("update")){
- 		int num = Integer.parseInt(request.getParameter("n_index"));
- 		System.out.println(num);
- 		//result=aMgr.updateNotice(request);
+ 		result=aMgr.updateNotice(request);
  		msg="수정 되었습니다.";
  	}else if (flag.equals("insert")){
  		result = aMgr.insertNotice(request);

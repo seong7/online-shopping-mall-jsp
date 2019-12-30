@@ -1,3 +1,4 @@
+<!-- list.jsp -->
 <%@page import="admin.NoticeBean"%>
 <%@page import="admin.UtilMgr"%>
 <%@page import="java.util.Vector"%>
@@ -5,6 +6,17 @@
 <jsp:useBean id="mgr" class="admin.AdminMgr"/>
 <%
 		request.setCharacterEncoding("EUC-KR");
+		String admin_id = (String)session.getAttribute("adminKey");
+		String cpath = request.getContextPath();		
+		
+		if(admin_id==null || admin_id.length()==0){
+			response.sendRedirect(cpath+"/index.jsp");
+		}else{			
+		
+		}
+
+
+
 		int totalRecord = 0;//총게시물 개수
 		int numPerPage = 10;//페이지당 레코드 개수 (5,10,15,30)
 		int pagePerBlock = 15;//블럭당 페이지 개수
@@ -13,12 +25,13 @@
 		int nowPage = 1;//현재 페이지
 		int nowBlock = 1;//현재 블럭
 		
+		//page에 보여질 게시물 개수 값
 		if(request.getParameter("numPerPage")!=null&&
 				!request.getParameter("numPerPage").equals("null")){
 			numPerPage = UtilMgr.parseInt(request, "numPerPage");
 		}
 		
-		int start = 0;
+		int start = 0;//테이블에 시작 번호
 		int cnt = numPerPage;
 		
 		//검색에 필요한 변수
@@ -37,6 +50,7 @@
 		}
 		
 		totalRecord = mgr.getTotalCount(keyField, keyWord);
+		//out.print(totalRecord);
 		
 		//nowPage를 요청한 경우
 		if(request.getParameter("nowPage")!=null){
@@ -52,11 +66,17 @@
 		//현재블럭 (현재페이지수/블럭당 페이지 개수) 올림.
 		nowBlock = (int)Math.ceil((double)nowPage/pagePerBlock);
  %>
- 
 <html>
 <head>
-<title>
-</title>
+
+<style>
+table {border: 1px solid; border-collapse:collapse; 
+			width: 70%; text-align:center;}
+td{border: 1px solid;}
+thead{background:lightgray;}
+</style>
+
+
 <script type="text/javascript">
 	function check() {
 		if(document.searchFrm.keyWord.value==""){
@@ -99,26 +119,26 @@
 <div>
 <h2>공지사항</h2>
 <hr/>
-<table>
-	<tr>
-		<td align="center" colspan="2">
+
+
 		<%
 				Vector<NoticeBean> vlist = mgr.getNoticeList(keyField, keyWord, start, cnt);
-				int listSize = vlist.size();
+				System.out.println(vlist.size());
+				int listSize = vlist.size();//브라우저 화면에 표시될 게시물 번호
 				if(vlist.isEmpty()){
 					out.println("등록된 게시물이 없습니다.");
 				}else{
 		%>
-		<table cellspacing="0">
-			<tr align="left">
-				<td width="100">번 호</td>
-				<td width="250">제 목</td>
-				<td width="100">이 름</td>
-				<td width="150">날 짜</td>
+		<table>
+			<tr>
+				<th>번 호</th>
+				<th>제 목</th>
+				<th>이 름</th>
+				<th>날 짜</th>				
 			</tr>
 		<%
 				for(int i=0;i<numPerPage;i++){
-					if(i==listSize) break; 
+					if(i==listSize) break; //제일 마지막 페이지가 10가 아닌 경우
 					NoticeBean bean = vlist.get(i);
 					int n_index = bean.getN_index ();
 					String n_id = bean.getN_id();
@@ -129,23 +149,19 @@
 					String n_file_name = bean.getN_file_name ();
 					int n_file_size = bean.getN_file_size();
 		%>
-		<tr align="center">
-			<td><%=totalRecord-start-i%></td>
-			<td align="left">
-			<a href="javascript:read('<%=n_index%>')"><%=n_title%></a>
-			<%if(n_file_name!=null&&!n_file_name.equals("")){%>
-			<%}%>
-			</td>
-			<td><%=n_id%></td> 
-			<td><%=n_date%></td>
+		<tr>
+		<td><%=totalRecord-start-i%></td>
+		<td><a href="notice_view.jsp?n_index=<%=n_index%>">[<%=n_category%>] &nbsp <%=n_title%></a></td>
+		<%if(n_id.equals("m1") || n_id.equals("m2") || n_id.equals("m3") ){ %>
+		<td>관리자</td><%}else{%>
+		<td>침입자</td><%} %>
+		<td><%=n_date%></td>
+		
 		</tr>
 		<%}//---for%>	
 		</table>
-		<%}//----if-else%>	
-		</td>
-	</tr>
-	<tr>
-		<td >
+		<%}//----if-else%>		
+	
 		<%if(totalPage>0){ %>
 			<!-- 이전 블럭 -->
 			<%if(nowBlock>1){%>
@@ -168,17 +184,32 @@
 			<%if(totalBlock>nowBlock){%>
 				<a href="javascript:block('<%=nowBlock+1%>')">...next</a>
 			<%}%>
-		<%}%>
-		</td>	
-	</tr>
-	<tr align="right">
-		<td><input type="button" value="글쓰기" onclick="location.href='notice_post.jsp'">
-	</tr>
-</table>
+		<%}%>	
+	
+			<input type="button" value="글쓰기" onclick="location.href='notice_post.jsp?n_id=<%=admin_id%>'">
+			<input type="button" value="처음으로" onclick="location.href='javascript:list()'">
+
 <form name="listFrm" method="post">
 	<input type="hidden" name="reload" value="true">
 	<input type="hidden" name="nowPage" value="1">
 </form>
+
+<form  name="searchFrm">
+	<table  width="600" cellpadding="4" cellspacing="0">
+ 		<tr>
+  			<td align="center" valign="bottom">
+   				<select name="keyField" size="1" >
+    				<option value="subject"> 제 목</option>
+    				<option value="content"> 내 용</option>
+   				</select>
+   				<input size="16" name="keyWord">
+   				<input type="button"  value="찾기" onClick="javascript:check()">
+   				<input type="hidden" name="nowPage" value="1">
+  			</td>
+ 		</tr>
+	</table>
+</form>
+
 <form name="readFrm">
 	<input type="hidden" name="num">
 	<input type="hidden" name="nowPage" value="<%=nowPage%>">
