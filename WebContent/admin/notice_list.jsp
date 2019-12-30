@@ -19,9 +19,7 @@
 		}else{			
 		
 		}
-
-
-
+		
 		int totalRecord = 0;//총게시물 개수
 		int numPerPage = 10;//페이지당 레코드 개수 (5,10,15,30)
 		int pagePerBlock = 15;//블럭당 페이지 개수
@@ -118,7 +116,6 @@ thead{background:lightgray;}
 		document.readFrm.submit();	
 	}
 </script>
-
 	
 <div id="manager">
 <h1 class="title">공지사항</h1>
@@ -163,6 +160,7 @@ thead{background:lightgray;}
 						String n_file_name = bean.getN_file_name ();
 						int n_file_size = bean.getN_file_size();
 			%>
+			
 			<tr>
 			<td><%=totalRecord-start-i%></td>
 			<td><%=n_category%></td>

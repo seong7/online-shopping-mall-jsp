@@ -33,7 +33,7 @@
         <div id="bannerWrapper">
             	<img class="mySlides" src="./img/index/banner/banner_new.jpg">
 				<img class="mySlides" src="./img/index/banner/banner_open.jpg">
-				<img class="mySlides" src="./img/index/banner/banner_sample2.png">
+				<img class="mySlides" src="./img/index/banner/banner_best.jpg">
 				<img class="mySlides" src="./img/index/banner/banner_sample3.png">
            </div>	
             <%
