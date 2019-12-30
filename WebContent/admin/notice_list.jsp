@@ -132,9 +132,10 @@ thead{background:lightgray;}
 		<table>
 			<tr>
 				<th>번 호</th>
+				<th>카테고리</th>
 				<th>제 목</th>
-				<th>이 름</th>
-				<th>날 짜</th>				
+				<th>작성자</th>
+				<th>작성일</th>				
 			</tr>
 		<%
 				for(int i=0;i<numPerPage;i++){
@@ -151,7 +152,8 @@ thead{background:lightgray;}
 		%>
 		<tr>
 		<td><%=totalRecord-start-i%></td>
-		<td><a href="notice_view.jsp?n_index=<%=n_index%>">[<%=n_category%>] &nbsp <%=n_title%></a></td>
+		<td><%=n_category%></td>
+		<td><a href="notice_view.jsp?n_index=<%=n_index%>"><%=n_title%></a></td>
 		<%if(n_id.equals("m1") || n_id.equals("m2") || n_id.equals("m3") ){ %>
 		<td>관리자</td><%}else{%>
 		<td>침입자</td><%} %>
@@ -195,14 +197,14 @@ thead{background:lightgray;}
 </form>
 
 <form  name="searchFrm">
-	<table  width="600" cellpadding="4" cellspacing="0">
+	<table>
  		<tr>
   			<td align="center" valign="bottom">
    				<select name="keyField" size="1" >
-    				<option value="subject"> 제 목</option>
-    				<option value="content"> 내 용</option>
+    				<option value="n_title"> 제 목</option>
+    				<option value="n_content"> 내 용</option>
    				</select>
-   				<input size="16" name="keyWord">
+   				<input name="keyWord">
    				<input type="button"  value="찾기" onClick="javascript:check()">
    				<input type="hidden" name="nowPage" value="1">
   			</td>

@@ -11,6 +11,14 @@
 %>
 <html>
 <h2>공지사항 수정</h2>
+<head>
+	<style>
+		table {border: 1px solid; border-collapse:collapse; 
+					width: 70%; text-align:center;}
+		td{border: 1px solid;}
+		thead{background:lightgray;}
+		</style>
+	</head>
 <body>
 <hr>
 </body>

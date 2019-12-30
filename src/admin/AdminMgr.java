@@ -112,7 +112,7 @@ public class AdminMgr {
 				}else{
 					//검색인 경우
 					sql = "select * from notice_tb where "+ keyField 
-							+" like  ? order by ref n_index desc limit ?,?";
+							+" like ? order by n_index desc limit ?,?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, "%"+keyWord+"%");
 					pstmt.setInt(2, start);//게시물 시작번호
