@@ -244,7 +244,7 @@ public class StockMgr {
 					try {
 						con = pool.getConnection();
 						sql = "SELECT st_ava_qty,st_exp_date from stock_tb "
-								+ "where p_code=? AND st_exp_date-CURDATE()>0 order by st_exp_date";
+								+ "where p_code=? order by st_exp_date";
 						pstmt = con.prepareStatement(sql);
 						pstmt.setInt(1, p_code);
 						rs= pstmt.executeQuery();
