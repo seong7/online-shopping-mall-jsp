@@ -153,14 +153,13 @@
 									</label>
 								</li>
 							<%}else if(id==null && admin_id!=null){ %>
-								
+								<li>
+									<a href="${pageContext.request.contextPath}/admin/member_list.jsp"><i class="fas fa-cog"></i></a>
+								</li>
 								<li>
 									<form id="logout_admin" action="/online-shopping-mall/member/signup"  method="post">
 										<a onclick="logout_admin()"><i class="fas fa-sign-in-alt"></i></a>
 									</form>
-								</li>
-								<li>
-									<a href="${pageContext.request.contextPath}/admin/member_list.jsp"><i class="fas fa-cog"></i></a>
 								</li>
 							<%}else if(id!=null && admin_id==null){ %>
 								<li>

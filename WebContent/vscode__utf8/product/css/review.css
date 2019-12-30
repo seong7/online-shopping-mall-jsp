@@ -23,13 +23,22 @@ input[type*="radio"] {
 #mypage #review_btn_wrapper {
   display: block;
   width: 100%;
-  text-align: center;
+  text-align: left;
   border-bottom: 1px solid #fec084;
-  margin-top: 20px;
-  padding-bottom: 10px;
+}
+
+#mypage #review_btn_wrapper .review_title {
+  display: inline-block;
+  color: #333;
+  font-size: 24px;
+  margin: 0px;
+  padding-bottom: 20px;
 }
 
 #mypage #review_btn_wrapper span {
+  position: relative;
+  left: 250px;
+  text-align: center;
   font-family: inherit;
   font-size: 18px;
   display: inline-block;
@@ -57,23 +66,42 @@ input[type*="radio"] {
 
 .review_table {
   margin-top: 30px !important;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  border-collapse: collapse;
+  color: #333;
+}
+
+.review_table .column_tr {
+  background-color: #f3f3f3;
+  color: #6b6b6b;
+  font-size: 18px;
 }
 
 .review_table th {
-  background-color: #f3f3f3;
-  color: #6b6b6b;
-  font-size: 18px !important;
-  height: 40px !important;
-  padding-top: 0px !important;
+  vertical-align: middle;
 }
 
 .review_table td {
-  vertical-align: center;
+  border-bottom: 0.5px solid #dcdbde;
+  vertical-align: middle;
+  font-family: "MS Shell Dlg 2";
   padding: 10px;
+  font-size: 16px;
 }
 
-.review_table td:hover {
+.review_table .pointer_tr:hover {
   cursor: pointer;
+}
+
+.review_table .btn_td a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.review_table .btn_td:hover a {
+  color: #fec084;
 }
 
 .review_table .rateField form {
@@ -101,6 +129,7 @@ input[type*="radio"] {
 
 .review_table .rateField form .rate_star_wrapper i {
   margin-right: 5px;
+  color: #cccccc;
 }
 
 .review_table .rateField form .rate_star_wrapper i:hover {
@@ -123,5 +152,20 @@ input[type*="radio"] {
 
 .review_table .rateField form .r_content_wrapper textarea:focus {
   border: 1px solid #FB9832;
+}
+
+#review_read_tb th {
+  vertical-align: middle;
+  padding-left: 10px;
+  height: 50px;
+  font-family: "ON_IGothic";
+}
+
+#review_read_tb td .yStar {
+  color: #fec084;
+}
+
+#review_read_tb td .nStar {
+  color: #cccccc;
 }
 /*# sourceMappingURL=review.css.map */

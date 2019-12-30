@@ -20,9 +20,10 @@
 
 	<div id="mypage">
 	
-		<h1 class="title">리뷰관리</h1>
-		
         <div id="review_btn_wrapper">
+
+		    <h1 class="review_title">리뷰관리</h1>
+        
             <input type="radio" name="list_name" id="avaList">
             <label for="avaList">
                 <span class="btn">작성 가능 리뷰</span>
@@ -33,6 +34,7 @@
                 <span class="btn">나의 리뷰 목록</span>
             </label>
         </div>
+        
 		
 		<div class="mypage_wrapper">
 
@@ -41,13 +43,12 @@
             <span class="review_detail">* 구매 후 31일 이내의 제품에 대해서만 리뷰 작성이 가능합니다.</span>
 			
 			
-			<table class="mypage_table horHead review_table" id="avaReview_table">
-				<tr id="column_tr">
+			<table class="horHead review_table" id="avaReview_table">
+				<tr class="column_tr">
 					<th>주문번호</th>
 					<th colspan="2">제품정보</th>
 					<th>구매일</th>
 					<th>주문상태</th>
-					<th></th>
 				</tr>
 
 				<%
@@ -78,7 +79,7 @@
 						int p_code = reBean.getP_code();
 				%>
 				
-					<tr>
+					<tr class="pointer_tr">
 						<td class="btn_td">
 							<a href="${pageContext.request.contextPath}/order/mypage_order_view.jsp?order=<%=o_index%>">
 								<%=o_index%>

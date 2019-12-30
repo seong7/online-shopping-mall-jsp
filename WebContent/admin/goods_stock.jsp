@@ -15,10 +15,13 @@
 <%@ include file="../top.jsp" %>
 
 <%@ include file="./admin_side.jsp"%> 
+<link rel="stylesheet" type="text/css" href="./css/goods_stock.css">
+<link rel="stylesheet" type="text/css" href="../css/util_btn.css">
+
 <!--------------->
 <!--  작업 영역  -->
 <!--------------->
-	<div id="manager">
+	<div id="manage_wrap">
  <!-- 모달 -->
  <div id="modalDiv2">
     <div id="modalInnerFrame2">
@@ -52,41 +55,19 @@
    </div>
 </div>
  <!-- 메인 콘텐츠 -->
-    <div>
- 		<form name="searchfrm">
-      			<h2>입고등록</h2>
-      			<hr>
-      			<p><select name="keyField" id="search_type" >	
-	      			<option value="code">제품코드</option>
-	      			<option value="name">제품이름</option>
-      			</select>       			
-      			<input name="keyWord"  id="product_search" autocomplete=”off”> 
-      			<input type ="button" value="검색"  onClick="javascript:check()">
-      			<input type ="hidden" name = "nowpage" value="1">
-      			</p>      			 
-    	  </form>
-      </div>
-  <form name="stfrm" method="get"  action="goods_stockProc.jsp">
-	  <div>			
-			<p>제품명 <input name ="p_name" id="stfrm_name" ></p>
-            <p>제품코드 <input name ="p_code" id="stfrm_code" ></p> 						
-            <p>수량 <input name ="st_enter_qty"></p>
-            <p>유통기한 <input type="date" name ="st_exp_date"> </p>
-            <input type="button" value="저장" onClick="submitStock();"> 
-      </div>
- </form>
-    
- <h2>검색결과</h2>
- <label>
- <input type="checkbox" id="waste_qty_include"> 유통기한 지난 제품 숨기기
-</label>
-<input type="button" id="stock_delete_btn" value="선택 폐기">
-<input type="button" id="stock_update_btn" value="제품 수정">
-
-<input type="hidden" id="selected_data" value="">
+    <div id="main_wrapping">
+ <h2 class="title">검색결과</h2>
  <div>
+ 	<div id="toggle_order_wrap">
+ 		<p>
+			 <label class="checkbox" id="toggle_older">
+				 <input type="checkbox" id="waste_qty_include">
+				 <span class="icon"></span>
+				 <span class="text">유통기한 지난 제품 숨기기</span>
+		 	</label>
+	 	</p>
+ 	</div>
 	<form name="search_result_frm" id="stock_form">
-		 <input type="button" value="입고등록">
 		<table id="stock_table" class="cell-border hover nowrap order-column cell-border ">
 			<thead>
 				<tr id="judgeRow">
@@ -105,7 +86,50 @@
  
 
  </div>
- 
+ <div id="options wrapper">
+	<input class="btn-gradient maincolor small button_items" type="button" id="stock_delete_btn" value="선택 폐기">
+	<input class="btn-gradient maincolor small button_items" type="button" id="stock_update_btn" value="제품 수정">
+	<input class="btn-gradient maincolor small button_items" id="display_addstock" type="button" value="입고등록">		
+	<input type="hidden" id="selected_data" value="">
+ </div>
+  	
+ <div id="add_stock_wrapper">
+		<h2 class="title">입고등록</h2>
+ 		<form name="searchfrm">
+	      			<p>
+		      			<select name="keyField" id="search_type" >	
+			      			<option value="code">제품코드</option>
+			      			<option value="name">제품이름</option>
+		      			</select>
+		      			<input name="keyWord"  id="product_search" autocomplete=”off”> 
+		      			<input type ="button" class="btn-gradient maincolor small button_items" value="검색"  onClick="javascript:check()">
+		      			<input type ="hidden" name = "nowpage" value="1">
+	      			</p>
+   	  	</form>
+	  	<form name="stfrm" id="stfrm" method="get"  action="goods_stockProc.jsp">
+		  	<div id="stfrm_wrapper">
+		  		<table class="default_table left_margin10">
+			  		<tr>
+						<th>제품명</th>
+						<td><input class="input_full disabled" name ="p_name" id="stfrm_name" ></td>
+						<th>제품코드</th>
+						<td><input class="input_full disabled" name ="p_code" id="stfrm_code" ></td>
+					</tr>
+					<tr>
+			            <th>수량</th>
+			            <td><input class="input_full" name ="st_enter_qty"></td>
+			            <th>유통기한</th>
+			            <td><input class="input_full" type="date" name ="st_exp_date"></td>
+			         </tr>
+	            </table>
+		     </div>
+		     <div id="save_btn_wrap">
+	     	<p>
+	     		<input type="button" class="btn-gradient maincolor small button_items" value="저장" onClick="submitStock();"> 
+	     	</p>
+     		</div>
+	 </form>
+   </div>
  </div>
  
  <script src="./js/goods_stock.js"></script>
