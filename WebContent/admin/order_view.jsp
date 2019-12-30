@@ -85,13 +85,22 @@
 			</tr>
 			<tr>
 				<th>상품금액</th>
-				<td><input class="input_full" name="o_prod_amount" value="<%=UtilMgr.monFormat(o_prod_amount)%>"></td>
+				<td>
+					<input class="input_full" value="<%=UtilMgr.monFormat(o_prod_amount)%>">
+					<input type="hidden" class="input_full" name="o_prod_amount" value="<%=o_prod_amount%>">
+				</td>
 				<th>배송비</th>
-				<td><input class="input_full" name="o_del_fee" value="<%=UtilMgr.monFormat(o_del_fee)%>"></td>
+				<td>
+					<input class="input_full" value="<%=UtilMgr.monFormat(o_del_fee)%>">
+					<input type="hidden" class="input_full" name="o_del_fee" value="<%=o_del_fee%>">
+				</td>
 			</tr>
 			<tr>
 				<th>사용포인트</th>
-				<td><input class="input_full" name="pt_point" value="<%=UtilMgr.monFormat(usedPoint)%>"></td>
+				<td>
+					<input class="input_full" value="<%=UtilMgr.monFormat(usedPoint)%>">
+					<input type="hidden" class="input_full" name="pt_point" value="<%=usedPoint%>">				
+				</td>
 				<th>결제방법</th>
 				<td>
 				<select id="pay_method_select">
@@ -103,7 +112,10 @@
 			</tr>
 			<tr>
 			<th>결제금액</th>
-				<td colspan="3"><input class="input_full" name="o_total_amount" value="<%=UtilMgr.monFormat(o_total_amount)%>"></td>
+				<td colspan="3">
+					<input class="input_full" value="<%=UtilMgr.monFormat(o_total_amount)%>">
+					<input type="hidden" class="input_full" name="o_total_amount" value="<%=o_total_amount%>">					
+				</td>
 			</tr>
 		
 		</table>

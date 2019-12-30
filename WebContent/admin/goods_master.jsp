@@ -59,7 +59,7 @@
 	
 	<div id="manager">
 	
-		<h1 class="title">力前格废</h1>
+		<h1 class="title">力前包府</h1>
 
 		<form name = "listFrm">
 			<input type ="hidden"  name ="reload" value="true">
@@ -69,7 +69,7 @@
 		
 			<input type = "hidden" name ="fch" value="0">	
 			
-			<h3 class="inner_title">力前疙 八祸</h3>
+			<h3 class="inner_title">力前 八祸</h3>
 			
 			<table class="mgr_table verHead">
 				<tr>
@@ -105,7 +105,7 @@
 	<!-- <form name=rFrm action="goods_Proc.jsp?flag=delete" enctype="multipart/form-data"> -->
 	<form name=rFrm id="rFrame" action="goods_masterProc.jsp" enctype="multipart/form-data">
 	
-	<h3 class="inner_title">力前 府胶飘</h3>
+	<h3 class="inner_title">力前 格废</h3>
 
 		<table class="mgr_table horHead">
 			<tr>

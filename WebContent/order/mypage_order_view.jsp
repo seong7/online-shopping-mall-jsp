@@ -194,9 +194,9 @@
 	                        <tr>
 	                            <th id="total_price_th">최종결제금액</th>
 	                            <td id="total_price_td">
-  	                                <span id="o_total_amount"><%=UtilMgr.intFormat(sum+shippingPrice)%></span>원
-  	                                <input type="hidden" name="o_total_amount" value="<%=sum+shippingPrice%>">
-	                                <span id="total_point">구매 시 <%=UtilMgr.intFormat((int)(sum*pointRate))%>P 적립</span>
+  	                                <span id="o_total_amount"><%=UtilMgr.intFormat(sum+shippingPrice+usedPoint)%></span>원
+  	                                <input type="hidden" name="o_total_amount" value="<%=sum+shippingPrice+usedPoint%>">
+	                                <span id="total_point"><%=UtilMgr.intFormat((int)(sum*pointRate))%>P 적립</span>
 	                            </td>
 	                        </tr>
 							</table>
