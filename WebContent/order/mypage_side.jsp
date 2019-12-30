@@ -81,7 +81,7 @@
             <!-- 메뉴 부분 -->
             <div id="mypage_btn_wrapper">
                 <ul>
-                    <a id="btn_first" href="../order/mypage_orderlist.jsp">
+                    <a id="btn_first" href="${pageContext.request.contextPath}/order/mypage_orderlist.jsp">
                         <li>
                             <span class="text">주문관리</span>
         
@@ -93,7 +93,7 @@
                        
                         </li>
                     </a>
-                    <a href="../product/mypage_review.jsp">
+                    <a href="${pageContext.request.contextPath}/product/mypage_review.jsp">
                         <li>
                             <span class="text">리뷰관리</span>
                             
@@ -105,7 +105,7 @@
         
                         </li>
                     </a>
-                    <a href="#">
+                    <a href="${pageContext.request.contextPath}/member/mypage_point.jsp">
                         <li>
                             <span class="text">포인트관리</span>
                             
@@ -117,7 +117,7 @@
                         
                         </li>
                     </a>
-                    <a id="btn_last" href="../member/myinfo_check.jsp">
+                    <a id="btn_last" href="${pageContext.request.contextPath}/member/myinfo_check.jsp">
                         <li>
                             <span class="text">회원정보</span>
                             

@@ -69,19 +69,19 @@
             <!-- 메뉴 부분 -->
             <div id="manager_btn_wrapper">
                 <ul>
-                    <a id="btn_first" href="#">
+<!--                     <a id="btn_first" href="#">
                         <li>
                             <span class="text">통계</span>
                             
-                            <!-- default 아이콘 -->
+                            default 아이콘
                             <span class="icon"><i class="fas fa-chevron-left"></i></span>
                         
-                             <!-- chart.jsp :: -->
-                            <!-- <span class="icon"><i class="fas fa-chevron-right"></i></span> -->
+                             chart.jsp ::
+                            <span class="icon"><i class="fas fa-chevron-right"></i></span>
                         
                         </li>
-                    </a>
-                    <a href="member_list.jsp">
+                    </a> -->
+                    <a href="${pageContext.request.contextPath}/admin/member_list.jsp">
                         <li>
                             <span class="text">회원관리</span>
         
@@ -93,7 +93,7 @@
                        
                         </li>
                     </a>
-                    <a href="order_list.jsp">
+                    <a href="${pageContext.request.contextPath}/admin/order_list.jsp">
                         <li>
                             <span class="text">주문관리</span>
                             
@@ -105,7 +105,7 @@
         
                         </li>
                     </a>
-                    <a href="goods_master.jsp">
+                    <a href="${pageContext.request.contextPath}/admin/goods_master.jsp">
                         <li>
                             <span class="text">제품관리</span>
                             
@@ -117,7 +117,19 @@
                         
                         </li>
                     </a>
-                    <a href="member_connect.jsp">
+                    <a href="${pageContext.request.contextPath}/admin/goods_stock.jsp">
+                        <li>
+                            <span class="text">재고관리</span>
+                            
+                            <!-- default 아이콘 -->
+                            <span class="icon"><i class="fas fa-chevron-left"></i></span>
+                        
+                             <!-- notice_list.jsp / notice_view.jsp :: -->
+                            <!-- <span class="icon"><i class="fas fa-chevron-right"></i></span> -->
+                        
+                        </li>
+                    </a>
+                    <a href="${pageContext.request.contextPath}/admin/member_connect.jsp">
                         <li>
                             <span class="text">접속관리</span>
                             
@@ -129,19 +141,19 @@
                         
                         </li>
                     </a>
-                    <a href="#">
+                    <!-- <a href="#">
                         <li>
                             <span class="text">QnA</span>
                             
-                            <!-- default 아이콘 -->
+                            default 아이콘
                             <span class="icon"><i class="fas fa-chevron-left"></i></span>
                         
-                             <!-- qna_list.jsp / qna_view.jsp :: -->
-                            <!-- <span class="icon"><i class="fas fa-chevron-right"></i></span> -->
+                             qna_list.jsp / qna_view.jsp ::
+                            <span class="icon"><i class="fas fa-chevron-right"></i></span>
                         
                         </li>
-                    </a>
-                    <a href="notice_list.jsp">
+                    </a> -->
+                    <a href="${pageContext.request.contextPath}/admin/notice_list.jsp">
                         <li>
                             <span class="text">공지사항</span>
                             
@@ -153,18 +165,18 @@
                         
                         </li>
                     </a>
-                    <a id="btn_last" href="#">
+                    <!-- <a id="btn_last" href="#">
                         <li>
                             <span class="text">FAQ</span>
                             
-                            <!-- default 아이콘 -->
+                            default 아이콘
                             <span class="icon"><i class="fas fa-chevron-left"></i></span>
                         
-                             <!-- faq_list.jsp / faq_view.jsp :: -->
-                            <!-- <span class="icon"><i class="fas fa-chevron-right"></i></span> -->
+                             faq_list.jsp / faq_view.jsp ::
+                            <span class="icon"><i class="fas fa-chevron-right"></i></span>
                         
                         </li>
-                    </a>
+                    </a> -->
                 </ul>
             </div>
         
