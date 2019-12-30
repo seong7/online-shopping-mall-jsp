@@ -102,7 +102,7 @@
 				</td>
 			</tr>
 			<tr>
-			<th>결재금액</th>
+			<th>결제금액</th>
 				<td colspan="3"><input class="input_full" name="o_total_amount" value="<%=UtilMgr.monFormat(o_total_amount)%>"></td>
 			</tr>
 		
