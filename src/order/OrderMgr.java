@@ -355,7 +355,7 @@ public class OrderMgr {
 				order.setO_mgr_note(rs.getString(14));
 				order.setO_status(rs.getString(15));
 				order.setO_del_num(rs.getString(16));
-				order.setO_del_date(rs.getString(17));
+				order.setO_del_date(rs.getString(17));				
 				vlist.addElement(order);
 			}
 		} catch (Exception e) {
@@ -540,4 +540,30 @@ public class OrderMgr {
 				}
 				return count;				
 			}	
+			//counting used point
+			public int usedpoint(int o_index) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = null;
+				int point =0;
+				try {
+					con = pool.getConnection();
+					sql = "SELECT pt_point FROM point_tb "
+						+	"WHERE o_index =? AND pt_category ='구매사용'";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, o_index);
+					rs = pstmt.executeQuery();
+					
+					if (rs.next()) {
+						point = rs.getInt(1);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					pool.freeConnection(con, pstmt, rs);
+				}
+				return point;
+				
+			}
 }
