@@ -1,0 +1,33 @@
+#connect_table_length{
+	margin-top: 13px;
+}
+
+#connect_table_filter > label > input{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+th, td{
+	border: 0.5px solid #dcdbde !important;
+	text-align: center;
+	letter-spacing: 0.5 !important;
+	font-size: 18px;
+	padding: 15px !important;
+	font-weight: lighter !important;
+}
+td{
+	padding: 14px !important;
+}
+
+#connect_table_info{
+	display: none;
+}
+#connect_table_paginate{
+	margin-top: 5px;
+}
+#connect_table{
+	border-bottom: 0.5px solid #dcdbde !important;
+}
+
+.sorting{
+	background-color: rgba(254, 192, 132, 0.4) !important;
+}

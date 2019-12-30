@@ -1,40 +1,223 @@
-input {
-  width:30px;
-  height:30px;
-  font-size:15px;
+@font-face {
+  font-family: 'ON_IGothic';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Handon3gyeopsal600g';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+/*default attr*/
+.page_title{
+  margin-top: 70px;
+  font-size: 30px;
   text-align: center;
+  font-family: inherit;
 }
 
-#main_contents{
-	opacity: 0;
+.subtitle{
+  display: inline-block;
+  color: grey;
+  margin-top: 20px;
+  padding-bottom: 50px;
+  font-family: inherit;
+  font-size: 16px;
 }
-#loader{
-	position: absolute;
-	left: 50%;
-	top: 70%;
-	z-index: 1;
-	width: 75px;
-	height: 75px;
-	margin: -75px 0 0 -75px;
-	border: 16px solid #f3f3f3;
-	border-radius: 50%;
-	border-top: 16px solid #fec084;
-	width: 60px;
+
+#cart_table  img{
+	width: 100%;
+	height: auto;
+}
+
+.default_table{
+	border: 2px solid #dcdbde;
+	letter-spacing: 0.5px;
+	color:#333;
+	border-collapse: collapse;
+    border-spacing: 0;
+	margin-bottom: 20px;
+}
+.default_wrapper{
+	width: 80%;
+	min-width: 80%;
+	font-family: "ON_IGothic";
+	padding-left: 50px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.default_tr_th{
+	border-top: none;
+}
+
+.default_table th{
+	background-color: #f3f3f5;
+	width: 140px;
+	min-width: 140px;
+	border: 0.5px solid#dcdbde;
 	height: 60px;
-	-webkit-animation: spin 2s linear infinite;
-	animation: spin 2s linear infinite;	
+	font-size: 18px;
+	vertical-align: middle;
 }
 
-@keyframes spin{
-	0% {transform: rotate(0deg);}
-	100% {transform: rotate(360deg);}
+.default_table td{
+	height: 50px;
+	vertical-align: middle;
+	text-align: center;
+	font-family: "MS Shell Dlg 2";
+	font-weight: 500;
+	border: 0.5px solid#dcdbde;
+	padding: 5px;
 }
-@-webkit-keyframes spin{
-	0% {transform: rotate(0deg);}
-	100% {transform: rotate(360deg);}
-} 
-img {
-  width: 100px;
-  height: 0 auto;
-  
+/*cart*/
+.cart_wrapping{
+	min-width: 100%;
+}
+
+/*cart table attr*/
+#plus{
+	border: none;
+	color:white;
+	background: #cccbcb;	
+    width: 25px;
+    height: 27px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-left: -7px;
+    font-size: 22px;
+    font-weight: 400;
+    padding-left: inherit;
+    outline: none;
+}
+#plus:focus, #minus:focus, #plus:active, #minus:active{
+  outline: 0 !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+button::-moz-focus-inner { 
+  border: 0; 
+}
+button{
+	cursor: pointer;
+}
+#minus{
+	border-radius: none;
+    border: none;
+    color: white;
+	background: #cccbcb;
+	width: 25px;
+	height: 27px;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+	margin-right: -7px;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 22px;
+	font-size: 22px;
+	font-weight: 400;
+}
+
+
+
+#c_qty{
+	width: 40px;
+	text-align: center;
+	background: white;
+	border: 1px solid #d2d2d2;
+	height: 27px;
+	font-size: 22px;
+	line-height: 22px;
+	font-weight: 300;
+}
+
+#cart_thirdcol{
+	width: 300px;	
+}
+
+.cart_totalprice_td{
+	font-size:16px;
+}
+.cart_price_td{
+	line-height: 30px;
+	font-size:18px;
+}
+
+/*최종금액*/
+.result_wrapper{
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 18px;
+	align-content: space-between;
+	align-items: center;
+	margin-top: 30px;
+}
+
+.cart_result_box{
+	width: 30%;
+}
+.cart_result_box > div{
+	width: 180px;
+	height: 180px;
+	border: 3px solid gray;
+	border-radius: 10px;
+}
+#cart_result_totalbox{
+	border: 3px solid #fec084;
+}
+
+.resultbox_title{
+	font-size: 20px;
+	line-height: 5em;
+	color: #5e5c5c;
+}
+
+.resultbox_content{
+	font-size: 25px;
+}
+.resultbox_content::after, .cart_price_td::after, .cart_totalprice_td::after{
+	content : ' 원';
+}
+
+.result_subicon{
+	font-size: 30px;
+}
+
+/*버튼*/
+#delete_product{
+	margin-top: 50px;
+	margin-left: -30px;	
+	width: 150px;
+	border: 2px solid #ff1919b3;
+	color: #fff;
+	background-color: #ea2a2ad6;
+	border-radius: 5px;
+	height: 35px;
+	font-weight: bold;
+}
+
+
+#order_product{
+	width: 150px;
+	margin-left: 50px;
+	border: 2px solid #ff9f43;
+	color:white;
+	background-color: #ff9a38;
+    border-radius: 5px;
+    height: 35px;
+    font-weight: bold;
+
 }

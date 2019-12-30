@@ -4,8 +4,9 @@ function init(){
 	const cart_rows = document.getElementById("cart_table").rows;
 	const delete_btn = document.querySelector('#delete_product');
 	const order_btn = document.querySelector('#order_product');
-	const allCheckbox = cart_rows[0].childNodes[1].firstChild;
+	const allCheckbox = cart_rows[0].childNodes[1].childNodes[0].childNodes[0];
 	const sumtext = document.querySelector('#sumtext');
+	const sumtotaltext = document.querySelector('#sumtotaltext');
 	let id = '';
 	order_btn.addEventListener('click', function(){
 		goOrder();
@@ -61,7 +62,7 @@ function init(){
 	    if(i!==0)  {
 	    	trArray.push(cart_rows[i]);
 	    }
-	    cart_rows[i].childNodes[1].firstChild.checked = false;
+	    cart_rows[i].childNodes[1].childNodes[0].childNodes[0].checked = false;
 	}
     console.log('체크박스 전체 해제 완료');
   
@@ -70,30 +71,32 @@ function init(){
 		const down_btn = tr7.childNodes[0];
 		let qty_input = tr7.childNodes[2];
 		const up_btn = tr7.childNodes[4];
-		let product_cash = parseInt(trArray[j].childNodes[5].childNodes[2].innerHTML);
+		let product_cash = parseInt(uncomma(trArray[j].childNodes[5].childNodes[2].innerHTML));
 		let total_cash = trArray[j].childNodes[9];	
 		
 		//체크박스 이벤트부
 			//값 초기화 구절
-			trArray[j].childNodes[9].innerHTML = trArray[j].childNodes[7].childNodes[2].value * parseInt(trArray[j].childNodes[5].childNodes[2].innerHTML) ;
+			trArray[j].childNodes[9].innerHTML = numberFormat(uncomma(trArray[j].childNodes[7].childNodes[2].value) * parseInt(uncomma(trArray[j].childNodes[5].childNodes[2].innerHTML))) ;
 			//이벤트리스너
-			trArray[j].childNodes[1].firstChild.addEventListener('click', function(){
-			if(trArray[j].childNodes[1].firstChild.checked){
-				sum += parseInt(trArray[j].childNodes[9].innerHTML);
-				sumtext.innerHTML = sum;
+			trArray[j].childNodes[1].childNodes[0].childNodes[0].addEventListener('click', function(){
+			if(trArray[j].childNodes[1].childNodes[0].childNodes[0].checked){
+				sum += parseInt(uncomma(trArray[j].childNodes[9].innerHTML));
+				sumtext.innerHTML = numberFormat(sum);
+				sumtotaltext.innerHTML = numberFormat(sum+2500);
 				undisableFunction(delete_btn);
 				undisableFunction(order_btn);
 				let judge_sum = 0;
 					for(let j=0; j<trArray.length; j++){
-						judge_sum+= parseInt(trArray[j].childNodes[9].innerHTML);
+						judge_sum+= parseInt(uncomma(trArray[j].childNodes[9].innerHTML));
 					}
 				if(sum===judge_sum){
 					allCheckbox.checked = true;
 				}
 				
 			}else{
-				sum -= parseInt(trArray[j].childNodes[9].innerHTML);
-				sumtext.innerHTML = sum;
+				sum -= parseInt(uncomma(trArray[j].childNodes[9].innerHTML));
+				sumtext.innerHTML = numberFormat(sum);
+				sumtotaltext.innerHTML = numberFormat(sum+2500);
 				if(sum==0)
 					allCheckbox.checked = false;
 			}
@@ -107,11 +110,12 @@ function init(){
 		//버튼이벤트
 		down_btn.addEventListener('click', function(){
 			if(parseInt(qty_input.value)>1){
-				let innerData = parseInt(qty_input.value)-1;
+				let innerData = parseInt(uncomma(qty_input.value))-1;
 				qty_input.value = innerData;
-				total_cash.innerHTML = innerData * product_cash;
-				if(trArray[j].childNodes[1].firstChild.checked){
-					sumtext.innerHTML = parseInt(sumtext.innerHTML) - product_cash;
+				total_cash.innerHTML = numberFormat(innerData * product_cash);
+				if(trArray[j].childNodes[1].childNodes[0].childNodes[0].checked){
+					sumtext.innerHTML = numberFormat(parseInt(uncomma(sumtext.innerHTML)) - product_cash);
+					sumtotaltext.innerHTML = numberFormat(parseInt(uncomma(sumtext.innerHTML)) - product_cash + 2500);
 					sum -= product_cash;
 				}
 			zeroCheck();
@@ -121,11 +125,12 @@ function init(){
 		
 		up_btn.addEventListener('click', function(){
 			if(parseInt(qty_input.value)<99){
-			let innerData = parseInt(qty_input.value)+1;
+			let innerData = parseInt(uncomma(qty_input.value))+1;
 			qty_input.value = innerData;
-			total_cash.innerHTML = innerData * product_cash;
-			if(trArray[j].childNodes[1].firstChild.checked){
-				sumtext.innerHTML = parseInt(sumtext.innerHTML) + product_cash;
+			total_cash.innerHTML = numberFormat(innerData * product_cash);
+			if(trArray[j].childNodes[1].childNodes[0].childNodes[0].checked){
+				sumtext.innerHTML = numberFormat(parseInt(uncomma(sumtext.innerHTML)) + product_cash);
+				sumtotaltext.innerHTML = numberFormat(parseInt(uncomma(sumtext.innerHTML)) + product_cash + 2500); 
 				sum += product_cash;
 			}
 				zeroCheck();
@@ -140,19 +145,21 @@ function init(){
 		undisableFunction(order_btn);
 		sum = 0;
 		for(let i = 0; i<trArray.length; i++){
-			trArray[i].childNodes[1].firstChild.checked = true;
-			sum += parseInt(trArray[i].childNodes[9].innerHTML);
-			sumtext.innerHTML = sum;
+			trArray[i].childNodes[1].childNodes[0].childNodes[0].checked = true;
+			sum += parseInt(uncomma(trArray[i].childNodes[9].innerHTML));
+			sumtext.innerHTML = numberFormat(sum);
+			sumtotaltext.innerHTML = numberFormat(sum + 2500); 
 		}
 		
 	}else{
 		disableFunction(delete_btn);
 		disableFunction(order_btn);
 		for(let i = 0; i<trArray.length; i++){
-			trArray[i].childNodes[1].firstChild.checked = false;
+			trArray[i].childNodes[1].childNodes[0].childNodes[0].checked = false;
 		}
 		sum = 0;
 		sumtext.innerHTML = 0;
+		sumtotaltext.innerHTML = numberFormat(2500); 
 	}
 });	// 전체 체크박스
 	
@@ -164,7 +171,14 @@ function init(){
 			return;
 		}
 	}
-
+  
+  	function numberFormat(inputNumber) {
+	   return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+  	function uncomma(str) {
+  	    str = String(str);
+  	    return str.replace(/[^\d]+/g, '');
+  	}
 	function disableFunction(element) {
 		element.disabled = true;
 		
@@ -178,7 +192,7 @@ function init(){
 		const total_cash_value = parseInt(document.querySelector('#sumtext').innerHTML);
 		if(total_cash_value===0){
 			for(let i=0; i<cart_rows.length; i++){
-			    cart_rows[i].childNodes[1].firstChild.checked = false;
+			    cart_rows[i].childNodes[1].childNodes[0].childNodes[0].checked = false;
 				disableFunction(delete_btn);
 				disableFunction(order_btn);
 			}
@@ -194,7 +208,7 @@ function init(){
 		let p_code = new Array();
 		let c_qty = new Array();
 		for(let i=0; i<trArray.length; i++){
-			p_code.push(trArray[i].childNodes[1].childNodes[0].value);
+			p_code.push(trArray[i].childNodes[1].childNodes[0].childNodes[0].value);
 			c_qty.push(trArray[i].childNodes[7].childNodes[2].value);
 		}
   	  //페이지 로딩 이벤트
@@ -232,12 +246,9 @@ function init(){
 	  	  		for(let i=0; i<trArray.length; i++){
 	  	  			trArray[i].childNodes[7].childNodes[2].value = parseInt(resultParse[i].c_qty);
 	  	  			trArray[i].childNodes[7].childNodes[2].max =  parseInt(resultParse[i].s_ava);
-	  	  			trArray[i].childNodes[9].innerHTML = parseInt(trArray[i].childNodes[5].childNodes[2].innerHTML) * parseInt(resultParse[i].c_qty);
-	  	  		console.log(trArray[i].childNodes[5].childNodes[2].innerHTML);
+	  	  			trArray[i].childNodes[9].innerHTML = numberFormat(parseInt(trArray[i].childNodes[5].childNodes[2].innerHTML) * parseInt(resultParse[i].c_qty));
 	  	  		}
     	 	}
-  	  		$('#main_contents').css("opacity","1");
-  	  		$('#loader').css("display","none");
   	         }, error : function(){
   	            //에러경우
   	            console.log('에러');
@@ -249,7 +260,7 @@ function init(){
 		let p_code2 = new Array();
 		let c_qty2 = new Array();
 		for(let i=0; i<trArray.length; i++){
-			p_code2.push(trArray[i].childNodes[1].childNodes[0].value);
+			p_code2.push(trArray[i].childNodes[1].childNodes[0].childNodes[0].value);
 			c_qty2.push(trArray[i].childNodes[7].childNodes[2].value);
 		}
   	  //페이지 로딩 이벤트

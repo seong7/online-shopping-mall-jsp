@@ -1,4 +1,5 @@
 <!-- goods_view.jsp에서 p_code, 수량 넘겨오기 -->
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="order.CartBean"%>
 <%@page import="product.ProductBean"%>
 <%@page import="java.util.Vector"%>
@@ -10,6 +11,7 @@
  		request.setCharacterEncoding("EUC-KR");
  		String id = (String)session.getAttribute("idKey");
  		int o_del_fee = 2500;
+ 		DecimalFormat formatter = new DecimalFormat();
  		if(id==null){%>
  			<script>
  			alert("로그인 정보가 없습니다.");
@@ -24,21 +26,23 @@
         <!--******************-->
         <div id="loader">
         </div>        	
-         <main id="main_contents">
-	<div align="center">
-		<h2 class="layout-page-title">장바구니</h2>
-			<p>주문하실 상품명 및 수량을 정확하게 확인해 주세요.</p>
+ <main id="main_contents">
+	<div align="center" class="default_wrapper cart_wrapping">
+		<h2 class="layout-page-title page_title">장바구니</h2>
+			<p class="subtitle">주문하실 상품명 및 수량을 정확하게 확인해 주세요.</p>
 	<form name="frm" id="go_order_form" action="order.jsp">
 		<input type="hidden" value="cart" name="flag">
 		<input type="hidden" name="fch" value="0">
-		<table border="1" id="cart_table">
-		<tr>
-			<th><input type="checkbox" name="allCh"></th>
-			<th>상품사진</th>
-			<th>상품명</th>
-			<th>수량</th>
-			<th>상품금액</th>
-		</tr>
+		<table border="1" id="cart_table" class="default_table">
+		<thead>
+			<tr>
+				<th id="cart_firstcol"><label class="checkbox"><input type="checkbox" name="allCh"><span class="icon"></span><span class="text"></span></label></th>
+				<th>상품사진</th>
+				<th id="cart_thirdcol">상품명</th>
+				<th>수량</th>
+				<th>상품금액</th>
+			</tr>
+		</thead>
 		<%
 			Vector<CartBean> clist = cMgr.getCart(id);
 			if(clist.isEmpty()){
@@ -60,38 +64,45 @@
 					int totalPrice = p_price* c_qty;
 				%>
 		<tr>
-			<td><input type="checkbox" name="fch" 
-			value="<%=p_code%>" ></td>
+			<td><label class="checkbox"><input type="checkbox" name="fch" value="<%=p_code%>" ><span class="icon"></span><span class="text"></span></label></td>
 			<td><img alt="제품사진" src="${pageContext.request.contextPath}/img/product/<%=p_main_pht_name%>"></td>
-			<td><%=p_name %><br><span><%=p_price %></span>원</td>
+			<td class="cart_price_td"><%=p_name %><br><span><%=formatter.format(p_price) %></span></td>
 		
-			<td><input type="button" value="-" 
-			>
+			<td><button type="button" id="minus">-</button>
 			<input type="text" id="c_qty" value=<%=c_qty%> readonly="readonly">
-			<input type="button" value="+"></td>
-			<td><%=totalPrice%></td>
+			<button type="button" id="plus">+</button></td>
+			<td class="cart_totalprice_td"><%=formatter.format(totalPrice)%></td>
 		</tr>
 				<%} 
 				}%>	
 		</table>
 		<br>
-		<table border="1">
-		<tr>
-			<th>상품금액</th>
-			<th>배송비</th>
-			<th>결제예정금액</th>
-		</tr>
-		<tr>
-			<td id="sumtext">0</td>
-			<td><%=o_del_fee %></td>
-			<td>결제금액</td>
-			</tr>
-		</table>
-		<br>
-		<input type="button" name="btn1"  value="선택 삭제하기" id="delete_product"
-		disabled style ="width:150px">
-		<input type="button" name="btn2" value="선택 주문하기" id="order_product"
-		disabled	style ="width:150px">
+		<div class="result_wrapper">
+			<div class="cart_result_box">
+				<div>
+					<span class="resultbox_title">상품금액</span><br/>
+					<span class="resultbox_content" id="sumtext">0</span>
+				</div>
+			</div>
+			<span class="result_subicon">+</span>
+			<div class="cart_result_box">
+				<div>
+					<span class="resultbox_title">배송비</span><br/>
+					<span class="resultbox_content">2,500</span>
+				</div>
+			</div>
+			<span class="result_subicon">=</span>
+			<div class="cart_result_box">
+				<div id="cart_result_totalbox">
+					<span class="resultbox_title">결제예정금액</span><br/>
+					<span class="resultbox_content" id="sumtotaltext">2,500</span>
+				</div>
+			</div>
+		</div>
+		<button type="button" name="btn1" id="delete_product"
+		disabled style ="width:150px">선택 삭제하기</button>
+		<button type="button" name="btn2" value="" id="order_product"
+		disabled	style ="width:150px">선택 주문하기</button>
 		<input type="hidden" name="id" id="user_id" value="<%=id %>">
 		</form>
 	</div>
