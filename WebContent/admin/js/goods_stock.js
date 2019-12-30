@@ -12,12 +12,27 @@ const modal_waste = document.getElementById('modal_waste');
 const modal_date = document.getElementById('modal_date');
 const modal_update_btn = document.getElementById('modal_update_btn');
 const modal_close_btn = document.getElementById('modal_close_btn');
-
+const add_stock_wrapper = document.getElementById('add_stock_wrapper');
+const display_addstock = document.getElementById('display_addstock');
+let display_flag = 0;
 let type = document.getElementById('search_type').value;
 const request2 = new XMLHttpRequest();
 const ctx2 = getContextPath();
 const flagdata = "flag";
 let dtcontrol = null;
+display_addstock.addEventListener('click',function(){
+	if(display_flag===0){
+		add_stock_wrapper.style.display = "block";
+		display_flag = 1;
+		display_addstock.innerHTML = "입고 숨기기";
+		display_addstock.value ="입고 숨기기";
+	}else{
+		add_stock_wrapper.style.display = "none";
+		display_flag = 0;
+		display_addstock.innerHTML ="입고등록";
+		display_addstock.value ="입고등록";
+	}
+});
 
 document.getElementById('selected_data').value = '[]';
 function init(){
@@ -42,7 +57,7 @@ function init(){
 		console.log(modal_update_ava);
 		console.log(modal_update_waste);
 		console.log(modal_update_date);
-		
+
 		$.ajax({
 	        type: 'POST',                   //post or get
 	        url:ctx+'/product/stockmodalupdate',   //servlet mapping addr

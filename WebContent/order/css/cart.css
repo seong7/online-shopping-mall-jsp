@@ -27,9 +27,12 @@
   font-family: inherit;
   font-size: 16px;
 }
+.sorting{
+	background-color: rgba(255, 219, 185, 0.4) !important;
+}
 
 #cart_table  img{
-	width: 100%;
+	width: 130px;
 	height: auto;
 }
 

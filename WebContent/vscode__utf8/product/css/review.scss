@@ -15,11 +15,23 @@ input[type*="radio"] {
     #review_btn_wrapper{
         display: block;
         width: 100%;
-        text-align: center;
+        text-align: left;
         border-bottom: 1px solid $brandColor1;
-        margin-top: 20px;
-        padding-bottom: 10px;
+        // margin-top: 20px;
+        // padding-bottom: 10px;
+
+        .review_title{
+            display: inline-block;
+            color:#333;
+            font-size: 24px;
+            margin: 0px;
+            padding-bottom:20px;
+        }
+
         span{
+            position: relative;
+            left: 250px;
+            text-align: center;
             font-family: inherit;
             font-size: 18px;
             display: inline-block;
@@ -45,22 +57,43 @@ input[type*="radio"] {
 
 .review_table{
     margin-top: 30px !important;
-    th{
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    border-collapse:collapse;
+    color: $titleColor;
+    .column_tr{
         background-color: #f3f3f3;
         color: rgb(107, 107, 107);
-        // vertical-align: middle;
-        font-size:18px !important;
-        height:40px !important;
-        padding-top:0px !important;
+        font-size:18px;
+    }
+    th{
+        vertical-align: middle;
     }
     td{
-        vertical-align: center;
+        border-bottom: 0.5px solid #dcdbde;
+        vertical-align: middle;
+        // text-align: center;
+        font-family: $thinFont;
         padding: 10px;
+        font-size: 16px;
+    }
+    .pointer_tr{
         &:hover{
             cursor: pointer;
         }
     }
+    .btn_td{
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+        &:hover a{
+            color: #fec084;
+        }
+    }
     .rateField{
+
         form{
             margin-bottom:0px;
             display: flex;
@@ -73,6 +106,7 @@ input[type*="radio"] {
                 color: $titleColor;
                 i{
                     margin-right: 5px;
+                    color:  rgb(204, 204, 204);
                     &:hover {
                         color:$brandColor1;
                         cursor: pointer;
@@ -96,5 +130,23 @@ input[type*="radio"] {
             }
         }
 
+    }
+}
+
+#review_read_tb{
+    th{
+        vertical-align: middle;
+        padding-left: 10px;
+        height: 50px;
+        font-family: $normalFont;
+
+    }
+    td{
+        .yStar{
+            color: $brandColor1;
+        }
+        .nStar{
+            color: rgb(204, 204, 204);
+        }
     }
 }

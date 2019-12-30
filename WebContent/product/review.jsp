@@ -10,10 +10,16 @@
 
 <jsp:useBean id="reviewListMgr" class="product.ReviewMgr"/>
 
+<!-- 작업용 : 삭제 예정 -->
+<link rel="stylesheet" type="text/css" href="../vscode__utf8/product/css/review.css">
+<!-- 작업용 : 삭제 예정 -->
 
-
-	<table class="mypage_table horHead review_table">
-		<tr id="column_tr">
+	<div id="review_wrapper">
+	
+	
+	</div>
+	<table class="horHead review_table" id="review_read_tb">
+		<tr class="column_tr">
 			<th>번호</th>
 			
 			<% if(reviewList.equals("mypage")){%>
@@ -47,7 +53,7 @@
 		%>
 				
 				<tr>
-					<td colspan="5">
+					<td colspan="6">
 						작성된 리뷰가 없습니다.
 					</td>
 				</tr>
@@ -68,14 +74,14 @@
 						String p_main_pht_name = reBean.getP_main_pht_name();
 						
 		%>
-					<tr>
+					<tr class="pointer_tr">
 						<td>
 							<%= i %>
 						</td>
 						<td>
 							<img alt="제품사진" src="${pageContext.request.contextPath}/img/product/<%=p_main_pht_name%>">
 						</td>
-						<td>
+						<td class="btn_td">
 							<a href="${pageContext.request.contextPath}/product/goods_view.jsp?p_code=<%=rP_code%>">
 								<%=p_name %>
 							</a>
@@ -143,7 +149,7 @@
 						String p_main_pht_name = reBean.getP_main_pht_name();
 						String reId = reBean.getId();
 		%>
-					<tr>
+					<tr class="pointer_tr">
 						<td>
 							<%= i %>
 						</td>
