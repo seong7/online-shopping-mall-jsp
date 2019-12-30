@@ -2,12 +2,13 @@
 <%@ page contentType="text/html; charset=EUC-KR"%>
 <jsp:useBean id="mMgr" class="member.MemberMgr"/>
 <jsp:useBean id="oMgr" class="order.OrderMgr"/>
+<jsp:useBean id="aMgr" class="admin.AdminMgr"/>
 <%
 		request.setCharacterEncoding("EUC-KR");
 
 		String cpath = request.getContextPath();
 		int countPayComplete = oMgr.countPayComplete(id);
-		
+		int todayvisitor = aMgr.todayvisitor();
 		if(admin_id==null || admin_id.length()==0){
 			response.sendRedirect(cpath+"/index.jsp");
 		}else{			
@@ -28,9 +29,7 @@
         <!-- 요약창 부분 -->
         <div id="manager_summ">
               <ul id="manager_summ_ul">
-                  <li id="summ_first">
-                  	
-                  	                  
+                  <li id="summ_first">                 	                  
                       <div class="top">
                           <span id="name" class="bold">관리자</span>
                           <span id="name_top" class="text">님</span>
@@ -38,7 +37,19 @@
                       <div class="bottom">
                           <span id="name_bottom" class="text">환영합니다.</span>
                       </div>
-                  </li>                  
+                  </li>         
+                  
+                  <li id="summ_last">
+                      <div class="top">
+                          <span id="del_top" class="text">오늘의 접속자수</span>
+                      </div>
+                      <div class="bottom">
+                          <span id="del" class="bold"><a href="member_connect.jsp"><%=todayvisitor%></a></span>
+                          <span id="del_bottom" class="text">명</span>
+                      </div>
+                  </li>
+                  
+                                            
                   <li id="summ_last">
                       <div class="top">
                           <span id="del_top" class="text">배송 대기중인 주문</span>

@@ -13,7 +13,7 @@
 <jsp:useBean id="pMgr" class="product.ProductMgr"/>
 <jsp:useBean id="cMgr" class="order.CartMgr"/>
 <%-- <jsp:useBean id="mMgr" class="member.MemberMgr"/> --%>
-<%-- <jsp:useBean id="oMgr" class="order.OrderMgr"/> --%>
+<jsp:useBean id="oMgr2" class="order.OrderMgr"/>
 
 <%
 		request.setCharacterEncoding("EUC-KR");
@@ -21,7 +21,7 @@
 		int o_index = Integer.parseInt(request.getParameter("order"));
 		int priceTotal = 0;
 		int sum = 0;
-		
+		int usedPoint = oMgr2.usedpoint(o_index);	
 		/// sample용
 		String o_status = "결제완료";
 		int shippingPrice = 2500;
@@ -162,7 +162,7 @@
 	                    <table class="order_verHead"> 
 	                        <tr>
 	                            <th>적용된 적립금</th>
-	                            <td><input readonly placeholder="0">원</td>
+	                            <td><input readonly placeholder="<%=UtilMgr.monFormat(usedPoint)%>">원</td>
 	                        </tr>
 	                    </table>
 	                </section>
@@ -188,7 +188,7 @@
 	                         <tr>
 	                            <th>포인트 사용</th>
 	                            <td>
-	                            	<span id="point_span">0</span>P
+	                            	<span id="point_span"><%=UtilMgr.monFormat(usedPoint)%></span>P
 	                            </td>
 	                        </tr>
 	                        <tr>
