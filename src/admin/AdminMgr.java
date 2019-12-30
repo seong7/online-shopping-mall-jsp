@@ -296,4 +296,26 @@ public class AdminMgr {
 					}
 					return vlist;
 				}
+				public int todayvisitor() {
+					Connection con = null;
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					String sql = null;
+					int count = 0;
+					try {
+						con = pool.getConnection();
+						sql = "SELECT COUNT(c_index) FROM page_connection_tb " 
+						     + "WHERE SUBSTR(c_time,1,10)=SUBSTR(NOW(),1,10)";
+						pstmt = con.prepareStatement(sql);
+						rs = pstmt.executeQuery();						
+						if(rs.next()) {
+						count = rs.getInt(1);	
+						}						
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						pool.freeConnection(con, pstmt, rs);
+					}
+					return count;
+				}
 }
