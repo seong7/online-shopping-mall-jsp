@@ -40,6 +40,7 @@ main header {
   width: 96%;
   margin-top: 30px;
   margin-bottom: 30px;
+  border-bottom: 3px solid #fec084;
 }
 
 main header #img_wrapper {
@@ -140,6 +141,11 @@ main header form .btn_wrapper #cartBtn {
   color: #f09439;
   border: 2px solid #f09439;
   width: 200px;
+}
+
+main #detail {
+  position: relative;
+  bottom: 30px;
 }
 
 #button_down, #button_up {

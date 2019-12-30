@@ -249,7 +249,9 @@ img{
         font-family: $thinFont;
         font-size: 16px;
         height: 100px;
-        padding-top:40px;
+        //padding-top:40px;
+        vertical-align: middle;
+        padding:10px;
     }
 
     // a 태그 걸린 td 속성

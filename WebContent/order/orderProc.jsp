@@ -146,25 +146,25 @@
 					<% return;
 					} else{  // insertPoint = false 일 때  %> 
 					<script>
-//						alert('4');
+						alert('포인트 저장 실패');
 						err();
 					</script>
 				<% }
 				} else{  // orderDetailResult = false 일 때  %> 
 				<script>
-//					alert('3');
+					alert('order_detail 저장 실패');
 					err();
 				</script>
 			<% }
 			} else{ // subtrackStock_flag = false 일 때 %>
 				<script>
-//					alert('2');
+					alert('재고 수량 수정 실패');
 					err();
 				</script>
 		<% }
 		 } else{  // orderResult = false 일 때 %>
 			<script>
-//				alert('1');
+				alert('order_tb insert 실패');
 				err();
 			</script>
 		<%
