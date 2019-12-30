@@ -1,4 +1,42 @@
 /*default attr*/
+#viewmanager{
+	font-family: "ON_IGothic";
+	padding-left: 50px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#order_date_no_view{
+	margin-top: 20px;
+	text-align: initial;
+	color: grey;
+	padding-left: 0 !important;
+	margin-bottom: 15px;
+}
+#order_date_no_view span{
+	font-size: 15px !important;
+}
+#order_number_input, #input_to_span, #order_date_input{
+	padding-left: 0 !important;
+}
+#span_start{
+	margin-left: 30px;
+}
+#order_date_input{
+	margin-right: 33px;
+}
+#order_number_input{
+	margin-right: 15px;
+}
 .page_title{
   margin-top: 70px;
   font-size: 30px;
@@ -8,20 +46,11 @@
 
 .subtitle{
   display: inline-block;
-  color: grey;
+  color: #535353;
   margin-top: 20px;
-  padding-bottom: 50px;
+  padding-bottom: 5px;
   font-family: inherit;
-  font-size: 16px;
-}
-
-.subtitle{
-  display: inline-block;
-  color: grey;
-  margin-top: 20px;
-  padding-bottom: 50px;
-  font-family: inherit;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .default_table{
@@ -112,19 +141,22 @@ select:-moz-focusring * {
 /*order_detail_table*/
 
 #order_detail_wrapper{	
-	margin-top: 50px;
+	margin-top: 30px;
 	width: 100%;
 }
 #order_detail_table{
 	width: 100%;
-	margin-bottom: 13px;
+	margin-bottom: 13px !important;
 }
 
-#order_detail_table th{
-	width: 60px;
-	min-width: 60px;
+.min_remove{
+	width: 100px !important;
+	min-width: 0px !important;
 }
 
+.bottom_13{
+	margin-bottom: 13px !important;
+}
 #order_detail_table input{
 	padding: none !important;
 	text-align: center !important;
@@ -132,10 +164,11 @@ select:-moz-focusring * {
 
 .padding-left-none{
 	padding-left: 0 !important;
+	text-align: center !important;
 }
 
 #ordered_product{
-	width: 150px !important;
+	width: 210px !important;
 }
 
 /*order_button_wrapper*/
