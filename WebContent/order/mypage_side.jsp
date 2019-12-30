@@ -46,8 +46,13 @@
                           <span id="point_top" class="text">사용가능 포인트</span>
                       </div>
                       <div class="bottom">
-                           <span id="point" class="bold"><a href="../member/mypage_point.jsp">
-                           <%=UtilMgr.intFormat(point) %></a></span>
+
+                      	<span id="point" class="bold">
+                      		<a href="${pageContext.request.contextPath}/member/mypage_point.jsp">
+                           <%=UtilMgr.intFormat(point) %>
+                      		</a>
+                      	</span>
+
                           <span id="point_bottm" class="text">원</span>
                       </div>
                   </li>
@@ -56,7 +61,7 @@
                           <span id="del_top" class="text">배송중인 주문</span>
                       </div>
                       <div class="bottom">
-                          <span id="del" class="bold"><a href="../order/mypage_orderlist.jsp"><%=countDeliver%></a></span>
+                          <span id="del" class="bold"><a href="${pageContext.request.contextPath}/order/mypage_orderlist.jsp"><%=countDeliver%></a></span>
                           <span id="del_bottom" class="text">건</span>
                       </div>
                   </li>
