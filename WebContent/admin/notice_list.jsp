@@ -14,9 +14,7 @@
 		}else{			
 		
 		}
-
-
-
+		
 		int totalRecord = 0;//총게시물 개수
 		int numPerPage = 10;//페이지당 레코드 개수 (5,10,15,30)
 		int pagePerBlock = 15;//블럭당 페이지 개수
@@ -119,11 +117,9 @@ thead{background:lightgray;}
 <div>
 <h2>공지사항</h2>
 <hr/>
-
-
 		<%
 				Vector<NoticeBean> vlist = mgr.getNoticeList(keyField, keyWord, start, cnt);
-				System.out.println(vlist.size());
+				System.out.println("공지사항 리스트개수 : "+vlist.size());
 				int listSize = vlist.size();//브라우저 화면에 표시될 게시물 번호
 				if(vlist.isEmpty()){
 					out.println("등록된 게시물이 없습니다.");

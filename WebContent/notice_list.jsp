@@ -6,6 +6,7 @@
 <jsp:useBean id="mgr" class="admin.AdminMgr"/>
 <%
 		request.setCharacterEncoding("EUC-KR");
+		String cpath = request.getContextPath();		
 
 		int totalRecord = 0;//총게시물 개수
 		int numPerPage = 10;//페이지당 레코드 개수 (5,10,15,30)

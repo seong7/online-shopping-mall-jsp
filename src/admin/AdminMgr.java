@@ -204,7 +204,6 @@ public class AdminMgr {
 								File f = new File(UPLOAD+n_file_name);
 								if(f.exists()) 
 									//파일삭제기능
-									System.out.println(f);
 									f.delete();								
 							}						
 						pstmt.close();
@@ -229,10 +228,10 @@ public class AdminMgr {
 					try {
 						MultipartRequest multi = new MultipartRequest(req, UPLOAD, MAXSIZE, ENCTYPE, new DefaultFileRenamePolicy());					
 						String n_file_name = multi.getFilesystemName("noticeFile");
-						System.out.println(n_file_name);
+						System.out.println("파일수정시 사진이름 : "+n_file_name);
 						File f= multi.getFile("noticeFile");						
 						int n_index = Integer.parseInt(multi.getParameter("n_index"));
-						System.out.println(n_index);
+						System.out.println("파일수정시 글번호 : "+n_index);
 						admin.AdminMgr mgr = new admin.AdminMgr();
 						NoticeBean bean = mgr.getNotice(n_index);
 						String fa = bean.getN_file_name();
@@ -246,14 +245,14 @@ public class AdminMgr {
 						pstmt.setString(2, multi.getParameter("n_title"));
 						pstmt.setString(3, multi.getParameter("n_content"));
 						
-						if(multi.getFilesystemName(n_file_name)!=null){
-							int size =(int)f.length();
-							pstmt.setString(4, n_file_name);
-							pstmt.setInt(5, size);
+						if(n_file_name!= null) {
+							int n_file_size=(int)f.length();
+							pstmt.setString(4,n_file_name);
+							pstmt.setInt(5, n_file_size);						
 							File fd=new File(UPLOAD + fa);
 							if(fd.exists()) {
 								fd.delete();}
-						}else if(multi.getFilesystemName(n_file_name)==null){
+						}else if(n_file_name==null){
 							pstmt.setString(4, fa);
 							pstmt.setInt(5, faa);
 						}												
