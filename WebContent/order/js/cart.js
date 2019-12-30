@@ -111,11 +111,14 @@ function init(){
 		down_btn.addEventListener('click', function(){
 			if(parseInt(qty_input.value)>1){
 				let innerData = parseInt(uncomma(qty_input.value))-1;
+				console.log("innerData: " + innerData);
+				console.log("product_cash: " +product_cash);
+				console.log("totalcash : " + innerData * product_cash);
 				qty_input.value = innerData;
 				total_cash.innerHTML = numberFormat(innerData * product_cash);
 				if(trArray[j].childNodes[1].childNodes[0].childNodes[0].checked){
 					sumtext.innerHTML = numberFormat(parseInt(uncomma(sumtext.innerHTML)) - product_cash);
-					sumtotaltext.innerHTML = numberFormat(parseInt(uncomma(sumtext.innerHTML)) - product_cash + 2500);
+					sumtotaltext.innerHTML = numberFormat(parseInt(uncomma(sumtotaltext.innerHTML)) - product_cash);
 					sum -= product_cash;
 				}
 			zeroCheck();
@@ -126,11 +129,14 @@ function init(){
 		up_btn.addEventListener('click', function(){
 			if(parseInt(qty_input.value)<99){
 			let innerData = parseInt(uncomma(qty_input.value))+1;
+			console.log("innerData: " + innerData);
+			console.log("product_cash: " +product_cash);
+			console.log("totalcash : " + innerData * product_cash);
 			qty_input.value = innerData;
 			total_cash.innerHTML = numberFormat(innerData * product_cash);
 			if(trArray[j].childNodes[1].childNodes[0].childNodes[0].checked){
 				sumtext.innerHTML = numberFormat(parseInt(uncomma(sumtext.innerHTML)) + product_cash);
-				sumtotaltext.innerHTML = numberFormat(parseInt(uncomma(sumtext.innerHTML)) + product_cash + 2500); 
+				sumtotaltext.innerHTML = numberFormat(parseInt(uncomma(sumtotaltext.innerHTML)) + product_cash); 
 				sum += product_cash;
 			}
 				zeroCheck();
