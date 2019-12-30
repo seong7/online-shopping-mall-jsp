@@ -1,10 +1,10 @@
-<!-- goods_view.jspì—ì„œ p_code, ìˆ˜ëŸ‰ ë„˜ê²¨ì˜¤ê¸° -->
+<!-- goods_view.jsp¿¡¼­ p_code, ¼ö·® ³Ñ°Ü¿À±â -->
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="order.CartBean"%>
 <%@page import="product.ProductBean"%>
 <%@page import="java.util.Vector"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="UTF-8"%>
+    pageEncoding="EUC-KR"%>
  <jsp:useBean id="pMgr" class="product.ProductMgr"/>
  <jsp:useBean id="cMgr" class="order.CartMgr"/>
  <%
@@ -14,7 +14,7 @@
  		DecimalFormat formatter = new DecimalFormat();
  		if(id==null){%>
  			<script>
- 			alert("ë¡œê·¸ì¸ ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤.");
+ 			alert("·Î±×ÀÎ Á¤º¸°¡ ¾ø½À´Ï´Ù.");
  			document.location.href="${pageContext.request.contextPath}/index.jsp";
  			</script>
  		<%}%>
@@ -22,14 +22,14 @@
 <link rel="stylesheet" type="text/css" href="./css/cart.css">
 <jsp:include page="../top.jsp"/> 
 		<!--******************-->
-        <!--ìž‘ì—… ë° ë³µë¶™ êµ¬ì—­-->
+        <!--ÀÛ¾÷ ¹× º¹ºÙ ±¸¿ª-->
         <!--******************-->
         <div id="loader">
         </div>        	
  <main id="main_contents">
 	<div align="center" class="default_wrapper cart_wrapping">
-		<h2 class="layout-page-title page_title">ìž¥ë°”êµ¬ë‹ˆ</h2>
-			<p class="subtitle">ì£¼ë¬¸í•˜ì‹¤ ìƒí’ˆëª… ë° ìˆ˜ëŸ‰ì„ ì •í™•í•˜ê²Œ í™•ì¸í•´ ì£¼ì„¸ìš”.</p>
+		<h2 class="layout-page-title page_title">Àå¹Ù±¸´Ï</h2>
+			<p class="subtitle">ÁÖ¹®ÇÏ½Ç »óÇ°¸í ¹× ¼ö·®À» Á¤È®ÇÏ°Ô È®ÀÎÇØ ÁÖ¼¼¿ä.</p>
 	<form name="frm" id="go_order_form" action="order.jsp">
 		<input type="hidden" value="cart" name="flag">
 		<input type="hidden" name="fch" value="0">
@@ -37,10 +37,10 @@
 		<thead>
 			<tr>
 				<th id="cart_firstcol"><label class="checkbox"><input type="checkbox" name="allCh"><span class="icon"></span><span class="text"></span></label></th>
-				<th>ìƒí’ˆì‚¬ì§„</th>
-				<th id="cart_thirdcol">ìƒí’ˆëª…</th>
-				<th>ìˆ˜ëŸ‰</th>
-				<th>ìƒí’ˆê¸ˆì•¡</th>
+				<th>»óÇ°»çÁø</th>
+				<th id="cart_thirdcol">»óÇ°¸í</th>
+				<th>¼ö·®</th>
+				<th>»óÇ°±Ý¾×</th>
 			</tr>
 		</thead>
 		<%
@@ -49,7 +49,7 @@
 				%>
 					<tr>
 						<td colspan="5">
-						ìž¥ë°”êµ¬ë‹ˆê°€ ë¹„ì—ˆìŠµë‹ˆë‹¤. 
+						Àå¹Ù±¸´Ï°¡ ºñ¾ú½À´Ï´Ù. 
 						</td>
 					</tr>
 				<%} else{
@@ -65,7 +65,7 @@
 				%>
 		<tr>
 			<td><label class="checkbox"><input type="checkbox" name="fch" value="<%=p_code%>" ><span class="icon"></span><span class="text"></span></label></td>
-			<td><img alt="ì œí’ˆì‚¬ì§„" src="${pageContext.request.contextPath}/img/product/<%=p_main_pht_name%>"></td>
+			<td><img alt="Á¦Ç°»çÁø" src="${pageContext.request.contextPath}/img/product/<%=p_main_pht_name%>"></td>
 			<td class="cart_price_td"><%=p_name %><br><span><%=formatter.format(p_price) %></span></td>
 		
 			<td><button type="button" id="minus">-</button>
@@ -80,29 +80,29 @@
 		<div class="result_wrapper">
 			<div class="cart_result_box">
 				<div>
-					<span class="resultbox_title">ìƒí’ˆê¸ˆì•¡</span><br/>
+					<span class="resultbox_title">»óÇ°±Ý¾×</span><br/>
 					<span class="resultbox_content" id="sumtext">0</span>
 				</div>
 			</div>
 			<span class="result_subicon">+</span>
 			<div class="cart_result_box">
 				<div>
-					<span class="resultbox_title">ë°°ì†¡ë¹„</span><br/>
+					<span class="resultbox_title">¹è¼Ûºñ</span><br/>
 					<span class="resultbox_content">2,500</span>
 				</div>
 			</div>
 			<span class="result_subicon">=</span>
 			<div class="cart_result_box">
 				<div id="cart_result_totalbox">
-					<span class="resultbox_title">ê²°ì œì˜ˆì •ê¸ˆì•¡</span><br/>
+					<span class="resultbox_title">°áÁ¦¿¹Á¤±Ý¾×</span><br/>
 					<span class="resultbox_content" id="sumtotaltext">2,500</span>
 				</div>
 			</div>
 		</div>
 		<button type="button" name="btn1" id="delete_product"
-		disabled style ="width:150px">ì„ íƒ ì‚­ì œí•˜ê¸°</button>
+		disabled style ="width:150px">¼±ÅÃ »èÁ¦ÇÏ±â</button>
 		<button type="button" name="btn2" value="" id="order_product"
-		disabled	style ="width:150px">ì„ íƒ ì£¼ë¬¸í•˜ê¸°</button>
+		disabled	style ="width:150px">¼±ÅÃ ÁÖ¹®ÇÏ±â</button>
 		<input type="hidden" name="id" id="user_id" value="<%=id %>">
 		</form>
 	</div>
