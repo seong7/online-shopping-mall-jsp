@@ -185,6 +185,12 @@
 	                            </td>
 	                            
 	                        </tr>
+	                         <tr>
+	                            <th>포인트 사용</th>
+	                            <td>
+	                            	<span id="point_span">0</span>P
+	                            </td>
+	                        </tr>
 	                        <tr>
 	                            <th id="total_price_th">최종결제금액</th>
 	                            <td id="total_price_td">
