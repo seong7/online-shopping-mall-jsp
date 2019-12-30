@@ -71,14 +71,6 @@
  %>
 
 
-<!-- <style>
-table {border: 1px solid; border-collapse:collapse; 
-			width: 70%; text-align:center;}
-td{border: 1px solid;}
-thead{background:lightgray;}
-</style>
- -->
-
 <script type="text/javascript">
 	function check() {
 		if(document.searchFrm.keyWord.value==""){
