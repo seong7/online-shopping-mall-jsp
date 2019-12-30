@@ -126,7 +126,7 @@
                         	<img alt="제품사진" src="${pageContext.request.contextPath}/img/product/<%=pbean.getP_main_pht_name()%>">
                         </td>
                         <td class="btn_td">
-                           	<a href="${pageContext.request.contextPath}/product/goods_view.jsp?goods=<%=pbean.getP_code()%>">
+                           	<a href="${pageContext.request.contextPath}/product/goods_view.jsp?p_code=<%=pbean.getP_code()%>">
                            		<%=pbean.getP_name() %>
                            	</a>
                        	</td>
