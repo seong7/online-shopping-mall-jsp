@@ -312,7 +312,7 @@ section table tr:last-of-type {
   background-color: rgba(254, 192, 132, 0.7);
   color: grey;
   padding: 10px;
-  height: 250px;
+  height: 290px;
   border-radius: 10px;
   position: relative;
   bottom: 10px;
@@ -395,7 +395,15 @@ section table tr:last-of-type {
 	-webkit-animation: spin 2s linear infinite;
 	animation: spin 2s linear infinite;	
 }
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
+input[type=number] {
+    -moz-appearance:textfield;
+}
 @keyframes spin{
 	0% {transform: rotate(0deg);}
 	100% {transform: rotate(360deg);}

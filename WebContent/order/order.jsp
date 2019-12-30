@@ -281,7 +281,8 @@
 	                        <tr>
 	                            <th>적립급 적용</th>
 	                            <!-- <td><input placeholder="사용가능한 적립금 : 5000">원</td> -->
-	                            <td><input type="text" name="usedPoint" placeholder="사용가능 적립금 : <%=UtilMgr.intFormat(point)%>">원</td>
+	                            <input id="point_buffer" type="hidden" value="<%=UtilMgr.intFormat(point)%>">
+ 	                            <td><input type="number"    name="usedPoint" id="point_input" placeholder="사용가능 적립금 : <%=UtilMgr.intFormat(point)%>">원</td>
 	                        </tr>
 	                    </table>
 	                </section>
@@ -302,13 +303,18 @@
 	                            	<span id="o_del_fee"><%=UtilMgr.intFormat(shippingPrice)%></span>원
 	                            	<input type="hidden" name="o_del_fee" value="<%=shippingPrice%>">
 	                            </td>
-	                            
+	                        </tr>
+	                        <tr>
+	                            <th>포인트 사용</th>
+	                            <td>
+	                            	<span id="point_span">0</span>P
+	                            </td>
 	                        </tr>
 	                        <tr>
 	                            <th id="total_price_th">최종결제금액</th>
 	                            <td id="total_price_td">
   	                                <span id="o_total_amount"><%=UtilMgr.intFormat(sum+shippingPrice)%></span>원
-  	                                <input type="hidden" name="o_total_amount" value="<%=sum+shippingPrice%>">
+  	                                <input type="hidden" id="total_target_input" name="o_total_amount" value="<%=sum+shippingPrice%>">
 	                                <span id="total_point">구매 시 <%=UtilMgr.intFormat((int)(sum*pointRate))%>P 적립</span>
 
 	                            </td>
