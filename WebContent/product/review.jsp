@@ -66,6 +66,7 @@
 						String r_content = reBean.getR_content();
 						String o_date = reBean.getO_date();
 						String p_main_pht_name = reBean.getP_main_pht_name();
+						
 		%>
 					<tr>
 						<td>
@@ -140,6 +141,7 @@
 						String r_content = reBean.getR_content();
 						String o_date = reBean.getO_date();
 						String p_main_pht_name = reBean.getP_main_pht_name();
+						String reId = reBean.getId();
 		%>
 					<tr>
 						<td>
@@ -164,7 +166,7 @@
 							<%=r_content %>
 						</td>
 						<td>
-							<%=id %>
+							<%=reId %>
 						</td>
 						<td>
 							<%=o_date %>
