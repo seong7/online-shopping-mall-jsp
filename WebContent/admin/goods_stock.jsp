@@ -56,7 +56,7 @@
 </div>
  <!-- 메인 콘텐츠 -->
     <div id="main_wrapping">
- <h2 class="title">검색결과</h2>
+ <h2 class="title">재고관리</h2>
  <div>
  	<div id="toggle_order_wrap">
  		<p>
@@ -87,9 +87,9 @@
 
  </div>
  <div id="options wrapper">
-	<input class="btn-gradient maincolor small button_items" type="button" id="stock_delete_btn" value="선택 폐기">
-	<input class="btn-gradient maincolor small button_items" type="button" id="stock_update_btn" value="제품 수정">
 	<input class="btn-gradient maincolor small button_items" id="display_addstock" type="button" value="입고등록">		
+	<input class="btn-gradient maincolor small button_items" type="button" id="stock_update_btn" value="제품 수정">
+	<input class="btn-gradient maincolor small button_items" type="button" id="stock_delete_btn" value="선택 폐기">
 	<input type="hidden" id="selected_data" value="">
  </div>
   	

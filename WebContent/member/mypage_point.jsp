@@ -38,7 +38,7 @@
 			<tr>
 			<td><%=num%></td>		
 			<td class="btn_td"><a href="../order/mypage_order_view.jsp?order=<%=pbean.getO_index()%>"><%=pbean.getPt_detail()%></a></td>
-			<td><%=pbean.getPt_point()%></td>
+			<td><%=UtilMgr.intFormat(pbean.getPt_point())%></td>
 			<td><%=pbean.getPt_date()%></td>
 			</tr>
 			<%}//--for%>
