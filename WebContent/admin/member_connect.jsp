@@ -7,12 +7,13 @@
 <%@ include file="../top.jsp" %>
 
 <%@ include file="./admin_side.jsp"%> 
+<link rel="stylesheet" type="text/css" href="./css/member_connect.css">
 <!--------------->
 <!--  작업 영역  -->
 <!--------------->
     <div id="manager">  
    		<div class="form_wrapper">
-            <h3 class="inner_title">회원 정보 List</h3>
+            <h3 class="title">회원 정보 List</h3>
             <table id="connect_table" class="cell-border hover nowrap order-column cell-border ">
             	<thead>
 	            <tr id="judgeRow">

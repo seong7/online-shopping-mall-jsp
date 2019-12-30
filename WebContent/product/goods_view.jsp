@@ -100,12 +100,19 @@
 			</div>
 			
 			
-			<!--  府轰 康开  -->
-			<div id="review">
-				<% String reviewList = "goods_view";%>
-				<%@ include file="review.jsp" %>
-				
-				
+			<!--  府轰 康开   display : none -->
+			<div id="review" style="display: none;">
+				<table>	
+					<thead>
+						<th>
+						
+						</th>
+					</thead>
+					<tr>
+						<td>
+						</td>
+					</tr>
+				</table>
 			</div>
 			
 		</div>

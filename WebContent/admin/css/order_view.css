@@ -1,0 +1,152 @@
+/*default attr*/
+.page_title{
+  margin-top: 70px;
+  font-size: 30px;
+  text-align: center;
+  font-family: inherit;
+}
+
+.subtitle{
+  display: inline-block;
+  color: grey;
+  margin-top: 20px;
+  padding-bottom: 50px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.subtitle{
+  display: inline-block;
+  color: grey;
+  margin-top: 20px;
+  padding-bottom: 50px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.default_table{
+	box-sizing: border-box;
+	border: 2px solid #dcdbde;
+	letter-spacing: 0.5px;
+	color:#333;
+	border-collapse: collapse;
+    border-spacing: 0;
+	margin-bottom: 60px;
+}
+
+.default_tr_th{
+	border-top: none;
+}
+
+.default_table th{
+	background-color: #f3f3f5;
+	width: 140px;
+	min-width: 140px;
+	border: 0.5px solid#dcdbde;
+	height: 60px;
+	font-size: 16px;
+	vertical-align: middle;
+}
+
+.default_table td{
+	height: 50px;
+	vertical-align: middle;
+	text-align: center;
+	font-family: "MS Shell Dlg 2";
+	font-weight: 500;
+	border: 0.5px solid#dcdbde;
+	padding: 5px;
+}
+.input_to_span{
+	background-color: white;
+	border: none;
+	padding-left: 15px;
+}
+
+.input_full{
+	width: 100%;
+	height: 100%;
+	border: none;
+	padding-left: 15px;
+	border: inherit;
+}
+select{
+    -webkit-appearance: none;  /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;
+    font-family: inherit;
+  	background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 
+}
+select:focus, select:active, select::-moz-focus-inner, select:-moz-focusring{
+	outline: 0 !important;
+	box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+}
+select:-moz-focusring {
+  color:transparent;
+  text-shadow:0 0 0 #000; /* your normal text color here */
+}
+select:-moz-focusring * {
+  color:#000; /* your normal text color here */
+  text-shadow:none;
+}
+
+.custom-select{
+	width:100%;
+	height: 100%;
+}
+
+#pay_method_select{
+	width: 100%;
+	height: 100%;
+	border: 1px solid #d5d3d3; 
+}
+#order_view_wrapper{
+	width: 100%;
+}
+
+.margin_left_40{
+	margin-left: 40px;
+}
+
+/*order_detail_table*/
+
+#order_detail_wrapper{	
+	margin-top: 50px;
+	width: 100%;
+}
+#order_detail_table{
+	width: 100%;
+	margin-bottom: 13px;
+}
+
+#order_detail_table th{
+	width: 60px;
+	min-width: 60px;
+}
+
+#order_detail_table input{
+	padding: none !important;
+	text-align: center !important;
+}
+
+.padding-left-none{
+	padding-left: 0 !important;
+}
+
+#ordered_product{
+	width: 150px !important;
+}
+
+/*order_button_wrapper*/
+
+#order_button_wrapper{
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 18px;
+	align-content: space-between;
+	justify-content: end;
+}
+.button_items{
+	margin-right: 10px;
+}
