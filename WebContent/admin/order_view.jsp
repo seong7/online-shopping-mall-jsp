@@ -98,7 +98,7 @@
 			<tr>
 				<th>사용포인트</th>
 				<td>
-					<input class="input_full" value="<%=UtilMgr.monFormat(usedPoint)%>">
+					<input class="input_full" value="<%=UtilMgr.monFormat(usedPoint*-1)%>">
 					<input type="hidden" class="input_full" name="pt_point" value="<%=usedPoint%>">				
 				</td>
 				<th>결제방법</th>
@@ -156,7 +156,7 @@
 			<div id="order_button_wrapper">
 				<input type="button" class="btn-gradient maincolor small button_items" value="리스트" onclick="location.href = 'javascript:list()'">
 				<input type="submit" class="btn-gradient maincolor small button_items" value="수정">
-				<input type="button" class="btn-gradient maincolor small button_items" value="삭제" onclick="location.href = 'javascript:confirmDel()'">
+				<input type="button" class="btn-gradient red small button_items" value="삭제" onclick="location.href = 'javascript:confirmDel()'">
 			</div>
 			</form>
 		<form name="listFrm">

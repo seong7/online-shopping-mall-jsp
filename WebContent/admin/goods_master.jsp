@@ -165,8 +165,8 @@
 		</table>
 		<div class="submit_wrapper">
 			<input class="btn" type ="button" name="update" id="update_btn" value="선택 수정" disabled>
-			<input class="btn" type="button" name="delete" id="delete_btn" value="선택 삭제" disabled>
 			<input class="btn" type ="button" value="제품 추가" onclick ="location.href='goods_insert.jsp'">	
+			<input class="btn" type="button" name="delete" id="delete" value="선택 삭제" disabled>
 			<input type ="hidden" name="buffer" id="buffer">	
 		</div>
 

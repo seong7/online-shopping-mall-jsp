@@ -162,7 +162,7 @@
 	                    <table class="order_verHead"> 
 	                        <tr>
 	                            <th>적용된 적립금</th>
-	                            <td><input readonly placeholder="<%=UtilMgr.monFormat(usedPoint)%>">원</td>
+	                            <td><input readonly placeholder="<%=UtilMgr.monFormat(usedPoint*-1)%>">원</td>
 	                        </tr>
 	                    </table>
 	                </section>

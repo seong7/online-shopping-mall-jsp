@@ -184,3 +184,8 @@
 .button_items{
 	margin-right: 10px;
 }
+
+#order_id_input{
+	margin-right: 15px !important;
+	padding-left: 0 !important;
+}
