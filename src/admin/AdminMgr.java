@@ -50,6 +50,9 @@ public class AdminMgr {
 						int n_file_size=(int)f.length();
 						pstmt.setString(5,n_file_name);
 						pstmt.setInt(6, n_file_size);
+					}else {
+						pstmt.setString(5,"");
+						pstmt.setInt(6, 0);						
 					}
 					int cnt = pstmt.executeUpdate();
 					if (cnt == 1) {

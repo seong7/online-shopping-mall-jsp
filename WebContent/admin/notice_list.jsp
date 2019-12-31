@@ -143,10 +143,7 @@
 			<%
 			
 					}else{
-			%>
-			
-			
-			<%
+						
 					for(int i=0;i<numPerPage;i++){
 						if(i==listSize) break; //제일 마지막 페이지가 10가 아닌 경우
 						NoticeBean bean = vlist.get(i);
@@ -161,13 +158,13 @@
 			%>
 			
 			<tr>
-			<td><%=totalRecord-start-i%></td>
-			<td><%=n_category%></td>
-			<td><a href="notice_view.jsp?n_index=<%=n_index%>"><%=n_title%></a></td>
-			<%if(n_id.equals("m1") || n_id.equals("m2") || n_id.equals("m3") ){ %>
-			<td>관리자</td><%}else{%>
-			<td>침입자</td><%} %>
-			<td><%=n_date%></td>
+				<td><%=totalRecord-start-i%></td>
+				<td><%=n_category%></td>
+				<td><a href="notice_view.jsp?n_index=<%=n_index%>"><%=n_title%></a></td>
+				<%if(n_id.equals("m1") || n_id.equals("m2") || n_id.equals("m3") ){ %>
+				<td>관리자</td><%}else{%>
+				<td>관리자아님</td><%} %>
+				<td><%=n_date%></td>
 			
 			</tr>
 			<%}//---for%>	

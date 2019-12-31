@@ -40,7 +40,9 @@
 .notice_list th:nth-of-type(4), td:nth-of-type(4){
 	width: 75px;
 }
-
+.notice_list th:nth-of-type(3), td:nth-of-type(3){
+	width: 236px;
+}
 #manager .notice_view_table{
 	width: 100%
 }
@@ -49,6 +51,10 @@
 	height: 40px;
 	vertical-align: middle;
 }
+#manager .notice_view_table #notice_write_title{
+	width: 97%;
+}
+
 #manager .notice_view_table td{
 	vertical-align: middle;
 	padding-left: 20px;
@@ -56,4 +62,50 @@
 }
 .notice_view_table img{
 	width: 100%;
+}
+#manager .notice_view_table #input_td{
+	height: 300px;
+}
+#manager .notice_view_table #input_td textarea{
+	height: 100%;
+	width: 97%;
+	border: none;
+	padding: 20px;
+}
+
+main{
+min-width: 1050px;
+max-width: 1050px;
+width: 1050px;
+min-height: 700px;
+margin: 0px auto;
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+-ms-flex-direction: column;
+flex-direction: column;
+text-align: center;
+color:
+#333;
+font-family: "ON_IGothic";
+letter-spacing: 0.5px;
+}
+
+main #manager{
+	padding: 0px;
+	padding-top: 50px;
+	width: 100%;
+	height: 100%;
+	
+}
+main #manager #btn_frm{
+	display: inline-block;
+	width: auto;
+	position: relative;
+	left: 480px;
+}
+main #manager #notice_searchFrm{
+	left: auto;
 }

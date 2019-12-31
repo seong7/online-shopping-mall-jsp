@@ -41,7 +41,7 @@
 	<div id="manager">
 		<h1 class="title">공지사항</h1>
 			<form name="Frm" method="post" action="notice_update.jsp" enctype="multipart/form=data">			
-				<input type= "hidden" name = num value=<%=bean.getN_index()%>>
+				<input type= "hidden" name="num" value=<%=bean.getN_index()%>>
 				
 				<h3 class="inner_title"></h3>	
 				
@@ -54,7 +54,7 @@
 							<td>관리자아님</td><%} %>					
 						</tr>
 						<tr>
-							<th>작성날짜</th>
+							<th>작성일</th>
 							<td><%=bean.getN_date()%></td>
 						</tr>		
 						<tr> 
@@ -67,9 +67,18 @@
 						</tr>
 						
 						 <tr>
-							<td colspan="2">
-								<img src="../img/notice/<%=n_file_name%>">
-								<br/><%=bean.getN_content()%>
+							<td id="input_td" colspan="2">
+								<%
+									if(!n_file_name.equals("")){
+								%>
+									<img src="../img/notice/<%=n_file_name%>">
+								<%
+									}if(!bean.getN_content().equals("")){
+								%>
+									<textarea rows="10" cols="90" wrap="hard"><%=bean.getN_content()%></textarea>
+								<%	
+									}
+								%>
 							</td>
 						</tr>
 					</table>								 
