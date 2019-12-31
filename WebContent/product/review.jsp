@@ -9,9 +9,9 @@
 <%@ page import="java.util.Vector" %>
 
 <jsp:useBean id="reviewListMgr" class="product.ReviewMgr"/>
-
+<link rel="stylesheet" type="text/css" href="./css/review.css">
 <!-- 작업용 : 삭제 예정 -->
-<link rel="stylesheet" type="text/css" href="../vscode__utf8/product/css/review.css">
+<!-- <link rel="stylesheet" type="text/css" href="../vscode__utf8/product/css/review.css"> -->
 <!-- 작업용 : 삭제 예정 -->
 
 	<div id="review_wrapper">

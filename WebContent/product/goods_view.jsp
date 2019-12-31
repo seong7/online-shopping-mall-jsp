@@ -101,10 +101,10 @@
 			
 			
 			<!--  ¸®ºä ¿µ¿ª -->
-			
-			<% String reviewList = "goods_view";%>
-			<%@ include file="review.jsp" %>
-			
+			<div class="goods_view_reivew_wrapper">
+				<% String reviewList = "goods_view";%>
+				<%@ include file="review.jsp" %>
+			</div>
 			
 		</div>
 
