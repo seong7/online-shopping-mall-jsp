@@ -85,6 +85,19 @@
   font-family: "ON_IGothic";
   font-weight: bolder;
 }
+#modal_elements_wrapper2 div{
+	margin-top: 15px;
+}
+
+#modal_title_span{
+	font-size: 28px;
+}
+#modal_title{
+	margin-top: 25px;
+}
+#modal_button_wrapper{
+	margin-top: 25px;
+}
 
 .disabled {
   pointer-events: none;

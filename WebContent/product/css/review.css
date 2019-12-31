@@ -1,0 +1,200 @@
+@charset "UTF-8";
+/* 폰트 추가*/
+/* 굵음 */
+@font-face {
+  font-family: 'ON_IGothic';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 일반 */
+@font-face {
+  font-family: 'Handon3gyeopsal600g';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+input[type*="radio"] {
+  display: none;
+}
+
+#mypage #review_btn_wrapper {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid #fec084;
+}
+
+#mypage #review_btn_wrapper .review_title {
+  display: inline-block;
+  color: #333;
+  font-size: 24px;
+  margin: 0px;
+  padding-bottom: 20px;
+}
+
+#mypage #review_btn_wrapper span {
+  position: relative;
+  left: 250px;
+  text-align: center;
+  font-family: inherit;
+  font-size: 18px;
+  display: inline-block;
+  width: 200px;
+  letter-spacing: 1;
+  line-height: 2.1;
+}
+
+#mypage #review_btn_wrapper span:first-of-type {
+  margin-right: 10px;
+}
+
+#mypage #review_btn_wrapper span:last-of-type {
+  margin-left: 10px;
+}
+
+#mypage #review_inner_title {
+  margin-bottom: 0px;
+}
+
+#mypage .review_detail {
+  color: gray;
+  padding-left: 10px;
+}
+
+.review_table {
+  margin-top: 30px !important;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  border-collapse: collapse;
+  color: #333;
+}
+
+.review_table .column_tr {
+  background-color: #f3f3f3;
+  color: #6b6b6b;
+  font-size: 18px;
+}
+
+.review_table th {
+  vertical-align: middle;
+}
+
+.review_table td {
+  border-bottom: 0.5px solid #dcdbde;
+  vertical-align: middle;
+  font-family: "MS Shell Dlg 2";
+  padding: 10px;
+  font-size: 16px;
+}
+
+.review_table .pointer_tr:hover {
+  cursor: pointer;
+}
+
+.review_table .btn_td a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.review_table .btn_td:hover a {
+  color: #fec084;
+}
+
+.review_table .rateField form {
+  margin-bottom: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.review_table .rateField form .rate_star_wrapper {
+  margin-right: 20px;
+  font-size: 25px;
+  color: #333;
+}
+
+.review_table .rateField form .rate_star_wrapper i {
+  margin-right: 5px;
+}
+
+.review_table .rateField form .rate_star_wrapper i:hover {
+  color: #fec084;
+  cursor: pointer;
+}
+
+.review_table .rateField form .r_content_wrapper {
+  margin-right: 40px;
+}
+
+.review_table .rateField form .r_content_wrapper textarea {
+  width: 300px;
+  padding: 10px;
+  font-family: "MS Shell Dlg 2";
+  color: #333;
+  border-radius: 5px;
+  border: 1px solid #dcdbde;
+}
+
+.review_table .rateField form .r_content_wrapper textarea:focus {
+  border: 1px solid #FB9832;
+}
+
+.yStar {
+  color: #fec084;
+}
+
+.nStar {
+  color: #cccccc;
+}
+
+.nStar:hover {
+  color: #fec084;
+  cursor: pointer;
+}
+
+.active_btn {
+  height: 40px;
+  width: 70px;
+  border: 1px solid #FB9832;
+  background-color: #FB9832;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+.my_page_rieview_wrapper .column_tr  th:nth-of-type(4){
+	width: 220px; 
+}
+.goods_view_reivew_wrapper .column_tr th:nth-of-type(3){
+	width: 500px;
+}
+.goods_view_reivew_wrapper .pointer_tr td:nth-of-type(3){
+	text-align: left;
+	padding-left: 5px;
+	line-height: 20px;
+}
+#review_read_tb th {
+  vertical-align: middle;
+  padding-left: 10px;
+  height: 50px;
+  font-family: "ON_IGothic";
+}
+
+.view_hide {
+  display: none;
+}
+/*# sourceMappingURL=review.css.map */
