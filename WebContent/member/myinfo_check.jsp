@@ -7,7 +7,12 @@
 <%@ include file="../top.jsp" %>
 
 	<%@ include file="../order/mypage_side.jsp"%> 
+<style>
+#pwdCheckInput{
+	width: 230px;
+}
 
+</style>
 		<div id="mypage">
 
 			<h1 class="title">개인 정보 수정</h1>
