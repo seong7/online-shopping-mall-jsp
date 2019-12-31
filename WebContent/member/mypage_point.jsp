@@ -11,7 +11,16 @@
 		request.setCharacterEncoding("EUC-KR");
 		
 %>
-
+	<style>
+		.point_blue{
+			color: #4b4bf9;
+			text-shadow: 0.5px 0.5px 0.5px #4b4bf9;
+		}
+		.point_red{
+			color: #f74d4d;
+			text-shadow: 0.5px 0.5px 0.5px #f74d4d;
+		}
+	</style>
 	<div id="mypage">
 	
 		<h1 class="title">포인트관리</h1>
@@ -39,9 +48,9 @@
 			<td><%=num%></td>		
 			<td class="btn_td"><a href="../order/mypage_order_view.jsp?order=<%=pbean.getO_index()%>"><%=pbean.getPt_detail()%></a></td>
 			<%if(pbean.getPt_point()>0){%>	
-			<td><font color="blue"><%=UtilMgr.intFormat(pbean.getPt_point())%></font></td>
+			<td><font class="point_blue"><%=UtilMgr.intFormat(pbean.getPt_point())%></font></td>
 			<%}else if(pbean.getPt_point()<0){%>
-			<td><font color="red"><%=UtilMgr.intFormat(pbean.getPt_point())%></font></td>
+			<td><font class="point_red"><%=UtilMgr.intFormat(pbean.getPt_point())%></font></td>
 			<%}else{%>
 			<td><%=UtilMgr.intFormat(pbean.getPt_point())%></td>
 			<%}%>
