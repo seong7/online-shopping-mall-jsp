@@ -116,7 +116,7 @@
                                     <th>메인이미지</th>
                                     <td>
                                     <div class="filebox">				
-                                    <%=bean.getP_main_pht_name()%>						                                    
+                                    <span id="main_img_name"><%=bean.getP_main_pht_name()%></span>						                                    
 										 <label for="main_img_btn">업로드</label>
                                     	<input class="9 readChange" type="file" name="upFile1" id="main_img_btn" disabled></td>
                                 	</div>
@@ -126,7 +126,7 @@
                                     <th>설명이미지</th>                                                                    
                                     <td> 
                                     <div class="filebox">
-                                    <%=bean.getP_detail_pht_name()%>								                                    
+                                    <span id="ex_img_name"><%=bean.getP_detail_pht_name()%></span>
 										  <label for="ex_img_btn">업로드</label>
                                     	 <input class="10 readChange" type="file" name="upFile2" id="ex_img_btn" disabled></td>
                               		</div>
@@ -136,7 +136,7 @@
                                     <th>상세이미지</th>
                                     <td> 
                                     <div class="filebox">										                                    
-                                    <%=bean.getP_info_pht_name()%>
+                                    <span id="detail_img_name"><%=bean.getP_info_pht_name()%></span>
 										  <label for="detail_img_btn">업로드</label>
                                     	<input class="11 readChange" type="file" name="upFile3" id="detail_img_btn" disabled></td>
                                     </div>
@@ -190,6 +190,24 @@
 					console.log(button);
 				}
 			});
+			
+			document.getElementById('main_img_btn').addEventListener('change',function(){
+			    var fileValue = $("#main_img_btn").val().split("\\");
+			    var fileName = fileValue[fileValue.length-1]; // 파일명
+				document.getElementById('main_img_name').innerHTML = fileName;
+			});
+			document.getElementById('ex_img_btn').addEventListener('change',function(){
+			    var fileValue = $("#ex_img_btn").val().split("\\");
+			    var fileName = fileValue[fileValue.length-1]; // 파일명
+				document.getElementById('ex_img_name').innerHTML = fileName;
+			});
+			document.getElementById('detail_img_btn').addEventListener('change',function(){
+			    var fileValue = $("#detail_img_btn").val().split("\\");
+			    var fileName = fileValue[fileValue.length-1]; // 파일명
+				document.getElementById('detail_img_name').innerHTML = fileName;
+			});
+				
+				
 		}
 		btnInit();
 	}
