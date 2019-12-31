@@ -53,28 +53,33 @@ function init(){
 	};
 
 	
-	point_input.value = 0;
+	point_input.value = '';
 	point_input.addEventListener('keypress', onlyNumber);
 	point_input.addEventListener('focusout', function(){
 		let maxPoint = parseInt(uncomma(point_buffer));
-		
+		if(point_input.value==='0'){
+			point_input.value = '';
+			point_span.innerHTML = 0;
+			o_total_amount.innerHTML = firstValue;
+			return;
+		}
 		if(isNaN(parseInt(point_input.value))){
 			alert("숫자를 입력해주세요.");
-			point_input.value = 0;
+			point_input.value = '';
 			point_span.innerHTML = 0;
 			o_total_amount.innerHTML = firstValue;
 			point_input.focus();
 		}
 		if(maxPoint < parseInt(point_input.value)){
 			alert(maxPoint+"원까지 사용가능합니다.");
-			point_input.value = 0;
+			point_input.value = '';
 			point_span.innerHTML = 0;
 			o_total_amount.innerHTML = firstValue;
 			point_input.focus();
 			return;
 		}
 		total_target_input.value = parseInt(uncomma(o_total_amount.innerHTML))- parseInt(point_input.value);
-		point_span.innerHTML = numberWithCommas(point_input.value);
+		point_span.innerHTML = "-"+ numberWithCommas(point_input.value);
 		o_total_amount.innerHTML = numberWithCommas(parseInt(uncomma(o_total_amount.innerHTML))- parseInt(point_input.value)) ;
 	});
 	point_input.max = point_buffer;

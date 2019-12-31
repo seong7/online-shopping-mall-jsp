@@ -10,8 +10,7 @@
 
 
 <!-- 작업용 : 삭제 예정 -->
-<link rel="stylesheet" type="text/css"
-	href="../vscode__utf8/product/css/review.css">
+<!-- <link rel="stylesheet" type="text/css"	href="../vscode__utf8/product/css/review.css"> -->
 <!-- 작업용 : 삭제 예정 -->
 
 
@@ -92,7 +91,7 @@
 			</tr>
 			<!--  작성 칸 -->
 			<tr>
-				<td class="rateField" colspan="5">
+				<td class="rateField view_hide" colspan="5">
 					<form name="reviewWriteFrm" method="post" action="./reviewProc.jsp">
 
 						<div class="rate_star_wrapper">
@@ -128,7 +127,6 @@
 						<input type="button" class="btn" value="작성">
 					</form>
 				</td>
-				<td></td>
 			</tr>
 
 			<%
@@ -145,12 +143,15 @@
 	<form name="reviewReadFrm" method="post" action="">
 
 		<h3 class="inner_title">내가 작성한 리뷰</h3>
-
-		<%
-			String reviewList = "mypage";
-			int p_code = 0; // mypage 에서 넘어갈 때 에러 생기지 않도록 임의 값 부여해야함
-		%>
-		<%@include file="review.jsp"%>
+		
+		<div class="my_page_rieview_wrapper" >
+			<%
+				String reviewList = "mypage";
+				int p_code = 0; // mypage 에서 넘어갈 때 에러 생기지 않도록 임의 값 부여해야함
+			%>
+			<%@include file="review.jsp"%>
+		
+		</div>
 
 
 	</form>

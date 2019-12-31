@@ -376,6 +376,11 @@ section table tr:last-of-type {
 }
 
 /*로더부(조은규)*/
+#o_recpt_add{
+	width: 370px;
+	margin-top : 5px;
+	margin-bottom: 5px;
+}
 #main_contents{
 	opacity: 0;
 }

@@ -26,6 +26,9 @@
  <div id="modalDiv2">
     <div id="modalInnerFrame2">
       <div id="modal_elements_wrapper2">
+      	<div id="modal_title">
+      		<span id="modal_title_span">제품수정</span>
+      	</div>
 	     <div id="modal__div">
 	     	<input type="hidden" id="modal_code">
       		<span>제품명 :</span>
@@ -47,9 +50,9 @@
       		<span>유통기한 :</span>
       		<input type="date" class="signup_input signup_long_input" id="modal_date" readonly="readonly">
 	      </div>
-	      <div>
-	      	<button type="button" id="modal_update_btn">제품수정</button>
-	      	<button type="button" id="modal_close_btn">수정취소</button>
+	      <div id="modal_button_wrapper">
+	      	<button class ="btn-gradient maincolor small button_items" type="button" id="modal_update_btn">제품수정</button>
+	      	<button class="btn-gradient maincolor small button_items" type="button" id="modal_close_btn">수정취소</button>
 	      </div>
    	</div>
    </div>

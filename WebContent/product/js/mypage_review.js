@@ -7,6 +7,8 @@ function init(){
 	const avabtn = document.getElementById('avabtn');
 	const mybtn = document.getElementById('mybtn');
 	const t  =document.getElementsByName('list_name');
+	const pointer_tr = document.getElementsByClassName('pointer_tr');
+	const rateField = document.getElementsByClassName('rateField');
 	//무슨버튼 체크인지 확인하는거
 	
 	for(let i=0; i<t.length; i++){
@@ -67,6 +69,11 @@ function init(){
 		});
 	}
 	for(let i=0; i<star_wrapper.length; i++){
+		/*포인트 hide view*/
+		pointer_tr[i].addEventListener('click', function(){
+			rateField[i].classList.toggle('view_hide');
+		});
+		
 		star_wrapper[i].childNodes[5].addEventListener('click', function(){
 			star_wrapper[i].childNodes[5].childNodes[1].classList.remove('far');
 			star_wrapper[i].childNodes[11].childNodes[1].classList.remove('fas');

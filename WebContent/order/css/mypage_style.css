@@ -169,15 +169,15 @@
       -ms-flex-direction: row;
           flex-direction: row;
   border: 0.5px solid #dcdbde;
-  border-radius: 3px;
+  border-radius: 30px;
   margin: 0px;
   padding: 0px;
-  background-color: rgba(254, 192, 132, 0.4);
+  background-color: rgba(238, 166, 89, 0.74);
 }
 
 #mypage_summ ul li {
   list-style: none;
-  border-left: 0.5px solid #dcdbde;
+  border-left: 0.5px solid #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -203,7 +203,7 @@
 #mypage_summ ul li .bold {
   font-size: 24px;
   font-family: "ON_IGothic";
-  color: #EB7A36;
+  color: #FFF;
 }
 
 #mypage_summ ul li #point_top, #mypage_summ ul li #del_top {
@@ -458,5 +458,16 @@ img {
   background-color: #eee;
   color: #555;
   opacity: 1;
+}
+
+/*aÅÂ±×*/
+#mypage_summ_ul a:link, #mypage_summ_ul a:visited{
+	text-decoration: none;
+	color: black;
+	transition: color .35s;
+}
+#mypage_summ_ul a:hover{
+	color : #FFFDFA;
+	transition: color 0.2s;
 }
 /*# sourceMappingURL=mypage_style.css.map */
