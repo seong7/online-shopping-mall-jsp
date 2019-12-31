@@ -98,7 +98,7 @@
 			<tr>
 				<th>사용포인트</th>
 				<td>
-					<input class="input_full" value="<%=UtilMgr.monFormat(usedPoint)%>">
+					<input class="input_full" value="<%=UtilMgr.monFormat(usedPoint*-1)%>">
 					<input type="hidden" class="input_full" name="pt_point" value="<%=usedPoint%>">				
 				</td>
 				<th>결제방법</th>

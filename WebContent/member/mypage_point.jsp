@@ -38,7 +38,13 @@
 			<tr>
 			<td><%=num%></td>		
 			<td class="btn_td"><a href="../order/mypage_order_view.jsp?order=<%=pbean.getO_index()%>"><%=pbean.getPt_detail()%></a></td>
+			<%if(pbean.getPt_point()>0){%>	
+			<td><font color="blue"><%=UtilMgr.intFormat(pbean.getPt_point())%></font></td>
+			<%}else if(pbean.getPt_point()<0){%>
+			<td><font color="red"><%=UtilMgr.intFormat(pbean.getPt_point())%></font></td>
+			<%}else{%>
 			<td><%=UtilMgr.intFormat(pbean.getPt_point())%></td>
+			<%}%>
 			<td><%=pbean.getPt_date()%></td>
 			</tr>
 			<%}//--for%>
