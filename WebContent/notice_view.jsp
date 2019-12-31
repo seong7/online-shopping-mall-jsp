@@ -74,7 +74,7 @@
 							<%
 								}if(!bean.getN_content().equals("")){
 							%>
-								<textarea rows="10" cols="90" wrap="hard"><%=bean.getN_content()%></textarea>
+								<textarea rows="10" cols="90" wrap="hard" style="resize: none;"><%=bean.getN_content()%></textarea>
 							<%	
 								}
 							%>
