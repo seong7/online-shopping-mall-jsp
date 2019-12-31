@@ -182,22 +182,22 @@
 	padding-left: 15px;
 	border: inherit;
 }
-select{
+#pay_method_select{
     -webkit-appearance: none;  /* 네이티브 외형 감추기 */
     -moz-appearance: none;
     appearance: none;
     font-family: inherit;
 }
-select:focus, select:active, select::-moz-focus-inner, select:-moz-focusring{
+#pay_method_select:focus, #pay_method_select:active, #pay_method_select::-moz-focus-inner, #pay_method_select:-moz-focusring{
 	outline: 0 !important;
 	box-shadow: none !important;
 	-webkit-box-shadow: none !important;
 }
-select:-moz-focusring {
+#pay_method_select:-moz-focusring {
   color:transparent;
   text-shadow:0 0 0 #000; /* your normal text color here */
 }
-select:-moz-focusring * {
+#pay_method_select:-moz-focusring * {
   color:#000; /* your normal text color here */
   text-shadow:none;
 }

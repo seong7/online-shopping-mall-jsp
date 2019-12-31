@@ -269,7 +269,7 @@
                         
                         <tr>
                             <th>배송요청사항</th>
-                            <td><textarea name="o_del_msg" rows="5" cols="50"></textarea></td>
+                            <td><textarea name="o_del_msg" rows="5" cols="50" style="resize:none;"></textarea></td>
                         </tr>
                     </table>
                 </section>
