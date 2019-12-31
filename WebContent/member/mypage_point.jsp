@@ -38,7 +38,11 @@
 					System.out.println("포인트리스트의 개수는?:"+plist.size());	
 					int listSize =plist.size(); 
 					if(plist.isEmpty()){
-					out.println("포인트 내역이 없습니다.");
+				%>
+					<tr>
+						<td colspan="4">포인트 내역이 없습니다</td>
+					</tr>
+				<%
 					}else{
 					for(int i=0; i<plist.size(); i++){
 					PointBean pbean = plist.get(i);
