@@ -130,6 +130,7 @@
 	width: 100%;
 	height: 100%;
 	border: 1px solid #d5d3d3; 
+	padding-left: 10px;
 }
 #order_view_wrapper{
 	width: 100%;
