@@ -89,10 +89,10 @@
  
 
  </div>
- <div id="options wrapper">
+ <div id="options_wrapper">
 	<input class="btn-gradient maincolor small button_items" id="display_addstock" type="button" value="입고등록">		
 	<input class="btn-gradient maincolor small button_items" type="button" id="stock_update_btn" value="제품 수정">
-	<input class="btn-gradient maincolor small button_items" type="button" id="stock_delete_btn" value="선택 폐기">
+	<input class="btn-gradient red small button_items" type="button" id="stock_delete_btn" value="선택 폐기">
 	<input type="hidden" id="selected_data" value="">
  </div>
   	
@@ -105,7 +105,6 @@
 			      			<option value="name">제품이름</option>
 		      			</select>
 		      			<input name="keyWord"  id="product_search" autocomplete=”off”> 
-		      			<input type ="button" class="btn-gradient maincolor small button_items" value="검색"  onClick="javascript:check()">
 		      			<input type ="hidden" name = "nowpage" value="1">
 	      			</p>
    	  	</form>

@@ -156,7 +156,7 @@
 			<div id="order_button_wrapper">
 				<input type="button" class="btn-gradient maincolor small button_items" value="리스트" onclick="location.href = 'javascript:list()'">
 				<input type="submit" class="btn-gradient maincolor small button_items" value="수정">
-				<input type="button" class="btn-gradient maincolor small button_items" value="삭제" onclick="location.href = 'javascript:confirmDel()'">
+				<input type="button" class="btn-gradient red small button_items" value="삭제" onclick="location.href = 'javascript:confirmDel()'">
 			</div>
 			</form>
 		<form name="listFrm">

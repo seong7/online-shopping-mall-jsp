@@ -18,8 +18,8 @@
 </head>
 <body topmargin="100">	
 
+<link rel="stylesheet" type="text/css" href="./css/goods_view.css">
 <!-- <title>-관리자-제품 등록</title> -->
-
 <!-- <link rel="stylesheet" type="text/css" href="./css/mypage_orderlist.css"> -->
 <%@ include file="../top.jsp" %>
 
@@ -114,18 +114,33 @@
                             <table class="mgr_table verHead" id="pht_table">
                                 <tr>
                                     <th>메인이미지</th>
-                                    <td><%=bean.getP_main_pht_name()%>
-                                    <input class="9 readChange" type="file" name="upFile1" disabled></td>
-                                </tr>
+                                    <td>
+                                    <div class="filebox">				
+                                    <%=bean.getP_main_pht_name()%>						                                    
+										 <label for="main_img_btn">업로드</label>
+                                    	<input class="9 readChange" type="file" name="upFile1" id="main_img_btn" disabled></td>
+                                	</div>
+                                    </td>
+                                    </tr>
                                 <tr>
                                     <th>설명이미지</th>                                                                    
-                                    <td> <%=bean.getP_detail_pht_name()%>
-                                    <input class="10 readChange" type="file" name="upFile2" disabled></td>
-                                </tr>
+                                    <td> 
+                                    <div class="filebox">
+                                    <%=bean.getP_detail_pht_name()%>								                                    
+										  <label for="ex_img_btn">업로드</label>
+                                    	 <input class="10 readChange" type="file" name="upFile2" id="ex_img_btn" disabled></td>
+                              		</div>
+                                    </td>
+                                     </tr>
                                 <tr>
                                     <th>상세이미지</th>
-                                    <td> <%=bean.getP_info_pht_name()%>
-                                    <input class="11 readChange" type="file" name="upFile3" disabled></td>
+                                    <td> 
+                                    <div class="filebox">										                                    
+                                    <%=bean.getP_info_pht_name()%>
+										  <label for="detail_img_btn">업로드</label>
+                                    	<input class="11 readChange" type="file" name="upFile3" id="detail_img_btn" disabled></td>
+                                    </div>
+                                    </td>
                                 </tr>
                             </table>
                             
