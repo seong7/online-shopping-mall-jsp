@@ -46,7 +46,11 @@
 				 <tr>
 	     			<th>첨부파일</th> 
 	     			<td>
-	     				<input type="file" name="noticeFile">
+	     			<div class="filebox">
+	     				<span id="img_file_name"></span>
+					  	<label for="img_upload">업로드</label>
+		     				<input type="file" name="noticeFile" id="img_upload">
+                    </div>
 	     			</td>
 				</tr>				
 				
@@ -76,6 +80,17 @@
 </div> <!--  #btn_manager_wrapper (버튼메뉴 + manager) : admin_side.jsp 에서 열림-->
 </div> <!-- #main (상단요약 + 버튼 + manager) : admin_side.jsp 에서 열림-->
 	<%@ include file="../bottom.jsp" %>
-
+	<script>
+	window.onload = function(){
+		function btnInit(){
+			document.getElementById('img_upload').addEventListener('change',function(){
+			    var fileValue = $("#img_upload").val().split("\\");
+			    var fileName = fileValue[fileValue.length-1]; // 파일명
+				document.getElementById('img_file_name').innerHTML = fileName;
+			});
+		}
+		btnInit();
+	}
+	</script>
 </body>
 </html>
