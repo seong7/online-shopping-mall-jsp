@@ -48,8 +48,8 @@
       		<input type="date" class="signup_input signup_long_input" id="modal_date" readonly="readonly">
 	      </div>
 	      <div>
-	      	<button type="button" id="modal_update_btn">제품수정</button>
-	      	<button type="button" id="modal_close_btn">수정취소</button>
+	      	<button class ="btn-gradient maincolor small button_items" type="button" id="modal_update_btn">제품수정</button>
+	      	<button class="btn-gradient maincolor small button_items" type="button" id="modal_close_btn">수정취소</button>
 	      </div>
    	</div>
    </div>
