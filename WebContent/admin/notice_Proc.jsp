@@ -23,6 +23,6 @@
  	
 %>
 <script>
-alert("<%=msg%>");
-location.href="notice_list.jsp";
+	alert("<%=msg%>");
+	location.href="notice_list.jsp";
 </script>

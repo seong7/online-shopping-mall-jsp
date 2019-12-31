@@ -2,6 +2,12 @@
 <%@page import="admin.UtilMgr"%>
 <%@page contentType="text/html; charset=EUC-KR"%>
 <jsp:useBean id="mgr" class="admin.AdminMgr"/>
+
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/admin/css/admin_style.css">
+	<link rel="stylesheet" type="text/css" href="admin/css/notice_list.css">
+
+	<%@ include file="../top.jsp" %>
+	
 <%
 		request.setCharacterEncoding("EUC-KR");
 		int n_index = UtilMgr.parseInt(request, "n_index");
@@ -16,16 +22,6 @@
 		//세션에 읽어온 게시물을 저장 : 삭제, 수정, 답변
 		session.setAttribute("bean", bean);
 %>
-<html>
-<head>
-
-<style>
-table {border: 1px solid; border-collapse:collapse; 
-			width: 70%; text-align:center;}
-td{border: 1px solid;}
-thead{background:lightgray;}
-</style>
-
 <script type="text/javascript">
 	function down(n_file_name) {
 		document.downFrm.n_file_name.value=n_file_name;
@@ -39,57 +35,83 @@ thead{background:lightgray;}
 	}
 </script>
 
-</head>
-
-<body>
-<h2>공지사항</h2>
-<hr>
-			<form name="Frm" method="post" action="notice_update.jsp" 
-			enctype="multipart/form=data">			
-			<input type= "hidden" name = num value=<%=bean.getN_index()%>>
+	<main>
+	
+		<div id="manager">
+		<h1 class="title">공지사항</h1>
+			<form name="Frm" method="post" action="notice_update.jsp" enctype="multipart/form=data">			
+			<input type= "hidden" name="num" value=<%=bean.getN_index()%>>
 			
+			<h3 class="inner_title"></h3>	
 				
-				<table> 
+				
+				<table class="mgr_table verHead notice_view_table" > 
 					<tr> 
-						<td>작성자</td>
+						<th>작성자</th>
 						<%if(n_id.equals("m1") || n_id.equals("m2") || n_id.equals("m3")){ %>
 						<td>관리자</td><%}else{%>
 						<td>관리자아님</td><%} %>					
 					</tr>
 					<tr>
-						<td>작성날짜</td>
+						<th>작성일</th>
 						<td><%=bean.getN_date()%></td>
 					</tr>		
 					<tr> 
-						<td> 제 목</td>
+						<th> 제 목</th>
 					    <td><%=bean.getN_title()%></td>
 					</tr>
 					<tr> 
-						<td> 카테고리</td>
+						<th> 카테고리</th>
 					    <td><%=bean.getN_category()%></td>
 					</tr>
 					
 					 <tr>
-					 	<td>내용</td> 
-						<td><img src="img/notice/<%=n_file_name%>">
-						<br/><%=bean.getN_content()%></td>
+						<td id="input_td" colspan="2">
+							<%
+								if(!n_file_name.equals("")){
+							%>
+								<img src="./img/notice/<%=n_file_name%>">
+							<%
+								}if(!bean.getN_content().equals("")){
+							%>
+								<textarea rows="10" cols="90" wrap="hard"><%=bean.getN_content()%></textarea>
+							<%	
+								}
+							%>
+						</td>
 					</tr>
-				</table>								 
+				</table>									 
+				
+				<div class="submit_wrapper">
+					<input class="btn" type="button" value="목록" onclick="location.href ='notice_list.jsp'">
+				</div>		
 								  
-					<input type="button" value="리스트" onclick="location.href ='notice_list.jsp'">
-								
 			</form>
 
-<form name="downFrm" action="download.jsp" method="post">
-	<input type="hidden" name="n_file_name">
-</form>
-<form name="listFrm" >
-	<input type="hidden" action="nowPage" value="<%=nowPage%>">
-	<input type="hidden" namex="numPerPage" value="<%=numPerPage%>">
-	<%if(!(keyWord==null||keyWord.equals(""))){ %>
-	<input type="hidden" action="keyWord" value="<%=keyWord%>">
-	<input type="hidden" name="keyField" value="<%=keyField%>">
-	<%} %>
-</form>
+			<form name="downFrm" action="download.jsp" method="post">
+				<input type="hidden" name="n_file_name">
+			</form>
+			<form name="listFrm" >
+				<input type="hidden" name="nowPage" value="<%=nowPage%>">
+				<input type="hidden" name="numPerPage" value="<%=numPerPage%>">
+				<%if(!(keyWord==null||keyWord.equals(""))){ %>
+				<input type="hidden" name="keyWord" value="<%=keyWord%>">
+				<input type="hidden" name="keyField" value="<%=keyField%>">
+				<%} %>
+			</form>	
+
+		</div>
+		
+		
+	</main>
+
+
+</div>
+<!--  #btn_mypage_wrapper (버튼메뉴 + mypage) : mypage_side.jsp 에서 열림-->
+</div>
+<!-- #main (상단요약 + 버튼 + mypage) : mypage_side.jsp 에서 열림-->
+<%@ include file="../bottom.jsp"%>
+
 </body>
 </html>
+
