@@ -25,6 +25,12 @@
 		<link rel="stylesheet" type="text/css" href="./css/goods_stock.css">
     <!--</head>
 	<body> -->
+	
+	<link rel="shortcut icon" href="./img/index/logo/grain.png">
+	<title>
+		밀리의 방앗간
+	</title>
+
 	        
 			    <div id="wrap" style="display:none;border:1px solid #DDDDDD;width:500px;margin-top:500px; margin-left: 200px, z-index: 200"></div>
     	<div style="height:10px;"></div>
