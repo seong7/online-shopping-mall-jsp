@@ -112,25 +112,14 @@
 <div id="manager">
 <h1 class="title">공지사항</h1>
 
-	<div>
+	<div class="notice_list_wrapper">
 			
 			<div id="btn_frm">
 				<input class="btn" type="button" value="글쓰기" onclick="location.href='notice_post.jsp?n_id=<%=admin_id%>'">
 				<input class="btn" type="button" value="처음으로" onclick="location.href='javascript:list()'">
 			</div>
 	
-			<table class="mgr_table horHead">
-			
-			<%
-					Vector<NoticeBean> vlist = mgr.getNoticeList(keyField, keyWord, start, cnt);
-					System.out.println(vlist.size());
-					int listSize = vlist.size();//브라우저 화면에 표시될 게시물 번호
-					if(vlist.isEmpty()){
-						out.println("등록된 게시물이 없습니다.");
-					}else{
-			%>
-			
-			
+			<table class="mgr_table horHead notice_list">
 			
 				<tr>
 					<th>번 호</th>
@@ -139,6 +128,24 @@
 					<th>작성자</th>
 					<th>작성일</th>				
 				</tr>
+				
+				
+			<%
+					Vector<NoticeBean> vlist = mgr.getNoticeList(keyField, keyWord, start, cnt);
+					int listSize = vlist.size();//브라우저 화면에 표시될 게시물 번호
+					if(vlist.isEmpty()){
+			%>
+				<tr>
+					<td colspan="5">
+						등록된 게시물이 없습니다.
+					</td>
+				</tr>
+			<%
+			
+					}else{
+			%>
+			
+			
 			<%
 					for(int i=0;i<numPerPage;i++){
 						if(i==listSize) break; //제일 마지막 페이지가 10가 아닌 경우
@@ -164,8 +171,9 @@
 			
 			</tr>
 			<%}//---for%>	
-			</table>
 			<%}//----if-else%>		
+
+			</table>
 	
 	</div>
 	
@@ -204,15 +212,15 @@
 	<form name="searchFrm" id="notice_searchFrm">
 				
 						
-		<table class="mgr_table verHead">
+		<table class="mgr_table verHead notice_searchTable">
 	 		<tr>
-	  			<td align="center" valign="bottom">
-	   				<select name="keyField" size="1" >
+	  			<td>
+	   				<select id="notice_search_select" name="keyField" size="1" >
 	    				<option value="n_title"> 제 목</option>
 	    				<option value="n_content"> 내 용</option>
 	   				</select>
-	   				<input name="keyWord">
-	   				<input id="search_btn" type="button"  value="찾기" onClick="javascript:check()">
+	   				<input id="notice_search_input" name="keyWord">
+	   				<input id="search_btn" type="button"  value="검색" onClick="javascript:check()">
 	   				<input type="hidden" name="nowPage" value="1">
 	  			</td>
 	 		</tr>
