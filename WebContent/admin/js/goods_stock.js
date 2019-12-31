@@ -79,6 +79,12 @@ function init(){
 	    });
 	}
 	
+	$('#product_search').keydown(function() {
+		  if (event.keyCode === 13) {
+		    event.preventDefault();
+		  };
+		});
+	
 	$('#waste_qty_include').on('change',function(){
 		if($(this).is(':checked')){
 			$.fn.dataTable.ext.search.push(

@@ -44,8 +44,6 @@
 		System.out.println("날짜1 :"+p_date1);
 		System.out.println("날짜2 :"+p_date2);
 %>
-<%=p_date1%>
-<%=p_date2%>
 <link rel="stylesheet"  type="text/css" href="../css/util.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
