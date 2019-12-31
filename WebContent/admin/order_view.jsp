@@ -124,7 +124,7 @@
 			<tr>
 				<th>林巩惑怕</th>
 				<td><input class="input_full" name="o_status"  value="<%=order.getO_status() %>"></td>
-				<th>惯价老</th>
+				<th>搬力老</th>
 				<td><input class="input_full" name="o_del_date"  value="<%=order.getO_date() %>"></td>
 			</tr>
 			
