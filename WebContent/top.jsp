@@ -28,7 +28,7 @@
 	
 	<link rel="shortcut icon" href="./img/index/logo/grain.png">
 	<title>
-		밀리의 방앗간
+		밀스의 방앗간
 	</title>
 
 	        

@@ -112,12 +112,23 @@
 			</tr>
 			<tr>
 			<th>결제금액</th>
-				<td colspan="3">
+				<td>
 					<input class="input_full" value="<%=UtilMgr.monFormat(o_total_amount)%>">
 					<input type="hidden" class="input_full" name="o_total_amount" value="<%=o_total_amount%>">					
 				</td>
+				<th>송장번호</th>
+				<td>
+					<input class="input_full" name="o_del_num" value="<%=order.getO_del_num() %>">
+				</td>
 			</tr>
-		
+			<tr>
+				<th>주문상태</th>
+				<td><input class="input_full" name="o_status"  value="<%=order.getO_status() %>"></td>
+				<th>결제일</th>
+				<td><input class="input_full" name="o_del_date"  value="<%=order.getO_date() %>"></td>
+			</tr>
+			
+			
 		</table>
 		
 		<h3 class="title">주문정보</h3>
@@ -127,9 +138,6 @@
 					<th class="min_remove">번호</th>
 					<th class="min_remove" id="ordered_product">주문상품</th>
 					<th class="min_remove">수량</th>
-					<th class="min_remove">송장번호</th>
-					<th class="min_remove">주문상태</th>
-					<th class="min_remove">발송일</th>
 				</tr>
 				<%					
 					Vector<OrderDetailBean> dvlist = oMgr.getOrderCode(o_index);
@@ -145,9 +153,6 @@
 					<td><%=j+1 %></td>
 					<td><input class="input_full padding-left-none" name="p_name"  value="<%=pbean.getP_name() %>"></td>
 					<td><input class="input_full padding-left-none" name="o_qyt"  value="<%=o_qty %>"></td>
-					<td><input class="input_full padding-left-none" name="o_del_num" value="<%=order.getO_del_num() %>"></td>
-					<td><input class="input_full padding-left-none" name="o_status"  value="<%=order.getO_status() %>"></td>
-					<td><input class="input_full padding-left-none" name="o_del_date"  value="<%=order.getO_date() %>"></td>
 				</tr>
 				<%	}//---for
 				}//---for %>

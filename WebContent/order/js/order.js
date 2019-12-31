@@ -25,7 +25,7 @@ function init(){
 	const point_input = document.getElementById('point_input');
 	const point_buffer = document.getElementById('point_buffer').value;
 	const o_total_amount = document.getElementById('o_total_amount');
-	const firstValue = o_total_amount.innerHTML;
+	const firstValue = uncomma(o_total_amount.innerHTML);
 	const total_target_input = document.getElementById('total_target_input');
 	
 	point_input.addEventListener("keydown", FilterInput);
@@ -60,21 +60,23 @@ function init(){
 		if(point_input.value==='0'){
 			point_input.value = '';
 			point_span.innerHTML = 0;
-			o_total_amount.innerHTML = firstValue;
+			o_total_amount.innerHTML = numberWithCommas(firstValue);
 			return;
 		}
 		if(isNaN(parseInt(point_input.value))){
 			alert("숫자를 입력해주세요.");
 			point_input.value = '';
 			point_span.innerHTML = 0;
-			o_total_amount.innerHTML = firstValue;
+			o_total_amount.innerHTML = numberWithCommas(firstValue);
 			point_input.focus();
+			return;
 		}
 		if(maxPoint < parseInt(point_input.value)){
 			alert(maxPoint+"원까지 사용가능합니다.");
 			point_input.value = '';
 			point_span.innerHTML = 0;
-			o_total_amount.innerHTML = firstValue;
+			o_total_amount.innerHTML = numberWithCommas(firstValue);
+			console.log("이벤트 온");
 			point_input.focus();
 			return;
 		}

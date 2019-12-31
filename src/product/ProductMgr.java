@@ -69,7 +69,8 @@ public class ProductMgr {
 				sql = "SELECT p.p_code, p_name, p_price, p.p_main_pht_name, p.p_on_sale "
 						+ "FROM product_mst_tb p JOIN stock_tb s ON p.p_code = s.p_code "
 						+ "GROUP BY p.p_code having p.p_on_sale=1 "
-						+ "ORDER BY (SUM(s.st_enter_qty)-SUM(s.st_ava_qty)) DESC";
+						+ "ORDER BY (SUM(s.st_enter_qty)-SUM(s.st_ava_qty)) DESC "
+						+ "LIMIT 0, 8";
 				break;
 			
 			case "indexBest":
@@ -84,7 +85,8 @@ public class ProductMgr {
 				
 			case "new":
 				sql=  "SELECT p_code, p_name, p_price, p_main_pht_name "
-						+ "FROM product_mst_tb WHERE p_on_sale=1 ORDER BY p_date DESC";
+						+ "FROM product_mst_tb WHERE p_on_sale=1 ORDER BY p_date DESC "
+						+ "LIMIT 0, 8";
 				break;
 			
 			case "indexNew":
