@@ -12,6 +12,21 @@ public class ProductBean {
 	private int p_info_pht_size;
 	private String p_date;
 	private int p_on_sale;
+	private int rm_code;
+	private String rm_name;
+	
+	public int getRm_code() {
+		return rm_code;
+	}
+	public void setRm_code(int rm_code) {
+		this.rm_code = rm_code;
+	}
+	public String getRm_name() {
+		return rm_name;
+	}
+	public void setRm_name(String rm_name) {
+		this.rm_name = rm_name;
+	}
 	public int getSt_enter_qty() {
 		return st_enter_qty;
 	}
