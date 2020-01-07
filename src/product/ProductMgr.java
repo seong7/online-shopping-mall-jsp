@@ -252,5 +252,4 @@ public class ProductMgr {
 			}
 			return vlist;
 		}	
-
 }

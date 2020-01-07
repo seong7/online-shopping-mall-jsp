@@ -419,4 +419,131 @@ public class ProductMgr {
 		}
 		return slist;
 	}
+	
+
+	public Vector<ProductBean> getMertaterialListAll(){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		Vector<ProductBean> vlist = new Vector<ProductBean>();
+		try {
+			con = pool.getConnection();
+			sql = "SELECT * FROM rawmaterial_tb";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ProductBean bean = new ProductBean();
+				bean.setRm_code(rs.getInt(1));
+				bean.setRm_name(rs.getString(2));
+				vlist.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
+	}
+	
+	public void insertRmData(int p_code, int[] rm_code, int[] percent) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			con = pool.getConnection();
+			sql = "INSERT INTO rm_pct_tb (p_code, rm_code, rm_percentage)\r\n" + 
+					"VALUES (?,?,?), (?,?,?),(?,?,?),(?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, p_code);
+			pstmt.setInt(2, rm_code[0]);
+			pstmt.setInt(3, percent[0]);
+			pstmt.setInt(4, p_code);
+			pstmt.setInt(5, rm_code[1]);
+			pstmt.setInt(6, percent[1]);
+			pstmt.setInt(7, p_code);
+			pstmt.setInt(8, rm_code[2]);
+			pstmt.setInt(9, percent[2]);
+			pstmt.setInt(10, p_code);
+			pstmt.setInt(11, rm_code[3]);
+			pstmt.setInt(12, percent[3]);
+			
+			int cnt = pstmt.executeUpdate();
+			System.out.println("재료등록 완료!");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+	}
+	public int getProductCode(String p_name) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int result = 0;
+		try {
+			con = pool.getConnection();
+			sql = "SELECT p_code from product_mst_tb where p_name=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, p_name);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return result;
+	}
+	
+
+	public Vector<ProductBean> getRmDatas(int p_code){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		Vector<ProductBean> vlist = new Vector<ProductBean>();
+		try {
+			con = pool.getConnection();
+			sql = "SELECT * FROM rm_pct_tb WHERE p_code=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, p_code);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ProductBean bean = new ProductBean();
+				bean.setRm_code(rs.getInt(2));
+				bean.setRm_percentage(rs.getInt(3));
+				vlist.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
+	}
+	public void updateRmData(int p_code, int[] rm_code, int[] percent) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			con = pool.getConnection();
+			sql = "UPDATE rm_pct_tb SET rm_percentage = ? WHERE p_code=? AND rm_code = ?";
+			for(int i=0; i<4; i++) {
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, percent[i]);
+				pstmt.setInt(2, p_code);
+				pstmt.setInt(3, rm_code[i]);
+				pstmt.executeUpdate();
+			}
+			System.out.println("수정완료!");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+	}
 }
