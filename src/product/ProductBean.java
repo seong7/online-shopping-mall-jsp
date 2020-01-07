@@ -14,7 +14,14 @@ public class ProductBean {
 	private int p_on_sale;
 	private int rm_code;
 	private String rm_name;
+	private int rm_percentage;
 	
+	public int getRm_percentage() {
+		return rm_percentage;
+	}
+	public void setRm_percentage(int rm_percentage) {
+		this.rm_percentage = rm_percentage;
+	}
 	public int getRm_code() {
 		return rm_code;
 	}
