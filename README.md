@@ -1,5 +1,8 @@
 # 밀스의 방앗간 (web shopping mall)
 
+![shoppingmall](https://user-images.githubusercontent.com/52827441/83596071-a92dfa80-a59e-11ea-858a-c9a3dc3788f5.gif)
+
+
 마켓 컬리 웹사이트의 UI 를 모티브로 만든 떡 판매 웹 쇼핑몰   
 [[실행 영상 >>](https://www.youtube.com/watch?v=URZqkt_aoKU)]
 
