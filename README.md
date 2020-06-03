@@ -1,6 +1,23 @@
-# online-shopping-mall-jsp 
-## Git, Github
-#### Commit 규칙
+# 밀스의 방앗간 (web shopping mall)
+
+마켓 컬리 웹사이트의 UI 를 모티브로 만든 떡 판매 웹 쇼핑몰   
+[[실행 영상 >>](https://www.youtube.com/watch?v=URZqkt_aoKU)]
+
+## About 밀스의 방앗간
+#### 사용자 모드
+- AJAX 통신을 이용한 로그인 및 검색어 자동완성 기능 구현
+- 주문, 포인트, 장바구니, 리뷰 등 실제 웹 쇼핑몰의 상세 기능들 구현
+#### 관리자 모드
+- 등록된 제품들의 유통기한, 재고 그리고 폐기된 수량을 한 눈에 조회, 관리 가능
+- 매장 전체 주문들의 상태와 매출을 한눈에 관리 가능
+
+## 기술 스택
+#### 백엔드
+ - Java (JSP) / mySql
+#### 프론트엔드
+ - Vainilla js / html / css (sass)
+
+## Commit 규칙
 <ol>
  <li>
   작업 전과 완료 후(push 전), 항상 최신 버전의 origin/dev 를 fetch 하여 업데이트 여부 확인
@@ -22,40 +39,4 @@
  </li>
 </ol>
 
-#### branch 관련 명령어
-<ul>
-  <li>
-  브랜치 리스트 보기
-   <ul>
-    <li>명령어 : git branch</li>
-    <li>remote 브랜치도 함께 보기 : git branch -a</li>
-  </ul>
- </li>
- <li>
-  브랜치 생성
-   <ul>
-    <li>명령어 : git branch 브랜치명</li>
-  </ul>
- </li>
-  <li>
-  브랜치 이동
-  <ul>
-   <li>명령어 : git checkout 브랜치명</li>
-  </ul>
- </li>
- <li>
-  브랜치 삭제
-  <ul>
-   <li>명령어 : git branch -d 브랜치명</li>
-  </ul>
- </li>
-  <li>
-  더이상 원격 repo(github)에 존재하지 않는 원격 브랜치(origin) 삭제
-  <ul>
-   <li>명령어 : git remote prune origin</li>
-  </ul>
- </li>
- </ul>
-
-
-### SQL 바로가기[./WebContent/sql/](./WebContent/sql/)
+### SQL 및 DB 설계도 바로가기[./WebContent/sql/](./WebContent/sql/)
