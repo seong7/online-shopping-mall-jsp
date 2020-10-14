@@ -19,7 +19,7 @@
 #### 백엔드
  - Java (JSP) / mySql
 #### 프론트엔드
- - Vainilla js / html / css (sass)
+ - Vainilla js / jQuery / html / css (sass)
 
 ## Commit 규칙
 <ol>
