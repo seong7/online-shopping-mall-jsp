@@ -21,26 +21,5 @@
 #### 프론트엔드
  - Vainilla js / jQuery / html / css (sass)
 
-## Commit 규칙
-<ol>
- <li>
-  작업 전과 완료 후(push 전), 항상 최신 버전의 origin/dev 를 fetch 하여 업데이트 여부 확인
-  <ul>
-    <li>명령어 : git fetch origin</li>
-  </ul>
- </li>
- <li>
-  origin/dev 업데이트가 있을 경우, 우선 local branch 와 merge 하기
-  <ul>
-   <li>명령어 : git merge 로컬브랜치명 origin/dev</li>
-  </ul>
- </li>
- <li>
-   push
-   <ul>
-    <li>명령어 : git push origin 로컬브랜치명</li>
-   </ul>
- </li>
-</ol>
 
 ### SQL 및 DB 설계도 바로가기[./WebContent/sql/](./WebContent/sql/)
